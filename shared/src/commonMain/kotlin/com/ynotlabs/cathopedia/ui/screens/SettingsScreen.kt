@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,7 +23,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -50,7 +48,7 @@ import com.ynotlabs.cathopedia.resources.settings_quote_bg
 
 
 private val SettingsBg = Color(0xFF061A13)
-private val SettingsCard = Color(0xFF102D23)
+//private val SettingsCard = Color(0xFF102D23)
 private val SettingsCardAlt = Color(0xFF0C271E)
 private val SettingsBorder = Color(0xFF315444)
 private val SettingsGold = Color(0xFFD9B44A)
@@ -62,7 +60,6 @@ private val SettingsMuted = Color(0xFFB2AB97)
 fun SettingsScreen(
     language: String,
     themeMode: ThemeMode,
-    onBack: () -> Unit,
     onOpenLanguage: () -> Unit,
     onOpenAppearance: () -> Unit,
     onOpenSaved: () -> Unit,
