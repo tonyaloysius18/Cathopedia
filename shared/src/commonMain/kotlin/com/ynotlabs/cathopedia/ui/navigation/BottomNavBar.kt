@@ -5,6 +5,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
@@ -13,8 +14,8 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -24,27 +25,26 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.ui.theme.DarkGoldBright
 import com.ynotlabs.cathopedia.ui.theme.DarkPillSurface
 import com.ynotlabs.cathopedia.ui.theme.LightGoldText
 import com.ynotlabs.cathopedia.ui.theme.LightPillSurface
+import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.resources.nav_explore
+import com.ynotlabs.cathopedia.resources.nav_home
+import com.ynotlabs.cathopedia.resources.nav_search
+import com.ynotlabs.cathopedia.resources.nav_settings
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
 import kotlin.math.abs
 
-/**
- * Ported from Itinera's `SlidingPillBar` — a floating pill with a raised
- * bubble that slides to the selected tab, drawn as one Canvas path rather
- * than a moving indicator view. Settings occupies the fourth slot (Saved now
- * lives inside Settings as its own card, reached by a push rather than a
- * tab). The selected glyph uses the theme's metallic-gold `primary` token
- * (the liturgical accent is reserved for the seasonal Today header/indicator,
- * not this bar).
- */
 @Composable
 fun BottomNavBar(selected: Tab, onSelect: (Tab) -> Unit) {
     val items = Tab.entries
@@ -59,10 +59,7 @@ fun BottomNavBar(selected: Tab, onSelect: (Tab) -> Unit) {
     // Same fill as the pill itself — the bubble reads as a raised bump (via its
     // drop shadow) rather than a differently-coloured badge.
     val activeCircleColor = barBackgroundColor
-    val rimColor = if (isLightMode) LightGoldText.copy(alpha = 0.18f) else DarkGoldBright.copy(alpha = 0.22f)
-    val selectedIconColor = MaterialTheme.colorScheme.primary
-    val unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant
-
+    val rimColor = if (isLightMode) LightGoldText.copy(alpha = 0.24f) else DarkGoldBright.copy(alpha = 0.34f)
     val targetBias = if (count <= 1) 0f else -1f + 2f * selectedIndex / (count - 1)
     val bias by animateFloatAsState(
         targetValue = targetBias,
@@ -157,12 +154,108 @@ fun BottomNavBar(selected: Tab, onSelect: (Tab) -> Unit) {
                 )
             }
 
-            drawPillShadow(path = shadowPath, radius = 14.dp.toPx(), dy = 4.dp.toPx(), isLightMode = isLightMode)
+            drawPillShadow(
+                path = shadowPath,
+                radius = 14.dp.toPx(),
+                dy = 4.dp.toPx(),
+                isLightMode = isLightMode,
+            )
+
+            // Gold ambience around the ENTIRE sliding pill shape.
+            // Multiple wide translucent strokes create a soft outer glow
+            // without changing the original geometry of the bar.
+            // Soft outer gold ambience around the complete pill.
+            drawPath(
+                path = path,
+                color = DarkGoldBright.copy(alpha = 0.04f),
+                style = Stroke(width = 12.dp.toPx()),
+            )
+            drawPath(
+                path = path,
+                color = DarkGoldBright.copy(alpha = 0.07f),
+                style = Stroke(width = 7.dp.toPx()),
+            )
+
+            // Base fill.
             drawPath(path = path, color = barBackgroundColor)
-            // A hairline gold rim gives the pill a defined edge on top of the
-            // fill-colour contrast, ties back to the metallic-gold identity.
-            drawPath(path = path, color = rimColor, style = Stroke(width = 1.2.dp.toPx()))
-            drawCircle(color = activeCircleColor, radius = bubbleRadius, center = Offset(centerX, bubbleCenterY))
+
+            // Diffuse gold illumination INSIDE the entire pill.
+            // This gives the full bar a warm glow rather than only outlining it.
+            drawPath(
+                path = path,
+                brush = Brush.horizontalGradient(
+                    colors = listOf(
+                        DarkGoldBright.copy(alpha = 0.11f),
+                        DarkGoldBright.copy(alpha = 0.045f),
+                        DarkGoldBright.copy(alpha = 0.08f),
+                    ),
+                ),
+            )
+
+            // Very soft vertical sheen across the pill surface.
+            drawPath(
+                path = path,
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        DarkGoldBright.copy(alpha = 0.06f),
+                        Color.Transparent,
+                        DarkGoldBright.copy(alpha = 0.03f),
+                    ),
+                ),
+            )
+
+            // Strong selected-item halo. Drawing it here (in the full 96dp
+            // canvas) keeps the glow from being constrained by the icon row.
+            drawCircle(
+                brush = Brush.radialGradient(
+                    colors = listOf(
+                        DarkGoldBright.copy(alpha = 0.64f),
+                        DarkGoldBright.copy(alpha = 0.34f),
+                        DarkGoldBright.copy(alpha = 0.13f),
+                        Color.Transparent,
+                    ),
+                    center = Offset(centerX, bubbleCenterY),
+                    radius = 39.dp.toPx(),
+                ),
+                radius = 39.dp.toPx(),
+                center = Offset(centerX, bubbleCenterY),
+            )
+
+            // A second tighter glow makes the active bubble visibly luminous.
+            drawCircle(
+                brush = Brush.radialGradient(
+                    colors = listOf(
+                        DarkGoldBright.copy(alpha = 0.52f),
+                        DarkGoldBright.copy(alpha = 0.16f),
+                        Color.Transparent,
+                    ),
+                    center = Offset(centerX, bubbleCenterY),
+                    radius = 29.dp.toPx(),
+                ),
+                radius = 29.dp.toPx(),
+                center = Offset(centerX, bubbleCenterY),
+            )
+
+            // Original pill outline/shape remains unchanged.
+            drawPath(
+                path = path,
+                color = rimColor,
+                style = Stroke(width = 1.2.dp.toPx()),
+            )
+
+            drawCircle(
+                color = activeCircleColor,
+                radius = bubbleRadius,
+                center = Offset(centerX, bubbleCenterY),
+            )
+
+            // Bright gold rim around the raised active circle.
+            drawCircle(
+                color = DarkGoldBright.copy(alpha = 0.82f),
+                radius = bubbleRadius + 1.5.dp.toPx(),
+                center = Offset(centerX, bubbleCenterY),
+                style = Stroke(width = 1.5.dp.toPx()),
+            )
         }
 
         Row(
@@ -172,7 +265,6 @@ fun BottomNavBar(selected: Tab, onSelect: (Tab) -> Unit) {
             items.forEachIndexed { index, tab ->
                 val itemBias = if (count <= 1) 0f else -1f + 2f * index / (count - 1)
                 val selectedness = (1f - abs(bias - itemBias) / step).coerceIn(0f, 1f)
-                val tint = lerp(unselectedIconColor, selectedIconColor, selectedness)
 
                 Box(
                     modifier = Modifier
@@ -184,15 +276,41 @@ fun BottomNavBar(selected: Tab, onSelect: (Tab) -> Unit) {
                         ) { onSelect(tab) },
                     contentAlignment = Alignment.Center,
                 ) {
-                    val verticalOffset = with(LocalDensity.current) { (-20.dp * selectedness).toPx() }
-                    Text(
-                        tab.glyph,
-                        fontSize = 20.sp,
-                        color = tint,
-                        modifier = Modifier.graphicsLayer { translationY = verticalOffset },
+                    // Row center is 20dp below the bubble center. This lift
+                    // places the selected PNG exactly at the center of the
+                    // raised circle while unselected icons remain centered in
+                    // the flat pill.
+                    val verticalOffset = with(LocalDensity.current) {
+                        (-20.dp * selectedness).toPx()
+                    }
+
+                    // Bigger at rest, with a modest selected enlargement.
+                    val iconSize = 34.dp + (12.dp * selectedness)
+
+                    Image(
+                        painter = painterResource(bottomNavIcon(tab)),
+                        contentDescription = tab.name,
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier
+                            .size(iconSize)
+                            .graphicsLayer {
+                                translationY = verticalOffset
+                                alpha = 0.86f + (0.14f * selectedness)
+                                scaleX = 1f
+                                scaleY = 1f
+                            },
                     )
                 }
             }
         }
     }
 }
+
+private fun bottomNavIcon(tab: Tab): DrawableResource =
+    when (tab.name.lowercase()) {
+        "home" -> Res.drawable.nav_home
+        "explore" -> Res.drawable.nav_explore
+        "search" -> Res.drawable.nav_search
+        "settings" -> Res.drawable.nav_settings
+        else -> Res.drawable.nav_home
+    }

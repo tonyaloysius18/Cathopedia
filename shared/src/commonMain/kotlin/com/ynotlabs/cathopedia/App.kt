@@ -178,7 +178,6 @@ fun App(container: AppContainer) {
                 is Destination.Settings -> SettingsScreen(
                     language = language,
                     themeMode = themeMode,
-                    onBack = nav::back,
                     onOpenLanguage = {
                         languageEditFromSettings = true
                         nav.navigate(Destination.LanguageSelect)
