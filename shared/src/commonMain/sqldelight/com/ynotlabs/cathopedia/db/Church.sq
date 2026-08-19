@@ -1,0 +1,43 @@
+CREATE TABLE ChurchEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    latitude REAL,
+    longitude REAL,
+    foundedYear INTEGER,
+    imageUrl TEXT,
+    sourceUrl TEXT
+);
+
+CREATE TABLE ChurchText (
+    churchId TEXT NOT NULL,
+    language TEXT NOT NULL,
+    name TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    body TEXT NOT NULL,
+    sourceAttribution TEXT,
+    PRIMARY KEY (churchId, language),
+    FOREIGN KEY (churchId) REFERENCES ChurchEntity(id) ON DELETE CASCADE
+);
+
+insertChurch:
+INSERT OR REPLACE INTO ChurchEntity(id, latitude, longitude, foundedYear, imageUrl, sourceUrl)
+VALUES (?, ?, ?, ?, ?, ?);
+
+insertChurchText:
+INSERT OR REPLACE INTO ChurchText(churchId, language, name, summary, body, sourceAttribution)
+VALUES (?, ?, ?, ?, ?, ?);
+
+selectAllChurches:
+SELECT ChurchEntity.id AS id, ChurchText.name AS name, ChurchText.summary AS summary,
+       ChurchEntity.imageUrl AS imageUrl
+FROM ChurchEntity
+JOIN ChurchText ON ChurchText.churchId = ChurchEntity.id AND ChurchText.language = :language
+ORDER BY ChurchText.name ASC;
+
+selectChurchDetail:
+SELECT ChurchEntity.id AS id, ChurchText.name AS name, ChurchText.summary AS summary, ChurchText.body AS body,
+       ChurchEntity.latitude AS latitude, ChurchEntity.longitude AS longitude,
+       ChurchEntity.foundedYear AS foundedYear, ChurchEntity.imageUrl AS imageUrl,
+       ChurchEntity.sourceUrl AS sourceUrl, ChurchText.sourceAttribution AS sourceAttribution
+FROM ChurchEntity
+JOIN ChurchText ON ChurchText.churchId = ChurchEntity.id AND ChurchText.language = :language
+WHERE ChurchEntity.id = :id;

@@ -1,0 +1,16 @@
+{
+  "id": "valentine",
+  "regnalNumber": 100,
+  "papacyStart": "827-08-09",
+  "papacyEnd": "827-09-10",
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Valentine",
+      "summary": "A pope of Roman noble birth whose reign lasted barely a month before his death.",
+      "body": "Valentine was already renowned for his personal piety and generosity as archdeacon before his election, but his papacy ended after only a few weeks, leaving essentially no opportunity to act on any policy of his own beyond what the barest chronicle entries record.",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

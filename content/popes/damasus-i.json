@@ -1,0 +1,16 @@
+{
+  "id": "damasus-i",
+  "regnalNumber": 37,
+  "papacyStart": "366-10-01",
+  "papacyEnd": "384-12-11",
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Damasus I",
+      "summary": "A pope who commissioned Jerome's Latin Vulgate translation of the Bible and promoted the cult of Rome's martyrs.",
+      "body": "Damasus I's election was contested by a rival faction backing Ursinus, and the resulting violence between their supporters was severe enough to require imperial intervention. Once secure in office, Damasus commissioned his secretary Jerome to produce a revised Latin translation of the Bible, which developed into the Vulgate, and composed verse inscriptions honoring the tombs of Roman martyrs in the catacombs, promoting Rome's prestige as a city of apostolic and martyric heritage.",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

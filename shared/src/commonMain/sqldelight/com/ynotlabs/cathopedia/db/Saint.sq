@@ -1,0 +1,43 @@
+CREATE TABLE SaintEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    feastDay TEXT,
+    canonizationYear INTEGER,
+    patronage TEXT,
+    imageUrl TEXT,
+    sourceUrl TEXT
+);
+
+CREATE TABLE SaintText (
+    saintId TEXT NOT NULL,
+    language TEXT NOT NULL,
+    name TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    body TEXT NOT NULL,
+    sourceAttribution TEXT,
+    PRIMARY KEY (saintId, language),
+    FOREIGN KEY (saintId) REFERENCES SaintEntity(id) ON DELETE CASCADE
+);
+
+insertSaint:
+INSERT OR REPLACE INTO SaintEntity(id, feastDay, canonizationYear, patronage, imageUrl, sourceUrl)
+VALUES (?, ?, ?, ?, ?, ?);
+
+insertSaintText:
+INSERT OR REPLACE INTO SaintText(saintId, language, name, summary, body, sourceAttribution)
+VALUES (?, ?, ?, ?, ?, ?);
+
+selectAllSaints:
+SELECT SaintEntity.id AS id, SaintText.name AS name, SaintText.summary AS summary,
+       SaintEntity.feastDay AS feastDay, SaintEntity.imageUrl AS imageUrl
+FROM SaintEntity
+JOIN SaintText ON SaintText.saintId = SaintEntity.id AND SaintText.language = :language
+ORDER BY SaintText.name ASC;
+
+selectSaintDetail:
+SELECT SaintEntity.id AS id, SaintText.name AS name, SaintText.summary AS summary, SaintText.body AS body,
+       SaintEntity.feastDay AS feastDay, SaintEntity.canonizationYear AS canonizationYear,
+       SaintEntity.patronage AS patronage, SaintEntity.imageUrl AS imageUrl, SaintEntity.sourceUrl AS sourceUrl,
+       SaintText.sourceAttribution AS sourceAttribution
+FROM SaintEntity
+JOIN SaintText ON SaintText.saintId = SaintEntity.id AND SaintText.language = :language
+WHERE SaintEntity.id = :id;

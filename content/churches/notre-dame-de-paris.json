@@ -1,0 +1,16 @@
+{
+  "id": "notre-dame-de-paris",
+  "latitude": 48.8530,
+  "longitude": 2.3499,
+  "foundedYear": 1345,
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Notre-Dame de Paris",
+      "summary": "The great Gothic cathedral of Paris, restored and reopened after the 2019 fire.",
+      "body": "Construction of Notre-Dame began in 1163 and continued for nearly two centuries, producing one of the defining examples of French Gothic architecture, with its flying buttresses, rose windows, and twin west towers. The cathedral has hosted coronations, held Joan of Arc's posthumous rehabilitation trial, and survived revolution and two world wars, only to suffer a devastating fire in April 2019 that destroyed its spire and roof. A major international restoration effort saw the cathedral reopen to the public in December 2024.",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "gregory-xiii",
+  "regnalNumber": 13,
+  "papacyStart": "1572-05",
+  "papacyEnd": "1585-04",
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Gregory XIII",
+      "summary": "The pope remembered for reforming the calendar that still bears his name, correcting centuries of accumulated drift in the Julian system.",
+      "body": "Ugo Boncompagni's most lasting legacy is the Gregorian calendar, introduced in 1582 to correct the slow drift of the Julian calendar against the solar year by dropping ten days and refining the leap-year rule, a reform gradually adopted across the world in the centuries since. He also expanded the Church's missionary and educational reach by founding numerous seminaries and colleges, including the Gregorian University in Rome, part of a broader Counter-Reformation push to train an educated clergy.",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

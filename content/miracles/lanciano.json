@@ -1,0 +1,15 @@
+{
+  "id": "lanciano",
+  "location": "Lanciano, Italy",
+  "miracleYear": 750,
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Eucharistic Miracle of Lanciano",
+      "summary": "An 8th-century Eucharistic miracle still displayed in the Church of San Francesco.",
+      "body": "Tradition holds that around AD 750, a monk in Lanciano witnessed the consecrated host and wine visibly turn to flesh and blood; the relics are still preserved and displayed today.",
+      "sourceAttribution": "Seed content — replace with sourced text."
+    }
+  }
+}

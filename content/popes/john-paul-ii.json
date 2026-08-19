@@ -1,0 +1,16 @@
+{
+  "id": "john-paul-ii",
+  "regnalNumber": 264,
+  "papacyStart": "1978-10-16",
+  "papacyEnd": "2005-04-02",
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "John Paul II",
+      "summary": "One of the longest-serving popes, previously Archbishop of Krakow.",
+      "body": "John Paul II (Karol Wojtyla, 1920-2005) served as pope from 1978 until his death, and was canonized in 2014.",
+      "sourceAttribution": "Seed content — replace with sourced text. Portrait: Chuck Fishman, 1979, public domain (Wikimedia Commons)."
+    }
+  }
+}

@@ -1,0 +1,44 @@
+CREATE TABLE ApparitionEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    location TEXT,
+    apparitionYear INTEGER,
+    approvalStatus TEXT,
+    imageUrl TEXT,
+    sourceUrl TEXT
+);
+
+CREATE TABLE ApparitionText (
+    apparitionId TEXT NOT NULL,
+    language TEXT NOT NULL,
+    name TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    body TEXT NOT NULL,
+    sourceAttribution TEXT,
+    PRIMARY KEY (apparitionId, language),
+    FOREIGN KEY (apparitionId) REFERENCES ApparitionEntity(id) ON DELETE CASCADE
+);
+
+insertApparition:
+INSERT OR REPLACE INTO ApparitionEntity(id, location, apparitionYear, approvalStatus, imageUrl, sourceUrl)
+VALUES (?, ?, ?, ?, ?, ?);
+
+insertApparitionText:
+INSERT OR REPLACE INTO ApparitionText(apparitionId, language, name, summary, body, sourceAttribution)
+VALUES (?, ?, ?, ?, ?, ?);
+
+selectAllApparitions:
+SELECT ApparitionEntity.id AS id, ApparitionText.name AS name, ApparitionText.summary AS summary,
+       ApparitionEntity.imageUrl AS imageUrl
+FROM ApparitionEntity
+JOIN ApparitionText ON ApparitionText.apparitionId = ApparitionEntity.id AND ApparitionText.language = :language
+ORDER BY ApparitionEntity.apparitionYear ASC;
+
+selectApparitionDetail:
+SELECT ApparitionEntity.id AS id, ApparitionText.name AS name, ApparitionText.summary AS summary,
+       ApparitionText.body AS body, ApparitionEntity.location AS location,
+       ApparitionEntity.apparitionYear AS apparitionYear, ApparitionEntity.approvalStatus AS approvalStatus,
+       ApparitionEntity.imageUrl AS imageUrl, ApparitionEntity.sourceUrl AS sourceUrl,
+       ApparitionText.sourceAttribution AS sourceAttribution
+FROM ApparitionEntity
+JOIN ApparitionText ON ApparitionText.apparitionId = ApparitionEntity.id AND ApparitionText.language = :language
+WHERE ApparitionEntity.id = :id;

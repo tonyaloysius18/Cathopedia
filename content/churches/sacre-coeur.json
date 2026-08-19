@@ -1,0 +1,16 @@
+{
+  "id": "sacre-coeur",
+  "latitude": 48.8867,
+  "longitude": 2.3431,
+  "foundedYear": 1914,
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Basilica of the Sacred Heart (Sacré-Cœur)",
+      "summary": "The white-domed basilica crowning Montmartre, built as a national act of penance after the Franco-Prussian War.",
+      "body": "The Basilica of the Sacré-Cœur was built atop the Montmartre hill following France's defeat in the 1870-71 Franco-Prussian War and the upheaval of the Paris Commune, conceived as a national offering of penance and hope dedicated to the Sacred Heart of Jesus. Constructed largely by public subscription between 1875 and 1914, its distinctive white travertine stone and Romano-Byzantine domes make it one of the most recognisable landmarks on the Paris skyline, with sweeping views across the city from its steps.",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

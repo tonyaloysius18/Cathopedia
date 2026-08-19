@@ -1,0 +1,16 @@
+{
+  "id": "chartres-cathedral",
+  "latitude": 48.4478,
+  "longitude": 1.4879,
+  "foundedYear": 1220,
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Chartres Cathedral",
+      "summary": "A French Gothic cathedral celebrated for its almost entirely intact medieval stained glass.",
+      "body": "Rebuilt after a fire in 1194 destroyed most of its predecessor, Chartres Cathedral was completed in a remarkably short span for the era, giving it an unusual stylistic unity among Gothic cathedrals. It is renowned above all for its stained glass — an exceptional collection of medieval windows, including the deep cobalt tone known as \"Chartres blue,\" that survived largely intact through wars and revolutions by being removed and stored for safekeeping. A UNESCO World Heritage Site, it remains a major pilgrimage destination associated with devotion to the Virgin Mary.",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

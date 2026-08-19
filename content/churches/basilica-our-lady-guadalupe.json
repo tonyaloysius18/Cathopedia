@@ -1,0 +1,16 @@
+{
+  "id": "basilica-our-lady-guadalupe",
+  "latitude": 19.4840,
+  "longitude": -99.1176,
+  "foundedYear": 1976,
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Basilica of Our Lady of Guadalupe",
+      "summary": "The most-visited Catholic shrine in the world, built to house Juan Diego's tilma bearing the image of Our Lady of Guadalupe.",
+      "body": "The basilica stands at the foot of Tepeyac hill in Mexico City, the site of the reported 1531 apparitions of Our Lady of Guadalupe to Juan Diego. It houses his tilma, the cloak said to bear the miraculous image left by the apparition, displayed above the main altar and viewed by pilgrims via a moving walkway beneath it. The current basilica, a modern circular structure, was completed in 1976 to replace an older colonial-era church that had begun to sink into the soft ground beneath it; it draws tens of millions of visitors a year, particularly around the December 12th feast.",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

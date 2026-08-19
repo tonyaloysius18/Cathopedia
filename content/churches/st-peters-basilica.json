@@ -1,0 +1,16 @@
+{
+  "id": "st-peters-basilica",
+  "latitude": 41.9022,
+  "longitude": 12.4539,
+  "foundedYear": 1626,
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "St. Peter's Basilica",
+      "summary": "The papal basilica in Vatican City, built over the traditional site of Peter's tomb.",
+      "body": "St. Peter's Basilica was completed in 1626 and stands over the site traditionally held to be the burial place of the apostle Peter.",
+      "sourceAttribution": "Seed content — replace with sourced text."
+    }
+  }
+}

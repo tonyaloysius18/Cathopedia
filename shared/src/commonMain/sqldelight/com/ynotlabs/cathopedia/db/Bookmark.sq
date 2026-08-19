@@ -1,0 +1,28 @@
+-- Local-only saves — no account, no sync, per the app-flow doc's "Saved"
+-- screen. name/summary are snapshotted at bookmark time so the Saved list
+-- renders without a per-type dispatch to re-fetch them.
+CREATE TABLE Bookmark (
+    entityType TEXT NOT NULL,
+    entityId TEXT NOT NULL,
+    name TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    note TEXT,
+    createdAt INTEGER NOT NULL,
+    PRIMARY KEY (entityType, entityId)
+);
+
+insertBookmark:
+INSERT OR REPLACE INTO Bookmark(entityType, entityId, name, summary, note, createdAt)
+VALUES (?, ?, ?, ?, ?, ?);
+
+deleteBookmark:
+DELETE FROM Bookmark WHERE entityType = :entityType AND entityId = :entityId;
+
+selectBookmark:
+SELECT * FROM Bookmark WHERE entityType = :entityType AND entityId = :entityId;
+
+selectAllBookmarks:
+SELECT * FROM Bookmark ORDER BY createdAt DESC;
+
+selectNotedBookmarks:
+SELECT * FROM Bookmark WHERE note IS NOT NULL ORDER BY createdAt DESC;

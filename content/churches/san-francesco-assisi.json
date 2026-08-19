@@ -1,0 +1,16 @@
+{
+  "id": "san-francesco-assisi",
+  "latitude": 43.0707,
+  "longitude": 12.6055,
+  "foundedYear": 1253,
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Basilica of San Francesco d'Assisi",
+      "summary": "The burial church of St. Francis, famed for its Giotto fresco cycle.",
+      "body": "Built into the hillside at Assisi beginning just two years after Francis's death in 1226, the basilica consists of two churches, one built atop the other, with Francis's tomb in the crypt below. Its walls are covered in fresco cycles by some of the greatest painters of the early Italian Renaissance, including a celebrated series attributed to Giotto depicting scenes from Francis's life. It remains one of the most important pilgrimage sites of the Franciscan order and a UNESCO World Heritage Site.",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

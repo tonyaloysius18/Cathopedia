@@ -1,0 +1,331 @@
+package com.ynotlabs.cathopedia.data
+
+import com.ynotlabs.cathopedia.db.CathopediaDatabase
+import com.ynotlabs.cathopedia.model.ApostleDetail
+import com.ynotlabs.cathopedia.model.ApparitionDetail
+import com.ynotlabs.cathopedia.model.BookmarkItem
+import com.ynotlabs.cathopedia.model.ChurchDetail
+import com.ynotlabs.cathopedia.model.ContentSummary
+import com.ynotlabs.cathopedia.model.ContentType
+import com.ynotlabs.cathopedia.model.FeastDetail
+import com.ynotlabs.cathopedia.model.MiracleDetail
+import com.ynotlabs.cathopedia.model.PopeDetail
+import com.ynotlabs.cathopedia.model.RelatedItem
+import com.ynotlabs.cathopedia.model.SaintDetail
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
+import kotlin.random.Random
+
+/**
+ * Single access point onto the bundled SQLite database. Every list/detail query
+ * is language-scoped per the Phase 0 content model; search is FTS5-backed and
+ * optionally filtered by content type.
+ */
+@OptIn(ExperimentalTime::class)
+class CathopediaRepository(private val database: CathopediaDatabase) {
+
+    suspend fun listSaints(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
+        database.saintQueries.selectAllSaints(language)
+            .executeAsList()
+            .map { 
+                ContentSummary(
+                    type = ContentType.SAINT, 
+                    id = it.id, 
+                    name = it.name, 
+                    summary = it.summary, 
+                    imageUrl = it.imageUrl,
+                    feastDay = it.feastDay
+                ) 
+            }
+    }
+
+    suspend fun saintDetail(id: String, language: String): SaintDetail? = withContext(Dispatchers.Default) {
+        database.saintQueries.selectSaintDetail(language = language, id = id).executeAsOneOrNull()?.let {
+            SaintDetail(
+                id = it.id,
+                name = it.name,
+                summary = it.summary,
+                body = it.body,
+                feastDay = it.feastDay,
+                canonizationYear = it.canonizationYear,
+                patronage = it.patronage,
+                imageUrl = it.imageUrl,
+                sourceUrl = it.sourceUrl,
+                sourceAttribution = it.sourceAttribution,
+                related = relatedItems(ContentType.SAINT, id),
+            )
+        }
+    }
+
+    suspend fun listPopes(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
+        database.popeQueries.selectAllPopes(language)
+            .executeAsList()
+            .map { ContentSummary(ContentType.POPE, it.id, it.name, it.summary, it.imageUrl, it.papacyStartYear, papacyStart = it.papacyStart, papacyEnd = it.papacyEnd) }
+    }
+
+    suspend fun popeDetail(id: String, language: String): PopeDetail? = withContext(Dispatchers.Default) {
+        database.popeQueries.selectPopeDetail(language = language, id = id).executeAsOneOrNull()?.let {
+            PopeDetail(
+                id = it.id,
+                name = it.name,
+                summary = it.summary,
+                body = it.body,
+                regnalNumber = it.regnalNumber,
+                papacyStart = it.papacyStart,
+                papacyEnd = it.papacyEnd,
+                imageUrl = it.imageUrl,
+                sourceUrl = it.sourceUrl,
+                sourceAttribution = it.sourceAttribution,
+                related = relatedItems(ContentType.POPE, id),
+            )
+        }
+    }
+
+    suspend fun listApostles(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
+        database.apostleQueries.selectAllApostles(language)
+            .executeAsList()
+            .map { ContentSummary(ContentType.APOSTLE, it.id, it.name, it.summary, it.imageUrl) }
+    }
+
+    suspend fun apostleDetail(id: String, language: String): ApostleDetail? = withContext(Dispatchers.Default) {
+        database.apostleQueries.selectApostleDetail(language = language, id = id).executeAsOneOrNull()?.let {
+            ApostleDetail(
+                id = it.id,
+                name = it.name,
+                summary = it.summary,
+                body = it.body,
+                originalName = it.originalName,
+                martyrdom = it.martyrdom,
+                imageUrl = it.imageUrl,
+                sourceUrl = it.sourceUrl,
+                sourceAttribution = it.sourceAttribution,
+                related = relatedItems(ContentType.APOSTLE, id),
+            )
+        }
+    }
+
+    suspend fun listChurches(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
+        database.churchQueries.selectAllChurches(language)
+            .executeAsList()
+            .map { ContentSummary(ContentType.CHURCH, it.id, it.name, it.summary, it.imageUrl) }
+    }
+
+    suspend fun churchDetail(id: String, language: String): ChurchDetail? = withContext(Dispatchers.Default) {
+        database.churchQueries.selectChurchDetail(language = language, id = id).executeAsOneOrNull()?.let {
+            ChurchDetail(
+                id = it.id,
+                name = it.name,
+                summary = it.summary,
+                body = it.body,
+                latitude = it.latitude,
+                longitude = it.longitude,
+                foundedYear = it.foundedYear,
+                imageUrl = it.imageUrl,
+                sourceUrl = it.sourceUrl,
+                sourceAttribution = it.sourceAttribution,
+                related = relatedItems(ContentType.CHURCH, id),
+            )
+        }
+    }
+
+    suspend fun listApparitions(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
+        database.apparitionQueries.selectAllApparitions(language)
+            .executeAsList()
+            .map { ContentSummary(ContentType.APPARITION, it.id, it.name, it.summary, it.imageUrl) }
+    }
+
+    suspend fun apparitionDetail(id: String, language: String): ApparitionDetail? = withContext(Dispatchers.Default) {
+        database.apparitionQueries.selectApparitionDetail(language = language, id = id).executeAsOneOrNull()?.let {
+            ApparitionDetail(
+                id = it.id,
+                name = it.name,
+                summary = it.summary,
+                body = it.body,
+                location = it.location,
+                apparitionYear = it.apparitionYear,
+                approvalStatus = it.approvalStatus,
+                imageUrl = it.imageUrl,
+                sourceUrl = it.sourceUrl,
+                sourceAttribution = it.sourceAttribution,
+                related = relatedItems(ContentType.APPARITION, id),
+            )
+        }
+    }
+
+    suspend fun listMiracles(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
+        database.miracleQueries.selectAllMiracles(language)
+            .executeAsList()
+            .map { ContentSummary(ContentType.MIRACLE, it.id, it.name, it.summary, it.imageUrl) }
+    }
+
+    suspend fun miracleDetail(id: String, language: String): MiracleDetail? = withContext(Dispatchers.Default) {
+        database.miracleQueries.selectMiracleDetail(language = language, id = id).executeAsOneOrNull()?.let {
+            MiracleDetail(
+                id = it.id,
+                name = it.name,
+                summary = it.summary,
+                body = it.body,
+                location = it.location,
+                miracleYear = it.miracleYear,
+                imageUrl = it.imageUrl,
+                sourceUrl = it.sourceUrl,
+                sourceAttribution = it.sourceAttribution,
+                related = relatedItems(ContentType.MIRACLE, id),
+            )
+        }
+    }
+
+    suspend fun listFeasts(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
+        database.feastQueries.selectAllFeasts(language)
+            .executeAsList()
+            .map { ContentSummary(ContentType.FEAST, it.id, it.name, it.summary, it.imageUrl) }
+    }
+
+    suspend fun feastDetail(id: String, language: String): FeastDetail? = withContext(Dispatchers.Default) {
+        database.feastQueries.selectFeastDetail(language = language, id = id).executeAsOneOrNull()?.let {
+            FeastDetail(
+                id = it.id,
+                name = it.name,
+                summary = it.summary,
+                body = it.body,
+                date = it.date,
+                rank = it.rank,
+                imageUrl = it.imageUrl,
+                sourceUrl = it.sourceUrl,
+                sourceAttribution = it.sourceAttribution,
+                related = relatedItems(ContentType.FEAST, id),
+            )
+        }
+    }
+
+    /** Cross-links resolved from EntityRelation, merged from both directions. */
+    private fun relatedItems(type: ContentType, id: String): List<RelatedItem> {
+        val outgoing = database.relationQueries.selectRelationsFrom(type.tag, id)
+            .executeAsList()
+            .map { RelatedItem(ContentType.fromTag(it.toType), it.toId, it.relationKind) }
+        val incoming = database.relationQueries.selectRelationsTo(type.tag, id)
+            .executeAsList()
+            .map { RelatedItem(ContentType.fromTag(it.fromType), it.fromId, it.relationKind) }
+        return outgoing + incoming
+    }
+
+    fun addRelation(from: ContentType, fromId: String, to: ContentType, toId: String, kind: String) {
+        database.relationQueries.insertRelation(from.tag, fromId, to.tag, toId, kind)
+    }
+
+    /** Re-indexes one entity's language-tagged text into the FTS5 table. Call after every text insert. */
+    fun reindexSearch(type: ContentType, id: String, language: String, name: String, summary: String, body: String) {
+        database.searchQueries.deleteSearchEntriesFor(type.tag, id, language)
+        database.searchQueries.insertSearchEntry(type.tag, id, language, name, summary, body)
+    }
+
+    suspend fun search(
+        query: String,
+        language: String,
+        type: ContentType? = null,
+        limit: Long = 50,
+    ): List<ContentSummary> = withContext(Dispatchers.Default) {
+        // FTS5 prefix match so "franc*" finds "Francis" as the user is still typing.
+        val matchQuery = query.trim().split(Regex("\\s+")).filter { it.isNotBlank() }
+            .joinToString(" ") { "$it*" }
+        if (matchQuery.isBlank()) return@withContext emptyList()
+
+        database.searchQueries.search(
+            matchQuery = matchQuery,
+            language = language,
+            entityTypeFilter = type?.tag,
+            resultLimit = limit,
+        )
+            .executeAsList()
+            .map {
+                // FTS5 virtual tables can't express NOT NULL, so SQLDelight infers these
+                // columns as nullable even though every row is written by insertSearchEntry
+                // with real values — safe to assert non-null here.
+                ContentSummary(ContentType.fromTag(it.entityType!!), it.entityId!!, it.name!!, it.summary!!)
+            }
+    }
+
+    /** Dispatches to the right per-type list query — used wherever the UI works across all 7 types generically. */
+    suspend fun listByType(type: ContentType, language: String): List<ContentSummary> = when (type) {
+        ContentType.SAINT -> listSaints(language)
+        ContentType.POPE -> listPopes(language)
+        ContentType.APOSTLE -> listApostles(language)
+        ContentType.CHURCH -> listChurches(language)
+        ContentType.APPARITION -> listApparitions(language)
+        ContentType.MIRACLE -> listMiracles(language)
+        ContentType.FEAST -> listFeasts(language)
+    }
+
+    /** Resolves a related item's display name — used to label Connected chips with a real title, not a raw id. */
+    suspend fun summaryOf(type: ContentType, id: String, language: String): ContentSummary? =
+        listByType(type, language).firstOrNull { it.id == id }
+
+    // ---- Bookmarks (Saved tab) ----
+
+    suspend fun isBookmarked(type: ContentType, id: String): Boolean = withContext(Dispatchers.Default) {
+        database.bookmarkQueries.selectBookmark(type.tag, id).executeAsOneOrNull() != null
+    }
+
+    /** Toggles the bookmark and returns the new state. */
+    suspend fun toggleBookmark(type: ContentType, id: String, name: String, summary: String): Boolean =
+        withContext(Dispatchers.Default) {
+            val existing = database.bookmarkQueries.selectBookmark(type.tag, id).executeAsOneOrNull()
+            if (existing != null) {
+                database.bookmarkQueries.deleteBookmark(type.tag, id)
+                false
+            } else {
+                database.bookmarkQueries.insertBookmark(
+                    type.tag, id, name, summary, null, Clock.System.now().toEpochMilliseconds(),
+                )
+                true
+            }
+        }
+
+    suspend fun listBookmarks(): List<BookmarkItem> = withContext(Dispatchers.Default) {
+        database.bookmarkQueries.selectAllBookmarks().executeAsList().map {
+            BookmarkItem(ContentType.fromTag(it.entityType), it.entityId, it.name, it.summary, it.note, it.createdAt)
+        }
+    }
+
+    // ---- Recently viewed / Discover (Home) ----
+
+    fun recordView(type: ContentType, id: String, name: String, summary: String) {
+        database.recentlyViewedQueries.recordView(
+            type.tag, id, name, summary, Clock.System.now().toEpochMilliseconds(),
+        )
+    }
+
+    suspend fun mostRecentlyViewed(): ContentSummary? = withContext(Dispatchers.Default) {
+        database.recentlyViewedQueries.selectMostRecent().executeAsOneOrNull()?.let {
+            ContentSummary(ContentType.fromTag(it.entityType), it.entityId, it.name, it.summary)
+        }
+    }
+
+    /** One entity, picked at random across every type, for Home's Discover card. */
+    suspend fun discoverPick(language: String): ContentSummary? = withContext(Dispatchers.Default) {
+        val types = ContentType.entries.shuffled()
+        for (type in types) {
+            val items = listByType(type, language)
+            if (items.isNotEmpty()) return@withContext items[Random.nextInt(items.size)]
+        }
+        null
+    }
+
+    // ---- Preferences ----
+
+    fun setPreference(key: String, value: String) {
+        database.preferenceQueries.setPreference(key, value)
+    }
+
+    fun getPreference(key: String): String? =
+        database.preferenceQueries.getPreference(key).executeAsOneOrNull()
+
+    // ---- Content pipeline ----
+
+    /** Loads the compiled /content bundle on first launch. See ContentLoader and content/README.md. */
+    suspend fun ensureContentLoaded() = withContext(Dispatchers.Default) {
+        ContentLoader.loadIfEmpty(database)
+    }
+}

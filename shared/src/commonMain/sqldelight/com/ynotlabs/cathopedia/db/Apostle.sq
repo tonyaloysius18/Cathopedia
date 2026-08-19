@@ -1,0 +1,42 @@
+CREATE TABLE ApostleEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    originalName TEXT,
+    martyrdom TEXT,
+    imageUrl TEXT,
+    sourceUrl TEXT
+);
+
+CREATE TABLE ApostleText (
+    apostleId TEXT NOT NULL,
+    language TEXT NOT NULL,
+    name TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    body TEXT NOT NULL,
+    sourceAttribution TEXT,
+    PRIMARY KEY (apostleId, language),
+    FOREIGN KEY (apostleId) REFERENCES ApostleEntity(id) ON DELETE CASCADE
+);
+
+insertApostle:
+INSERT OR REPLACE INTO ApostleEntity(id, originalName, martyrdom, imageUrl, sourceUrl)
+VALUES (?, ?, ?, ?, ?);
+
+insertApostleText:
+INSERT OR REPLACE INTO ApostleText(apostleId, language, name, summary, body, sourceAttribution)
+VALUES (?, ?, ?, ?, ?, ?);
+
+selectAllApostles:
+SELECT ApostleEntity.id AS id, ApostleText.name AS name, ApostleText.summary AS summary,
+       ApostleEntity.imageUrl AS imageUrl
+FROM ApostleEntity
+JOIN ApostleText ON ApostleText.apostleId = ApostleEntity.id AND ApostleText.language = :language
+ORDER BY ApostleText.name ASC;
+
+selectApostleDetail:
+SELECT ApostleEntity.id AS id, ApostleText.name AS name, ApostleText.summary AS summary, ApostleText.body AS body,
+       ApostleEntity.originalName AS originalName, ApostleEntity.martyrdom AS martyrdom,
+       ApostleEntity.imageUrl AS imageUrl, ApostleEntity.sourceUrl AS sourceUrl,
+       ApostleText.sourceAttribution AS sourceAttribution
+FROM ApostleEntity
+JOIN ApostleText ON ApostleText.apostleId = ApostleEntity.id AND ApostleText.language = :language
+WHERE ApostleEntity.id = :id;

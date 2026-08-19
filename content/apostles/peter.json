@@ -1,0 +1,15 @@
+{
+  "id": "peter",
+  "originalName": "Simon",
+  "martyrdom": "Crucified in Rome, c. AD 64-68",
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Peter",
+      "summary": "Leader of the twelve apostles, traditionally regarded as the first pope.",
+      "body": "Peter (originally Simon) was a fisherman called by Jesus to become \"a fisher of men\", and is traditionally regarded as the first Bishop of Rome.",
+      "sourceAttribution": "Seed content — replace with sourced text."
+    }
+  }
+}

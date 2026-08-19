@@ -1,0 +1,904 @@
+[
+  {
+    "from": {
+      "type": "saint",
+      "id": "francis-of-assisi"
+    },
+    "to": {
+      "type": "feast",
+      "id": "all-saints"
+    },
+    "kind": "commemorated_with"
+  },
+  {
+    "from": {
+      "type": "apostle",
+      "id": "peter"
+    },
+    "to": {
+      "type": "church",
+      "id": "st-peters-basilica"
+    },
+    "kind": "namesake"
+  },
+  {
+    "from": {
+      "type": "apostle",
+      "id": "andrew"
+    },
+    "to": {
+      "type": "apostle",
+      "id": "peter"
+    },
+    "kind": "sibling"
+  },
+  {
+    "from": {
+      "type": "apostle",
+      "id": "james-the-greater"
+    },
+    "to": {
+      "type": "apostle",
+      "id": "john"
+    },
+    "kind": "sibling"
+  },
+  {
+    "from": {
+      "type": "apostle",
+      "id": "james-the-greater"
+    },
+    "to": {
+      "type": "church",
+      "id": "santiago-de-compostela"
+    },
+    "kind": "burial_place"
+  },
+  {
+    "from": {
+      "type": "apostle",
+      "id": "philip"
+    },
+    "to": {
+      "type": "apostle",
+      "id": "bartholomew"
+    },
+    "kind": "companion"
+  },
+  {
+    "from": {
+      "type": "apostle",
+      "id": "thomas"
+    },
+    "to": {
+      "type": "feast",
+      "id": "easter"
+    },
+    "kind": "gospel_event"
+  },
+  {
+    "from": {
+      "type": "apostle",
+      "id": "matthew"
+    },
+    "to": {
+      "type": "feast",
+      "id": "christmas"
+    },
+    "kind": "gospel_narrative"
+  },
+  {
+    "from": {
+      "type": "apostle",
+      "id": "james-the-less"
+    },
+    "to": {
+      "type": "apostle",
+      "id": "jude-thaddaeus"
+    },
+    "kind": "companion"
+  },
+  {
+    "from": {
+      "type": "apostle",
+      "id": "jude-thaddaeus"
+    },
+    "to": {
+      "type": "apostle",
+      "id": "simon-the-zealot"
+    },
+    "kind": "martyred_together"
+  },
+  {
+    "from": {
+      "type": "apostle",
+      "id": "matthias"
+    },
+    "to": {
+      "type": "apostle",
+      "id": "peter"
+    },
+    "kind": "chosen_by"
+  },
+  {
+    "from": {
+      "type": "apostle",
+      "id": "paul"
+    },
+    "to": {
+      "type": "apostle",
+      "id": "peter"
+    },
+    "kind": "companion"
+  },
+  {
+    "from": {
+      "type": "apostle",
+      "id": "paul"
+    },
+    "to": {
+      "type": "feast",
+      "id": "sts-peter-and-paul"
+    },
+    "kind": "commemorated_with"
+  },
+  {
+    "from": {
+      "type": "apostle",
+      "id": "peter"
+    },
+    "to": {
+      "type": "feast",
+      "id": "sts-peter-and-paul"
+    },
+    "kind": "commemorated_with"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "francis-of-assisi"
+    },
+    "to": {
+      "type": "church",
+      "id": "san-francesco-assisi"
+    },
+    "kind": "burial_place"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "clare-of-assisi"
+    },
+    "to": {
+      "type": "saint",
+      "id": "francis-of-assisi"
+    },
+    "kind": "companion"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "anthony-of-padua"
+    },
+    "to": {
+      "type": "saint",
+      "id": "francis-of-assisi"
+    },
+    "kind": "companion"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "innocent-iii"
+    },
+    "to": {
+      "type": "saint",
+      "id": "francis-of-assisi"
+    },
+    "kind": "approved_rule"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "therese-of-lisieux"
+    },
+    "to": {
+      "type": "saint",
+      "id": "teresa-of-avila"
+    },
+    "kind": "namesake"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "augustine-of-hippo"
+    },
+    "to": {
+      "type": "saint",
+      "id": "thomas-aquinas"
+    },
+    "kind": "influenced"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "catherine-of-siena"
+    },
+    "to": {
+      "type": "saint",
+      "id": "thomas-aquinas"
+    },
+    "kind": "same_order"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "benedict-of-nursia"
+    },
+    "to": {
+      "type": "pope",
+      "id": "gregory-the-great"
+    },
+    "kind": "biographer"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "joan-of-arc"
+    },
+    "to": {
+      "type": "church",
+      "id": "notre-dame-de-paris"
+    },
+    "kind": "rehabilitation_trial"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "ignatius-of-loyola"
+    },
+    "to": {
+      "type": "saint",
+      "id": "teresa-of-avila"
+    },
+    "kind": "contemporary"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "padre-pio"
+    },
+    "to": {
+      "type": "saint",
+      "id": "maximilian-kolbe"
+    },
+    "kind": "contemporary"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "vincent-de-paul"
+    },
+    "to": {
+      "type": "saint",
+      "id": "rose-of-lima"
+    },
+    "kind": "contemporary"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "patrick"
+    },
+    "to": {
+      "type": "apparition",
+      "id": "our-lady-of-knock"
+    },
+    "kind": "ireland"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-ix"
+    },
+    "to": {
+      "type": "feast",
+      "id": "immaculate-conception"
+    },
+    "kind": "defined_dogma"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "feast",
+      "id": "assumption-of-mary"
+    },
+    "kind": "defined_dogma"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-the-great"
+    },
+    "to": {
+      "type": "apostle",
+      "id": "peter"
+    },
+    "kind": "papal_primacy"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-v"
+    },
+    "to": {
+      "type": "feast",
+      "id": "corpus-christi"
+    },
+    "kind": "liturgical_reform"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "pope",
+      "id": "pius-ix"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-x"
+    },
+    "to": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-xxiii"
+    },
+    "to": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "miracle",
+      "id": "miracle-of-bolsena"
+    },
+    "to": {
+      "type": "feast",
+      "id": "corpus-christi"
+    },
+    "kind": "originated_feast"
+  },
+  {
+    "from": {
+      "type": "miracle",
+      "id": "miracle-of-bolsena"
+    },
+    "to": {
+      "type": "saint",
+      "id": "thomas-aquinas"
+    },
+    "kind": "commissioned_hymns"
+  },
+  {
+    "from": {
+      "type": "miracle",
+      "id": "miracle-of-santarem"
+    },
+    "to": {
+      "type": "miracle",
+      "id": "lanciano"
+    },
+    "kind": "eucharistic_miracle"
+  },
+  {
+    "from": {
+      "type": "miracle",
+      "id": "eucharistic-miracle-buenos-aires"
+    },
+    "to": {
+      "type": "miracle",
+      "id": "lanciano"
+    },
+    "kind": "eucharistic_miracle"
+  },
+  {
+    "from": {
+      "type": "miracle",
+      "id": "miracle-of-siena"
+    },
+    "to": {
+      "type": "feast",
+      "id": "corpus-christi"
+    },
+    "kind": "commemorated_at"
+  },
+  {
+    "from": {
+      "type": "apparition",
+      "id": "our-lady-of-guadalupe"
+    },
+    "to": {
+      "type": "church",
+      "id": "basilica-our-lady-guadalupe"
+    },
+    "kind": "commemorated_at"
+  },
+  {
+    "from": {
+      "type": "apparition",
+      "id": "our-lady-of-fatima"
+    },
+    "to": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "kind": "papal_devotion"
+  },
+  {
+    "from": {
+      "type": "apparition",
+      "id": "our-lady-of-la-salette"
+    },
+    "to": {
+      "type": "apparition",
+      "id": "lourdes"
+    },
+    "kind": "french_apparition"
+  },
+  {
+    "from": {
+      "type": "apparition",
+      "id": "our-lady-of-akita"
+    },
+    "to": {
+      "type": "apparition",
+      "id": "our-lady-of-fatima"
+    },
+    "kind": "related_message"
+  },
+  {
+    "from": {
+      "type": "church",
+      "id": "sagrada-familia"
+    },
+    "to": {
+      "type": "church",
+      "id": "notre-dame-de-paris"
+    },
+    "kind": "major_basilica"
+  },
+  {
+    "from": {
+      "type": "church",
+      "id": "sacre-coeur"
+    },
+    "to": {
+      "type": "church",
+      "id": "notre-dame-de-paris"
+    },
+    "kind": "same_city"
+  },
+  {
+    "from": {
+      "type": "church",
+      "id": "chartres-cathedral"
+    },
+    "to": {
+      "type": "church",
+      "id": "notre-dame-de-paris"
+    },
+    "kind": "gothic_cathedral"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-paul-ii"
+    },
+    "to": {
+      "type": "saint",
+      "id": "maximilian-kolbe"
+    },
+    "kind": "canonized"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-paul-ii"
+    },
+    "to": {
+      "type": "saint",
+      "id": "padre-pio"
+    },
+    "kind": "canonized"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-paul-ii"
+    },
+    "to": {
+      "type": "apparition",
+      "id": "our-lady-of-fatima"
+    },
+    "kind": "attributed_protection"
+  },
+  {
+    "from": {
+      "type": "feast",
+      "id": "annunciation"
+    },
+    "to": {
+      "type": "feast",
+      "id": "christmas"
+    },
+    "kind": "nine_months_before"
+  },
+  {
+    "from": {
+      "type": "feast",
+      "id": "pentecost"
+    },
+    "to": {
+      "type": "feast",
+      "id": "easter"
+    },
+    "kind": "fifty_days_after"
+  },
+  {
+    "from": {
+      "type": "feast",
+      "id": "pentecost"
+    },
+    "to": {
+      "type": "apostle",
+      "id": "peter"
+    },
+    "kind": "first_sermon"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "linus"
+    },
+    "to": {
+      "type": "apostle",
+      "id": "peter"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "cletus"
+    },
+    "to": {
+      "type": "pope",
+      "id": "linus"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "clement-i"
+    },
+    "to": {
+      "type": "pope",
+      "id": "cletus"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "evaristus"
+    },
+    "to": {
+      "type": "pope",
+      "id": "clement-i"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "alexander-i"
+    },
+    "to": {
+      "type": "pope",
+      "id": "evaristus"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "sixtus-i"
+    },
+    "to": {
+      "type": "pope",
+      "id": "alexander-i"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "telesphorus"
+    },
+    "to": {
+      "type": "pope",
+      "id": "sixtus-i"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "hyginus"
+    },
+    "to": {
+      "type": "pope",
+      "id": "telesphorus"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-i"
+    },
+    "to": {
+      "type": "pope",
+      "id": "hyginus"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "anicetus"
+    },
+    "to": {
+      "type": "pope",
+      "id": "pius-i"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "soter"
+    },
+    "to": {
+      "type": "pope",
+      "id": "anicetus"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "eleutherius"
+    },
+    "to": {
+      "type": "pope",
+      "id": "soter"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "victor-i"
+    },
+    "to": {
+      "type": "pope",
+      "id": "eleutherius"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "zephyrinus"
+    },
+    "to": {
+      "type": "pope",
+      "id": "victor-i"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "callixtus-i"
+    },
+    "to": {
+      "type": "pope",
+      "id": "zephyrinus"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "urban-i"
+    },
+    "to": {
+      "type": "pope",
+      "id": "callixtus-i"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pontian"
+    },
+    "to": {
+      "type": "pope",
+      "id": "urban-i"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "anterus"
+    },
+    "to": {
+      "type": "pope",
+      "id": "pontian"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "fabian"
+    },
+    "to": {
+      "type": "pope",
+      "id": "anterus"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "cornelius"
+    },
+    "to": {
+      "type": "pope",
+      "id": "fabian"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "lucius-i"
+    },
+    "to": {
+      "type": "pope",
+      "id": "cornelius"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "stephen-i"
+    },
+    "to": {
+      "type": "pope",
+      "id": "lucius-i"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "sixtus-ii"
+    },
+    "to": {
+      "type": "pope",
+      "id": "stephen-i"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "dionysius"
+    },
+    "to": {
+      "type": "pope",
+      "id": "sixtus-ii"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "felix-i"
+    },
+    "to": {
+      "type": "pope",
+      "id": "dionysius"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "eutychian"
+    },
+    "to": {
+      "type": "pope",
+      "id": "felix-i"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "caius"
+    },
+    "to": {
+      "type": "pope",
+      "id": "eutychian"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "marcellinus"
+    },
+    "to": {
+      "type": "pope",
+      "id": "caius"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "marcellus-i"
+    },
+    "to": {
+      "type": "pope",
+      "id": "marcellinus"
+    },
+    "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "eusebius"
+    },
+    "to": {
+      "type": "pope",
+      "id": "marcellus-i"
+    },
+    "kind": "succeeded"
+  }
+]

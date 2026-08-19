@@ -1,0 +1,16 @@
+{
+  "id": "sagrada-familia",
+  "latitude": 41.4036,
+  "longitude": 2.1744,
+  "foundedYear": 1882,
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Sagrada Família",
+      "summary": "Antoni Gaudí's still-unfinished basilica in Barcelona, under continuous construction since 1882.",
+      "body": "The Basilica of the Sagrada Família has been under construction in Barcelona since 1882, most of that time under the direction of the architect Antoni Gaudí, who devoted the last years of his life to the project and is buried in its crypt. Its soaring, organic towers and richly symbolic façades draw on natural forms in a style unlike any other church in the Catholic world. Consecrated as a minor basilica by Pope Benedict XVI in 2010, it remains a working construction site and one of the most visited monuments in Spain.",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

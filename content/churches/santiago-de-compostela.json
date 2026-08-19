@@ -1,0 +1,16 @@
+{
+  "id": "santiago-de-compostela",
+  "latitude": 42.8806,
+  "longitude": -8.5449,
+  "foundedYear": 1211,
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Santiago de Compostela Cathedral",
+      "summary": "The traditional burial place of St. James the Greater and the destination of the Camino de Santiago pilgrimage.",
+      "body": "According to tradition, the remains of the apostle James the Greater were brought to Spain after his martyrdom and discovered near Compostela in the ninth century, prompting the construction of a shrine that grew into the present Romanesque cathedral, consecrated in 1211. It became the terminus of the Camino de Santiago, a network of pilgrimage routes across Europe that drew medieval pilgrims by the hundreds of thousands and, in a remarkable modern revival, continues to draw walkers from around the world today, many finishing at the cathedral's Portico of Glory.",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

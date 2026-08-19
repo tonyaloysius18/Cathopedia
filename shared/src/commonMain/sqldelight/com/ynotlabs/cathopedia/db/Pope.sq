@@ -1,0 +1,48 @@
+CREATE TABLE PopeEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    regnalNumber INTEGER,
+    papacyStart TEXT,
+    papacyEnd TEXT,
+    -- Numeric year parsed from papacyStart (handles "c. 64", "988-01-01", "1003-06",
+    -- etc.) so chronological ordering doesn't fall prey to text sorting on mixed-
+    -- precision date strings. papacyStart/papacyEnd stay untouched for display.
+    papacyStartYear INTEGER,
+    imageUrl TEXT,
+    sourceUrl TEXT
+);
+
+CREATE TABLE PopeText (
+    popeId TEXT NOT NULL,
+    language TEXT NOT NULL,
+    name TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    body TEXT NOT NULL,
+    sourceAttribution TEXT,
+    PRIMARY KEY (popeId, language),
+    FOREIGN KEY (popeId) REFERENCES PopeEntity(id) ON DELETE CASCADE
+);
+
+insertPope:
+INSERT OR REPLACE INTO PopeEntity(id, regnalNumber, papacyStart, papacyEnd, papacyStartYear, imageUrl, sourceUrl)
+VALUES (?, ?, ?, ?, ?, ?, ?);
+
+insertPopeText:
+INSERT OR REPLACE INTO PopeText(popeId, language, name, summary, body, sourceAttribution)
+VALUES (?, ?, ?, ?, ?, ?);
+
+selectAllPopes:
+SELECT PopeEntity.id AS id, PopeText.name AS name, PopeText.summary AS summary,
+       PopeEntity.papacyStart AS papacyStart, PopeEntity.papacyEnd AS papacyEnd, PopeEntity.imageUrl AS imageUrl,
+       PopeEntity.papacyStartYear AS papacyStartYear
+FROM PopeEntity
+JOIN PopeText ON PopeText.popeId = PopeEntity.id AND PopeText.language = :language
+ORDER BY PopeEntity.papacyStartYear ASC;
+
+selectPopeDetail:
+SELECT PopeEntity.id AS id, PopeText.name AS name, PopeText.summary AS summary, PopeText.body AS body,
+       PopeEntity.regnalNumber AS regnalNumber, PopeEntity.papacyStart AS papacyStart,
+       PopeEntity.papacyEnd AS papacyEnd, PopeEntity.imageUrl AS imageUrl, PopeEntity.sourceUrl AS sourceUrl,
+       PopeText.sourceAttribution AS sourceAttribution
+FROM PopeEntity
+JOIN PopeText ON PopeText.popeId = PopeEntity.id AND PopeText.language = :language
+WHERE PopeEntity.id = :id;

@@ -1,0 +1,30 @@
+-- Full-text index kept in sync by the repository layer: every insert/update of
+-- an entity's *Text row is mirrored here with insertSearchEntry, and removed
+-- with deleteSearchEntriesFor before re-inserting. entityType matches the tags
+-- used in EntityRelation so search results can deep-link straight to a detail
+-- query on the right table.
+CREATE VIRTUAL TABLE ContentSearch USING fts5(
+    entityType UNINDEXED,
+    entityId UNINDEXED,
+    language UNINDEXED,
+    name,
+    summary,
+    body
+);
+
+insertSearchEntry:
+INSERT INTO ContentSearch(entityType, entityId, language, name, summary, body)
+VALUES (?, ?, ?, ?, ?, ?);
+
+deleteSearchEntriesFor:
+DELETE FROM ContentSearch WHERE entityType = :entityType AND entityId = :entityId AND language = :language;
+
+-- entityTypeFilter: pass NULL to search across every content type.
+search:
+SELECT entityType, entityId, name, summary
+FROM ContentSearch
+WHERE ContentSearch MATCH :matchQuery
+  AND language = :language
+  AND (:entityTypeFilter IS NULL OR entityType = :entityTypeFilter)
+ORDER BY rank
+LIMIT :resultLimit;

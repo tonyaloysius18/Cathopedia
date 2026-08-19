@@ -1,0 +1,17 @@
+-- Backs Home's "Continue reading" card. Recorded once per detail-page visit;
+-- only the single most recent row is read back for the POC (one card, not a history list).
+CREATE TABLE RecentlyViewed (
+    entityType TEXT NOT NULL,
+    entityId TEXT NOT NULL,
+    name TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    viewedAt INTEGER NOT NULL,
+    PRIMARY KEY (entityType, entityId)
+);
+
+recordView:
+INSERT OR REPLACE INTO RecentlyViewed(entityType, entityId, name, summary, viewedAt)
+VALUES (?, ?, ?, ?, ?);
+
+selectMostRecent:
+SELECT * FROM RecentlyViewed ORDER BY viewedAt DESC LIMIT 1;

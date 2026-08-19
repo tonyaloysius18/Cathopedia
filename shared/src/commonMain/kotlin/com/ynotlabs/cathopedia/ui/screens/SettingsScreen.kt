@@ -1,0 +1,451 @@
+package com.ynotlabs.cathopedia.ui.screens
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.resources.ic_about
+import com.ynotlabs.cathopedia.resources.ic_appearance
+import com.ynotlabs.cathopedia.ui.theme.ThemeMode
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
+import com.ynotlabs.cathopedia.resources.ic_language
+import com.ynotlabs.cathopedia.resources.ic_saved
+import com.ynotlabs.cathopedia.resources.settings_header_bg
+import com.ynotlabs.cathopedia.resources.settings_quote_bg
+
+
+private val SettingsBg = Color(0xFF061A13)
+private val SettingsCard = Color(0xFF102D23)
+private val SettingsCardAlt = Color(0xFF0C271E)
+private val SettingsBorder = Color(0xFF315444)
+private val SettingsGold = Color(0xFFD9B44A)
+private val SettingsGoldSoft = Color(0xFF9D8956)
+private val SettingsCream = Color(0xFFF4ECDD)
+private val SettingsMuted = Color(0xFFB2AB97)
+
+@Composable
+fun SettingsScreen(
+    language: String,
+    themeMode: ThemeMode,
+    onBack: () -> Unit,
+    onOpenLanguage: () -> Unit,
+    onOpenAppearance: () -> Unit,
+    onOpenSaved: () -> Unit,
+    onOpenAbout: () -> Unit,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(SettingsBg)
+            .verticalScroll(rememberScrollState())
+            .navigationBarsPadding()
+            .padding(bottom = 88.dp),
+    ) {
+        SettingsHero()
+
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 18.dp),
+        ) {
+            SettingsSectionLabel("Preferences")
+
+            SettingsGroup {
+                PremiumSettingsRow(
+                    icon = Res.drawable.ic_language,
+                    label = "Language",
+                    value = languageDisplayName(language),
+                    onClick = onOpenLanguage,
+                )
+
+                SettingsDivider()
+
+                PremiumSettingsRow(
+                    icon = Res.drawable.ic_appearance,
+                    label = "Appearance",
+                    value = themeMode.label,
+                    onClick = onOpenAppearance,
+                )
+            }
+
+            Spacer(Modifier.height(16.dp))
+
+            SettingsSectionLabel("Library & app")
+
+            SettingsGroup {
+                PremiumSettingsRow(
+                    icon = Res.drawable.ic_saved,
+                    label = "Saved",
+                    value = "Your bookmarked entries",
+                    onClick = onOpenSaved,
+                )
+
+                SettingsDivider()
+
+                PremiumSettingsRow(
+                    icon = Res.drawable.ic_about,
+                    label = "About",
+                    value = "App info, storage, attributions",
+                    onClick = onOpenAbout,
+                )
+            }
+
+            Spacer(Modifier.height(12.dp))
+
+            InspirationCard()
+
+            Spacer(Modifier.height(12.dp))
+
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                Text(
+                    text = "CATHOPEDIA",
+                    color = SettingsGold.copy(alpha = 0.78f),
+                    fontSize = 10.sp,
+                    letterSpacing = 1.8.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = "Knowledge · Faith · Tradition",
+                    color = SettingsMuted.copy(alpha = 0.72f),
+                    fontSize = 11.sp,
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun SettingsHero() {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(160.dp),
+    ) {
+        Image(
+            painter = painterResource(Res.drawable.settings_header_bg),
+            contentDescription = null,
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .fillMaxWidth(0.95f)
+                .height(170.dp)
+                .padding(top = 40.dp, end = 2.dp),
+            contentScale = ContentScale.Fit,
+            alignment = Alignment.TopEnd,
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(
+                            SettingsBg.copy(alpha = 0.97f),
+                            SettingsBg.copy(alpha = 0.76f),
+                            SettingsBg.copy(alpha = 0.16f),
+                        ),
+                    ),
+                ),
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        listOf(
+                            Color.Black.copy(alpha = 0.20f),
+                            Color.Transparent,
+                            SettingsBg.copy(alpha = 0.95f),
+                        ),
+                    ),
+                ),
+        )
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .statusBarsPadding()
+                .padding(start = 20.dp, end = 18.dp, top = 8.dp, bottom = 16.dp),
+        ) {
+            Spacer(Modifier.height(18.dp))
+
+            Text(
+                text = "Settings",
+                color = SettingsCream,
+                fontFamily = FontFamily.Serif,
+                fontSize = 35.sp,
+                lineHeight = 38.sp,
+                fontWeight = FontWeight.SemiBold,
+            )
+
+            Spacer(Modifier.height(4.dp))
+
+            Text(
+                text = "Personalize your Cathopedia experience",
+                color = SettingsCream.copy(alpha = 0.78f),
+                fontSize = 14.sp,
+                lineHeight = 18.sp,
+            )
+        }
+    }
+}
+
+@Composable
+private fun SettingsSectionLabel(
+    text: String,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 2.dp, bottom = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = text.uppercase(),
+            color = SettingsGold,
+            fontSize = 11.sp,
+            letterSpacing = 1.2.sp,
+            fontWeight = FontWeight.Bold,
+        )
+
+        Spacer(Modifier.width(10.dp))
+
+        Box(
+            modifier = Modifier
+                .weight(1f)
+                .height(1.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(
+                            SettingsGoldSoft.copy(alpha = 0.55f),
+                            Color.Transparent,
+                        ),
+                    ),
+                ),
+        )
+    }
+}
+
+@Composable
+private fun SettingsGroup(
+    content: @Composable () -> Unit,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(20.dp))
+            .background(SettingsCardAlt)
+            .border(
+                width = 1.dp,
+                color = SettingsBorder.copy(alpha = 0.72f),
+                shape = RoundedCornerShape(20.dp),
+            ),
+    ) {
+        content()
+    }
+}
+
+@Composable
+private fun PremiumSettingsRow(
+    icon: DrawableResource,
+    label: String,
+    value: String,
+    onClick: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(horizontal = 14.dp, vertical = 13.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Box(
+            modifier = Modifier
+                .size(48.dp)
+                .clip(CircleShape)
+                .background(SettingsBg.copy(alpha = 0.58f))
+                .border(
+                    width = 1.dp,
+                    color = SettingsGold.copy(alpha = 0.74f),
+                    shape = CircleShape,
+                ),
+            contentAlignment = Alignment.Center,
+        ) {
+            Image(
+                painter = painterResource(icon),
+                contentDescription = null,
+                modifier = Modifier.size(35.dp),
+                contentScale = ContentScale.Fit,
+            )
+        }
+
+        Spacer(Modifier.width(14.dp))
+
+        Column(
+            modifier = Modifier.weight(1f),
+        ) {
+            Text(
+                text = label,
+                color = SettingsGold,
+                fontFamily = FontFamily.Serif,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Medium,
+            )
+
+            Spacer(Modifier.height(3.dp))
+
+            Text(
+                text = value,
+                color = SettingsMuted,
+                fontSize = 12.5.sp,
+                lineHeight = 16.sp,
+            )
+        }
+
+        Box(
+            modifier = Modifier
+                .size(34.dp)
+                .clip(CircleShape)
+                .background(SettingsGold.copy(alpha = 0.07f)),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(
+                imageVector = Icons.Default.KeyboardArrowRight,
+                contentDescription = null,
+                tint = SettingsGold,
+                modifier = Modifier.size(21.dp),
+            )
+        }
+    }
+}
+
+@Composable
+private fun SettingsDivider() {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 76.dp, end = 14.dp)
+            .height(1.dp)
+            .background(SettingsBorder.copy(alpha = 0.55f)),
+    )
+}
+
+@Composable
+private fun InspirationCard() {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(122.dp)
+            .clip(RoundedCornerShape(18.dp))
+            .border(
+                width = 1.dp,
+                color = SettingsGoldSoft.copy(alpha = 0.55f),
+                shape = RoundedCornerShape(18.dp),
+            ),
+    ) {
+        Image(
+            painter = painterResource(Res.drawable.settings_quote_bg),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop,
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(
+                            SettingsBg.copy(alpha = 0.86f),
+                            SettingsBg.copy(alpha = 0.62f),
+                            SettingsBg.copy(alpha = 0.30f),
+                        ),
+                    ),
+                ),
+        )
+
+        Column(
+            modifier = Modifier
+                .align(Alignment.CenterEnd)
+                .fillMaxWidth(0.68f)
+                .padding(end = 14.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Text(
+                text = "“",
+                color = SettingsGold,
+                fontFamily = FontFamily.Serif,
+                fontSize = 24.sp,
+                lineHeight = 20.sp,
+            )
+
+            Text(
+                text = "Your word is a lamp to my feet\nand a light to my path.",
+                color = SettingsCream,
+                fontFamily = FontFamily.Serif,
+                fontSize = 13.sp,
+                lineHeight = 18.sp,
+                fontWeight = FontWeight.Medium,
+                modifier = Modifier.padding(top = 1.dp),
+            )
+
+            Spacer(Modifier.height(4.dp))
+
+            Text(
+                text = "Psalm 119:105",
+                color = SettingsGold,
+                fontSize = 11.sp,
+                fontWeight = FontWeight.SemiBold,
+            )
+        }
+    }
+}
+
+private fun languageDisplayName(language: String): String =
+    when (language.lowercase()) {
+        "en", "eng", "english" -> "English"
+        "fr", "fra", "fre", "french", "français" -> "Français"
+        "es", "spa", "spanish", "español" -> "Español"
+        "it", "ita", "italian", "italiano" -> "Italiano"
+        "de", "deu", "ger", "german", "deutsch" -> "Deutsch"
+        else -> language.uppercase()
+    }

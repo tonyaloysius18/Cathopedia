@@ -1,0 +1,16 @@
+{
+  "id": "john-ii",
+  "regnalNumber": 56,
+  "papacyStart": "533-01-02",
+  "papacyEnd": "535-05-08",
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "John II",
+      "summary": "The first pope to adopt a new papal name upon election, having been born with the name Mercurius.",
+      "body": "John II began the enduring custom of popes taking a new name upon election, since his birth name, Mercurius, honored a pagan god and was considered unsuitable for a bishop of Rome. His reign saw the emperor Justinian formally acknowledge Roman primacy in a letter addressed to him, even as Justinian's own authority over Italy remained contested amid ongoing Gothic rule.",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

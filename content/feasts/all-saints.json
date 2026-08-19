@@ -1,0 +1,15 @@
+{
+  "id": "all-saints",
+  "date": "11-01",
+  "rank": "Solemnity",
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "All Saints' Day",
+      "summary": "A solemnity honouring all the saints, known and unknown.",
+      "body": "Celebrated on November 1st, All Saints' Day honours every saint who has attained the beatific vision, including those never formally canonized.",
+      "sourceAttribution": "Seed content — replace with sourced text."
+    }
+  }
+}

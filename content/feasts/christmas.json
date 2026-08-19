@@ -1,0 +1,15 @@
+{
+  "id": "christmas",
+  "date": "12-25",
+  "rank": "Solemnity",
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Christmas",
+      "summary": "The Solemnity of the Nativity of the Lord, celebrating the birth of Jesus.",
+      "body": "Christmas celebrates the birth of Jesus in Bethlehem, one of the two great poles of the liturgical year alongside Easter. Its date, December 25th, was fixed in the fourth century and is preceded by the penitential season of Advent. The feast's Gospel readings — the shepherds and angels of Luke, the Magi of Matthew — have shaped Christian art and devotion for two millennia, and its customs vary enormously across Catholic cultures worldwide while sharing the same central proclamation: \"the Word became flesh.\"",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

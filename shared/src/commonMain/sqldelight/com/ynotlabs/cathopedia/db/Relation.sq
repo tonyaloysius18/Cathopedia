@@ -1,0 +1,26 @@
+-- Explicit cross-links between any two content entities, e.g. a Saint linked to
+-- a Feast, a Church linked to an Apparition. entityType values are the lowercase
+-- content-type tags: "saint", "pope", "apostle", "church", "apparition", "miracle", "feast".
+CREATE TABLE EntityRelation (
+    fromType TEXT NOT NULL,
+    fromId TEXT NOT NULL,
+    toType TEXT NOT NULL,
+    toId TEXT NOT NULL,
+    relationKind TEXT NOT NULL,
+    PRIMARY KEY (fromType, fromId, toType, toId, relationKind)
+);
+
+CREATE INDEX EntityRelation_from ON EntityRelation(fromType, fromId);
+CREATE INDEX EntityRelation_to ON EntityRelation(toType, toId);
+
+insertRelation:
+INSERT OR IGNORE INTO EntityRelation(fromType, fromId, toType, toId, relationKind)
+VALUES (?, ?, ?, ?, ?);
+
+-- Relations are stored once per direction pair but should be browsable from
+-- either side, so callers query both the "from" and "to" index and merge.
+selectRelationsFrom:
+SELECT toType, toId, relationKind FROM EntityRelation WHERE fromType = :fromType AND fromId = :fromId;
+
+selectRelationsTo:
+SELECT fromType, fromId, relationKind FROM EntityRelation WHERE toType = :toType AND toId = :toId;

@@ -1,0 +1,41 @@
+CREATE TABLE FeastEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    date TEXT,
+    rank TEXT,
+    imageUrl TEXT,
+    sourceUrl TEXT
+);
+
+CREATE TABLE FeastText (
+    feastId TEXT NOT NULL,
+    language TEXT NOT NULL,
+    name TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    body TEXT NOT NULL,
+    sourceAttribution TEXT,
+    PRIMARY KEY (feastId, language),
+    FOREIGN KEY (feastId) REFERENCES FeastEntity(id) ON DELETE CASCADE
+);
+
+insertFeast:
+INSERT OR REPLACE INTO FeastEntity(id, date, rank, imageUrl, sourceUrl)
+VALUES (?, ?, ?, ?, ?);
+
+insertFeastText:
+INSERT OR REPLACE INTO FeastText(feastId, language, name, summary, body, sourceAttribution)
+VALUES (?, ?, ?, ?, ?, ?);
+
+selectAllFeasts:
+SELECT FeastEntity.id AS id, FeastText.name AS name, FeastText.summary AS summary,
+       FeastEntity.date AS date, FeastEntity.rank AS rank, FeastEntity.imageUrl AS imageUrl
+FROM FeastEntity
+JOIN FeastText ON FeastText.feastId = FeastEntity.id AND FeastText.language = :language
+ORDER BY FeastEntity.date ASC;
+
+selectFeastDetail:
+SELECT FeastEntity.id AS id, FeastText.name AS name, FeastText.summary AS summary, FeastText.body AS body,
+       FeastEntity.date AS date, FeastEntity.rank AS rank, FeastEntity.imageUrl AS imageUrl,
+       FeastEntity.sourceUrl AS sourceUrl, FeastText.sourceAttribution AS sourceAttribution
+FROM FeastEntity
+JOIN FeastText ON FeastText.feastId = FeastEntity.id AND FeastText.language = :language
+WHERE FeastEntity.id = :id;

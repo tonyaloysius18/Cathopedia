@@ -1,0 +1,16 @@
+{
+  "id": "lourdes",
+  "location": "Lourdes, France",
+  "apparitionYear": 1858,
+  "approvalStatus": "Approved",
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Our Lady of Lourdes",
+      "summary": "A series of Marian apparitions reported by Bernadette Soubirous in 1858.",
+      "body": "Between February and July 1858, Bernadette Soubirous reported eighteen apparitions of the Virgin Mary at a grotto in Lourdes, France, later approved by the Church.",
+      "sourceAttribution": "Seed content — replace with sourced text."
+    }
+  }
+}

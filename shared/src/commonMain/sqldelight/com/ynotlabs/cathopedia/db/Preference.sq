@@ -1,0 +1,13 @@
+-- Tiny key-value store for app-level state: first-run/onboarding flag,
+-- selected language, theme mode. Avoids pulling in a settings library for
+-- three flags.
+CREATE TABLE AppPreference (
+    key TEXT NOT NULL PRIMARY KEY,
+    value TEXT NOT NULL
+);
+
+setPreference:
+INSERT OR REPLACE INTO AppPreference(key, value) VALUES (?, ?);
+
+getPreference:
+SELECT value FROM AppPreference WHERE key = :key;

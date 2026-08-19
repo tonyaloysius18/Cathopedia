@@ -1,0 +1,42 @@
+CREATE TABLE MiracleEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    location TEXT,
+    miracleYear INTEGER,
+    imageUrl TEXT,
+    sourceUrl TEXT
+);
+
+CREATE TABLE MiracleText (
+    miracleId TEXT NOT NULL,
+    language TEXT NOT NULL,
+    name TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    body TEXT NOT NULL,
+    sourceAttribution TEXT,
+    PRIMARY KEY (miracleId, language),
+    FOREIGN KEY (miracleId) REFERENCES MiracleEntity(id) ON DELETE CASCADE
+);
+
+insertMiracle:
+INSERT OR REPLACE INTO MiracleEntity(id, location, miracleYear, imageUrl, sourceUrl)
+VALUES (?, ?, ?, ?, ?);
+
+insertMiracleText:
+INSERT OR REPLACE INTO MiracleText(miracleId, language, name, summary, body, sourceAttribution)
+VALUES (?, ?, ?, ?, ?, ?);
+
+selectAllMiracles:
+SELECT MiracleEntity.id AS id, MiracleText.name AS name, MiracleText.summary AS summary,
+       MiracleEntity.imageUrl AS imageUrl
+FROM MiracleEntity
+JOIN MiracleText ON MiracleText.miracleId = MiracleEntity.id AND MiracleText.language = :language
+ORDER BY MiracleEntity.miracleYear ASC;
+
+selectMiracleDetail:
+SELECT MiracleEntity.id AS id, MiracleText.name AS name, MiracleText.summary AS summary, MiracleText.body AS body,
+       MiracleEntity.location AS location, MiracleEntity.miracleYear AS miracleYear,
+       MiracleEntity.imageUrl AS imageUrl, MiracleEntity.sourceUrl AS sourceUrl,
+       MiracleText.sourceAttribution AS sourceAttribution
+FROM MiracleEntity
+JOIN MiracleText ON MiracleText.miracleId = MiracleEntity.id AND MiracleText.language = :language
+WHERE MiracleEntity.id = :id;
