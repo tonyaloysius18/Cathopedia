@@ -56,6 +56,7 @@ import com.ynotlabs.cathopedia.resources.explore_apostles
 import com.ynotlabs.cathopedia.resources.explore_churches
 import com.ynotlabs.cathopedia.resources.explore_eucharistic
 import com.ynotlabs.cathopedia.resources.explore_feasts
+import com.ynotlabs.cathopedia.resources.explore_bg
 import com.ynotlabs.cathopedia.resources.explore_marian
 import com.ynotlabs.cathopedia.resources.explore_popes
 import com.ynotlabs.cathopedia.resources.explore_saints
@@ -67,26 +68,6 @@ import com.ynotlabs.cathopedia.resources.marian_apparitions_icon
 import com.ynotlabs.cathopedia.resources.eucharistic_miracles_icon
 import com.ynotlabs.cathopedia.resources.liturgical_feasts_icon
 
-private val ExploreBackground = Color(0xFF061A13)
-private val HeaderBackground = Color(0xFF0C271D)
-private val CardGreen = Color(0xFF17372B)
-private val CardGreenDeep = Color(0xFF102C22)
-private val Gold = Color(0xFFE0B844)
-private val GoldMuted = Color(0xFF8F8159)
-private val Cream = Color(0xFFF5EEDF)
-private val MutedCream = Color(0xFFB7B09E)
-private val SearchSurface = Color(0xFF112E24)
-private val BorderGreen = Color(0xFF355246)
-
-private val CardBorderColor = Color(0xFFDDBF5F).copy(alpha = 0.22f)
-private val CardBorderWidth = 1.2.dp
-
-/**
- * Premium visual Explore screen inspired by Cathopedia's dark-green / gold identity.
- *
- * The existing repository, language handling, content counts and category navigation
- * are preserved. Only the visual hierarchy and browsing experience are redesigned.
- */
 @Composable
 fun ExploreScreen(
     repository: CathopediaRepository,
@@ -103,7 +84,7 @@ fun ExploreScreen(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .background(ExploreBackground)
+            .background(MaterialTheme.colorScheme.background)
             .statusBarsPadding(),
         contentPadding = PaddingValues(
             start = 20.dp,
@@ -180,14 +161,14 @@ fun ExploreScreen(
                     ) {
                         Text(
                             text = "No results found",
-                            color = Cream,
+                            color = MaterialTheme.colorScheme.onBackground,
                             fontSize = 18.sp,
                             fontWeight = FontWeight.SemiBold,
                         )
                         Spacer(Modifier.height(6.dp))
                         Text(
                             text = "Try another category or keyword.",
-                            color = MutedCream,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontSize = 14.sp,
                         )
                     }
@@ -205,31 +186,82 @@ private fun ExploreHero(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 24.dp, bottom = 0.dp),
+            .padding(top = 10.dp, bottom = 0.dp),
     ) {
-        Row(
-            verticalAlignment = Alignment.Top,
+        // Header artwork follows the same treatment as Settings:
+        // artwork on the top-right with green fades keeping the text readable.
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(128.dp),
         ) {
-            Column(modifier = Modifier.weight(1f)) {
+            Image(
+                painter = painterResource(Res.drawable.explore_bg),
+                contentDescription = null,
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .fillMaxWidth(0.58f)
+                    .height(126.dp)
+                    .padding(top = 4.dp),
+                contentScale = ContentScale.Fit,
+                alignment = Alignment.TopEnd,
+            )
+
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        Brush.horizontalGradient(
+                            listOf(
+                                MaterialTheme.colorScheme.background.copy(alpha = 1f),
+                                MaterialTheme.colorScheme.background.copy(alpha = 0.92f),
+                                MaterialTheme.colorScheme.background.copy(alpha = 0.42f),
+                                Color.Transparent,
+                            ),
+                        ),
+                    ),
+            )
+
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        Brush.verticalGradient(
+                            listOf(
+                                Color.Transparent,
+                                MaterialTheme.colorScheme.background.copy(alpha = 0.18f),
+                                MaterialTheme.colorScheme.background.copy(alpha = 0.94f),
+                            ),
+                        ),
+                    ),
+            )
+
+            Column(
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .padding(top = 14.dp, end = 150.dp),
+            ) {
                 Text(
                     text = "Explore",
-                    color = Cream,
+                    color = MaterialTheme.colorScheme.onBackground,
                     fontSize = 30.sp,
                     lineHeight = 38.sp,
                     fontFamily = FontFamily.Serif,
                     fontWeight = FontWeight.Medium,
                 )
+
                 Spacer(Modifier.height(8.dp))
+
                 Text(
                     text = "Discover the richness of the Catholic faith",
-                    color = MutedCream,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontSize = 16.sp,
                     lineHeight = 22.sp,
                 )
             }
         }
 
-        Spacer(Modifier.height(15.dp))
+        Spacer(Modifier.height(4.dp))
 
         OutlinedTextField(
             value = query,
@@ -238,7 +270,7 @@ private fun ExploreHero(
             placeholder = {
                 Text(
                     text = "Search saints, popes, places...",
-                    color = MutedCream.copy(alpha = 0.82f),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.82f),
                     fontSize = 15.sp,
                 )
             },
@@ -246,18 +278,18 @@ private fun ExploreHero(
                 Icon(
                     imageVector = Icons.Default.Search,
                     contentDescription = null,
-                    tint = Gold,
+                    tint = MaterialTheme.colorScheme.primary,
                 )
             },
             shape = RoundedCornerShape(26.dp),
             colors = OutlinedTextFieldDefaults.colors(
-                focusedContainerColor = SearchSurface,
-                unfocusedContainerColor = SearchSurface,
-                focusedBorderColor = Gold.copy(alpha = 0.55f),
-                unfocusedBorderColor = BorderGreen,
-                focusedTextColor = Cream,
-                unfocusedTextColor = Cream,
-                cursorColor = Gold,
+                focusedContainerColor = MaterialTheme.colorScheme.surfaceContainer,
+                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceContainer,
+                focusedBorderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.55f),
+                unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                focusedTextColor = MaterialTheme.colorScheme.onBackground,
+                unfocusedTextColor = MaterialTheme.colorScheme.onBackground,
+                cursorColor = MaterialTheme.colorScheme.primary,
             ),
             modifier = Modifier
                 .fillMaxWidth()
@@ -276,7 +308,7 @@ private fun ExploreSectionHeader(title: String) {
     ) {
         Text(
             text = title,
-            color = Gold,
+            color = MaterialTheme.colorScheme.primary,
             fontSize = 12.sp,
             fontWeight = FontWeight.SemiBold,
             letterSpacing = 0.9.sp,
@@ -288,7 +320,7 @@ private fun ExploreSectionHeader(title: String) {
             modifier = Modifier
                 .weight(1f)
                 .height(1.dp)
-                .background(GoldMuted.copy(alpha = 0.48f)),
+                .background(MaterialTheme.colorScheme.tertiary.copy(alpha = 0.48f)),
         )
     }
 }
@@ -375,8 +407,8 @@ private fun PortraitExploreCard(
             .height(156.dp)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
-        border = BorderStroke(CardBorderWidth, CardBorderColor),
-        colors = CardDefaults.cardColors(containerColor = CardGreen),
+        border = BorderStroke(1.2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
         Box(Modifier.fillMaxSize()) {
@@ -409,7 +441,7 @@ private fun PortraitExploreCard(
             ) {
                 Text(
                     text = title,
-                    color = Cream,
+                    color = MaterialTheme.colorScheme.onBackground,
                     fontFamily = FontFamily.Serif,
                     fontSize = 15.sp,
                     lineHeight = 20.sp,
@@ -418,7 +450,7 @@ private fun PortraitExploreCard(
                 )
                 Text(
                     text = humanCountLabel(title, count),
-                    color = MutedCream,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontSize = 11.sp,
                     lineHeight = 16.sp,
                 )
@@ -441,8 +473,8 @@ private fun EventExploreCard(
             .aspectRatio(1.3f)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
-        border = BorderStroke(CardBorderWidth, CardBorderColor),
-        colors = CardDefaults.cardColors(containerColor = CardGreenDeep),
+        border = BorderStroke(1.2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
         Box(Modifier.fillMaxSize()) {
@@ -474,7 +506,7 @@ private fun EventExploreCard(
             ) {
                 Text(
                     text = title,
-                    color = Cream,
+                    color = MaterialTheme.colorScheme.onBackground,
                     fontFamily = FontFamily.Serif,
                     fontSize = 15.sp,
                     lineHeight = 20.sp,
@@ -483,7 +515,7 @@ private fun EventExploreCard(
                 )
                 Text(
                     text = humanCountLabel(title, count),
-                    color = MutedCream,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontSize = 11.sp,
                     lineHeight = 16.sp,
                 )
@@ -507,8 +539,8 @@ private fun WideExploreCard(
             .padding(bottom = 12.dp)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
-        border = BorderStroke(CardBorderWidth, CardBorderColor),
-        colors = CardDefaults.cardColors(containerColor = CardGreenDeep),
+        border = BorderStroke(1.2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
         Box(Modifier.fillMaxSize()) {
@@ -540,7 +572,7 @@ private fun WideExploreCard(
                 Column {
                     Text(
                         text = title,
-                        color = Cream,
+                        color = MaterialTheme.colorScheme.onBackground,
                         fontFamily = FontFamily.Serif,
                         fontSize = 15.sp,
                         lineHeight = 20.sp,
@@ -549,7 +581,7 @@ private fun WideExploreCard(
                     )
                     Text(
                         text = humanCountLabel(title, count),
-                        color = MutedCream,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontSize = 11.sp,
                         lineHeight = 16.sp,
                         maxLines = 1,
@@ -566,19 +598,21 @@ private fun ArtworkFadeOverlay(
     includeBottomFade: Boolean = false,
     wideCardFade: Boolean = false,
 ) {
+    val bg = MaterialTheme.colorScheme.background
+
     val horizontalFade = if (wideCardFade) {
         Brush.horizontalGradient(
-            0f to Color(0xFF071C15).copy(alpha = 1f),
-            0.34f to Color(0xFF071C15).copy(alpha = 0.94f),
-            0.58f to Color(0xFF071C15).copy(alpha = 0.70f),
-            0.80f to Color(0xFF071C15).copy(alpha = 0.24f),
+            0f to bg.copy(alpha = 1f),
+            0.34f to bg.copy(alpha = 0.94f),
+            0.58f to bg.copy(alpha = 0.70f),
+            0.80f to bg.copy(alpha = 0.24f),
             1f to Color.Transparent,
         )
     } else {
         Brush.horizontalGradient(
-            0f to Color(0xFF071C15).copy(alpha = 0.98f),
-            0.38f to Color(0xFF071C15).copy(alpha = 0.78f),
-            0.68f to Color(0xFF071C15).copy(alpha = 0.26f),
+            0f to bg.copy(alpha = 0.98f),
+            0.38f to bg.copy(alpha = 0.78f),
+            0.68f to bg.copy(alpha = 0.26f),
             1f to Color.Transparent,
         )
     }
@@ -597,7 +631,7 @@ private fun ArtworkFadeOverlay(
                     Brush.verticalGradient(
                         0f to Color.Transparent,
                         0.58f to Color.Transparent,
-                        1f to Color(0xFF071C15).copy(alpha = 0.95f),
+                        1f to bg.copy(alpha = 0.95f),
                     )
                 )
         )
@@ -636,7 +670,11 @@ private fun CategoryArtwork(
         Box(
             modifier = modifier.background(
                 Brush.linearGradient(
-                    listOf(CardGreen, HeaderBackground, ExploreBackground)
+                    listOf(
+                        MaterialTheme.colorScheme.surfaceVariant,
+                        MaterialTheme.colorScheme.surface,
+                        MaterialTheme.colorScheme.background
+                    )
                 )
             )
         )
@@ -674,12 +712,12 @@ private fun CategoryGlyph(
             modifier = modifier
                 .size(size)
                 .clip(CircleShape)
-                .background(Color(0xFF0B2B21).copy(alpha = 0.92f)),
+                .background(MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.92f)),
             contentAlignment = Alignment.Center,
         ) {
             Text(
                 text = "✦",
-                color = Gold,
+                color = MaterialTheme.colorScheme.primary,
                 fontSize = (size.value * 0.45f).sp,
                 fontWeight = FontWeight.Medium,
             )

@@ -108,8 +108,7 @@ fun App(container: AppContainer) {
     // engine (v1.0) can drive it.
     CathopediaTheme(themeMode = themeMode, liturgicalAccent = LiturgicalOrdinary) {
         val destination = nav.current
-        val showBottomBar = destination in TAB_DESTINATIONS ||
-            destination is Destination.EntityList
+        val showBottomBar = destination in TAB_DESTINATIONS
 
         Box(modifier = Modifier.fillMaxSize().nestedScroll(navBarScrollConnection)) {
             when (val current = destination) {

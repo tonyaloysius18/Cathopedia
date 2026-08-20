@@ -23,6 +23,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -47,15 +48,6 @@ import com.ynotlabs.cathopedia.resources.settings_header_bg
 import com.ynotlabs.cathopedia.resources.settings_quote_bg
 
 
-private val SettingsBg = Color(0xFF061A13)
-//private val SettingsCard = Color(0xFF102D23)
-private val SettingsCardAlt = Color(0xFF0C271E)
-private val SettingsBorder = Color(0xFF315444)
-private val SettingsGold = Color(0xFFD9B44A)
-private val SettingsGoldSoft = Color(0xFF9D8956)
-private val SettingsCream = Color(0xFFF4ECDD)
-private val SettingsMuted = Color(0xFFB2AB97)
-
 @Composable
 fun SettingsScreen(
     language: String,
@@ -68,7 +60,7 @@ fun SettingsScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(SettingsBg)
+            .background(MaterialTheme.colorScheme.background)
             .verticalScroll(rememberScrollState())
             .navigationBarsPadding()
             .padding(bottom = 88.dp),
@@ -134,7 +126,7 @@ fun SettingsScreen(
             ) {
                 Text(
                     text = "CATHOPEDIA",
-                    color = SettingsGold.copy(alpha = 0.78f),
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.78f),
                     fontSize = 10.sp,
                     letterSpacing = 1.8.sp,
                     fontWeight = FontWeight.Bold,
@@ -142,7 +134,7 @@ fun SettingsScreen(
                 Spacer(Modifier.height(4.dp))
                 Text(
                     text = "Knowledge · Faith · Tradition",
-                    color = SettingsMuted.copy(alpha = 0.72f),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.72f),
                     fontSize = 11.sp,
                 )
             }
@@ -175,9 +167,9 @@ private fun SettingsHero() {
                 .background(
                     Brush.horizontalGradient(
                         listOf(
-                            SettingsBg.copy(alpha = 0.97f),
-                            SettingsBg.copy(alpha = 0.76f),
-                            SettingsBg.copy(alpha = 0.16f),
+                            MaterialTheme.colorScheme.background.copy(alpha = 0.97f),
+                            MaterialTheme.colorScheme.background.copy(alpha = 0.76f),
+                            MaterialTheme.colorScheme.background.copy(alpha = 0.16f),
                         ),
                     ),
                 ),
@@ -191,7 +183,7 @@ private fun SettingsHero() {
                         listOf(
                             Color.Black.copy(alpha = 0.20f),
                             Color.Transparent,
-                            SettingsBg.copy(alpha = 0.95f),
+                            MaterialTheme.colorScheme.background.copy(alpha = 0.95f),
                         ),
                     ),
                 ),
@@ -207,7 +199,7 @@ private fun SettingsHero() {
 
             Text(
                 text = "Settings",
-                color = SettingsCream,
+                color = MaterialTheme.colorScheme.onBackground,
                 fontFamily = FontFamily.Serif,
                 fontSize = 35.sp,
                 lineHeight = 38.sp,
@@ -218,7 +210,7 @@ private fun SettingsHero() {
 
             Text(
                 text = "Personalize your Cathopedia experience",
-                color = SettingsCream.copy(alpha = 0.78f),
+                color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.78f),
                 fontSize = 14.sp,
                 lineHeight = 18.sp,
             )
@@ -238,7 +230,7 @@ private fun SettingsSectionLabel(
     ) {
         Text(
             text = text.uppercase(),
-            color = SettingsGold,
+            color = MaterialTheme.colorScheme.primary,
             fontSize = 11.sp,
             letterSpacing = 1.2.sp,
             fontWeight = FontWeight.Bold,
@@ -253,7 +245,7 @@ private fun SettingsSectionLabel(
                 .background(
                     Brush.horizontalGradient(
                         listOf(
-                            SettingsGoldSoft.copy(alpha = 0.55f),
+                            MaterialTheme.colorScheme.tertiary.copy(alpha = 0.55f),
                             Color.Transparent,
                         ),
                     ),
@@ -270,10 +262,10 @@ private fun SettingsGroup(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(20.dp))
-            .background(SettingsCardAlt)
+            .background(MaterialTheme.colorScheme.surface)
             .border(
                 width = 1.dp,
-                color = SettingsBorder.copy(alpha = 0.72f),
+                color = MaterialTheme.colorScheme.outline.copy(alpha = 0.72f),
                 shape = RoundedCornerShape(20.dp),
             ),
     ) {
@@ -299,10 +291,10 @@ private fun PremiumSettingsRow(
             modifier = Modifier
                 .size(48.dp)
                 .clip(CircleShape)
-                .background(SettingsBg.copy(alpha = 0.58f))
+                .background(MaterialTheme.colorScheme.background.copy(alpha = 0.58f))
                 .border(
                     width = 1.dp,
-                    color = SettingsGold.copy(alpha = 0.74f),
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.74f),
                     shape = CircleShape,
                 ),
             contentAlignment = Alignment.Center,
@@ -322,7 +314,7 @@ private fun PremiumSettingsRow(
         ) {
             Text(
                 text = label,
-                color = SettingsGold,
+                color = MaterialTheme.colorScheme.primary,
                 fontFamily = FontFamily.Serif,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Medium,
@@ -332,7 +324,7 @@ private fun PremiumSettingsRow(
 
             Text(
                 text = value,
-                color = SettingsMuted,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
                 fontSize = 12.5.sp,
                 lineHeight = 16.sp,
             )
@@ -342,13 +334,13 @@ private fun PremiumSettingsRow(
             modifier = Modifier
                 .size(34.dp)
                 .clip(CircleShape)
-                .background(SettingsGold.copy(alpha = 0.07f)),
+                .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.07f)),
             contentAlignment = Alignment.Center,
         ) {
             Icon(
                 imageVector = Icons.Default.KeyboardArrowRight,
                 contentDescription = null,
-                tint = SettingsGold,
+                tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(21.dp),
             )
         }
@@ -362,7 +354,7 @@ private fun SettingsDivider() {
             .fillMaxWidth()
             .padding(start = 76.dp, end = 14.dp)
             .height(1.dp)
-            .background(SettingsBorder.copy(alpha = 0.55f)),
+            .background(MaterialTheme.colorScheme.outline.copy(alpha = 0.55f)),
     )
 }
 
@@ -375,7 +367,7 @@ private fun InspirationCard() {
             .clip(RoundedCornerShape(18.dp))
             .border(
                 width = 1.dp,
-                color = SettingsGoldSoft.copy(alpha = 0.55f),
+                color = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.55f),
                 shape = RoundedCornerShape(18.dp),
             ),
     ) {
@@ -392,9 +384,9 @@ private fun InspirationCard() {
                 .background(
                     Brush.horizontalGradient(
                         listOf(
-                            SettingsBg.copy(alpha = 0.86f),
-                            SettingsBg.copy(alpha = 0.62f),
-                            SettingsBg.copy(alpha = 0.30f),
+                            MaterialTheme.colorScheme.background.copy(alpha = 0.86f),
+                            MaterialTheme.colorScheme.background.copy(alpha = 0.62f),
+                            MaterialTheme.colorScheme.background.copy(alpha = 0.30f),
                         ),
                     ),
                 ),
@@ -409,7 +401,7 @@ private fun InspirationCard() {
         ) {
             Text(
                 text = "“",
-                color = SettingsGold,
+                color = MaterialTheme.colorScheme.primary,
                 fontFamily = FontFamily.Serif,
                 fontSize = 24.sp,
                 lineHeight = 20.sp,
@@ -417,7 +409,7 @@ private fun InspirationCard() {
 
             Text(
                 text = "Your word is a lamp to my feet\nand a light to my path.",
-                color = SettingsCream,
+                color = MaterialTheme.colorScheme.onBackground,
                 fontFamily = FontFamily.Serif,
                 fontSize = 13.sp,
                 lineHeight = 18.sp,
@@ -429,7 +421,7 @@ private fun InspirationCard() {
 
             Text(
                 text = "Psalm 119:105",
-                color = SettingsGold,
+                color = MaterialTheme.colorScheme.primary,
                 fontSize = 11.sp,
                 fontWeight = FontWeight.SemiBold,
             )
