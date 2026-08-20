@@ -45,7 +45,8 @@ import com.ynotlabs.cathopedia.ui.screens.EntityListScreen
 import com.ynotlabs.cathopedia.ui.screens.ExploreScreen
 import com.ynotlabs.cathopedia.ui.screens.HomeScreen
 import com.ynotlabs.cathopedia.ui.screens.IntroScreen
-import com.ynotlabs.cathopedia.ui.screens.LanguageSelectScreen
+import com.ynotlabs.cathopedia.ui.screens.LanguageScreen
+import com.ynotlabs.cathopedia.ui.screens.LanguageScreenStartup
 import com.ynotlabs.cathopedia.ui.screens.SavedScreen
 import com.ynotlabs.cathopedia.ui.screens.SearchScreen
 import com.ynotlabs.cathopedia.ui.screens.SettingsScreen
@@ -66,7 +67,6 @@ fun App(container: AppContainer) {
     val onboardingComplete = remember {
         repository.getPreference(PreferenceKeys.ONBOARDING_COMPLETE) == "true"
     }
-    var languageEditFromSettings by remember { mutableStateOf(false) }
     var themeMode by remember {
         mutableStateOf(ThemeMode.fromStorageKey(repository.getPreference(PreferenceKeys.THEME_MODE)))
     }
@@ -113,19 +113,23 @@ fun App(container: AppContainer) {
         Box(modifier = Modifier.fillMaxSize().nestedScroll(navBarScrollConnection)) {
             when (val current = destination) {
                 is Destination.Splash -> SplashScreen(isFirstRun = !onboardingComplete, repository = repository) { firstRun ->
-                    nav.resetTo(if (firstRun) Destination.LanguageSelect else Destination.Home)
+                    nav.resetTo(if (firstRun) Destination.LanguageStartup else Destination.Home)
                 }
 
-                is Destination.LanguageSelect -> LanguageSelectScreen(currentLanguage = language) { code ->
+                is Destination.LanguageStartup -> LanguageScreenStartup(currentLanguage = language) { code ->
                     language = code
                     repository.setPreference(PreferenceKeys.LANGUAGE, code)
-                    if (languageEditFromSettings) {
-                        languageEditFromSettings = false
-                        nav.back()
-                    } else {
-                        nav.navigate(Destination.Intro)
-                    }
+                    nav.navigate(Destination.Intro)
                 }
+
+                is Destination.LanguageSettings -> LanguageScreen(
+                    currentLanguage = language,
+                    onSelect = { code ->
+                        language = code
+                        repository.setPreference(PreferenceKeys.LANGUAGE, code)
+                    },
+                    onBack = nav::back,
+                )
 
                 is Destination.Intro -> IntroScreen {
                     repository.setPreference(PreferenceKeys.ONBOARDING_COMPLETE, "true")
@@ -177,10 +181,7 @@ fun App(container: AppContainer) {
                 is Destination.Settings -> SettingsScreen(
                     language = language,
                     themeMode = themeMode,
-                    onOpenLanguage = {
-                        languageEditFromSettings = true
-                        nav.navigate(Destination.LanguageSelect)
-                    },
+                    onOpenLanguage = { nav.navigate(Destination.LanguageSettings) },
                     onOpenAppearance = { nav.navigate(Destination.Appearance) },
                     onOpenSaved = { nav.navigate(Destination.Saved) },
                     onOpenAbout = { nav.navigate(Destination.About) },

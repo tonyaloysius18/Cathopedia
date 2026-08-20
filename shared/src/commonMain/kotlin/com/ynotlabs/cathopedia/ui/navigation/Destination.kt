@@ -4,7 +4,8 @@ import com.ynotlabs.cathopedia.model.ContentType
 
 sealed interface Destination {
     data object Splash : Destination
-    data object LanguageSelect : Destination
+    data object LanguageStartup : Destination
+    data object LanguageSettings : Destination
     data object Intro : Destination
     data object Home : Destination
     data object Explore : Destination

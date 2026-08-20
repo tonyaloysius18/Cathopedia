@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -22,7 +23,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.OpenInNew
 import androidx.compose.material.icons.filled.AutoStories
 import androidx.compose.material.icons.filled.Code
@@ -51,7 +51,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.resources.back_arrow
 import com.ynotlabs.cathopedia.resources.cathopedia_app_logo_transparent
+import com.ynotlabs.cathopedia.resources.settings_header_bg
 import org.jetbrains.compose.resources.painterResource
 
 private const val APP_VERSION = "1.0.0"
@@ -296,57 +298,99 @@ fun AboutScreen(
 private fun AboutHero(
     onBack: () -> Unit,
 ) {
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxWidth()
-            .statusBarsPadding()
-            .padding(start = 18.dp, end = 18.dp, top = 16.dp, bottom = 20.dp),
+            .height(190.dp),
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
+        Image(
+            painter = painterResource(Res.drawable.settings_header_bg),
+            contentDescription = null,
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .fillMaxWidth(0.62f)
+                .height(170.dp)
+                .padding(top = 22.dp),
+            contentScale = ContentScale.Fit,
+            alignment = Alignment.TopEnd,
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(
+                            MaterialTheme.colorScheme.background,
+                            MaterialTheme.colorScheme.background.copy(alpha = 0.92f),
+                            MaterialTheme.colorScheme.background.copy(alpha = 0.24f),
+                            Color.Transparent,
+                        ),
+                    ),
+                ),
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        listOf(
+                            Color.Transparent,
+                            MaterialTheme.colorScheme.background.copy(alpha = 0.10f),
+                            MaterialTheme.colorScheme.background.copy(alpha = 0.95f),
+                        ),
+                    ),
+                ),
+        )
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .statusBarsPadding()
+                .padding(start = 18.dp, end = 18.dp, top = 10.dp, bottom = 12.dp),
         ) {
             Surface(
                 modifier = Modifier
                     .size(42.dp)
                     .clickable(onClick = onBack),
                 shape = CircleShape,
-                color = MaterialTheme.colorScheme.surface.copy(alpha = 0.8f),
-                border = androidx.compose.foundation.BorderStroke(
+                color = MaterialTheme.colorScheme.surface.copy(alpha = 0.88f),
+                border = BorderStroke(
                     width = 1.dp,
-                    color = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.55f),
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.55f),
                 ),
             ) {
                 Box(contentAlignment = Alignment.Center) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    Image(
+                        painter = painterResource(Res.drawable.back_arrow),
                         contentDescription = "Back",
-                        tint = MaterialTheme.colorScheme.onBackground,
-                        modifier = Modifier.size(21.dp),
+                        modifier = Modifier.size(34.dp),
+                        contentScale = ContentScale.Fit,
                     )
                 }
             }
 
-            Spacer(Modifier.width(16.dp))
+            Spacer(Modifier.weight(1f))
 
             Text(
                 text = "About",
                 color = MaterialTheme.colorScheme.onBackground,
                 fontFamily = FontFamily.Serif,
-                fontSize = 35.sp,
+                fontSize = 34.sp,
+                lineHeight = 38.sp,
                 fontWeight = FontWeight.SemiBold,
             )
+
+            Spacer(Modifier.height(4.dp))
+
+            Text(
+                text = "App info, storage & attributions",
+                color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.78f),
+                fontSize = 14.sp,
+                lineHeight = 18.sp,
+            )
         }
-
-        Spacer(Modifier.height(4.dp))
-
-        Text(
-            text = "App info, storage & attributions",
-            modifier = Modifier.padding(start = 58.dp),
-            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.78f),
-            fontSize = 14.sp,
-            lineHeight = 18.sp,
-        )
     }
 }
 
@@ -448,7 +492,7 @@ private fun AboutCard(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
         color = MaterialTheme.colorScheme.surface.copy(alpha = 0.96f),
-        border = androidx.compose.foundation.BorderStroke(
+        border = BorderStroke(
             width = 1.dp,
             color = MaterialTheme.colorScheme.outline.copy(alpha = 0.72f),
         ),
@@ -475,7 +519,7 @@ private fun InfoRow(
             modifier = Modifier.size(38.dp),
             shape = CircleShape,
             color = MaterialTheme.colorScheme.primary.copy(alpha = 0.08f),
-            border = androidx.compose.foundation.BorderStroke(
+            border = BorderStroke(
                 width = 1.dp,
                 color = MaterialTheme.colorScheme.primary.copy(alpha = 0.28f),
             ),

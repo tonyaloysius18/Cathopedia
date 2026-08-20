@@ -95,50 +95,97 @@ fun AppearanceScreen(
 private fun AppearanceHeader(
     onBack: () -> Unit,
 ) {
-    Row(
+    Box(
         modifier = Modifier
             .fillMaxWidth()
-            .statusBarsPadding()
-            .padding(start = 18.dp, end = 18.dp, top = 16.dp, bottom = 20.dp),
-        verticalAlignment = Alignment.CenterVertically,
+            .height(190.dp),
     ) {
-        Surface(
+        Image(
+            painter = painterResource(Res.drawable.settings_header_bg),
+            contentDescription = null,
             modifier = Modifier
-                .size(42.dp)
-                .clickable(onClick = onBack),
-            shape = CircleShape,
-            color = MaterialTheme.colorScheme.surface.copy(alpha = 0.8f),
-            border = BorderStroke(
-                width = 1.dp,
-                color = MaterialTheme.colorScheme.primary.copy(alpha = 0.4f),
-            ),
+                .align(Alignment.TopEnd)
+                .fillMaxWidth(0.62f)
+                .height(170.dp)
+                .padding(top = 22.dp),
+            contentScale = ContentScale.Fit,
+            alignment = Alignment.TopEnd,
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(
+                            MaterialTheme.colorScheme.background,
+                            MaterialTheme.colorScheme.background.copy(alpha = 0.92f),
+                            MaterialTheme.colorScheme.background.copy(alpha = 0.24f),
+                            Color.Transparent,
+                        ),
+                    ),
+                ),
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        listOf(
+                            Color.Transparent,
+                            MaterialTheme.colorScheme.background.copy(alpha = 0.10f),
+                            MaterialTheme.colorScheme.background.copy(alpha = 0.95f),
+                        ),
+                    ),
+                ),
+        )
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .statusBarsPadding()
+                .padding(start = 18.dp, end = 18.dp, top = 10.dp, bottom = 12.dp),
         ) {
-            Box(contentAlignment = Alignment.Center) {
-                Image(
-                    painter = painterResource(Res.drawable.back_arrow),
-                    contentDescription = "Back",
-                    modifier = Modifier.size(34.dp),
-                    contentScale = ContentScale.Fit,
-                )
+            Surface(
+                modifier = Modifier
+                    .size(42.dp)
+                    .clickable(onClick = onBack),
+                shape = CircleShape,
+                color = MaterialTheme.colorScheme.surface.copy(alpha = 0.88f),
+                border = BorderStroke(
+                    width = 1.dp,
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.55f),
+                ),
+            ) {
+                Box(contentAlignment = Alignment.Center) {
+                    Image(
+                        painter = painterResource(Res.drawable.back_arrow),
+                        contentDescription = "Back",
+                        modifier = Modifier.size(34.dp),
+                        contentScale = ContentScale.Fit,
+                    )
+                }
             }
-        }
 
-        Spacer(Modifier.width(16.dp))
+            Spacer(Modifier.weight(1f))
 
-        Column {
             Text(
                 text = "Appearance",
                 color = MaterialTheme.colorScheme.onBackground,
                 fontFamily = FontFamily.Serif,
-                fontSize = 35.sp,
+                fontSize = 34.sp,
+                lineHeight = 38.sp,
                 fontWeight = FontWeight.SemiBold,
             )
-            Spacer(Modifier.height(8.dp))
+
+            Spacer(Modifier.height(4.dp))
+
             Text(
                 text = "Customize the look and feel",
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                fontSize = 16.sp,
-                lineHeight = 16.sp,
+                color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.78f),
+                fontSize = 14.sp,
+                lineHeight = 18.sp,
             )
         }
     }
