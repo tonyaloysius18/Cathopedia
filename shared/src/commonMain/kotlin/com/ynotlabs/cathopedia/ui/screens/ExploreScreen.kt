@@ -94,10 +94,7 @@ fun ExploreScreen(
         verticalArrangement = Arrangement.spacedBy(0.dp),
     ) {
         item {
-            ExploreHero(
-                query = query,
-                onQueryChange = { query = it },
-            )
+            ExploreHero(query) { query = it }
         }
 
         ContentCategory.entries.forEach { category ->
@@ -620,7 +617,7 @@ private fun ArtworkFadeOverlay(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(horizontalFade)
+            .background(horizontalFade),
     )
 
     if (includeBottomFade) {

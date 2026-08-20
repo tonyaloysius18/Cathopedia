@@ -60,7 +60,7 @@ fun BottomNavBar(selected: Tab, onSelect: (Tab) -> Unit) {
     // drop shadow) rather than a differently-coloured badge.
     val activeCircleColor = barBackgroundColor
     val rimColor = if (isLightMode) LightGoldText.copy(alpha = 0.24f) else DarkGoldBright.copy(alpha = 0.34f)
-    val targetBias = if (count <= 1) 0f else -1f + 2f * selectedIndex / (count - 1)
+    val targetBias = if (count <= 1) 0f else (-1f + 2f * selectedIndex / (count - 1))
     val bias by animateFloatAsState(
         targetValue = targetBias,
         animationSpec = spring(dampingRatio = 0.78f, stiffness = 350f),
@@ -281,7 +281,7 @@ fun BottomNavBar(selected: Tab, onSelect: (Tab) -> Unit) {
                     // raised circle while unselected icons remain centered in
                     // the flat pill.
                     val verticalOffset = with(LocalDensity.current) {
-                        (-20.dp * selectedness).toPx()
+                        ((-20).dp * selectedness).toPx()
                     }
 
                     // Bigger at rest, with a modest selected enlargement.

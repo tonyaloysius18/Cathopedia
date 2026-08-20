@@ -51,7 +51,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.resources.Res
-import com.ynotlabs.cathopedia.resources.app_logo
 import com.ynotlabs.cathopedia.resources.cathopedia_app_logo_transparent
 import org.jetbrains.compose.resources.painterResource
 
