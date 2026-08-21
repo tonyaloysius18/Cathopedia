@@ -12,6 +12,7 @@ data class ContentSummary(
     val papacyStart: String? = null,
     val papacyEnd: String? = null,
     val feastDay: String? = null,
+    val rank: String? = null,
 )
 
 /** One edge out of EntityRelation, resolved to a browsable target. */

@@ -1,0 +1,16 @@
+{
+  "id": "st-mary-major",
+  "latitude": 41.8977,
+  "longitude": 12.4983,
+  "foundedYear": 432,
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Basilica of St. Mary Major",
+      "summary": "The largest of Rome's Marian churches, built after the Council of Ephesus affirmed Mary as Mother of God.",
+      "body": "Built between 432 and 440 following the Council of Ephesus's declaration of Mary's divine motherhood, St. Mary Major is one of the four papal basilicas and houses relics venerated as fragments of the manger of Bethlehem.",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

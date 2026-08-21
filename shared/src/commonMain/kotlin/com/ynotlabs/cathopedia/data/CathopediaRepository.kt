@@ -180,7 +180,7 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
     suspend fun listFeasts(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
         database.feastQueries.selectAllFeasts(language)
             .executeAsList()
-            .map { ContentSummary(ContentType.FEAST, it.id, it.name, it.summary, it.imageUrl) }
+            .map { ContentSummary(ContentType.FEAST, it.id, it.name, it.summary, it.imageUrl, rank = it.rank) }
     }
 
     suspend fun feastDetail(id: String, language: String): FeastDetail? = withContext(Dispatchers.Default) {

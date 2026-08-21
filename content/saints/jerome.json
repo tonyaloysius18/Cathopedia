@@ -1,0 +1,16 @@
+{
+  "id": "jerome",
+  "feastDay": "09-30",
+  "canonizationYear": null,
+  "patronage": "Translators, librarians, encyclopedists, students",
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Jerome",
+      "summary": "Scholar-monk and Doctor of the Church who translated the Bible into Latin, producing the Vulgate.",
+      "body": "Jerome was a Roman Christian scholar of formidable learning and famously sharp temper, educated in Rome before withdrawing to the Syrian desert to live as an ascetic and master Hebrew and Greek. Commissioned by Pope Damasus I to revise the Latin translations of Scripture then in circulation, he went further, retranslating most of the Old Testament directly from Hebrew rather than the Greek Septuagint, and the resulting Latin Bible, the Vulgate, became the standard text of Western Christianity for over a thousand years. He spent his later decades in a monastery in Bethlehem, writing biblical commentaries and combative letters that make him one of the best-documented personalities of the early Church. He is honored as one of the four great Latin Doctors of the Church.",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

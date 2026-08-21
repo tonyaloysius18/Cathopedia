@@ -9,22 +9,33 @@ import kotlinx.serialization.json.Json
 
 /**
  * Loads the compiled content bundle (`/content` → `:shared:compileContent` →
- * `catalog.json`, see content/README.md) into the local database on first
- * launch. This is what SeedData.kt used to do with hand-written Kotlin calls
- * — the pipeline exists so growing the catalogue is a content operation, not
- * a code change.
+ * `catalog.json`, see content/README.md) into the local database, re-running
+ * whenever CONTENT_VERSION has been bumped since the last load. This is what
+ * SeedData.kt used to do with hand-written Kotlin calls — the pipeline exists
+ * so growing the catalogue is a content operation, not a code change.
  */
 object ContentLoader {
     private const val CATALOG_PATH = "files/content/catalog.json"
+
+    /**
+     * Bump this whenever /content gains or changes entries. insertX queries
+     * are all INSERT OR REPLACE, so re-running the load is safe/idempotent —
+     * this just controls whether it re-runs on an existing install rather
+     * than only ever loading once on a database with zero rows.
+     */
+    private const val CONTENT_VERSION = "18"
+    private const val CONTENT_VERSION_KEY = "content_version"
+
     private val json = Json { ignoreUnknownKeys = true }
 
     suspend fun loadIfEmpty(database: CathopediaDatabase) {
-        val alreadyLoaded = database.saintQueries.selectAllSaints("en").executeAsList().isNotEmpty()
-        if (alreadyLoaded) return
+        val loadedVersion = database.preferenceQueries.getPreference(CONTENT_VERSION_KEY).executeAsOneOrNull()
+        if (loadedVersion == CONTENT_VERSION) return
 
         val bytes = Res.readBytes(CATALOG_PATH)
         val catalog = json.decodeFromString<ContentCatalog>(bytes.decodeToString())
         insert(database, catalog)
+        database.preferenceQueries.setPreference(CONTENT_VERSION_KEY, CONTENT_VERSION)
     }
 
     private fun insert(database: CathopediaDatabase, catalog: ContentCatalog) {

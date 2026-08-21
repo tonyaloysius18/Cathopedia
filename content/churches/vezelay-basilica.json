@@ -1,0 +1,16 @@
+{
+  "id": "vezelay-basilica",
+  "latitude": 47.4642,
+  "longitude": 3.7472,
+  "foundedYear": 1104,
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Basilica of Sainte-Marie-Madeleine, Vézelay",
+      "summary": "A UNESCO-listed Burgundian basilica venerating relics associated with St. Mary Magdalene, a starting point for medieval pilgrims to Compostela.",
+      "body": "Consecrated in the early twelfth century and famed for its sculpted Romanesque tympanum, the basilica at Vézelay became a major departure point for pilgrims walking to Santiago de Compostela, after monks claimed to hold relics of St. Mary Magdalene.",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

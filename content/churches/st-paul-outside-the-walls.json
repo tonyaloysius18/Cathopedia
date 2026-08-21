@@ -1,0 +1,16 @@
+{
+  "id": "st-paul-outside-the-walls",
+  "latitude": 41.858,
+  "longitude": 12.477,
+  "foundedYear": 324,
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Basilica of St. Paul Outside the Walls",
+      "summary": "A papal basilica built over the traditional burial site of the apostle Paul, largely rebuilt after a catastrophic 1823 fire.",
+      "body": "Founded under Constantine over the tomb of St. Paul, the basilica was almost entirely destroyed by fire in 1823 and rebuilt in the following decades, preserving its ancient plan and a chain of papal portrait mosaics running the length of the nave.",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

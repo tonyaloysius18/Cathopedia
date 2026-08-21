@@ -900,5 +900,632 @@
       "id": "marcellus-i"
     },
     "kind": "succeeded"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "ambrose-of-milan"
+    },
+    "to": {
+      "type": "saint",
+      "id": "augustine-of-hippo"
+    },
+    "kind": "baptized"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "jerome"
+    },
+    "to": {
+      "type": "saint",
+      "id": "augustine-of-hippo"
+    },
+    "kind": "contemporary"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "anthony-the-great"
+    },
+    "to": {
+      "type": "saint",
+      "id": "benedict-of-nursia"
+    },
+    "kind": "influenced"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "monica"
+    },
+    "to": {
+      "type": "saint",
+      "id": "augustine-of-hippo"
+    },
+    "kind": "same_city"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "bernadette-soubirous"
+    },
+    "to": {
+      "type": "apparition",
+      "id": "lourdes"
+    },
+    "kind": "related_message"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "juan-diego"
+    },
+    "to": {
+      "type": "apparition",
+      "id": "our-lady-of-guadalupe"
+    },
+    "kind": "related_message"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "francis-xavier"
+    },
+    "to": {
+      "type": "saint",
+      "id": "ignatius-of-loyola"
+    },
+    "kind": "companion"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "kuriakose-elias-chavara"
+    },
+    "to": {
+      "type": "saint",
+      "id": "euphrasia-eluvathingal"
+    },
+    "kind": "same_order"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "polycarp-of-smyrna"
+    },
+    "to": {
+      "type": "apostle",
+      "id": "john"
+    },
+    "kind": "influenced"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "basil-the-great"
+    },
+    "to": {
+      "type": "saint",
+      "id": "gregory-of-nazianzus"
+    },
+    "kind": "companion"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "bonaventure"
+    },
+    "to": {
+      "type": "saint",
+      "id": "thomas-aquinas"
+    },
+    "kind": "contemporary"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "albert-the-great"
+    },
+    "to": {
+      "type": "saint",
+      "id": "thomas-aquinas"
+    },
+    "kind": "influenced"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "john-of-the-cross"
+    },
+    "to": {
+      "type": "saint",
+      "id": "teresa-of-avila"
+    },
+    "kind": "companion"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "gerard-majella"
+    },
+    "to": {
+      "type": "saint",
+      "id": "alphonsus-liguori"
+    },
+    "kind": "same_order"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "paul-miki"
+    },
+    "to": {
+      "type": "saint",
+      "id": "gonsalo-garcia"
+    },
+    "kind": "martyred_together"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "scholastica"
+    },
+    "to": {
+      "type": "saint",
+      "id": "benedict-of-nursia"
+    },
+    "kind": "sibling"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "toribio-de-mogrovejo"
+    },
+    "to": {
+      "type": "saint",
+      "id": "rose-of-lima"
+    },
+    "kind": "chosen_by"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "toribio-de-mogrovejo"
+    },
+    "to": {
+      "type": "saint",
+      "id": "martin-de-porres"
+    },
+    "kind": "chosen_by"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "margaret-mary-alacoque"
+    },
+    "to": {
+      "type": "saint",
+      "id": "john-vianney"
+    },
+    "kind": "contemporary"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "louis-martin"
+    },
+    "to": {
+      "type": "saint",
+      "id": "zelie-martin"
+    },
+    "kind": "companion"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "louis-martin"
+    },
+    "to": {
+      "type": "saint",
+      "id": "therese-of-lisieux"
+    },
+    "kind": "chosen_by"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "zelie-martin"
+    },
+    "to": {
+      "type": "saint",
+      "id": "therese-of-lisieux"
+    },
+    "kind": "chosen_by"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "cosmas"
+    },
+    "to": {
+      "type": "saint",
+      "id": "damian"
+    },
+    "kind": "sibling"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "aloysius-gonzaga"
+    },
+    "to": {
+      "type": "saint",
+      "id": "stanislaus-kostka"
+    },
+    "kind": "canonized"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "joseph-cafasso"
+    },
+    "to": {
+      "type": "saint",
+      "id": "john-bosco"
+    },
+    "kind": "influenced"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "philomena"
+    },
+    "to": {
+      "type": "saint",
+      "id": "john-vianney"
+    },
+    "kind": "attributed_protection"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "elizabeth-of-portugal"
+    },
+    "to": {
+      "type": "saint",
+      "id": "elizabeth-of-hungary"
+    },
+    "kind": "namesake"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "martin-of-tours"
+    },
+    "to": {
+      "type": "saint",
+      "id": "hilary-of-poitiers"
+    },
+    "kind": "chosen_by"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "gervase"
+    },
+    "to": {
+      "type": "saint",
+      "id": "protase"
+    },
+    "kind": "sibling"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "perpetua"
+    },
+    "to": {
+      "type": "saint",
+      "id": "felicity"
+    },
+    "kind": "martyred_together"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "joachim"
+    },
+    "to": {
+      "type": "saint",
+      "id": "anne"
+    },
+    "kind": "companion"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "gervase"
+    },
+    "to": {
+      "type": "saint",
+      "id": "ambrose-of-milan"
+    },
+    "kind": "burial_place"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "gervase"
+    },
+    "to": {
+      "type": "saint",
+      "id": "augustine-of-hippo"
+    },
+    "kind": "influenced"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "brigid-of-ireland"
+    },
+    "to": {
+      "type": "saint",
+      "id": "patrick"
+    },
+    "kind": "contemporary"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "john-de-britto"
+    },
+    "to": {
+      "type": "saint",
+      "id": "francis-xavier"
+    },
+    "kind": "same_order"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "vitus"
+    },
+    "to": {
+      "type": "saint",
+      "id": "george"
+    },
+    "kind": "companion"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "michael-the-archangel"
+    },
+    "to": {
+      "type": "saint",
+      "id": "gabriel-the-archangel"
+    },
+    "kind": "companion"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "michael-the-archangel"
+    },
+    "to": {
+      "type": "saint",
+      "id": "raphael-the-archangel"
+    },
+    "kind": "companion"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "gabriel-the-archangel"
+    },
+    "to": {
+      "type": "saint",
+      "id": "raphael-the-archangel"
+    },
+    "kind": "companion"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "gabriel-the-archangel"
+    },
+    "to": {
+      "type": "feast",
+      "id": "annunciation"
+    },
+    "kind": "gospel_event"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "charles-lwanga"
+    },
+    "to": {
+      "type": "saint",
+      "id": "kizito"
+    },
+    "kind": "martyred_together"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "edith-stein"
+    },
+    "to": {
+      "type": "saint",
+      "id": "teresa-of-avila"
+    },
+    "kind": "influenced"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "peter-faber"
+    },
+    "to": {
+      "type": "saint",
+      "id": "ignatius-of-loyola"
+    },
+    "kind": "companion"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "peter-faber"
+    },
+    "to": {
+      "type": "saint",
+      "id": "francis-xavier"
+    },
+    "kind": "companion"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "pier-giorgio-frassati"
+    },
+    "to": {
+      "type": "saint",
+      "id": "carlo-acutis"
+    },
+    "kind": "canonized"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "dominic-savio"
+    },
+    "to": {
+      "type": "saint",
+      "id": "john-bosco"
+    },
+    "kind": "chosen_by"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "stanislaus-of-krakow"
+    },
+    "to": {
+      "type": "saint",
+      "id": "thomas-becket"
+    },
+    "kind": "contemporary"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "willibrord"
+    },
+    "to": {
+      "type": "saint",
+      "id": "boniface-of-mainz"
+    },
+    "kind": "companion"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "teresa-of-the-andes"
+    },
+    "to": {
+      "type": "saint",
+      "id": "teresa-of-avila"
+    },
+    "kind": "namesake"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "catherine-laboure"
+    },
+    "to": {
+      "type": "apparition",
+      "id": "rue-du-bac"
+    },
+    "kind": "related_message"
+  },
+  {
+    "from": {
+      "type": "miracle",
+      "id": "liege"
+    },
+    "to": {
+      "type": "miracle",
+      "id": "miracle-of-bolsena"
+    },
+    "kind": "originated_feast"
+  },
+  {
+    "from": {
+      "type": "miracle",
+      "id": "liege"
+    },
+    "to": {
+      "type": "feast",
+      "id": "corpus-christi"
+    },
+    "kind": "originated_feast"
+  },
+  {
+    "from": {
+      "type": "miracle",
+      "id": "miracle-of-bolsena"
+    },
+    "to": {
+      "type": "feast",
+      "id": "corpus-christi"
+    },
+    "kind": "originated_feast"
+  },
+  {
+    "from": {
+      "type": "miracle",
+      "id": "sokolka"
+    },
+    "to": {
+      "type": "miracle",
+      "id": "legnica"
+    },
+    "kind": "contemporary"
+  },
+  {
+    "from": {
+      "type": "miracle",
+      "id": "daroca"
+    },
+    "to": {
+      "type": "miracle",
+      "id": "cimballa"
+    },
+    "kind": "contemporary"
+  },
+  {
+    "from": {
+      "type": "miracle",
+      "id": "walldurn"
+    },
+    "to": {
+      "type": "miracle",
+      "id": "bettbrunn"
+    },
+    "kind": "contemporary"
+  },
+  {
+    "from": {
+      "type": "saint",
+      "id": "rita-of-cascia"
+    },
+    "to": {
+      "type": "miracle",
+      "id": "cascia"
+    },
+    "kind": "commemorated_at"
   }
 ]

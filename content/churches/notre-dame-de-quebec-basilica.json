@@ -1,0 +1,16 @@
+{
+  "id": "notre-dame-de-quebec-basilica",
+  "latitude": 46.8128,
+  "longitude": -71.2027,
+  "foundedYear": 1647,
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Cathedral-Basilica of Notre-Dame de Québec",
+      "summary": "The primatial church of Canada, first built in the seventeenth century and rebuilt after fires and war.",
+      "body": "Founded in 1647 and rebuilt several times after fire and the 1759 siege of Quebec, the cathedral-basilica serves as the mother church of Catholicism in Canada and the burial place of several bishops of Quebec.",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

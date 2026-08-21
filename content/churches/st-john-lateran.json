@@ -1,0 +1,16 @@
+{
+  "id": "st-john-lateran",
+  "latitude": 41.8862,
+  "longitude": 12.5058,
+  "foundedYear": 324,
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Archbasilica of St. John Lateran",
+      "summary": "The cathedral church of Rome and the Pope's own seat as Bishop of Rome — the highest-ranking church in the Catholic world.",
+      "body": "Dedicated by Constantine in 324, St. John Lateran is the oldest and, in rank, the highest of the four papal basilicas, since it is the actual cathedral of the Diocese of Rome. Its façade inscription names it 'mother and head of all the churches of the city and the world.'",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

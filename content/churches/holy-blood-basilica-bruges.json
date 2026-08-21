@@ -1,0 +1,16 @@
+{
+  "id": "holy-blood-basilica-bruges",
+  "latitude": 51.2083,
+  "longitude": 3.2247,
+  "foundedYear": 1157,
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Basilica of the Holy Blood, Bruges",
+      "summary": "A medieval basilica venerating a relic said to hold blood collected at the crucifixion of Christ.",
+      "body": "Built in the mid-twelfth century and expanded over the following centuries, the basilica in Bruges venerates a rock-crystal vial said to contain blood of Christ, brought from the Holy Land during the Second Crusade.",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

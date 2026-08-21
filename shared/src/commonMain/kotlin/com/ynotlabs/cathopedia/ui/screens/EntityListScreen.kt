@@ -41,24 +41,30 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -70,19 +76,129 @@ import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.ui.Portraits
 import com.ynotlabs.cathopedia.ui.displayName
 import com.ynotlabs.cathopedia.ui.singularLabel
+import com.ynotlabs.cathopedia.ui.theme.ApostleActionBar
+import com.ynotlabs.cathopedia.ui.theme.ApostleBg
+import com.ynotlabs.cathopedia.ui.theme.ApostleBorder
+import com.ynotlabs.cathopedia.ui.theme.ApostleButtonContent
+import com.ynotlabs.cathopedia.ui.theme.ApostleCard
+import com.ynotlabs.cathopedia.ui.theme.ApostleCardPressed
+import com.ynotlabs.cathopedia.ui.theme.ApostleChipForeground
+import com.ynotlabs.cathopedia.ui.theme.ApostleCream
+import com.ynotlabs.cathopedia.ui.theme.ApostleFieldContainer
+import com.ynotlabs.cathopedia.ui.theme.ApostleGold
+import com.ynotlabs.cathopedia.ui.theme.ApostleGoldSoft
+import com.ynotlabs.cathopedia.ui.theme.ApostleHeader
+import com.ynotlabs.cathopedia.ui.theme.ApostleIconCircleBg
+import com.ynotlabs.cathopedia.ui.theme.ApostleMuted
+import com.ynotlabs.cathopedia.ui.theme.ApostlePlaceholderBg
+import com.ynotlabs.cathopedia.ui.theme.ApostleSheet
+import com.ynotlabs.cathopedia.ui.theme.ApostleTag
+import com.ynotlabs.cathopedia.ui.theme.ChurchActionBar
+import com.ynotlabs.cathopedia.ui.theme.ChurchBg
+import com.ynotlabs.cathopedia.ui.theme.ChurchBorder
+import com.ynotlabs.cathopedia.ui.theme.ChurchButtonContent
+import com.ynotlabs.cathopedia.ui.theme.ChurchCard
+import com.ynotlabs.cathopedia.ui.theme.ChurchCardPressed
+import com.ynotlabs.cathopedia.ui.theme.ChurchChipForeground
+import com.ynotlabs.cathopedia.ui.theme.ChurchCream
+import com.ynotlabs.cathopedia.ui.theme.ChurchFieldContainer
+import com.ynotlabs.cathopedia.ui.theme.ChurchGold
+import com.ynotlabs.cathopedia.ui.theme.ChurchGoldSoft
+import com.ynotlabs.cathopedia.ui.theme.ChurchHeader
+import com.ynotlabs.cathopedia.ui.theme.ChurchIconCircleBg
+import com.ynotlabs.cathopedia.ui.theme.ChurchMuted
+import com.ynotlabs.cathopedia.ui.theme.ChurchPlaceholderBg
+import com.ynotlabs.cathopedia.ui.theme.ChurchSheet
+import com.ynotlabs.cathopedia.ui.theme.ChurchTag
+import com.ynotlabs.cathopedia.ui.theme.FeastBg
+import com.ynotlabs.cathopedia.ui.theme.FeastBorder
+import com.ynotlabs.cathopedia.ui.theme.FeastButtonContent
+import com.ynotlabs.cathopedia.ui.theme.FeastCard
+import com.ynotlabs.cathopedia.ui.theme.FeastCardPressed
+import com.ynotlabs.cathopedia.ui.theme.FeastChipForeground
+import com.ynotlabs.cathopedia.ui.theme.FeastCream
+import com.ynotlabs.cathopedia.ui.theme.FeastFieldContainer
+import com.ynotlabs.cathopedia.ui.theme.FeastGold
+import com.ynotlabs.cathopedia.ui.theme.FeastGoldSoft
+import com.ynotlabs.cathopedia.ui.theme.FeastHeader
+import com.ynotlabs.cathopedia.ui.theme.FeastIconCircleBg
+import com.ynotlabs.cathopedia.ui.theme.FeastMuted
+import com.ynotlabs.cathopedia.ui.theme.FeastPlaceholderBg
+import com.ynotlabs.cathopedia.ui.theme.FeastSheet
+import com.ynotlabs.cathopedia.ui.theme.FeastTag
+import com.ynotlabs.cathopedia.ui.theme.LocalApostleTheme
+import com.ynotlabs.cathopedia.ui.theme.LocalChurchTheme
+import com.ynotlabs.cathopedia.ui.theme.LocalFeastTheme
+import com.ynotlabs.cathopedia.ui.theme.LocalMarianTheme
+import com.ynotlabs.cathopedia.ui.theme.LocalMiracleTheme
+import com.ynotlabs.cathopedia.ui.theme.LocalPopeTheme
+import com.ynotlabs.cathopedia.ui.theme.MarianBg
+import com.ynotlabs.cathopedia.ui.theme.MarianBorder
+import com.ynotlabs.cathopedia.ui.theme.MarianButtonContent
+import com.ynotlabs.cathopedia.ui.theme.MarianCard
+import com.ynotlabs.cathopedia.ui.theme.MarianCardPressed
+import com.ynotlabs.cathopedia.ui.theme.MarianChipForeground
+import com.ynotlabs.cathopedia.ui.theme.MarianCream
+import com.ynotlabs.cathopedia.ui.theme.MarianFieldContainer
+import com.ynotlabs.cathopedia.ui.theme.MarianGold
+import com.ynotlabs.cathopedia.ui.theme.MarianGoldSoft
+import com.ynotlabs.cathopedia.ui.theme.MarianHeader
+import com.ynotlabs.cathopedia.ui.theme.MarianIconCircleBg
+import com.ynotlabs.cathopedia.ui.theme.MarianMuted
+import com.ynotlabs.cathopedia.ui.theme.MarianPlaceholderBg
+import com.ynotlabs.cathopedia.ui.theme.MarianSheet
+import com.ynotlabs.cathopedia.ui.theme.MarianTag
+import com.ynotlabs.cathopedia.ui.theme.MiracleBg
+import com.ynotlabs.cathopedia.ui.theme.MiracleBorder
+import com.ynotlabs.cathopedia.ui.theme.MiracleButtonContent
+import com.ynotlabs.cathopedia.ui.theme.MiracleCard
+import com.ynotlabs.cathopedia.ui.theme.MiracleCardPressed
+import com.ynotlabs.cathopedia.ui.theme.MiracleChipForeground
+import com.ynotlabs.cathopedia.ui.theme.MiracleCream
+import com.ynotlabs.cathopedia.ui.theme.MiracleFieldContainer
+import com.ynotlabs.cathopedia.ui.theme.MiracleGold
+import com.ynotlabs.cathopedia.ui.theme.MiracleGoldSoft
+import com.ynotlabs.cathopedia.ui.theme.MiracleHeader
+import com.ynotlabs.cathopedia.ui.theme.MiracleIconCircleBg
+import com.ynotlabs.cathopedia.ui.theme.MiracleMuted
+import com.ynotlabs.cathopedia.ui.theme.MiraclePlaceholderBg
+import com.ynotlabs.cathopedia.ui.theme.MiracleSheet
+import com.ynotlabs.cathopedia.ui.theme.MiracleTag
+import com.ynotlabs.cathopedia.ui.theme.PopeActionBar
+import com.ynotlabs.cathopedia.ui.theme.PopeBg
+import com.ynotlabs.cathopedia.ui.theme.PopeBorder
+import com.ynotlabs.cathopedia.ui.theme.PopeButtonContent
+import com.ynotlabs.cathopedia.ui.theme.PopeCard
+import com.ynotlabs.cathopedia.ui.theme.PopeCardPressed
+import com.ynotlabs.cathopedia.ui.theme.PopeChipForeground
+import com.ynotlabs.cathopedia.ui.theme.PopeCream
+import com.ynotlabs.cathopedia.ui.theme.PopeFieldContainer
+import com.ynotlabs.cathopedia.ui.theme.PopeGold
+import com.ynotlabs.cathopedia.ui.theme.PopeGoldSoft
+import com.ynotlabs.cathopedia.ui.theme.PopeHeader
+import com.ynotlabs.cathopedia.ui.theme.PopeIconCircleBg
+import com.ynotlabs.cathopedia.ui.theme.PopeMuted
+import com.ynotlabs.cathopedia.ui.theme.PopePlaceholderBg
+import com.ynotlabs.cathopedia.ui.theme.PopeSheet
+import com.ynotlabs.cathopedia.ui.theme.PopeTag
 import org.jetbrains.compose.resources.painterResource
 
-private val EntityBg = Color(0xFF061A13)
-private val EntityHeader = Color(0xFF0B271D)
-private val EntityCard = Color(0xFF102D23)
-private val EntityCardPressed = Color(0xFF15382B)
-private val EntityBorder = Color(0xFF294C3D)
-private val EntityGold = Color(0xFFE0B844)
-private val EntityGoldSoft = Color(0xFF9B8651)
-private val EntityCream = Color(0xFFF5EEDF)
-private val EntityMuted = Color(0xFFAAA58E)
-private val EntityTag = Color(0xFF174B35)
-private val EntitySheet = Color(0xFF0C261D)
+private val EntityBg: Color @Composable get() = if (LocalMarianTheme.current) MarianBg else if (LocalFeastTheme.current) FeastBg else if (LocalPopeTheme.current) PopeBg else if (LocalApostleTheme.current) ApostleBg else if (LocalMiracleTheme.current) MiracleBg else if (LocalChurchTheme.current) ChurchBg else MaterialTheme.colorScheme.background
+private val EntityHeader: Color @Composable get() = if (LocalMarianTheme.current) MarianHeader else if (LocalFeastTheme.current) FeastHeader else if (LocalPopeTheme.current) PopeHeader else if (LocalApostleTheme.current) ApostleHeader else if (LocalMiracleTheme.current) MiracleHeader else if (LocalChurchTheme.current) ChurchHeader else MaterialTheme.colorScheme.surface
+private val EntityCard: Color @Composable get() = if (LocalMarianTheme.current) MarianCard else if (LocalFeastTheme.current) FeastCard else if (LocalPopeTheme.current) PopeCard else if (LocalApostleTheme.current) ApostleCard else if (LocalMiracleTheme.current) MiracleCard else if (LocalChurchTheme.current) ChurchCard else MaterialTheme.colorScheme.surfaceContainerHigh
+private val EntityCardPressed: Color @Composable get() = if (LocalMarianTheme.current) MarianCardPressed else if (LocalFeastTheme.current) FeastCardPressed else if (LocalPopeTheme.current) PopeCardPressed else if (LocalApostleTheme.current) ApostleCardPressed else if (LocalMiracleTheme.current) MiracleCardPressed else if (LocalChurchTheme.current) ChurchCardPressed else MaterialTheme.colorScheme.surfaceContainerHighest
+private val EntityBorder: Color @Composable get() = if (LocalMarianTheme.current) MarianBorder else if (LocalFeastTheme.current) FeastBorder else if (LocalPopeTheme.current) PopeBorder else if (LocalApostleTheme.current) ApostleBorder else if (LocalMiracleTheme.current) MiracleBorder else if (LocalChurchTheme.current) ChurchBorder else MaterialTheme.colorScheme.outline
+private val EntityGold: Color @Composable get() = if (LocalMarianTheme.current) MarianGold else if (LocalFeastTheme.current) FeastGold else if (LocalPopeTheme.current) PopeGold else if (LocalApostleTheme.current) ApostleGold else if (LocalMiracleTheme.current) MiracleGold else if (LocalChurchTheme.current) ChurchGold else MaterialTheme.colorScheme.primary
+private val EntityGoldSoft: Color @Composable get() = if (LocalMarianTheme.current) MarianGoldSoft else if (LocalFeastTheme.current) FeastGoldSoft else if (LocalPopeTheme.current) PopeGoldSoft else if (LocalApostleTheme.current) ApostleGoldSoft else if (LocalMiracleTheme.current) MiracleGoldSoft else if (LocalChurchTheme.current) ChurchGoldSoft else MaterialTheme.colorScheme.secondary
+private val EntityCream: Color @Composable get() = if (LocalMarianTheme.current) MarianCream else if (LocalFeastTheme.current) FeastCream else if (LocalPopeTheme.current) PopeCream else if (LocalApostleTheme.current) ApostleCream else if (LocalMiracleTheme.current) MiracleCream else if (LocalChurchTheme.current) ChurchCream else MaterialTheme.colorScheme.onBackground
+private val EntityMuted: Color @Composable get() = if (LocalMarianTheme.current) MarianMuted else if (LocalFeastTheme.current) FeastMuted else if (LocalPopeTheme.current) PopeMuted else if (LocalApostleTheme.current) ApostleMuted else if (LocalMiracleTheme.current) MiracleMuted else if (LocalChurchTheme.current) ChurchMuted else MaterialTheme.colorScheme.onSurfaceVariant
+private val EntityTag: Color @Composable get() = if (LocalMarianTheme.current) MarianTag else if (LocalFeastTheme.current) FeastTag else if (LocalPopeTheme.current) PopeTag else if (LocalApostleTheme.current) ApostleTag else if (LocalMiracleTheme.current) MiracleTag else if (LocalChurchTheme.current) ChurchTag else MaterialTheme.colorScheme.secondaryContainer
+private val EntitySheet: Color @Composable get() = if (LocalMarianTheme.current) MarianSheet else if (LocalFeastTheme.current) FeastSheet else if (LocalPopeTheme.current) PopeSheet else if (LocalApostleTheme.current) ApostleSheet else if (LocalMiracleTheme.current) MiracleSheet else if (LocalChurchTheme.current) ChurchSheet else MaterialTheme.colorScheme.surfaceContainerLow
+private val EntityFieldContainer: Color @Composable get() = if (LocalMarianTheme.current) MarianFieldContainer else if (LocalFeastTheme.current) FeastFieldContainer else if (LocalPopeTheme.current) PopeFieldContainer else if (LocalApostleTheme.current) ApostleFieldContainer else if (LocalMiracleTheme.current) MiracleFieldContainer else if (LocalChurchTheme.current) ChurchFieldContainer else MaterialTheme.colorScheme.surfaceContainerLow
+private val EntityChipForeground: Color @Composable get() = if (LocalMarianTheme.current) MarianChipForeground else if (LocalFeastTheme.current) FeastChipForeground else if (LocalPopeTheme.current) PopeChipForeground else if (LocalApostleTheme.current) ApostleChipForeground else if (LocalMiracleTheme.current) MiracleChipForeground else if (LocalChurchTheme.current) ChurchChipForeground else MaterialTheme.colorScheme.background
+private val EntityPlaceholderBg: Color @Composable get() = if (LocalMarianTheme.current) MarianPlaceholderBg else if (LocalFeastTheme.current) FeastPlaceholderBg else if (LocalPopeTheme.current) PopePlaceholderBg else if (LocalApostleTheme.current) ApostlePlaceholderBg else if (LocalMiracleTheme.current) MiraclePlaceholderBg else if (LocalChurchTheme.current) ChurchPlaceholderBg else MaterialTheme.colorScheme.surfaceContainerLow
+private val EntityIconCircleBg: Color @Composable get() = if (LocalMarianTheme.current) MarianIconCircleBg else if (LocalFeastTheme.current) FeastIconCircleBg else if (LocalPopeTheme.current) PopeIconCircleBg else if (LocalApostleTheme.current) ApostleIconCircleBg else if (LocalMiracleTheme.current) MiracleIconCircleBg else if (LocalChurchTheme.current) ChurchIconCircleBg else MaterialTheme.colorScheme.surfaceContainerHighest
+private val EntityButtonContent: Color @Composable get() = if (LocalMarianTheme.current) MarianButtonContent else if (LocalFeastTheme.current) FeastButtonContent else if (LocalPopeTheme.current) PopeButtonContent else if (LocalApostleTheme.current) ApostleButtonContent else if (LocalMiracleTheme.current) MiracleButtonContent else if (LocalChurchTheme.current) ChurchButtonContent else MaterialTheme.colorScheme.onPrimary
 
 private enum class EntitySortOption {
     NAME_ASC,
@@ -105,6 +221,7 @@ fun EntityListScreen(
     var query by remember(type) { mutableStateOf("") }
     var searchVisible by remember(type) { mutableStateOf(false) }
     var selectedCentury by remember(type) { mutableStateOf<String?>(null) }
+    var selectedRank by remember(type) { mutableStateOf<String?>(null) }
     var sortOption by remember(type) { mutableStateOf(EntitySortOption.EARLIEST_FIRST) }
     var showFilterSheet by remember(type) { mutableStateOf(false) }
 
@@ -129,7 +246,18 @@ fun EntityListScreen(
         }
     }
 
-    val filteredItems = remember(currentItems, query, selectedCentury, sortOption, type) {
+    val allRanks = remember(currentItems, type) {
+        if (type == ContentType.FEAST && currentItems != null) {
+            currentItems
+                .mapNotNull { it.rank?.takeIf { r -> r.isNotBlank() } }
+                .distinct()
+                .sortedBy { rankSortOrder(it) }
+        } else {
+            emptyList()
+        }
+    }
+
+    val filteredItems = remember(currentItems, query, selectedCentury, selectedRank, sortOption, type) {
         val source = currentItems.orEmpty()
 
         val searched = source.filter { item ->
@@ -144,91 +272,73 @@ fun EntityListScreen(
             searched
         }
 
+        val rankFiltered = if (type == ContentType.FEAST && selectedRank != null) {
+            centuryFiltered.filter { it.rank == selectedRank }
+        } else {
+            centuryFiltered
+        }
+
         when (sortOption) {
-            EntitySortOption.NAME_ASC -> centuryFiltered.sortedBy { it.name.lowercase() }
-            EntitySortOption.NAME_DESC -> centuryFiltered.sortedByDescending { it.name.lowercase() }
-            EntitySortOption.EARLIEST_FIRST -> centuryFiltered.sortedBy { it.sortYear ?: Long.MAX_VALUE }
-            EntitySortOption.LATEST_FIRST -> centuryFiltered.sortedByDescending { it.sortYear ?: Long.MIN_VALUE }
+            EntitySortOption.NAME_ASC -> rankFiltered.sortedBy { it.name.lowercase() }
+            EntitySortOption.NAME_DESC -> rankFiltered.sortedByDescending { it.name.lowercase() }
+            EntitySortOption.EARLIEST_FIRST -> rankFiltered.sortedBy { it.sortYear ?: Long.MAX_VALUE }
+            EntitySortOption.LATEST_FIRST -> rankFiltered.sortedByDescending { it.sortYear ?: Long.MIN_VALUE }
         }
     }
 
-    Column(
+    var headerHeightPx by remember(type) { mutableIntStateOf(0) }
+    val headerHeightDp = with(LocalDensity.current) { headerHeightPx.toDp() }
+
+    CompositionLocalProvider(
+        LocalMarianTheme provides (type == ContentType.APPARITION),
+        LocalFeastTheme provides (type == ContentType.FEAST),
+        LocalPopeTheme provides (type == ContentType.POPE),
+        LocalApostleTheme provides (type == ContentType.APOSTLE),
+        LocalMiracleTheme provides (type == ContentType.MIRACLE),
+        LocalChurchTheme provides (type == ContentType.CHURCH),
+    ) {
+    Box(
         modifier = Modifier
             .fillMaxSize()
             .background(EntityBg),
     ) {
-        EntityTopArea(
-            title = type.displayName(),
-            count = currentItems?.size,
-            searchVisible = searchVisible,
-            query = query,
-            onQueryChange = { query = it },
-            onBack = onBack,
-            onSearchClick = { searchVisible = !searchVisible },
-            onCloseSearch = {
-                query = ""
-                searchVisible = false
-            },
-            onFilterClick = { showFilterSheet = true },
-        )
-
+        // Content layer — scrolls beneath the elevated header below.
         if (currentItems == null) {
             Box(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f),
+                    .fillMaxSize()
+                    .padding(top = headerHeightDp),
                 contentAlignment = Alignment.Center,
             ) {
                 CircularProgressIndicator(color = EntityGold)
             }
+        } else if (filteredItems.isEmpty()) {
+            EmptyEntityState(
+                query = query,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = headerHeightDp),
+            )
         } else {
-            if (type == ContentType.POPE && allCenturies.isNotEmpty()) {
-                CenturyChipStrip(
-                    centuries = allCenturies,
-                    selectedCentury = selectedCentury,
-                    onCenturySelected = { selectedCentury = it },
-                )
-            }
-
-            if (filteredItems.isEmpty()) {
-                EmptyEntityState(
-                    query = query,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f),
-                )
-            } else {
-                LazyColumn(
-                    state = listState,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f),
-                    contentPadding = PaddingValues(
-                        start = 18.dp,
-                        end = 18.dp,
-                        top = 4.dp,
-                        bottom = 126.dp,
-                    ),
-                    verticalArrangement = Arrangement.spacedBy(12.dp),
-                ) {
-                    if (type == ContentType.POPE) {
-                        val grouped = filteredItems.groupBy { centuryLabel(it.sortYear) }
-                        grouped.forEach { (century, popes) ->
-                            stickyHeader(key = "century-$century") {
-                                PremiumCenturyHeader(century)
-                            }
-
-                            items(popes, key = { it.id }) { item ->
-                                PremiumEntityCard(
-                                    type = type,
-                                    item = item,
-                                    century = null,
-                                    onClick = { onItemSelected(item) },
-                                )
-                            }
+            LazyColumn(
+                state = listState,
+                modifier = Modifier.fillMaxSize(),
+                contentPadding = PaddingValues(
+                    start = 18.dp,
+                    end = 18.dp,
+                    top = headerHeightDp + 12.dp,
+                    bottom = 126.dp,
+                ),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                if (type == ContentType.POPE) {
+                    val grouped = filteredItems.groupBy { centuryLabel(it.sortYear) }
+                    grouped.forEach { (century, popes) ->
+                        stickyHeader(key = "century-$century") {
+                            PremiumCenturyHeader(century)
                         }
-                    } else {
-                        items(filteredItems, key = { it.id }) { item ->
+
+                        items(popes, key = { it.id }) { item ->
                             PremiumEntityCard(
                                 type = type,
                                 item = item,
@@ -237,8 +347,64 @@ fun EntityListScreen(
                             )
                         }
                     }
+                } else {
+                    items(filteredItems, key = { it.id }) { item ->
+                        PremiumEntityCard(
+                            type = type,
+                            item = item,
+                            century = null,
+                            onClick = { onItemSelected(item) },
+                        )
+                    }
                 }
             }
+        }
+
+        // Header layer — elevated rounded panel; content above scrolls in behind it.
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .onGloballyPositioned { headerHeightPx = it.size.height }
+                .shadow(
+                    elevation = 14.dp,
+                    shape = RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp),
+                    clip = false,
+                )
+                .clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp))
+                .background(EntityHeader),
+        ) {
+            EntityTopArea(
+                title = type.displayName(),
+                count = currentItems?.size,
+                searchVisible = searchVisible,
+                query = query,
+                onQueryChange = { query = it },
+                onBack = onBack,
+                onSearchClick = { searchVisible = !searchVisible },
+                onCloseSearch = {
+                    query = ""
+                    searchVisible = false
+                },
+                onFilterClick = { showFilterSheet = true },
+            )
+
+            if (type == ContentType.POPE && allCenturies.isNotEmpty()) {
+                CenturyChipStrip(
+                    centuries = allCenturies,
+                    selectedCentury = selectedCentury,
+                    onCenturySelected = { selectedCentury = it },
+                )
+            }
+
+            if (type == ContentType.FEAST && allRanks.isNotEmpty()) {
+                RankChipStrip(
+                    ranks = allRanks,
+                    selectedRank = selectedRank,
+                    onRankSelected = { selectedRank = it },
+                )
+            }
+
+            Spacer(Modifier.height(10.dp))
         }
     }
 
@@ -247,12 +413,16 @@ fun EntityListScreen(
             type = type,
             centuries = allCenturies,
             selectedCentury = selectedCentury,
+            ranks = allRanks,
+            selectedRank = selectedRank,
             selectedSort = sortOption,
             onCenturySelected = { selectedCentury = it },
+            onRankSelected = { selectedRank = it },
             onSortSelected = { sortOption = it },
             onDismiss = { showFilterSheet = false },
             onApply = { showFilterSheet = false },
         )
+    }
     }
 }
 
@@ -271,7 +441,6 @@ private fun EntityTopArea(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(EntityBg)
             .statusBarsPadding()
             .padding(start = 18.dp, end = 14.dp, top = 6.dp, bottom = 8.dp),
     ) {
@@ -315,7 +484,7 @@ private fun EntityTopArea(
                     text = if (title.equals("Popes", ignoreCase = true)) {
                         "Explore the successors of St. Peter through the centuries"
                     } else {
-                        count?.let { "$it entries · Explore through history" }
+                        count?.let { "Explore through history" }
                             ?: "Explore through history"
                     },
                     color = EntityMuted,
@@ -377,8 +546,8 @@ private fun EntityTopArea(
                     }
                 },
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedContainerColor = Color(0xFF102C22),
-                    unfocusedContainerColor = Color(0xFF102C22),
+                    focusedContainerColor = EntityFieldContainer,
+                    unfocusedContainerColor = EntityFieldContainer,
                     focusedBorderColor = EntityGoldSoft,
                     unfocusedBorderColor = EntityBorder,
                     focusedTextColor = EntityCream,
@@ -403,7 +572,6 @@ private fun CenturyChipStrip(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(EntityBg)
             .horizontalScroll(rememberScrollState())
             .padding(horizontal = 18.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -424,13 +592,48 @@ private fun CenturyChipStrip(
 }
 
 @Composable
+private fun RankChipStrip(
+    ranks: List<String>,
+    selectedRank: String?,
+    onRankSelected: (String?) -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .horizontalScroll(rememberScrollState())
+            .padding(horizontal = 18.dp, vertical = 8.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        PremiumFilterChip(
+            text = "All",
+            selected = selectedRank == null,
+            onClick = { onRankSelected(null) },
+        )
+        ranks.forEach { rank ->
+            PremiumFilterChip(
+                text = rank,
+                selected = selectedRank == rank,
+                onClick = { onRankSelected(rank) },
+            )
+        }
+    }
+}
+
+/** Solemnity outranks Feast liturgically, so it sorts first regardless of alphabetical order. */
+private fun rankSortOrder(rank: String): Int = when (rank) {
+    "Solemnity" -> 0
+    "Feast" -> 1
+    else -> 2
+}
+
+@Composable
 private fun PremiumFilterChip(
     text: String,
     selected: Boolean,
     onClick: () -> Unit,
 ) {
     val background = if (selected) EntityCream else Color.Transparent
-    val foreground = if (selected) Color(0xFF173025) else EntityCream
+    val foreground = if (selected) EntityChipForeground else EntityCream
     val border = if (selected) EntityCream else EntityBorder
 
     Surface(
@@ -580,7 +783,7 @@ private fun PremiumEntityCard(
                             height = 128.dp,
                         )
                         .clip(RoundedCornerShape(16.dp))
-                        .background(Color(0xFF17382C))
+                        .background(EntityPlaceholderBg)
                         .border(1.dp, EntityBorder, RoundedCornerShape(16.dp)),
                     contentAlignment = Alignment.Center,
                 ) {
@@ -624,7 +827,11 @@ private fun PremiumEntityCard(
                     )
                     Spacer(Modifier.width(5.dp))
                     Text(
-                        text = type.singularLabel().uppercase(),
+                        text = if (type == ContentType.FEAST) {
+                            (item.rank?.takeIf { it.isNotBlank() } ?: type.singularLabel()).uppercase()
+                        } else {
+                            type.singularLabel().uppercase()
+                        },
                         color = EntityGold,
                         fontSize = 10.sp,
                         letterSpacing = 0.9.sp,
@@ -678,7 +885,7 @@ private fun PremiumEntityCard(
             Surface(
                 modifier = Modifier.size(36.dp),
                 shape = CircleShape,
-                color = Color(0xFF203C2F),
+                color = EntityIconCircleBg,
                 border = androidx.compose.foundation.BorderStroke(
                     1.dp,
                     EntityGoldSoft.copy(alpha = 0.7f),
@@ -703,8 +910,11 @@ private fun EntityFilterSheet(
     type: ContentType,
     centuries: List<String>,
     selectedCentury: String?,
+    ranks: List<String>,
+    selectedRank: String?,
     selectedSort: EntitySortOption,
     onCenturySelected: (String?) -> Unit,
+    onRankSelected: (String?) -> Unit,
     onSortSelected: (EntitySortOption) -> Unit,
     onDismiss: () -> Unit,
     onApply: () -> Unit,
@@ -775,6 +985,32 @@ private fun EntityFilterSheet(
                 }
             }
 
+            if (type == ContentType.FEAST && ranks.isNotEmpty()) {
+                Spacer(Modifier.height(16.dp))
+                FilterSectionLabel("RANK")
+                Spacer(Modifier.height(10.dp))
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .horizontalScroll(rememberScrollState()),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    PremiumFilterChip(
+                        text = "All",
+                        selected = selectedRank == null,
+                        onClick = { onRankSelected(null) },
+                    )
+                    ranks.forEach { rank ->
+                        PremiumFilterChip(
+                            text = rank,
+                            selected = selectedRank == rank,
+                            onClick = { onRankSelected(rank) },
+                        )
+                    }
+                }
+            }
+
             Spacer(Modifier.height(24.dp))
             FilterSectionLabel("SORT BY")
             Spacer(Modifier.height(10.dp))
@@ -826,7 +1062,7 @@ private fun EntityFilterSheet(
                 shape = RoundedCornerShape(16.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = EntityGold,
-                    contentColor = Color(0xFF13261E),
+                    contentColor = EntityButtonContent,
                 ),
             ) {
                 Text(

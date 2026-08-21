@@ -1,0 +1,16 @@
+{
+  "id": "santa-croce-basilica-florence",
+  "latitude": 43.7686,
+  "longitude": 11.2626,
+  "foundedYear": 1442,
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Basilica of Santa Croce, Florence",
+      "summary": "A Franciscan basilica in Florence serving as the burial place of Michelangelo, Galileo, and other notable figures.",
+      "body": "Consecrated in 1442 after more than a century of construction, the Franciscan basilica of Santa Croce became known as the 'Temple of the Italian Glories' for the tombs and memorials of Michelangelo, Galileo, Machiavelli, and other major figures of Italian history housed within it.",
+      "sourceAttribution": "Draft content — pending citation review."
+    }
+  }
+}

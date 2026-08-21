@@ -36,9 +36,11 @@ import androidx.compose.material3.AssistChip
 import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -76,18 +78,79 @@ import com.ynotlabs.cathopedia.resources.papacy_basilica
 import com.ynotlabs.cathopedia.resources.papal_keys
 import com.ynotlabs.cathopedia.resources.regnal_crown
 import com.ynotlabs.cathopedia.resources.source_globe_book
+import com.ynotlabs.cathopedia.ui.theme.ApostleActionBar
+import com.ynotlabs.cathopedia.ui.theme.ApostleBg
+import com.ynotlabs.cathopedia.ui.theme.ApostleBorder
+import com.ynotlabs.cathopedia.ui.theme.ApostleCard
+import com.ynotlabs.cathopedia.ui.theme.ApostleCream
+import com.ynotlabs.cathopedia.ui.theme.ApostleGold
+import com.ynotlabs.cathopedia.ui.theme.ApostleGoldSoft
+import com.ynotlabs.cathopedia.ui.theme.ApostleMuted
+import com.ynotlabs.cathopedia.ui.theme.ApostleSurfaceElevated
+import com.ynotlabs.cathopedia.ui.theme.ChurchActionBar
+import com.ynotlabs.cathopedia.ui.theme.ChurchBg
+import com.ynotlabs.cathopedia.ui.theme.ChurchBorder
+import com.ynotlabs.cathopedia.ui.theme.ChurchCard
+import com.ynotlabs.cathopedia.ui.theme.ChurchCream
+import com.ynotlabs.cathopedia.ui.theme.ChurchGold
+import com.ynotlabs.cathopedia.ui.theme.ChurchGoldSoft
+import com.ynotlabs.cathopedia.ui.theme.ChurchMuted
+import com.ynotlabs.cathopedia.ui.theme.ChurchSurfaceElevated
+import com.ynotlabs.cathopedia.ui.theme.FeastActionBar
+import com.ynotlabs.cathopedia.ui.theme.FeastBg
+import com.ynotlabs.cathopedia.ui.theme.FeastBorder
+import com.ynotlabs.cathopedia.ui.theme.FeastCard
+import com.ynotlabs.cathopedia.ui.theme.FeastCream
+import com.ynotlabs.cathopedia.ui.theme.FeastGold
+import com.ynotlabs.cathopedia.ui.theme.FeastGoldSoft
+import com.ynotlabs.cathopedia.ui.theme.FeastMuted
+import com.ynotlabs.cathopedia.ui.theme.FeastSurfaceElevated
+import com.ynotlabs.cathopedia.ui.theme.LocalApostleTheme
+import com.ynotlabs.cathopedia.ui.theme.LocalChurchTheme
+import com.ynotlabs.cathopedia.ui.theme.LocalFeastTheme
+import com.ynotlabs.cathopedia.ui.theme.LocalMarianTheme
+import com.ynotlabs.cathopedia.ui.theme.LocalMiracleTheme
+import com.ynotlabs.cathopedia.ui.theme.LocalPopeTheme
+import com.ynotlabs.cathopedia.ui.theme.MarianActionBar
+import com.ynotlabs.cathopedia.ui.theme.MarianBg
+import com.ynotlabs.cathopedia.ui.theme.MarianBorder
+import com.ynotlabs.cathopedia.ui.theme.MarianCard
+import com.ynotlabs.cathopedia.ui.theme.MarianCream
+import com.ynotlabs.cathopedia.ui.theme.MarianGold
+import com.ynotlabs.cathopedia.ui.theme.MarianGoldSoft
+import com.ynotlabs.cathopedia.ui.theme.MarianMuted
+import com.ynotlabs.cathopedia.ui.theme.MarianSurfaceElevated
+import com.ynotlabs.cathopedia.ui.theme.MiracleActionBar
+import com.ynotlabs.cathopedia.ui.theme.MiracleBg
+import com.ynotlabs.cathopedia.ui.theme.MiracleBorder
+import com.ynotlabs.cathopedia.ui.theme.MiracleCard
+import com.ynotlabs.cathopedia.ui.theme.MiracleCream
+import com.ynotlabs.cathopedia.ui.theme.MiracleGold
+import com.ynotlabs.cathopedia.ui.theme.MiracleGoldSoft
+import com.ynotlabs.cathopedia.ui.theme.MiracleMuted
+import com.ynotlabs.cathopedia.ui.theme.MiracleSurfaceElevated
+import com.ynotlabs.cathopedia.ui.theme.PopeActionBar
+import com.ynotlabs.cathopedia.ui.theme.PopeBg
+import com.ynotlabs.cathopedia.ui.theme.PopeBorder
+import com.ynotlabs.cathopedia.ui.theme.PopeCard
+import com.ynotlabs.cathopedia.ui.theme.PopeCream
+import com.ynotlabs.cathopedia.ui.theme.PopeGold
+import com.ynotlabs.cathopedia.ui.theme.PopeGoldSoft
+import com.ynotlabs.cathopedia.ui.theme.PopeMuted
+import com.ynotlabs.cathopedia.ui.theme.PopeSurfaceElevated
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
-private val DetailBg = Color(0xFF061A13)
-private val DetailSurface = Color(0xFF0D281F)
-private val DetailSurfaceElevated = Color(0xFF143329)
-private val DetailBorder = Color(0xFF315444)
-private val DetailGold = Color(0xFFD8B24C)
-private val DetailGoldSoft = Color(0xFF9D8858)
-private val DetailCream = Color(0xFFF4ECDD)
-private val DetailMuted = Color(0xFFB4AD98)
+private val DetailBg: Color @Composable get() = if (LocalMarianTheme.current) MarianBg else if (LocalFeastTheme.current) FeastBg else if (LocalPopeTheme.current) PopeBg else if (LocalApostleTheme.current) ApostleBg else if (LocalMiracleTheme.current) MiracleBg else if (LocalChurchTheme.current) ChurchBg else MaterialTheme.colorScheme.background
+private val DetailSurface: Color @Composable get() = if (LocalMarianTheme.current) MarianCard else if (LocalFeastTheme.current) FeastCard else if (LocalPopeTheme.current) PopeCard else if (LocalApostleTheme.current) ApostleCard else if (LocalMiracleTheme.current) MiracleCard else if (LocalChurchTheme.current) ChurchCard else MaterialTheme.colorScheme.surfaceContainerHigh
+private val DetailSurfaceElevated: Color @Composable get() = if (LocalMarianTheme.current) MarianSurfaceElevated else if (LocalFeastTheme.current) FeastSurfaceElevated else if (LocalPopeTheme.current) PopeSurfaceElevated else if (LocalApostleTheme.current) ApostleSurfaceElevated else if (LocalMiracleTheme.current) MiracleSurfaceElevated else if (LocalChurchTheme.current) ChurchSurfaceElevated else MaterialTheme.colorScheme.surfaceContainerHighest
+private val DetailBorder: Color @Composable get() = if (LocalMarianTheme.current) MarianBorder else if (LocalFeastTheme.current) FeastBorder else if (LocalPopeTheme.current) PopeBorder else if (LocalApostleTheme.current) ApostleBorder else if (LocalMiracleTheme.current) MiracleBorder else if (LocalChurchTheme.current) ChurchBorder else MaterialTheme.colorScheme.outline
+private val DetailGold: Color @Composable get() = if (LocalMarianTheme.current) MarianGold else if (LocalFeastTheme.current) FeastGold else if (LocalPopeTheme.current) PopeGold else if (LocalApostleTheme.current) ApostleGold else if (LocalMiracleTheme.current) MiracleGold else if (LocalChurchTheme.current) ChurchGold else MaterialTheme.colorScheme.primary
+private val DetailGoldSoft: Color @Composable get() = if (LocalMarianTheme.current) MarianGoldSoft else if (LocalFeastTheme.current) FeastGoldSoft else if (LocalPopeTheme.current) PopeGoldSoft else if (LocalApostleTheme.current) ApostleGoldSoft else if (LocalMiracleTheme.current) MiracleGoldSoft else if (LocalChurchTheme.current) ChurchGoldSoft else MaterialTheme.colorScheme.secondary
+private val DetailCream: Color @Composable get() = if (LocalMarianTheme.current) MarianCream else if (LocalFeastTheme.current) FeastCream else if (LocalPopeTheme.current) PopeCream else if (LocalApostleTheme.current) ApostleCream else if (LocalMiracleTheme.current) MiracleCream else if (LocalChurchTheme.current) ChurchCream else MaterialTheme.colorScheme.onBackground
+private val DetailMuted: Color @Composable get() = if (LocalMarianTheme.current) MarianMuted else if (LocalFeastTheme.current) FeastMuted else if (LocalPopeTheme.current) PopeMuted else if (LocalApostleTheme.current) ApostleMuted else if (LocalMiracleTheme.current) MiracleMuted else if (LocalChurchTheme.current) ChurchMuted else MaterialTheme.colorScheme.onSurfaceVariant
+private val DetailActionBar: Color @Composable get() = if (LocalMarianTheme.current) MarianActionBar else if (LocalFeastTheme.current) FeastActionBar else if (LocalPopeTheme.current) PopeActionBar else if (LocalApostleTheme.current) ApostleActionBar else if (LocalMiracleTheme.current) MiracleActionBar else if (LocalChurchTheme.current) ChurchActionBar else MaterialTheme.colorScheme.surfaceDim
 
 private data class DetailViewData(
     val name: String,
@@ -236,7 +299,6 @@ fun EntityDetailScreen(
                     body = it.body,
                     facts = listOfNotNull(
                         it.date?.let { v -> "Date" to v },
-                        it.rank?.let { v -> "Rank" to v },
                     ),
                     sourceAttribution = it.sourceAttribution,
                     related = it.related,
@@ -258,6 +320,14 @@ fun EntityDetailScreen(
     val portrait = Portraits.forEntity(type, id)
     val fullPortrait = Portraits.fullForEntity(type, id)
 
+    CompositionLocalProvider(
+        LocalMarianTheme provides (type == ContentType.APPARITION),
+        LocalFeastTheme provides (type == ContentType.FEAST),
+        LocalPopeTheme provides (type == ContentType.POPE),
+        LocalApostleTheme provides (type == ContentType.APOSTLE),
+        LocalMiracleTheme provides (type == ContentType.MIRACLE),
+        LocalChurchTheme provides (type == ContentType.CHURCH),
+    ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -284,6 +354,7 @@ fun EntityDetailScreen(
                         portrait = fullPortrait ?: portrait,
                         canOpenFullImage = fullPortrait != null,
                         bookmarked = bookmarked,
+                        hasRelated = resolvedRelated.isNotEmpty(),
                         onBack = onBack,
                         onBookmark = {
                             scope.launch {
@@ -358,6 +429,7 @@ fun EntityDetailScreen(
             )
         }
     }
+    }
 }
 
 @Composable
@@ -368,6 +440,7 @@ private fun DetailHero(
     portrait: DrawableResource,
     canOpenFullImage: Boolean,
     bookmarked: Boolean,
+    hasRelated: Boolean,
     onBack: () -> Unit,
     onBookmark: () -> Unit,
     onShare: () -> Unit,
@@ -531,6 +604,7 @@ private fun DetailHero(
 
         DetailActionBar(
             bookmarked = bookmarked,
+            hasRelated = hasRelated,
             onSave = onBookmark,
             onShare = onShare,
             onRelated = onRelated,
@@ -564,6 +638,7 @@ private fun HeroCircleButton(
 @Composable
 private fun DetailActionBar(
     bookmarked: Boolean,
+    hasRelated: Boolean,
     onSave: () -> Unit,
     onShare: () -> Unit,
     onRelated: () -> Unit,
@@ -572,7 +647,7 @@ private fun DetailActionBar(
 ) {
     Surface(
         modifier = modifier.fillMaxWidth(),
-        color = Color(0xFF0B251C).copy(alpha = 0.98f),
+        color = DetailActionBar.copy(alpha = 0.98f),
         shape = RoundedCornerShape(18.dp),
         border = androidx.compose.foundation.BorderStroke(
             width = 1.dp,
@@ -614,20 +689,22 @@ private fun DetailActionBar(
                 onClick = onShare,
             )
 
-            ActionDivider()
+            if (hasRelated) {
+                ActionDivider()
 
-            ActionItem(
-                label = "Related",
-                icon = {
-                    Icon(
-                        imageVector = Icons.Default.Link,
-                        contentDescription = null,
-                        tint = DetailCream,
-                        modifier = Modifier.size(23.dp),
-                    )
-                },
-                onClick = onRelated,
-            )
+                ActionItem(
+                    label = "Related",
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.Link,
+                            contentDescription = null,
+                            tint = DetailCream,
+                            modifier = Modifier.size(23.dp),
+                        )
+                    },
+                    onClick = onRelated,
+                )
+            }
 
             ActionDivider()
 
@@ -840,26 +917,58 @@ private fun FactGrid(
         facts
     }
 
-    displayFacts.chunked(2).forEachIndexed { index, rowFacts ->
+    // A fact whose value is too long to read comfortably in a half-width card
+    // gets its own full-width row instead of being crammed in and truncated;
+    // short facts still pair up two-per-row as before.
+    val rows = buildFactRows(displayFacts)
+
+    rows.forEachIndexed { index, row ->
         if (index > 0) Spacer(Modifier.height(10.dp))
 
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(10.dp),
         ) {
-            rowFacts.forEach { (label, value) ->
+            row.facts.forEach { (label, value) ->
                 FactCard(
                     label = label,
                     value = value,
                     icon = factIcon(type = type, label = label),
-                    modifier = Modifier.weight(1f),
+                    modifier = if (row.fillWidth) Modifier.fillMaxWidth() else Modifier.weight(1f),
                 )
             }
-            if (rowFacts.size == 1) {
+            if (row.facts.size == 1 && !row.fillWidth) {
                 Spacer(Modifier.weight(1f))
             }
         }
     }
+}
+
+private class FactRow(val facts: List<Pair<String, String>>, val fillWidth: Boolean)
+
+/** Values longer than this don't fit comfortably in a half-width card. */
+private const val LONG_FACT_VALUE_LENGTH = 28
+
+private fun buildFactRows(facts: List<Pair<String, String>>): List<FactRow> {
+    val rows = mutableListOf<FactRow>()
+    var i = 0
+    while (i < facts.size) {
+        val current = facts[i]
+        if (current.second.length > LONG_FACT_VALUE_LENGTH) {
+            rows += FactRow(listOf(current), fillWidth = true)
+            i += 1
+            continue
+        }
+        val next = facts.getOrNull(i + 1)
+        if (next != null && next.second.length <= LONG_FACT_VALUE_LENGTH) {
+            rows += FactRow(listOf(current, next), fillWidth = false)
+            i += 2
+        } else {
+            rows += FactRow(listOf(current), fillWidth = false)
+            i += 1
+        }
+    }
+    return rows
 }
 
 @Composable
@@ -879,7 +988,7 @@ private fun FactCard(
                 shape = RoundedCornerShape(14.dp),
             )
             .padding(horizontal = 12.dp, vertical = 12.dp),
-        verticalAlignment = Alignment.CenterVertically,
+        verticalAlignment = Alignment.Top,
     ) {
         Box(
             modifier = Modifier
@@ -915,8 +1024,6 @@ private fun FactCard(
                 fontSize = 13.sp,
                 lineHeight = 17.sp,
                 fontWeight = FontWeight.Medium,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
             )
         }
     }
@@ -1044,13 +1151,6 @@ private fun SourceCard(
                     )
                 }
             }
-
-            Image(
-                painter = painterResource(Res.drawable.source_globe_book),
-                contentDescription = null,
-                modifier = Modifier.size(24.dp),
-                contentScale = ContentScale.Fit,
-            )
         }
     }
 }

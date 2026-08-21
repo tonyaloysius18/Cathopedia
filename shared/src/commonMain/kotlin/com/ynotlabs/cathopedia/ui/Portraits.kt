@@ -2,6 +2,558 @@ package com.ynotlabs.cathopedia.ui
 
 import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.resources.church_aglona_basilica
+import com.ynotlabs.cathopedia.resources.church_annai_velankanni_basilica_besant_nagar
+import com.ynotlabs.cathopedia.resources.church_elele_international_shrine
+import com.ynotlabs.cathopedia.resources.church_full_annai_velankanni_basilica_besant_nagar
+import com.ynotlabs.cathopedia.resources.church_full_elele_international_shrine
+import com.ynotlabs.cathopedia.resources.church_full_our_lady_of_holy_rosary_basilica_karumathampatti
+import com.ynotlabs.cathopedia.resources.church_full_st_john_de_britto_basilica_oriyur
+import com.ynotlabs.cathopedia.resources.church_full_st_thomas_mount_basilica_chennai
+import com.ynotlabs.cathopedia.resources.church_full_stary_wielislaw_basilica
+import com.ynotlabs.cathopedia.resources.church_our_lady_of_holy_rosary_basilica_karumathampatti
+import com.ynotlabs.cathopedia.resources.church_st_john_de_britto_basilica_oriyur
+import com.ynotlabs.cathopedia.resources.church_st_thomas_mount_basilica_chennai
+import com.ynotlabs.cathopedia.resources.church_stary_wielislaw_basilica
+import com.ynotlabs.cathopedia.resources.church_annunciation_basilica_nazareth
+import com.ynotlabs.cathopedia.resources.church_antipolo_cathedral
+import com.ynotlabs.cathopedia.resources.church_aparecida_basilica
+import com.ynotlabs.cathopedia.resources.church_basilica_holy_redeemer_tiruchirapalli
+import com.ynotlabs.cathopedia.resources.church_basilica_our_lady_guadalupe
+import com.ynotlabs.cathopedia.resources.church_bom_jesus_basilica_goa
+import com.ynotlabs.cathopedia.resources.church_chartres_cathedral
+import com.ynotlabs.cathopedia.resources.church_chiquinquira_basilica
+import com.ynotlabs.cathopedia.resources.church_copacabana_basilica_bolivia
+import com.ynotlabs.cathopedia.resources.church_divine_mercy_basilica_krakow
+import com.ynotlabs.cathopedia.resources.church_einsiedeln_basilica
+import com.ynotlabs.cathopedia.resources.church_el_cobre_basilica_cuba
+import com.ynotlabs.cathopedia.resources.church_fatima_basilica
+import com.ynotlabs.cathopedia.resources.church_full_aglona_basilica
+import com.ynotlabs.cathopedia.resources.church_full_annunciation_basilica_nazareth
+import com.ynotlabs.cathopedia.resources.church_full_antipolo_cathedral
+import com.ynotlabs.cathopedia.resources.church_full_aparecida_basilica
+import com.ynotlabs.cathopedia.resources.church_full_basilica_holy_redeemer_tiruchirapalli
+import com.ynotlabs.cathopedia.resources.church_full_basilica_our_lady_guadalupe
+import com.ynotlabs.cathopedia.resources.church_full_bom_jesus_basilica_goa
+import com.ynotlabs.cathopedia.resources.church_full_chartres_cathedral
+import com.ynotlabs.cathopedia.resources.church_full_chiquinquira_basilica
+import com.ynotlabs.cathopedia.resources.church_full_copacabana_basilica_bolivia
+import com.ynotlabs.cathopedia.resources.church_full_divine_mercy_basilica_krakow
+import com.ynotlabs.cathopedia.resources.church_full_einsiedeln_basilica
+import com.ynotlabs.cathopedia.resources.church_full_el_cobre_basilica_cuba
+import com.ynotlabs.cathopedia.resources.church_full_fatima_basilica
+import com.ynotlabs.cathopedia.resources.church_full_gora_swietej_anny_basilica
+import com.ynotlabs.cathopedia.resources.church_full_haemi_martyrs_shrine
+import com.ynotlabs.cathopedia.resources.church_full_holy_blood_basilica_bruges
+import com.ynotlabs.cathopedia.resources.church_full_holy_sepulchre_basilica
+import com.ynotlabs.cathopedia.resources.church_full_jasna_gora_basilica
+import com.ynotlabs.cathopedia.resources.church_full_jeoldusan_martyrs_shrine
+import com.ynotlabs.cathopedia.resources.church_full_kevelaer_basilica
+import com.ynotlabs.cathopedia.resources.church_full_knock_basilica
+import com.ynotlabs.cathopedia.resources.church_full_la_vang_basilica
+import com.ynotlabs.cathopedia.resources.church_full_loreto_basilica
+import com.ynotlabs.cathopedia.resources.church_full_lourdes_basilica
+import com.ynotlabs.cathopedia.resources.church_full_lujan_basilica
+import com.ynotlabs.cathopedia.resources.church_full_mariazell_basilica
+import com.ynotlabs.cathopedia.resources.church_full_national_shrine_immaculate_conception_dc
+import com.ynotlabs.cathopedia.resources.church_full_notre_dame_de_paris
+import com.ynotlabs.cathopedia.resources.church_full_notre_dame_de_quebec_basilica
+import com.ynotlabs.cathopedia.resources.church_full_our_lady_of_assumption_basilica_kamanayakkanpatti
+import com.ynotlabs.cathopedia.resources.church_full_our_lady_of_lourdes_basilica_poondi
+import com.ynotlabs.cathopedia.resources.church_full_our_lady_of_nativity_basilica_mulagumoodu
+import com.ynotlabs.cathopedia.resources.church_full_our_lady_of_peace_basilica_yamoussoukro
+import com.ynotlabs.cathopedia.resources.church_full_our_lady_of_pillar_basilica_zaragoza
+import com.ynotlabs.cathopedia.resources.church_full_our_lady_of_snows_basilica_thoothukudi
+import com.ynotlabs.cathopedia.resources.church_full_padre_pio_shrine_batangas
+import com.ynotlabs.cathopedia.resources.church_full_pompei_basilica
+import com.ynotlabs.cathopedia.resources.church_full_porziuncola_basilica_assisi
+import com.ynotlabs.cathopedia.resources.church_full_sacre_coeur
+import com.ynotlabs.cathopedia.resources.church_full_sacred_heart_basilica_koekelberg
+import com.ynotlabs.cathopedia.resources.church_full_sagrada_familia
+import com.ynotlabs.cathopedia.resources.church_full_san_francesco_assisi
+import com.ynotlabs.cathopedia.resources.church_full_san_thome_basilica_chennai
+import com.ynotlabs.cathopedia.resources.church_full_santa_croce_basilica_florence
+import com.ynotlabs.cathopedia.resources.church_full_santiago_de_compostela
+import com.ynotlabs.cathopedia.resources.church_full_st_andrews_basilica_arthunkal
+import com.ynotlabs.cathopedia.resources.church_full_st_anthony_basilica_padua
+import com.ynotlabs.cathopedia.resources.church_full_st_john_lateran
+import com.ynotlabs.cathopedia.resources.church_full_st_marks_basilica_venice
+import com.ynotlabs.cathopedia.resources.church_full_st_mary_major
+import com.ynotlabs.cathopedia.resources.church_full_st_paul_outside_the_walls
+import com.ynotlabs.cathopedia.resources.church_full_st_peters_basilica
+import com.ynotlabs.cathopedia.resources.church_full_st_sernin_basilica_toulouse
+import com.ynotlabs.cathopedia.resources.church_full_st_thomas_shrine_malayattoor
+import com.ynotlabs.cathopedia.resources.church_full_superga_basilica_turin
+import com.ynotlabs.cathopedia.resources.church_full_trzebnica_basilica
+import com.ynotlabs.cathopedia.resources.church_full_velankanni_basilica
+import com.ynotlabs.cathopedia.resources.church_full_vezelay_basilica
+import com.ynotlabs.cathopedia.resources.church_gora_swietej_anny_basilica
+import com.ynotlabs.cathopedia.resources.church_haemi_martyrs_shrine
+import com.ynotlabs.cathopedia.resources.church_holy_blood_basilica_bruges
+import com.ynotlabs.cathopedia.resources.church_holy_sepulchre_basilica
+import com.ynotlabs.cathopedia.resources.church_jasna_gora_basilica
+import com.ynotlabs.cathopedia.resources.church_jeoldusan_martyrs_shrine
+import com.ynotlabs.cathopedia.resources.church_kevelaer_basilica
+import com.ynotlabs.cathopedia.resources.church_knock_basilica
+import com.ynotlabs.cathopedia.resources.church_la_vang_basilica
+import com.ynotlabs.cathopedia.resources.church_loreto_basilica
+import com.ynotlabs.cathopedia.resources.church_lourdes_basilica
+import com.ynotlabs.cathopedia.resources.church_lujan_basilica
+import com.ynotlabs.cathopedia.resources.church_mariazell_basilica
+import com.ynotlabs.cathopedia.resources.church_national_shrine_immaculate_conception_dc
+import com.ynotlabs.cathopedia.resources.church_notre_dame_de_paris
+import com.ynotlabs.cathopedia.resources.church_notre_dame_de_quebec_basilica
+import com.ynotlabs.cathopedia.resources.church_our_lady_of_assumption_basilica_kamanayakkanpatti
+import com.ynotlabs.cathopedia.resources.church_our_lady_of_lourdes_basilica_poondi
+import com.ynotlabs.cathopedia.resources.church_our_lady_of_nativity_basilica_mulagumoodu
+import com.ynotlabs.cathopedia.resources.church_our_lady_of_peace_basilica_yamoussoukro
+import com.ynotlabs.cathopedia.resources.church_our_lady_of_pillar_basilica_zaragoza
+import com.ynotlabs.cathopedia.resources.church_our_lady_of_snows_basilica_thoothukudi
+import com.ynotlabs.cathopedia.resources.church_padre_pio_shrine_batangas
+import com.ynotlabs.cathopedia.resources.church_pompei_basilica
+import com.ynotlabs.cathopedia.resources.church_porziuncola_basilica_assisi
+import com.ynotlabs.cathopedia.resources.church_sacre_coeur
+import com.ynotlabs.cathopedia.resources.church_sacred_heart_basilica_koekelberg
+import com.ynotlabs.cathopedia.resources.church_sagrada_familia
+import com.ynotlabs.cathopedia.resources.church_san_francesco_assisi
+import com.ynotlabs.cathopedia.resources.church_san_thome_basilica_chennai
+import com.ynotlabs.cathopedia.resources.church_santa_croce_basilica_florence
+import com.ynotlabs.cathopedia.resources.church_santiago_de_compostela
+import com.ynotlabs.cathopedia.resources.church_st_andrews_basilica_arthunkal
+import com.ynotlabs.cathopedia.resources.church_st_anthony_basilica_padua
+import com.ynotlabs.cathopedia.resources.church_st_john_lateran
+import com.ynotlabs.cathopedia.resources.church_st_marks_basilica_venice
+import com.ynotlabs.cathopedia.resources.church_st_mary_major
+import com.ynotlabs.cathopedia.resources.church_st_paul_outside_the_walls
+import com.ynotlabs.cathopedia.resources.church_st_peters_basilica
+import com.ynotlabs.cathopedia.resources.church_st_sernin_basilica_toulouse
+import com.ynotlabs.cathopedia.resources.church_st_thomas_shrine_malayattoor
+import com.ynotlabs.cathopedia.resources.church_superga_basilica_turin
+import com.ynotlabs.cathopedia.resources.church_trzebnica_basilica
+import com.ynotlabs.cathopedia.resources.church_velankanni_basilica
+import com.ynotlabs.cathopedia.resources.church_vezelay_basilica
+import com.ynotlabs.cathopedia.resources.apparition_banneux
+import com.ynotlabs.cathopedia.resources.apparition_beauraing
+import com.ynotlabs.cathopedia.resources.apparition_betania
+import com.ynotlabs.cathopedia.resources.apparition_cuapa
+import com.ynotlabs.cathopedia.resources.apparition_full_banneux
+import com.ynotlabs.cathopedia.resources.apparition_full_beauraing
+import com.ynotlabs.cathopedia.resources.apparition_full_betania
+import com.ynotlabs.cathopedia.resources.apparition_full_cuapa
+import com.ynotlabs.cathopedia.resources.apparition_full_kibeho
+import com.ynotlabs.cathopedia.resources.apparition_full_lourdes
+import com.ynotlabs.cathopedia.resources.apparition_full_medjugorje
+import com.ynotlabs.cathopedia.resources.apparition_full_mount_zvir
+import com.ynotlabs.cathopedia.resources.apparition_full_our_lady_of_akita
+import com.ynotlabs.cathopedia.resources.apparition_full_our_lady_of_aparecida
+import com.ynotlabs.cathopedia.resources.apparition_full_our_lady_of_fatima
+import com.ynotlabs.cathopedia.resources.apparition_full_our_lady_of_good_help
+import com.ynotlabs.cathopedia.resources.apparition_full_our_lady_of_good_success
+import com.ynotlabs.cathopedia.resources.apparition_full_our_lady_of_guadalupe
+import com.ynotlabs.cathopedia.resources.apparition_full_our_lady_of_knock
+import com.ynotlabs.cathopedia.resources.apparition_full_our_lady_of_la_salette
+import com.ynotlabs.cathopedia.resources.apparition_full_our_lady_of_laus
+import com.ynotlabs.cathopedia.resources.apparition_full_our_lady_of_siluva
+import com.ynotlabs.cathopedia.resources.apparition_full_our_lady_of_the_rock
+import com.ynotlabs.cathopedia.resources.apparition_full_pellevoisin
+import com.ynotlabs.cathopedia.resources.apparition_full_pontmain
+import com.ynotlabs.cathopedia.resources.apparition_full_rue_du_bac
+import com.ynotlabs.cathopedia.resources.apparition_full_san_nicolas
+import com.ynotlabs.cathopedia.resources.apparition_full_velankanni
+import com.ynotlabs.cathopedia.resources.apparition_full_zeitoun
+import com.ynotlabs.cathopedia.resources.feast_full_all_saints
+import com.ynotlabs.cathopedia.resources.feast_full_all_souls
+import com.ynotlabs.cathopedia.resources.feast_full_andrew
+import com.ynotlabs.cathopedia.resources.feast_full_annunciation
+import com.ynotlabs.cathopedia.resources.feast_full_archangels
+import com.ynotlabs.cathopedia.resources.feast_full_ascension
+import com.ynotlabs.cathopedia.resources.feast_full_assumption_of_mary
+import com.ynotlabs.cathopedia.resources.feast_full_baptism_of_the_lord
+import com.ynotlabs.cathopedia.resources.feast_full_bartholomew
+import com.ynotlabs.cathopedia.resources.feast_full_chair_of_saint_peter
+import com.ynotlabs.cathopedia.resources.feast_full_christ_the_king
+import com.ynotlabs.cathopedia.resources.feast_full_christmas
+import com.ynotlabs.cathopedia.resources.feast_full_conversion_of_saint_paul
+import com.ynotlabs.cathopedia.resources.feast_full_corpus_christi
+import com.ynotlabs.cathopedia.resources.feast_full_dedication_of_sts_peter_and_paul_basilicas
+import com.ynotlabs.cathopedia.resources.feast_full_dedication_of_the_lateran_basilica
+import com.ynotlabs.cathopedia.resources.feast_full_easter
+import com.ynotlabs.cathopedia.resources.feast_full_epiphany
+import com.ynotlabs.cathopedia.resources.feast_full_exaltation_of_the_holy_cross
+import com.ynotlabs.cathopedia.resources.feast_full_holy_family
+import com.ynotlabs.cathopedia.resources.feast_full_holy_innocents
+import com.ynotlabs.cathopedia.resources.feast_full_immaculate_conception
+import com.ynotlabs.cathopedia.resources.feast_full_james_the_greater
+import com.ynotlabs.cathopedia.resources.feast_full_john
+import com.ynotlabs.cathopedia.resources.feast_full_joseph_spouse_of_mary
+import com.ynotlabs.cathopedia.resources.feast_full_lawrence
+import com.ynotlabs.cathopedia.resources.feast_full_luke_the_evangelist
+import com.ynotlabs.cathopedia.resources.feast_full_mark_the_evangelist
+import com.ynotlabs.cathopedia.resources.feast_full_mary_magdalene
+import com.ynotlabs.cathopedia.resources.feast_full_mary_mother_of_god
+import com.ynotlabs.cathopedia.resources.feast_full_matthew
+import com.ynotlabs.cathopedia.resources.feast_full_matthias
+import com.ynotlabs.cathopedia.resources.feast_full_nativity_of_john_the_baptist
+import com.ynotlabs.cathopedia.resources.feast_full_nativity_of_mary
+import com.ynotlabs.cathopedia.resources.feast_full_pentecost
+import com.ynotlabs.cathopedia.resources.feast_full_philip_and_james
+import com.ynotlabs.cathopedia.resources.feast_full_presentation_of_the_lord
+import com.ynotlabs.cathopedia.resources.feast_full_sacred_heart
+import com.ynotlabs.cathopedia.resources.feast_full_simon_and_jude
+import com.ynotlabs.cathopedia.resources.feast_full_stephen
+import com.ynotlabs.cathopedia.resources.feast_full_sts_peter_and_paul
+import com.ynotlabs.cathopedia.resources.feast_full_thomas_the_apostle
+import com.ynotlabs.cathopedia.resources.feast_full_transfiguration
+import com.ynotlabs.cathopedia.resources.feast_full_trinity_sunday
+import com.ynotlabs.cathopedia.resources.feast_full_visitation
+import com.ynotlabs.cathopedia.resources.apparition_kibeho
+import com.ynotlabs.cathopedia.resources.apparition_lourdes
+import com.ynotlabs.cathopedia.resources.apparition_medjugorje
+import com.ynotlabs.cathopedia.resources.apparition_mount_zvir
+import com.ynotlabs.cathopedia.resources.apparition_our_lady_of_akita
+import com.ynotlabs.cathopedia.resources.apparition_our_lady_of_aparecida
+import com.ynotlabs.cathopedia.resources.apparition_our_lady_of_fatima
+import com.ynotlabs.cathopedia.resources.apparition_our_lady_of_good_help
+import com.ynotlabs.cathopedia.resources.apparition_our_lady_of_good_success
+import com.ynotlabs.cathopedia.resources.apparition_our_lady_of_guadalupe
+import com.ynotlabs.cathopedia.resources.apparition_our_lady_of_knock
+import com.ynotlabs.cathopedia.resources.apparition_our_lady_of_la_salette
+import com.ynotlabs.cathopedia.resources.apparition_our_lady_of_laus
+import com.ynotlabs.cathopedia.resources.apparition_our_lady_of_siluva
+import com.ynotlabs.cathopedia.resources.apparition_our_lady_of_the_rock
+import com.ynotlabs.cathopedia.resources.apparition_pellevoisin
+import com.ynotlabs.cathopedia.resources.apparition_pontmain
+import com.ynotlabs.cathopedia.resources.apparition_rue_du_bac
+import com.ynotlabs.cathopedia.resources.apparition_san_nicolas
+import com.ynotlabs.cathopedia.resources.apparition_velankanni
+import com.ynotlabs.cathopedia.resources.apparition_zeitoun
+import com.ynotlabs.cathopedia.resources.feast_all_saints
+import com.ynotlabs.cathopedia.resources.feast_all_souls
+import com.ynotlabs.cathopedia.resources.feast_andrew
+import com.ynotlabs.cathopedia.resources.feast_annunciation
+import com.ynotlabs.cathopedia.resources.feast_archangels
+import com.ynotlabs.cathopedia.resources.feast_ascension
+import com.ynotlabs.cathopedia.resources.feast_assumption_of_mary
+import com.ynotlabs.cathopedia.resources.feast_baptism_of_the_lord
+import com.ynotlabs.cathopedia.resources.feast_bartholomew
+import com.ynotlabs.cathopedia.resources.feast_chair_of_saint_peter
+import com.ynotlabs.cathopedia.resources.feast_christ_the_king
+import com.ynotlabs.cathopedia.resources.feast_christmas
+import com.ynotlabs.cathopedia.resources.feast_conversion_of_saint_paul
+import com.ynotlabs.cathopedia.resources.feast_corpus_christi
+import com.ynotlabs.cathopedia.resources.feast_dedication_of_sts_peter_and_paul_basilicas
+import com.ynotlabs.cathopedia.resources.feast_dedication_of_the_lateran_basilica
+import com.ynotlabs.cathopedia.resources.feast_easter
+import com.ynotlabs.cathopedia.resources.feast_epiphany
+import com.ynotlabs.cathopedia.resources.feast_exaltation_of_the_holy_cross
+import com.ynotlabs.cathopedia.resources.feast_holy_family
+import com.ynotlabs.cathopedia.resources.feast_holy_innocents
+import com.ynotlabs.cathopedia.resources.feast_immaculate_conception
+import com.ynotlabs.cathopedia.resources.feast_james_the_greater
+import com.ynotlabs.cathopedia.resources.feast_john
+import com.ynotlabs.cathopedia.resources.feast_joseph_spouse_of_mary
+import com.ynotlabs.cathopedia.resources.feast_lawrence
+import com.ynotlabs.cathopedia.resources.feast_luke_the_evangelist
+import com.ynotlabs.cathopedia.resources.feast_mark_the_evangelist
+import com.ynotlabs.cathopedia.resources.feast_mary_magdalene
+import com.ynotlabs.cathopedia.resources.feast_mary_mother_of_god
+import com.ynotlabs.cathopedia.resources.feast_matthew
+import com.ynotlabs.cathopedia.resources.feast_matthias
+import com.ynotlabs.cathopedia.resources.feast_nativity_of_john_the_baptist
+import com.ynotlabs.cathopedia.resources.feast_nativity_of_mary
+import com.ynotlabs.cathopedia.resources.feast_pentecost
+import com.ynotlabs.cathopedia.resources.feast_philip_and_james
+import com.ynotlabs.cathopedia.resources.feast_presentation_of_the_lord
+import com.ynotlabs.cathopedia.resources.feast_sacred_heart
+import com.ynotlabs.cathopedia.resources.feast_simon_and_jude
+import com.ynotlabs.cathopedia.resources.feast_stephen
+import com.ynotlabs.cathopedia.resources.feast_sts_peter_and_paul
+import com.ynotlabs.cathopedia.resources.feast_thomas_the_apostle
+import com.ynotlabs.cathopedia.resources.feast_transfiguration
+import com.ynotlabs.cathopedia.resources.feast_trinity_sunday
+import com.ynotlabs.cathopedia.resources.feast_visitation
+import com.ynotlabs.cathopedia.resources.miracle_alatri
+import com.ynotlabs.cathopedia.resources.miracle_alboraya_almacera
+import com.ynotlabs.cathopedia.resources.miracle_alcala_de_henares
+import com.ynotlabs.cathopedia.resources.miracle_alcoy
+import com.ynotlabs.cathopedia.resources.miracle_alkmaar
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam
+import com.ynotlabs.cathopedia.resources.miracle_assisi_clare
+import com.ynotlabs.cathopedia.resources.miracle_asti
+import com.ynotlabs.cathopedia.resources.miracle_augsburg
+import com.ynotlabs.cathopedia.resources.miracle_avignon
+import com.ynotlabs.cathopedia.resources.miracle_bagno_di_romagna
+import com.ynotlabs.cathopedia.resources.miracle_balasar
+import com.ynotlabs.cathopedia.resources.miracle_benningen
+import com.ynotlabs.cathopedia.resources.miracle_bergen_op_zoom
+import com.ynotlabs.cathopedia.resources.miracle_betania
+import com.ynotlabs.cathopedia.resources.miracle_bettbrunn
+import com.ynotlabs.cathopedia.resources.miracle_blanot
+import com.ynotlabs.cathopedia.resources.miracle_bois_dhaine
+import com.ynotlabs.cathopedia.resources.miracle_bois_seigneur_isaac
+import com.ynotlabs.cathopedia.resources.miracle_bologna_imelda
+import com.ynotlabs.cathopedia.resources.miracle_bordeaux
+import com.ynotlabs.cathopedia.resources.miracle_boxmeer
+import com.ynotlabs.cathopedia.resources.miracle_boxtel_hoogstraten
+import com.ynotlabs.cathopedia.resources.miracle_breda_niervaart
+import com.ynotlabs.cathopedia.resources.miracle_bruges
+import com.ynotlabs.cathopedia.resources.miracle_calanda
+import com.ynotlabs.cathopedia.resources.miracle_canosio
+import com.ynotlabs.cathopedia.resources.miracle_caravaca_de_la_cruz
+import com.ynotlabs.cathopedia.resources.miracle_carmelite_siena
+import com.ynotlabs.cathopedia.resources.miracle_cascia
+import com.ynotlabs.cathopedia.resources.miracle_cava_dei_tirreni
+import com.ynotlabs.cathopedia.resources.miracle_champion_wisconsin
+import com.ynotlabs.cathopedia.resources.miracle_chateauneuf_de_galaure
+import com.ynotlabs.cathopedia.resources.miracle_chiaravalle_bernard
+import com.ynotlabs.cathopedia.resources.miracle_chirattakonam
+import com.ynotlabs.cathopedia.resources.miracle_cimballa
+import com.ynotlabs.cathopedia.resources.miracle_daroca
+import com.ynotlabs.cathopedia.resources.miracle_dijon
+import com.ynotlabs.cathopedia.resources.miracle_douai
+import com.ynotlabs.cathopedia.resources.miracle_dronero
+import com.ynotlabs.cathopedia.resources.miracle_dulmen
+import com.ynotlabs.cathopedia.resources.miracle_erding
+import com.ynotlabs.cathopedia.resources.miracle_eten
+import com.ynotlabs.cathopedia.resources.miracle_ettiswil
+import com.ynotlabs.cathopedia.resources.miracle_eucharistic_miracle_buenos_aires
+import com.ynotlabs.cathopedia.resources.miracle_fatima_angel
+import com.ynotlabs.cathopedia.resources.miracle_faverney
+import com.ynotlabs.cathopedia.resources.miracle_ferrara
+import com.ynotlabs.cathopedia.resources.miracle_fiecht
+import com.ynotlabs.cathopedia.resources.miracle_florence
+import com.ynotlabs.cathopedia.resources.miracle_foligno_angela
+import com.ynotlabs.cathopedia.resources.miracle_full_alatri
+import com.ynotlabs.cathopedia.resources.miracle_full_alboraya_almacera
+import com.ynotlabs.cathopedia.resources.miracle_full_alcala_de_henares
+import com.ynotlabs.cathopedia.resources.miracle_full_alcoy
+import com.ynotlabs.cathopedia.resources.miracle_full_alkmaar
+import com.ynotlabs.cathopedia.resources.miracle_full_amsterdam
+import com.ynotlabs.cathopedia.resources.miracle_full_assisi_clare
+import com.ynotlabs.cathopedia.resources.miracle_full_asti
+import com.ynotlabs.cathopedia.resources.miracle_full_augsburg
+import com.ynotlabs.cathopedia.resources.miracle_full_avignon
+import com.ynotlabs.cathopedia.resources.miracle_full_bagno_di_romagna
+import com.ynotlabs.cathopedia.resources.miracle_full_balasar
+import com.ynotlabs.cathopedia.resources.miracle_full_benningen
+import com.ynotlabs.cathopedia.resources.miracle_full_bergen_op_zoom
+import com.ynotlabs.cathopedia.resources.miracle_full_betania
+import com.ynotlabs.cathopedia.resources.miracle_full_bettbrunn
+import com.ynotlabs.cathopedia.resources.miracle_full_blanot
+import com.ynotlabs.cathopedia.resources.miracle_full_bois_dhaine
+import com.ynotlabs.cathopedia.resources.miracle_full_bois_seigneur_isaac
+import com.ynotlabs.cathopedia.resources.miracle_full_bologna_imelda
+import com.ynotlabs.cathopedia.resources.miracle_full_bordeaux
+import com.ynotlabs.cathopedia.resources.miracle_full_boxmeer
+import com.ynotlabs.cathopedia.resources.miracle_full_boxtel_hoogstraten
+import com.ynotlabs.cathopedia.resources.miracle_full_breda_niervaart
+import com.ynotlabs.cathopedia.resources.miracle_full_bruges
+import com.ynotlabs.cathopedia.resources.miracle_full_calanda
+import com.ynotlabs.cathopedia.resources.miracle_full_canosio
+import com.ynotlabs.cathopedia.resources.miracle_full_caravaca_de_la_cruz
+import com.ynotlabs.cathopedia.resources.miracle_full_carmelite_siena
+import com.ynotlabs.cathopedia.resources.miracle_full_cascia
+import com.ynotlabs.cathopedia.resources.miracle_full_cava_dei_tirreni
+import com.ynotlabs.cathopedia.resources.miracle_full_champion_wisconsin
+import com.ynotlabs.cathopedia.resources.miracle_full_chateauneuf_de_galaure
+import com.ynotlabs.cathopedia.resources.miracle_full_chiaravalle_bernard
+import com.ynotlabs.cathopedia.resources.miracle_full_chirattakonam
+import com.ynotlabs.cathopedia.resources.miracle_full_cimballa
+import com.ynotlabs.cathopedia.resources.miracle_full_daroca
+import com.ynotlabs.cathopedia.resources.miracle_full_dijon
+import com.ynotlabs.cathopedia.resources.miracle_full_douai
+import com.ynotlabs.cathopedia.resources.miracle_full_dronero
+import com.ynotlabs.cathopedia.resources.miracle_full_dulmen
+import com.ynotlabs.cathopedia.resources.miracle_full_erding
+import com.ynotlabs.cathopedia.resources.miracle_full_eten
+import com.ynotlabs.cathopedia.resources.miracle_full_ettiswil
+import com.ynotlabs.cathopedia.resources.miracle_full_eucharistic_miracle_buenos_aires
+import com.ynotlabs.cathopedia.resources.miracle_full_fatima_angel
+import com.ynotlabs.cathopedia.resources.miracle_full_faverney
+import com.ynotlabs.cathopedia.resources.miracle_full_ferrara
+import com.ynotlabs.cathopedia.resources.miracle_full_fiecht
+import com.ynotlabs.cathopedia.resources.miracle_full_florence
+import com.ynotlabs.cathopedia.resources.miracle_full_foligno_angela
+import com.ynotlabs.cathopedia.resources.miracle_full_gerona
+import com.ynotlabs.cathopedia.resources.miracle_full_glotowo
+import com.ynotlabs.cathopedia.resources.miracle_full_gorkum_escorial
+import com.ynotlabs.cathopedia.resources.miracle_full_gruaro
+import com.ynotlabs.cathopedia.resources.miracle_full_guadalupe_mexico
+import com.ynotlabs.cathopedia.resources.miracle_full_guadalupe_spain
+import com.ynotlabs.cathopedia.resources.miracle_full_herentals
+import com.ynotlabs.cathopedia.resources.miracle_full_herkenrode_hasselt
+import com.ynotlabs.cathopedia.resources.miracle_full_ivorra
+import com.ynotlabs.cathopedia.resources.miracle_full_konnersreuth
+import com.ynotlabs.cathopedia.resources.miracle_full_krakow_divine_mercy
+import com.ynotlabs.cathopedia.resources.miracle_full_kranenburg
+import com.ynotlabs.cathopedia.resources.miracle_full_la_rochelle
+import com.ynotlabs.cathopedia.resources.miracle_full_lanciano
+import com.ynotlabs.cathopedia.resources.miracle_full_lateran_council
+import com.ynotlabs.cathopedia.resources.miracle_full_legnica
+import com.ynotlabs.cathopedia.resources.miracle_full_les_ulmes
+import com.ynotlabs.cathopedia.resources.miracle_full_liege
+import com.ynotlabs.cathopedia.resources.miracle_full_lourdes_healings
+import com.ynotlabs.cathopedia.resources.miracle_full_ludbreg
+import com.ynotlabs.cathopedia.resources.miracle_full_macerata
+import com.ynotlabs.cathopedia.resources.miracle_full_marseille_en_beauvais
+import com.ynotlabs.cathopedia.resources.miracle_full_mary_of_egypt
+import com.ynotlabs.cathopedia.resources.miracle_full_meerssen
+import com.ynotlabs.cathopedia.resources.miracle_full_meerssen_fire_1465
+import com.ynotlabs.cathopedia.resources.miracle_full_middleburg
+import com.ynotlabs.cathopedia.resources.miracle_full_miracle_of_bolsena
+import com.ynotlabs.cathopedia.resources.miracle_full_miracle_of_santarem
+import com.ynotlabs.cathopedia.resources.miracle_full_miracle_of_siena
+import com.ynotlabs.cathopedia.resources.miracle_full_mogliano
+import com.ynotlabs.cathopedia.resources.miracle_full_mogoro
+import com.ynotlabs.cathopedia.resources.miracle_full_moncada
+import com.ynotlabs.cathopedia.resources.miracle_full_montefalco_clare
+import com.ynotlabs.cathopedia.resources.miracle_full_montieri
+import com.ynotlabs.cathopedia.resources.miracle_full_montserrat
+import com.ynotlabs.cathopedia.resources.miracle_full_morne_rouge
+import com.ynotlabs.cathopedia.resources.miracle_full_morrovalle
+import com.ynotlabs.cathopedia.resources.miracle_full_muro_lucano
+import com.ynotlabs.cathopedia.resources.miracle_full_naples_five_wounds
+import com.ynotlabs.cathopedia.resources.miracle_full_neuvy_saint_sepulcre
+import com.ynotlabs.cathopedia.resources.miracle_full_o_cebreiro
+import com.ynotlabs.cathopedia.resources.miracle_full_offida
+import com.ynotlabs.cathopedia.resources.miracle_full_onil
+import com.ynotlabs.cathopedia.resources.miracle_full_orvieto_thomas_of_cori
+import com.ynotlabs.cathopedia.resources.miracle_full_patierno
+import com.ynotlabs.cathopedia.resources.miracle_full_peshtigo
+import com.ynotlabs.cathopedia.resources.miracle_full_peter_damian
+import com.ynotlabs.cathopedia.resources.miracle_full_pibrac
+import com.ynotlabs.cathopedia.resources.miracle_full_pitigliano
+import com.ynotlabs.cathopedia.resources.miracle_full_ponferrada
+import com.ynotlabs.cathopedia.resources.miracle_full_poznan
+import com.ynotlabs.cathopedia.resources.miracle_full_pressac
+import com.ynotlabs.cathopedia.resources.miracle_full_proceno_agnes
+import com.ynotlabs.cathopedia.resources.miracle_full_regensburg
+import com.ynotlabs.cathopedia.resources.miracle_full_rimini
+import com.ynotlabs.cathopedia.resources.miracle_full_rome_devoted_lambs
+import com.ynotlabs.cathopedia.resources.miracle_full_rome_gregory_great
+import com.ynotlabs.cathopedia.resources.miracle_full_rome_santa_pudenziana
+import com.ynotlabs.cathopedia.resources.miracle_full_rosano
+import com.ynotlabs.cathopedia.resources.miracle_full_sachseln
+import com.ynotlabs.cathopedia.resources.miracle_full_saint_andre_de_la_reunion
+import com.ynotlabs.cathopedia.resources.miracle_full_saint_gilles
+import com.ynotlabs.cathopedia.resources.miracle_full_saint_satyrus
+import com.ynotlabs.cathopedia.resources.miracle_full_salzano
+import com.ynotlabs.cathopedia.resources.miracle_full_san_giorgio_a_cremano
+import com.ynotlabs.cathopedia.resources.miracle_full_san_juan_de_las_abadesas
+import com.ynotlabs.cathopedia.resources.miracle_full_san_juan_honduras
+import com.ynotlabs.cathopedia.resources.miracle_full_san_mauro_la_bruca
+import com.ynotlabs.cathopedia.resources.miracle_full_scala
+import com.ynotlabs.cathopedia.resources.miracle_full_scete
+import com.ynotlabs.cathopedia.resources.miracle_full_seefeld
+import com.ynotlabs.cathopedia.resources.miracle_full_silla
+import com.ynotlabs.cathopedia.resources.miracle_full_sokolka
+import com.ynotlabs.cathopedia.resources.miracle_full_stiphout
+import com.ynotlabs.cathopedia.resources.miracle_full_tixtla
+import com.ynotlabs.cathopedia.resources.miracle_full_trani
+import com.ynotlabs.cathopedia.resources.miracle_full_tumaco
+import com.ynotlabs.cathopedia.resources.miracle_full_turin
+import com.ynotlabs.cathopedia.resources.miracle_full_turin_1640
+import com.ynotlabs.cathopedia.resources.miracle_full_valencia_santo_caliz
+import com.ynotlabs.cathopedia.resources.miracle_full_vercelli_bicchieri
+import com.ynotlabs.cathopedia.resources.miracle_full_veroli
+import com.ynotlabs.cathopedia.resources.miracle_full_vienna_stanislaus_kostka
+import com.ynotlabs.cathopedia.resources.miracle_full_vilakkannur
+import com.ynotlabs.cathopedia.resources.miracle_full_volterra
+import com.ynotlabs.cathopedia.resources.miracle_full_walldurn
+import com.ynotlabs.cathopedia.resources.miracle_full_weingarten
+import com.ynotlabs.cathopedia.resources.miracle_full_weiten_raxendorf
+import com.ynotlabs.cathopedia.resources.miracle_full_wilsnack
+import com.ynotlabs.cathopedia.resources.miracle_full_zaragoza
+import com.ynotlabs.cathopedia.resources.miracle_gerona
+import com.ynotlabs.cathopedia.resources.miracle_glotowo
+import com.ynotlabs.cathopedia.resources.miracle_gorkum_escorial
+import com.ynotlabs.cathopedia.resources.miracle_gruaro
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_mexico
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_spain
+import com.ynotlabs.cathopedia.resources.miracle_herentals
+import com.ynotlabs.cathopedia.resources.miracle_herkenrode_hasselt
+import com.ynotlabs.cathopedia.resources.miracle_ivorra
+import com.ynotlabs.cathopedia.resources.miracle_konnersreuth
+import com.ynotlabs.cathopedia.resources.miracle_krakow_divine_mercy
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg
+import com.ynotlabs.cathopedia.resources.miracle_la_rochelle
+import com.ynotlabs.cathopedia.resources.miracle_lanciano
+import com.ynotlabs.cathopedia.resources.miracle_lateran_council
+import com.ynotlabs.cathopedia.resources.miracle_legnica
+import com.ynotlabs.cathopedia.resources.miracle_les_ulmes
+import com.ynotlabs.cathopedia.resources.miracle_liege
+import com.ynotlabs.cathopedia.resources.miracle_lourdes_healings
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg
+import com.ynotlabs.cathopedia.resources.miracle_macerata
+import com.ynotlabs.cathopedia.resources.miracle_marseille_en_beauvais
+import com.ynotlabs.cathopedia.resources.miracle_mary_of_egypt
+import com.ynotlabs.cathopedia.resources.miracle_meerssen
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_fire_1465
+import com.ynotlabs.cathopedia.resources.miracle_middleburg
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_santarem
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_siena
+import com.ynotlabs.cathopedia.resources.miracle_mogliano
+import com.ynotlabs.cathopedia.resources.miracle_mogoro
+import com.ynotlabs.cathopedia.resources.miracle_moncada
+import com.ynotlabs.cathopedia.resources.miracle_montefalco_clare
+import com.ynotlabs.cathopedia.resources.miracle_montieri
+import com.ynotlabs.cathopedia.resources.miracle_montserrat
+import com.ynotlabs.cathopedia.resources.miracle_morne_rouge
+import com.ynotlabs.cathopedia.resources.miracle_morrovalle
+import com.ynotlabs.cathopedia.resources.miracle_muro_lucano
+import com.ynotlabs.cathopedia.resources.miracle_naples_five_wounds
+import com.ynotlabs.cathopedia.resources.miracle_neuvy_saint_sepulcre
+import com.ynotlabs.cathopedia.resources.miracle_o_cebreiro
+import com.ynotlabs.cathopedia.resources.miracle_offida
+import com.ynotlabs.cathopedia.resources.miracle_onil
+import com.ynotlabs.cathopedia.resources.miracle_orvieto_thomas_of_cori
+import com.ynotlabs.cathopedia.resources.miracle_patierno
+import com.ynotlabs.cathopedia.resources.miracle_peshtigo
+import com.ynotlabs.cathopedia.resources.miracle_peter_damian
+import com.ynotlabs.cathopedia.resources.miracle_pibrac
+import com.ynotlabs.cathopedia.resources.miracle_pitigliano
+import com.ynotlabs.cathopedia.resources.miracle_ponferrada
+import com.ynotlabs.cathopedia.resources.miracle_poznan
+import com.ynotlabs.cathopedia.resources.miracle_pressac
+import com.ynotlabs.cathopedia.resources.miracle_proceno_agnes
+import com.ynotlabs.cathopedia.resources.miracle_regensburg
+import com.ynotlabs.cathopedia.resources.miracle_rimini
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana
+import com.ynotlabs.cathopedia.resources.miracle_rosano
+import com.ynotlabs.cathopedia.resources.miracle_sachseln
+import com.ynotlabs.cathopedia.resources.miracle_saint_andre_de_la_reunion
+import com.ynotlabs.cathopedia.resources.miracle_saint_gilles
+import com.ynotlabs.cathopedia.resources.miracle_saint_satyrus
+import com.ynotlabs.cathopedia.resources.miracle_salzano
+import com.ynotlabs.cathopedia.resources.miracle_san_giorgio_a_cremano
+import com.ynotlabs.cathopedia.resources.miracle_san_juan_de_las_abadesas
+import com.ynotlabs.cathopedia.resources.miracle_san_juan_honduras
+import com.ynotlabs.cathopedia.resources.miracle_san_mauro_la_bruca
+import com.ynotlabs.cathopedia.resources.miracle_scala
+import com.ynotlabs.cathopedia.resources.miracle_scete
+import com.ynotlabs.cathopedia.resources.miracle_seefeld
+import com.ynotlabs.cathopedia.resources.miracle_silla
+import com.ynotlabs.cathopedia.resources.miracle_sokolka
+import com.ynotlabs.cathopedia.resources.miracle_stiphout
+import com.ynotlabs.cathopedia.resources.miracle_tixtla
+import com.ynotlabs.cathopedia.resources.miracle_trani
+import com.ynotlabs.cathopedia.resources.miracle_tumaco
+import com.ynotlabs.cathopedia.resources.miracle_turin
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640
+import com.ynotlabs.cathopedia.resources.miracle_valencia_santo_caliz
+import com.ynotlabs.cathopedia.resources.miracle_vercelli_bicchieri
+import com.ynotlabs.cathopedia.resources.miracle_veroli
+import com.ynotlabs.cathopedia.resources.miracle_vienna_stanislaus_kostka
+import com.ynotlabs.cathopedia.resources.miracle_vilakkannur
+import com.ynotlabs.cathopedia.resources.miracle_volterra
+import com.ynotlabs.cathopedia.resources.miracle_walldurn
+import com.ynotlabs.cathopedia.resources.miracle_weingarten
+import com.ynotlabs.cathopedia.resources.miracle_weiten_raxendorf
+import com.ynotlabs.cathopedia.resources.miracle_wilsnack
+import com.ynotlabs.cathopedia.resources.miracle_zaragoza
 import com.ynotlabs.cathopedia.resources.apostle_andrew
 import com.ynotlabs.cathopedia.resources.apostle_bartholomew
 import com.ynotlabs.cathopedia.resources.apostle_full_andrew
@@ -28,6 +580,190 @@ import com.ynotlabs.cathopedia.resources.apostle_peter
 import com.ynotlabs.cathopedia.resources.apostle_philip
 import com.ynotlabs.cathopedia.resources.apostle_simon_the_zealot
 import com.ynotlabs.cathopedia.resources.apostle_thomas
+import com.ynotlabs.cathopedia.resources.portrait_adalbert_of_prague
+import com.ynotlabs.cathopedia.resources.portrait_agatha
+import com.ynotlabs.cathopedia.resources.portrait_agnes_of_rome
+import com.ynotlabs.cathopedia.resources.portrait_albert_the_great
+import com.ynotlabs.cathopedia.resources.portrait_alphonsa_of_india
+import com.ynotlabs.cathopedia.resources.portrait_aloysius_gonzaga
+import com.ynotlabs.cathopedia.resources.portrait_alphonsus_liguori
+import com.ynotlabs.cathopedia.resources.portrait_ambrose_of_milan
+import com.ynotlabs.cathopedia.resources.portrait_anastasia
+import com.ynotlabs.cathopedia.resources.portrait_andre_bessette
+import com.ynotlabs.cathopedia.resources.portrait_andrew_kim_taegon
+import com.ynotlabs.cathopedia.resources.portrait_angela_merici
+import com.ynotlabs.cathopedia.resources.portrait_ansgar
+import com.ynotlabs.cathopedia.resources.portrait_anne
+import com.ynotlabs.cathopedia.resources.portrait_anselm_of_canterbury
+import com.ynotlabs.cathopedia.resources.portrait_anthony_mary_claret
+import com.ynotlabs.cathopedia.resources.portrait_anthony_the_great
+import com.ynotlabs.cathopedia.resources.portrait_anthony_zaccaria
+import com.ynotlabs.cathopedia.resources.portrait_anuarite_nengapeta
+import com.ynotlabs.cathopedia.resources.portrait_athanasius_of_alexandria
+import com.ynotlabs.cathopedia.resources.portrait_barnabas
+import com.ynotlabs.cathopedia.resources.portrait_basil_the_great
+import com.ynotlabs.cathopedia.resources.portrait_bede_the_venerable
+import com.ynotlabs.cathopedia.resources.portrait_bernadette_soubirous
+import com.ynotlabs.cathopedia.resources.portrait_bernard_of_clairvaux
+import com.ynotlabs.cathopedia.resources.portrait_bernardine_of_siena
+import com.ynotlabs.cathopedia.resources.portrait_blaise
+import com.ynotlabs.cathopedia.resources.portrait_bonaventure
+import com.ynotlabs.cathopedia.resources.portrait_boniface_of_mainz
+import com.ynotlabs.cathopedia.resources.portrait_bridget_of_sweden
+import com.ynotlabs.cathopedia.resources.portrait_brigid_of_ireland
+import com.ynotlabs.cathopedia.resources.portrait_cajetan
+import com.ynotlabs.cathopedia.resources.portrait_camillus_de_lellis
+import com.ynotlabs.cathopedia.resources.portrait_carlo_acutis
+import com.ynotlabs.cathopedia.resources.portrait_casimir_of_poland
+import com.ynotlabs.cathopedia.resources.portrait_catherine_laboure
+import com.ynotlabs.cathopedia.resources.portrait_catherine_of_alexandria
+import com.ynotlabs.cathopedia.resources.portrait_catherine_of_genoa
+import com.ynotlabs.cathopedia.resources.portrait_cecilia
+import com.ynotlabs.cathopedia.resources.portrait_charbel_makhlouf
+import com.ynotlabs.cathopedia.resources.portrait_charles_borromeo
+import com.ynotlabs.cathopedia.resources.portrait_charles_lwanga
+import com.ynotlabs.cathopedia.resources.portrait_christopher
+import com.ynotlabs.cathopedia.resources.portrait_clare_of_montefalco
+import com.ynotlabs.cathopedia.resources.portrait_columba
+import com.ynotlabs.cathopedia.resources.portrait_cosmas
+import com.ynotlabs.cathopedia.resources.portrait_cuthbert
+import com.ynotlabs.cathopedia.resources.portrait_cyprian_of_carthage
+import com.ynotlabs.cathopedia.resources.portrait_cyril_of_jerusalem
+import com.ynotlabs.cathopedia.resources.portrait_damian
+import com.ynotlabs.cathopedia.resources.portrait_damien_of_molokai
+import com.ynotlabs.cathopedia.resources.portrait_daniel_comboni
+import com.ynotlabs.cathopedia.resources.portrait_denis_of_paris
+import com.ynotlabs.cathopedia.resources.portrait_dominic_savio
+import com.ynotlabs.cathopedia.resources.portrait_edith_stein
+import com.ynotlabs.cathopedia.resources.portrait_edmund_campion
+import com.ynotlabs.cathopedia.resources.portrait_elizabeth_of_hungary
+import com.ynotlabs.cathopedia.resources.portrait_elizabeth_of_portugal
+import com.ynotlabs.cathopedia.resources.portrait_elizabeth_of_the_trinity
+import com.ynotlabs.cathopedia.resources.portrait_ephrem_the_syrian
+import com.ynotlabs.cathopedia.resources.portrait_felicity
+import com.ynotlabs.cathopedia.resources.portrait_frances_of_rome
+import com.ynotlabs.cathopedia.resources.portrait_francis_borgia
+import com.ynotlabs.cathopedia.resources.portrait_frances_xavier_cabrini
+import com.ynotlabs.cathopedia.resources.portrait_frei_galvao
+import com.ynotlabs.cathopedia.resources.portrait_gabriel_the_archangel
+import com.ynotlabs.cathopedia.resources.portrait_genevieve_of_paris
+import com.ynotlabs.cathopedia.resources.portrait_gervase
+import com.ynotlabs.cathopedia.resources.portrait_gregory_thaumaturgus
+import com.ynotlabs.cathopedia.resources.portrait_hedwig_of_silesia
+import com.ynotlabs.cathopedia.resources.portrait_devasahayam_pillai
+import com.ynotlabs.cathopedia.resources.portrait_dominic
+import com.ynotlabs.cathopedia.resources.portrait_elizabeth_ann_seton
+import com.ynotlabs.cathopedia.resources.portrait_euphrasia_eluvathingal
+import com.ynotlabs.cathopedia.resources.portrait_faustina_kowalska
+import com.ynotlabs.cathopedia.resources.portrait_francis_de_sales
+import com.ynotlabs.cathopedia.resources.portrait_francis_xavier
+import com.ynotlabs.cathopedia.resources.portrait_gemma_galgani
+import com.ynotlabs.cathopedia.resources.portrait_george
+import com.ynotlabs.cathopedia.resources.portrait_gerard_majella
+import com.ynotlabs.cathopedia.resources.portrait_gianna_beretta_molla
+import com.ynotlabs.cathopedia.resources.portrait_gonsalo_garcia
+import com.ynotlabs.cathopedia.resources.portrait_gregory_of_nazianzus
+import com.ynotlabs.cathopedia.resources.portrait_hilary_of_poitiers
+import com.ynotlabs.cathopedia.resources.portrait_hildegard_of_bingen
+import com.ynotlabs.cathopedia.resources.portrait_hyacinth_of_poland
+import com.ynotlabs.cathopedia.resources.portrait_ignatius_of_antioch
+import com.ynotlabs.cathopedia.resources.portrait_irenaeus_of_lyon
+import com.ynotlabs.cathopedia.resources.portrait_isaac_jogues
+import com.ynotlabs.cathopedia.resources.portrait_isidore_the_farmer
+import com.ynotlabs.cathopedia.resources.portrait_januarius
+import com.ynotlabs.cathopedia.resources.portrait_jerome
+import com.ynotlabs.cathopedia.resources.portrait_joachim
+import com.ynotlabs.cathopedia.resources.portrait_john_bosco
+import com.ynotlabs.cathopedia.resources.portrait_john_chrysostom
+import com.ynotlabs.cathopedia.resources.portrait_john_de_britto
+import com.ynotlabs.cathopedia.resources.portrait_john_neumann
+import com.ynotlabs.cathopedia.resources.portrait_john_of_the_cross
+import com.ynotlabs.cathopedia.resources.portrait_john_ogilvie
+import com.ynotlabs.cathopedia.resources.portrait_john_the_baptist
+import com.ynotlabs.cathopedia.resources.portrait_john_vianney
+import com.ynotlabs.cathopedia.resources.portrait_joseph
+import com.ynotlabs.cathopedia.resources.portrait_joseph_cafasso
+import com.ynotlabs.cathopedia.resources.portrait_joseph_of_cupertino
+import com.ynotlabs.cathopedia.resources.portrait_joseph_vaz
+import com.ynotlabs.cathopedia.resources.portrait_josemaria_escriva
+import com.ynotlabs.cathopedia.resources.portrait_josephine_bakhita
+import com.ynotlabs.cathopedia.resources.portrait_juan_diego
+import com.ynotlabs.cathopedia.resources.portrait_junipero_serra
+import com.ynotlabs.cathopedia.resources.portrait_justin_martyr
+import com.ynotlabs.cathopedia.resources.portrait_katharine_drexel
+import com.ynotlabs.cathopedia.resources.portrait_kateri_tekakwitha
+import com.ynotlabs.cathopedia.resources.portrait_kizito
+import com.ynotlabs.cathopedia.resources.portrait_kuriakose_elias_chavara
+import com.ynotlabs.cathopedia.resources.portrait_lawrence
+import com.ynotlabs.cathopedia.resources.portrait_lawrence_of_brindisi
+import com.ynotlabs.cathopedia.resources.portrait_louis_de_montfort
+import com.ynotlabs.cathopedia.resources.portrait_louis_martin
+import com.ynotlabs.cathopedia.resources.portrait_lucy_of_syracuse
+import com.ynotlabs.cathopedia.resources.portrait_luke_the_evangelist
+import com.ynotlabs.cathopedia.resources.portrait_margaret_clitherow
+import com.ynotlabs.cathopedia.resources.portrait_margaret_mary_alacoque
+import com.ynotlabs.cathopedia.resources.portrait_marguerite_bourgeoys
+import com.ynotlabs.cathopedia.resources.portrait_maria_goretti
+import com.ynotlabs.cathopedia.resources.portrait_mariam_thresia
+import com.ynotlabs.cathopedia.resources.portrait_mark_the_evangelist
+import com.ynotlabs.cathopedia.resources.portrait_martin_de_porres
+import com.ynotlabs.cathopedia.resources.portrait_martin_of_tours
+import com.ynotlabs.cathopedia.resources.portrait_mary_magdalene
+import com.ynotlabs.cathopedia.resources.portrait_maurice
+import com.ynotlabs.cathopedia.resources.portrait_michael_the_archangel
+import com.ynotlabs.cathopedia.resources.portrait_miguel_pro
+import com.ynotlabs.cathopedia.resources.portrait_monica
+import com.ynotlabs.cathopedia.resources.portrait_nicholas_of_flue
+import com.ynotlabs.cathopedia.resources.portrait_nicholas_of_myra
+import com.ynotlabs.cathopedia.resources.portrait_nicholas_of_tolentino
+import com.ynotlabs.cathopedia.resources.portrait_norbert_of_xanten
+import com.ynotlabs.cathopedia.resources.portrait_oliver_plunkett
+import com.ynotlabs.cathopedia.resources.portrait_oscar_romero
+import com.ynotlabs.cathopedia.resources.portrait_pancras
+import com.ynotlabs.cathopedia.resources.portrait_paschal_baylon
+import com.ynotlabs.cathopedia.resources.portrait_paul_miki
+import com.ynotlabs.cathopedia.resources.portrait_peregrine_laziosi
+import com.ynotlabs.cathopedia.resources.portrait_perpetua
+import com.ynotlabs.cathopedia.resources.portrait_peter_canisius
+import com.ynotlabs.cathopedia.resources.portrait_peter_chanel
+import com.ynotlabs.cathopedia.resources.portrait_peter_claver
+import com.ynotlabs.cathopedia.resources.portrait_peter_faber
+import com.ynotlabs.cathopedia.resources.portrait_philip_neri
+import com.ynotlabs.cathopedia.resources.portrait_philomena
+import com.ynotlabs.cathopedia.resources.portrait_pier_giorgio_frassati
+import com.ynotlabs.cathopedia.resources.portrait_polycarp_of_smyrna
+import com.ynotlabs.cathopedia.resources.portrait_protase
+import com.ynotlabs.cathopedia.resources.portrait_raphael_the_archangel
+import com.ynotlabs.cathopedia.resources.portrait_rita_of_cascia
+import com.ynotlabs.cathopedia.resources.portrait_robert_bellarmine
+import com.ynotlabs.cathopedia.resources.portrait_roch
+import com.ynotlabs.cathopedia.resources.portrait_rose_of_viterbo
+import com.ynotlabs.cathopedia.resources.portrait_rose_philippine_duchesne
+import com.ynotlabs.cathopedia.resources.portrait_saturninus_of_toulouse
+import com.ynotlabs.cathopedia.resources.portrait_scholastica
+import com.ynotlabs.cathopedia.resources.portrait_sebastian
+import com.ynotlabs.cathopedia.resources.portrait_simeon_stylites
+import com.ynotlabs.cathopedia.resources.portrait_stanislaus_kostka
+import com.ynotlabs.cathopedia.resources.portrait_stanislaus_of_krakow
+import com.ynotlabs.cathopedia.resources.portrait_stephen
+import com.ynotlabs.cathopedia.resources.portrait_teresa_of_calcutta
+import com.ynotlabs.cathopedia.resources.portrait_teresa_of_the_andes
+import com.ynotlabs.cathopedia.resources.portrait_thomas_becket
+import com.ynotlabs.cathopedia.resources.portrait_thomas_more
+import com.ynotlabs.cathopedia.resources.portrait_titus_brandsma
+import com.ynotlabs.cathopedia.resources.portrait_toribio_de_mogrovejo
+import com.ynotlabs.cathopedia.resources.portrait_valentine_of_rome
+import com.ynotlabs.cathopedia.resources.portrait_veronica_giuliani
+import com.ynotlabs.cathopedia.resources.portrait_vincent_ferrer
+import com.ynotlabs.cathopedia.resources.portrait_vincent_of_saragossa
+import com.ynotlabs.cathopedia.resources.portrait_vincent_pallotti
+import com.ynotlabs.cathopedia.resources.portrait_vitus
+import com.ynotlabs.cathopedia.resources.portrait_walburga
+import com.ynotlabs.cathopedia.resources.portrait_wenceslaus
+import com.ynotlabs.cathopedia.resources.portrait_willibrord
+import com.ynotlabs.cathopedia.resources.portrait_winifred_of_wales
+import com.ynotlabs.cathopedia.resources.portrait_zelie_martin
+import com.ynotlabs.cathopedia.resources.portrait_zita_of_lucca
 import com.ynotlabs.cathopedia.resources.portrait_adeodatus_i
 import com.ynotlabs.cathopedia.resources.portrait_adeodatus_ii
 import com.ynotlabs.cathopedia.resources.portrait_adrian_i
@@ -126,6 +862,190 @@ import com.ynotlabs.cathopedia.resources.portrait_felix_iv
 import com.ynotlabs.cathopedia.resources.portrait_formosus
 import com.ynotlabs.cathopedia.resources.portrait_francis
 import com.ynotlabs.cathopedia.resources.portrait_francis_of_assisi
+import com.ynotlabs.cathopedia.resources.portrait_full_adalbert_of_prague
+import com.ynotlabs.cathopedia.resources.portrait_full_agatha
+import com.ynotlabs.cathopedia.resources.portrait_full_agnes_of_rome
+import com.ynotlabs.cathopedia.resources.portrait_full_albert_the_great
+import com.ynotlabs.cathopedia.resources.portrait_full_alphonsa_of_india
+import com.ynotlabs.cathopedia.resources.portrait_full_aloysius_gonzaga
+import com.ynotlabs.cathopedia.resources.portrait_full_alphonsus_liguori
+import com.ynotlabs.cathopedia.resources.portrait_full_ambrose_of_milan
+import com.ynotlabs.cathopedia.resources.portrait_full_anastasia
+import com.ynotlabs.cathopedia.resources.portrait_full_andre_bessette
+import com.ynotlabs.cathopedia.resources.portrait_full_andrew_kim_taegon
+import com.ynotlabs.cathopedia.resources.portrait_full_angela_merici
+import com.ynotlabs.cathopedia.resources.portrait_full_ansgar
+import com.ynotlabs.cathopedia.resources.portrait_full_anne
+import com.ynotlabs.cathopedia.resources.portrait_full_anselm_of_canterbury
+import com.ynotlabs.cathopedia.resources.portrait_full_anthony_mary_claret
+import com.ynotlabs.cathopedia.resources.portrait_full_anthony_the_great
+import com.ynotlabs.cathopedia.resources.portrait_full_anthony_zaccaria
+import com.ynotlabs.cathopedia.resources.portrait_full_anuarite_nengapeta
+import com.ynotlabs.cathopedia.resources.portrait_full_athanasius_of_alexandria
+import com.ynotlabs.cathopedia.resources.portrait_full_barnabas
+import com.ynotlabs.cathopedia.resources.portrait_full_basil_the_great
+import com.ynotlabs.cathopedia.resources.portrait_full_bede_the_venerable
+import com.ynotlabs.cathopedia.resources.portrait_full_bernadette_soubirous
+import com.ynotlabs.cathopedia.resources.portrait_full_bernard_of_clairvaux
+import com.ynotlabs.cathopedia.resources.portrait_full_bernardine_of_siena
+import com.ynotlabs.cathopedia.resources.portrait_full_blaise
+import com.ynotlabs.cathopedia.resources.portrait_full_bonaventure
+import com.ynotlabs.cathopedia.resources.portrait_full_boniface_of_mainz
+import com.ynotlabs.cathopedia.resources.portrait_full_bridget_of_sweden
+import com.ynotlabs.cathopedia.resources.portrait_full_brigid_of_ireland
+import com.ynotlabs.cathopedia.resources.portrait_full_cajetan
+import com.ynotlabs.cathopedia.resources.portrait_full_camillus_de_lellis
+import com.ynotlabs.cathopedia.resources.portrait_full_carlo_acutis
+import com.ynotlabs.cathopedia.resources.portrait_full_casimir_of_poland
+import com.ynotlabs.cathopedia.resources.portrait_full_catherine_laboure
+import com.ynotlabs.cathopedia.resources.portrait_full_catherine_of_alexandria
+import com.ynotlabs.cathopedia.resources.portrait_full_catherine_of_genoa
+import com.ynotlabs.cathopedia.resources.portrait_full_cecilia
+import com.ynotlabs.cathopedia.resources.portrait_full_charbel_makhlouf
+import com.ynotlabs.cathopedia.resources.portrait_full_charles_borromeo
+import com.ynotlabs.cathopedia.resources.portrait_full_charles_lwanga
+import com.ynotlabs.cathopedia.resources.portrait_full_christopher
+import com.ynotlabs.cathopedia.resources.portrait_full_clare_of_montefalco
+import com.ynotlabs.cathopedia.resources.portrait_full_columba
+import com.ynotlabs.cathopedia.resources.portrait_full_cosmas
+import com.ynotlabs.cathopedia.resources.portrait_full_cuthbert
+import com.ynotlabs.cathopedia.resources.portrait_full_cyprian_of_carthage
+import com.ynotlabs.cathopedia.resources.portrait_full_cyril_of_jerusalem
+import com.ynotlabs.cathopedia.resources.portrait_full_damian
+import com.ynotlabs.cathopedia.resources.portrait_full_damien_of_molokai
+import com.ynotlabs.cathopedia.resources.portrait_full_daniel_comboni
+import com.ynotlabs.cathopedia.resources.portrait_full_denis_of_paris
+import com.ynotlabs.cathopedia.resources.portrait_full_dominic_savio
+import com.ynotlabs.cathopedia.resources.portrait_full_edith_stein
+import com.ynotlabs.cathopedia.resources.portrait_full_edmund_campion
+import com.ynotlabs.cathopedia.resources.portrait_full_elizabeth_of_hungary
+import com.ynotlabs.cathopedia.resources.portrait_full_elizabeth_of_portugal
+import com.ynotlabs.cathopedia.resources.portrait_full_elizabeth_of_the_trinity
+import com.ynotlabs.cathopedia.resources.portrait_full_ephrem_the_syrian
+import com.ynotlabs.cathopedia.resources.portrait_full_felicity
+import com.ynotlabs.cathopedia.resources.portrait_full_frances_of_rome
+import com.ynotlabs.cathopedia.resources.portrait_full_frances_xavier_cabrini
+import com.ynotlabs.cathopedia.resources.portrait_full_francis_borgia
+import com.ynotlabs.cathopedia.resources.portrait_full_frei_galvao
+import com.ynotlabs.cathopedia.resources.portrait_full_gabriel_the_archangel
+import com.ynotlabs.cathopedia.resources.portrait_full_genevieve_of_paris
+import com.ynotlabs.cathopedia.resources.portrait_full_gervase
+import com.ynotlabs.cathopedia.resources.portrait_full_gregory_thaumaturgus
+import com.ynotlabs.cathopedia.resources.portrait_full_hedwig_of_silesia
+import com.ynotlabs.cathopedia.resources.portrait_full_devasahayam_pillai
+import com.ynotlabs.cathopedia.resources.portrait_full_dominic
+import com.ynotlabs.cathopedia.resources.portrait_full_elizabeth_ann_seton
+import com.ynotlabs.cathopedia.resources.portrait_full_euphrasia_eluvathingal
+import com.ynotlabs.cathopedia.resources.portrait_full_faustina_kowalska
+import com.ynotlabs.cathopedia.resources.portrait_full_francis_de_sales
+import com.ynotlabs.cathopedia.resources.portrait_full_francis_xavier
+import com.ynotlabs.cathopedia.resources.portrait_full_gemma_galgani
+import com.ynotlabs.cathopedia.resources.portrait_full_george
+import com.ynotlabs.cathopedia.resources.portrait_full_gerard_majella
+import com.ynotlabs.cathopedia.resources.portrait_full_gianna_beretta_molla
+import com.ynotlabs.cathopedia.resources.portrait_full_gonsalo_garcia
+import com.ynotlabs.cathopedia.resources.portrait_full_gregory_of_nazianzus
+import com.ynotlabs.cathopedia.resources.portrait_full_hilary_of_poitiers
+import com.ynotlabs.cathopedia.resources.portrait_full_hildegard_of_bingen
+import com.ynotlabs.cathopedia.resources.portrait_full_hyacinth_of_poland
+import com.ynotlabs.cathopedia.resources.portrait_full_ignatius_of_antioch
+import com.ynotlabs.cathopedia.resources.portrait_full_irenaeus_of_lyon
+import com.ynotlabs.cathopedia.resources.portrait_full_isaac_jogues
+import com.ynotlabs.cathopedia.resources.portrait_full_isidore_the_farmer
+import com.ynotlabs.cathopedia.resources.portrait_full_januarius
+import com.ynotlabs.cathopedia.resources.portrait_full_jerome
+import com.ynotlabs.cathopedia.resources.portrait_full_joachim
+import com.ynotlabs.cathopedia.resources.portrait_full_john_bosco
+import com.ynotlabs.cathopedia.resources.portrait_full_john_chrysostom
+import com.ynotlabs.cathopedia.resources.portrait_full_john_de_britto
+import com.ynotlabs.cathopedia.resources.portrait_full_john_neumann
+import com.ynotlabs.cathopedia.resources.portrait_full_john_of_the_cross
+import com.ynotlabs.cathopedia.resources.portrait_full_john_ogilvie
+import com.ynotlabs.cathopedia.resources.portrait_full_john_the_baptist
+import com.ynotlabs.cathopedia.resources.portrait_full_john_vianney
+import com.ynotlabs.cathopedia.resources.portrait_full_joseph
+import com.ynotlabs.cathopedia.resources.portrait_full_joseph_cafasso
+import com.ynotlabs.cathopedia.resources.portrait_full_joseph_of_cupertino
+import com.ynotlabs.cathopedia.resources.portrait_full_joseph_vaz
+import com.ynotlabs.cathopedia.resources.portrait_full_josemaria_escriva
+import com.ynotlabs.cathopedia.resources.portrait_full_josephine_bakhita
+import com.ynotlabs.cathopedia.resources.portrait_full_juan_diego
+import com.ynotlabs.cathopedia.resources.portrait_full_junipero_serra
+import com.ynotlabs.cathopedia.resources.portrait_full_justin_martyr
+import com.ynotlabs.cathopedia.resources.portrait_full_katharine_drexel
+import com.ynotlabs.cathopedia.resources.portrait_full_kateri_tekakwitha
+import com.ynotlabs.cathopedia.resources.portrait_full_kizito
+import com.ynotlabs.cathopedia.resources.portrait_full_kuriakose_elias_chavara
+import com.ynotlabs.cathopedia.resources.portrait_full_lawrence
+import com.ynotlabs.cathopedia.resources.portrait_full_lawrence_of_brindisi
+import com.ynotlabs.cathopedia.resources.portrait_full_louis_de_montfort
+import com.ynotlabs.cathopedia.resources.portrait_full_louis_martin
+import com.ynotlabs.cathopedia.resources.portrait_full_lucy_of_syracuse
+import com.ynotlabs.cathopedia.resources.portrait_full_luke_the_evangelist
+import com.ynotlabs.cathopedia.resources.portrait_full_margaret_clitherow
+import com.ynotlabs.cathopedia.resources.portrait_full_margaret_mary_alacoque
+import com.ynotlabs.cathopedia.resources.portrait_full_marguerite_bourgeoys
+import com.ynotlabs.cathopedia.resources.portrait_full_maria_goretti
+import com.ynotlabs.cathopedia.resources.portrait_full_mariam_thresia
+import com.ynotlabs.cathopedia.resources.portrait_full_mark_the_evangelist
+import com.ynotlabs.cathopedia.resources.portrait_full_martin_de_porres
+import com.ynotlabs.cathopedia.resources.portrait_full_martin_of_tours
+import com.ynotlabs.cathopedia.resources.portrait_full_mary_magdalene
+import com.ynotlabs.cathopedia.resources.portrait_full_maurice
+import com.ynotlabs.cathopedia.resources.portrait_full_michael_the_archangel
+import com.ynotlabs.cathopedia.resources.portrait_full_miguel_pro
+import com.ynotlabs.cathopedia.resources.portrait_full_monica
+import com.ynotlabs.cathopedia.resources.portrait_full_nicholas_of_flue
+import com.ynotlabs.cathopedia.resources.portrait_full_nicholas_of_myra
+import com.ynotlabs.cathopedia.resources.portrait_full_nicholas_of_tolentino
+import com.ynotlabs.cathopedia.resources.portrait_full_norbert_of_xanten
+import com.ynotlabs.cathopedia.resources.portrait_full_oliver_plunkett
+import com.ynotlabs.cathopedia.resources.portrait_full_oscar_romero
+import com.ynotlabs.cathopedia.resources.portrait_full_pancras
+import com.ynotlabs.cathopedia.resources.portrait_full_paschal_baylon
+import com.ynotlabs.cathopedia.resources.portrait_full_paul_miki
+import com.ynotlabs.cathopedia.resources.portrait_full_peregrine_laziosi
+import com.ynotlabs.cathopedia.resources.portrait_full_perpetua
+import com.ynotlabs.cathopedia.resources.portrait_full_peter_canisius
+import com.ynotlabs.cathopedia.resources.portrait_full_peter_chanel
+import com.ynotlabs.cathopedia.resources.portrait_full_peter_claver
+import com.ynotlabs.cathopedia.resources.portrait_full_peter_faber
+import com.ynotlabs.cathopedia.resources.portrait_full_philip_neri
+import com.ynotlabs.cathopedia.resources.portrait_full_philomena
+import com.ynotlabs.cathopedia.resources.portrait_full_pier_giorgio_frassati
+import com.ynotlabs.cathopedia.resources.portrait_full_polycarp_of_smyrna
+import com.ynotlabs.cathopedia.resources.portrait_full_protase
+import com.ynotlabs.cathopedia.resources.portrait_full_raphael_the_archangel
+import com.ynotlabs.cathopedia.resources.portrait_full_rita_of_cascia
+import com.ynotlabs.cathopedia.resources.portrait_full_robert_bellarmine
+import com.ynotlabs.cathopedia.resources.portrait_full_roch
+import com.ynotlabs.cathopedia.resources.portrait_full_rose_of_viterbo
+import com.ynotlabs.cathopedia.resources.portrait_full_rose_philippine_duchesne
+import com.ynotlabs.cathopedia.resources.portrait_full_saturninus_of_toulouse
+import com.ynotlabs.cathopedia.resources.portrait_full_scholastica
+import com.ynotlabs.cathopedia.resources.portrait_full_sebastian
+import com.ynotlabs.cathopedia.resources.portrait_full_simeon_stylites
+import com.ynotlabs.cathopedia.resources.portrait_full_stanislaus_kostka
+import com.ynotlabs.cathopedia.resources.portrait_full_stanislaus_of_krakow
+import com.ynotlabs.cathopedia.resources.portrait_full_stephen
+import com.ynotlabs.cathopedia.resources.portrait_full_teresa_of_calcutta
+import com.ynotlabs.cathopedia.resources.portrait_full_teresa_of_the_andes
+import com.ynotlabs.cathopedia.resources.portrait_full_thomas_becket
+import com.ynotlabs.cathopedia.resources.portrait_full_thomas_more
+import com.ynotlabs.cathopedia.resources.portrait_full_titus_brandsma
+import com.ynotlabs.cathopedia.resources.portrait_full_toribio_de_mogrovejo
+import com.ynotlabs.cathopedia.resources.portrait_full_valentine_of_rome
+import com.ynotlabs.cathopedia.resources.portrait_full_veronica_giuliani
+import com.ynotlabs.cathopedia.resources.portrait_full_vincent_ferrer
+import com.ynotlabs.cathopedia.resources.portrait_full_vincent_of_saragossa
+import com.ynotlabs.cathopedia.resources.portrait_full_vincent_pallotti
+import com.ynotlabs.cathopedia.resources.portrait_full_vitus
+import com.ynotlabs.cathopedia.resources.portrait_full_walburga
+import com.ynotlabs.cathopedia.resources.portrait_full_wenceslaus
+import com.ynotlabs.cathopedia.resources.portrait_full_willibrord
+import com.ynotlabs.cathopedia.resources.portrait_full_winifred_of_wales
+import com.ynotlabs.cathopedia.resources.portrait_full_zelie_martin
+import com.ynotlabs.cathopedia.resources.portrait_full_zita_of_lucca
 import com.ynotlabs.cathopedia.resources.portrait_full_adeodatus_i
 import com.ynotlabs.cathopedia.resources.portrait_full_adeodatus_ii
 import com.ynotlabs.cathopedia.resources.portrait_full_adrian_i
@@ -654,9 +1574,6 @@ object Portraits {
         "benedict-xvi" to Res.drawable.portrait_benedict_xvi,
         "francis" to Res.drawable.portrait_francis,
         "leo-xiv" to Res.drawable.portrait_leo_xiv,
-        "maximilian-kolbe" to Res.drawable.portrait_maximilian_kolbe,
-        "padre-pio" to Res.drawable.portrait_padre_pio,
-        "therese-of-lisieux" to Res.drawable.portrait_therese_of_lisieux,
     )
 
     private val photographPortraitsFull: Map<String, DrawableResource> = mapOf(
@@ -673,9 +1590,6 @@ object Portraits {
         "benedict-xvi" to Res.drawable.portrait_full_benedict_xvi,
         "francis" to Res.drawable.portrait_full_francis,
         "leo-xiv" to Res.drawable.portrait_full_leo_xiv,
-        "maximilian-kolbe" to Res.drawable.portrait_full_maximilian_kolbe,
-        "padre-pio" to Res.drawable.portrait_full_padre_pio,
-        "therese-of-lisieux" to Res.drawable.portrait_full_therese_of_lisieux,
     )
 
     // Generated devotional paintings for saints/popes who predate photography.
@@ -947,6 +1861,193 @@ object Portraits {
         "zachary" to Res.drawable.portrait_zachary,
         "zephyrinus" to Res.drawable.portrait_zephyrinus,
         "zosimus" to Res.drawable.portrait_zosimus,
+        "agnes-of-rome" to Res.drawable.portrait_agnes_of_rome,
+        "ambrose-of-milan" to Res.drawable.portrait_ambrose_of_milan,
+        "anthony-the-great" to Res.drawable.portrait_anthony_the_great,
+        "cecilia" to Res.drawable.portrait_cecilia,
+        "george" to Res.drawable.portrait_george,
+        "jerome" to Res.drawable.portrait_jerome,
+        "lucy-of-syracuse" to Res.drawable.portrait_lucy_of_syracuse,
+        "nicholas-of-myra" to Res.drawable.portrait_nicholas_of_myra,
+        "sebastian" to Res.drawable.portrait_sebastian,
+        "dominic" to Res.drawable.portrait_dominic,
+        "monica" to Res.drawable.portrait_monica,
+        "bernard-of-clairvaux" to Res.drawable.portrait_bernard_of_clairvaux,
+        "elizabeth-ann-seton" to Res.drawable.portrait_elizabeth_ann_seton,
+        "kateri-tekakwitha" to Res.drawable.portrait_kateri_tekakwitha,
+        "martin-de-porres" to Res.drawable.portrait_martin_de_porres,
+        "juan-diego" to Res.drawable.portrait_juan_diego,
+        "francis-xavier" to Res.drawable.portrait_francis_xavier,
+        "devasahayam-pillai" to Res.drawable.portrait_devasahayam_pillai,
+        "maximilian-kolbe" to Res.drawable.portrait_maximilian_kolbe,
+        "padre-pio" to Res.drawable.portrait_padre_pio,
+        "therese-of-lisieux" to Res.drawable.portrait_therese_of_lisieux,
+        "bernadette-soubirous" to Res.drawable.portrait_bernadette_soubirous,
+        "john-vianney" to Res.drawable.portrait_john_vianney,
+        "john-bosco" to Res.drawable.portrait_john_bosco,
+        "damien-of-molokai" to Res.drawable.portrait_damien_of_molokai,
+        "anthony-mary-claret" to Res.drawable.portrait_anthony_mary_claret,
+        "josephine-bakhita" to Res.drawable.portrait_josephine_bakhita,
+        "faustina-kowalska" to Res.drawable.portrait_faustina_kowalska,
+        "maria-goretti" to Res.drawable.portrait_maria_goretti,
+        "euphrasia-eluvathingal" to Res.drawable.portrait_euphrasia_eluvathingal,
+        "mariam-thresia" to Res.drawable.portrait_mariam_thresia,
+        "kuriakose-elias-chavara" to Res.drawable.portrait_kuriakose_elias_chavara,
+        "thomas-more" to Res.drawable.portrait_thomas_more,
+        "ignatius-of-antioch" to Res.drawable.portrait_ignatius_of_antioch,
+        "polycarp-of-smyrna" to Res.drawable.portrait_polycarp_of_smyrna,
+        "justin-martyr" to Res.drawable.portrait_justin_martyr,
+        "irenaeus-of-lyon" to Res.drawable.portrait_irenaeus_of_lyon,
+        "athanasius-of-alexandria" to Res.drawable.portrait_athanasius_of_alexandria,
+        "john-chrysostom" to Res.drawable.portrait_john_chrysostom,
+        "basil-the-great" to Res.drawable.portrait_basil_the_great,
+        "gregory-of-nazianzus" to Res.drawable.portrait_gregory_of_nazianzus,
+        "cyril-of-jerusalem" to Res.drawable.portrait_cyril_of_jerusalem,
+        "hilary-of-poitiers" to Res.drawable.portrait_hilary_of_poitiers,
+        "bonaventure" to Res.drawable.portrait_bonaventure,
+        "albert-the-great" to Res.drawable.portrait_albert_the_great,
+        "anselm-of-canterbury" to Res.drawable.portrait_anselm_of_canterbury,
+        "francis-de-sales" to Res.drawable.portrait_francis_de_sales,
+        "alphonsus-liguori" to Res.drawable.portrait_alphonsus_liguori,
+        "louis-de-montfort" to Res.drawable.portrait_louis_de_montfort,
+        "john-of-the-cross" to Res.drawable.portrait_john_of_the_cross,
+        "peter-claver" to Res.drawable.portrait_peter_claver,
+        "isaac-jogues" to Res.drawable.portrait_isaac_jogues,
+        "andrew-kim-taegon" to Res.drawable.portrait_andrew_kim_taegon,
+        "paul-miki" to Res.drawable.portrait_paul_miki,
+        "gonsalo-garcia" to Res.drawable.portrait_gonsalo_garcia,
+        "charles-borromeo" to Res.drawable.portrait_charles_borromeo,
+        "philip-neri" to Res.drawable.portrait_philip_neri,
+        "gemma-galgani" to Res.drawable.portrait_gemma_galgani,
+        "gerard-majella" to Res.drawable.portrait_gerard_majella,
+        "valentine-of-rome" to Res.drawable.portrait_valentine_of_rome,
+        "christopher" to Res.drawable.portrait_christopher,
+        "camillus-de-lellis" to Res.drawable.portrait_camillus_de_lellis,
+        "hildegard-of-bingen" to Res.drawable.portrait_hildegard_of_bingen,
+        "catherine-of-genoa" to Res.drawable.portrait_catherine_of_genoa,
+        "angela-merici" to Res.drawable.portrait_angela_merici,
+        "margaret-mary-alacoque" to Res.drawable.portrait_margaret_mary_alacoque,
+        "bridget-of-sweden" to Res.drawable.portrait_bridget_of_sweden,
+        "frances-of-rome" to Res.drawable.portrait_frances_of_rome,
+        "gianna-beretta-molla" to Res.drawable.portrait_gianna_beretta_molla,
+        "rita-of-cascia" to Res.drawable.portrait_rita_of_cascia,
+        "zita-of-lucca" to Res.drawable.portrait_zita_of_lucca,
+        "toribio-de-mogrovejo" to Res.drawable.portrait_toribio_de_mogrovejo,
+        "junipero-serra" to Res.drawable.portrait_junipero_serra,
+        "rose-philippine-duchesne" to Res.drawable.portrait_rose_philippine_duchesne,
+        "katharine-drexel" to Res.drawable.portrait_katharine_drexel,
+        "frances-xavier-cabrini" to Res.drawable.portrait_frances_xavier_cabrini,
+        "charles-lwanga" to Res.drawable.portrait_charles_lwanga,
+        "joseph-vaz" to Res.drawable.portrait_joseph_vaz,
+        "teresa-of-calcutta" to Res.drawable.portrait_teresa_of_calcutta,
+        "nicholas-of-flue" to Res.drawable.portrait_nicholas_of_flue,
+        "anthony-zaccaria" to Res.drawable.portrait_anthony_zaccaria,
+        "vincent-ferrer" to Res.drawable.portrait_vincent_ferrer,
+        "peter-chanel" to Res.drawable.portrait_peter_chanel,
+        "andre-bessette" to Res.drawable.portrait_andre_bessette,
+        "marguerite-bourgeoys" to Res.drawable.portrait_marguerite_bourgeoys,
+        "john-neumann" to Res.drawable.portrait_john_neumann,
+        "robert-bellarmine" to Res.drawable.portrait_robert_bellarmine,
+        "peter-canisius" to Res.drawable.portrait_peter_canisius,
+        "lawrence-of-brindisi" to Res.drawable.portrait_lawrence_of_brindisi,
+        "ephrem-the-syrian" to Res.drawable.portrait_ephrem_the_syrian,
+        "scholastica" to Res.drawable.portrait_scholastica,
+        "elizabeth-of-hungary" to Res.drawable.portrait_elizabeth_of_hungary,
+        "charbel-makhlouf" to Res.drawable.portrait_charbel_makhlouf,
+        "carlo-acutis" to Res.drawable.portrait_carlo_acutis,
+        "aloysius-gonzaga" to Res.drawable.portrait_aloysius_gonzaga,
+        "stanislaus-kostka" to Res.drawable.portrait_stanislaus_kostka,
+        "joseph-of-cupertino" to Res.drawable.portrait_joseph_of_cupertino,
+        "catherine-laboure" to Res.drawable.portrait_catherine_laboure,
+        "louis-martin" to Res.drawable.portrait_louis_martin,
+        "zelie-martin" to Res.drawable.portrait_zelie_martin,
+        "januarius" to Res.drawable.portrait_januarius,
+        "walburga" to Res.drawable.portrait_walburga,
+        "philomena" to Res.drawable.portrait_philomena,
+        "peregrine-laziosi" to Res.drawable.portrait_peregrine_laziosi,
+        "joseph-cafasso" to Res.drawable.portrait_joseph_cafasso,
+        "clare-of-montefalco" to Res.drawable.portrait_clare_of_montefalco,
+        "veronica-giuliani" to Res.drawable.portrait_veronica_giuliani,
+        "paschal-baylon" to Res.drawable.portrait_paschal_baylon,
+        "nicholas-of-tolentino" to Res.drawable.portrait_nicholas_of_tolentino,
+        "roch" to Res.drawable.portrait_roch,
+        "blaise" to Res.drawable.portrait_blaise,
+        "frei-galvao" to Res.drawable.portrait_frei_galvao,
+        "isidore-the-farmer" to Res.drawable.portrait_isidore_the_farmer,
+        "elizabeth-of-portugal" to Res.drawable.portrait_elizabeth_of_portugal,
+        "genevieve-of-paris" to Res.drawable.portrait_genevieve_of_paris,
+        "hyacinth-of-poland" to Res.drawable.portrait_hyacinth_of_poland,
+        "winifred-of-wales" to Res.drawable.portrait_winifred_of_wales,
+        "cosmas" to Res.drawable.portrait_cosmas,
+        "damian" to Res.drawable.portrait_damian,
+        "simeon-stylites" to Res.drawable.portrait_simeon_stylites,
+        "martin-of-tours" to Res.drawable.portrait_martin_of_tours,
+        "gregory-thaumaturgus" to Res.drawable.portrait_gregory_thaumaturgus,
+        "joseph" to Res.drawable.portrait_joseph,
+        "john-the-baptist" to Res.drawable.portrait_john_the_baptist,
+        "mark-the-evangelist" to Res.drawable.portrait_mark_the_evangelist,
+        "luke-the-evangelist" to Res.drawable.portrait_luke_the_evangelist,
+        "barnabas" to Res.drawable.portrait_barnabas,
+        "stephen" to Res.drawable.portrait_stephen,
+        "lawrence" to Res.drawable.portrait_lawrence,
+        "vincent-of-saragossa" to Res.drawable.portrait_vincent_of_saragossa,
+        "gervase" to Res.drawable.portrait_gervase,
+        "protase" to Res.drawable.portrait_protase,
+        "mary-magdalene" to Res.drawable.portrait_mary_magdalene,
+        "agatha" to Res.drawable.portrait_agatha,
+        "catherine-of-alexandria" to Res.drawable.portrait_catherine_of_alexandria,
+        "anastasia" to Res.drawable.portrait_anastasia,
+        "john-de-britto" to Res.drawable.portrait_john_de_britto,
+        "saturninus-of-toulouse" to Res.drawable.portrait_saturninus_of_toulouse,
+        "perpetua" to Res.drawable.portrait_perpetua,
+        "felicity" to Res.drawable.portrait_felicity,
+        "cyprian-of-carthage" to Res.drawable.portrait_cyprian_of_carthage,
+        "boniface-of-mainz" to Res.drawable.portrait_boniface_of_mainz,
+        "brigid-of-ireland" to Res.drawable.portrait_brigid_of_ireland,
+        "thomas-becket" to Res.drawable.portrait_thomas_becket,
+        "columba" to Res.drawable.portrait_columba,
+        "joachim" to Res.drawable.portrait_joachim,
+        "anne" to Res.drawable.portrait_anne,
+        "pancras" to Res.drawable.portrait_pancras,
+        "denis-of-paris" to Res.drawable.portrait_denis_of_paris,
+        "maurice" to Res.drawable.portrait_maurice,
+        "vitus" to Res.drawable.portrait_vitus,
+        "wenceslaus" to Res.drawable.portrait_wenceslaus,
+        "cajetan" to Res.drawable.portrait_cajetan,
+        "michael-the-archangel" to Res.drawable.portrait_michael_the_archangel,
+        "gabriel-the-archangel" to Res.drawable.portrait_gabriel_the_archangel,
+        "raphael-the-archangel" to Res.drawable.portrait_raphael_the_archangel,
+        "alphonsa-of-india" to Res.drawable.portrait_alphonsa_of_india,
+        "edith-stein" to Res.drawable.portrait_edith_stein,
+        "titus-brandsma" to Res.drawable.portrait_titus_brandsma,
+        "oscar-romero" to Res.drawable.portrait_oscar_romero,
+        "bernardine-of-siena" to Res.drawable.portrait_bernardine_of_siena,
+        "vincent-pallotti" to Res.drawable.portrait_vincent_pallotti,
+        "daniel-comboni" to Res.drawable.portrait_daniel_comboni,
+        "josemaria-escriva" to Res.drawable.portrait_josemaria_escriva,
+        "pier-giorgio-frassati" to Res.drawable.portrait_pier_giorgio_frassati,
+        "dominic-savio" to Res.drawable.portrait_dominic_savio,
+        "teresa-of-the-andes" to Res.drawable.portrait_teresa_of_the_andes,
+        "elizabeth-of-the-trinity" to Res.drawable.portrait_elizabeth_of_the_trinity,
+        "john-ogilvie" to Res.drawable.portrait_john_ogilvie,
+        "oliver-plunkett" to Res.drawable.portrait_oliver_plunkett,
+        "margaret-clitherow" to Res.drawable.portrait_margaret_clitherow,
+        "edmund-campion" to Res.drawable.portrait_edmund_campion,
+        "peter-faber" to Res.drawable.portrait_peter_faber,
+        "francis-borgia" to Res.drawable.portrait_francis_borgia,
+        "casimir-of-poland" to Res.drawable.portrait_casimir_of_poland,
+        "stanislaus-of-krakow" to Res.drawable.portrait_stanislaus_of_krakow,
+        "adalbert-of-prague" to Res.drawable.portrait_adalbert_of_prague,
+        "norbert-of-xanten" to Res.drawable.portrait_norbert_of_xanten,
+        "hedwig-of-silesia" to Res.drawable.portrait_hedwig_of_silesia,
+        "miguel-pro" to Res.drawable.portrait_miguel_pro,
+        "anuarite-nengapeta" to Res.drawable.portrait_anuarite_nengapeta,
+        "kizito" to Res.drawable.portrait_kizito,
+        "rose-of-viterbo" to Res.drawable.portrait_rose_of_viterbo,
+        "cuthbert" to Res.drawable.portrait_cuthbert,
+        "bede-the-venerable" to Res.drawable.portrait_bede_the_venerable,
+        "ansgar" to Res.drawable.portrait_ansgar,
+        "willibrord" to Res.drawable.portrait_willibrord,
     )
 
     private val paintedPortraitsFull: Map<String, DrawableResource> = mapOf(
@@ -1217,17 +2318,791 @@ object Portraits {
         "zachary" to Res.drawable.portrait_full_zachary,
         "zephyrinus" to Res.drawable.portrait_full_zephyrinus,
         "zosimus" to Res.drawable.portrait_full_zosimus,
+        "agnes-of-rome" to Res.drawable.portrait_full_agnes_of_rome,
+        "ambrose-of-milan" to Res.drawable.portrait_full_ambrose_of_milan,
+        "anthony-the-great" to Res.drawable.portrait_full_anthony_the_great,
+        "cecilia" to Res.drawable.portrait_full_cecilia,
+        "george" to Res.drawable.portrait_full_george,
+        "jerome" to Res.drawable.portrait_full_jerome,
+        "lucy-of-syracuse" to Res.drawable.portrait_full_lucy_of_syracuse,
+        "nicholas-of-myra" to Res.drawable.portrait_full_nicholas_of_myra,
+        "sebastian" to Res.drawable.portrait_full_sebastian,
+        "dominic" to Res.drawable.portrait_full_dominic,
+        "monica" to Res.drawable.portrait_full_monica,
+        "bernard-of-clairvaux" to Res.drawable.portrait_full_bernard_of_clairvaux,
+        "elizabeth-ann-seton" to Res.drawable.portrait_full_elizabeth_ann_seton,
+        "kateri-tekakwitha" to Res.drawable.portrait_full_kateri_tekakwitha,
+        "martin-de-porres" to Res.drawable.portrait_full_martin_de_porres,
+        "juan-diego" to Res.drawable.portrait_full_juan_diego,
+        "francis-xavier" to Res.drawable.portrait_full_francis_xavier,
+        "devasahayam-pillai" to Res.drawable.portrait_full_devasahayam_pillai,
+        "maximilian-kolbe" to Res.drawable.portrait_full_maximilian_kolbe,
+        "padre-pio" to Res.drawable.portrait_full_padre_pio,
+        "therese-of-lisieux" to Res.drawable.portrait_full_therese_of_lisieux,
+        "bernadette-soubirous" to Res.drawable.portrait_full_bernadette_soubirous,
+        "john-vianney" to Res.drawable.portrait_full_john_vianney,
+        "john-bosco" to Res.drawable.portrait_full_john_bosco,
+        "damien-of-molokai" to Res.drawable.portrait_full_damien_of_molokai,
+        "anthony-mary-claret" to Res.drawable.portrait_full_anthony_mary_claret,
+        "josephine-bakhita" to Res.drawable.portrait_full_josephine_bakhita,
+        "faustina-kowalska" to Res.drawable.portrait_full_faustina_kowalska,
+        "maria-goretti" to Res.drawable.portrait_full_maria_goretti,
+        "euphrasia-eluvathingal" to Res.drawable.portrait_full_euphrasia_eluvathingal,
+        "mariam-thresia" to Res.drawable.portrait_full_mariam_thresia,
+        "kuriakose-elias-chavara" to Res.drawable.portrait_full_kuriakose_elias_chavara,
+        "thomas-more" to Res.drawable.portrait_full_thomas_more,
+        "ignatius-of-antioch" to Res.drawable.portrait_full_ignatius_of_antioch,
+        "polycarp-of-smyrna" to Res.drawable.portrait_full_polycarp_of_smyrna,
+        "justin-martyr" to Res.drawable.portrait_full_justin_martyr,
+        "irenaeus-of-lyon" to Res.drawable.portrait_full_irenaeus_of_lyon,
+        "athanasius-of-alexandria" to Res.drawable.portrait_full_athanasius_of_alexandria,
+        "john-chrysostom" to Res.drawable.portrait_full_john_chrysostom,
+        "basil-the-great" to Res.drawable.portrait_full_basil_the_great,
+        "gregory-of-nazianzus" to Res.drawable.portrait_full_gregory_of_nazianzus,
+        "cyril-of-jerusalem" to Res.drawable.portrait_full_cyril_of_jerusalem,
+        "hilary-of-poitiers" to Res.drawable.portrait_full_hilary_of_poitiers,
+        "bonaventure" to Res.drawable.portrait_full_bonaventure,
+        "albert-the-great" to Res.drawable.portrait_full_albert_the_great,
+        "anselm-of-canterbury" to Res.drawable.portrait_full_anselm_of_canterbury,
+        "francis-de-sales" to Res.drawable.portrait_full_francis_de_sales,
+        "alphonsus-liguori" to Res.drawable.portrait_full_alphonsus_liguori,
+        "louis-de-montfort" to Res.drawable.portrait_full_louis_de_montfort,
+        "john-of-the-cross" to Res.drawable.portrait_full_john_of_the_cross,
+        "peter-claver" to Res.drawable.portrait_full_peter_claver,
+        "isaac-jogues" to Res.drawable.portrait_full_isaac_jogues,
+        "andrew-kim-taegon" to Res.drawable.portrait_full_andrew_kim_taegon,
+        "paul-miki" to Res.drawable.portrait_full_paul_miki,
+        "gonsalo-garcia" to Res.drawable.portrait_full_gonsalo_garcia,
+        "charles-borromeo" to Res.drawable.portrait_full_charles_borromeo,
+        "philip-neri" to Res.drawable.portrait_full_philip_neri,
+        "gemma-galgani" to Res.drawable.portrait_full_gemma_galgani,
+        "gerard-majella" to Res.drawable.portrait_full_gerard_majella,
+        "valentine-of-rome" to Res.drawable.portrait_full_valentine_of_rome,
+        "christopher" to Res.drawable.portrait_full_christopher,
+        "camillus-de-lellis" to Res.drawable.portrait_full_camillus_de_lellis,
+        "hildegard-of-bingen" to Res.drawable.portrait_full_hildegard_of_bingen,
+        "catherine-of-genoa" to Res.drawable.portrait_full_catherine_of_genoa,
+        "angela-merici" to Res.drawable.portrait_full_angela_merici,
+        "margaret-mary-alacoque" to Res.drawable.portrait_full_margaret_mary_alacoque,
+        "bridget-of-sweden" to Res.drawable.portrait_full_bridget_of_sweden,
+        "frances-of-rome" to Res.drawable.portrait_full_frances_of_rome,
+        "gianna-beretta-molla" to Res.drawable.portrait_full_gianna_beretta_molla,
+        "rita-of-cascia" to Res.drawable.portrait_full_rita_of_cascia,
+        "zita-of-lucca" to Res.drawable.portrait_full_zita_of_lucca,
+        "toribio-de-mogrovejo" to Res.drawable.portrait_full_toribio_de_mogrovejo,
+        "junipero-serra" to Res.drawable.portrait_full_junipero_serra,
+        "rose-philippine-duchesne" to Res.drawable.portrait_full_rose_philippine_duchesne,
+        "katharine-drexel" to Res.drawable.portrait_full_katharine_drexel,
+        "frances-xavier-cabrini" to Res.drawable.portrait_full_frances_xavier_cabrini,
+        "charles-lwanga" to Res.drawable.portrait_full_charles_lwanga,
+        "joseph-vaz" to Res.drawable.portrait_full_joseph_vaz,
+        "teresa-of-calcutta" to Res.drawable.portrait_full_teresa_of_calcutta,
+        "nicholas-of-flue" to Res.drawable.portrait_full_nicholas_of_flue,
+        "anthony-zaccaria" to Res.drawable.portrait_full_anthony_zaccaria,
+        "vincent-ferrer" to Res.drawable.portrait_full_vincent_ferrer,
+        "peter-chanel" to Res.drawable.portrait_full_peter_chanel,
+        "andre-bessette" to Res.drawable.portrait_full_andre_bessette,
+        "marguerite-bourgeoys" to Res.drawable.portrait_full_marguerite_bourgeoys,
+        "john-neumann" to Res.drawable.portrait_full_john_neumann,
+        "robert-bellarmine" to Res.drawable.portrait_full_robert_bellarmine,
+        "peter-canisius" to Res.drawable.portrait_full_peter_canisius,
+        "lawrence-of-brindisi" to Res.drawable.portrait_full_lawrence_of_brindisi,
+        "ephrem-the-syrian" to Res.drawable.portrait_full_ephrem_the_syrian,
+        "scholastica" to Res.drawable.portrait_full_scholastica,
+        "elizabeth-of-hungary" to Res.drawable.portrait_full_elizabeth_of_hungary,
+        "charbel-makhlouf" to Res.drawable.portrait_full_charbel_makhlouf,
+        "carlo-acutis" to Res.drawable.portrait_full_carlo_acutis,
+        "aloysius-gonzaga" to Res.drawable.portrait_full_aloysius_gonzaga,
+        "stanislaus-kostka" to Res.drawable.portrait_full_stanislaus_kostka,
+        "joseph-of-cupertino" to Res.drawable.portrait_full_joseph_of_cupertino,
+        "catherine-laboure" to Res.drawable.portrait_full_catherine_laboure,
+        "louis-martin" to Res.drawable.portrait_full_louis_martin,
+        "zelie-martin" to Res.drawable.portrait_full_zelie_martin,
+        "januarius" to Res.drawable.portrait_full_januarius,
+        "walburga" to Res.drawable.portrait_full_walburga,
+        "philomena" to Res.drawable.portrait_full_philomena,
+        "peregrine-laziosi" to Res.drawable.portrait_full_peregrine_laziosi,
+        "joseph-cafasso" to Res.drawable.portrait_full_joseph_cafasso,
+        "clare-of-montefalco" to Res.drawable.portrait_full_clare_of_montefalco,
+        "veronica-giuliani" to Res.drawable.portrait_full_veronica_giuliani,
+        "paschal-baylon" to Res.drawable.portrait_full_paschal_baylon,
+        "nicholas-of-tolentino" to Res.drawable.portrait_full_nicholas_of_tolentino,
+        "roch" to Res.drawable.portrait_full_roch,
+        "blaise" to Res.drawable.portrait_full_blaise,
+        "frei-galvao" to Res.drawable.portrait_full_frei_galvao,
+        "isidore-the-farmer" to Res.drawable.portrait_full_isidore_the_farmer,
+        "elizabeth-of-portugal" to Res.drawable.portrait_full_elizabeth_of_portugal,
+        "genevieve-of-paris" to Res.drawable.portrait_full_genevieve_of_paris,
+        "hyacinth-of-poland" to Res.drawable.portrait_full_hyacinth_of_poland,
+        "winifred-of-wales" to Res.drawable.portrait_full_winifred_of_wales,
+        "cosmas" to Res.drawable.portrait_full_cosmas,
+        "damian" to Res.drawable.portrait_full_damian,
+        "simeon-stylites" to Res.drawable.portrait_full_simeon_stylites,
+        "martin-of-tours" to Res.drawable.portrait_full_martin_of_tours,
+        "gregory-thaumaturgus" to Res.drawable.portrait_full_gregory_thaumaturgus,
+        "joseph" to Res.drawable.portrait_full_joseph,
+        "john-the-baptist" to Res.drawable.portrait_full_john_the_baptist,
+        "mark-the-evangelist" to Res.drawable.portrait_full_mark_the_evangelist,
+        "luke-the-evangelist" to Res.drawable.portrait_full_luke_the_evangelist,
+        "barnabas" to Res.drawable.portrait_full_barnabas,
+        "stephen" to Res.drawable.portrait_full_stephen,
+        "lawrence" to Res.drawable.portrait_full_lawrence,
+        "vincent-of-saragossa" to Res.drawable.portrait_full_vincent_of_saragossa,
+        "gervase" to Res.drawable.portrait_full_gervase,
+        "protase" to Res.drawable.portrait_full_protase,
+        "mary-magdalene" to Res.drawable.portrait_full_mary_magdalene,
+        "agatha" to Res.drawable.portrait_full_agatha,
+        "catherine-of-alexandria" to Res.drawable.portrait_full_catherine_of_alexandria,
+        "anastasia" to Res.drawable.portrait_full_anastasia,
+        "john-de-britto" to Res.drawable.portrait_full_john_de_britto,
+        "saturninus-of-toulouse" to Res.drawable.portrait_full_saturninus_of_toulouse,
+        "perpetua" to Res.drawable.portrait_full_perpetua,
+        "felicity" to Res.drawable.portrait_full_felicity,
+        "cyprian-of-carthage" to Res.drawable.portrait_full_cyprian_of_carthage,
+        "boniface-of-mainz" to Res.drawable.portrait_full_boniface_of_mainz,
+        "brigid-of-ireland" to Res.drawable.portrait_full_brigid_of_ireland,
+        "thomas-becket" to Res.drawable.portrait_full_thomas_becket,
+        "columba" to Res.drawable.portrait_full_columba,
+        "joachim" to Res.drawable.portrait_full_joachim,
+        "anne" to Res.drawable.portrait_full_anne,
+        "pancras" to Res.drawable.portrait_full_pancras,
+        "denis-of-paris" to Res.drawable.portrait_full_denis_of_paris,
+        "maurice" to Res.drawable.portrait_full_maurice,
+        "vitus" to Res.drawable.portrait_full_vitus,
+        "wenceslaus" to Res.drawable.portrait_full_wenceslaus,
+        "cajetan" to Res.drawable.portrait_full_cajetan,
+        "michael-the-archangel" to Res.drawable.portrait_full_michael_the_archangel,
+        "gabriel-the-archangel" to Res.drawable.portrait_full_gabriel_the_archangel,
+        "raphael-the-archangel" to Res.drawable.portrait_full_raphael_the_archangel,
+        "alphonsa-of-india" to Res.drawable.portrait_full_alphonsa_of_india,
+        "edith-stein" to Res.drawable.portrait_full_edith_stein,
+        "titus-brandsma" to Res.drawable.portrait_full_titus_brandsma,
+        "oscar-romero" to Res.drawable.portrait_full_oscar_romero,
+        "bernardine-of-siena" to Res.drawable.portrait_full_bernardine_of_siena,
+        "vincent-pallotti" to Res.drawable.portrait_full_vincent_pallotti,
+        "daniel-comboni" to Res.drawable.portrait_full_daniel_comboni,
+        "josemaria-escriva" to Res.drawable.portrait_full_josemaria_escriva,
+        "pier-giorgio-frassati" to Res.drawable.portrait_full_pier_giorgio_frassati,
+        "dominic-savio" to Res.drawable.portrait_full_dominic_savio,
+        "teresa-of-the-andes" to Res.drawable.portrait_full_teresa_of_the_andes,
+        "elizabeth-of-the-trinity" to Res.drawable.portrait_full_elizabeth_of_the_trinity,
+        "john-ogilvie" to Res.drawable.portrait_full_john_ogilvie,
+        "oliver-plunkett" to Res.drawable.portrait_full_oliver_plunkett,
+        "margaret-clitherow" to Res.drawable.portrait_full_margaret_clitherow,
+        "edmund-campion" to Res.drawable.portrait_full_edmund_campion,
+        "peter-faber" to Res.drawable.portrait_full_peter_faber,
+        "francis-borgia" to Res.drawable.portrait_full_francis_borgia,
+        "casimir-of-poland" to Res.drawable.portrait_full_casimir_of_poland,
+        "stanislaus-of-krakow" to Res.drawable.portrait_full_stanislaus_of_krakow,
+        "adalbert-of-prague" to Res.drawable.portrait_full_adalbert_of_prague,
+        "norbert-of-xanten" to Res.drawable.portrait_full_norbert_of_xanten,
+        "hedwig-of-silesia" to Res.drawable.portrait_full_hedwig_of_silesia,
+        "miguel-pro" to Res.drawable.portrait_full_miguel_pro,
+        "anuarite-nengapeta" to Res.drawable.portrait_full_anuarite_nengapeta,
+        "kizito" to Res.drawable.portrait_full_kizito,
+        "rose-of-viterbo" to Res.drawable.portrait_full_rose_of_viterbo,
+        "cuthbert" to Res.drawable.portrait_full_cuthbert,
+        "bede-the-venerable" to Res.drawable.portrait_full_bede_the_venerable,
+        "ansgar" to Res.drawable.portrait_full_ansgar,
+        "willibrord" to Res.drawable.portrait_full_willibrord,
+    )
+
+    // Devotional scene paintings for Marian apparitions — Mary and visionary(s) at the reported site.
+    private val churchPortraits: Map<String, DrawableResource> = mapOf(
+        "aglona-basilica" to Res.drawable.church_aglona_basilica,
+        "annunciation-basilica-nazareth" to Res.drawable.church_annunciation_basilica_nazareth,
+        "antipolo-cathedral" to Res.drawable.church_antipolo_cathedral,
+        "aparecida-basilica" to Res.drawable.church_aparecida_basilica,
+        "basilica-holy-redeemer-tiruchirapalli" to Res.drawable.church_basilica_holy_redeemer_tiruchirapalli,
+        "basilica-our-lady-guadalupe" to Res.drawable.church_basilica_our_lady_guadalupe,
+        "bom-jesus-basilica-goa" to Res.drawable.church_bom_jesus_basilica_goa,
+        "chartres-cathedral" to Res.drawable.church_chartres_cathedral,
+        "chiquinquira-basilica" to Res.drawable.church_chiquinquira_basilica,
+        "copacabana-basilica-bolivia" to Res.drawable.church_copacabana_basilica_bolivia,
+        "divine-mercy-basilica-krakow" to Res.drawable.church_divine_mercy_basilica_krakow,
+        "einsiedeln-basilica" to Res.drawable.church_einsiedeln_basilica,
+        "el-cobre-basilica-cuba" to Res.drawable.church_el_cobre_basilica_cuba,
+        "fatima-basilica" to Res.drawable.church_fatima_basilica,
+        "gora-swietej-anny-basilica" to Res.drawable.church_gora_swietej_anny_basilica,
+        "haemi-martyrs-shrine" to Res.drawable.church_haemi_martyrs_shrine,
+        "holy-blood-basilica-bruges" to Res.drawable.church_holy_blood_basilica_bruges,
+        "holy-sepulchre-basilica" to Res.drawable.church_holy_sepulchre_basilica,
+        "jasna-gora-basilica" to Res.drawable.church_jasna_gora_basilica,
+        "jeoldusan-martyrs-shrine" to Res.drawable.church_jeoldusan_martyrs_shrine,
+        "kevelaer-basilica" to Res.drawable.church_kevelaer_basilica,
+        "knock-basilica" to Res.drawable.church_knock_basilica,
+        "la-vang-basilica" to Res.drawable.church_la_vang_basilica,
+        "loreto-basilica" to Res.drawable.church_loreto_basilica,
+        "lourdes-basilica" to Res.drawable.church_lourdes_basilica,
+        "lujan-basilica" to Res.drawable.church_lujan_basilica,
+        "mariazell-basilica" to Res.drawable.church_mariazell_basilica,
+        "national-shrine-immaculate-conception-dc" to Res.drawable.church_national_shrine_immaculate_conception_dc,
+        "notre-dame-de-paris" to Res.drawable.church_notre_dame_de_paris,
+        "notre-dame-de-quebec-basilica" to Res.drawable.church_notre_dame_de_quebec_basilica,
+        "our-lady-of-assumption-basilica-kamanayakkanpatti" to Res.drawable.church_our_lady_of_assumption_basilica_kamanayakkanpatti,
+        "our-lady-of-lourdes-basilica-poondi" to Res.drawable.church_our_lady_of_lourdes_basilica_poondi,
+        "our-lady-of-nativity-basilica-mulagumoodu" to Res.drawable.church_our_lady_of_nativity_basilica_mulagumoodu,
+        "our-lady-of-peace-basilica-yamoussoukro" to Res.drawable.church_our_lady_of_peace_basilica_yamoussoukro,
+        "our-lady-of-pillar-basilica-zaragoza" to Res.drawable.church_our_lady_of_pillar_basilica_zaragoza,
+        "our-lady-of-snows-basilica-thoothukudi" to Res.drawable.church_our_lady_of_snows_basilica_thoothukudi,
+        "padre-pio-shrine-batangas" to Res.drawable.church_padre_pio_shrine_batangas,
+        "pompei-basilica" to Res.drawable.church_pompei_basilica,
+        "porziuncola-basilica-assisi" to Res.drawable.church_porziuncola_basilica_assisi,
+        "sacre-coeur" to Res.drawable.church_sacre_coeur,
+        "sacred-heart-basilica-koekelberg" to Res.drawable.church_sacred_heart_basilica_koekelberg,
+        "sagrada-familia" to Res.drawable.church_sagrada_familia,
+        "san-francesco-assisi" to Res.drawable.church_san_francesco_assisi,
+        "san-thome-basilica-chennai" to Res.drawable.church_san_thome_basilica_chennai,
+        "santa-croce-basilica-florence" to Res.drawable.church_santa_croce_basilica_florence,
+        "santiago-de-compostela" to Res.drawable.church_santiago_de_compostela,
+        "st-andrews-basilica-arthunkal" to Res.drawable.church_st_andrews_basilica_arthunkal,
+        "st-anthony-basilica-padua" to Res.drawable.church_st_anthony_basilica_padua,
+        "st-john-lateran" to Res.drawable.church_st_john_lateran,
+        "st-marks-basilica-venice" to Res.drawable.church_st_marks_basilica_venice,
+        "st-mary-major" to Res.drawable.church_st_mary_major,
+        "st-paul-outside-the-walls" to Res.drawable.church_st_paul_outside_the_walls,
+        "st-peters-basilica" to Res.drawable.church_st_peters_basilica,
+        "st-sernin-basilica-toulouse" to Res.drawable.church_st_sernin_basilica_toulouse,
+        "st-thomas-shrine-malayattoor" to Res.drawable.church_st_thomas_shrine_malayattoor,
+        "superga-basilica-turin" to Res.drawable.church_superga_basilica_turin,
+        "trzebnica-basilica" to Res.drawable.church_trzebnica_basilica,
+        "velankanni-basilica" to Res.drawable.church_velankanni_basilica,
+        "vezelay-basilica" to Res.drawable.church_vezelay_basilica,
+        "annai-velankanni-basilica-besant-nagar" to Res.drawable.church_annai_velankanni_basilica_besant_nagar,
+        "elele-international-shrine" to Res.drawable.church_elele_international_shrine,
+        "our-lady-of-holy-rosary-basilica-karumathampatti" to Res.drawable.church_our_lady_of_holy_rosary_basilica_karumathampatti,
+        "st-john-de-britto-basilica-oriyur" to Res.drawable.church_st_john_de_britto_basilica_oriyur,
+        "st-thomas-mount-basilica-chennai" to Res.drawable.church_st_thomas_mount_basilica_chennai,
+        "stary-wielislaw-basilica" to Res.drawable.church_stary_wielislaw_basilica,
+    )
+
+    private val churchPortraitsFull: Map<String, DrawableResource> = mapOf(
+        "aglona-basilica" to Res.drawable.church_full_aglona_basilica,
+        "annunciation-basilica-nazareth" to Res.drawable.church_full_annunciation_basilica_nazareth,
+        "antipolo-cathedral" to Res.drawable.church_full_antipolo_cathedral,
+        "aparecida-basilica" to Res.drawable.church_full_aparecida_basilica,
+        "basilica-holy-redeemer-tiruchirapalli" to Res.drawable.church_full_basilica_holy_redeemer_tiruchirapalli,
+        "basilica-our-lady-guadalupe" to Res.drawable.church_full_basilica_our_lady_guadalupe,
+        "bom-jesus-basilica-goa" to Res.drawable.church_full_bom_jesus_basilica_goa,
+        "chartres-cathedral" to Res.drawable.church_full_chartres_cathedral,
+        "chiquinquira-basilica" to Res.drawable.church_full_chiquinquira_basilica,
+        "copacabana-basilica-bolivia" to Res.drawable.church_full_copacabana_basilica_bolivia,
+        "divine-mercy-basilica-krakow" to Res.drawable.church_full_divine_mercy_basilica_krakow,
+        "einsiedeln-basilica" to Res.drawable.church_full_einsiedeln_basilica,
+        "el-cobre-basilica-cuba" to Res.drawable.church_full_el_cobre_basilica_cuba,
+        "fatima-basilica" to Res.drawable.church_full_fatima_basilica,
+        "gora-swietej-anny-basilica" to Res.drawable.church_full_gora_swietej_anny_basilica,
+        "haemi-martyrs-shrine" to Res.drawable.church_full_haemi_martyrs_shrine,
+        "holy-blood-basilica-bruges" to Res.drawable.church_full_holy_blood_basilica_bruges,
+        "holy-sepulchre-basilica" to Res.drawable.church_full_holy_sepulchre_basilica,
+        "jasna-gora-basilica" to Res.drawable.church_full_jasna_gora_basilica,
+        "jeoldusan-martyrs-shrine" to Res.drawable.church_full_jeoldusan_martyrs_shrine,
+        "kevelaer-basilica" to Res.drawable.church_full_kevelaer_basilica,
+        "knock-basilica" to Res.drawable.church_full_knock_basilica,
+        "la-vang-basilica" to Res.drawable.church_full_la_vang_basilica,
+        "loreto-basilica" to Res.drawable.church_full_loreto_basilica,
+        "lourdes-basilica" to Res.drawable.church_full_lourdes_basilica,
+        "lujan-basilica" to Res.drawable.church_full_lujan_basilica,
+        "mariazell-basilica" to Res.drawable.church_full_mariazell_basilica,
+        "national-shrine-immaculate-conception-dc" to Res.drawable.church_full_national_shrine_immaculate_conception_dc,
+        "notre-dame-de-paris" to Res.drawable.church_full_notre_dame_de_paris,
+        "notre-dame-de-quebec-basilica" to Res.drawable.church_full_notre_dame_de_quebec_basilica,
+        "our-lady-of-assumption-basilica-kamanayakkanpatti" to Res.drawable.church_full_our_lady_of_assumption_basilica_kamanayakkanpatti,
+        "our-lady-of-lourdes-basilica-poondi" to Res.drawable.church_full_our_lady_of_lourdes_basilica_poondi,
+        "our-lady-of-nativity-basilica-mulagumoodu" to Res.drawable.church_full_our_lady_of_nativity_basilica_mulagumoodu,
+        "our-lady-of-peace-basilica-yamoussoukro" to Res.drawable.church_full_our_lady_of_peace_basilica_yamoussoukro,
+        "our-lady-of-pillar-basilica-zaragoza" to Res.drawable.church_full_our_lady_of_pillar_basilica_zaragoza,
+        "our-lady-of-snows-basilica-thoothukudi" to Res.drawable.church_full_our_lady_of_snows_basilica_thoothukudi,
+        "padre-pio-shrine-batangas" to Res.drawable.church_full_padre_pio_shrine_batangas,
+        "pompei-basilica" to Res.drawable.church_full_pompei_basilica,
+        "porziuncola-basilica-assisi" to Res.drawable.church_full_porziuncola_basilica_assisi,
+        "sacre-coeur" to Res.drawable.church_full_sacre_coeur,
+        "sacred-heart-basilica-koekelberg" to Res.drawable.church_full_sacred_heart_basilica_koekelberg,
+        "sagrada-familia" to Res.drawable.church_full_sagrada_familia,
+        "san-francesco-assisi" to Res.drawable.church_full_san_francesco_assisi,
+        "san-thome-basilica-chennai" to Res.drawable.church_full_san_thome_basilica_chennai,
+        "santa-croce-basilica-florence" to Res.drawable.church_full_santa_croce_basilica_florence,
+        "santiago-de-compostela" to Res.drawable.church_full_santiago_de_compostela,
+        "st-andrews-basilica-arthunkal" to Res.drawable.church_full_st_andrews_basilica_arthunkal,
+        "st-anthony-basilica-padua" to Res.drawable.church_full_st_anthony_basilica_padua,
+        "st-john-lateran" to Res.drawable.church_full_st_john_lateran,
+        "st-marks-basilica-venice" to Res.drawable.church_full_st_marks_basilica_venice,
+        "st-mary-major" to Res.drawable.church_full_st_mary_major,
+        "st-paul-outside-the-walls" to Res.drawable.church_full_st_paul_outside_the_walls,
+        "st-peters-basilica" to Res.drawable.church_full_st_peters_basilica,
+        "st-sernin-basilica-toulouse" to Res.drawable.church_full_st_sernin_basilica_toulouse,
+        "st-thomas-shrine-malayattoor" to Res.drawable.church_full_st_thomas_shrine_malayattoor,
+        "superga-basilica-turin" to Res.drawable.church_full_superga_basilica_turin,
+        "trzebnica-basilica" to Res.drawable.church_full_trzebnica_basilica,
+        "velankanni-basilica" to Res.drawable.church_full_velankanni_basilica,
+        "vezelay-basilica" to Res.drawable.church_full_vezelay_basilica,
+        "annai-velankanni-basilica-besant-nagar" to Res.drawable.church_full_annai_velankanni_basilica_besant_nagar,
+        "elele-international-shrine" to Res.drawable.church_full_elele_international_shrine,
+        "our-lady-of-holy-rosary-basilica-karumathampatti" to Res.drawable.church_full_our_lady_of_holy_rosary_basilica_karumathampatti,
+        "st-john-de-britto-basilica-oriyur" to Res.drawable.church_full_st_john_de_britto_basilica_oriyur,
+        "st-thomas-mount-basilica-chennai" to Res.drawable.church_full_st_thomas_mount_basilica_chennai,
+        "stary-wielislaw-basilica" to Res.drawable.church_full_stary_wielislaw_basilica,
+    )
+
+    private val apparitionScenes: Map<String, DrawableResource> = mapOf(
+        "lourdes" to Res.drawable.apparition_lourdes,
+        "our-lady-of-akita" to Res.drawable.apparition_our_lady_of_akita,
+        "our-lady-of-fatima" to Res.drawable.apparition_our_lady_of_fatima,
+        "our-lady-of-guadalupe" to Res.drawable.apparition_our_lady_of_guadalupe,
+        "our-lady-of-knock" to Res.drawable.apparition_our_lady_of_knock,
+        "our-lady-of-la-salette" to Res.drawable.apparition_our_lady_of_la_salette,
+        "rue-du-bac" to Res.drawable.apparition_rue_du_bac,
+        "pontmain" to Res.drawable.apparition_pontmain,
+        "beauraing" to Res.drawable.apparition_beauraing,
+        "banneux" to Res.drawable.apparition_banneux,
+        "our-lady-of-good-success" to Res.drawable.apparition_our_lady_of_good_success,
+        "our-lady-of-laus" to Res.drawable.apparition_our_lady_of_laus,
+        "betania" to Res.drawable.apparition_betania,
+        "kibeho" to Res.drawable.apparition_kibeho,
+        "san-nicolas" to Res.drawable.apparition_san_nicolas,
+        "our-lady-of-good-help" to Res.drawable.apparition_our_lady_of_good_help,
+        "our-lady-of-siluva" to Res.drawable.apparition_our_lady_of_siluva,
+        "our-lady-of-aparecida" to Res.drawable.apparition_our_lady_of_aparecida,
+        "zeitoun" to Res.drawable.apparition_zeitoun,
+        "medjugorje" to Res.drawable.apparition_medjugorje,
+        "velankanni" to Res.drawable.apparition_velankanni,
+        "pellevoisin" to Res.drawable.apparition_pellevoisin,
+        "our-lady-of-the-rock" to Res.drawable.apparition_our_lady_of_the_rock,
+        "mount-zvir" to Res.drawable.apparition_mount_zvir,
+        "cuapa" to Res.drawable.apparition_cuapa,
+    )
+
+    private val apparitionScenesFull: Map<String, DrawableResource> = mapOf(
+        "lourdes" to Res.drawable.apparition_full_lourdes,
+        "our-lady-of-akita" to Res.drawable.apparition_full_our_lady_of_akita,
+        "our-lady-of-fatima" to Res.drawable.apparition_full_our_lady_of_fatima,
+        "our-lady-of-guadalupe" to Res.drawable.apparition_full_our_lady_of_guadalupe,
+        "our-lady-of-knock" to Res.drawable.apparition_full_our_lady_of_knock,
+        "our-lady-of-la-salette" to Res.drawable.apparition_full_our_lady_of_la_salette,
+        "rue-du-bac" to Res.drawable.apparition_full_rue_du_bac,
+        "pontmain" to Res.drawable.apparition_full_pontmain,
+        "beauraing" to Res.drawable.apparition_full_beauraing,
+        "banneux" to Res.drawable.apparition_full_banneux,
+        "our-lady-of-good-success" to Res.drawable.apparition_full_our_lady_of_good_success,
+        "our-lady-of-laus" to Res.drawable.apparition_full_our_lady_of_laus,
+        "betania" to Res.drawable.apparition_full_betania,
+        "kibeho" to Res.drawable.apparition_full_kibeho,
+        "san-nicolas" to Res.drawable.apparition_full_san_nicolas,
+        "our-lady-of-good-help" to Res.drawable.apparition_full_our_lady_of_good_help,
+        "our-lady-of-siluva" to Res.drawable.apparition_full_our_lady_of_siluva,
+        "our-lady-of-aparecida" to Res.drawable.apparition_full_our_lady_of_aparecida,
+        "zeitoun" to Res.drawable.apparition_full_zeitoun,
+        "medjugorje" to Res.drawable.apparition_full_medjugorje,
+        "velankanni" to Res.drawable.apparition_full_velankanni,
+        "pellevoisin" to Res.drawable.apparition_full_pellevoisin,
+        "our-lady-of-the-rock" to Res.drawable.apparition_full_our_lady_of_the_rock,
+        "mount-zvir" to Res.drawable.apparition_full_mount_zvir,
+        "cuapa" to Res.drawable.apparition_full_cuapa,
+    )
+
+    // Devotional scene paintings for feasts — the biblical/liturgical event itself.
+    private val feastScenes: Map<String, DrawableResource> = mapOf(
+        "mary-mother-of-god" to Res.drawable.feast_mary_mother_of_god,
+        "epiphany" to Res.drawable.feast_epiphany,
+        "joseph-spouse-of-mary" to Res.drawable.feast_joseph_spouse_of_mary,
+        "annunciation" to Res.drawable.feast_annunciation,
+        "nativity-of-john-the-baptist" to Res.drawable.feast_nativity_of_john_the_baptist,
+        "sts-peter-and-paul" to Res.drawable.feast_sts_peter_and_paul,
+        "assumption-of-mary" to Res.drawable.feast_assumption_of_mary,
+        "all-saints" to Res.drawable.feast_all_saints,
+        "immaculate-conception" to Res.drawable.feast_immaculate_conception,
+        "christmas" to Res.drawable.feast_christmas,
+        "easter" to Res.drawable.feast_easter,
+        "ascension" to Res.drawable.feast_ascension,
+        "pentecost" to Res.drawable.feast_pentecost,
+        "trinity-sunday" to Res.drawable.feast_trinity_sunday,
+        "corpus-christi" to Res.drawable.feast_corpus_christi,
+        "christ-the-king" to Res.drawable.feast_christ_the_king,
+        "sacred-heart" to Res.drawable.feast_sacred_heart,
+        "all-souls" to Res.drawable.feast_all_souls,
+        "presentation-of-the-lord" to Res.drawable.feast_presentation_of_the_lord,
+        "conversion-of-saint-paul" to Res.drawable.feast_conversion_of_saint_paul,
+        "chair-of-saint-peter" to Res.drawable.feast_chair_of_saint_peter,
+        "mark-the-evangelist" to Res.drawable.feast_mark_the_evangelist,
+        "philip-and-james" to Res.drawable.feast_philip_and_james,
+        "matthias" to Res.drawable.feast_matthias,
+        "visitation" to Res.drawable.feast_visitation,
+        "thomas-the-apostle" to Res.drawable.feast_thomas_the_apostle,
+        "mary-magdalene" to Res.drawable.feast_mary_magdalene,
+        "james-the-greater" to Res.drawable.feast_james_the_greater,
+        "transfiguration" to Res.drawable.feast_transfiguration,
+        "lawrence" to Res.drawable.feast_lawrence,
+        "bartholomew" to Res.drawable.feast_bartholomew,
+        "nativity-of-mary" to Res.drawable.feast_nativity_of_mary,
+        "exaltation-of-the-holy-cross" to Res.drawable.feast_exaltation_of_the_holy_cross,
+        "matthew" to Res.drawable.feast_matthew,
+        "archangels" to Res.drawable.feast_archangels,
+        "luke-the-evangelist" to Res.drawable.feast_luke_the_evangelist,
+        "simon-and-jude" to Res.drawable.feast_simon_and_jude,
+        "dedication-of-the-lateran-basilica" to Res.drawable.feast_dedication_of_the_lateran_basilica,
+        "dedication-of-sts-peter-and-paul-basilicas" to Res.drawable.feast_dedication_of_sts_peter_and_paul_basilicas,
+        "andrew" to Res.drawable.feast_andrew,
+        "holy-family" to Res.drawable.feast_holy_family,
+        "baptism-of-the-lord" to Res.drawable.feast_baptism_of_the_lord,
+        "stephen" to Res.drawable.feast_stephen,
+        "john" to Res.drawable.feast_john,
+        "holy-innocents" to Res.drawable.feast_holy_innocents,
+    )
+
+    private val feastScenesFull: Map<String, DrawableResource> = mapOf(
+        "mary-mother-of-god" to Res.drawable.feast_full_mary_mother_of_god,
+        "epiphany" to Res.drawable.feast_full_epiphany,
+        "joseph-spouse-of-mary" to Res.drawable.feast_full_joseph_spouse_of_mary,
+        "annunciation" to Res.drawable.feast_full_annunciation,
+        "nativity-of-john-the-baptist" to Res.drawable.feast_full_nativity_of_john_the_baptist,
+        "sts-peter-and-paul" to Res.drawable.feast_full_sts_peter_and_paul,
+        "assumption-of-mary" to Res.drawable.feast_full_assumption_of_mary,
+        "all-saints" to Res.drawable.feast_full_all_saints,
+        "immaculate-conception" to Res.drawable.feast_full_immaculate_conception,
+        "christmas" to Res.drawable.feast_full_christmas,
+        "easter" to Res.drawable.feast_full_easter,
+        "ascension" to Res.drawable.feast_full_ascension,
+        "pentecost" to Res.drawable.feast_full_pentecost,
+        "trinity-sunday" to Res.drawable.feast_full_trinity_sunday,
+        "corpus-christi" to Res.drawable.feast_full_corpus_christi,
+        "christ-the-king" to Res.drawable.feast_full_christ_the_king,
+        "sacred-heart" to Res.drawable.feast_full_sacred_heart,
+        "all-souls" to Res.drawable.feast_full_all_souls,
+        "presentation-of-the-lord" to Res.drawable.feast_full_presentation_of_the_lord,
+        "conversion-of-saint-paul" to Res.drawable.feast_full_conversion_of_saint_paul,
+        "chair-of-saint-peter" to Res.drawable.feast_full_chair_of_saint_peter,
+        "mark-the-evangelist" to Res.drawable.feast_full_mark_the_evangelist,
+        "philip-and-james" to Res.drawable.feast_full_philip_and_james,
+        "matthias" to Res.drawable.feast_full_matthias,
+        "visitation" to Res.drawable.feast_full_visitation,
+        "thomas-the-apostle" to Res.drawable.feast_full_thomas_the_apostle,
+        "mary-magdalene" to Res.drawable.feast_full_mary_magdalene,
+        "james-the-greater" to Res.drawable.feast_full_james_the_greater,
+        "transfiguration" to Res.drawable.feast_full_transfiguration,
+        "lawrence" to Res.drawable.feast_full_lawrence,
+        "bartholomew" to Res.drawable.feast_full_bartholomew,
+        "nativity-of-mary" to Res.drawable.feast_full_nativity_of_mary,
+        "exaltation-of-the-holy-cross" to Res.drawable.feast_full_exaltation_of_the_holy_cross,
+        "matthew" to Res.drawable.feast_full_matthew,
+        "archangels" to Res.drawable.feast_full_archangels,
+        "luke-the-evangelist" to Res.drawable.feast_full_luke_the_evangelist,
+        "simon-and-jude" to Res.drawable.feast_full_simon_and_jude,
+        "dedication-of-the-lateran-basilica" to Res.drawable.feast_full_dedication_of_the_lateran_basilica,
+        "dedication-of-sts-peter-and-paul-basilicas" to Res.drawable.feast_full_dedication_of_sts_peter_and_paul_basilicas,
+        "andrew" to Res.drawable.feast_full_andrew,
+        "holy-family" to Res.drawable.feast_full_holy_family,
+        "baptism-of-the-lord" to Res.drawable.feast_full_baptism_of_the_lord,
+        "stephen" to Res.drawable.feast_full_stephen,
+        "john" to Res.drawable.feast_full_john,
+        "holy-innocents" to Res.drawable.feast_full_holy_innocents,
+    )
+
+    // Devotional scene paintings for Eucharistic miracles — the reported event itself.
+    private val miracleScenes: Map<String, DrawableResource> = mapOf(
+        "alatri" to Res.drawable.miracle_alatri,
+        "alboraya-almacera" to Res.drawable.miracle_alboraya_almacera,
+        "alcala-de-henares" to Res.drawable.miracle_alcala_de_henares,
+        "alcoy" to Res.drawable.miracle_alcoy,
+        "alkmaar" to Res.drawable.miracle_alkmaar,
+        "amsterdam" to Res.drawable.miracle_amsterdam,
+        "assisi-clare" to Res.drawable.miracle_assisi_clare,
+        "asti" to Res.drawable.miracle_asti,
+        "augsburg" to Res.drawable.miracle_augsburg,
+        "avignon" to Res.drawable.miracle_avignon,
+        "bagno-di-romagna" to Res.drawable.miracle_bagno_di_romagna,
+        "balasar" to Res.drawable.miracle_balasar,
+        "benningen" to Res.drawable.miracle_benningen,
+        "bergen-op-zoom" to Res.drawable.miracle_bergen_op_zoom,
+        "betania" to Res.drawable.miracle_betania,
+        "bettbrunn" to Res.drawable.miracle_bettbrunn,
+        "blanot" to Res.drawable.miracle_blanot,
+        "bois-dhaine" to Res.drawable.miracle_bois_dhaine,
+        "bois-seigneur-isaac" to Res.drawable.miracle_bois_seigneur_isaac,
+        "bologna-imelda" to Res.drawable.miracle_bologna_imelda,
+        "bordeaux" to Res.drawable.miracle_bordeaux,
+        "boxmeer" to Res.drawable.miracle_boxmeer,
+        "boxtel-hoogstraten" to Res.drawable.miracle_boxtel_hoogstraten,
+        "breda-niervaart" to Res.drawable.miracle_breda_niervaart,
+        "bruges" to Res.drawable.miracle_bruges,
+        "calanda" to Res.drawable.miracle_calanda,
+        "canosio" to Res.drawable.miracle_canosio,
+        "caravaca-de-la-cruz" to Res.drawable.miracle_caravaca_de_la_cruz,
+        "carmelite-siena" to Res.drawable.miracle_carmelite_siena,
+        "cascia" to Res.drawable.miracle_cascia,
+        "cava-dei-tirreni" to Res.drawable.miracle_cava_dei_tirreni,
+        "champion-wisconsin" to Res.drawable.miracle_champion_wisconsin,
+        "chateauneuf-de-galaure" to Res.drawable.miracle_chateauneuf_de_galaure,
+        "chiaravalle-bernard" to Res.drawable.miracle_chiaravalle_bernard,
+        "chirattakonam" to Res.drawable.miracle_chirattakonam,
+        "cimballa" to Res.drawable.miracle_cimballa,
+        "daroca" to Res.drawable.miracle_daroca,
+        "dijon" to Res.drawable.miracle_dijon,
+        "douai" to Res.drawable.miracle_douai,
+        "dronero" to Res.drawable.miracle_dronero,
+        "dulmen" to Res.drawable.miracle_dulmen,
+        "erding" to Res.drawable.miracle_erding,
+        "eten" to Res.drawable.miracle_eten,
+        "ettiswil" to Res.drawable.miracle_ettiswil,
+        "eucharistic-miracle-buenos-aires" to Res.drawable.miracle_eucharistic_miracle_buenos_aires,
+        "fatima-angel" to Res.drawable.miracle_fatima_angel,
+        "faverney" to Res.drawable.miracle_faverney,
+        "ferrara" to Res.drawable.miracle_ferrara,
+        "fiecht" to Res.drawable.miracle_fiecht,
+        "florence" to Res.drawable.miracle_florence,
+        "foligno-angela" to Res.drawable.miracle_foligno_angela,
+        "gerona" to Res.drawable.miracle_gerona,
+        "glotowo" to Res.drawable.miracle_glotowo,
+        "gorkum-escorial" to Res.drawable.miracle_gorkum_escorial,
+        "gruaro" to Res.drawable.miracle_gruaro,
+        "guadalupe-mexico" to Res.drawable.miracle_guadalupe_mexico,
+        "guadalupe-spain" to Res.drawable.miracle_guadalupe_spain,
+        "herentals" to Res.drawable.miracle_herentals,
+        "herkenrode-hasselt" to Res.drawable.miracle_herkenrode_hasselt,
+        "ivorra" to Res.drawable.miracle_ivorra,
+        "konnersreuth" to Res.drawable.miracle_konnersreuth,
+        "krakow-divine-mercy" to Res.drawable.miracle_krakow_divine_mercy,
+        "kranenburg" to Res.drawable.miracle_kranenburg,
+        "la-rochelle" to Res.drawable.miracle_la_rochelle,
+        "lanciano" to Res.drawable.miracle_lanciano,
+        "lateran-council" to Res.drawable.miracle_lateran_council,
+        "legnica" to Res.drawable.miracle_legnica,
+        "les-ulmes" to Res.drawable.miracle_les_ulmes,
+        "liege" to Res.drawable.miracle_liege,
+        "lourdes-healings" to Res.drawable.miracle_lourdes_healings,
+        "ludbreg" to Res.drawable.miracle_ludbreg,
+        "macerata" to Res.drawable.miracle_macerata,
+        "marseille-en-beauvais" to Res.drawable.miracle_marseille_en_beauvais,
+        "mary-of-egypt" to Res.drawable.miracle_mary_of_egypt,
+        "meerssen-fire-1465" to Res.drawable.miracle_meerssen_fire_1465,
+        "meerssen" to Res.drawable.miracle_meerssen,
+        "middleburg" to Res.drawable.miracle_middleburg,
+        "miracle-of-bolsena" to Res.drawable.miracle_miracle_of_bolsena,
+        "miracle-of-santarem" to Res.drawable.miracle_miracle_of_santarem,
+        "miracle-of-siena" to Res.drawable.miracle_miracle_of_siena,
+        "mogliano" to Res.drawable.miracle_mogliano,
+        "mogoro" to Res.drawable.miracle_mogoro,
+        "moncada" to Res.drawable.miracle_moncada,
+        "montefalco-clare" to Res.drawable.miracle_montefalco_clare,
+        "montieri" to Res.drawable.miracle_montieri,
+        "montserrat" to Res.drawable.miracle_montserrat,
+        "morne-rouge" to Res.drawable.miracle_morne_rouge,
+        "morrovalle" to Res.drawable.miracle_morrovalle,
+        "muro-lucano" to Res.drawable.miracle_muro_lucano,
+        "naples-five-wounds" to Res.drawable.miracle_naples_five_wounds,
+        "neuvy-saint-sepulcre" to Res.drawable.miracle_neuvy_saint_sepulcre,
+        "o-cebreiro" to Res.drawable.miracle_o_cebreiro,
+        "offida" to Res.drawable.miracle_offida,
+        "onil" to Res.drawable.miracle_onil,
+        "orvieto-thomas-of-cori" to Res.drawable.miracle_orvieto_thomas_of_cori,
+        "patierno" to Res.drawable.miracle_patierno,
+        "peshtigo" to Res.drawable.miracle_peshtigo,
+        "peter-damian" to Res.drawable.miracle_peter_damian,
+        "pibrac" to Res.drawable.miracle_pibrac,
+        "pitigliano" to Res.drawable.miracle_pitigliano,
+        "ponferrada" to Res.drawable.miracle_ponferrada,
+        "poznan" to Res.drawable.miracle_poznan,
+        "pressac" to Res.drawable.miracle_pressac,
+        "proceno-agnes" to Res.drawable.miracle_proceno_agnes,
+        "regensburg" to Res.drawable.miracle_regensburg,
+        "rimini" to Res.drawable.miracle_rimini,
+        "rome-devoted-lambs" to Res.drawable.miracle_rome_devoted_lambs,
+        "rome-gregory-great" to Res.drawable.miracle_rome_gregory_great,
+        "rome-santa-pudenziana" to Res.drawable.miracle_rome_santa_pudenziana,
+        "rosano" to Res.drawable.miracle_rosano,
+        "sachseln" to Res.drawable.miracle_sachseln,
+        "saint-andre-de-la-reunion" to Res.drawable.miracle_saint_andre_de_la_reunion,
+        "saint-gilles" to Res.drawable.miracle_saint_gilles,
+        "saint-satyrus" to Res.drawable.miracle_saint_satyrus,
+        "salzano" to Res.drawable.miracle_salzano,
+        "san-giorgio-a-cremano" to Res.drawable.miracle_san_giorgio_a_cremano,
+        "san-juan-de-las-abadesas" to Res.drawable.miracle_san_juan_de_las_abadesas,
+        "san-juan-honduras" to Res.drawable.miracle_san_juan_honduras,
+        "san-mauro-la-bruca" to Res.drawable.miracle_san_mauro_la_bruca,
+        "scala" to Res.drawable.miracle_scala,
+        "scete" to Res.drawable.miracle_scete,
+        "seefeld" to Res.drawable.miracle_seefeld,
+        "silla" to Res.drawable.miracle_silla,
+        "sokolka" to Res.drawable.miracle_sokolka,
+        "stiphout" to Res.drawable.miracle_stiphout,
+        "tixtla" to Res.drawable.miracle_tixtla,
+        "trani" to Res.drawable.miracle_trani,
+        "tumaco" to Res.drawable.miracle_tumaco,
+        "turin-1640" to Res.drawable.miracle_turin_1640,
+        "turin" to Res.drawable.miracle_turin,
+        "valencia-santo-caliz" to Res.drawable.miracle_valencia_santo_caliz,
+        "vercelli-bicchieri" to Res.drawable.miracle_vercelli_bicchieri,
+        "veroli" to Res.drawable.miracle_veroli,
+        "vienna-stanislaus-kostka" to Res.drawable.miracle_vienna_stanislaus_kostka,
+        "vilakkannur" to Res.drawable.miracle_vilakkannur,
+        "volterra" to Res.drawable.miracle_volterra,
+        "walldurn" to Res.drawable.miracle_walldurn,
+        "weingarten" to Res.drawable.miracle_weingarten,
+        "weiten-raxendorf" to Res.drawable.miracle_weiten_raxendorf,
+        "wilsnack" to Res.drawable.miracle_wilsnack,
+        "zaragoza" to Res.drawable.miracle_zaragoza,
+    )
+
+    private val miracleScenesFull: Map<String, DrawableResource> = mapOf(
+        "alatri" to Res.drawable.miracle_full_alatri,
+        "alboraya-almacera" to Res.drawable.miracle_full_alboraya_almacera,
+        "alcala-de-henares" to Res.drawable.miracle_full_alcala_de_henares,
+        "alcoy" to Res.drawable.miracle_full_alcoy,
+        "alkmaar" to Res.drawable.miracle_full_alkmaar,
+        "amsterdam" to Res.drawable.miracle_full_amsterdam,
+        "assisi-clare" to Res.drawable.miracle_full_assisi_clare,
+        "asti" to Res.drawable.miracle_full_asti,
+        "augsburg" to Res.drawable.miracle_full_augsburg,
+        "avignon" to Res.drawable.miracle_full_avignon,
+        "bagno-di-romagna" to Res.drawable.miracle_full_bagno_di_romagna,
+        "balasar" to Res.drawable.miracle_full_balasar,
+        "benningen" to Res.drawable.miracle_full_benningen,
+        "bergen-op-zoom" to Res.drawable.miracle_full_bergen_op_zoom,
+        "betania" to Res.drawable.miracle_full_betania,
+        "bettbrunn" to Res.drawable.miracle_full_bettbrunn,
+        "blanot" to Res.drawable.miracle_full_blanot,
+        "bois-dhaine" to Res.drawable.miracle_full_bois_dhaine,
+        "bois-seigneur-isaac" to Res.drawable.miracle_full_bois_seigneur_isaac,
+        "bologna-imelda" to Res.drawable.miracle_full_bologna_imelda,
+        "bordeaux" to Res.drawable.miracle_full_bordeaux,
+        "boxmeer" to Res.drawable.miracle_full_boxmeer,
+        "boxtel-hoogstraten" to Res.drawable.miracle_full_boxtel_hoogstraten,
+        "breda-niervaart" to Res.drawable.miracle_full_breda_niervaart,
+        "bruges" to Res.drawable.miracle_full_bruges,
+        "calanda" to Res.drawable.miracle_full_calanda,
+        "canosio" to Res.drawable.miracle_full_canosio,
+        "caravaca-de-la-cruz" to Res.drawable.miracle_full_caravaca_de_la_cruz,
+        "carmelite-siena" to Res.drawable.miracle_full_carmelite_siena,
+        "cascia" to Res.drawable.miracle_full_cascia,
+        "cava-dei-tirreni" to Res.drawable.miracle_full_cava_dei_tirreni,
+        "champion-wisconsin" to Res.drawable.miracle_full_champion_wisconsin,
+        "chateauneuf-de-galaure" to Res.drawable.miracle_full_chateauneuf_de_galaure,
+        "chiaravalle-bernard" to Res.drawable.miracle_full_chiaravalle_bernard,
+        "chirattakonam" to Res.drawable.miracle_full_chirattakonam,
+        "cimballa" to Res.drawable.miracle_full_cimballa,
+        "daroca" to Res.drawable.miracle_full_daroca,
+        "dijon" to Res.drawable.miracle_full_dijon,
+        "douai" to Res.drawable.miracle_full_douai,
+        "dronero" to Res.drawable.miracle_full_dronero,
+        "dulmen" to Res.drawable.miracle_full_dulmen,
+        "erding" to Res.drawable.miracle_full_erding,
+        "eten" to Res.drawable.miracle_full_eten,
+        "ettiswil" to Res.drawable.miracle_full_ettiswil,
+        "eucharistic-miracle-buenos-aires" to Res.drawable.miracle_full_eucharistic_miracle_buenos_aires,
+        "fatima-angel" to Res.drawable.miracle_full_fatima_angel,
+        "faverney" to Res.drawable.miracle_full_faverney,
+        "ferrara" to Res.drawable.miracle_full_ferrara,
+        "fiecht" to Res.drawable.miracle_full_fiecht,
+        "florence" to Res.drawable.miracle_full_florence,
+        "foligno-angela" to Res.drawable.miracle_full_foligno_angela,
+        "gerona" to Res.drawable.miracle_full_gerona,
+        "glotowo" to Res.drawable.miracle_full_glotowo,
+        "gorkum-escorial" to Res.drawable.miracle_full_gorkum_escorial,
+        "gruaro" to Res.drawable.miracle_full_gruaro,
+        "guadalupe-mexico" to Res.drawable.miracle_full_guadalupe_mexico,
+        "guadalupe-spain" to Res.drawable.miracle_full_guadalupe_spain,
+        "herentals" to Res.drawable.miracle_full_herentals,
+        "herkenrode-hasselt" to Res.drawable.miracle_full_herkenrode_hasselt,
+        "ivorra" to Res.drawable.miracle_full_ivorra,
+        "konnersreuth" to Res.drawable.miracle_full_konnersreuth,
+        "krakow-divine-mercy" to Res.drawable.miracle_full_krakow_divine_mercy,
+        "kranenburg" to Res.drawable.miracle_full_kranenburg,
+        "la-rochelle" to Res.drawable.miracle_full_la_rochelle,
+        "lanciano" to Res.drawable.miracle_full_lanciano,
+        "lateran-council" to Res.drawable.miracle_full_lateran_council,
+        "legnica" to Res.drawable.miracle_full_legnica,
+        "les-ulmes" to Res.drawable.miracle_full_les_ulmes,
+        "liege" to Res.drawable.miracle_full_liege,
+        "lourdes-healings" to Res.drawable.miracle_full_lourdes_healings,
+        "ludbreg" to Res.drawable.miracle_full_ludbreg,
+        "macerata" to Res.drawable.miracle_full_macerata,
+        "marseille-en-beauvais" to Res.drawable.miracle_full_marseille_en_beauvais,
+        "mary-of-egypt" to Res.drawable.miracle_full_mary_of_egypt,
+        "meerssen-fire-1465" to Res.drawable.miracle_full_meerssen_fire_1465,
+        "meerssen" to Res.drawable.miracle_full_meerssen,
+        "middleburg" to Res.drawable.miracle_full_middleburg,
+        "miracle-of-bolsena" to Res.drawable.miracle_full_miracle_of_bolsena,
+        "miracle-of-santarem" to Res.drawable.miracle_full_miracle_of_santarem,
+        "miracle-of-siena" to Res.drawable.miracle_full_miracle_of_siena,
+        "mogliano" to Res.drawable.miracle_full_mogliano,
+        "mogoro" to Res.drawable.miracle_full_mogoro,
+        "moncada" to Res.drawable.miracle_full_moncada,
+        "montefalco-clare" to Res.drawable.miracle_full_montefalco_clare,
+        "montieri" to Res.drawable.miracle_full_montieri,
+        "montserrat" to Res.drawable.miracle_full_montserrat,
+        "morne-rouge" to Res.drawable.miracle_full_morne_rouge,
+        "morrovalle" to Res.drawable.miracle_full_morrovalle,
+        "muro-lucano" to Res.drawable.miracle_full_muro_lucano,
+        "naples-five-wounds" to Res.drawable.miracle_full_naples_five_wounds,
+        "neuvy-saint-sepulcre" to Res.drawable.miracle_full_neuvy_saint_sepulcre,
+        "o-cebreiro" to Res.drawable.miracle_full_o_cebreiro,
+        "offida" to Res.drawable.miracle_full_offida,
+        "onil" to Res.drawable.miracle_full_onil,
+        "orvieto-thomas-of-cori" to Res.drawable.miracle_full_orvieto_thomas_of_cori,
+        "patierno" to Res.drawable.miracle_full_patierno,
+        "peshtigo" to Res.drawable.miracle_full_peshtigo,
+        "peter-damian" to Res.drawable.miracle_full_peter_damian,
+        "pibrac" to Res.drawable.miracle_full_pibrac,
+        "pitigliano" to Res.drawable.miracle_full_pitigliano,
+        "ponferrada" to Res.drawable.miracle_full_ponferrada,
+        "poznan" to Res.drawable.miracle_full_poznan,
+        "pressac" to Res.drawable.miracle_full_pressac,
+        "proceno-agnes" to Res.drawable.miracle_full_proceno_agnes,
+        "regensburg" to Res.drawable.miracle_full_regensburg,
+        "rimini" to Res.drawable.miracle_full_rimini,
+        "rome-devoted-lambs" to Res.drawable.miracle_full_rome_devoted_lambs,
+        "rome-gregory-great" to Res.drawable.miracle_full_rome_gregory_great,
+        "rome-santa-pudenziana" to Res.drawable.miracle_full_rome_santa_pudenziana,
+        "rosano" to Res.drawable.miracle_full_rosano,
+        "sachseln" to Res.drawable.miracle_full_sachseln,
+        "saint-andre-de-la-reunion" to Res.drawable.miracle_full_saint_andre_de_la_reunion,
+        "saint-gilles" to Res.drawable.miracle_full_saint_gilles,
+        "saint-satyrus" to Res.drawable.miracle_full_saint_satyrus,
+        "salzano" to Res.drawable.miracle_full_salzano,
+        "san-giorgio-a-cremano" to Res.drawable.miracle_full_san_giorgio_a_cremano,
+        "san-juan-de-las-abadesas" to Res.drawable.miracle_full_san_juan_de_las_abadesas,
+        "san-juan-honduras" to Res.drawable.miracle_full_san_juan_honduras,
+        "san-mauro-la-bruca" to Res.drawable.miracle_full_san_mauro_la_bruca,
+        "scala" to Res.drawable.miracle_full_scala,
+        "scete" to Res.drawable.miracle_full_scete,
+        "seefeld" to Res.drawable.miracle_full_seefeld,
+        "silla" to Res.drawable.miracle_full_silla,
+        "sokolka" to Res.drawable.miracle_full_sokolka,
+        "stiphout" to Res.drawable.miracle_full_stiphout,
+        "tixtla" to Res.drawable.miracle_full_tixtla,
+        "trani" to Res.drawable.miracle_full_trani,
+        "tumaco" to Res.drawable.miracle_full_tumaco,
+        "turin-1640" to Res.drawable.miracle_full_turin_1640,
+        "turin" to Res.drawable.miracle_full_turin,
+        "valencia-santo-caliz" to Res.drawable.miracle_full_valencia_santo_caliz,
+        "vercelli-bicchieri" to Res.drawable.miracle_full_vercelli_bicchieri,
+        "veroli" to Res.drawable.miracle_full_veroli,
+        "vienna-stanislaus-kostka" to Res.drawable.miracle_full_vienna_stanislaus_kostka,
+        "vilakkannur" to Res.drawable.miracle_full_vilakkannur,
+        "volterra" to Res.drawable.miracle_full_volterra,
+        "walldurn" to Res.drawable.miracle_full_walldurn,
+        "weingarten" to Res.drawable.miracle_full_weingarten,
+        "weiten-raxendorf" to Res.drawable.miracle_full_weiten_raxendorf,
+        "wilsnack" to Res.drawable.miracle_full_wilsnack,
+        "zaragoza" to Res.drawable.miracle_full_zaragoza,
     )
 
     fun forEntity(type: ContentType, id: String): DrawableResource? = when (type) {
         ContentType.APOSTLE -> apostlePortraits[id]
         ContentType.SAINT, ContentType.POPE -> photographPortraits[id] ?: paintedPortraits[id]
+        ContentType.APPARITION -> apparitionScenes[id]
+        ContentType.FEAST -> feastScenes[id]
+        ContentType.MIRACLE -> miracleScenes[id]
+        ContentType.CHURCH -> churchPortraits[id]
         else -> null
     }
 
     fun fullForEntity(type: ContentType, id: String): DrawableResource? = when (type) {
         ContentType.APOSTLE -> apostlePortraitsFull[id]
         ContentType.SAINT, ContentType.POPE -> photographPortraitsFull[id] ?: paintedPortraitsFull[id]
+        ContentType.APPARITION -> apparitionScenesFull[id]
+        ContentType.FEAST -> feastScenesFull[id]
+        ContentType.MIRACLE -> miracleScenesFull[id]
+        ContentType.CHURCH -> churchPortraitsFull[id]
         else -> null
     }
 
@@ -1235,6 +3110,9 @@ object Portraits {
     fun isGeneratedArt(type: ContentType, id: String): Boolean = when (type) {
         ContentType.APOSTLE -> apostlePortraits.containsKey(id)
         ContentType.SAINT, ContentType.POPE -> paintedPortraits.containsKey(id)
+        ContentType.APPARITION -> apparitionScenes.containsKey(id)
+        ContentType.FEAST -> feastScenes.containsKey(id)
+        ContentType.MIRACLE -> miracleScenes.containsKey(id)
         else -> false
     }
 }
