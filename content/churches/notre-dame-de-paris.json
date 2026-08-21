@@ -1,6 +1,6 @@
 {
   "id": "notre-dame-de-paris",
-  "latitude": 48.8530,
+  "latitude": 48.853,
   "longitude": 2.3499,
   "foundedYear": 1345,
   "imageUrl": null,
@@ -11,6 +11,12 @@
       "summary": "The great Gothic cathedral of Paris, restored and reopened after the 2019 fire.",
       "body": "Construction of Notre-Dame began in 1163 and continued for nearly two centuries, producing one of the defining examples of French Gothic architecture, with its flying buttresses, rose windows, and twin west towers. The cathedral has hosted coronations, held Joan of Arc's posthumous rehabilitation trial, and survived revolution and two world wars, only to suffer a devastating fire in April 2019 that destroyed its spire and roof. A major international restoration effort saw the cathedral reopen to the public in December 2024.",
       "sourceAttribution": "Draft content — pending citation review."
+    },
+    "fr": {
+      "name": "Notre-Dame de Paris",
+      "summary": "La grande cathédrale gothique de Paris, restaurée et rouverte après l'incendie de 2019.",
+      "body": "La construction de Notre-Dame débuta en 1163 et se poursuivit pendant près de deux siècles, produisant l'un des exemples les plus emblématiques de l'architecture gothique française, avec ses arcs-boutants, ses rosaces et ses deux tours occidentales. La cathédrale a accueilli des sacres, abrité le procès de réhabilitation posthume de Jeanne d'Arc, et survécu à la Révolution ainsi qu'à deux guerres mondiales, avant de subir un incendie dévastateur en avril 2019 qui détruisit sa flèche et sa toiture. Un vaste effort international de restauration permit à la cathédrale de rouvrir au public en décembre 2024.",
+      "sourceAttribution": "Contenu provisoire — en attente de vérification des sources."
     }
   }
 }

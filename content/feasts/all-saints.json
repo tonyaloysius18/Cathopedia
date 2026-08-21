@@ -10,6 +10,12 @@
       "summary": "A solemnity honouring all the saints, known and unknown.",
       "body": "Celebrated on November 1st, All Saints' Day honours every saint who has attained the beatific vision, including those never formally canonized.",
       "sourceAttribution": "Seed content — replace with sourced text."
+    },
+    "fr": {
+      "name": "Toussaint",
+      "summary": "Une solennité honorant tous les saints, connus et inconnus.",
+      "body": "Célébrée le 1er novembre, la Toussaint honore tout saint ayant atteint la vision béatifique, y compris ceux qui n'ont jamais été formellement canonisés.",
+      "sourceAttribution": "Contenu de base — à remplacer par un texte sourcé."
     }
   }
 }

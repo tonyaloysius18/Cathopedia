@@ -1,6 +1,6 @@
 {
   "id": "basilica-our-lady-guadalupe",
-  "latitude": 19.4840,
+  "latitude": 19.484,
   "longitude": -99.1176,
   "foundedYear": 1976,
   "imageUrl": null,
@@ -11,6 +11,12 @@
       "summary": "The most-visited Catholic shrine in the world, built to house Juan Diego's tilma bearing the image of Our Lady of Guadalupe.",
       "body": "The basilica stands at the foot of Tepeyac hill in Mexico City, the site of the reported 1531 apparitions of Our Lady of Guadalupe to Juan Diego. It houses his tilma, the cloak said to bear the miraculous image left by the apparition, displayed above the main altar and viewed by pilgrims via a moving walkway beneath it. The current basilica, a modern circular structure, was completed in 1976 to replace an older colonial-era church that had begun to sink into the soft ground beneath it; it draws tens of millions of visitors a year, particularly around the December 12th feast.",
       "sourceAttribution": "Draft content — pending citation review."
+    },
+    "fr": {
+      "name": "Basilique de Notre-Dame de Guadalupe",
+      "summary": "Le sanctuaire catholique le plus visité au monde, construit pour abriter la tilma de Juan Diego portant l'image de Notre-Dame de Guadalupe.",
+      "body": "La basilique se dresse au pied de la colline du Tepeyac, à Mexico, site des apparitions rapportées de Notre-Dame de Guadalupe à Juan Diego en 1531. Elle abrite sa tilma, le manteau qui porterait, dit-on, l'image miraculeuse laissée par l'apparition, exposée au-dessus du maître-autel et observée par les pèlerins grâce à un tapis roulant situé en dessous. La basilique actuelle, une structure circulaire moderne, fut achevée en 1976 pour remplacer une ancienne église de l'époque coloniale qui commençait à s'enfoncer dans le sol meuble ; elle attire des dizaines de millions de visiteurs chaque année, en particulier autour de la fête du 12 décembre.",
+      "sourceAttribution": "Contenu provisoire — en attente de vérification des sources."
     }
   }
 }

@@ -11,6 +11,12 @@
       "summary": "The papal basilica in Vatican City, built over the traditional site of Peter's tomb.",
       "body": "St. Peter's Basilica was completed in 1626 and stands over the site traditionally held to be the burial place of the apostle Peter.",
       "sourceAttribution": "Seed content — replace with sourced text."
+    },
+    "fr": {
+      "name": "Basilique Saint-Pierre",
+      "summary": "La basilique papale de la Cité du Vatican, construite sur le site traditionnel du tombeau de Pierre.",
+      "body": "La basilique Saint-Pierre fut achevée en 1626 et se dresse sur le site traditionnellement considéré comme le lieu de sépulture de l'apôtre Pierre.",
+      "sourceAttribution": "Contenu de base — à remplacer par un texte sourcé."
     }
   }
 }
