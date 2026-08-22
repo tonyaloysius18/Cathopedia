@@ -3,5 +3,18 @@
   "category": "eucharistic",
   "sortOrder": 7,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Thanksgiving After Communion",
+      "attribution": "St. Thomas Aquinas",
+      "bodyMd": "Lord, Father all-powerful and ever-living God,\nI thank You, for even though I am a sinner,\nyour unprofitable servant,\nnot because of my worth but in the kindness of your mercy,\nYou have fed me with the Precious Body and Blood of Your Son,\nour Lord Jesus Christ.\n\nI pray that this Holy Communion may not bring me condemnation and punishment\nbut forgiveness and salvation.\nMay it be a helmet of faith and a shield of good will.\nMay it purify me from evil ways and put an end to my evil passions.\nMay it bring me charity and patience, humility and obedience,\nand growth in the power to do good.\nMay it be my strong defense against all my enemies, visible and invisible,\nand the perfect calming of all my evil impulses, bodily and spiritual.\nMay it unite me more closely to you, the one true God,\nand lead me safely through death to everlasting happiness with You.\nAmen.",
+      "source": "EWTN, \"The Prayer of St. Thomas Aquinas\", https://www.ewtn.com/catholicism/devotions/prayer-of-st-thomas-aquinas-397, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Action de grâces après la communion",
+      "attribution": "Saint Thomas d'Aquin",
+      "bodyMd": "Je vous rends grâces, Seigneur saint, Père tout-puissant, Dieu éternel,\nde ce que vous avez daigné me rassasier\ndu Corps et du Sang précieux de votre Fils,\nnotre Seigneur Jésus-Christ,\nmoi pécheur, votre indigne serviteur,\nsans aucun mérite de ma part,\nmais par votre pure miséricorde.\n\nEt je vous supplie que cette sainte communion\nne soit pas pour moi un sujet de châtiment,\nmais un titre salutaire de pardon.\nQu'elle me soit une armure de foi,\net un bouclier de bonne volonté.\nAmen.",
+      "source": "Prières catholiques (prieres-catholiques.blogspot.com), « Prière après la communion de saint Thomas d'Aquin », http://prieres-catholiques.blogspot.com/2013/06/priere-apres-la-communion-de-saint.html, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }

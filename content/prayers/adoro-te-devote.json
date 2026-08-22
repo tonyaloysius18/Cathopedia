@@ -3,5 +3,26 @@
   "category": "eucharistic",
   "sortOrder": 2,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Godhead Here in Hiding",
+      "subtitle": "Adoro Te Devote",
+      "attribution": "St. Thomas Aquinas, tr. Edward Caswall",
+      "bodyMd": "O Godhead hid, devoutly I adore Thee,\nWho truly art within the forms before me;\nTo Thee my heart I bow with bended knee,\nAs failing quite in contemplating Thee.\n\nSight, touch, and taste in Thee are each deceived;\nThe ear alone most safely is believed:\nI believe all the Son of God has spoken,\nThan Truth's own word there is no truer token.\n\nGod only on the Cross lay hid from view;\nBut here lies hid at once the Manhood too:\nAnd I, in both professing my belief,\nMake the same prayer as the repentant thief.\n\nThy wounds, as Thomas saw, I do not see;\nYet Thee confess my Lord and God to be:\nMake me believe Thee ever more and more;\nIn Thee my hope, in Thee my love to store.\n\nO thou Memorial of our Lord's own dying!\nO Bread that living art and vivifying!\nMake ever Thou my soul on Thee to live;\nEver a taste of Heavenly sweetness give.\n\nO loving Pelican! O Jesu, Lord!\nUnclean I am, but cleanse me in Thy Blood;\nOf which a single drop, for sinners spilt,\nIs ransom for a world's entire guilt.\n\nJesu! Whom for the present veil'd I see,\nWhat I so thirst for, O vouchsafe to me:\nThat I may see Thy countenance unfolding,\nAnd may be blest Thy glory in beholding.\nAmen.",
+      "source": "EWTN, \"Adoro te devote\", https://www.ewtn.com/catholicism/library/adoro-te-devote-11817, retrieved 2026-08-22"
+    },
+    "la": {
+      "title": "Adoro Te Devote",
+      "attribution": "St. Thomas Aquinas",
+      "bodyMd": "Adoro te devote, latens Deitas,\nQuae sub his figuris vere latitas;\nTibi se cor meum totum subiicit,\nQuia te contemplans, totum deficit.\n\nVisus, tactus, gustus in te fallitur,\nSed auditu solo tuto creditur;\nCredo quidquid dixit Dei Filius,\nNil hoc verbo veritatis verius.\n\nIn Cruce latebat sola Deitas.\nAt hic latet simul et humanitas:\nAmbo tamen credens, atque confitens,\nPeto quod petivit latro paenitens.\n\nPlagas, sicut Thomas, non intueor,\nDeum tamen meum te confiteor:\nFac me tibi semper magis credere,\nIn te spem habere, te diligere.\n\nO memoriale mortis Domini,\nPanis vivus vitam praestans homini:\nPraesta meae menti de te vivere,\nEt te illi semper dulce sapere.\n\nPie pellicane Iesu Domine,\nMe immundum munda tuo Sanguine:\nCuius una stilla salvum facere\nTotum mundum quit ab omni scelere.\n\nIesu, quem velatum nunc aspicio,\nOro, fiat illud, quod tam sitio,\nUt te revelata cernens facie,\nVisu sim beatus tuae gloriae.\nAmen.",
+      "source": "EWTN, \"Adoro te devote\", https://www.ewtn.com/catholicism/library/adoro-te-devote-11817, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Je t'adore dévotement",
+      "subtitle": "Adoro te devote",
+      "attribution": "Saint Thomas d'Aquin",
+      "bodyMd": "Je t'adore dévotement, Dieu caché,\nqui sous ces apparences vraiment prends corps,\nà Toi, mon cœur tout entier se soumet\nparce qu'à te contempler, tout entier il s'abandonne.\n\nLa vue, le goût, le toucher, en toi font ici défaut,\nmais t'écouter seulement fonde la certitude de foi.\nJe crois tout ce qu'a dit le Fils de Dieu,\nil n'est rien de plus vrai que cette Parole de vérité.",
+      "source": "medaille-miraculeuse.fr, « Adoro te devote / Je t'adore avec dévotion », https://www.medaille-miraculeuse.fr/wp-content/uploads/2012/07/Adoro-te-devote.pdf, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }

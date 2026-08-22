@@ -3,5 +3,25 @@
   "category": "eucharistic",
   "sortOrder": 3,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Down in Adoration Falling",
+      "subtitle": "Tantum Ergo",
+      "attribution": "St. Thomas Aquinas",
+      "bodyMd": "Down in adoration falling,\nLo! the sacred Host we hail;\nLo! o'er ancient forms departing,\nnewer rites of grace prevail;\nfaith for all defects supplying,\nwhere the feeble senses fail.\n\nTo the everlasting Father,\nand the Son who reigns on high,\nwith the Spirit blessed proceeding\nforth from each eternally,\nbe salvation, honor, blessing,\nmight and endless majesty.\nAmen.",
+      "source": "EWTN, \"The Divine Praises at Adoration\" / \"Pange, lingua (Sing, my tongue)\", https://www.ewtn.com/catholicism/teachings/pange-lingua-sing-my-tongue-832, retrieved 2026-08-22"
+    },
+    "la": {
+      "title": "Tantum Ergo",
+      "attribution": "St. Thomas Aquinas",
+      "bodyMd": "Tantum ergo Sacramentum\nveneremur cernui:\net antiquum documentum\nnovo cedat ritui:\npraestet fides supplementum\nsensuum defectui.\n\nGenitori, Genitoque\nlaus et iubilatio,\nsalus, honor, virtus quoque\nsit et benedictio:\nprocedenti ab utroque\ncompar sit laudatio.\nAmen.",
+      "source": "EWTN, \"Pange, lingua (Sing, my tongue)\", https://www.ewtn.com/catholicism/teachings/pange-lingua-sing-my-tongue-832, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Tantum Ergo",
+      "attribution": "Saint Thomas d'Aquin",
+      "bodyMd": "Un si auguste sacrement,\nadorons-le, prosternés ;\nque les vieilles cérémonies\nfassent place au nouveau rite ;\nque la foi de nos cœurs supplée\naux faiblesses de nos sens.\n\nAu Père et à son Fils unique,\nlouange et vibrant triomphe !\nGloire, honneur et toute-puissance !\nBénissons-les à jamais !\nÀ l'Esprit procédant des deux,\négale adoration.\nAmen.",
+      "source": "prieres-catholiques.blogspot.com, « Tantum ergo », http://prieres-catholiques.blogspot.com/2013/07/tantum-ergo.html, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }

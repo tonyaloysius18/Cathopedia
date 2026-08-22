@@ -3,5 +3,26 @@
   "category": "eucharistic",
   "sortOrder": 4,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "O Saving Victim",
+      "subtitle": "O Salutaris Hostia",
+      "attribution": "St. Thomas Aquinas",
+      "bodyMd": "O saving Victim, op'ning wide\nthe gate of heav'n to us below,\nour foes press on from every side;\nThine aid supply, Thy strength bestow.\n\nAll praise and thanks to Thee ascend\nforevermore, blest One in Three;\nO grant us life that shall not end\nin our true native land with Thee.\nAmen.",
+      "source": "Hymnary.org, \"O saving Victim, opening wide\", https://hymnary.org/text/o_saving_victim_opening_wide, retrieved 2026-08-22"
+    },
+    "la": {
+      "title": "O Salutaris Hostia",
+      "attribution": "St. Thomas Aquinas",
+      "bodyMd": "O salutaris Hostia,\nquae caeli pandis ostium,\nbella premunt hostilia,\nda robur, fer auxilium.\n\nUni trinoque Domino\nsit sempiterna gloria,\nqui vitam sine termino\nnobis donet in patria.\nAmen.",
+      "source": "EWTN Sunday Vespers, https://www.ewtn.com/img/tv/downloads/sunday-vespers/2026-06-28.pdf, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Ô Salutaire Hostie",
+      "subtitle": "O Salutaris Hostia",
+      "attribution": "Saint Thomas d'Aquin",
+      "bodyMd": "Ô Victime salutaire,\nqui nous ouvre les portes du ciel,\nles armées ennemies nous poursuivent,\ndonne-nous la force, porte-nous secours.\n\nAu Seigneur unique en trois personnes,\nsoit la gloire éternelle ;\nqu'il nous donne en sa Patrie\nla vie qui n'aura pas de fin.\nAmen.",
+      "source": "Wikipédia (fr), « Ô salutaris Hostia », https://fr.wikipedia.org/wiki/%C3%94_salutaris_Hostia, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }

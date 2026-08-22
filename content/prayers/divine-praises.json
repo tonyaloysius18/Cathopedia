@@ -3,5 +3,19 @@
   "category": "eucharistic",
   "sortOrder": 6,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "The Divine Praises",
+      "attribution": "Luigi Felici, S.J., 1797",
+      "bodyMd": "Blessed be God.\nBlessed be His holy Name.\nBlessed be Jesus Christ, true God and true man.\nBlessed be the Name of Jesus.\nBlessed be His most Sacred Heart.\nBlessed be His most Precious Blood.\nBlessed be Jesus in the most holy Sacrament of the altar.\nBlessed be the Holy Spirit, the Paraclete.\nBlessed be the great Mother of God, Mary most holy.\nBlessed be her holy and Immaculate Conception.\nBlessed be her glorious Assumption.\nBlessed be the name of Mary, Virgin and Mother.\nBlessed be Saint Joseph, her most chaste spouse.\nBlessed be God in His angels and in His saints.",
+      "source": "USCCB, \"Divine Praises\", https://www.usccb.org/prayers/divine-praises, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Les Louanges Divines",
+      "subtitle": "En réparation des blasphèmes au très Saint Sacrement",
+      "attribution": "Luigi Felici, s.j., 1797",
+      "bodyMd": "Dieu soit béni !\nBéni soit son saint Nom !\nBéni soit Jésus-Christ, vrai Dieu et vrai homme !\nBéni soit le nom de Jésus !\nBéni soit son Sacré Cœur !\nBéni soit son Précieux Sang !\nBéni soit Jésus au très Saint-Sacrement de l'autel !\nBéni soit l'Esprit Saint Consolateur !\nBénie soit l'incomparable Mère de Dieu, la très sainte Vierge Marie !\nBénie soit sa sainte et immaculée Conception !\nBénie soit sa glorieuse Assomption !\nBéni soit le nom de Marie Vierge et Mère !\nBéni soit Saint Joseph son très chaste époux !\nBéni soit Dieu dans ses anges et dans ses saints !",
+      "source": "Prions le Seigneur (prionsleseigneur1.eklablog.com), « Louanges divines en réparation des blasphèmes au très Saint Sacrement », https://prionsleseigneur1.eklablog.com/louanges-divines-en-reparation-des-blasphemes-au-tres-saint-sacrement-p765310, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }

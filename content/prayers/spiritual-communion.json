@@ -3,5 +3,16 @@
   "category": "eucharistic",
   "sortOrder": 5,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Act of Spiritual Communion",
+      "bodyMd": "My Jesus, I believe that You are present in the Most Holy Sacrament.\nI love You above all things,\nand I desire to receive You into my soul.\nSince I cannot at this moment receive You sacramentally,\ncome at least spiritually into my heart.\nI embrace You as if You were already there\nand unite myself wholly to You.\nAmen.",
+      "source": "EWTN, \"Act of Spiritual Communion Prayer\", https://www.ewtn.com/catholicism/devotions/act-of-spiritual-communion-339, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Prière de communion spirituelle",
+      "bodyMd": "Mon Jésus, je crois à votre présence dans le Très Saint Sacrement.\nJe vous aime plus que toute chose\net je désire que vous veniez dans mon âme.\nJe ne puis maintenant vous recevoir sacramentellement dans mon cœur :\nvenez-y au moins spirituellement.\nJe vous embrasse comme si vous étiez déjà venu,\net je m'unis à vous tout entier.\nAmen.",
+      "source": "Diocèse de Paris (dioceseparis.fr), « Prière de communion spirituelle », https://dioceseparis.fr/priere-de-communion-spirituelle.html, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }
