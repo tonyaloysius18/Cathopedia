@@ -439,6 +439,20 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
             }
         }
 
+    /**
+     * Favourite prayer summaries in reading language, pinned atop PrayersHome.
+     * Reuses [prayerDetail] per id rather than a new joined query — favourites
+     * are a short list, and this naturally excludes a favourite whose text
+     * isn't sourced in [language] yet, same as every other prayer list query.
+     */
+    suspend fun listFavoritePrayers(language: String): List<PrayerSummary> = withContext(Dispatchers.Default) {
+        database.prayerUserStateQueries.selectFavoritePrayerIds().executeAsList().mapNotNull { id ->
+            database.prayerQueries.selectPrayerDetail(language = language, id = id).executeAsOneOrNull()?.let {
+                PrayerSummary(it.id, it.title, it.subtitle, PrayerCategory.fromTag(it.category), it.isSequence == 1L)
+            }
+        }
+    }
+
     suspend fun isPrayerFavorite(id: String): Boolean = withContext(Dispatchers.Default) {
         database.prayerUserStateQueries.selectPrayerUserState(id).executeAsOneOrNull()?.isFavorite == 1L
     }

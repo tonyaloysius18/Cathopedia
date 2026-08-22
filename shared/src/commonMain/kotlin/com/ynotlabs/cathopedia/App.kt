@@ -218,12 +218,16 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                 )
 
                 is Destination.PrayersHome -> PrayersHomeScreen(
+                    repository = repository,
+                    language = language,
                     onOpenPrayer = { slug -> nav.navigate(Destination.PrayerDetail(slug)) },
                     onOpenRosary = { nav.navigate(Destination.RosaryScreen) },
                 )
 
                 is Destination.PrayerDetail -> PrayerDetailScreen(
                     slug = current.slug,
+                    repository = repository,
+                    language = language,
                     onBack = nav::back,
                 )
 

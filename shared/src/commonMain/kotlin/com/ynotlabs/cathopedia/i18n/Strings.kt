@@ -35,11 +35,44 @@ data class Strings(
     val navSearch: String = "Search",
     val navSettings: String = "Settings",
 
-    // Prayers tab (placeholder copy until the prayer library/detail/Rosary screens land)
+    // Prayers tab
     val prayersHomeTitle: String = "Prayers",
     val prayersComingSoon: String = "The prayer library is on its way.",
     val prayerDetailTitle: String = "Prayer",
     val rosaryScreenTitle: String = "Holy Rosary",
+
+    // Prayer categories (chrome labels for PrayerCategory's fixed taxonomy)
+    val prayerCategoryEveryday: String = "Everyday",
+    val prayerCategoryMarian: String = "Marian",
+    val prayerCategoryHolySpirit: String = "Holy Spirit",
+    val prayerCategoryEucharistic: String = "Eucharistic",
+    val prayerCategorySaints: String = "Saints",
+    val prayerCategoryPenitential: String = "Penitential",
+    val prayerCategorySequences: String = "Chaplets & Novenas",
+    val prayerCategoryOccasional: String = "Occasional",
+
+    // PrayersHome
+    val prayersFavoritesSection: String = "Favourites",
+    val prayersRosaryCardTitle: String = "The Holy Rosary",
+    val prayersRosaryCardSubtitle: String = "Pray a decade, or all twenty mysteries",
+    val prayersSearchPlaceholder: String = "Search prayers…",
+    val prayersSearchNoResults: String = "No prayers match your search.",
+    val prayersSequenceComingSoon: String = "Coming soon",
+
+    // PrayerDetail
+    val prayerDetailBySource: String = "Source",
+    val prayerDetailAttribution: String = "Attribution",
+    val prayerDetailShowSource: String = "Show source",
+    val prayerDetailHideSource: String = "Hide source",
+    val prayerDetailParallelView: String = "Side by side",
+    val prayerDetailFontSize: String = "Text size",
+    val prayerDetailFontSmaller: String = "Smaller text",
+    val prayerDetailFontLarger: String = "Larger text",
+    val prayerDetailKeepScreenOn: String = "Keep screen on",
+    val prayerLanguageEn: String = "English",
+    val prayerLanguageFr: String = "Français",
+    val prayerLanguageLa: String = "Latin",
+    val prayerDetailSequenceComingSoon: String = "This chaplet or novena isn't in the app yet — the Rosary is the first one implemented.",
 
     // Content type names (chrome labels for the seven entity kinds)
     val typeSaintsPlural: String = "Saints",
