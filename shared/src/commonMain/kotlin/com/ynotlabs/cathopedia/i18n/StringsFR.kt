@@ -81,6 +81,7 @@ val FR: Strings = Strings().apply {
     rosaryOrdinalThird = "troisième"
     rosaryOrdinalFourth = "quatrième"
     rosaryOrdinalFifth = "cinquième"
+    rosaryMysteryAnnouncement = "{ordinal} mystère {set}"
 
     typeSaintsPlural = "Saints"
     typePopesPlural = "Papes"

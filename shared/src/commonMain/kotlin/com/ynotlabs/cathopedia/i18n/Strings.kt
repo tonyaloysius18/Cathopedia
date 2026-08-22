@@ -107,6 +107,7 @@ class Strings {
     var rosaryOrdinalThird: String = "Third"
     var rosaryOrdinalFourth: String = "Fourth"
     var rosaryOrdinalFifth: String = "Fifth"
+    var rosaryMysteryAnnouncement: String = "The {ordinal} {set} Mystery"
 
     // Content type names (chrome labels for the seven entity kinds)
     var typeSaintsPlural: String = "Saints"
