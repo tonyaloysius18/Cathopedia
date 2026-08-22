@@ -7,17 +7,17 @@
     "en": {
       "title": "Sign of the Cross",
       "bodyMd": "In the name of the Father, and of the Son, and of the Holy Spirit.\nAmen.",
-      "source": "Traditional public-domain wording, recalled from memory at the user's explicit instruction (2026-08-22) overriding the brief's normal no-recall rule — not verified against a specific printed edition."
+      "source": "EWTN, \"Prayers of the Rosary in English and Latin\", https://www.ewtn.com/catholicism/teachings/prayers-of-the-rosary-in-english-and-latin-164, retrieved 2026-08-22"
     },
     "la": {
       "title": "Signum Crucis",
       "bodyMd": "In nomine Patris, et Filii, et Spiritus Sancti.\nAmen.",
-      "source": "Traditional public-domain wording, recalled from memory at the user's explicit instruction (2026-08-22) overriding the brief's normal no-recall rule — not verified against a specific printed edition."
+      "source": "EWTN, \"Latin Prayers, Pater Noster\", https://www.ewtn.com/catholicism/library/latin-prayers-9125, retrieved 2026-08-22"
     },
     "fr": {
       "title": "Signe de croix",
-      "bodyMd": "Au nom du Père, et du Fils, et du Saint-Esprit.\nAinsi soit-il.",
-      "source": "Forme traditionnelle, restituée de mémoire à la demande explicite de l'utilisateur (2026-08-22) — non vérifiée sur une édition imprimée précise ; en attente d'audit AELF."
+      "bodyMd": "Au nom du Père, et du Fils, et du Saint-Esprit.\nAmen.",
+      "source": "foicatholique.com, « Le Chapelet — Prier le Rosaire pas à pas », https://www.foicatholique.com/chapelet, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
     }
   }
 }
