@@ -3,5 +3,16 @@
   "category": "everyday",
   "sortOrder": 11,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Grace After Meals",
+      "bodyMd": "We give Thee thanks, Almighty God,\nfor these and all Thy gifts,\nwhich we have received from Thy bounty,\nWho livest and reignest world without end.\nAmen.",
+      "source": "EWTN, \"Meal Prayers for the Christmas Season\", https://www.ewtn.com/catholicism/library/meal-prayers-for-the-christmas-season-11900, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Grâces après le repas",
+      "bodyMd": "Nous te rendons grâce, Seigneur,\npour tous tes bienfaits,\nô Dieu tout-puissant\nqui vis et règnes dans les siècles des siècles.\nAmen.",
+      "source": "Église catholique en France (eglise.catholique.fr), « Prières autour du repas », https://eglise.catholique.fr/approfondir-sa-foi/vivre-sa-foi-a-tous-les-ages/transmettre-la-foi/vivre-foi-famille/442120-prieres-autour-repas/, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }

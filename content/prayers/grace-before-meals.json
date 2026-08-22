@@ -3,5 +3,21 @@
   "category": "everyday",
   "sortOrder": 10,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Grace Before Meals",
+      "bodyMd": "Bless us, O Lord, and these Thy gifts,\nwhich we are about to receive from Thy bounty,\nthrough Christ our Lord.\nAmen.",
+      "source": "EWTN, \"Meal Prayers for the Christmas Season\", https://www.ewtn.com/catholicism/library/meal-prayers-for-the-christmas-season-11900, retrieved 2026-08-22"
+    },
+    "la": {
+      "title": "Benedictio Mensae (ante)",
+      "bodyMd": "Benedic, Domine, nos et haec tua dona,\nquae de tua largitate sumus sumpturi,\nper Christum Dominum nostrum.\nAmen.",
+      "source": "Latin Prayer (latinprayer.org), \"Prayer before meals\", https://latinprayer.org/en/prayers/prayer-before-meals/, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Bénédicité",
+      "bodyMd": "Bénissez-nous Seigneur, bénissez ce repas,\nceux qui l'ont préparé,\net procurez du pain à ceux qui n'en ont pas.\nAinsi soit-il.",
+      "source": "Catholiques de France (catholiquedefrance.fr), « Le Bénédicité / les Grâces », https://catholiquedefrance.fr/le-benedicite-les-graces/, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }

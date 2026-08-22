@@ -3,5 +3,21 @@
   "category": "everyday",
   "sortOrder": 13,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Eternal Rest",
+      "bodyMd": "> V. Eternal rest grant unto them, O Lord.\n> R. And let perpetual light shine upon them.\n\nMay the souls of all the faithful departed,\nthrough the mercy of God, rest in peace.\nAmen.",
+      "source": "EWTN, \"Prayer for the Poor Souls in Purgatory\", https://www.ewtn.com/catholicism/teachings/prayer-for-the-poor-souls-in-purgatory-163, retrieved 2026-08-22"
+    },
+    "la": {
+      "title": "Requiem Aeternam",
+      "bodyMd": "> V. Requiem aeternam dona eis, Domine.\n> R. Et lux perpetua luceat eis.\n\nFidelium animae, per misericordiam Dei,\nrequiescant in pace.\nAmen.",
+      "source": "EWTN, \"Prayer for the Poor Souls in Purgatory\", https://www.ewtn.com/catholicism/teachings/prayer-for-the-poor-souls-in-purgatory-163, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Repos éternel",
+      "bodyMd": "Donne-leur, Seigneur, le repos éternel.\nEt que brille sur eux la lumière de ta face.\nQu'ils reposent en paix.\nAmen.",
+      "source": "Hozana, « La prière du repos éternel (Requiem aeternam) », https://hozana.org/priere/defunts/repos-eternel, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }

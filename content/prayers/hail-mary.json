@@ -3,5 +3,21 @@
   "category": "everyday",
   "sortOrder": 3,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Hail Mary",
+      "bodyMd": "Hail Mary, full of grace, the Lord is with thee.\nBlessed art thou among women,\nand blessed is the fruit of thy womb, Jesus.\nHoly Mary, Mother of God,\npray for us sinners,\nnow and at the hour of our death.\nAmen.",
+      "source": "EWTN prayer library, \"Hail Mary Prayer - Ave Maria\", https://www.ewtn.com/catholicism/devotions/hail-mary-348, retrieved 2026-08-22"
+    },
+    "la": {
+      "title": "Ave Maria",
+      "bodyMd": "Ave Maria, gratia plena,\nDominus tecum.\nBenedicta tu in mulieribus,\net benedictus fructus ventris tui, Iesus.\nSancta Maria, Mater Dei,\nora pro nobis peccatoribus,\nnunc et in hora mortis nostrae.\nAmen.",
+      "source": "EWTN, \"Prayers of the Rosary in English and Latin\", https://www.ewtn.com/catholicism/teachings/prayers-of-the-rosary-in-english-and-latin-164, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Je vous salue Marie",
+      "bodyMd": "Je vous salue Marie, pleine de grâce ;\nle Seigneur est avec vous.\nVous êtes bénie entre toutes les femmes\net Jésus, le fruit de vos entrailles, est béni.\nSainte Marie, Mère de Dieu,\npriez pour nous, pauvres pécheurs,\nmaintenant, et à l'heure de notre mort.\nAmen.",
+      "source": "Wikipédia (fr), « Je vous salue, Marie », section « Catholicisme francophone », https://fr.wikipedia.org/wiki/Je_vous_salue,_Marie, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }

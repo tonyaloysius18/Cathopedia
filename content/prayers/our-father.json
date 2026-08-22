@@ -3,5 +3,21 @@
   "category": "everyday",
   "sortOrder": 2,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Our Father",
+      "bodyMd": "Our Father, Who art in heaven,\nHallowed be Thy Name.\nThy Kingdom come.\nThy Will be done, on earth as it is in Heaven.\nGive us this day our daily bread.\nAnd forgive us our trespasses,\nas we forgive those who trespass against us.\nAnd lead us not into temptation,\nbut deliver us from evil.\nAmen.",
+      "source": "EWTN prayer library, \"The Lord's Prayer / Our Father\", https://www.ewtn.com/catholicism/devotions/our-father-395, retrieved 2026-08-22"
+    },
+    "la": {
+      "title": "Pater Noster",
+      "bodyMd": "Pater noster, qui es in caelis,\nsanctificetur nomen tuum.\nAdveniat regnum tuum.\nFiat voluntas tua, sicut in caelo et in terra.\nPanem nostrum quotidianum da nobis hodie,\net dimitte nobis debita nostra\nsicut et nos dimittimus debitoribus nostris.\nEt ne nos inducas in tentationem,\nsed libera nos a malo.\nAmen.",
+      "source": "EWTN, \"The Our Father (Pater Noster)\", https://www.ewtn.com/catholicism/teachings/our-father-pater-noster-12743, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Notre Père",
+      "bodyMd": "Notre Père, qui es aux cieux,\nque ton nom soit sanctifié,\nque ton règne vienne,\nque ta volonté soit faite sur la terre comme au ciel.\nDonne-nous aujourd'hui notre pain de ce jour.\nRemets-nous nos dettes,\ncomme nous-mêmes nous remettons leurs dettes à nos débiteurs.\nEt ne nous laisse pas entrer en tentation,\nmais délivre-nous du Mal.",
+      "source": "AELF (aelf.org), Évangile selon saint Matthieu, chapitre 6, https://www.aelf.org/bible/Mt/6, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }
