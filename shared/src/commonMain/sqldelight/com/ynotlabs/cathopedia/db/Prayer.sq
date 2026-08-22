@@ -1,0 +1,62 @@
+-- category is a fixed taxonomy (everyday, marian, holy-spirit, eucharistic,
+-- saints, penitential, sequences, occasional), matching how ContentType's
+-- seven kinds are a Kotlin enum rather than a lookup table — see
+-- model/Prayer.kt's PrayerCategory. Display names for the category chrome
+-- live in Strings.kt, the same as ContentType's typeSaintsPlural etc.
+CREATE TABLE PrayerEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    category TEXT NOT NULL,
+    sortOrder INTEGER NOT NULL,
+    isSequence INTEGER NOT NULL DEFAULT 0
+);
+
+-- Latin is a row here (language = 'la'), not a separate prayer — the detail
+-- screen's language toggle/parallel view is driven by whichever of en/fr/la
+-- actually have a row for a given prayerId.
+CREATE TABLE PrayerText (
+    prayerId TEXT NOT NULL,
+    language TEXT NOT NULL,
+    title TEXT NOT NULL,
+    subtitle TEXT,
+    bodyMd TEXT NOT NULL,
+    attribution TEXT,
+    source TEXT NOT NULL,
+    PRIMARY KEY (prayerId, language),
+    FOREIGN KEY (prayerId) REFERENCES PrayerEntity(id) ON DELETE CASCADE
+);
+
+insertPrayer:
+INSERT OR REPLACE INTO PrayerEntity(id, category, sortOrder, isSequence)
+VALUES (?, ?, ?, ?);
+
+insertPrayerText:
+INSERT OR REPLACE INTO PrayerText(prayerId, language, title, subtitle, bodyMd, attribution, source)
+VALUES (?, ?, ?, ?, ?, ?, ?);
+
+selectPrayersByCategory:
+SELECT PrayerEntity.id AS id, PrayerText.title AS title, PrayerText.subtitle AS subtitle,
+       PrayerEntity.category AS category, PrayerEntity.isSequence AS isSequence
+FROM PrayerEntity
+JOIN PrayerText ON PrayerText.prayerId = PrayerEntity.id AND PrayerText.language = :language
+WHERE PrayerEntity.category = :category
+ORDER BY PrayerEntity.sortOrder ASC;
+
+selectPrayerDetail:
+SELECT PrayerEntity.id AS id, PrayerEntity.category AS category, PrayerEntity.isSequence AS isSequence,
+       PrayerText.title AS title, PrayerText.subtitle AS subtitle, PrayerText.bodyMd AS bodyMd,
+       PrayerText.attribution AS attribution, PrayerText.source AS source
+FROM PrayerEntity
+JOIN PrayerText ON PrayerText.prayerId = PrayerEntity.id AND PrayerText.language = :language
+WHERE PrayerEntity.id = :id;
+
+-- Which of en/fr/la actually have a row for this prayer, for the detail
+-- screen's language toggle.
+selectPrayerLanguages:
+SELECT language FROM PrayerText WHERE prayerId = :id;
+
+selectAllPrayerSummaries:
+SELECT PrayerEntity.id AS id, PrayerText.title AS title, PrayerText.subtitle AS subtitle,
+       PrayerEntity.category AS category, PrayerEntity.isSequence AS isSequence
+FROM PrayerEntity
+JOIN PrayerText ON PrayerText.prayerId = PrayerEntity.id AND PrayerText.language = :language
+ORDER BY PrayerEntity.sortOrder ASC;

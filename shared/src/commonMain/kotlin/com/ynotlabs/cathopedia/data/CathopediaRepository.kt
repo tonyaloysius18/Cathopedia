@@ -10,6 +10,10 @@ import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.model.FeastDetail
 import com.ynotlabs.cathopedia.model.MiracleDetail
 import com.ynotlabs.cathopedia.model.PopeDetail
+import com.ynotlabs.cathopedia.model.PRAYER_SEARCH_ENTITY_TYPE
+import com.ynotlabs.cathopedia.model.PrayerCategory
+import com.ynotlabs.cathopedia.model.PrayerDetail
+import com.ynotlabs.cathopedia.model.PrayerSummary
 import com.ynotlabs.cathopedia.model.RelatedItem
 import com.ynotlabs.cathopedia.model.SaintDetail
 import com.ynotlabs.cathopedia.liturgical.LiturgicalCalendar
@@ -385,6 +389,74 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
             if (items.isNotEmpty()) return@withContext items[Random.nextInt(items.size)]
         }
         null
+    }
+
+    // ---- Prayers ----
+
+    suspend fun listPrayers(category: PrayerCategory, language: String): List<PrayerSummary> =
+        withContext(Dispatchers.Default) {
+            database.prayerQueries.selectPrayersByCategory(language, category.tag).executeAsList().map {
+                PrayerSummary(it.id, it.title, it.subtitle, PrayerCategory.fromTag(it.category), it.isSequence == 1L)
+            }
+        }
+
+    suspend fun prayerDetail(id: String, language: String): PrayerDetail? = withContext(Dispatchers.Default) {
+        database.prayerQueries.selectPrayerDetail(language = language, id = id).executeAsOneOrNull()?.let {
+            PrayerDetail(
+                id = it.id,
+                category = PrayerCategory.fromTag(it.category),
+                isSequence = it.isSequence == 1L,
+                title = it.title,
+                subtitle = it.subtitle,
+                bodyMd = it.bodyMd,
+                attribution = it.attribution,
+                source = it.source,
+                availableLanguages = database.prayerQueries.selectPrayerLanguages(id).executeAsList(),
+            )
+        }
+    }
+
+    /** FTS5 search scoped to prayers only — see the PRAYER_SEARCH_ENTITY_TYPE note in ContentLoader. */
+    suspend fun searchPrayers(query: String, language: String, limit: Long = 50): List<PrayerSummary> =
+        withContext(Dispatchers.Default) {
+            val matchQuery = query.trim().split(Regex("\\s+")).filter { it.isNotBlank() }
+                .joinToString(" ") { "$it*" }
+            if (matchQuery.isBlank()) return@withContext emptyList()
+
+            database.searchQueries.search(
+                matchQuery = matchQuery,
+                language = language,
+                entityTypeFilter = PRAYER_SEARCH_ENTITY_TYPE,
+                resultLimit = limit,
+            ).executeAsList().mapNotNull { row ->
+                // Search rows carry only title/subtitle, not the full body — resolve
+                // against PrayerEntity for category/isSequence so results can be
+                // grouped/routed the same as a regular list row.
+                val id = row.entityId ?: return@mapNotNull null
+                database.prayerQueries.selectPrayerDetail(language = language, id = id).executeAsOneOrNull()?.let {
+                    PrayerSummary(it.id, it.title, it.subtitle, PrayerCategory.fromTag(it.category), it.isSequence == 1L)
+                }
+            }
+        }
+
+    suspend fun isPrayerFavorite(id: String): Boolean = withContext(Dispatchers.Default) {
+        database.prayerUserStateQueries.selectPrayerUserState(id).executeAsOneOrNull()?.isFavorite == 1L
+    }
+
+    suspend fun listFavoritePrayerIds(): List<String> = withContext(Dispatchers.Default) {
+        database.prayerUserStateQueries.selectFavoritePrayerIds().executeAsList()
+    }
+
+    /** Toggles the favourite and returns the new state. */
+    suspend fun togglePrayerFavorite(id: String): Boolean = withContext(Dispatchers.Default) {
+        val newState = !(database.prayerUserStateQueries.selectPrayerUserState(id).executeAsOneOrNull()?.isFavorite == 1L)
+        database.prayerUserStateQueries.setPrayerFavorite(if (newState) 1L else 0L, id)
+        newState
+    }
+
+    /** Bumps timesPrayed and lastOpenedAt — call when a prayer (or the Rosary) is actually recited, not merely viewed. */
+    suspend fun recordPrayerRecited(id: String) = withContext(Dispatchers.Default) {
+        database.prayerUserStateQueries.recordPrayerOpened(Clock.System.now().toEpochMilliseconds(), id)
     }
 
     // ---- Preferences ----

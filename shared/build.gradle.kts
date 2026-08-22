@@ -106,7 +106,7 @@ val compileContent by tasks.registering {
     outputs.file(outputFile)
 
     doLast {
-        val contentTypes = listOf("saints", "popes", "apostles", "churches", "apparitions", "miracles", "feasts")
+        val contentTypes = listOf("saints", "popes", "apostles", "churches", "apparitions", "miracles", "feasts", "prayers")
 
         fun collectArray(typeDir: String): String {
             val dir = contentDir.dir(typeDir).asFile

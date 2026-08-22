@@ -8,9 +8,10 @@ actually reads.
 ## Adding an entity
 
 Create `<type>/<id>.json`, where `<type>` is one of `saints`, `popes`,
-`apostles`, `churches`, `apparitions`, `miracles`, `feasts`, and `<id>` is a
-stable slug (lowercase, hyphenated) — it becomes the entity's permanent ID,
-so don't rename it once other entities or relations reference it.
+`apostles`, `churches`, `apparitions`, `miracles`, `feasts`, `prayers`, and
+`<id>` is a stable slug (lowercase, hyphenated) — it becomes the entity's
+permanent ID, so don't rename it once other entities or relations reference
+it.
 
 Every file has the same shape: type-specific metadata fields (see the
 existing files for the field names per type — they match the SQLDelight
@@ -34,6 +35,36 @@ keyed by language code:
 
 Optional fields (`imageUrl`, `sourceUrl`, most metadata) can be omitted or
 set to `null`.
+
+`prayers` is the one exception to the shape above — its `text` entries use
+`title`/`subtitle`/`bodyMd`/`attribution`/`source` instead of
+`name`/`summary`/`body`/`sourceAttribution` (see PrayerText in Prayer.sq),
+and `source` is required, not optional:
+
+```json
+{
+  "id": "our-father",
+  "category": "everyday",
+  "sortOrder": 1,
+  "isSequence": false,
+  "text": {
+    "en": {
+      "title": "Our Father",
+      "bodyMd": "Our Father, who art in heaven...",
+      "source": "Traditional English form"
+    },
+    "la": {
+      "title": "Pater Noster",
+      "bodyMd": "Pater noster, qui es in caelis...",
+      "source": "Traditional Latin form"
+    }
+  }
+}
+```
+
+`category` must be one of PrayerCategory's tags (`everyday`, `marian`,
+`holy-spirit`, `eucharistic`, `saints`, `penitential`, `sequences`,
+`occasional`). Only the six `sequences` prayers should set `isSequence: true`.
 
 ## Cross-links
 

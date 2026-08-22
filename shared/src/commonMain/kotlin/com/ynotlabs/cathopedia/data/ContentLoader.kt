@@ -4,6 +4,7 @@ import com.ynotlabs.cathopedia.content.ContentCatalog
 import com.ynotlabs.cathopedia.content.LocalizedText
 import com.ynotlabs.cathopedia.db.CathopediaDatabase
 import com.ynotlabs.cathopedia.model.ContentType
+import com.ynotlabs.cathopedia.model.PRAYER_SEARCH_ENTITY_TYPE
 import com.ynotlabs.cathopedia.resources.Res
 import kotlinx.serialization.json.Json
 
@@ -23,7 +24,7 @@ object ContentLoader {
      * this just controls whether it re-runs on an existing install rather
      * than only ever loading once on a database with zero rows.
      */
-    private const val CONTENT_VERSION = "21"
+    private const val CONTENT_VERSION = "22"
     private const val CONTENT_VERSION_KEY = "content_version"
 
     private val json = Json { ignoreUnknownKeys = true }
@@ -89,6 +90,15 @@ object ContentLoader {
                 database.feastQueries.insertFeastText(f.id, lang, t.name, t.summary, t.body, t.sourceAttribution)
                 index(database, ContentType.FEAST, f.id, lang, t)
             }
+        }
+
+        catalog.prayers.forEach { p ->
+            database.prayerQueries.insertPrayer(p.id, p.category, p.sortOrder, if (p.isSequence) 1L else 0L)
+            p.text.forEach { (lang, t) ->
+                database.prayerQueries.insertPrayerText(p.id, lang, t.title, t.subtitle, t.bodyMd, t.attribution, t.source)
+                database.searchQueries.insertSearchEntry(PRAYER_SEARCH_ENTITY_TYPE, p.id, lang, t.title, t.subtitle ?: "", t.bodyMd)
+            }
+            database.prayerUserStateQueries.insertPrayerUserStateDefault(p.id)
         }
 
         catalog.relations.forEach { r ->

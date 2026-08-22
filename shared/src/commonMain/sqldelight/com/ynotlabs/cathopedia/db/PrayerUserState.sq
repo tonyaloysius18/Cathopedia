@@ -1,0 +1,31 @@
+-- Per-prayer user state: favourite toggle + recitation tracking. Kept as its
+-- own table in the same database as the content tables, same as Bookmark —
+-- see the note in CathopediaRepository about the single-database pattern this
+-- app already uses (content and user state share one bundled/runtime DB,
+-- reloaded idempotently by ContentLoader; there's no separate read-only
+-- content DB / writable user DB split here).
+CREATE TABLE PrayerUserState (
+    prayerId TEXT NOT NULL PRIMARY KEY,
+    isFavorite INTEGER NOT NULL DEFAULT 0,
+    lastOpenedAt INTEGER,
+    timesPrayed INTEGER NOT NULL DEFAULT 0,
+    FOREIGN KEY (prayerId) REFERENCES PrayerEntity(id) ON DELETE CASCADE
+);
+
+-- One row per prayer from first load, so setFavorite/recordPrayed below can
+-- always UPDATE rather than needing an upsert.
+insertPrayerUserStateDefault:
+INSERT OR IGNORE INTO PrayerUserState(prayerId, isFavorite, lastOpenedAt, timesPrayed)
+VALUES (?, 0, NULL, 0);
+
+selectPrayerUserState:
+SELECT * FROM PrayerUserState WHERE prayerId = :prayerId;
+
+selectFavoritePrayerIds:
+SELECT prayerId FROM PrayerUserState WHERE isFavorite = 1;
+
+setPrayerFavorite:
+UPDATE PrayerUserState SET isFavorite = :isFavorite WHERE prayerId = :prayerId;
+
+recordPrayerOpened:
+UPDATE PrayerUserState SET lastOpenedAt = :openedAt, timesPrayed = timesPrayed + 1 WHERE prayerId = :prayerId;

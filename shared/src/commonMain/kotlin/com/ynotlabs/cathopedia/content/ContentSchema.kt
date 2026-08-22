@@ -91,6 +91,30 @@ data class RelationRef(val type: String, val id: String)
 @Serializable
 data class RelationContent(val from: RelationRef, val to: RelationRef, val kind: String)
 
+/**
+ * Prayer text has a different shape than [LocalizedText] (title/bodyMd instead
+ * of name/body, a mandatory [source] rather than an optional sourceAttribution),
+ * so it gets its own class rather than overloading that one.
+ */
+@Serializable
+data class PrayerLocalizedText(
+    val title: String,
+    val subtitle: String? = null,
+    val bodyMd: String,
+    val attribution: String? = null,
+    val source: String,
+)
+
+@Serializable
+data class PrayerContent(
+    val id: String,
+    /** One of PrayerCategory's tags — see model/Prayer.kt. */
+    val category: String,
+    val sortOrder: Long,
+    val isSequence: Boolean = false,
+    val text: Map<String, PrayerLocalizedText>,
+)
+
 /** Deserialised shape of the compiled `catalog.json` bundle. */
 @Serializable
 data class ContentCatalog(
@@ -101,5 +125,6 @@ data class ContentCatalog(
     val apparitions: List<ApparitionContent> = emptyList(),
     val miracles: List<MiracleContent> = emptyList(),
     val feasts: List<FeastContent> = emptyList(),
+    val prayers: List<PrayerContent> = emptyList(),
     val relations: List<RelationContent> = emptyList(),
 )
