@@ -3,5 +3,22 @@
   "category": "holy-spirit",
   "sortOrder": 1,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Come, Holy Spirit",
+      "subtitle": "Veni, Sancte Spiritus",
+      "bodyMd": "Come, Holy Spirit, fill the hearts of Thy faithful\nand enkindle in them the fire of Thy love.\n\n> V. Send forth Thy Spirit and they shall be created.\n> R. And Thou shalt renew the face of the earth.\n\nLet us pray. O God, Who taught the hearts of the faithful\nby the light of the Holy Spirit,\ngrant us in the same Spirit to be truly wise,\nand ever to rejoice in His consolation.\nThrough Christ our Lord.\nAmen.",
+      "source": "EWTN, \"Come, Holy Spirit\", https://www.ewtn.com/catholicism/devotions/come-holy-spirit-13402, retrieved 2026-08-22"
+    },
+    "la": {
+      "title": "Veni, Sancte Spiritus",
+      "bodyMd": "Veni, Sancte Spiritus,\nreple tuorum corda fidelium:\net tui amoris in eis ignem accende.\n\n> V. Emitte Spiritum tuum, et creabuntur.\n> R. Et renovabis faciem terrae.\n\nOremus. Deus, qui corda fidelium Sancti Spiritus illustratione docuisti:\nda nobis in eodem Spiritu recta sapere;\net de eius semper consolatione gaudere.\nPer Christum Dominum nostrum.\nAmen.",
+      "source": "Marian Prayers in Latin, \"Come Holy Spirit in Latin & English — Veni Sancte Spiritus\", https://marianprayersinlatin.com/prayers/comeholyspirit/, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Viens, Esprit Saint",
+      "bodyMd": "Viens, Esprit Saint,\nremplis les cœurs de tes fidèles,\net embrase-les du feu de ton amour.\nEnvoie ton Esprit, et tout sera créé,\ntu renouvelleras la face de la terre.\n\nPrions le Seigneur : Seigneur notre Dieu,\npar l'illumination de l'Esprit Saint,\ntu as instruit les cœurs de tes fidèles ;\nrends-nous dociles à ton Esprit\npour apprécier ce qui est juste\net donne-nous d'éprouver toujours le réconfort de sa présence.\nPar le Christ notre Seigneur.\nAmen.",
+      "source": "Communauté Catholique Shalom (comshalom.org), « Prière à l'Esprit Saint », https://comshalom.org/fr/priere-lesprit-saint/, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }
