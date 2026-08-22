@@ -90,6 +90,53 @@ sqldelight {
     }
 }
 
+// Prayers are the one content type with hand-authored text quoted from
+// specific public-domain editions rather than model-drafted prose (see
+// content/README.md's provenance note), so they get real validation before
+// compileContent packs them in — a bad file here is a doctrinally/liturgically
+// wrong prayer shipped to users, not just a typo. Lives in buildSrc (real
+// kotlinx.serialization JSON parsing, real commonmark parsing) since `shared`
+// has no JVM target compileContent's own script could otherwise call into.
+val validatePrayerContent by tasks.registering {
+    group = "content"
+    description = "Validates /content/prayers/*.json; fails the build on any error. " +
+        "Pass -PstrictPrayerValidation to also fail on unsourced (\"text\": {}) skeleton entries."
+
+    val strict = project.hasProperty("strictPrayerValidation")
+    val prayersDir = rootProject.layout.projectDirectory.dir("content/prayers").asFile
+
+    inputs.dir(prayersDir)
+
+    doLast {
+        val issues = prayercontent.PrayerContentValidator(prayersDir).validate(strict)
+        val errors = issues.filter { it.severity == prayercontent.Severity.ERROR }
+        val warnings = issues.filter { it.severity == prayercontent.Severity.WARNING }
+
+        warnings.forEach { logger.warn(it.toString()) }
+        errors.forEach { logger.error(it.toString()) }
+
+        if (errors.isNotEmpty()) {
+            throw GradleException("${errors.size} prayer content validation error(s) — see above.")
+        }
+        logger.lifecycle(
+            "Prayer content OK: ${warnings.size} warning(s), 0 errors" + if (strict) " (strict)" else "",
+        )
+    }
+}
+
+// Working checklist for filling in /content/prayers by hand — run with
+// `./gradlew prayerCoverage --console=plain -q`.
+val prayerCoverage by tasks.registering {
+    group = "content"
+    description = "Prints a slug × language coverage table for /content/prayers."
+
+    val prayersDir = rootProject.layout.projectDirectory.dir("content/prayers").asFile
+
+    doLast {
+        prayercontent.PrayerCoverageReport(prayersDir).print { logger.lifecycle(it) }
+    }
+}
+
 // Content pipeline: /content is the human-edited source of truth (one JSON
 // file per entity, see content/README.md). This task compiles it into the
 // single bundle the app actually reads at runtime — every per-type file is
@@ -98,6 +145,8 @@ sqldelight {
 val compileContent by tasks.registering {
     group = "content"
     description = "Compiles /content into shared's bundled catalog.json resource."
+
+    dependsOn(validatePrayerContent)
 
     val contentDir = rootProject.layout.projectDirectory.dir("content")
     val outputFile = layout.projectDirectory.file("src/commonMain/composeResources/files/content/catalog.json")

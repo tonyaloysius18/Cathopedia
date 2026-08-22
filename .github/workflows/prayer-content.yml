@@ -1,0 +1,27 @@
+name: Prayer content validation
+
+on:
+  push:
+    paths:
+      - "content/prayers/**"
+      - "buildSrc/**"
+      - "shared/build.gradle.kts"
+  pull_request:
+    paths:
+      - "content/prayers/**"
+      - "buildSrc/**"
+      - "shared/build.gradle.kts"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Validate /content/prayers (strict)
+        run: ./gradlew validatePrayerContent -PstrictPrayerValidation --console=plain --no-daemon

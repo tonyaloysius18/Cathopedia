@@ -66,6 +66,46 @@ and `source` is required, not optional:
 `holy-spirit`, `eucharistic`, `saints`, `penitential`, `sequences`,
 `occasional`). Only the six `sequences` prayers should set `isSequence: true`.
 
+### Prayer texts: provenance, not recall
+
+Every prayer text must come from a published, citable, public-domain edition
+— never generated or "recalled" wording, however well-known the prayer. A
+single drifted word in something like the Salve Regina is a bug people will
+notice immediately, and `source` exists precisely so a wrong text can be
+traced back to its edition and fixed. If a text isn't sourced yet, its file
+stays skeletal (`"text": {}`) rather than getting a plausible-looking
+placeholder — `prayerCoverage` (below) tracks that as "not yet sourced," not
+an error.
+
+English uses pre-2010 traditional wording throughout — the ICEL 2010 Missal
+translation is copyrighted, so the Nicene Creed and Confiteor should use the
+older forms. `"consubstantial with the Father"` or `"through my most
+grievous fault"` in a prayer file is a bug, not a style choice. French
+wording is provisional pending an AELF licence request, which is why `source`
+is mandatory on every language row — it's what makes that audit possible.
+
+### Validating and tracking coverage
+
+`./gradlew validatePrayerContent` runs on every `compileContent` (so a normal
+build always validates) and fails on: malformed JSON, an `id` that doesn't
+match its filename, a duplicate `id`, an unknown `category`, a `sortOrder`
+collision within a category, `isSequence: true` on a slug that isn't one of
+the six known sequences, a prayer missing `en` or `fr` once it has *any*
+language sourced, a blank `title`/`bodyMd`/`source`, or markdown that fails
+to parse. A completely empty `"text": {}` is tolerated as a warning, not an
+error — pass `-PstrictPrayerValidation` (what CI uses) to promote that to a
+failure too.
+
+`./gradlew prayerCoverage` prints a slug × language table (present / missing
+/ empty-source), grouped by category with summary counts — the working
+checklist while filling the catalogue in.
+
+Both tasks live in `buildSrc/src/main/kotlin/prayercontent/`, since `shared`
+has no JVM target for `compileContent`'s own build script to call into for
+real JSON/markdown parsing; the field shapes there mirror
+`ContentSchema.kt`'s `PrayerContent`/`PrayerLocalizedText` by hand and need
+to stay in sync if either changes.
+
 ## Cross-links
 
 Add relations in `relations.json` (one flat array, not split per entity):
