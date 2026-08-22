@@ -106,6 +106,15 @@ real JSON/markdown parsing; the field shapes there mirror
 `ContentSchema.kt`'s `PrayerContent`/`PrayerLocalizedText` by hand and need
 to stay in sync if either changes.
 
+### Fetching prayer texts instead of hand-typing them
+
+`content/sources/` holds the Wikisource importer that fetches prayer text
+instead of anyone (human or model) typing it in — see
+`content/sources/README.md`. It's opt-in tooling (`importPrayerTexts`,
+`verifyPrayerImport`, `importReport` in `buildSrc/src/main/kotlin/prayerimport/`),
+never part of a normal build, and the validator above applies identically to
+imported and hand-pasted text.
+
 ## Rosary mysteries
 
 `mysteries/<id>.json`, one per mystery (`<set>-<n>`, e.g. `joyful-1`):

@@ -1,0 +1,905 @@
+{
+  "act-of-charity": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "act-of-contrition": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "act-of-faith": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "act-of-hope": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "adoro-te-devote": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "after-confession": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "angelus": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "anima-christi": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "apostles-creed": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "aquinas-before-study": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "before-confession": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "before-exams": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "confiteor": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "de-profundis": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "divine-mercy-chaplet": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "divine-praises": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "eternal-rest": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "evening-prayer": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "examination-of-conscience": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "fatima-decade-prayer": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "for-a-happy-death": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "for-peace": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "for-the-pope": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "for-the-sick": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "for-travel": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "for-vocations": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "glory-be": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "grace-after-meals": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "grace-before-meals": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "guardian-angel": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "hail-mary": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "holy-rosary": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "in-time-of-anxiety": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "late-have-i-loved-you": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "litany-of-loreto": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "magnificat": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "memorare": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "montfort-consecration": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "morning-offering": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "nicene-creed": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "novena-to-the-holy-spirit": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "o-salutaris-hostia": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "our-father": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "peace-prayer-of-st-francis": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "prayer-for-the-seven-gifts": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "radiating-christ": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "regina-caeli": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "rosary-closing-prayer": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "salve-regina": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "seven-sorrows": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "sign-of-the-cross": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "spiritual-communion": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "st-andrew-christmas-novena": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "st-gertrude": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "st-michael": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "st-patricks-breastplate": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "stations-of-the-cross": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "sub-tuum-praesidium": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "suscipe": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "tantum-ergo": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "thanksgiving-after-communion": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    }
+  },
+  "to-you-o-blessed-joseph": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "veni-creator": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  },
+  "veni-sancte-spiritus": {
+    "en": {
+      "wiki": "en",
+      "page": null,
+      "edition": null
+    },
+    "fr": {
+      "wiki": "fr",
+      "page": null,
+      "edition": null
+    },
+    "la": {
+      "wiki": "la",
+      "page": null,
+      "edition": null
+    }
+  }
+}

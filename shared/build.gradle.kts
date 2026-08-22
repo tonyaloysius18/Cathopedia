@@ -137,6 +137,104 @@ val prayerCoverage by tasks.registering {
     }
 }
 
+// --- Wikisource text importer (task 3b) --------------------------------
+// Opt-in only: needs network access, the app and every other build task do
+// not. Never add these as a dependency of compileContent, prayerCoverage,
+// validatePrayerContent, or any *Resources task. CI must not invoke them.
+// See cathopedia-task-3b-importer.md.
+
+fun categoryLookup(prayersDir: java.io.File): (String) -> String? {
+    val byId = prayersDir.listFiles { f -> f.isFile && f.extension == "json" }
+        ?.associate { f ->
+            val parsed = kotlinx.serialization.json.Json { ignoreUnknownKeys = true }
+                .decodeFromString(prayercontent.PrayerContentFile.serializer(), f.readText())
+            parsed.id to parsed.category
+        }
+        .orEmpty()
+    return { slug -> byId[slug] }
+}
+
+val importPrayerTexts by tasks.registering {
+    notCompatibleWithConfigurationCache("network I/O and ad-hoc content-directory writes; opt-in dev task only")
+    group = "content"
+    description = "Opt-in: fetches prayer text from Wikisource per content/sources/wikisource-map.json " +
+        "and writes it into content/prayers/*.json. Needs network access. Never runs as part of a normal " +
+        "build or in CI. Pass -PrefreshWikisource to bypass the fetch cache."
+
+    val refresh = project.hasProperty("refreshWikisource")
+    val prayersDir = rootProject.layout.projectDirectory.dir("content/prayers").asFile
+    val sourceMapFile = rootProject.layout.projectDirectory.file("content/sources/wikisource-map.json").asFile
+    val cacheDir = rootProject.layout.projectDirectory.dir("content/sources/fetched").asFile
+
+    doLast {
+        val client = prayerimport.MediaWikiClient(cacheDir = cacheDir, refresh = refresh)
+        val importer = prayerimport.PrayerTextImporter(prayersDir = prayersDir, sourceMapFile = sourceMapFile, client = client)
+        val results = importer.run(write = true)
+        prayerimport.ImportReport.print(results, categoryLookup(prayersDir)) { logger.lifecycle(it) }
+    }
+}
+
+val verifyPrayerImport by tasks.registering {
+    notCompatibleWithConfigurationCache("network I/O and ad-hoc content-directory writes; opt-in dev task only")
+    group = "content"
+    description = "Opt-in: runs the Wikisource importer against sign-of-the-cross, anima-christi and " +
+        "salve-regina only, and diffs the result character-by-character against the already-committed " +
+        "hand-sourced text, without writing anything. Needs network access."
+
+    val refresh = project.hasProperty("refreshWikisource")
+    val prayersDir = rootProject.layout.projectDirectory.dir("content/prayers").asFile
+    val sourceMapFile = rootProject.layout.projectDirectory.file("content/sources/wikisource-map.json").asFile
+    val cacheDir = rootProject.layout.projectDirectory.dir("content/sources/fetched").asFile
+
+    doLast {
+        val client = prayerimport.MediaWikiClient(cacheDir = cacheDir, refresh = refresh)
+        val importer = prayerimport.PrayerTextImporter(prayersDir = prayersDir, sourceMapFile = sourceMapFile, client = client)
+        val verifySlugs = setOf("sign-of-the-cross", "anima-christi", "salve-regina")
+
+        val verifier = prayerimport.VerifyPrayerImport(prayersDir, importer)
+        val outcomes = verifier.run(verifySlugs)
+
+        for (outcome in outcomes) {
+            when (outcome) {
+                is prayerimport.VerifyOutcome.Match ->
+                    logger.lifecycle("MATCH       ${outcome.slug}/${outcome.lang}")
+                is prayerimport.VerifyOutcome.Differs -> {
+                    logger.lifecycle("DIFFERS     ${outcome.slug}/${outcome.lang} — first mismatch at char ${outcome.diffAt}")
+                    logger.lifecycle("  expected: …${outcome.expectedContext}…")
+                    logger.lifecycle("  actual:   …${outcome.actualContext}…")
+                }
+                is prayerimport.VerifyOutcome.NotComparable ->
+                    logger.lifecycle("SKIPPED     ${outcome.slug}/${outcome.lang} — ${outcome.reason}")
+            }
+        }
+
+        val differs = outcomes.count { it is prayerimport.VerifyOutcome.Differs }
+        val matches = outcomes.count { it is prayerimport.VerifyOutcome.Match }
+        val skipped = outcomes.count { it is prayerimport.VerifyOutcome.NotComparable }
+        logger.lifecycle("")
+        logger.lifecycle("Summary: $matches match(es), $differs differ(s), $skipped skipped")
+    }
+}
+
+val importReport by tasks.registering {
+    notCompatibleWithConfigurationCache("network I/O and ad-hoc content-directory writes; opt-in dev task only")
+    group = "content"
+    description = "Opt-in: prints importer state (imported/manual/hand-sourced/no-map/failed) per " +
+        "slug×language without writing to content/prayers. Still fetches per the same cache rules as " +
+        "importPrayerTexts (network only for entries not already cached)."
+
+    val prayersDir = rootProject.layout.projectDirectory.dir("content/prayers").asFile
+    val sourceMapFile = rootProject.layout.projectDirectory.file("content/sources/wikisource-map.json").asFile
+    val cacheDir = rootProject.layout.projectDirectory.dir("content/sources/fetched").asFile
+
+    doLast {
+        val client = prayerimport.MediaWikiClient(cacheDir = cacheDir, refresh = false)
+        val importer = prayerimport.PrayerTextImporter(prayersDir = prayersDir, sourceMapFile = sourceMapFile, client = client)
+        val results = importer.run(write = false)
+        prayerimport.ImportReport.print(results, categoryLookup(prayersDir)) { logger.lifecycle(it) }
+    }
+}
+
 // Content pipeline: /content is the human-edited source of truth (one JSON
 // file per entity, see content/README.md). This task compiles it into the
 // single bundle the app actually reads at runtime — every per-type file is
