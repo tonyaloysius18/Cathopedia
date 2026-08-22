@@ -115,6 +115,29 @@ data class PrayerContent(
     val text: Map<String, PrayerLocalizedText>,
 )
 
+/**
+ * Mirrors MysteryText (Mystery.sq): title/fruit are the factual metadata from
+ * the Rosary brief's Appendix A table; [meditation] is left null everywhere
+ * for now — someone else is writing those separately (see content/README.md).
+ */
+@Serializable
+data class MysteryLocalizedText(
+    val title: String,
+    val fruit: String,
+    val meditation: String? = null,
+)
+
+@Serializable
+data class MysteryContent(
+    val id: String,
+    /** One of MysterySet's tags — see model/Mystery.kt. */
+    val mysterySet: String,
+    val sortOrder: Long,
+    /** Language-neutral Bible citation (e.g. "Lk 1:26-38") — lives here, not in [text]. */
+    val scriptureRef: String?,
+    val text: Map<String, MysteryLocalizedText> = emptyMap(),
+)
+
 /** Deserialised shape of the compiled `catalog.json` bundle. */
 @Serializable
 data class ContentCatalog(
@@ -126,5 +149,6 @@ data class ContentCatalog(
     val miracles: List<MiracleContent> = emptyList(),
     val feasts: List<FeastContent> = emptyList(),
     val prayers: List<PrayerContent> = emptyList(),
+    val mysteries: List<MysteryContent> = emptyList(),
     val relations: List<RelationContent> = emptyList(),
 )

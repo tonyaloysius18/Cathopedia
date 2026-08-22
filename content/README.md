@@ -106,6 +106,36 @@ real JSON/markdown parsing; the field shapes there mirror
 `ContentSchema.kt`'s `PrayerContent`/`PrayerLocalizedText` by hand and need
 to stay in sync if either changes.
 
+## Rosary mysteries
+
+`mysteries/<id>.json`, one per mystery (`<set>-<n>`, e.g. `joyful-1`):
+
+```json
+{
+  "id": "joyful-1",
+  "mysterySet": "joyful",
+  "sortOrder": 1,
+  "scriptureRef": "Lk 1:26-38",
+  "text": {
+    "en": {
+      "title": "Annunciation",
+      "fruit": "humility",
+      "meditation": null
+    }
+  }
+}
+```
+
+`mysterySet` is one of `joyful`, `sorrowful`, `glorious`, `luminous`.
+`scriptureRef` is a plain Bible citation and lives on the entity, not per
+language, since it reads the same in every language — it's `null` for the
+Assumption and Coronation, which aren't narrated in a single Gospel passage.
+`meditation` is left `null` deliberately; those are being written separately
+and aren't in scope for the pipeline itself. There's no `validateMysteryContent`
+task — unlike prayer texts, mystery titles/fruits are short factual metadata
+supplied directly in the Rosary brief, not liturgical wording needing a
+provenance audit, so the same validation concern doesn't apply.
+
 ## Cross-links
 
 Add relations in `relations.json` (one flat array, not split per entity):

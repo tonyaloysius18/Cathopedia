@@ -1,0 +1,49 @@
+-- mysterySet is a fixed taxonomy (joyful/sorrowful/glorious/luminous), matching
+-- how PrayerEntity.category and ContentType are enums rather than lookup
+-- tables — see model/Mystery.kt's MysterySet. scriptureRef is language-neutral
+-- (a Bible citation reads the same in en/fr) so it lives on the entity, not
+-- per-language text. It's nullable: the Assumption and Coronation are
+-- dogmatic mysteries with no single narrated Gospel passage, per Appendix A.
+CREATE TABLE MysteryEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    mysterySet TEXT NOT NULL,
+    sortOrder INTEGER NOT NULL,
+    scriptureRef TEXT
+);
+
+-- meditation is nullable and deliberately left empty by the content pipeline
+-- for now — see content/README.md. The detail screen shows the announcement
+-- and scripture reference alone when it's null.
+CREATE TABLE MysteryText (
+    mysteryId TEXT NOT NULL,
+    language TEXT NOT NULL,
+    title TEXT NOT NULL,
+    fruit TEXT NOT NULL,
+    meditation TEXT,
+    PRIMARY KEY (mysteryId, language),
+    FOREIGN KEY (mysteryId) REFERENCES MysteryEntity(id) ON DELETE CASCADE
+);
+
+insertMystery:
+INSERT OR REPLACE INTO MysteryEntity(id, mysterySet, sortOrder, scriptureRef)
+VALUES (?, ?, ?, ?);
+
+insertMysteryText:
+INSERT OR REPLACE INTO MysteryText(mysteryId, language, title, fruit, meditation)
+VALUES (?, ?, ?, ?, ?);
+
+selectMysteriesBySet:
+SELECT MysteryEntity.id AS id, MysteryEntity.mysterySet AS mysterySet, MysteryEntity.sortOrder AS sortOrder,
+       MysteryEntity.scriptureRef AS scriptureRef, MysteryText.title AS title, MysteryText.fruit AS fruit
+FROM MysteryEntity
+JOIN MysteryText ON MysteryText.mysteryId = MysteryEntity.id AND MysteryText.language = :language
+WHERE MysteryEntity.mysterySet = :mysterySet
+ORDER BY MysteryEntity.sortOrder ASC;
+
+selectMysteryDetail:
+SELECT MysteryEntity.id AS id, MysteryEntity.mysterySet AS mysterySet, MysteryEntity.sortOrder AS sortOrder,
+       MysteryEntity.scriptureRef AS scriptureRef, MysteryText.title AS title, MysteryText.fruit AS fruit,
+       MysteryText.meditation AS meditation
+FROM MysteryEntity
+JOIN MysteryText ON MysteryText.mysteryId = MysteryEntity.id AND MysteryText.language = :language
+WHERE MysteryEntity.id = :id;

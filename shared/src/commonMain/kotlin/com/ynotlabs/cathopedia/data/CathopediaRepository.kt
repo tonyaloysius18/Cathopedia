@@ -9,6 +9,9 @@ import com.ynotlabs.cathopedia.model.ContentSummary
 import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.model.FeastDetail
 import com.ynotlabs.cathopedia.model.MiracleDetail
+import com.ynotlabs.cathopedia.model.MysteryDetail
+import com.ynotlabs.cathopedia.model.MysterySet
+import com.ynotlabs.cathopedia.model.MysterySummary
 import com.ynotlabs.cathopedia.model.PopeDetail
 import com.ynotlabs.cathopedia.model.PRAYER_SEARCH_ENTITY_TYPE
 import com.ynotlabs.cathopedia.model.PrayerCategory
@@ -471,6 +474,29 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
     /** Bumps timesPrayed and lastOpenedAt — call when a prayer (or the Rosary) is actually recited, not merely viewed. */
     suspend fun recordPrayerRecited(id: String) = withContext(Dispatchers.Default) {
         database.prayerUserStateQueries.recordPrayerOpened(Clock.System.now().toEpochMilliseconds(), id)
+    }
+
+    // ---- Rosary mysteries ----
+
+    suspend fun listMysteries(set: MysterySet, language: String): List<MysterySummary> =
+        withContext(Dispatchers.Default) {
+            database.mysteryQueries.selectMysteriesBySet(language, set.tag).executeAsList().map {
+                MysterySummary(it.id, MysterySet.fromTag(it.mysterySet), it.sortOrder, it.title, it.scriptureRef, it.fruit)
+            }
+        }
+
+    suspend fun mysteryDetail(id: String, language: String): MysteryDetail? = withContext(Dispatchers.Default) {
+        database.mysteryQueries.selectMysteryDetail(language = language, id = id).executeAsOneOrNull()?.let {
+            MysteryDetail(
+                id = it.id,
+                set = MysterySet.fromTag(it.mysterySet),
+                sortOrder = it.sortOrder,
+                scriptureRef = it.scriptureRef,
+                title = it.title,
+                fruit = it.fruit,
+                meditation = it.meditation,
+            )
+        }
     }
 
     // ---- Preferences ----

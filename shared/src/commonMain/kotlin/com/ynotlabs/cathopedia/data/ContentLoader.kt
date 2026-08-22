@@ -24,7 +24,7 @@ object ContentLoader {
      * this just controls whether it re-runs on an existing install rather
      * than only ever loading once on a database with zero rows.
      */
-    private const val CONTENT_VERSION = "22"
+    private const val CONTENT_VERSION = "23"
     private const val CONTENT_VERSION_KEY = "content_version"
 
     private val json = Json { ignoreUnknownKeys = true }
@@ -99,6 +99,13 @@ object ContentLoader {
                 database.searchQueries.insertSearchEntry(PRAYER_SEARCH_ENTITY_TYPE, p.id, lang, t.title, t.subtitle ?: "", t.bodyMd)
             }
             database.prayerUserStateQueries.insertPrayerUserStateDefault(p.id)
+        }
+
+        catalog.mysteries.forEach { m ->
+            database.mysteryQueries.insertMystery(m.id, m.mysterySet, m.sortOrder, m.scriptureRef)
+            m.text.forEach { (lang, t) ->
+                database.mysteryQueries.insertMysteryText(m.id, lang, t.title, t.fruit, t.meditation)
+            }
         }
 
         catalog.relations.forEach { r ->
