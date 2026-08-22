@@ -307,11 +307,11 @@ private fun GuidedRosaryContent(
 
             if (!isLoading) {
                 val body = prayer?.bodyMd
-                if (body != null) {
+                if (!body.isNullOrBlank()) {
                     PrayerBodyText(bodyMd = body, color = MaterialTheme.colorScheme.onSurface)
                 } else {
                     Text(
-                        text = s.rosaryTextNotYetAvailable,
+                        text = s.prayerTextNotYetAvailable,
                         style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )

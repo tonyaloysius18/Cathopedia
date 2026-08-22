@@ -37,7 +37,7 @@ selectPrayersByCategory:
 SELECT PrayerEntity.id AS id, PrayerText.title AS title, PrayerText.subtitle AS subtitle,
        PrayerEntity.category AS category, PrayerEntity.isSequence AS isSequence
 FROM PrayerEntity
-JOIN PrayerText ON PrayerText.prayerId = PrayerEntity.id AND PrayerText.language = :language
+LEFT JOIN PrayerText ON PrayerText.prayerId = PrayerEntity.id AND PrayerText.language = :language
 WHERE PrayerEntity.category = :category
 ORDER BY PrayerEntity.sortOrder ASC;
 
@@ -46,7 +46,7 @@ SELECT PrayerEntity.id AS id, PrayerEntity.category AS category, PrayerEntity.is
        PrayerText.title AS title, PrayerText.subtitle AS subtitle, PrayerText.bodyMd AS bodyMd,
        PrayerText.attribution AS attribution, PrayerText.source AS source
 FROM PrayerEntity
-JOIN PrayerText ON PrayerText.prayerId = PrayerEntity.id AND PrayerText.language = :language
+LEFT JOIN PrayerText ON PrayerText.prayerId = PrayerEntity.id AND PrayerText.language = :language
 WHERE PrayerEntity.id = :id;
 
 -- Which of en/fr/la actually have a row for this prayer, for the detail
@@ -58,5 +58,5 @@ selectAllPrayerSummaries:
 SELECT PrayerEntity.id AS id, PrayerText.title AS title, PrayerText.subtitle AS subtitle,
        PrayerEntity.category AS category, PrayerEntity.isSequence AS isSequence
 FROM PrayerEntity
-JOIN PrayerText ON PrayerText.prayerId = PrayerEntity.id AND PrayerText.language = :language
+LEFT JOIN PrayerText ON PrayerText.prayerId = PrayerEntity.id AND PrayerText.language = :language
 ORDER BY PrayerEntity.sortOrder ASC;

@@ -80,6 +80,7 @@ class Strings {
     var prayerLanguageFr: String = "Français"
     var prayerLanguageLa: String = "Latin"
     var prayerDetailSequenceComingSoon: String = "This chaplet or novena isn't in the app yet — the Rosary is the first one implemented."
+    var prayerTextNotYetAvailable: String = "This prayer's text isn't in the app yet."
 
     // Rosary screen
     var rosaryModeGuided: String = "Guided"
@@ -96,7 +97,6 @@ class Strings {
     var rosaryResumeButton: String = "Resume"
     var rosaryStartOverButton: String = "Start over"
     var rosaryProgressLabel: String = "{current} of {total}"
-    var rosaryTextNotYetAvailable: String = "This prayer's text isn't in the app yet."
     var rosaryMysteryFruit: String = "Fruit"
     var rosaryFinishedTitle: String = "Amen."
     var rosaryFinishedMessage: String = "You've completed the Rosary."

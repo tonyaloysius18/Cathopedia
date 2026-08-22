@@ -192,7 +192,16 @@ private fun PrayerReadingContent(
 
             // Reading comfort is the point of this screen: generous line height
             // and a comfortable measure rather than the app's usual list-row density.
-            if (hasLatin && isWideEnoughForParallel) {
+            // A blank bodyMd means this prayer's list row is showing (its title
+            // falls back to a slug-derived label, see CathopediaRepository) but
+            // no text has actually been sourced yet.
+            if (detail.bodyMd.isBlank()) {
+                Text(
+                    text = s.prayerTextNotYetAvailable,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            } else if (hasLatin && isWideEnoughForParallel) {
                 Row(horizontalArrangement = Arrangement.spacedBy(32.dp)) {
                     PrayerBodyText(
                         bodyMd = detail.bodyMd,
@@ -209,12 +218,14 @@ private fun PrayerReadingContent(
                 )
             }
 
-            SourceFooter(
-                detail = detail,
-                expanded = showSource,
-                onExpandedChange = onShowSourceChange,
-                modifier = Modifier.padding(top = 32.dp),
-            )
+            if (detail.source.isNotBlank() || detail.attribution != null) {
+                SourceFooter(
+                    detail = detail,
+                    expanded = showSource,
+                    onExpandedChange = onShowSourceChange,
+                    modifier = Modifier.padding(top = 32.dp),
+                )
+            }
         }
     }
 }
@@ -295,11 +306,13 @@ private fun SourceFooter(
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
-                Text(
-                    text = "${s.prayerDetailBySource}: ${detail.source}",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
+                if (detail.source.isNotBlank()) {
+                    Text(
+                        text = "${s.prayerDetailBySource}: ${detail.source}",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
             }
         }
     }

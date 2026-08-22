@@ -299,11 +299,24 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
             resultLimit = limit,
         )
             .executeAsList()
-            .map {
+            .mapNotNull {
                 // FTS5 virtual tables can't express NOT NULL, so SQLDelight infers these
                 // columns as nullable even though every row is written by insertSearchEntry
                 // with real values — safe to assert non-null here.
-                ContentSummary(ContentType.fromTag(it.entityType!!), it.entityId!!, it.name!!, it.summary!!)
+                val entityType = it.entityType ?: return@mapNotNull null
+                
+                // ContentSearch index shared by encyclopedia (7 types) and prayers.
+                // Prayers are handled by searchPrayers() from the Prayers tab, but
+                // global search needs to filter them out here because they don't
+                // map to the ContentType enum.
+                if (entityType == PRAYER_SEARCH_ENTITY_TYPE) return@mapNotNull null
+
+                ContentSummary(
+                    type = ContentType.fromTag(entityType),
+                    id = it.entityId!!,
+                    name = it.name!!,
+                    summary = it.summary!!
+                )
             }
     }
 
@@ -399,7 +412,13 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
     suspend fun listPrayers(category: PrayerCategory, language: String): List<PrayerSummary> =
         withContext(Dispatchers.Default) {
             database.prayerQueries.selectPrayersByCategory(language, category.tag).executeAsList().map {
-                PrayerSummary(it.id, it.title, it.subtitle, PrayerCategory.fromTag(it.category), it.isSequence == 1L)
+                PrayerSummary(
+                    it.id,
+                    it.title ?: it.id.hyphenatedToTitle(),
+                    it.subtitle,
+                    PrayerCategory.fromTag(it.category),
+                    it.isSequence == 1L
+                )
             }
         }
 
@@ -409,11 +428,11 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
                 id = it.id,
                 category = PrayerCategory.fromTag(it.category),
                 isSequence = it.isSequence == 1L,
-                title = it.title,
+                title = it.title ?: it.id.hyphenatedToTitle(),
                 subtitle = it.subtitle,
-                bodyMd = it.bodyMd,
+                bodyMd = it.bodyMd ?: "",
                 attribution = it.attribution,
-                source = it.source,
+                source = it.source ?: "",
                 availableLanguages = database.prayerQueries.selectPrayerLanguages(id).executeAsList(),
             )
         }
@@ -437,7 +456,13 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
                 // grouped/routed the same as a regular list row.
                 val id = row.entityId ?: return@mapNotNull null
                 database.prayerQueries.selectPrayerDetail(language = language, id = id).executeAsOneOrNull()?.let {
-                    PrayerSummary(it.id, it.title, it.subtitle, PrayerCategory.fromTag(it.category), it.isSequence == 1L)
+                    PrayerSummary(
+                        it.id,
+                        it.title ?: it.id.hyphenatedToTitle(),
+                        it.subtitle,
+                        PrayerCategory.fromTag(it.category),
+                        it.isSequence == 1L
+                    )
                 }
             }
         }
@@ -451,7 +476,13 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
     suspend fun listFavoritePrayers(language: String): List<PrayerSummary> = withContext(Dispatchers.Default) {
         database.prayerUserStateQueries.selectFavoritePrayerIds().executeAsList().mapNotNull { id ->
             database.prayerQueries.selectPrayerDetail(language = language, id = id).executeAsOneOrNull()?.let {
-                PrayerSummary(it.id, it.title, it.subtitle, PrayerCategory.fromTag(it.category), it.isSequence == 1L)
+                PrayerSummary(
+                    it.id,
+                    it.title ?: it.id.hyphenatedToTitle(),
+                    it.subtitle,
+                    PrayerCategory.fromTag(it.category),
+                    it.isSequence == 1L
+                )
             }
         }
     }
@@ -514,4 +545,7 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
     suspend fun ensureContentLoaded() = withContext(Dispatchers.Default) {
         ContentLoader.loadIfEmpty(database)
     }
+
+    private fun String.hyphenatedToTitle(): String =
+        this.split("-").joinToString(" ") { it.replaceFirstChar { char -> if (char.isLowerCase()) char.titlecase() else char.toString() } }
 }

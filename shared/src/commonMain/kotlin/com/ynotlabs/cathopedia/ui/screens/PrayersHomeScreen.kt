@@ -55,10 +55,11 @@ private const val HOLY_ROSARY_ID = "holy-rosary"
 /**
  * Tab root for Prayers: category sections, favourites pinned at top when
  * non-empty, a prominent Rosary card, and an inline FTS search that swaps the
- * whole body for results while a query is active. A category with nothing
- * sourced yet in [language] simply doesn't render — [CathopediaRepository]'s
- * queries already exclude unsourced prayers, so there's no client-side
- * filtering to get wrong here.
+ * whole body for results while a query is active. Prayers list even when
+ * their text isn't sourced yet — [CathopediaRepository.listPrayers] falls
+ * back to a title-cased slug so the catalogue reads as populated; opening one
+ * shows [com.ynotlabs.cathopedia.i18n.Strings.prayerTextNotYetAvailable]
+ * instead of the real body (see PrayerDetailScreen.kt).
  */
 @Composable
 fun PrayersHomeScreen(
@@ -121,13 +122,19 @@ fun PrayersHomeScreen(
         )
 
         if (query.isNotBlank()) {
-            PrayerSearchResults(query = query, results = searchResults, onSelect = ::openPrayer)
+            PrayerSearchResults(
+                query = query,
+                results = searchResults,
+                onSelect = ::openPrayer,
+                modifier = Modifier.weight(1f).fillMaxWidth(),
+            )
         } else {
             PrayersHomeBody(
                 favorites = favorites,
                 byCategory = byCategory,
                 onSelect = ::openPrayer,
                 onOpenRosary = onOpenRosary,
+                modifier = Modifier.weight(1f).fillMaxWidth(),
             )
         }
     }
@@ -139,6 +146,7 @@ private fun PrayersHomeBody(
     byCategory: Map<PrayerCategory, List<PrayerSummary>>,
     onSelect: (PrayerSummary) -> Unit,
     onOpenRosary: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val s = LocalStrings.current
     val nonEmptyCategories = PrayerCategory.entries.filter { !byCategory[it].isNullOrEmpty() }
@@ -146,7 +154,10 @@ private fun PrayersHomeBody(
     // The Rosary is its own self-contained feature (mysteries, not prayer
     // text) — it stays reachable even while the rest of the catalogue has
     // nothing sourced yet, so this only gates the *list* content below it.
-    LazyColumn(contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 116.dp)) {
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 116.dp),
+    ) {
         item { RosaryCard(onClick = onOpenRosary) }
 
         if (favorites.isEmpty() && nonEmptyCategories.isEmpty()) {
@@ -178,17 +189,21 @@ private fun PrayerSearchResults(
     query: String,
     results: List<PrayerSummary>,
     onSelect: (PrayerSummary) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val s = LocalStrings.current
 
     if (results.isEmpty()) {
-        Box(modifier = Modifier.fillMaxWidth().padding(32.dp)) {
+        Box(modifier = modifier.padding(32.dp)) {
             Text(s.prayersSearchNoResults, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         return
     }
 
-    LazyColumn(contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 116.dp)) {
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 116.dp),
+    ) {
         items(results, key = { it.id }) { prayer ->
             PrayerRow(prayer = prayer, query = query, onClick = { onSelect(prayer) })
         }

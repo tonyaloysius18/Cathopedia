@@ -55,6 +55,7 @@ val FR: Strings = Strings().apply {
     prayerLanguageFr = "Français"
     prayerLanguageLa = "Latin"
     prayerDetailSequenceComingSoon = "Ce chapelet ou cette neuvaine n'est pas encore disponible — le Rosaire est le premier mis en œuvre."
+    prayerTextNotYetAvailable = "Le texte de cette prière n'est pas encore disponible."
 
     rosaryModeGuided = "Guidé"
     rosaryModeMap = "Plan"
@@ -70,7 +71,6 @@ val FR: Strings = Strings().apply {
     rosaryResumeButton = "Reprendre"
     rosaryStartOverButton = "Recommencer"
     rosaryProgressLabel = "{current} sur {total}"
-    rosaryTextNotYetAvailable = "Le texte de cette prière n'est pas encore disponible."
     rosaryMysteryFruit = "Fruit"
     rosaryFinishedTitle = "Amen."
     rosaryFinishedMessage = "Vous avez terminé le Rosaire."
