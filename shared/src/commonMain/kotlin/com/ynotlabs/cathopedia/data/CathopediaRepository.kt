@@ -315,6 +315,27 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
     suspend fun summaryOf(type: ContentType, id: String, language: String): ContentSummary? =
         listByType(type, language).firstOrNull { it.id == id }
 
+    // ---- Search History ----
+
+    suspend fun addSearchHistory(query: String) = withContext(Dispatchers.Default) {
+        val cleaned = query.trim()
+        if (cleaned.isNotEmpty()) {
+            database.searchHistoryQueries.insertSearch(cleaned, Clock.System.now().toEpochMilliseconds())
+        }
+    }
+
+    suspend fun getSearchHistory(): List<String> = withContext(Dispatchers.Default) {
+        database.searchHistoryQueries.selectAllHistory().executeAsList()
+    }
+
+    suspend fun removeSearchHistory(query: String) = withContext(Dispatchers.Default) {
+        database.searchHistoryQueries.deleteHistory(query)
+    }
+
+    suspend fun clearSearchHistory() = withContext(Dispatchers.Default) {
+        database.searchHistoryQueries.clearAllHistory()
+    }
+
     // ---- Bookmarks (Saved tab) ----
 
     suspend fun isBookmarked(type: ContentType, id: String): Boolean = withContext(Dispatchers.Default) {

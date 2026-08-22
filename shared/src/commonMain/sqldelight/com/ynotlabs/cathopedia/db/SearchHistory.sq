@@ -1,0 +1,17 @@
+CREATE TABLE SearchHistory (
+    query TEXT NOT NULL PRIMARY KEY,
+    searchedAt INTEGER NOT NULL
+);
+
+insertSearch:
+INSERT OR REPLACE INTO SearchHistory(query, searchedAt)
+VALUES (?, ?);
+
+selectAllHistory:
+SELECT query FROM SearchHistory ORDER BY searchedAt DESC LIMIT 10;
+
+deleteHistory:
+DELETE FROM SearchHistory WHERE query = ?;
+
+clearAllHistory:
+DELETE FROM SearchHistory;
