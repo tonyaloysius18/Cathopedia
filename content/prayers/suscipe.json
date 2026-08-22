@@ -3,5 +3,26 @@
   "category": "saints",
   "sortOrder": 4,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Suscipe",
+      "subtitle": "Take, Lord, and Receive",
+      "attribution": "St. Ignatius of Loyola",
+      "bodyMd": "Take, Lord, and receive all my liberty,\nmy memory, my understanding,\nand my entire will,\nAll I have and call my own.\nYou have given all to me.\nTo you, Lord, I return it.\nEverything is yours; do with it what you will.\nGive me only your love and your grace,\nthat is enough for me.",
+      "source": "Loyola Press, \"Suscipe\", https://www.loyolapress.com/catholic-resources/prayer/traditional-catholic-prayers/saints-prayers/suscipe-prayer-saint-ignatius-of-loyola/, retrieved 2026-08-22"
+    },
+    "la": {
+      "title": "Suscipe",
+      "attribution": "St. Ignatius of Loyola",
+      "bodyMd": "Suscipe, Domine, universam meam libertatem.\nAccipe memoriam, intellectum atque voluntatem omnem.\nQuidquid habeo vel possideo mihi largitus es;\nid tibi totum restituo,\nac tuae prorsus voluntati trado gubernandum.\nAmorem tui solum cum gratia tua mihi dones,\net dives sum satis,\nnec aliud quidquam ultra posco.\nAmen.",
+      "source": "Hymnary.org, \"Suscipe Domine, universam libertatem meam\", https://hymnary.org/text/suscipe_domine_universam_libertatem_meam, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Prends, Seigneur, et reçois",
+      "subtitle": "Suscipe",
+      "attribution": "Saint Ignace de Loyola",
+      "bodyMd": "Prends, Seigneur, et reçois toute ma liberté,\nma mémoire, mon intelligence et toute ma volonté,\ntout ce que j'ai, tout ce que je possède.\nTu me l'as donné, à toi, Seigneur, je le rends.\nTout est à toi.\nDisposes-en selon ta divine volonté.\nDonne-moi ton amour et ta grâce,\nc'est tout ce qu'il me faut.\nAmen.",
+      "source": "Église catholique en France (eglise.catholique.fr), « Reçois toute ma liberté d'Ignace de Loyola », https://eglise.catholique.fr/approfondir-sa-foi/prier/prieres/524278-recois-toute-ma-liberte/, retrieved 2026-08-22"
+    }
+  }
 }

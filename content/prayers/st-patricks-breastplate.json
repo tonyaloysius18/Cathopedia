@@ -3,5 +3,20 @@
   "category": "saints",
   "sortOrder": 7,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "St. Patrick's Breastplate",
+      "subtitle": "I Bind Unto Myself Today",
+      "attribution": "Traditional, tr. Cecil Frances Alexander, 1889",
+      "bodyMd": "I bind unto myself today\nthe strong Name of the Trinity,\nby invocation of the same,\nthe Three in One and One in Three.\n\nBy power of faith, Christ's incarnation;\nHis baptism in the Jordan river;\nHis death on Cross for my salvation;\nHis bursting from the spicèd tomb;\nHis riding up the heavenly way;\nHis coming at the day of doom;\nI bind unto myself today.\n\nI bind unto myself today\nthe virtues of the starlit heaven,\nthe glorious sun's life-giving ray,\nthe whiteness of the moon at even,\nthe flashing of the lightning free,\nthe whirling wind's tempestuous shocks,\nthe stable earth, the deep salt sea,\naround the old eternal rocks.",
+      "source": "Hymnary.org, \"I Bind Unto Myself Today\", https://hymnary.org/text/i_bind_unto_myself_today, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Cuirasse de Saint Patrick",
+      "subtitle": "Je me lève aujourd'hui",
+      "attribution": "Traditionnel, attribué à saint Patrick",
+      "bodyMd": "Je me lève aujourd'hui\npar une force puissante,\nl'invocation de la Trinité,\nla croyance en la Trinité,\nla confession de l'unité\ndu Créateur du monde.",
+      "source": "evangelium-vitae.org, « Je me lève aujourd'hui - Saint Patrick », https://evangelium-vitae.org/veillez-et-priez/texte-priere/252/prier-le-matin-dans-la-journeacutee-le-soir-/je-me-legraveve-aujourd-hui--saint-patrick.htm, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }

@@ -3,5 +3,18 @@
   "category": "saints",
   "sortOrder": 3,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Prayer of St. Thomas Aquinas Before Study",
+      "attribution": "St. Thomas Aquinas",
+      "bodyMd": "Ineffable Creator,\nWho out of the treasures of Thy wisdom\nhast appointed three hierarchies of Angels\nand set them in wondrous order,\ngrant that I may be enlightened by Thee\nto penetrate the truths I study\nand to grow in virtue and wisdom.\nAmen.",
+      "source": "EWTN, \"On St. Thomas Aquinas\", https://www.ewtn.com/catholicism/library/on-st-thomas-aquinas-3526, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Prière avant l'étude",
+      "attribution": "Saint Thomas d'Aquin",
+      "bodyMd": "Créateur ineffable, vous êtes la vraie source de la lumière et de la sagesse.\nDaignez répandre votre clarté sur l'obscurité de mon intelligence ;\nchassez de moi les ténèbres du péché et de l'ignorance.\n\nDonnez-moi :\nla pénétration pour comprendre,\nla mémoire pour retenir,\nla méthode et la facilité pour apprendre,\nla lucidité pour interpréter,\nune grâce abondante pour m'exprimer.\n\nAidez le commencement de mon travail,\ndirigez-en le progrès,\ncouronnez-en la fin,\npar Jésus Christ Notre Seigneur.\nAmen.",
+      "source": "Diocèse d'Orléans (orleans.catholique.fr), « Prière avant l'étude - de St Thomas d'Aquin », https://www.orleans.catholique.fr/vivre-ma-foi/prier-et-celebrer/5219-priere-etudes/, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }

@@ -3,5 +3,16 @@
   "category": "penitential",
   "sortOrder": 4,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Prayer After Confession",
+      "bodyMd": "Merciful Lord, with a pure heart I thank you for taking away my sins.\nLet your Holy Spirit guide my life\nso that my soul may bear the fruit of love, joy, peace, patience,\nkindness, goodness, trustfulness, gentleness, and self-control.\nRenew my desire to be your faithful friend and servant,\nincrease my loving dependence on you,\nand grant me that joy and peace of heart\nwhich comes from doing your holy will.\nThrough Christ our Lord.\nAmen.",
+      "source": "Catholicity.com, \"Prayer of Thanksgiving After Confession\", https://www.catholicity.com/prayer/prayer-of-thanksgiving-after-confession.html, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Prière après la confession",
+      "bodyMd": "Reconnaissance éternelle vous soit rendue, ô Dieu de bonté et de miséricorde !\nVous n'avez pas voulu la mort du pécheur,\nvous n'avez pas rejeté son repentir ;\ncomme un bon Père vous lui avez pardonné ses péchés\net l'avez reçu dans votre amour.\n\nVous avez brisé mes liens, ô Jésus,\nvous m'avez appelé de nouveau au nombre de vos enfants,\net la paix céleste, que vous seul pouvez dispenser,\nest descendue dans mon âme.\n\nCette liberté, cette paix, ô Jésus, je veux désormais les conserver.\nDès ce moment, je vous donne mon cœur.\nAvec le secours de votre sainte grâce, je vous serai fidèle.\nAmen.",
+      "source": "The Catholic Doors Ministry, « Prière après la confession », https://www.catholicdoors.com/prayers/french/fran114.htm, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }

@@ -3,5 +3,24 @@
   "category": "saints",
   "sortOrder": 6,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "To You, O Blessed Joseph",
+      "attribution": "Pope Leo XIII, 1889",
+      "bodyMd": "To you, O blessed Joseph, do we come in our tribulation,\nand having implored the help of your most holy spouse,\nwe confidently invoke your patronage also.\nThrough that charity which bound you to the Immaculate Virgin Mother of God\nand through the paternal love with which you embraced the Child Jesus,\nwe humbly beg you graciously to regard the inheritance\nwhich Jesus Christ has purchased by his Blood,\nand with your power and strength to aid us in our necessities.\nAmen.",
+      "source": "EWTN, \"Devotion to St. Joseph\", https://www.ewtn.com/catholicism/devotions/devotion-to-st-joseph-346, retrieved 2026-08-22"
+    },
+    "la": {
+      "title": "Ad Te, Beate Ioseph",
+      "attribution": "Pope Leo XIII, 1889",
+      "bodyMd": "Ad te, beate Ioseph, in tribulatione nostra confugimus,\natque, implorato Sponsae tuae sanctissimae auxilio,\npatrocinium quoque tuum fidenter exposcimus.\nPer eam, quaesumus, quae te cum immaculata Virgine Dei Genetrice coniunxit,\ncaritatem, perque paternum, quo Puerum Iesum amplexus es, amorem,\nsupplices deprecamur, ut ad hereditatem,\nquam Iesus Christus acquisivit Sanguine suo,\nbenignus respicias, ac necessitatibus nostris\ntua virtute et ope succurras.\nAmen.",
+      "source": "Catholic Culture, \"Ad te Beate Ioseph - To thee, O Blessed Joseph\" (Pope Leo XIII, encyclical Quamquam pluries, 1889), https://www.catholicculture.org/culture/liturgicalyear/prayers/view.cfm?id=1005, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "À vous, bienheureux Joseph",
+      "attribution": "Pape Léon XIII, 1889",
+      "bodyMd": "Nous recourons à vous dans notre tribulation, bienheureux Joseph,\net, après avoir imploré le secours de votre très sainte épouse,\nnous sollicitons aussi avec confiance votre patronage.\nAu nom de l'affection qui vous a uni à la Vierge immaculée, Mère de Dieu,\npar l'amour paternel dont vous avez entouré l'Enfant Jésus,\nnous vous supplions de regarder avec bonté\nl'héritage que Jésus-Christ a acquis au prix de son sang,\net de nous assister de votre puissance et de votre secours dans nos besoins.\nAmen.",
+      "source": "30Giorni, « À vous, bienheureux Joseph », https://www.30giorni.it/articoli_id_77444_l4.htm, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }

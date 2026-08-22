@@ -3,5 +3,18 @@
   "category": "saints",
   "sortOrder": 5,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Prayer of St. Gertrude for the Souls in Purgatory",
+      "attribution": "St. Gertrude the Great",
+      "bodyMd": "Eternal Father, I offer Thee the Most Precious Blood of Jesus,\nwith all the Masses being said all over the world this day,\nfor the Souls in Purgatory.\nAmen.",
+      "source": "EWTN, \"How to Avoid Purgatory\", https://www.ewtn.com/catholicism/library/how-to-avoid-purgatory-12562, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Prière de Sainte Gertrude pour les âmes du purgatoire",
+      "attribution": "Sainte Gertrude la Grande",
+      "bodyMd": "Père Éternel, je vous offre le Très Précieux Sang de votre Divin Fils Jésus,\nen union avec toutes les Messes célébrées aujourd'hui dans le monde entier,\npour toutes les âmes du Purgatoire,\npour les pécheurs en tous lieux,\npour les pécheurs dans l'Église universelle,\npour ceux de ma maison et de mes proches.\nAmen.",
+      "source": "asandamiano.fr, « Prière pour les âmes du purgatoire de Sainte Gertrude », https://www.asandamiano.fr/prieres/prieres-ames-purgatoire/priere-ames-purgatoire-de-sainte-gertrude/, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }

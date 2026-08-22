@@ -3,5 +3,18 @@
   "category": "saints",
   "sortOrder": 2,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Peace Prayer of St. Francis",
+      "attribution": "Traditionally attributed to St. Francis of Assisi; author unknown, c. 1912",
+      "bodyMd": "Lord, make me an instrument of your peace:\nWhere there is hatred, let me sow love;\nwhere there is injury, pardon;\nwhere there is doubt, faith;\nwhere there is despair, hope;\nwhere there is darkness, light;\nwhere there is sadness, joy.\n\nO divine Master,\ngrant that I may not so much seek\nto be consoled as to console,\nto be understood as to understand,\nto be loved as to love.\n\nFor it is in giving that we receive,\nit is in pardoning that we are pardoned,\nand it is in dying that we are born to eternal life.\nAmen.",
+      "source": "LiederNet Archive, \"Prayer of Saint Francis / Lord, make me an instrument of Thy peace\", https://www.lieder.net/lieder/get_text.html?TextId=50568, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Prière de Saint François",
+      "attribution": "Attribuée traditionnellement à saint François d'Assise ; auteur inconnu, v. 1912",
+      "bodyMd": "Seigneur, fais de moi un instrument de ta paix,\nlà où est la haine, que je mette l'amour,\nlà où est l'offense, que je mette le pardon,\nlà où est la discorde, que je mette l'union,\nlà où est l'erreur, que je mette la vérité,\nlà où est le doute, que je mette la foi,\nlà où est le désespoir, que je mette l'espérance,\nlà où sont les ténèbres, que je mette la lumière,\nlà où est la tristesse, que je mette la joie.\n\nÔ Seigneur, que je ne cherche pas tant\nà être consolé qu'à consoler,\nà être compris qu'à comprendre,\nà être aimé qu'à aimer.\n\nCar c'est en se donnant qu'on reçoit,\nc'est en s'oubliant qu'on se retrouve,\nc'est en pardonnant qu'on est pardonné,\nc'est en mourant qu'on ressuscite à l'éternelle vie.\nAmen.",
+      "source": "Église catholique en France (eglise.catholique.fr), « Prière de saint François d'Assise », https://eglise.catholique.fr/approfondir-sa-foi/prier/prieres/372202-priere-de-saint-francois-dassise/, retrieved 2026-08-22"
+    }
+  }
 }
