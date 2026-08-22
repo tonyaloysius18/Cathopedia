@@ -24,7 +24,7 @@ object ContentLoader {
      * this just controls whether it re-runs on an existing install rather
      * than only ever loading once on a database with zero rows.
      */
-    private const val CONTENT_VERSION = "25"
+    private const val CONTENT_VERSION = "26"
     private const val CONTENT_VERSION_KEY = "content_version"
 
     private val json = Json { ignoreUnknownKeys = true }

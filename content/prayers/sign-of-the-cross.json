@@ -3,5 +3,21 @@
   "category": "everyday",
   "sortOrder": 1,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Sign of the Cross",
+      "bodyMd": "In the name of the Father, and of the Son, and of the Holy Spirit.\nAmen.",
+      "source": "Traditional public-domain wording, recalled from memory at the user's explicit instruction (2026-08-22) overriding the brief's normal no-recall rule — not verified against a specific printed edition."
+    },
+    "la": {
+      "title": "Signum Crucis",
+      "bodyMd": "In nomine Patris, et Filii, et Spiritus Sancti.\nAmen.",
+      "source": "Traditional public-domain wording, recalled from memory at the user's explicit instruction (2026-08-22) overriding the brief's normal no-recall rule — not verified against a specific printed edition."
+    },
+    "fr": {
+      "title": "Signe de croix",
+      "bodyMd": "Au nom du Père, et du Fils, et du Saint-Esprit.\nAinsi soit-il.",
+      "source": "Forme traditionnelle, restituée de mémoire à la demande explicite de l'utilisateur (2026-08-22) — non vérifiée sur une édition imprimée précise ; en attente d'audit AELF."
+    }
+  }
 }
