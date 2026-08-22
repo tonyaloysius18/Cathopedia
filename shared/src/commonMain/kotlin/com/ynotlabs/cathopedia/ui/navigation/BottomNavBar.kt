@@ -30,18 +30,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import com.ynotlabs.cathopedia.ui.theme.DarkGoldBright
 import com.ynotlabs.cathopedia.ui.theme.DarkPillSurface
 import com.ynotlabs.cathopedia.ui.theme.LightGoldText
 import com.ynotlabs.cathopedia.ui.theme.LightPillSurface
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Text
-import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.sp
-import com.ynotlabs.cathopedia.i18n.LocalStrings
-import com.ynotlabs.cathopedia.i18n.Strings
+import androidx.compose.ui.layout.ContentScale
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.nav_explore
 import com.ynotlabs.cathopedia.resources.nav_home
@@ -54,7 +49,6 @@ import kotlin.math.abs
 
 @Composable
 fun BottomNavBar(selected: Tab, onSelect: (Tab) -> Unit) {
-    val strings = LocalStrings.current
     val items = Tab.entries
     val count = items.size
     val selectedIndex = items.indexOf(selected).coerceAtLeast(0)
@@ -274,8 +268,6 @@ fun BottomNavBar(selected: Tab, onSelect: (Tab) -> Unit) {
                 val itemBias = if (count <= 1) 0f else -1f + 2f * index / (count - 1)
                 val selectedness = (1f - abs(bias - itemBias) / step).coerceIn(0f, 1f)
 
-                val isSelected = tab == selected
-
                 Box(
                     modifier = Modifier
                         .weight(1f)
@@ -294,16 +286,13 @@ fun BottomNavBar(selected: Tab, onSelect: (Tab) -> Unit) {
                         ((-20).dp * selectedness).toPx()
                     }
 
-                    // Bigger at rest, with a modest selected enlargement — kept
-                    // smaller than before so the label below still fits inside
-                    // the bar's fixed height without clipping.
-                    val iconSize = 34.dp + (6.dp * selectedness)
+                    val iconSize = 32.dp + (8.dp * selectedness)
 
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         modifier = Modifier.graphicsLayer {
                             translationY = verticalOffset
-                            alpha = 0.86f + (0.14f * selectedness)
+                            alpha = 0.82f + (0.18f * selectedness)
                         },
                     ) {
                         Image(
@@ -312,19 +301,6 @@ fun BottomNavBar(selected: Tab, onSelect: (Tab) -> Unit) {
                             contentScale = ContentScale.Fit,
                             modifier = Modifier.size(iconSize),
                         )
-                        // Only the selected item carries a label — the other
-                        // four stay icon-only, which is what keeps five items
-                        // fitting the bar down to 320dp.
-                        if (isSelected) {
-                            Text(
-                                text = tabLabel(tab, strings),
-                                fontSize = 10.sp,
-                                maxLines = 1,
-                                overflow = TextOverflow.Clip,
-                                color = MaterialTheme.colorScheme.onSurface,
-                                modifier = Modifier.padding(top = 2.dp),
-                            )
-                        }
                     }
                 }
             }
@@ -340,13 +316,4 @@ private fun bottomNavIcon(tab: Tab): DrawableResource =
         "search" -> Res.drawable.nav_search
         "settings" -> Res.drawable.nav_settings
         else -> Res.drawable.nav_home
-    }
-
-private fun tabLabel(tab: Tab, strings: Strings): String =
-    when (tab) {
-        Tab.HOME -> strings.navHome
-        Tab.EXPLORE -> strings.navExplore
-        Tab.PRAYERS -> strings.navPrayers
-        Tab.SEARCH -> strings.navSearch
-        Tab.SETTINGS -> strings.navSettings
     }
