@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -11,6 +12,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.layout.ContentScale
+import org.jetbrains.compose.resources.painterResource
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.FilterChip
@@ -41,6 +45,7 @@ import com.ynotlabs.cathopedia.data.PreferenceKeys
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.model.PrayerDetail
+import com.ynotlabs.cathopedia.ui.PrayerPortraits
 import com.ynotlabs.cathopedia.ui.components.KeepScreenOn
 import com.ynotlabs.cathopedia.ui.components.PrayerBodyText
 import kotlinx.coroutines.launch
@@ -72,9 +77,7 @@ fun PrayerDetailScreen(
     var keepScreenOn by remember(slug) { mutableStateOf(false) }
     var fontScaleIndex by remember(slug) { mutableStateOf(DEFAULT_FONT_SCALE_INDEX) }
 
-    LaunchedEffect(slug, language) {
-        detail = repository.prayerDetail(slug, language)
-        readingLanguage = language
+    LaunchedEffect(slug) {
         isFavorite = repository.isPrayerFavorite(slug)
         fontScaleIndex = FONT_SCALE_STEPS.indexOf(
             repository.getPreference(PreferenceKeys.PRAYER_FONT_SCALE)?.toFloatOrNull() ?: FONT_SCALE_STEPS[DEFAULT_FONT_SCALE_INDEX],
@@ -82,10 +85,12 @@ fun PrayerDetailScreen(
         repository.recordPrayerRecited(slug)
     }
 
+    LaunchedEffect(slug, language) {
+        readingLanguage = language
+    }
+
     LaunchedEffect(slug, readingLanguage) {
-        if (readingLanguage != language) {
-            detail = repository.prayerDetail(slug, readingLanguage)
-        }
+        detail = repository.prayerDetail(slug, readingLanguage)
     }
 
     KeepScreenOn(enabled = keepScreenOn)
@@ -115,34 +120,48 @@ fun PrayerDetailScreen(
             )
         },
     ) { padding ->
-        when {
-            current == null -> Box(modifier = Modifier.fillMaxSize().padding(padding)) {
-                Text(s.loading, modifier = Modifier.padding(24.dp))
+        Box(modifier = Modifier.fillMaxSize().padding(padding)) {
+            PrayerPortraits.forPrayer(slug)?.let { background ->
+                Image(
+                    painter = painterResource(background),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize().alpha(PRAYER_BACKGROUND_ALPHA),
+                )
             }
-            current.isSequence && current.id != HOLY_ROSARY_ID -> Box(
-                modifier = Modifier.fillMaxSize().padding(padding).padding(24.dp),
-                contentAlignment = Alignment.Center,
-            ) {
-                Text(s.prayerDetailSequenceComingSoon, color = MaterialTheme.colorScheme.onSurfaceVariant)
+
+            when {
+                current == null -> Box(modifier = Modifier.fillMaxSize()) {
+                    Text(s.loading, modifier = Modifier.padding(24.dp))
+                }
+                current.isSequence && current.id != HOLY_ROSARY_ID -> Box(
+                    modifier = Modifier.fillMaxSize().padding(24.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(s.prayerDetailSequenceComingSoon, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+                else -> PrayerReadingContent(
+                    detail = current,
+                    readingLanguage = readingLanguage,
+                    onLanguageChange = { readingLanguage = it },
+                    fontScale = FONT_SCALE_STEPS[fontScaleIndex],
+                    onFontScaleChange = { newIndex ->
+                        fontScaleIndex = newIndex
+                        repository.setPreference(PreferenceKeys.PRAYER_FONT_SCALE, FONT_SCALE_STEPS[newIndex].toString())
+                    },
+                    keepScreenOn = keepScreenOn,
+                    onKeepScreenOnChange = { keepScreenOn = it },
+                    showSource = showSource,
+                    onShowSourceChange = { showSource = it },
+                    modifier = Modifier.fillMaxSize(),
+                )
             }
-            else -> PrayerReadingContent(
-                detail = current,
-                readingLanguage = readingLanguage,
-                onLanguageChange = { readingLanguage = it },
-                fontScale = FONT_SCALE_STEPS[fontScaleIndex],
-                onFontScaleChange = { newIndex ->
-                    fontScaleIndex = newIndex
-                    repository.setPreference(PreferenceKeys.PRAYER_FONT_SCALE, FONT_SCALE_STEPS[newIndex].toString())
-                },
-                keepScreenOn = keepScreenOn,
-                onKeepScreenOnChange = { keepScreenOn = it },
-                showSource = showSource,
-                onShowSourceChange = { showSource = it },
-                modifier = Modifier.fillMaxSize().padding(padding),
-            )
         }
     }
 }
+
+/** Kept low so the reading text — the whole point of this screen — stays comfortably legible over it. */
+private const val PRAYER_BACKGROUND_ALPHA = 0.14f
 
 @Composable
 private fun PrayerReadingContent(
