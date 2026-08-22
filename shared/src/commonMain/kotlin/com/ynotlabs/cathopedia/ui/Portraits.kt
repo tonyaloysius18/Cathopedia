@@ -167,6 +167,7 @@ import com.ynotlabs.cathopedia.resources.feast_full_andrew
 import com.ynotlabs.cathopedia.resources.feast_full_annunciation
 import com.ynotlabs.cathopedia.resources.feast_full_archangels
 import com.ynotlabs.cathopedia.resources.feast_full_ascension
+import com.ynotlabs.cathopedia.resources.feast_full_ash_wednesday
 import com.ynotlabs.cathopedia.resources.feast_full_assumption_of_mary
 import com.ynotlabs.cathopedia.resources.feast_full_baptism_of_the_lord
 import com.ynotlabs.cathopedia.resources.feast_full_bartholomew
@@ -180,6 +181,7 @@ import com.ynotlabs.cathopedia.resources.feast_full_dedication_of_the_lateran_ba
 import com.ynotlabs.cathopedia.resources.feast_full_easter
 import com.ynotlabs.cathopedia.resources.feast_full_epiphany
 import com.ynotlabs.cathopedia.resources.feast_full_exaltation_of_the_holy_cross
+import com.ynotlabs.cathopedia.resources.feast_full_good_friday
 import com.ynotlabs.cathopedia.resources.feast_full_holy_family
 import com.ynotlabs.cathopedia.resources.feast_full_holy_innocents
 import com.ynotlabs.cathopedia.resources.feast_full_immaculate_conception
@@ -195,6 +197,7 @@ import com.ynotlabs.cathopedia.resources.feast_full_matthew
 import com.ynotlabs.cathopedia.resources.feast_full_matthias
 import com.ynotlabs.cathopedia.resources.feast_full_nativity_of_john_the_baptist
 import com.ynotlabs.cathopedia.resources.feast_full_nativity_of_mary
+import com.ynotlabs.cathopedia.resources.feast_full_palm_sunday
 import com.ynotlabs.cathopedia.resources.feast_full_pentecost
 import com.ynotlabs.cathopedia.resources.feast_full_philip_and_james
 import com.ynotlabs.cathopedia.resources.feast_full_presentation_of_the_lord
@@ -233,6 +236,7 @@ import com.ynotlabs.cathopedia.resources.feast_andrew
 import com.ynotlabs.cathopedia.resources.feast_annunciation
 import com.ynotlabs.cathopedia.resources.feast_archangels
 import com.ynotlabs.cathopedia.resources.feast_ascension
+import com.ynotlabs.cathopedia.resources.feast_ash_wednesday
 import com.ynotlabs.cathopedia.resources.feast_assumption_of_mary
 import com.ynotlabs.cathopedia.resources.feast_baptism_of_the_lord
 import com.ynotlabs.cathopedia.resources.feast_bartholomew
@@ -246,6 +250,7 @@ import com.ynotlabs.cathopedia.resources.feast_dedication_of_the_lateran_basilic
 import com.ynotlabs.cathopedia.resources.feast_easter
 import com.ynotlabs.cathopedia.resources.feast_epiphany
 import com.ynotlabs.cathopedia.resources.feast_exaltation_of_the_holy_cross
+import com.ynotlabs.cathopedia.resources.feast_good_friday
 import com.ynotlabs.cathopedia.resources.feast_holy_family
 import com.ynotlabs.cathopedia.resources.feast_holy_innocents
 import com.ynotlabs.cathopedia.resources.feast_immaculate_conception
@@ -261,6 +266,7 @@ import com.ynotlabs.cathopedia.resources.feast_matthew
 import com.ynotlabs.cathopedia.resources.feast_matthias
 import com.ynotlabs.cathopedia.resources.feast_nativity_of_john_the_baptist
 import com.ynotlabs.cathopedia.resources.feast_nativity_of_mary
+import com.ynotlabs.cathopedia.resources.feast_palm_sunday
 import com.ynotlabs.cathopedia.resources.feast_pentecost
 import com.ynotlabs.cathopedia.resources.feast_philip_and_james
 import com.ynotlabs.cathopedia.resources.feast_presentation_of_the_lord
@@ -2712,6 +2718,9 @@ object Portraits {
         "all-saints" to Res.drawable.feast_all_saints,
         "immaculate-conception" to Res.drawable.feast_immaculate_conception,
         "christmas" to Res.drawable.feast_christmas,
+        "ash-wednesday" to Res.drawable.feast_ash_wednesday,
+        "palm-sunday" to Res.drawable.feast_palm_sunday,
+        "good-friday" to Res.drawable.feast_good_friday,
         "easter" to Res.drawable.feast_easter,
         "ascension" to Res.drawable.feast_ascension,
         "pentecost" to Res.drawable.feast_pentecost,
@@ -2760,6 +2769,9 @@ object Portraits {
         "all-saints" to Res.drawable.feast_full_all_saints,
         "immaculate-conception" to Res.drawable.feast_full_immaculate_conception,
         "christmas" to Res.drawable.feast_full_christmas,
+        "ash-wednesday" to Res.drawable.feast_full_ash_wednesday,
+        "palm-sunday" to Res.drawable.feast_full_palm_sunday,
+        "good-friday" to Res.drawable.feast_full_good_friday,
         "easter" to Res.drawable.feast_full_easter,
         "ascension" to Res.drawable.feast_full_ascension,
         "pentecost" to Res.drawable.feast_full_pentecost,
