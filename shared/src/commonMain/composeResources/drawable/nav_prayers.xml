@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Rosary-loop glyph: a ring of beads with a short pendant tail, standing in
+  for a real hand-drawn icon in the style of nav_home/nav_explore/nav_search/
+  nav_settings (those are baked raster art; this is a plain vector placeholder
+  pending matching artwork).
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+    <path
+        android:pathData="M32,10a18,18 0,1 0,0.01 0z"
+        android:strokeColor="#D4AF37"
+        android:strokeWidth="3"
+        android:fillColor="#00000000" />
+    <path
+        android:pathData="M32,46 L30,58 L34,58 Z"
+        android:fillColor="#D4AF37" />
+    <path
+        android:pathData="M32,4 m-3,0 a3,3 0,1 1,6 0 a3,3 0,1 1,-6 0"
+        android:fillColor="#D4AF37" />
+    <path
+        android:pathData="M50,14 m-3,0 a3,3 0,1 1,6 0 a3,3 0,1 1,-6 0"
+        android:fillColor="#D4AF37" />
+    <path
+        android:pathData="M58,32 m-3,0 a3,3 0,1 1,6 0 a3,3 0,1 1,-6 0"
+        android:fillColor="#D4AF37" />
+    <path
+        android:pathData="M50,50 m-3,0 a3,3 0,1 1,6 0 a3,3 0,1 1,-6 0"
+        android:fillColor="#D4AF37" />
+    <path
+        android:pathData="M14,50 m-3,0 a3,3 0,1 1,6 0 a3,3 0,1 1,-6 0"
+        android:fillColor="#D4AF37" />
+    <path
+        android:pathData="M6,32 m-3,0 a3,3 0,1 1,6 0 a3,3 0,1 1,-6 0"
+        android:fillColor="#D4AF37" />
+    <path
+        android:pathData="M14,14 m-3,0 a3,3 0,1 1,6 0 a3,3 0,1 1,-6 0"
+        android:fillColor="#D4AF37" />
+</vector>

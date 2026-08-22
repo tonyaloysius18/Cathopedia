@@ -55,6 +55,9 @@ import com.ynotlabs.cathopedia.ui.screens.IntroScreen
 import com.ynotlabs.cathopedia.ui.screens.LanguageScreen
 import com.ynotlabs.cathopedia.ui.screens.LanguageScreenStartup
 import com.ynotlabs.cathopedia.ui.screens.NotificationsScreen
+import com.ynotlabs.cathopedia.ui.screens.PrayerDetailScreen
+import com.ynotlabs.cathopedia.ui.screens.PrayersHomeScreen
+import com.ynotlabs.cathopedia.ui.screens.RosaryScreen
 import com.ynotlabs.cathopedia.ui.screens.SavedScreen
 import com.ynotlabs.cathopedia.ui.screens.SearchScreen
 import com.ynotlabs.cathopedia.ui.screens.SettingsScreen
@@ -64,7 +67,13 @@ import com.ynotlabs.cathopedia.ui.theme.ThemeMode
 import com.ynotlabs.cathopedia.ui.theme.toAccentColor
 import kotlinx.coroutines.launch
 
-private val TAB_DESTINATIONS = setOf(Destination.Home, Destination.Explore, Destination.Search, Destination.Settings)
+private val TAB_DESTINATIONS = setOf(
+    Destination.Home,
+    Destination.Explore,
+    Destination.PrayersHome,
+    Destination.Search,
+    Destination.Settings,
+)
 
 /** Root composable, shared verbatim between the Android and iOS entry points. */
 @Composable
@@ -207,6 +216,18 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     onBack = nav::back,
                     onRelatedSelected = { related: RelatedItem -> nav.navigate(Destination.EntityDetail(related.type, related.id)) },
                 )
+
+                is Destination.PrayersHome -> PrayersHomeScreen(
+                    onOpenPrayer = { slug -> nav.navigate(Destination.PrayerDetail(slug)) },
+                    onOpenRosary = { nav.navigate(Destination.RosaryScreen) },
+                )
+
+                is Destination.PrayerDetail -> PrayerDetailScreen(
+                    slug = current.slug,
+                    onBack = nav::back,
+                )
+
+                is Destination.RosaryScreen -> RosaryScreen(onBack = nav::back)
 
                 is Destination.Search -> SearchScreen(
                     repository = repository,

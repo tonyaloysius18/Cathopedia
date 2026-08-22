@@ -15,6 +15,17 @@ val FR: Strings = EN.copy(
     skip = "Passer",
     brandTagline = "Connaissance · Foi · Tradition",
 
+    navHome = "Accueil",
+    navExplore = "Explorer",
+    navPrayers = "Prières",
+    navSearch = "Recherche",
+    navSettings = "Réglages",
+
+    prayersHomeTitle = "Prières",
+    prayersComingSoon = "La bibliothèque de prières arrive bientôt.",
+    prayerDetailTitle = "Prière",
+    rosaryScreenTitle = "Saint Rosaire",
+
     typeSaintsPlural = "Saints",
     typePopesPlural = "Papes",
     typeApostlesPlural = "Apôtres",

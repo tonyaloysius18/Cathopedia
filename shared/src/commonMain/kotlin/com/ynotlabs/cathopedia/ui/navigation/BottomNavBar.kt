@@ -36,9 +36,16 @@ import com.ynotlabs.cathopedia.ui.theme.DarkGoldBright
 import com.ynotlabs.cathopedia.ui.theme.DarkPillSurface
 import com.ynotlabs.cathopedia.ui.theme.LightGoldText
 import com.ynotlabs.cathopedia.ui.theme.LightPillSurface
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Text
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.sp
+import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.nav_explore
 import com.ynotlabs.cathopedia.resources.nav_home
+import com.ynotlabs.cathopedia.resources.nav_prayers
 import com.ynotlabs.cathopedia.resources.nav_search
 import com.ynotlabs.cathopedia.resources.nav_settings
 import org.jetbrains.compose.resources.DrawableResource
@@ -47,6 +54,7 @@ import kotlin.math.abs
 
 @Composable
 fun BottomNavBar(selected: Tab, onSelect: (Tab) -> Unit) {
+    val strings = LocalStrings.current
     val items = Tab.entries
     val count = items.size
     val selectedIndex = items.indexOf(selected).coerceAtLeast(0)
@@ -266,6 +274,8 @@ fun BottomNavBar(selected: Tab, onSelect: (Tab) -> Unit) {
                 val itemBias = if (count <= 1) 0f else -1f + 2f * index / (count - 1)
                 val selectedness = (1f - abs(bias - itemBias) / step).coerceIn(0f, 1f)
 
+                val isSelected = tab == selected
+
                 Box(
                     modifier = Modifier
                         .weight(1f)
@@ -276,30 +286,46 @@ fun BottomNavBar(selected: Tab, onSelect: (Tab) -> Unit) {
                         ) { onSelect(tab) },
                     contentAlignment = Alignment.Center,
                 ) {
-                    // Row center is 20dp below the bubble center. This lift
-                    // places the selected PNG exactly at the center of the
-                    // raised circle while unselected icons remain centered in
-                    // the flat pill.
+                    // Column center is 20dp below the bubble center. This lift
+                    // places the selected PNG (plus its label, when shown)
+                    // exactly at the center of the raised circle while
+                    // unselected icons remain centered in the flat pill.
                     val verticalOffset = with(LocalDensity.current) {
                         ((-20).dp * selectedness).toPx()
                     }
 
-                    // Bigger at rest, with a modest selected enlargement.
-                    val iconSize = 34.dp + (12.dp * selectedness)
+                    // Bigger at rest, with a modest selected enlargement — kept
+                    // smaller than before so the label below still fits inside
+                    // the bar's fixed height without clipping.
+                    val iconSize = 34.dp + (6.dp * selectedness)
 
-                    Image(
-                        painter = painterResource(bottomNavIcon(tab)),
-                        contentDescription = tab.name,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier
-                            .size(iconSize)
-                            .graphicsLayer {
-                                translationY = verticalOffset
-                                alpha = 0.86f + (0.14f * selectedness)
-                                scaleX = 1f
-                                scaleY = 1f
-                            },
-                    )
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.graphicsLayer {
+                            translationY = verticalOffset
+                            alpha = 0.86f + (0.14f * selectedness)
+                        },
+                    ) {
+                        Image(
+                            painter = painterResource(bottomNavIcon(tab)),
+                            contentDescription = tab.name,
+                            contentScale = ContentScale.Fit,
+                            modifier = Modifier.size(iconSize),
+                        )
+                        // Only the selected item carries a label — the other
+                        // four stay icon-only, which is what keeps five items
+                        // fitting the bar down to 320dp.
+                        if (isSelected) {
+                            Text(
+                                text = tabLabel(tab, strings),
+                                fontSize = 10.sp,
+                                maxLines = 1,
+                                overflow = TextOverflow.Clip,
+                                color = MaterialTheme.colorScheme.onSurface,
+                                modifier = Modifier.padding(top = 2.dp),
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -310,7 +336,17 @@ private fun bottomNavIcon(tab: Tab): DrawableResource =
     when (tab.name.lowercase()) {
         "home" -> Res.drawable.nav_home
         "explore" -> Res.drawable.nav_explore
+        "prayers" -> Res.drawable.nav_prayers
         "search" -> Res.drawable.nav_search
         "settings" -> Res.drawable.nav_settings
         else -> Res.drawable.nav_home
+    }
+
+private fun tabLabel(tab: Tab, strings: Strings): String =
+    when (tab) {
+        Tab.HOME -> strings.navHome
+        Tab.EXPLORE -> strings.navExplore
+        Tab.PRAYERS -> strings.navPrayers
+        Tab.SEARCH -> strings.navSearch
+        Tab.SETTINGS -> strings.navSettings
     }

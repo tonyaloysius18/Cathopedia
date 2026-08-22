@@ -28,6 +28,19 @@ data class Strings(
     val skip: String = "Skip",
     val brandTagline: String = "Knowledge · Faith · Tradition",
 
+    // Bottom bar tab labels — shown only for the currently selected tab
+    val navHome: String = "Home",
+    val navExplore: String = "Explore",
+    val navPrayers: String = "Prayers",
+    val navSearch: String = "Search",
+    val navSettings: String = "Settings",
+
+    // Prayers tab (placeholder copy until the prayer library/detail/Rosary screens land)
+    val prayersHomeTitle: String = "Prayers",
+    val prayersComingSoon: String = "The prayer library is on its way.",
+    val prayerDetailTitle: String = "Prayer",
+    val rosaryScreenTitle: String = "Holy Rosary",
+
     // Content type names (chrome labels for the seven entity kinds)
     val typeSaintsPlural: String = "Saints",
     val typePopesPlural: String = "Popes",
