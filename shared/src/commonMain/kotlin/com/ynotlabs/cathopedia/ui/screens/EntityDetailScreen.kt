@@ -64,11 +64,14 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.ynotlabs.cathopedia.data.CathopediaRepository
+import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.model.ContentCategory
 import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.model.RelatedItem
 import com.ynotlabs.cathopedia.ui.Portraits
 import com.ynotlabs.cathopedia.ui.accentColor
+import com.ynotlabs.cathopedia.ui.label
 import com.ynotlabs.cathopedia.ui.singularLabel
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.connected_basilica
@@ -181,6 +184,7 @@ fun EntityDetailScreen(
     onBack: () -> Unit,
     onRelatedSelected: (RelatedItem) -> Unit,
 ) {
+    val s = LocalStrings.current
     var data by remember(type, id) { mutableStateOf<DetailViewData?>(null) }
     var resolvedRelated by remember(type, id) { mutableStateOf<List<ResolvedRelated>>(emptyList()) }
     var bookmarked by remember(type, id) { mutableStateOf(false) }
@@ -421,9 +425,9 @@ fun EntityDetailScreen(
                 image = fullPortrait,
                 title = current?.name.orEmpty(),
                 caption = if (Portraits.isGeneratedArt(type, id)) {
-                    "AI-GENERATED DEVOTIONAL PORTRAIT · STYLED AFTER TRADITIONAL ICONOGRAPHY"
+                    s.detailAiGeneratedCaption
                 } else {
-                    "HISTORICAL IMAGE · SEE SOURCES FOR ATTRIBUTION"
+                    s.detailHistoricalImageCaption
                 },
                 onDismiss = { lightboxOpen = false },
             )
@@ -448,12 +452,13 @@ private fun DetailHero(
     onRelated: () -> Unit,
     onSource: () -> Unit,
 ) {
+    val s = LocalStrings.current
     val isSaintPope = type == ContentType.POPE && data.name.isSaintPopeName()
     val papacyStart = data.fact("Papacy start")?.toPapacyDisplayDate()
     val papacyEnd = data.fact("Papacy end")?.toPapacyDisplayDate()
     val papacyTimeline = when {
         papacyStart != null && papacyEnd != null -> "$papacyStart – $papacyEnd"
-        papacyStart != null -> "$papacyStart – Present"
+        papacyStart != null -> "$papacyStart – ${s.detailPresent}"
         else -> null
     }
 
@@ -504,7 +509,7 @@ private fun DetailHero(
             ) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Back",
+                    contentDescription = s.back,
                     tint = DetailCream,
                     modifier = Modifier.size(24.dp),
                 )
@@ -514,7 +519,7 @@ private fun DetailHero(
                 HeroCircleButton(onClick = onBookmark) {
                     Icon(
                         imageVector = if (bookmarked) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                        contentDescription = if (bookmarked) "Remove from favorites" else "Save to favorites",
+                        contentDescription = if (bookmarked) s.detailRemoveFromFavorites else s.detailSaveToFavorites,
                         tint = DetailCream,
                         modifier = Modifier.size(22.dp),
                     )
@@ -523,7 +528,7 @@ private fun DetailHero(
                 HeroCircleButton(onClick = onShare) {
                     Icon(
                         imageVector = Icons.Default.Share,
-                        contentDescription = "Share",
+                        contentDescription = s.detailShare,
                         tint = DetailCream,
                         modifier = Modifier.size(22.dp),
                     )
@@ -547,7 +552,7 @@ private fun DetailHero(
                     )
                     Spacer(Modifier.width(5.dp))
                     Text(
-                        text = "SAINT",
+                        text = s.detailSaintTag,
                         color = DetailGold,
                         fontSize = 11.sp,
                         letterSpacing = 1.1.sp,
@@ -563,7 +568,7 @@ private fun DetailHero(
                 }
 
                 Text(
-                    text = type.singularLabel().uppercase(),
+                    text = type.singularLabel(s).uppercase(),
                     color = DetailGold,
                     fontSize = 11.sp,
                     letterSpacing = 1.1.sp,
@@ -586,7 +591,7 @@ private fun DetailHero(
 
             val heroMeta = when (type) {
                 ContentType.POPE -> papacyTimeline
-                ContentType.SAINT -> data.fact("Feast day")?.let { "Feast day · $it" }
+                ContentType.SAINT -> data.fact("Feast day")?.let { "${s.detailFactFeastDay} · $it" }
                 else -> null
             }
 
@@ -645,6 +650,7 @@ private fun DetailActionBar(
     onSource: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val s = LocalStrings.current
     Surface(
         modifier = modifier.fillMaxWidth(),
         color = DetailActionBar.copy(alpha = 0.98f),
@@ -662,7 +668,7 @@ private fun DetailActionBar(
             horizontalArrangement = Arrangement.SpaceEvenly,
         ) {
             ActionItem(
-                label = if (bookmarked) "Saved" else "Save",
+                label = if (bookmarked) s.detailSaved else s.detailSave,
                 icon = {
                     Icon(
                         imageVector = if (bookmarked) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
@@ -677,7 +683,7 @@ private fun DetailActionBar(
             ActionDivider()
 
             ActionItem(
-                label = "Share",
+                label = s.detailShare,
                 icon = {
                     Icon(
                         imageVector = Icons.Default.Share,
@@ -693,7 +699,7 @@ private fun DetailActionBar(
                 ActionDivider()
 
                 ActionItem(
-                    label = "Related",
+                    label = s.detailRelated,
                     icon = {
                         Icon(
                             imageVector = Icons.Default.Link,
@@ -709,7 +715,7 @@ private fun DetailActionBar(
             ActionDivider()
 
             ActionItem(
-                label = "Source",
+                label = s.detailSourceTitle,
                 icon = {
                     Icon(
                         imageVector = Icons.Default.MenuBook,
@@ -769,6 +775,7 @@ private fun DetailContent(
     onRelatedPositioned: (Int) -> Unit,
     onSourcePositioned: (Int) -> Unit,
 ) {
+    val s = LocalStrings.current
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -777,7 +784,7 @@ private fun DetailContent(
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         PremiumSectionCard {
-            SectionTitle("Overview")
+            SectionTitle(s.detailOverviewTitle)
 
             Text(
                 text = data.summary,
@@ -797,7 +804,7 @@ private fun DetailContent(
 
             if (data.body.isNotBlank()) {
                 Spacer(Modifier.height(22.dp))
-                SectionTitle("Life & Legacy")
+                SectionTitle(s.detailLifeAndLegacyTitle)
                 Text(
                     text = data.body,
                     color = DetailCream.copy(alpha = 0.88f),
@@ -814,7 +821,7 @@ private fun DetailContent(
                     },
                 ) {
                     Column {
-                        SectionTitle("Connected")
+                        SectionTitle(s.detailConnectedTitle)
                         ConnectedChips(
                             items = resolvedRelated,
                             onRelatedSelected = onRelatedSelected,
@@ -887,6 +894,7 @@ private fun FactGrid(
     type: ContentType,
     facts: List<Pair<String, String>>,
 ) {
+    val s = LocalStrings.current
     val displayFacts = if (type == ContentType.POPE) {
         val start = facts.firstOrNull { it.first.equals("Papacy start", true) }?.second
             ?.toPapacyDisplayDate()
@@ -899,7 +907,7 @@ private fun FactGrid(
                 add(
                     "Papacy" to when {
                         start != null && end != null -> "$start – $end"
-                        start != null -> "$start – Present"
+                        start != null -> "$start – ${s.detailPresent}"
                         else -> end.orEmpty()
                     },
                 )
@@ -931,7 +939,7 @@ private fun FactGrid(
         ) {
             row.facts.forEach { (label, value) ->
                 FactCard(
-                    label = label,
+                    label = factLabel(label, s),
                     value = value,
                     icon = factIcon(type = type, label = label),
                     modifier = if (row.fillWidth) Modifier.fillMaxWidth() else Modifier.weight(1f),
@@ -1034,11 +1042,12 @@ private fun ConnectedChips(
     items: List<ResolvedRelated>,
     onRelatedSelected: (RelatedItem) -> Unit,
 ) {
+    val s = LocalStrings.current
     items
         .groupBy { ContentCategory.of(it.item.type) }
         .forEach { (category, group) ->
             Text(
-                text = category.label.uppercase(),
+                text = category.label(s).uppercase(),
                 color = DetailMuted,
                 fontSize = 9.sp,
                 letterSpacing = 0.8.sp,
@@ -1089,6 +1098,7 @@ private fun SourceCard(
     generatedPortrait: Boolean,
     modifier: Modifier = Modifier,
 ) {
+    val s = LocalStrings.current
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -1101,7 +1111,7 @@ private fun SourceCard(
             )
             .padding(18.dp),
     ) {
-        SectionTitle("Source")
+        SectionTitle(s.detailSourceTitle)
 
         Row(
             modifier = Modifier
@@ -1125,7 +1135,7 @@ private fun SourceCard(
             ) {
                 Image(
                     painter = painterResource(Res.drawable.source_globe_book),
-                    contentDescription = "Source",
+                    contentDescription = s.detailSourceTitle,
                     modifier = Modifier.size(32.dp),
                     contentScale = ContentScale.Fit,
                 )
@@ -1136,7 +1146,7 @@ private fun SourceCard(
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = sourceAttribution?.takeIf { it.isNotBlank() }
-                        ?: "Cathopedia source material",
+                        ?: s.detailSourceFallback,
                     color = DetailCream,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Medium,
@@ -1144,7 +1154,7 @@ private fun SourceCard(
                 if (generatedPortrait) {
                     Spacer(Modifier.height(4.dp))
                     Text(
-                        text = "Portrait is a devotional illustration; see source attribution for the historical content.",
+                        text = s.detailPortraitIllustrationNote,
                         color = DetailMuted,
                         fontSize = 10.sp,
                         lineHeight = 14.sp,
@@ -1163,6 +1173,7 @@ private fun CompactNoPortraitHeader(
     onBack: () -> Unit,
     onBookmark: () -> Unit,
 ) {
+    val s = LocalStrings.current
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -1176,7 +1187,7 @@ private fun CompactNoPortraitHeader(
             HeroCircleButton(onClick = onBack) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Back",
+                    contentDescription = s.back,
                     tint = DetailCream,
                     modifier = Modifier.size(23.dp),
                 )
@@ -1187,7 +1198,7 @@ private fun CompactNoPortraitHeader(
             HeroCircleButton(onClick = onBookmark) {
                 Icon(
                     imageVector = if (bookmarked) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                    contentDescription = "Save to favorites",
+                    contentDescription = if (bookmarked) s.detailRemoveFromFavorites else s.detailSaveToFavorites,
                     tint = DetailCream,
                     modifier = Modifier.size(22.dp),
                 )
@@ -1197,7 +1208,7 @@ private fun CompactNoPortraitHeader(
         Spacer(Modifier.height(22.dp))
 
         Text(
-            text = type.singularLabel().uppercase(),
+            text = type.singularLabel(s).uppercase(),
             color = DetailGold,
             fontSize = 10.sp,
             letterSpacing = 1.1.sp,
@@ -1221,6 +1232,7 @@ private fun PortraitLightbox(
     caption: String,
     onDismiss: () -> Unit,
 ) {
+    val s = LocalStrings.current
     Dialog(
         onDismissRequest = onDismiss,
         properties = DialogProperties(usePlatformDefaultWidth = false),
@@ -1253,7 +1265,7 @@ private fun PortraitLightbox(
             ) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Close full image",
+                    contentDescription = s.closeFullImage,
                     tint = Color.White,
                     modifier = Modifier.size(24.dp),
                 )
@@ -1282,6 +1294,25 @@ private fun PortraitLightbox(
             }
         }
     }
+}
+
+/** [label] is the internal English key the fact was stored under — translates it for display. */
+private fun factLabel(label: String, s: Strings): String = when (label.lowercase()) {
+    "feast day" -> s.detailFactFeastDay
+    "canonized" -> s.detailFactCanonized
+    "patronage" -> s.detailFactPatronage
+    "regnal number" -> s.detailFactRegnalNumber
+    "papacy start" -> s.detailFactPapacyStart
+    "papacy end" -> s.detailFactPapacyEnd
+    "papacy" -> s.detailFactPapacy
+    "original name" -> s.detailFactOriginalName
+    "martyrdom" -> s.detailFactMartyrdom
+    "founded" -> s.detailFactFounded
+    "location" -> s.detailFactLocation
+    "year" -> s.detailFactYear
+    "status" -> s.detailFactStatus
+    "date" -> s.detailFactDate
+    else -> label
 }
 
 private fun factIcon(

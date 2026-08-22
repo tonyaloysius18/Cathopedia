@@ -1,0 +1,21 @@
+{
+  "id": "ash-wednesday",
+  "date": "Movable",
+  "rank": "Feast",
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Ash Wednesday",
+      "summary": "The solemn opening of Lent, when the faithful receive ashes on their foreheads as a sign of penance and mortality.",
+      "body": "Ash Wednesday marks the beginning of the forty days of Lent, the season of prayer, fasting, and almsgiving that prepares the Church for Easter. During Mass, ashes made from the previous year's blessed palms are traced on the foreheads of the faithful with the words \"Remember that you are dust, and to dust you shall return\" or \"Repent, and believe in the Gospel.\" It is a day of fasting and abstinence from meat, observed by Catholics between the ages of eighteen and fifty-nine, and sets the tone of penitence that runs through the whole of Lent until the Easter Triduum begins on Holy Thursday.",
+      "sourceAttribution": "Draft content — pending citation review."
+    },
+    "fr": {
+      "name": "Mercredi des Cendres",
+      "summary": "L'ouverture solennelle du Carême, lorsque les fidèles reçoivent les cendres sur le front en signe de pénitence et de condition mortelle.",
+      "body": "Le Mercredi des Cendres marque le début des quarante jours du Carême, le temps de prière, de jeûne et d'aumône qui prépare l'Église à Pâques. Pendant la messe, des cendres faites à partir des rameaux bénis de l'année précédente sont tracées sur le front des fidèles avec les mots « Souviens-toi que tu es poussière, et que tu retourneras en poussière » ou « Convertis-toi et crois à l'Évangile ». C'est un jour de jeûne et d'abstinence de viande, observé par les catholiques âgés de dix-huit à cinquante-neuf ans, et il donne le ton pénitentiel qui traverse tout le Carême jusqu'au début du triduum pascal le Jeudi saint.",
+      "sourceAttribution": "Contenu provisoire — en attente de vérification des sources."
+    }
+  }
+}

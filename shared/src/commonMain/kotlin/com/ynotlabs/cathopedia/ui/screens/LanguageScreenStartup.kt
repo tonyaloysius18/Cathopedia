@@ -44,6 +44,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.cathopedia_app_logo_transparent
 import com.ynotlabs.cathopedia.resources.check
@@ -56,11 +58,11 @@ private data class StartupLanguageOption(
     val available: Boolean,
 )
 
-private val STARTUP_LANGUAGE_OPTIONS = listOf(
-    StartupLanguageOption("en", "English", "English", available = true),
-    StartupLanguageOption("fr", "Français", "French", available = true),
-    StartupLanguageOption("es", "Español", "Spanish", available = false),
-    StartupLanguageOption("it", "Italiano", "Italian", available = false),
+private fun startupLanguageOptions(s: Strings) = listOf(
+    StartupLanguageOption("en", "English", s.languageNameEnglish, available = true),
+    StartupLanguageOption("fr", "Français", s.languageNameFrench, available = true),
+    StartupLanguageOption("es", "Español", s.languageNameSpanish, available = false),
+    StartupLanguageOption("it", "Italiano", s.languageNameItalian, available = false),
 )
 
 @Composable
@@ -68,6 +70,8 @@ fun LanguageScreenStartup(
     currentLanguage: String = "en",
     onContinue: (languageCode: String) -> Unit,
 ) {
+    val s = LocalStrings.current
+    val options = remember(s) { startupLanguageOptions(s) }
     var selected by remember(currentLanguage) { mutableStateOf(currentLanguage) }
 
     Column(
@@ -107,7 +111,7 @@ fun LanguageScreenStartup(
         Spacer(Modifier.height(18.dp))
 
         Text(
-            text = "Welcome to Cathopedia",
+            text = s.languageWelcomeToCathopedia,
             color = MaterialTheme.colorScheme.onBackground,
             fontFamily = FontFamily.Serif,
             fontSize = 29.sp,
@@ -119,7 +123,7 @@ fun LanguageScreenStartup(
         Spacer(Modifier.height(8.dp))
 
         Text(
-            text = "To get started, please choose\nyour preferred language.",
+            text = s.languageChoosePrompt,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             fontSize = 14.sp,
             lineHeight = 20.sp,
@@ -128,7 +132,7 @@ fun LanguageScreenStartup(
 
         Spacer(Modifier.height(24.dp))
 
-        STARTUP_LANGUAGE_OPTIONS.forEach { option ->
+        options.forEach { option ->
             StartupLanguageRow(
                 option = option,
                 selected = selected == option.code,
@@ -155,7 +159,7 @@ fun LanguageScreenStartup(
                 contentAlignment = Alignment.Center,
             ) {
                 Text(
-                    text = "Continue",
+                    text = s.continueLabel,
                     color = MaterialTheme.colorScheme.onPrimary,
                     fontSize = 15.sp,
                     fontWeight = FontWeight.SemiBold,
@@ -200,7 +204,7 @@ fun LanguageScreenStartup(
             Spacer(Modifier.width(8.dp))
 
             Text(
-                text = "You can change this later in Settings.",
+                text = s.languageChangeLaterInSettings,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 fontSize = 11.5.sp,
             )
@@ -216,6 +220,7 @@ private fun StartupLanguageRow(
     selected: Boolean,
     onClick: () -> Unit,
 ) {
+    val s = LocalStrings.current
     val shape = RoundedCornerShape(17.dp)
 
     Row(
@@ -291,7 +296,7 @@ private fun StartupLanguageRow(
             selected -> {
                 Image(
                     painter = painterResource(Res.drawable.check),
-                    contentDescription = "Selected",
+                    contentDescription = s.selectedDesc,
                     modifier = Modifier.size(31.dp),
                     contentScale = ContentScale.Fit,
                 )
@@ -307,7 +312,7 @@ private fun StartupLanguageRow(
                     ),
                 ) {
                     Text(
-                        text = "soon",
+                        text = s.soon,
                         modifier = Modifier.padding(horizontal = 9.dp, vertical = 5.dp),
                         color = MaterialTheme.colorScheme.primary.copy(alpha = 0.75f),
                         fontSize = 10.sp,

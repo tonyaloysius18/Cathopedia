@@ -1,0 +1,21 @@
+{
+  "id": "good-friday",
+  "date": "Movable",
+  "rank": "Solemnity",
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Good Friday",
+      "summary": "The most solemn day of the liturgical year, commemorating the crucifixion and death of Jesus Christ.",
+      "body": "Good Friday is the second day of the Easter Triduum, observed with the deepest solemnity of the entire year. No Mass is celebrated; instead, the Celebration of the Lord's Passion includes the proclamation of the Passion according to John, solemn intercessions for the whole world, the veneration of the Cross, and Holy Communion distributed from hosts consecrated the previous evening at the Mass of the Lord's Supper. It is a day of strict fasting and abstinence, and altars throughout the church are left bare as the community keeps watch at the foot of the Cross, awaiting the Easter Vigil.",
+      "sourceAttribution": "Draft content — pending citation review."
+    },
+    "fr": {
+      "name": "Vendredi saint",
+      "summary": "Le jour le plus solennel de l'année liturgique, commémorant la crucifixion et la mort de Jésus-Christ.",
+      "body": "Le Vendredi saint est le deuxième jour du triduum pascal, observé avec la plus grande solennité de toute l'année. Aucune messe n'est célébrée ; à la place, la célébration de la Passion du Seigneur comprend la proclamation de la Passion selon saint Jean, de solennelles intercessions pour le monde entier, la vénération de la Croix, et la communion distribuée à partir d'hosties consacrées la veille lors de la messe de la Cène du Seigneur. C'est un jour de jeûne et d'abstinence stricts, et les autels de l'église restent dépouillés tandis que la communauté veille au pied de la Croix, dans l'attente de la Vigile pascale.",
+      "sourceAttribution": "Contenu provisoire — en attente de vérification des sources."
+    }
+  }
+}

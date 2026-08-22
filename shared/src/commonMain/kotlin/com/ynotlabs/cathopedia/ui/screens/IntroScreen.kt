@@ -48,6 +48,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.cathopedia_app_logo_transparent
 import org.jetbrains.compose.resources.painterResource
@@ -73,20 +75,20 @@ private enum class IntroKind {
     SEARCH,
 }
 
-private val INTRO_PAGES = listOf(
+private fun introPages(s: Strings) = listOf(
     IntroPage(
-        title = "Everything connects",
-        body = "Move naturally between saints, feasts, churches and sacred traditions. Cathopedia brings the story of the faith together in one place.",
+        title = s.introPage1Title,
+        body = s.introPage1Body,
         kind = IntroKind.CONNECT,
     ),
     IntroPage(
-        title = "Works without a signal",
-        body = "Keep exploring inside a basilica, while travelling, or on pilgrimage. Your core Catholic reference stays available on your device.",
+        title = s.introPage2Title,
+        body = s.introPage2Body,
         kind = IntroKind.OFFLINE,
     ),
     IntroPage(
-        title = "Search across everything",
-        body = "Find saints, popes, churches, apparitions, Eucharistic miracles and feasts from one unified search experience.",
+        title = s.introPage3Title,
+        body = s.introPage3Body,
         kind = IntroKind.SEARCH,
     ),
 )
@@ -95,8 +97,10 @@ private val INTRO_PAGES = listOf(
 fun IntroScreen(
     onDone: () -> Unit,
 ) {
+    val s = LocalStrings.current
+    val introPages = remember(s) { introPages(s) }
     var page by remember { mutableStateOf(0) }
-    val current = INTRO_PAGES[page]
+    val current = introPages[page]
 
     Column(
         modifier = Modifier
@@ -150,7 +154,7 @@ fun IntroScreen(
 
         IntroProgress(
             selectedPage = page,
-            pageCount = INTRO_PAGES.size,
+            pageCount = introPages.size,
         )
 
         Spacer(Modifier.height(18.dp))
@@ -160,7 +164,7 @@ fun IntroScreen(
                 .fillMaxWidth()
                 .height(58.dp)
                 .clickable {
-                    if (page < INTRO_PAGES.lastIndex) {
+                    if (page < introPages.lastIndex) {
                         page += 1
                     } else {
                         onDone()
@@ -175,7 +179,7 @@ fun IntroScreen(
                 contentAlignment = Alignment.Center,
             ) {
                 Text(
-                    text = if (page < INTRO_PAGES.lastIndex) "Next" else "Get Started",
+                    text = if (page < introPages.lastIndex) s.introNext else s.introGetStarted,
                     color = Color(0xFF101913),
                     fontSize = 15.sp,
                     fontWeight = FontWeight.SemiBold,
@@ -202,6 +206,7 @@ private fun IntroTopBar(
     showBrand: Boolean,
     onSkip: () -> Unit,
 ) {
+    val s = LocalStrings.current
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
@@ -241,7 +246,7 @@ private fun IntroTopBar(
             ),
         ) {
             Text(
-                text = "Skip",
+                text = s.skip,
                 modifier = Modifier.padding(horizontal = 15.dp, vertical = 8.dp),
                 color = IntroGold,
                 fontSize = 12.sp,
@@ -365,6 +370,7 @@ private fun ConnectArtwork() {
 
 @Composable
 private fun OfflineArtwork() {
+    val s = LocalStrings.current
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -427,7 +433,7 @@ private fun OfflineArtwork() {
         Spacer(Modifier.height(18.dp))
 
         Text(
-            text = "Available wherever you go",
+            text = s.introAvailableWhereverYouGo,
             color = IntroGold,
             fontSize = 12.sp,
             letterSpacing = 0.4.sp,
@@ -438,6 +444,7 @@ private fun OfflineArtwork() {
 
 @Composable
 private fun SearchArtwork() {
+    val s = LocalStrings.current
     Column(
         modifier = Modifier.padding(horizontal = 22.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -494,7 +501,7 @@ private fun SearchArtwork() {
                 Spacer(Modifier.width(12.dp))
 
                 Text(
-                    text = "Search Cathopedia",
+                    text = s.searchCathopedia,
                     color = IntroMuted,
                     fontSize = 14.sp,
                 )

@@ -37,7 +37,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.ui.theme.ThemeMode
+import com.ynotlabs.cathopedia.ui.theme.label
 import com.ynotlabs.cathopedia.ui.theme.MetallicGold
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.cathopedia_app_logo_transparent
@@ -55,6 +57,7 @@ fun AppearanceScreen(
     onSelect: (ThemeMode) -> Unit,
     onBack: () -> Unit,
 ) {
+    val s = LocalStrings.current
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -71,7 +74,7 @@ fun AppearanceScreen(
         ) {
             Spacer(Modifier.height(14.dp))
 
-            SectionTitle("Theme mode")
+            SectionTitle(s.appearanceThemeModeSectionTitle)
 
             ThemeSelector(
                 selected = selected,
@@ -84,7 +87,7 @@ fun AppearanceScreen(
 
             Spacer(Modifier.height(22.dp))
 
-            SectionTitle("Preview")
+            SectionTitle(s.appearancePreviewSectionTitle)
 
             ThemePreview(selected = selected)
         }
@@ -95,6 +98,7 @@ fun AppearanceScreen(
 private fun AppearanceHeader(
     onBack: () -> Unit,
 ) {
+    val s = LocalStrings.current
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -161,7 +165,7 @@ private fun AppearanceHeader(
                 Box(contentAlignment = Alignment.Center) {
                     Image(
                         painter = painterResource(Res.drawable.back_arrow),
-                        contentDescription = "Back",
+                        contentDescription = s.back,
                         modifier = Modifier.size(34.dp),
                         contentScale = ContentScale.Fit,
                     )
@@ -171,7 +175,7 @@ private fun AppearanceHeader(
             Spacer(Modifier.weight(1f))
 
             Text(
-                text = "Appearance",
+                text = s.appearanceTitle,
                 color = MaterialTheme.colorScheme.onBackground,
                 fontFamily = FontFamily.Serif,
                 fontSize = 34.sp,
@@ -182,7 +186,7 @@ private fun AppearanceHeader(
             Spacer(Modifier.height(4.dp))
 
             Text(
-                text = "Customize the look and feel",
+                text = s.appearanceSubtitle,
                 color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.78f),
                 fontSize = 14.sp,
                 lineHeight = 18.sp,
@@ -232,12 +236,13 @@ private fun ThemeSelector(
     selected: ThemeMode,
     onSelect: (ThemeMode) -> Unit,
 ) {
+    val s = LocalStrings.current
     Row(
         modifier = Modifier.fillMaxWidth(),
     ) {
         ThemeChoiceCard(
             mode = ThemeMode.SYSTEM,
-            subtitle = "Match your\ndevice setting",
+            subtitle = s.appearanceMatchDevice,
             selected = selected == ThemeMode.SYSTEM,
             modifier = Modifier.weight(1f),
             onClick = { onSelect(ThemeMode.SYSTEM) },
@@ -247,7 +252,7 @@ private fun ThemeSelector(
 
         ThemeChoiceCard(
             mode = ThemeMode.LIGHT,
-            subtitle = "Always use the\nlight theme",
+            subtitle = s.appearanceAlwaysLight,
             selected = selected == ThemeMode.LIGHT,
             modifier = Modifier.weight(1f),
             onClick = { onSelect(ThemeMode.LIGHT) },
@@ -257,7 +262,7 @@ private fun ThemeSelector(
 
         ThemeChoiceCard(
             mode = ThemeMode.DARK,
-            subtitle = "Always use the\ndark theme",
+            subtitle = s.appearanceAlwaysDark,
             selected = selected == ThemeMode.DARK,
             modifier = Modifier.weight(1f),
             onClick = { onSelect(ThemeMode.DARK) },
@@ -273,6 +278,7 @@ private fun ThemeChoiceCard(
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
 ) {
+    val s = LocalStrings.current
     val shape = RoundedCornerShape(18.dp)
     val isItemLight = mode == ThemeMode.LIGHT
     
@@ -332,7 +338,7 @@ private fun ThemeChoiceCard(
                 if (selected) {
                     Image(
                         painter = painterResource(Res.drawable.check),
-                        contentDescription = "Selected",
+                        contentDescription = s.selectedDesc,
                         modifier = Modifier.size(30.dp),
                         contentScale = ContentScale.Fit,
                     )
@@ -376,7 +382,7 @@ private fun ThemeChoiceCard(
                             }
                             Image(
                                 painter = painterResource(Res.drawable.dark),
-                                contentDescription = "System theme",
+                                contentDescription = s.themeSystem,
                                 modifier = Modifier
                                     .align(Alignment.BottomEnd)
                                     .size(40.dp),
@@ -387,7 +393,7 @@ private fun ThemeChoiceCard(
                     ThemeMode.LIGHT -> {
                         Image(
                             painter = painterResource(Res.drawable.light),
-                            contentDescription = "Light theme",
+                            contentDescription = s.themeLight,
                             modifier = Modifier.size(58.dp),
                             contentScale = ContentScale.Fit,
                         )
@@ -395,7 +401,7 @@ private fun ThemeChoiceCard(
                     ThemeMode.DARK -> {
                         Image(
                             painter = painterResource(Res.drawable.dark),
-                            contentDescription = "Dark theme",
+                            contentDescription = s.themeDark,
                             modifier = Modifier.size(58.dp),
                             contentScale = ContentScale.Fit,
                         )
@@ -406,7 +412,7 @@ private fun ThemeChoiceCard(
             Spacer(Modifier.height(7.dp))
 
             Text(
-                text = mode.label,
+                text = mode.label(s),
                 color = titleColor,
                 fontFamily = FontFamily.Serif,
                 fontSize = 18.sp,
@@ -434,6 +440,7 @@ private fun ThemeChoiceCard(
 private fun ThemeInfo(
     selected: ThemeMode,
 ) {
+    val s = LocalStrings.current
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(17.dp),
@@ -470,9 +477,9 @@ private fun ThemeInfo(
 
             Text(
                 text = when (selected) {
-                    ThemeMode.SYSTEM -> "System follows the appearance setting of your device."
-                    ThemeMode.LIGHT -> "Light keeps Cathopedia in its brighter theme regardless of your device setting."
-                    ThemeMode.DARK -> "Dark keeps Cathopedia in its deep forest-green theme regardless of your device setting."
+                    ThemeMode.SYSTEM -> s.appearanceInfoSystem
+                    ThemeMode.LIGHT -> s.appearanceInfoLight
+                    ThemeMode.DARK -> s.appearanceInfoDark
                 },
                 modifier = Modifier.weight(1f),
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -487,6 +494,7 @@ private fun ThemeInfo(
 private fun ThemePreview(
     selected: ThemeMode,
 ) {
+    val s = LocalStrings.current
     val isLightPreview = selected == ThemeMode.LIGHT
 
     val cardBackground = if (isLightPreview) Color(0xFFF3EBDD) else Color(0xFF082219)
@@ -575,7 +583,7 @@ private fun ThemePreview(
                     )
                     Spacer(Modifier.height(3.dp))
                     Text(
-                        text = "Faith • Knowledge • Tradition",
+                        text = s.appearancePreviewTagline,
                         color = MaterialTheme.colorScheme.primary,
                         fontSize = 11.5.sp,
                         lineHeight = 14.sp,
@@ -591,7 +599,7 @@ private fun ThemePreview(
                 verticalAlignment = Alignment.Bottom,
             ) {
                 Text(
-                    text = "Explore the richness of our Catholic faith\nwith a beautiful reading experience.",
+                    text = s.appearancePreviewBody,
                     modifier = Modifier.weight(1f),
                     color = secondaryText,
                     fontSize = 12.3.sp,

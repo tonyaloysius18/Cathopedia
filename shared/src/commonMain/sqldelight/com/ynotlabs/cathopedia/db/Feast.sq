@@ -39,3 +39,8 @@ SELECT FeastEntity.id AS id, FeastText.name AS name, FeastText.summary AS summar
 FROM FeastEntity
 JOIN FeastText ON FeastText.feastId = FeastEntity.id AND FeastText.language = :language
 WHERE FeastEntity.id = :id;
+
+-- id + raw date string only, language-independent — used to find today's feast
+-- (see LiturgicalCalendar.resolveDate) without needing a text-table join.
+selectFeastDates:
+SELECT id, date FROM FeastEntity;

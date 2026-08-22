@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
+import com.ynotlabs.cathopedia.i18n.LocalStrings
 
 /**
  * Opens the bundled database, loads the compiled content bundle on first run
@@ -26,6 +27,8 @@ fun SplashScreen(isFirstRun: Boolean, repository: CathopediaRepository, onReady:
         onReady(isFirstRun)
     }
 
+    val s = LocalStrings.current
+
     Surface(color = MaterialTheme.colorScheme.background) {
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -38,7 +41,7 @@ fun SplashScreen(isFirstRun: Boolean, repository: CathopediaRepository, onReady:
                 color = MaterialTheme.colorScheme.onBackground,
             )
             Text(
-                "Loading",
+                s.loading,
                 fontSize = 12.sp,
                 fontStyle = FontStyle.Italic,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,

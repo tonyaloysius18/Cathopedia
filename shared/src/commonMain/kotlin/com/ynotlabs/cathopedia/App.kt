@@ -13,12 +13,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,10 +33,15 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import com.ynotlabs.cathopedia.data.PreferenceKeys
 import com.ynotlabs.cathopedia.di.AppContainer
+import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.stringsFor
+import com.ynotlabs.cathopedia.liturgical.LiturgicalCalendar
 import com.ynotlabs.cathopedia.model.BookmarkItem
 import com.ynotlabs.cathopedia.model.ContentSummary
 import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.model.RelatedItem
+import com.ynotlabs.cathopedia.notifications.FeastNotificationScheduler
+import com.ynotlabs.cathopedia.notifications.UpcomingFeastNotification
 import com.ynotlabs.cathopedia.ui.navigation.BottomNavBar
 import com.ynotlabs.cathopedia.ui.navigation.Destination
 import com.ynotlabs.cathopedia.ui.navigation.rememberAppNavController
@@ -47,19 +54,21 @@ import com.ynotlabs.cathopedia.ui.screens.HomeScreen
 import com.ynotlabs.cathopedia.ui.screens.IntroScreen
 import com.ynotlabs.cathopedia.ui.screens.LanguageScreen
 import com.ynotlabs.cathopedia.ui.screens.LanguageScreenStartup
+import com.ynotlabs.cathopedia.ui.screens.NotificationsScreen
 import com.ynotlabs.cathopedia.ui.screens.SavedScreen
 import com.ynotlabs.cathopedia.ui.screens.SearchScreen
 import com.ynotlabs.cathopedia.ui.screens.SettingsScreen
 import com.ynotlabs.cathopedia.ui.screens.SplashScreen
 import com.ynotlabs.cathopedia.ui.theme.CathopediaTheme
-import com.ynotlabs.cathopedia.ui.theme.LiturgicalOrdinary
 import com.ynotlabs.cathopedia.ui.theme.ThemeMode
+import com.ynotlabs.cathopedia.ui.theme.toAccentColor
+import kotlinx.coroutines.launch
 
 private val TAB_DESTINATIONS = setOf(Destination.Home, Destination.Explore, Destination.Search, Destination.Settings)
 
 /** Root composable, shared verbatim between the Android and iOS entry points. */
 @Composable
-fun App(container: AppContainer) {
+fun App(container: AppContainer, notificationScheduler: FeastNotificationScheduler) {
     val repository = container.repository
     var language by remember {
         mutableStateOf(repository.getPreference(PreferenceKeys.LANGUAGE) ?: "en")
@@ -69,6 +78,37 @@ fun App(container: AppContainer) {
     }
     var themeMode by remember {
         mutableStateOf(ThemeMode.fromStorageKey(repository.getPreference(PreferenceKeys.THEME_MODE)))
+    }
+    var notificationsEnabled by remember {
+        mutableStateOf(repository.getPreference(PreferenceKeys.NOTIFICATIONS_ENABLED) == "true")
+    }
+    var notificationsPermissionDenied by remember { mutableStateOf(false) }
+    val coroutineScope = rememberCoroutineScope()
+
+    fun refreshFeastNotifications(onResult: ((Boolean) -> Unit)? = null) {
+        coroutineScope.launch {
+            val items = repository.upcomingFeasts(language).map { (date, summary) ->
+                UpcomingFeastNotification(
+                    feastId = summary.id,
+                    date = date,
+                    title = summary.name,
+                    body = summary.summary,
+                )
+            }
+            notificationScheduler.requestPermissionAndSchedule(items) { granted ->
+                notificationsEnabled = granted
+                notificationsPermissionDenied = !granted
+                repository.setPreference(PreferenceKeys.NOTIFICATIONS_ENABLED, granted.toString())
+                onResult?.invoke(granted)
+            }
+        }
+    }
+
+    // Re-schedules on every app open when the feature is already on, so the
+    // rolling notification horizon keeps moving forward and picks up any feasts
+    // added to the content catalog since the feature was last turned on.
+    LaunchedEffect(Unit) {
+        if (notificationsEnabled) refreshFeastNotifications()
     }
 
     val nav = rememberAppNavController(Destination.Splash)
@@ -103,10 +143,12 @@ fun App(container: AppContainer) {
         barScale = 1f
     }
 
-    // Liturgical accent is a single theme token from day one (per the colour
-    // system doc) — hardcoded to Ordinary Time's green until the calendar
-    // engine (v1.0) can drive it.
-    CathopediaTheme(themeMode = themeMode, liturgicalAccent = LiturgicalOrdinary) {
+    // Computed once per app session — good enough for a value that only ever
+    // changes at most once a day, and avoids recomputing on every recomposition.
+    val liturgicalAccent = remember { LiturgicalCalendar.liturgicalDayFor(LiturgicalCalendar.today()).color.toAccentColor() }
+
+    CathopediaTheme(themeMode = themeMode, liturgicalAccent = liturgicalAccent) {
+    CompositionLocalProvider(LocalStrings provides stringsFor(language)) {
         val destination = nav.current
         val showBottomBar = destination in TAB_DESTINATIONS
 
@@ -181,8 +223,10 @@ fun App(container: AppContainer) {
                 is Destination.Settings -> SettingsScreen(
                     language = language,
                     themeMode = themeMode,
+                    notificationsEnabled = notificationsEnabled,
                     onOpenLanguage = { nav.navigate(Destination.LanguageSettings) },
                     onOpenAppearance = { nav.navigate(Destination.Appearance) },
+                    onOpenNotifications = { nav.navigate(Destination.Notifications) },
                     onOpenSaved = { nav.navigate(Destination.Saved) },
                     onOpenAbout = { nav.navigate(Destination.About) },
                 )
@@ -192,6 +236,22 @@ fun App(container: AppContainer) {
                     onSelect = { mode ->
                         themeMode = mode
                         repository.setPreference(PreferenceKeys.THEME_MODE, mode.storageKey)
+                    },
+                    onBack = nav::back,
+                )
+
+                is Destination.Notifications -> NotificationsScreen(
+                    enabled = notificationsEnabled,
+                    permissionDenied = notificationsPermissionDenied,
+                    onToggle = { enable ->
+                        if (enable) {
+                            refreshFeastNotifications()
+                        } else {
+                            notificationScheduler.cancelAll()
+                            notificationsEnabled = false
+                            notificationsPermissionDenied = false
+                            repository.setPreference(PreferenceKeys.NOTIFICATIONS_ENABLED, "false")
+                        }
                     },
                     onBack = nav::back,
                 )
@@ -221,5 +281,6 @@ fun App(container: AppContainer) {
                 }
             }
         }
+    }
     }
 }

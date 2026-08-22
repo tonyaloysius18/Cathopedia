@@ -18,7 +18,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
@@ -47,9 +46,12 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
+import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.model.ContentCategory
 import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.ui.displayName
+import com.ynotlabs.cathopedia.ui.label
 import org.jetbrains.compose.resources.painterResource
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.explore_apostles
@@ -74,6 +76,7 @@ fun ExploreScreen(
     language: String,
     onCategorySelected: (ContentType) -> Unit,
 ) {
+    val s = LocalStrings.current
     var counts by remember { mutableStateOf<Map<ContentType, Int>>(emptyMap()) }
     var query by remember { mutableStateOf("") }
 
@@ -99,16 +102,16 @@ fun ExploreScreen(
 
         ContentCategory.entries.forEach { category ->
             val visibleTypes = category.types.filter { type ->
-                query.isBlank() || type.displayName().contains(query, ignoreCase = true)
+                query.isBlank() || type.displayName(s).contains(query, ignoreCase = true)
             }
 
             if (visibleTypes.isNotEmpty()) {
                 item {
-                    ExploreSectionHeader(category.label.uppercase())
+                    ExploreSectionHeader(category.label(s).uppercase())
                 }
 
-                when (category.label.lowercase()) {
-                    "people" -> {
+                when (category) {
+                    ContentCategory.PEOPLE -> {
                         item {
                             PeopleSection(
                                 types = visibleTypes,
@@ -118,7 +121,7 @@ fun ExploreScreen(
                         }
                     }
 
-                    "events" -> {
+                    ContentCategory.EVENTS -> {
                         item {
                             EventsSection(
                                 types = visibleTypes,
@@ -145,7 +148,7 @@ fun ExploreScreen(
 
         if (query.isNotBlank()) {
             val hasAnyResult = ContentCategory.entries.any { category ->
-                category.types.any { it.displayName().contains(query, ignoreCase = true) }
+                category.types.any { it.displayName(s).contains(query, ignoreCase = true) }
             }
 
             if (!hasAnyResult) {
@@ -157,14 +160,14 @@ fun ExploreScreen(
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
                         Text(
-                            text = "No results found",
+                            text = s.exploreNoResultsFound,
                             color = MaterialTheme.colorScheme.onBackground,
                             fontSize = 18.sp,
                             fontWeight = FontWeight.SemiBold,
                         )
                         Spacer(Modifier.height(6.dp))
                         Text(
-                            text = "Try another category or keyword.",
+                            text = s.exploreTryAnotherCategory,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontSize = 14.sp,
                         )
@@ -180,6 +183,7 @@ private fun ExploreHero(
     query: String,
     onQueryChange: (String) -> Unit,
 ) {
+    val s = LocalStrings.current
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -239,7 +243,7 @@ private fun ExploreHero(
                     .padding(top = 14.dp, end = 150.dp),
             ) {
                 Text(
-                    text = "Explore",
+                    text = s.exploreTitle,
                     color = MaterialTheme.colorScheme.onBackground,
                     fontSize = 30.sp,
                     lineHeight = 38.sp,
@@ -250,7 +254,7 @@ private fun ExploreHero(
                 Spacer(Modifier.height(8.dp))
 
                 Text(
-                    text = "Discover the richness of the Catholic faith",
+                    text = s.exploreSubtitle,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontSize = 16.sp,
                     lineHeight = 22.sp,
@@ -266,9 +270,9 @@ private fun ExploreHero(
             singleLine = true,
             placeholder = {
                 Text(
-                    text = "Search saints, popes, places...",
+                    text = s.exploreSearchPlaceholder,
                     color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.82f),
-                    fontSize = 15.sp,
+                    fontSize = 14.sp,
                 )
             },
             leadingIcon = {
@@ -290,7 +294,7 @@ private fun ExploreHero(
             ),
             modifier = Modifier
                 .fillMaxWidth()
-                .height(58.dp),
+                .height(54.dp),
         )
     }
 }
@@ -397,7 +401,8 @@ private fun PortraitExploreCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val title = type.displayName()
+    val s = LocalStrings.current
+    val title = type.displayName(s)
 
     Card(
         modifier = modifier
@@ -410,7 +415,7 @@ private fun PortraitExploreCard(
     ) {
         Box(Modifier.fillMaxSize()) {
             CategoryArtwork(
-                title = title,
+                type = type,
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(top = 8.dp, start = 6.dp, end = 2.dp),
@@ -423,6 +428,7 @@ private fun PortraitExploreCard(
             )
 
             CategoryGlyph(
+                type = type,
                 title = title,
                 modifier = Modifier
                     .align(Alignment.TopStart)
@@ -446,7 +452,7 @@ private fun PortraitExploreCard(
                     overflow = TextOverflow.Ellipsis,
                 )
                 Text(
-                    text = humanCountLabel(title, count),
+                    text = humanCountLabel(type, count, s),
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontSize = 11.sp,
                     lineHeight = 16.sp,
@@ -463,7 +469,8 @@ private fun EventExploreCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val title = type.displayName()
+    val s = LocalStrings.current
+    val title = type.displayName(s)
 
     Card(
         modifier = modifier
@@ -476,7 +483,7 @@ private fun EventExploreCard(
     ) {
         Box(Modifier.fillMaxSize()) {
             CategoryArtwork(
-                title = title,
+                type = type,
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(top = 8.dp, start = 6.dp, end = 2.dp),
@@ -489,6 +496,7 @@ private fun EventExploreCard(
             )
 
             CategoryGlyph(
+                type = type,
                 title = title,
                 modifier = Modifier
                     .align(Alignment.TopStart)
@@ -511,7 +519,7 @@ private fun EventExploreCard(
                     overflow = TextOverflow.Ellipsis,
                 )
                 Text(
-                    text = humanCountLabel(title, count),
+                    text = humanCountLabel(type, count, s),
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontSize = 11.sp,
                     lineHeight = 16.sp,
@@ -527,7 +535,8 @@ private fun WideExploreCard(
     count: Int,
     onClick: () -> Unit,
 ) {
-    val title = type.displayName()
+    val s = LocalStrings.current
+    val title = type.displayName(s)
 
     Card(
         modifier = Modifier
@@ -542,7 +551,7 @@ private fun WideExploreCard(
     ) {
         Box(Modifier.fillMaxSize()) {
             CategoryArtwork(
-                title = title,
+                type = type,
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
@@ -550,9 +559,7 @@ private fun WideExploreCard(
                 alignment = Alignment.BottomEnd,
             )
 
-            val needsStrongerWideFade = title.contains("church", ignoreCase = true) ||
-                    title.contains("shrine", ignoreCase = true) ||
-                    title.contains("feast", ignoreCase = true)
+            val needsStrongerWideFade = type == ContentType.CHURCH || type == ContentType.FEAST
 
             ArtworkFadeOverlay(
                 wideCardFade = needsStrongerWideFade,
@@ -564,7 +571,7 @@ private fun WideExploreCard(
                     .padding(14.dp),
                 verticalArrangement = Arrangement.SpaceBetween,
             ) {
-                CategoryGlyph(title = title, size = 30.dp)
+                CategoryGlyph(type = type, title = title, size = 30.dp)
 
                 Column {
                     Text(
@@ -577,7 +584,7 @@ private fun WideExploreCard(
                         overflow = TextOverflow.Ellipsis,
                     )
                     Text(
-                        text = humanCountLabel(title, count),
+                        text = humanCountLabel(type, count, s),
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontSize = 11.sp,
                         lineHeight = 16.sp,
@@ -637,100 +644,68 @@ private fun ArtworkFadeOverlay(
 
 @Composable
 private fun CategoryArtwork(
-    title: String,
+    type: ContentType,
     modifier: Modifier = Modifier,
     contentScale: ContentScale = ContentScale.Crop,
     alignment: Alignment = Alignment.Center,
 ) {
-    val normalized = title.lowercase()
-
-    val painter = when {
-        normalized.contains("saint") -> painterResource(Res.drawable.explore_saints)
-        normalized.contains("pope") -> painterResource(Res.drawable.explore_popes)
-        normalized.contains("apost") -> painterResource(Res.drawable.explore_apostles)
-        normalized.contains("church") || normalized.contains("shrine") -> painterResource(Res.drawable.explore_churches)
-        normalized.contains("marian") -> painterResource(Res.drawable.explore_marian)
-        normalized.contains("euchar") -> painterResource(Res.drawable.explore_eucharistic)
-        normalized.contains("feast") -> painterResource(Res.drawable.explore_feasts)
-        else -> null
+    val painter = when (type) {
+        ContentType.SAINT -> painterResource(Res.drawable.explore_saints)
+        ContentType.POPE -> painterResource(Res.drawable.explore_popes)
+        ContentType.APOSTLE -> painterResource(Res.drawable.explore_apostles)
+        ContentType.CHURCH -> painterResource(Res.drawable.explore_churches)
+        ContentType.APPARITION -> painterResource(Res.drawable.explore_marian)
+        ContentType.MIRACLE -> painterResource(Res.drawable.explore_eucharistic)
+        ContentType.FEAST -> painterResource(Res.drawable.explore_feasts)
     }
 
-    if (painter != null) {
-        Image(
-            painter = painter,
-            contentDescription = null,
-            contentScale = contentScale,
-            alignment = alignment,
-            modifier = modifier,
-        )
-    } else {
-        Box(
-            modifier = modifier.background(
-                Brush.linearGradient(
-                    listOf(
-                        MaterialTheme.colorScheme.surfaceVariant,
-                        MaterialTheme.colorScheme.surface,
-                        MaterialTheme.colorScheme.background
-                    )
-                )
-            )
-        )
-    }
+    Image(
+        painter = painter,
+        contentDescription = null,
+        contentScale = contentScale,
+        alignment = alignment,
+        modifier = modifier,
+    )
 }
 
 @Composable
 private fun CategoryGlyph(
+    type: ContentType,
     title: String,
     modifier: Modifier = Modifier,
     size: androidx.compose.ui.unit.Dp = 40.dp,
 ) {
-    val normalized = title.lowercase()
-
-    val iconPainter = when {
-        normalized.contains("saint") -> painterResource(Res.drawable.saints_icon)
-        normalized.contains("pope") -> painterResource(Res.drawable.popes_icon)
-        normalized.contains("apost") -> painterResource(Res.drawable.apostles_icon)
-        normalized.contains("church") || normalized.contains("shrine") -> painterResource(Res.drawable.churches_shrines_icon)
-        normalized.contains("marian") -> painterResource(Res.drawable.marian_apparitions_icon)
-        normalized.contains("euchar") -> painterResource(Res.drawable.eucharistic_miracles_icon)
-        normalized.contains("feast") -> painterResource(Res.drawable.liturgical_feasts_icon)
-        else -> null
+    val iconPainter = when (type) {
+        ContentType.SAINT -> painterResource(Res.drawable.saints_icon)
+        ContentType.POPE -> painterResource(Res.drawable.popes_icon)
+        ContentType.APOSTLE -> painterResource(Res.drawable.apostles_icon)
+        ContentType.CHURCH -> painterResource(Res.drawable.churches_shrines_icon)
+        ContentType.APPARITION -> painterResource(Res.drawable.marian_apparitions_icon)
+        ContentType.MIRACLE -> painterResource(Res.drawable.eucharistic_miracles_icon)
+        ContentType.FEAST -> painterResource(Res.drawable.liturgical_feasts_icon)
     }
 
-    if (iconPainter != null) {
-        Image(
-            painter = iconPainter,
-            contentDescription = "$title icon",
-            contentScale = ContentScale.Fit,
-            modifier = modifier.size(size),
-        )
-    } else {
-        Box(
-            modifier = modifier
-                .size(size)
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.92f)),
-            contentAlignment = Alignment.Center,
-        ) {
-            Text(
-                text = "✦",
-                color = MaterialTheme.colorScheme.primary,
-                fontSize = (size.value * 0.45f).sp,
-                fontWeight = FontWeight.Medium,
-            )
-        }
-    }
+    Image(
+        painter = iconPainter,
+        contentDescription = "$title icon",
+        contentScale = ContentScale.Fit,
+        modifier = modifier.size(size),
+    )
 }
 
-private fun humanCountLabel(title: String, count: Int): String {
-    return when {
-        title.contains("Saint", ignoreCase = true) -> "$count holy lives"
-        title.contains("Pope", ignoreCase = true) -> "$count pontiffs"
-        title.contains("Apost", ignoreCase = true) -> "$count witnesses of Christ"
-        title.contains("Church", ignoreCase = true) || title.contains("Shrine", ignoreCase = true) -> "$count sacred places"
-        title.contains("Marian", ignoreCase = true) -> "$count apparitions"
-        title.contains("Euchar", ignoreCase = true) -> "$count documented miracles"
-        title.contains("Feast", ignoreCase = true) -> if (count > 0) "$count celebrations in the Church year" else "Journey through the Church year"
-        else -> "$count entries"
+private fun humanCountLabel(type: ContentType, count: Int, s: Strings): String {
+    val template = when (type) {
+        ContentType.SAINT -> s.countHolyLives
+        ContentType.POPE -> s.countPontiffs
+        ContentType.APOSTLE -> s.countWitnesses
+        ContentType.CHURCH -> s.countSacredPlaces
+        ContentType.APPARITION -> s.countApparitions
+        ContentType.MIRACLE -> s.countMiracles
+        ContentType.FEAST -> return if (count > 0) {
+            s.countFeastCelebrations.replace("{count}", count.toString())
+        } else {
+            s.countFeastFallback
+        }
     }
+    return template.replace("{count}", count.toString())
 }

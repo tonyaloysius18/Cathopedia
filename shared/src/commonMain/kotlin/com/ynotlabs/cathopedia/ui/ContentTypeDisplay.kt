@@ -1,6 +1,7 @@
 package com.ynotlabs.cathopedia.ui
 
 import androidx.compose.ui.graphics.Color
+import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.model.ContentCategory
 import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.ui.theme.CategoryEventsViolet
@@ -8,24 +9,31 @@ import com.ynotlabs.cathopedia.ui.theme.CategoryFeastMustard
 import com.ynotlabs.cathopedia.ui.theme.CategoryPeopleGreen
 import com.ynotlabs.cathopedia.ui.theme.CategoryPlacesGold
 
-fun ContentType.displayName(): String = when (this) {
-    ContentType.SAINT -> "Saints"
-    ContentType.POPE -> "Popes"
-    ContentType.APOSTLE -> "Apostles"
-    ContentType.CHURCH -> "Churches & Shrines"
-    ContentType.APPARITION -> "Marian Apparitions"
-    ContentType.MIRACLE -> "Eucharistic Miracles"
-    ContentType.FEAST -> "Liturgical Feasts"
+fun ContentType.displayName(s: Strings): String = when (this) {
+    ContentType.SAINT -> s.typeSaintsPlural
+    ContentType.POPE -> s.typePopesPlural
+    ContentType.APOSTLE -> s.typeApostlesPlural
+    ContentType.CHURCH -> s.typeChurchesPlural
+    ContentType.APPARITION -> s.typeApparitionsPlural
+    ContentType.MIRACLE -> s.typeMiraclesPlural
+    ContentType.FEAST -> s.typeFeastsPlural
 }
 
-fun ContentType.singularLabel(): String = when (this) {
-    ContentType.SAINT -> "Saint"
-    ContentType.POPE -> "Pope"
-    ContentType.APOSTLE -> "Apostle"
-    ContentType.CHURCH -> "Church"
-    ContentType.APPARITION -> "Apparition"
-    ContentType.MIRACLE -> "Eucharistic Miracle"
-    ContentType.FEAST -> "Liturgical Feast"
+fun ContentType.singularLabel(s: Strings): String = when (this) {
+    ContentType.SAINT -> s.typeSaintSingular
+    ContentType.POPE -> s.typePopeSingular
+    ContentType.APOSTLE -> s.typeApostleSingular
+    ContentType.CHURCH -> s.typeChurchSingular
+    ContentType.APPARITION -> s.typeApparitionSingular
+    ContentType.MIRACLE -> s.typeMiracleSingular
+    ContentType.FEAST -> s.typeFeastSingular
+}
+
+fun ContentCategory.label(s: Strings): String = when (this) {
+    ContentCategory.PEOPLE -> s.categoryPeople
+    ContentCategory.PLACES -> s.categoryPlaces
+    ContentCategory.EVENTS -> s.categoryEvents
+    ContentCategory.FEASTS -> s.categoryFeasts
 }
 
 /** The colour-coding that makes the relation graph's shape readable at a glance. */

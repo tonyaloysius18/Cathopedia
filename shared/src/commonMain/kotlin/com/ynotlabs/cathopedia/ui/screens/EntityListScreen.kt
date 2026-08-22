@@ -71,6 +71,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
+import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.model.ContentSummary
 import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.ui.Portraits
@@ -217,6 +219,7 @@ fun EntityListScreen(
     onItemSelected: (ContentSummary) -> Unit,
     listState: LazyListState = rememberLazyListState(),
 ) {
+    val s = LocalStrings.current
     var items by remember(type) { mutableStateOf<List<ContentSummary>?>(null) }
     var query by remember(type) { mutableStateOf("") }
     var searchVisible by remember(type) { mutableStateOf(false) }
@@ -239,7 +242,7 @@ fun EntityListScreen(
     val allCenturies = remember(currentItems, type) {
         if (type == ContentType.POPE && currentItems != null) {
             currentItems
-                .map { centuryLabel(it.sortYear) }
+                .map { centuryLabel(it.sortYear, s) }
                 .distinct()
         } else {
             emptyList()
@@ -267,7 +270,7 @@ fun EntityListScreen(
         }
 
         val centuryFiltered = if (type == ContentType.POPE && selectedCentury != null) {
-            searched.filter { centuryLabel(it.sortYear) == selectedCentury }
+            searched.filter { centuryLabel(it.sortYear, s) == selectedCentury }
         } else {
             searched
         }
@@ -332,7 +335,7 @@ fun EntityListScreen(
                 verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 if (type == ContentType.POPE) {
-                    val grouped = filteredItems.groupBy { centuryLabel(it.sortYear) }
+                    val grouped = filteredItems.groupBy { centuryLabel(it.sortYear, s) }
                     grouped.forEach { (century, popes) ->
                         stickyHeader(key = "century-$century") {
                             PremiumCenturyHeader(century)
@@ -374,7 +377,8 @@ fun EntityListScreen(
                 .background(EntityHeader),
         ) {
             EntityTopArea(
-                title = type.displayName(),
+                type = type,
+                title = type.displayName(s),
                 count = currentItems?.size,
                 searchVisible = searchVisible,
                 query = query,
@@ -428,6 +432,7 @@ fun EntityListScreen(
 
 @Composable
 private fun EntityTopArea(
+    type: ContentType,
     title: String,
     count: Int?,
     searchVisible: Boolean,
@@ -438,6 +443,7 @@ private fun EntityTopArea(
     onCloseSearch: () -> Unit,
     onFilterClick: () -> Unit,
 ) {
+    val s = LocalStrings.current
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -455,7 +461,7 @@ private fun EntityTopArea(
             ) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Back",
+                    contentDescription = s.back,
                     tint = EntityCream,
                     modifier = Modifier.size(25.dp),
                 )
@@ -481,11 +487,10 @@ private fun EntityTopArea(
                 Spacer(Modifier.height(2.dp))
 
                 Text(
-                    text = if (title.equals("Popes", ignoreCase = true)) {
-                        "Explore the successors of St. Peter through the centuries"
+                    text = if (type == ContentType.POPE) {
+                        s.listPopesSubtitle
                     } else {
-                        count?.let { "Explore through history" }
-                            ?: "Explore through history"
+                        s.listExploreThroughHistory
                     },
                     color = EntityMuted,
                     fontSize = 13.sp,
@@ -502,7 +507,7 @@ private fun EntityTopArea(
                 IconButton(onClick = onFilterClick) {
                     Icon(
                         imageVector = Icons.Default.FilterList,
-                        contentDescription = "Filter and sort",
+                        contentDescription = s.listFilterAndSortDesc,
                         tint = EntityCream,
                         modifier = Modifier.size(24.dp),
                     )
@@ -510,7 +515,7 @@ private fun EntityTopArea(
                 IconButton(onClick = onSearchClick) {
                     Icon(
                         imageVector = Icons.Default.Search,
-                        contentDescription = "Search",
+                        contentDescription = s.searchDesc,
                         tint = EntityCream,
                         modifier = Modifier.size(25.dp),
                     )
@@ -525,7 +530,7 @@ private fun EntityTopArea(
                 singleLine = true,
                 placeholder = {
                     Text(
-                        text = "Search ${title.lowercase()} by name or description…",
+                        text = s.listSearchByNameOrDescription.replace("{type}", title.lowercase()),
                         color = EntityMuted,
                     )
                 },
@@ -540,7 +545,7 @@ private fun EntityTopArea(
                     IconButton(onClick = onCloseSearch) {
                         Icon(
                             imageVector = Icons.Default.Close,
-                            contentDescription = "Close search",
+                            contentDescription = s.closeSearch,
                             tint = EntityMuted,
                         )
                     }
@@ -569,6 +574,7 @@ private fun CenturyChipStrip(
     selectedCentury: String?,
     onCenturySelected: (String?) -> Unit,
 ) {
+    val s = LocalStrings.current
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -577,7 +583,7 @@ private fun CenturyChipStrip(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         PremiumFilterChip(
-            text = "All",
+            text = s.all,
             selected = selectedCentury == null,
             onClick = { onCenturySelected(null) },
         )
@@ -597,6 +603,7 @@ private fun RankChipStrip(
     selectedRank: String?,
     onRankSelected: (String?) -> Unit,
 ) {
+    val s = LocalStrings.current
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -605,7 +612,7 @@ private fun RankChipStrip(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         PremiumFilterChip(
-            text = "All",
+            text = s.all,
             selected = selectedRank == null,
             onClick = { onRankSelected(null) },
         )
@@ -695,13 +702,12 @@ private fun PremiumEntityCard(
     century: String?,
     onClick: () -> Unit,
 ) {
+    val s = LocalStrings.current
     val portrait = Portraits.fullForEntity(type, item.id)
-    val isChurchCard = type.displayName().contains("church", ignoreCase = true) ||
-            type.displayName().contains("basilica", ignoreCase = true) ||
-            type.displayName().contains("shrine", ignoreCase = true)
+    val isChurchCard = type == ContentType.CHURCH
     val isSaintPope = type == ContentType.POPE && item.isDeclaredSaint()
-    val popeTimeline = if (type == ContentType.POPE) item.papacyTimeline() else null
-    val saintFeastDay = if (type == ContentType.SAINT) item.feastDayLabel() else null
+    val popeTimeline = if (type == ContentType.POPE) item.papacyTimeline(s) else null
+    val saintFeastDay = if (type == ContentType.SAINT) item.feastDayLabel(s) else null
     val titleSize = when {
         item.name.length <= 18 -> 18.sp
         item.name.length <= 26 -> 16.sp
@@ -811,7 +817,7 @@ private fun PremiumEntityCard(
                         )
                         Spacer(Modifier.width(4.dp))
                         Text(
-                            text = "SAINT",
+                            text = s.detailSaintTag,
                             color = EntityGold,
                             fontSize = 10.sp,
                             letterSpacing = 0.9.sp,
@@ -828,9 +834,9 @@ private fun PremiumEntityCard(
                     Spacer(Modifier.width(5.dp))
                     Text(
                         text = if (type == ContentType.FEAST) {
-                            (item.rank?.takeIf { it.isNotBlank() } ?: type.singularLabel()).uppercase()
+                            (item.rank?.takeIf { it.isNotBlank() } ?: type.singularLabel(s)).uppercase()
                         } else {
-                            type.singularLabel().uppercase()
+                            type.singularLabel(s).uppercase()
                         },
                         color = EntityGold,
                         fontSize = 10.sp,
@@ -894,7 +900,7 @@ private fun PremiumEntityCard(
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                        contentDescription = "Open ${item.name}",
+                        contentDescription = s.listOpenEntity.replace("{name}", item.name),
                         tint = EntityGold,
                         modifier = Modifier.size(17.dp),
                     )
@@ -919,6 +925,7 @@ private fun EntityFilterSheet(
     onDismiss: () -> Unit,
     onApply: () -> Unit,
 ) {
+    val s = LocalStrings.current
     ModalBottomSheet(
         onDismissRequest = onDismiss,
         containerColor = EntitySheet,
@@ -943,7 +950,7 @@ private fun EntityFilterSheet(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
-                    text = "Filter & Sort",
+                    text = s.listFilterAndSortSheetTitle,
                     color = EntityCream,
                     fontFamily = FontFamily.Serif,
                     fontSize = 24.sp,
@@ -953,7 +960,7 @@ private fun EntityFilterSheet(
                 IconButton(onClick = onDismiss) {
                     Icon(
                         imageVector = Icons.Default.Close,
-                        contentDescription = "Close",
+                        contentDescription = s.close,
                         tint = EntityCream,
                     )
                 }
@@ -961,7 +968,7 @@ private fun EntityFilterSheet(
 
             if (type == ContentType.POPE && centuries.isNotEmpty()) {
                 Spacer(Modifier.height(16.dp))
-                FilterSectionLabel("CENTURY")
+                FilterSectionLabel(s.listFilterCentury)
                 Spacer(Modifier.height(10.dp))
 
                 Row(
@@ -971,7 +978,7 @@ private fun EntityFilterSheet(
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     PremiumFilterChip(
-                        text = "All",
+                        text = s.all,
                         selected = selectedCentury == null,
                         onClick = { onCenturySelected(null) },
                     )
@@ -987,7 +994,7 @@ private fun EntityFilterSheet(
 
             if (type == ContentType.FEAST && ranks.isNotEmpty()) {
                 Spacer(Modifier.height(16.dp))
-                FilterSectionLabel("RANK")
+                FilterSectionLabel(s.listFilterRank)
                 Spacer(Modifier.height(10.dp))
 
                 Row(
@@ -997,7 +1004,7 @@ private fun EntityFilterSheet(
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     PremiumFilterChip(
-                        text = "All",
+                        text = s.all,
                         selected = selectedRank == null,
                         onClick = { onRankSelected(null) },
                     )
@@ -1012,7 +1019,7 @@ private fun EntityFilterSheet(
             }
 
             Spacer(Modifier.height(24.dp))
-            FilterSectionLabel("SORT BY")
+            FilterSectionLabel(s.listSortBy)
             Spacer(Modifier.height(10.dp))
 
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -1021,13 +1028,13 @@ private fun EntityFilterSheet(
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     SortChoice(
-                        text = "Name (A–Z)",
+                        text = s.listSortNameAsc,
                         selected = selectedSort == EntitySortOption.NAME_ASC,
                         modifier = Modifier.weight(1f),
                         onClick = { onSortSelected(EntitySortOption.NAME_ASC) },
                     )
                     SortChoice(
-                        text = "Name (Z–A)",
+                        text = s.listSortNameDesc,
                         selected = selectedSort == EntitySortOption.NAME_DESC,
                         modifier = Modifier.weight(1f),
                         onClick = { onSortSelected(EntitySortOption.NAME_DESC) },
@@ -1038,13 +1045,13 @@ private fun EntityFilterSheet(
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     SortChoice(
-                        text = "Earliest first",
+                        text = s.listSortEarliestFirst,
                         selected = selectedSort == EntitySortOption.EARLIEST_FIRST,
                         modifier = Modifier.weight(1f),
                         onClick = { onSortSelected(EntitySortOption.EARLIEST_FIRST) },
                     )
                     SortChoice(
-                        text = "Latest first",
+                        text = s.listSortLatestFirst,
                         selected = selectedSort == EntitySortOption.LATEST_FIRST,
                         modifier = Modifier.weight(1f),
                         onClick = { onSortSelected(EntitySortOption.LATEST_FIRST) },
@@ -1066,7 +1073,7 @@ private fun EntityFilterSheet(
                 ),
             ) {
                 Text(
-                    text = "Apply Filter",
+                    text = s.listApplyFilter,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                 )
@@ -1120,6 +1127,7 @@ private fun EmptyEntityState(
     query: String,
     modifier: Modifier = Modifier,
 ) {
+    val s = LocalStrings.current
     Column(
         modifier = modifier.padding(horizontal = 32.dp),
         verticalArrangement = Arrangement.Center,
@@ -1132,7 +1140,7 @@ private fun EmptyEntityState(
         )
         Spacer(Modifier.height(10.dp))
         Text(
-            text = if (query.isBlank()) "Nothing to show" else "No matches found",
+            text = if (query.isBlank()) s.listNothingToShow else s.listNoMatchesFound,
             color = EntityCream,
             fontFamily = FontFamily.Serif,
             fontSize = 22.sp,
@@ -1140,9 +1148,9 @@ private fun EmptyEntityState(
         Spacer(Modifier.height(7.dp))
         Text(
             text = if (query.isBlank()) {
-                "Content will appear here when available."
+                s.listContentWillAppear
             } else {
-                "Try another name, keyword, or century."
+                s.listTryAnotherNameKeyword
             },
             color = EntityMuted,
             fontSize = 13.sp,
@@ -1155,39 +1163,44 @@ private fun String.titleCaseCentury(): String {
     return replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
 }
 
-/** "1st century", "11th century", "21st century" from the repository's sort key. */
-private fun centuryLabel(sortKey: Long?): String {
-    if (sortKey == null) return "Unknown era"
+/** "1st century", "11th century", "21st century" (or the French equivalent) from the repository's sort key. */
+private fun centuryLabel(sortKey: Long?, s: Strings): String {
+    if (sortKey == null) return s.listUnknownEra
     val year = sortKey / 12
     val century = ((year - 1) / 100 + 1).toInt()
-    val suffix = if (century % 100 in 11..13) {
-        "th"
+    val ordinal = if (s.listUseFrenchOrdinals) {
+        if (century == 1) "1er" else "${century}e"
     } else {
-        when (century % 10) {
-            1 -> "st"
-            2 -> "nd"
-            3 -> "rd"
-            else -> "th"
+        val suffix = if (century % 100 in 11..13) {
+            "th"
+        } else {
+            when (century % 10) {
+                1 -> "st"
+                2 -> "nd"
+                3 -> "rd"
+                else -> "th"
+            }
         }
+        "$century$suffix"
     }
-    return "$century$suffix century"
+    return "$ordinal ${s.listCenturyWord}"
 }
 
 
-private fun ContentSummary.papacyTimeline(): String? {
+private fun ContentSummary.papacyTimeline(s: Strings): String? {
     val start = papacyStart?.trim()?.takeIf { it.isNotEmpty() }
     val end = papacyEnd?.trim()?.takeIf { it.isNotEmpty() }
 
     return when {
         start != null && end != null -> "$start – $end"
-        start != null -> "$start – Present"
+        start != null -> "$start – ${s.detailPresent}"
         else -> null
     }
 }
 
-private fun ContentSummary.feastDayLabel(): String? {
+private fun ContentSummary.feastDayLabel(s: Strings): String? {
     feastDay?.trim()?.takeIf { it.isNotEmpty() }?.let {
-        return "Feast Day · $it"
+        return "${s.detailFactFeastDay} · $it"
     }
 
     val source = summary.replace('\n', ' ')
@@ -1205,7 +1218,7 @@ private fun ContentSummary.feastDayLabel(): String? {
     )
 
     val match = patterns.firstNotNullOfOrNull { it.find(source) } ?: return null
-    return "Feast Day · ${match.groupValues[1].trim()}"
+    return "${s.detailFactFeastDay} · ${match.groupValues[1].trim()}"
 }
 
 private val canonizedPopeNames = setOf(

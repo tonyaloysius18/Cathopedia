@@ -64,6 +64,7 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.sqldelight.android.driver)
             implementation(libs.requery.sqlite.android)
+            implementation(libs.androidx.activity.compose)
         }
         iosMain.dependencies {
             implementation(libs.sqldelight.native.driver)

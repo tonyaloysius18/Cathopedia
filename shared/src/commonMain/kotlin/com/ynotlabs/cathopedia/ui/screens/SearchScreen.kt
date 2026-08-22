@@ -24,9 +24,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
+import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.model.ContentCategory
 import com.ynotlabs.cathopedia.model.ContentSummary
 import com.ynotlabs.cathopedia.ui.components.FilterChipsRow
+import com.ynotlabs.cathopedia.ui.label
 
 /** One FTS5 query across every entity type; results grouped by category with live counts. */
 @Composable
@@ -35,6 +37,7 @@ fun SearchScreen(
     language: String,
     onResultSelected: (ContentSummary) -> Unit,
 ) {
+    val s = LocalStrings.current
     var query by remember { mutableStateOf("") }
     var allResults by remember { mutableStateOf<List<ContentSummary>>(emptyList()) }
     var filter by remember { mutableStateOf<ContentCategory?>(null) }
@@ -56,7 +59,7 @@ fun SearchScreen(
                     OutlinedTextField(
                         value = query,
                         onValueChange = { query = it },
-                        placeholder = { Text("Search Cathopedia") },
+                        placeholder = { Text(s.searchCathopedia) },
                         modifier = Modifier.fillMaxWidth(),
                         singleLine = true,
                     )
@@ -67,10 +70,10 @@ fun SearchScreen(
         Column(modifier = Modifier.fillMaxWidth().padding(padding)) {
             if (allResults.isNotEmpty()) {
                 val chipOptions = buildList {
-                    add("All ${allResults.size}" to null)
+                    add("${s.all} ${allResults.size}" to null)
                     ContentCategory.entries.forEach { category ->
                         val count = counts[category] ?: 0
-                        if (count > 0) add("${category.label} $count" to category)
+                        if (count > 0) add("${category.label(s)} $count" to category)
                     }
                 }
                 FilterChipsRow(

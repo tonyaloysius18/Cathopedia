@@ -37,6 +37,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -50,6 +51,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.back_arrow
 import com.ynotlabs.cathopedia.resources.cathopedia_app_logo_transparent
@@ -68,11 +71,11 @@ private data class Credit(
     val purpose: String,
 )
 
-private val CREDITS = listOf(
-    Credit("Compose Multiplatform", "Cross-platform user interface"),
-    Credit("SQLDelight", "Local structured data and persistence"),
-    Credit("Kotlinx Coroutines", "Asynchronous application logic"),
-    Credit("Kotlinx Serialization", "Content and data serialization"),
+private fun credits(s: Strings) = listOf(
+    Credit("Compose Multiplatform", s.aboutCreditComposePurpose),
+    Credit("SQLDelight", s.aboutCreditSqlDelightPurpose),
+    Credit("Kotlinx Coroutines", s.aboutCreditCoroutinesPurpose),
+    Credit("Kotlinx Serialization", s.aboutCreditSerializationPurpose),
 )
 
 @Composable
@@ -80,6 +83,8 @@ fun AboutScreen(
     onBack: () -> Unit,
 ) {
     val uriHandler = LocalUriHandler.current
+    val s = LocalStrings.current
+    val credits = remember(s) { credits(s) }
 
     Column(
         modifier = Modifier
@@ -98,12 +103,10 @@ fun AboutScreen(
 
             Spacer(Modifier.height(24.dp))
 
-            SectionTitle("About Cathopedia")
+            SectionTitle(s.aboutSectionTitle)
             AboutCard {
                 Text(
-                    text = "Cathopedia is an offline-first Catholic encyclopedia and spiritual reference " +
-                            "designed to bring saints, popes, apostles, churches, Marian apparitions, " +
-                            "Eucharistic miracles and liturgical feasts together in one carefully organized experience.",
+                    text = s.aboutBody,
                     modifier = Modifier.padding(16.dp),
                     color = MaterialTheme.colorScheme.onBackground,
                     fontSize = 14.sp,
@@ -113,34 +116,34 @@ fun AboutScreen(
 
             Spacer(Modifier.height(20.dp))
 
-            SectionTitle("App & data")
+            SectionTitle(s.aboutAppDataSectionTitle)
             AboutCard {
                 InfoRow(
                     icon = Icons.Filled.Storage,
-                    title = "Offline-first",
-                    subtitle = "Core encyclopedia content is stored on your device.",
+                    title = s.aboutOfflineFirstTitle,
+                    subtitle = s.aboutOfflineFirstSubtitle,
                 )
 
                 ThinDivider()
 
                 InfoRow(
                     icon = Icons.Filled.Lock,
-                    title = "Privacy",
-                    subtitle = "No account is required for the core app experience.",
+                    title = s.aboutPrivacyTitle,
+                    subtitle = s.aboutPrivacySubtitle,
                 )
 
                 ThinDivider()
 
                 InfoRow(
                     icon = Icons.Filled.AutoStories,
-                    title = "Saved entries",
-                    subtitle = "Bookmarks and preferences are kept locally on this device.",
+                    title = s.aboutSavedEntriesTitle,
+                    subtitle = s.aboutSavedEntriesSubtitle,
                 )
             }
 
             Spacer(Modifier.height(20.dp))
 
-            SectionTitle("Developer")
+            SectionTitle(s.aboutDeveloperSectionTitle)
             AboutCard {
                 Row(
                     modifier = Modifier
@@ -157,7 +160,7 @@ fun AboutScreen(
                         )
                         Spacer(Modifier.height(2.dp))
                         Text(
-                            text = "$STUDIO_NAME · Android & iOS",
+                            text = "$STUDIO_NAME ${s.aboutStudioSuffix}",
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontSize = 12.sp,
                         )
@@ -168,8 +171,8 @@ fun AboutScreen(
 
                 LinkRow(
                     icon = Icons.Filled.Code,
-                    title = "GitHub",
-                    subtitle = "View projects and source",
+                    title = s.aboutGithubTitle,
+                    subtitle = s.aboutGithubSubtitle,
                 ) {
                     uriHandler.openUri(GITHUB_URL)
                 }
@@ -178,8 +181,8 @@ fun AboutScreen(
 
                 LinkRow(
                     icon = Icons.Filled.Link,
-                    title = "LinkedIn",
-                    subtitle = "Connect with the developer",
+                    title = s.aboutLinkedinTitle,
+                    subtitle = s.aboutLinkedinSubtitle,
                 ) {
                     uriHandler.openUri(LINKEDIN_URL)
                 }
@@ -188,7 +191,7 @@ fun AboutScreen(
 
                 LinkRow(
                     icon = Icons.Filled.Email,
-                    title = "Contact",
+                    title = s.aboutContactTitle,
                     subtitle = CONTACT_EMAIL,
                 ) {
                     uriHandler.openUri("mailto:$CONTACT_EMAIL")
@@ -197,9 +200,9 @@ fun AboutScreen(
 
             Spacer(Modifier.height(20.dp))
 
-            SectionTitle("Acknowledgements")
+            SectionTitle(s.aboutAcknowledgementsSectionTitle)
             AboutCard {
-                CREDITS.forEachIndexed { index, credit ->
+                credits.forEachIndexed { index, credit ->
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -231,7 +234,7 @@ fun AboutScreen(
                         }
                     }
 
-                    if (index != CREDITS.lastIndex) {
+                    if (index != credits.lastIndex) {
                         ThinDivider(startPadding = 35.dp)
                     }
                 }
@@ -239,7 +242,7 @@ fun AboutScreen(
 
             Spacer(Modifier.height(20.dp))
 
-            SectionTitle("Content note")
+            SectionTitle(s.aboutContentNoteSectionTitle)
             AboutCard {
                 Row(
                     modifier = Modifier
@@ -257,9 +260,7 @@ fun AboutScreen(
                     Spacer(Modifier.width(12.dp))
 
                     Text(
-                        text = "Cathopedia is an independent educational reference app. " +
-                                "It is not an official publication of the Holy See or any diocese. " +
-                                "Historical and devotional material should be read alongside authoritative Church sources.",
+                        text = s.aboutContentNoteBody,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontSize = 12.sp,
                         lineHeight = 18.sp,
@@ -270,7 +271,7 @@ fun AboutScreen(
             Spacer(Modifier.height(24.dp))
 
             Text(
-                text = "© 2026 $STUDIO_NAME",
+                text = "${s.aboutCopyrightPrefix} $STUDIO_NAME",
                 modifier = Modifier.fillMaxWidth(),
                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.62f),
                 fontSize = 11.sp,
@@ -280,7 +281,7 @@ fun AboutScreen(
             Spacer(Modifier.height(4.dp))
 
             Text(
-                text = "Knowledge · Faith · Tradition",
+                text = s.brandTagline,
                 modifier = Modifier.fillMaxWidth(),
                 color = MaterialTheme.colorScheme.primary.copy(alpha = 0.72f),
                 fontSize = 10.5.sp,
@@ -298,6 +299,7 @@ fun AboutScreen(
 private fun AboutHero(
     onBack: () -> Unit,
 ) {
+    val s = LocalStrings.current
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -364,7 +366,7 @@ private fun AboutHero(
                 Box(contentAlignment = Alignment.Center) {
                     Image(
                         painter = painterResource(Res.drawable.back_arrow),
-                        contentDescription = "Back",
+                        contentDescription = s.back,
                         modifier = Modifier.size(34.dp),
                         contentScale = ContentScale.Fit,
                     )
@@ -374,7 +376,7 @@ private fun AboutHero(
             Spacer(Modifier.weight(1f))
 
             Text(
-                text = "About",
+                text = s.aboutTitle,
                 color = MaterialTheme.colorScheme.onBackground,
                 fontFamily = FontFamily.Serif,
                 fontSize = 34.sp,
@@ -385,7 +387,7 @@ private fun AboutHero(
             Spacer(Modifier.height(4.dp))
 
             Text(
-                text = "App info, storage & attributions",
+                text = s.aboutSubtitle,
                 color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.78f),
                 fontSize = 14.sp,
                 lineHeight = 18.sp,
@@ -396,6 +398,7 @@ private fun AboutHero(
 
 @Composable
 private fun AppIdentity() {
+    val s = LocalStrings.current
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -429,7 +432,7 @@ private fun AppIdentity() {
         Spacer(Modifier.height(2.dp))
 
         Text(
-            text = "Version $APP_VERSION",
+            text = "${s.aboutVersionPrefix} $APP_VERSION",
             color = MaterialTheme.colorScheme.primary,
             fontSize = 11.5.sp,
             fontWeight = FontWeight.Medium,
@@ -438,7 +441,7 @@ private fun AppIdentity() {
         Spacer(Modifier.height(8.dp))
 
         Text(
-            text = "A Catholic knowledge companion for learning, discovery and reflection.",
+            text = s.aboutAppTagline,
             modifier = Modifier.padding(horizontal = 36.dp),
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             fontSize = 13.sp,

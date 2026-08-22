@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
+import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.model.BookmarkItem
 import com.ynotlabs.cathopedia.ui.components.FilterChipsRow
 
@@ -36,6 +37,7 @@ fun SavedScreen(
     onBack: () -> Unit,
     onItemSelected: (BookmarkItem) -> Unit,
 ) {
+    val s = LocalStrings.current
     var bookmarks by remember { mutableStateOf<List<BookmarkItem>>(emptyList()) }
     var filter by remember { mutableStateOf(SavedFilter.ALL) }
 
@@ -54,7 +56,7 @@ fun SavedScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Saved") },
+                title = { Text(s.savedTitle) },
                 navigationIcon = {
                     IconButton(onClick = onBack) { Text("←", fontSize = 22.sp) }
                 },
@@ -63,13 +65,13 @@ fun SavedScreen(
     ) { padding ->
         Column(modifier = Modifier.fillMaxWidth().padding(padding)) {
             Text(
-                "Stored on this device only.",
+                s.savedStoredOnDeviceOnly,
                 fontSize = 12.sp,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(start = 16.dp, top = 12.dp),
             )
             FilterChipsRow(
-                options = listOf("All" to SavedFilter.ALL, "Notes" to SavedFilter.NOTES),
+                options = listOf(s.all to SavedFilter.ALL, s.savedFilterNotes to SavedFilter.NOTES),
                 selected = filter,
                 onSelect = { filter = it },
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
@@ -77,7 +79,7 @@ fun SavedScreen(
 
             if (visible.isEmpty()) {
                 Text(
-                    "Nothing saved yet — bookmark anything from its detail page.",
+                    s.savedNothingSavedYet,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.padding(16.dp),
                 )
@@ -94,7 +96,7 @@ fun SavedScreen(
                             Column(modifier = Modifier.padding(16.dp)) {
                                 Text(bookmark.name)
                                 Text(
-                                    if (bookmark.note != null) "1 note" else "Bookmarked",
+                                    if (bookmark.note != null) s.savedOneNote else s.savedBookmarked,
                                     fontSize = 12.sp,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                                 )

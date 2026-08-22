@@ -12,8 +12,10 @@ import com.ynotlabs.cathopedia.model.MiracleDetail
 import com.ynotlabs.cathopedia.model.PopeDetail
 import com.ynotlabs.cathopedia.model.RelatedItem
 import com.ynotlabs.cathopedia.model.SaintDetail
+import com.ynotlabs.cathopedia.liturgical.LiturgicalCalendar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.datetime.LocalDate
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 import kotlin.random.Random
@@ -181,6 +183,57 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
         database.feastQueries.selectAllFeasts(language)
             .executeAsList()
             .map { ContentSummary(ContentType.FEAST, it.id, it.name, it.summary, it.imageUrl, rank = it.rank) }
+    }
+
+    /**
+     * The feast (if any) celebrated on [today] — cross-references each feast's raw
+     * `date` string against [LiturgicalCalendar.resolveDate] rather than a SQL date
+     * comparison, since movable feasts ("Movable" in the content data) have no
+     * calendar date until resolved against that year's Easter. Prefers the
+     * higher-ranking feast if more than one somehow lands on the same day.
+     */
+    suspend fun feastOfToday(language: String, today: LocalDate = LiturgicalCalendar.today()): ContentSummary? =
+        withContext(Dispatchers.Default) {
+            val todaysFeastIds = database.feastQueries.selectFeastDates()
+                .executeAsList()
+                .filter { LiturgicalCalendar.resolveDate(it.date, it.id, today.year) == today }
+                .map { it.id }
+                .toSet()
+            if (todaysFeastIds.isEmpty()) return@withContext null
+
+            listFeasts(language)
+                .filter { it.id in todaysFeastIds }
+                .minByOrNull { if (it.rank == "Solemnity") 0 else 1 }
+        }
+
+    /**
+     * Every feast from [from] onward, resolved to its actual calendar date and
+     * paired with its localized name/summary, ready to hand to a
+     * [com.ynotlabs.cathopedia.notifications.FeastNotificationScheduler]. Looks up
+     * to three years ahead so [limit] is always filled even right after a content
+     * update adds new feasts, then returns the earliest [limit] by date.
+     */
+    suspend fun upcomingFeasts(
+        language: String,
+        from: LocalDate = LiturgicalCalendar.today(),
+        limit: Int = 60,
+    ): List<Pair<LocalDate, ContentSummary>> = withContext(Dispatchers.Default) {
+        val rawDates = database.feastQueries.selectFeastDates().executeAsList()
+        val textById = listFeasts(language).associateBy { it.id }
+
+        (from.year until from.year + 3)
+            .asSequence()
+            .flatMap { year ->
+                rawDates.asSequence().mapNotNull { row ->
+                    val resolved = LiturgicalCalendar.resolveDate(row.date, row.id, year) ?: return@mapNotNull null
+                    if (resolved < from) return@mapNotNull null
+                    val summary = textById[row.id] ?: return@mapNotNull null
+                    resolved to summary
+                }
+            }
+            .sortedBy { it.first }
+            .take(limit)
+            .toList()
     }
 
     suspend fun feastDetail(id: String, language: String): FeastDetail? = withContext(Dispatchers.Default) {

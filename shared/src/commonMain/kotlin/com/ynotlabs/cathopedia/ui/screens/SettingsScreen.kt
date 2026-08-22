@@ -22,6 +22,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -36,10 +37,12 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.ic_about
 import com.ynotlabs.cathopedia.resources.ic_appearance
 import com.ynotlabs.cathopedia.ui.theme.ThemeMode
+import com.ynotlabs.cathopedia.ui.theme.label
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import com.ynotlabs.cathopedia.resources.ic_language
@@ -52,11 +55,14 @@ import com.ynotlabs.cathopedia.resources.settings_quote_bg
 fun SettingsScreen(
     language: String,
     themeMode: ThemeMode,
+    notificationsEnabled: Boolean,
     onOpenLanguage: () -> Unit,
     onOpenAppearance: () -> Unit,
+    onOpenNotifications: () -> Unit,
     onOpenSaved: () -> Unit,
     onOpenAbout: () -> Unit,
 ) {
+    val s = LocalStrings.current
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -72,12 +78,12 @@ fun SettingsScreen(
                 .fillMaxWidth()
                 .padding(horizontal = 18.dp),
         ) {
-            SettingsSectionLabel("Preferences")
+            SettingsSectionLabel(s.settingsPreferencesSectionTitle)
 
             SettingsGroup {
                 PremiumSettingsRow(
                     icon = Res.drawable.ic_language,
-                    label = "Language",
+                    label = s.settingsLanguageRowLabel,
                     value = languageDisplayName(language),
                     onClick = onOpenLanguage,
                 )
@@ -86,21 +92,30 @@ fun SettingsScreen(
 
                 PremiumSettingsRow(
                     icon = Res.drawable.ic_appearance,
-                    label = "Appearance",
-                    value = themeMode.label,
+                    label = s.settingsAppearanceRowLabel,
+                    value = themeMode.label(s),
                     onClick = onOpenAppearance,
+                )
+
+                SettingsDivider()
+
+                PremiumIconSettingsRow(
+                    icon = Icons.Filled.Notifications,
+                    label = s.settingsNotificationsRowLabel,
+                    value = if (notificationsEnabled) s.settingsNotificationsRowValueOn else s.settingsNotificationsRowValueOff,
+                    onClick = onOpenNotifications,
                 )
             }
 
             Spacer(Modifier.height(16.dp))
 
-            SettingsSectionLabel("Library & app")
+            SettingsSectionLabel(s.settingsLibraryAppSectionTitle)
 
             SettingsGroup {
                 PremiumSettingsRow(
                     icon = Res.drawable.ic_saved,
-                    label = "Saved",
-                    value = "Your bookmarked entries",
+                    label = s.settingsSavedRowLabel,
+                    value = s.settingsSavedRowValue,
                     onClick = onOpenSaved,
                 )
 
@@ -108,8 +123,8 @@ fun SettingsScreen(
 
                 PremiumSettingsRow(
                     icon = Res.drawable.ic_about,
-                    label = "About",
-                    value = "App info, storage, attributions",
+                    label = s.settingsAboutRowLabel,
+                    value = s.settingsAboutRowValue,
                     onClick = onOpenAbout,
                 )
             }
@@ -133,7 +148,7 @@ fun SettingsScreen(
                 )
                 Spacer(Modifier.height(4.dp))
                 Text(
-                    text = "Knowledge · Faith · Tradition",
+                    text = s.brandTagline,
                     color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.72f),
                     fontSize = 11.sp,
                 )
@@ -144,6 +159,7 @@ fun SettingsScreen(
 
 @Composable
 private fun SettingsHero() {
+    val s = LocalStrings.current
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -198,7 +214,7 @@ private fun SettingsHero() {
             Spacer(Modifier.height(18.dp))
 
             Text(
-                text = "Settings",
+                text = s.settingsTitle,
                 color = MaterialTheme.colorScheme.onBackground,
                 fontFamily = FontFamily.Serif,
                 fontSize = 35.sp,
@@ -209,7 +225,7 @@ private fun SettingsHero() {
             Spacer(Modifier.height(4.dp))
 
             Text(
-                text = "Personalize your Cathopedia experience",
+                text = s.settingsSubtitle,
                 color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.78f),
                 fontSize = 14.sp,
                 lineHeight = 18.sp,
@@ -347,6 +363,81 @@ private fun PremiumSettingsRow(
     }
 }
 
+/** Same layout as [PremiumSettingsRow], for rows with no bespoke PNG icon yet. */
+@Composable
+private fun PremiumIconSettingsRow(
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    label: String,
+    value: String,
+    onClick: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(horizontal = 14.dp, vertical = 13.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Box(
+            modifier = Modifier
+                .size(48.dp)
+                .clip(CircleShape)
+                .background(MaterialTheme.colorScheme.background.copy(alpha = 0.58f))
+                .border(
+                    width = 1.dp,
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.74f),
+                    shape = CircleShape,
+                ),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(24.dp),
+            )
+        }
+
+        Spacer(Modifier.width(14.dp))
+
+        Column(
+            modifier = Modifier.weight(1f),
+        ) {
+            Text(
+                text = label,
+                color = MaterialTheme.colorScheme.primary,
+                fontFamily = FontFamily.Serif,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Medium,
+            )
+
+            Spacer(Modifier.height(3.dp))
+
+            Text(
+                text = value,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                fontSize = 12.5.sp,
+                lineHeight = 16.sp,
+            )
+        }
+
+        Box(
+            modifier = Modifier
+                .size(34.dp)
+                .clip(CircleShape)
+                .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.07f)),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(
+                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(21.dp),
+            )
+        }
+    }
+}
+
 @Composable
 private fun SettingsDivider() {
     Box(
@@ -360,6 +451,7 @@ private fun SettingsDivider() {
 
 @Composable
 private fun InspirationCard() {
+    val s = LocalStrings.current
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -408,7 +500,7 @@ private fun InspirationCard() {
             )
 
             Text(
-                text = "Your word is a lamp to my feet\nand a light to my path.",
+                text = s.settingsInspirationQuote,
                 color = MaterialTheme.colorScheme.onBackground,
                 fontFamily = FontFamily.Serif,
                 fontSize = 13.sp,
@@ -420,7 +512,7 @@ private fun InspirationCard() {
             Spacer(Modifier.height(4.dp))
 
             Text(
-                text = "Psalm 119:105",
+                text = s.settingsInspirationReference,
                 color = MaterialTheme.colorScheme.primary,
                 fontSize = 11.sp,
                 fontWeight = FontWeight.SemiBold,

@@ -1,0 +1,21 @@
+{
+  "id": "palm-sunday",
+  "date": "Movable",
+  "rank": "Solemnity",
+  "imageUrl": null,
+  "sourceUrl": null,
+  "text": {
+    "en": {
+      "name": "Palm Sunday of the Passion of the Lord",
+      "summary": "The Sunday opening Holy Week, recalling Christ's triumphant entry into Jerusalem and the reading of his Passion.",
+      "body": "Palm Sunday begins Holy Week with a double character: joyful and sorrowful. Mass opens with the blessing of palm branches and a procession recalling Jesus's entry into Jerusalem, where crowds welcomed him as a king by waving palms and spreading their cloaks before him. The liturgy then turns solemn, as the account of the Passion — Christ's arrest, trial, and crucifixion — is proclaimed in full, often read by several voices. The blessed palms are traditionally kept in the home through the year, and burned the following year to make the ashes used on Ash Wednesday.",
+      "sourceAttribution": "Draft content — pending citation review."
+    },
+    "fr": {
+      "name": "Dimanche des Rameaux et de la Passion",
+      "summary": "Le dimanche qui ouvre la Semaine sainte, rappelant l'entrée triomphale du Christ à Jérusalem et la lecture de sa Passion.",
+      "body": "Le Dimanche des Rameaux ouvre la Semaine sainte avec un double caractère, joyeux et douloureux. La messe débute par la bénédiction des rameaux et une procession rappelant l'entrée de Jésus à Jérusalem, où les foules l'accueillirent comme un roi en agitant des palmes et en étendant leurs manteaux devant lui. La liturgie devient ensuite solennelle, lorsque le récit de la Passion — l'arrestation, le procès et la crucifixion du Christ — est proclamé dans son intégralité, souvent lu par plusieurs voix. Les rameaux bénis sont traditionnellement conservés dans les foyers durant l'année, puis brûlés l'année suivante pour fournir les cendres utilisées le Mercredi des Cendres.",
+      "sourceAttribution": "Contenu provisoire — en attente de vérification des sources."
+    }
+  }
+}

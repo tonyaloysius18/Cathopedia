@@ -3,7 +3,6 @@ package com.ynotlabs.cathopedia.ui.screens
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,7 +11,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -22,16 +20,16 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Language
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -40,75 +38,55 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.i18n.LocalStrings
-import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.back_arrow
-import com.ynotlabs.cathopedia.resources.check
 import com.ynotlabs.cathopedia.resources.info
 import com.ynotlabs.cathopedia.resources.settings_header_bg
 import org.jetbrains.compose.resources.painterResource
 
-private data class SettingsLanguageOption(
-    val code: String,
-    val label: String,
-    val subtitle: String,
-    val available: Boolean,
-)
-
-private fun settingsLanguageOptions(s: Strings) = listOf(
-    SettingsLanguageOption("en", "English", s.languageNameEnglish, available = true),
-    SettingsLanguageOption("fr", "Français", s.languageNameFrench, available = true),
-    SettingsLanguageOption("es", "Español", s.languageNameSpanish, available = false),
-    SettingsLanguageOption("it", "Italiano", s.languageNameItalian, available = false),
-)
-
 @Composable
-fun LanguageScreen(
-    currentLanguage: String,
-    onSelect: (languageCode: String) -> Unit,
+fun NotificationsScreen(
+    enabled: Boolean,
+    permissionDenied: Boolean,
+    onToggle: (Boolean) -> Unit,
     onBack: () -> Unit,
 ) {
     val s = LocalStrings.current
-    val options = remember(s) { settingsLanguageOptions(s) }
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
-            .verticalScroll(rememberScrollState())
-            .navigationBarsPadding(),
+            .verticalScroll(rememberScrollState()),
     ) {
-        SettingsLanguageHero(onBack = onBack)
+        NotificationsHeader(onBack = onBack)
 
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 18.dp)
-                .padding(bottom = 28.dp),
+                .padding(bottom = 34.dp),
         ) {
-            SettingsLanguageSectionTitle(s.languageAppLanguageSectionTitle)
+            Spacer(Modifier.height(14.dp))
 
-            options.forEach { option ->
-                SettingsLanguageRow(
-                    option = option,
-                    selected = currentLanguage.equals(option.code, ignoreCase = true),
-                    onClick = {
-                        if (option.available && option.code != currentLanguage) {
-                            onSelect(option.code)
-                        }
-                    },
-                )
+            FeastToggleCard(
+                enabled = enabled,
+                onToggle = onToggle,
+            )
+
+            Spacer(Modifier.height(14.dp))
+
+            if (permissionDenied) {
+                NotificationsInfoCard(text = s.notificationsPermissionDenied)
                 Spacer(Modifier.height(10.dp))
             }
 
-            Spacer(Modifier.height(6.dp))
-
-            LanguageInfoCard()
+            NotificationsInfoCard(text = s.notificationsInfoText)
         }
     }
 }
 
 @Composable
-private fun SettingsLanguageHero(
+private fun NotificationsHeader(
     onBack: () -> Unit,
 ) {
     val s = LocalStrings.current
@@ -188,7 +166,7 @@ private fun SettingsLanguageHero(
             Spacer(Modifier.weight(1f))
 
             Text(
-                text = s.languageScreenTitle,
+                text = s.notificationsTitle,
                 color = MaterialTheme.colorScheme.onBackground,
                 fontFamily = FontFamily.Serif,
                 fontSize = 34.sp,
@@ -199,7 +177,7 @@ private fun SettingsLanguageHero(
             Spacer(Modifier.height(4.dp))
 
             Text(
-                text = s.languageScreenSubtitle,
+                text = s.notificationsSubtitle,
                 color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.78f),
                 fontSize = 14.sp,
                 lineHeight = 18.sp,
@@ -209,155 +187,76 @@ private fun SettingsLanguageHero(
 }
 
 @Composable
-private fun SettingsLanguageSectionTitle(
-    text: String,
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 2.dp, bottom = 9.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Text(
-            text = text.uppercase(),
-            color = MaterialTheme.colorScheme.primary,
-            fontSize = 10.5.sp,
-            letterSpacing = 1.2.sp,
-            fontWeight = FontWeight.Bold,
-        )
-
-        Spacer(Modifier.width(10.dp))
-
-        Box(
-            modifier = Modifier
-                .weight(1f)
-                .height(1.dp)
-                .background(
-                    Brush.horizontalGradient(
-                        listOf(
-                            MaterialTheme.colorScheme.primary.copy(alpha = 0.55f),
-                            Color.Transparent,
-                        ),
-                    ),
-                ),
-        )
-    }
-}
-
-@Composable
-private fun SettingsLanguageRow(
-    option: SettingsLanguageOption,
-    selected: Boolean,
-    onClick: () -> Unit,
+private fun FeastToggleCard(
+    enabled: Boolean,
+    onToggle: (Boolean) -> Unit,
 ) {
     val s = LocalStrings.current
-    val shape = RoundedCornerShape(17.dp)
+    val shape = RoundedCornerShape(20.dp)
 
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(shape)
-            .background(
-                if (selected) {
-                    Brush.horizontalGradient(
-                        listOf(
-                            MaterialTheme.colorScheme.surfaceVariant,
-                            MaterialTheme.colorScheme.surface,
-                        ),
-                    )
-                } else {
-                    Brush.horizontalGradient(
-                        listOf(
-                            MaterialTheme.colorScheme.surface.copy(alpha = 0.92f),
-                            MaterialTheme.colorScheme.surface.copy(alpha = 0.76f),
-                        ),
-                    )
-                },
-            )
-            .border(
-                width = if (selected) 1.7.dp else 1.dp,
-                color = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline.copy(alpha = 0.76f),
-                shape = shape,
-            )
-            .then(
-                if (option.available) Modifier.clickable(onClick = onClick) else Modifier,
-            )
-            .padding(horizontal = 14.dp, vertical = 13.dp),
-        verticalAlignment = Alignment.CenterVertically,
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = shape,
+        color = MaterialTheme.colorScheme.surface,
+        border = BorderStroke(
+            width = 1.dp,
+            color = MaterialTheme.colorScheme.outline.copy(alpha = 0.72f),
+        ),
     ) {
-        Surface(
-            modifier = Modifier.size(45.dp),
-            shape = CircleShape,
-            color = MaterialTheme.colorScheme.background.copy(alpha = 0.56f),
-            border = BorderStroke(
-                width = 1.dp,
-                color = MaterialTheme.colorScheme.primary.copy(alpha = 0.42f),
-            ),
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 16.dp),
+            verticalAlignment = Alignment.CenterVertically,
         ) {
-            Box(contentAlignment = Alignment.Center) {
+            Box(
+                modifier = Modifier
+                    .size(48.dp)
+                    .background(MaterialTheme.colorScheme.background.copy(alpha = 0.58f), CircleShape),
+                contentAlignment = Alignment.Center,
+            ) {
                 Icon(
-                    imageVector = Icons.Filled.Language,
+                    imageVector = Icons.Filled.Notifications,
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.size(23.dp),
-                )
-            }
-        }
-
-        Spacer(Modifier.width(13.dp))
-
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = option.label,
-                color = if (option.available) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.66f),
-                fontFamily = FontFamily.Serif,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Medium,
-            )
-
-            Spacer(Modifier.height(2.dp))
-
-            Text(
-                text = option.subtitle,
-                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = if (option.available) 0.92f else 0.56f),
-                fontSize = 11.5.sp,
-            )
-        }
-
-        when {
-            selected -> {
-                Image(
-                    painter = painterResource(Res.drawable.check),
-                    contentDescription = s.selectedDesc,
-                    modifier = Modifier.size(31.dp),
-                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.size(24.dp),
                 )
             }
 
-            !option.available -> {
-                Surface(
-                    shape = RoundedCornerShape(50),
-                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.07f),
-                    border = BorderStroke(
-                        width = 1.dp,
-                        color = MaterialTheme.colorScheme.primary.copy(alpha = 0.24f),
-                    ),
-                ) {
-                    Text(
-                        text = s.soon,
-                        modifier = Modifier.padding(horizontal = 9.dp, vertical = 5.dp),
-                        color = MaterialTheme.colorScheme.primary.copy(alpha = 0.75f),
-                        fontSize = 10.sp,
-                    )
-                }
+            Spacer(Modifier.width(14.dp))
+
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = s.notificationsFeastToggleLabel,
+                    color = MaterialTheme.colorScheme.primary,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Medium,
+                )
+                Spacer(Modifier.height(3.dp))
+                Text(
+                    text = s.notificationsFeastToggleDescription,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    fontSize = 12.5.sp,
+                    lineHeight = 17.sp,
+                )
             }
+
+            Spacer(Modifier.width(10.dp))
+
+            Switch(
+                checked = enabled,
+                onCheckedChange = onToggle,
+                colors = SwitchDefaults.colors(
+                    checkedTrackColor = MaterialTheme.colorScheme.primary,
+                ),
+            )
         }
     }
 }
 
 @Composable
-private fun LanguageInfoCard() {
-    val s = LocalStrings.current
+private fun NotificationsInfoCard(text: String) {
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(17.dp),
@@ -381,7 +280,7 @@ private fun LanguageInfoCard() {
             Spacer(Modifier.width(12.dp))
 
             Text(
-                text = s.languageInfoText,
+                text = text,
                 modifier = Modifier.weight(1f),
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 fontSize = 12.sp,

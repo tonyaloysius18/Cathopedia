@@ -15,6 +15,7 @@ sealed interface Destination {
     data object Saved : Destination
     data object Settings : Destination
     data object Appearance : Destination
+    data object Notifications : Destination
     data object About : Destination
 }
 
