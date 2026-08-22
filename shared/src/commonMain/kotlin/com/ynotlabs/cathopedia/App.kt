@@ -231,7 +231,11 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     onBack = nav::back,
                 )
 
-                is Destination.RosaryScreen -> RosaryScreen(onBack = nav::back)
+                is Destination.RosaryScreen -> RosaryScreen(
+                    repository = repository,
+                    language = language,
+                    onBack = nav::back,
+                )
 
                 is Destination.Search -> SearchScreen(
                     repository = repository,

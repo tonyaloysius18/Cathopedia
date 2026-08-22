@@ -143,15 +143,19 @@ private fun PrayersHomeBody(
     val s = LocalStrings.current
     val nonEmptyCategories = PrayerCategory.entries.filter { !byCategory[it].isNullOrEmpty() }
 
-    if (favorites.isEmpty() && nonEmptyCategories.isEmpty()) {
-        Box(modifier = Modifier.fillMaxWidth().padding(32.dp)) {
-            Text(s.listContentWillAppear, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        }
-        return
-    }
-
+    // The Rosary is its own self-contained feature (mysteries, not prayer
+    // text) — it stays reachable even while the rest of the catalogue has
+    // nothing sourced yet, so this only gates the *list* content below it.
     LazyColumn(contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 116.dp)) {
         item { RosaryCard(onClick = onOpenRosary) }
+
+        if (favorites.isEmpty() && nonEmptyCategories.isEmpty()) {
+            item {
+                Box(modifier = Modifier.fillMaxWidth().padding(vertical = 32.dp)) {
+                    Text(s.listContentWillAppear, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+            }
+        }
 
         if (favorites.isNotEmpty()) {
             item { SectionHeader(s.prayersFavoritesSection) }
