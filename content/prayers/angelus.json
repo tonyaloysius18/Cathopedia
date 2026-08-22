@@ -3,5 +3,21 @@
   "category": "marian",
   "sortOrder": 3,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "The Angelus",
+      "bodyMd": "> V. The Angel of the Lord declared unto Mary,\n> R. And she conceived of the Holy Spirit.\n\nHail Mary, full of grace, the Lord is with thee;\nblessed art thou among women,\nand blessed is the fruit of thy womb, Jesus.\nHoly Mary, Mother of God, pray for us sinners,\nnow and at the hour of our death. Amen.\n\n> V. Behold the handmaid of the Lord.\n> R. Be it done unto me according to thy word.\n\nHail Mary…\n\n> V. And the Word was made flesh.\n> R. And dwelt among us.\n\nHail Mary…\n\n> V. Pray for us, O holy Mother of God.\n> R. That we may be made worthy of the promises of Christ.\n\nLet us pray. Pour forth, we beseech Thee, O Lord,\nThy grace into our hearts;\nthat we, to whom the Incarnation of Christ Thy Son\nwas made known by the message of an angel,\nmay by His Passion and Cross be brought to the glory of His Resurrection.\nThrough the same Christ our Lord. Amen.",
+      "source": "EWTN, \"Angelus Prayer\", https://www.ewtn.com/catholicism/devotions/angelus-383, retrieved 2026-08-22"
+    },
+    "la": {
+      "title": "Angelus Domini",
+      "bodyMd": "> V. Angelus Domini nuntiavit Mariae.\n> R. Et concepit de Spiritu Sancto.\n\nAve Maria, gratia plena; Dominus tecum:\nbenedicta tu in mulieribus, et benedictus fructus ventris tui Iesus.\nSancta Maria, Mater Dei, ora pro nobis peccatoribus,\nnunc et in hora mortis nostrae. Amen.\n\n> V. Ecce ancilla Domini.\n> R. Fiat mihi secundum verbum tuum.\n\nAve Maria…\n\n> V. Et Verbum caro factum est.\n> R. Et habitavit in nobis.\n\nAve Maria…\n\n> V. Ora pro nobis, sancta Dei Genetrix.\n> R. Ut digni efficiamur promissionibus Christi.\n\nOremus. Gratiam tuam, quaesumus, Domine, mentibus nostris infunde;\nut qui, Angelo nuntiante, Christi Filii tui incarnationem cognovimus,\nper passionem eius et crucem ad resurrectionis gloriam perducamur.\nPer eumdem Christum Dominum nostrum. R. Amen.",
+      "source": "EWTN, \"Latin Prayers, Pater Noster\", https://www.ewtn.com/catholicism/library/latin-prayers-9125, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "L'Angélus",
+      "bodyMd": "> V. L'ange du Seigneur apporta l'annonce à Marie.\n> R. Et elle conçut du Saint-Esprit.\n\nJe vous salue Marie, pleine de grâce,\nle Seigneur est avec vous,\nvous êtes bénie entre toutes les femmes,\net Jésus, le fruit de vos entrailles, est béni.\nSainte Marie, mère de Dieu, priez pour nous, pauvres pécheurs,\nmaintenant et à l'heure de notre mort. Amen.\n\n> V. Voici la servante du Seigneur.\n> R. Qu'il me soit fait selon votre parole.\n\nJe vous salue Marie…\n\n> V. Et le Verbe s'est fait chair.\n> R. Et il a habité parmi nous.\n\nJe vous salue Marie…\n\n> V. Priez pour nous, sainte Mère de Dieu.\n> R. Afin que nous soyons rendus dignes des promesses du Christ.\n\nPrions. Que ta grâce, Seigneur, se répande en nos cœurs ;\npar le message de l'ange, tu nous as fait connaître l'Incarnation de ton Fils bien-aimé,\nconduis-nous, par sa passion et par sa croix, jusqu'à la gloire de la résurrection.\nAmen.",
+      "source": "Diocèse de Paris (dioceseparis.fr), « L'Angélus », https://dioceseparis.fr/l-angelus.html, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }

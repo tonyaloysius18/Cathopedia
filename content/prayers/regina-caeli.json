@@ -3,5 +3,23 @@
   "category": "marian",
   "sortOrder": 4,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Regina Caeli",
+      "subtitle": "Queen of Heaven",
+      "bodyMd": "> V. Queen of heaven, rejoice, alleluia.\n> R. For he whom you did merit to bear, alleluia,\n> V. Has risen as he said, alleluia.\n> R. Pray for us to God, alleluia.\n> V. Rejoice and be glad, O Virgin Mary, alleluia,\n> R. For the Lord is truly risen, alleluia.\n\nLet us pray. O God, who gave joy to the world through the resurrection of your Son our Lord Jesus Christ,\ngrant, we beseech you, that through the intercession of the Virgin Mary, his mother,\nwe may obtain the joys of everlasting life.\nThrough the same Christ our Lord.\nAmen.",
+      "source": "EWTN, \"Regina caeli (O Queen of Heaven)\", https://www.ewtn.com/catholicism/devotions/regina-caeli-o-queen-of-heaven-375, retrieved 2026-08-22"
+    },
+    "la": {
+      "title": "Regina Caeli",
+      "bodyMd": "Regina caeli, laetare, alleluia,\nquia quem meruisti portare, alleluia,\nresurrexit sicut dixit, alleluia,\nora pro nobis Deum, alleluia.",
+      "source": "Vie chrétienne (viechretienne.catholique.org), « Regina cæli - En latin », https://viechretienne.catholique.org/prieres/en-latin/640-regina-caeli, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Regina Caeli",
+      "subtitle": "Reine du ciel",
+      "bodyMd": "Reine du ciel, réjouissez-vous, alléluia,\ncar Celui que vous avez mérité de porter dans votre sein, alléluia,\nest ressuscité comme il l'a dit, alléluia,\npriez Dieu pour nous, alléluia.\n\n> V. Soyez dans la joie et l'allégresse, Vierge Marie, alléluia.\n> R. Parce que le Seigneur est vraiment ressuscité, alléluia.",
+      "source": "Aleteia (fr), « Regina Caeli, le chant de l'Église durant le temps pascal », https://fr.aleteia.org/2014/04/28/regina-coeli-laetare-alleluia/, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }
