@@ -3,5 +3,18 @@
   "category": "occasional",
   "sortOrder": 4,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Prayer for a Happy Death",
+      "attribution": "Ven. John Henry Cardinal Newman",
+      "bodyMd": "O my Lord and Savior, support me in my last hour\nin the strong arms of Thy Sacraments\nand by the fresh fragrance of Thy consolations.\nLet the absolving words be said over me,\nand the holy oil sign and seal me;\nand let Thine own Body be my food, and Thy Blood my sprinkling;\nand let my sweet Mother, Mary, breathe on me,\nand my Angel whisper peace to me,\nand my glorious saints and my own dear patrons smile upon me,\nthat, in them all and through them all,\nI may receive the gift of perseverance,\nand die as I desire to live,\nin Thy faith, in Thy Church, in Thy service, and in Thy love.\nAmen.",
+      "source": "EWTN, \"Prayers to Prepare for Death\", https://www.ewtn.com/catholicism/teachings/prayers-to-prepare-for-death-165, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Prière pour une bonne mort",
+      "bodyMd": "Seigneur,\nvoici la dernière prière que j'aimerais t'adresser,\navant de quitter cette terre, alors que Tu m'appelleras chez Toi.\nJe reconnais ton grand amour pour moi.\nMalgré mes fautes, crois-moi, je T'ai aimé, j'ai cru en Toi, j'ai espéré en Toi.\n\nAccorde-moi le pardon de toutes les fautes de ma vie.\nOublie celles que j'ai pu commettre contre Toi et contre mon prochain.\nTiens compte du pardon que je donne volontiers aux personnes qui ont pu m'offenser.\n\nSeigneur Jésus, Tu as promis de conduire à ton Père tous ceux qu'Il T'a confiés.\nTu es mon salut. En Toi je mets toute ma confiance.\n\nPermets, Seigneur Jésus, que je me recommande à Marie, ta Mère et la mienne,\nà Saint Joseph, patron de la bonne mort,\nà mon ange gardien, compagnon toujours fidèle,\naux saints et saintes, à mes parents et ami(e)s qui m'attendent dans ta maison.\nAmen.",
+      "attribution": "Les amis de la Prière, St-Hyacinthe, Canada",
+      "source": "Diocèse d'Orléans (orleans.catholique.fr), « Prière pour une bonne mort », https://www.orleans.catholique.fr/vivre-ma-foi/prier-et-celebrer/5191-priere-pour-se-preparer-a-la-mort/, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }

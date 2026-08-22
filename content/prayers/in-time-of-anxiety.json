@@ -3,5 +3,18 @@
   "category": "occasional",
   "sortOrder": 8,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Prayer in Time of Anxiety",
+      "attribution": "St. Frances Xavier Cabrini",
+      "bodyMd": "Jesus, fortify me with the grace of your Holy Spirit\nand give your peace to my soul\nthat I may be free of all needless anxiety, solicitude, and worry.\nAmen.",
+      "source": "St. Frances Cabrini Shrine, New York City, \"Prayers\" (For Anxiety), https://cabrinishrinenyc.org/prayers-of-mother-cabrini/, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Prière dans l'anxiété",
+      "attribution": "Sainte Françoise-Xavière Cabrini",
+      "bodyMd": "Par la grâce de ton Esprit Saint, fortifie-moi et donne ta paix à mon âme,\nlibère-moi de toute anxiété, de toutes préoccupations et de tous soucis inutiles.\nAide-moi à désirer toujours ce qui t'est doux et agréable,\nafin que ta volonté soit ma volonté.\nAmen.",
+      "source": "Aleteia (fr), « Une prière pour lutter contre le stress et l'anxiété », https://fr.aleteia.org/2018/02/19/une-priere-pour-lutter-contre-le-stress-et-lanxiete/, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }

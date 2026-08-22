@@ -3,5 +3,16 @@
   "category": "occasional",
   "sortOrder": 2,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "A Prayer for Travelers",
+      "bodyMd": "O Almighty and merciful God,\nwho hast commissioned Thy angels to guide and protect us,\ncommand them to be our assiduous companions from our setting out until our return;\nto clothe us with their invisible protection;\nto keep from us all danger of collision, of fire, of explosion, of fall and bruises,\nand finally, having preserved us from all evil, and especially from sin,\nto guide us to our heavenly home.\nThrough Jesus Christ, our Lord.\nAmen.",
+      "source": "EWTN, \"A Prayer For Travelers\", https://www.ewtn.com/catholicism/devotions/prayer-for-travelers-330, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Prière à Saint Raphaël pour les voyageurs",
+      "bodyMd": "Saint Raphaël, guide des voyageurs,\ntoi qui as conduit le jeune Tobie sur des routes inconnues\net l'as ramené sain et sauf auprès des siens,\naccompagne-moi dans ce voyage que j'entreprends.\nProtège mes pas et ceux de mes proches.\nÉloigne les accidents, les retards et les malheurs.\nFais que ce départ soit béni et que le retour soit heureux.\nToi qui connais les chemins que nos yeux ne voient pas encore,\nguide-moi avec la même patience et la même bonté que tu as montrées à Tobie.\nQue je parte en paix et que je revienne en paix,\nrendu meilleur par la route parcourue.\nAmen.",
+      "source": "trouve-une-messe.fr, « Prière à Saint Raphaël — Guérison, voyage et protection divine », https://www.trouve-une-messe.fr/priere/priere-saint-raphael/, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }

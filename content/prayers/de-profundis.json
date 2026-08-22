@@ -3,5 +3,24 @@
   "category": "occasional",
   "sortOrder": 9,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Out of the Depths",
+      "subtitle": "Psalm 129 (130)",
+      "bodyMd": "Out of the depths I have cried to thee, O Lord:\nLord, hear my voice.\nLet thy ears be attentive to the voice of my supplication.\n\nIf thou, O Lord, wilt mark iniquities: Lord, who shall stand it.\nFor with thee there is merciful forgiveness:\nand by reason of thy law, I have waited for thee, O Lord.\nMy soul hath relied on his word:\nmy soul hath hoped in the Lord.\n\nFrom the morning watch even until night, let Israel hope in the Lord.\nBecause with the Lord there is mercy: and with him plentiful redemption.\nAnd he shall redeem Israel from all his iniquities.",
+      "source": "Douay-Rheims Bible, Psalm 129, https://www.drbo.org/chapter/21129.htm, retrieved 2026-08-22"
+    },
+    "la": {
+      "title": "De Profundis",
+      "subtitle": "Psalmus 129 (130)",
+      "bodyMd": "De profundis clamavi ad te, Domine;\nDomine, exaudi vocem meam.\nFiant aures tuae intendentes in vocem deprecationis meae.\n\nSi iniquitates observaveris, Domine, Domine, quis sustinebit?\nQuia apud te propitiatio est;\net propter legem tuam sustinui te, Domine.\nSustinuit anima mea in verbo eius:\nspera vit anima mea in Domino.\n\nA custodia matutina usque ad noctem, speret Israel in Domino,\nquia apud Dominum misericordia, et copiosa apud eum redemptio.\nEt ipse redimet Israel ex omnibus iniquitatibus eius.",
+      "source": "Vulgate, Psalm 129, via Bible Study Tools, https://www.biblestudytools.com/vul/psalms/129.html, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Des profondeurs je crie vers toi",
+      "subtitle": "Psaume 129",
+      "bodyMd": "Des profondeurs je crie vers toi, Seigneur,\nSeigneur, écoute mon appel !\nQue ton oreille se fasse attentive au cri de ma prière !\n\nSi tu retiens les fautes, Seigneur, Seigneur, qui subsistera ?\nMais près de toi se trouve le pardon\npour que l'homme te craigne.\n\nJ'espère le Seigneur de toute mon âme ;\nje l'espère, et j'attends sa parole.\nMon âme attend le Seigneur plus qu'un veilleur ne guette l'aurore.\n\nPlus qu'un veilleur ne guette l'aurore, attends le Seigneur, Israël.\nOui, près du Seigneur, est l'amour ;\nprès de lui, abonde le rachat.\nC'est lui qui rachètera Israël de toutes ses fautes.",
+      "source": "Diocèse d'Orléans (orleans.catholique.fr), « Des profondeurs je crie vers Toi - Psaume 129 », https://www.orleans.catholique.fr/vivre-ma-foi/prier-et-celebrer/5229-psaume129/, retrieved 2026-08-22"
+    }
+  }
 }

@@ -3,5 +3,18 @@
   "category": "occasional",
   "sortOrder": 3,
   "isSequence": false,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Prayer to St. Joseph of Cupertino Before Exams",
+      "attribution": "Traditional, invoking St. Joseph of Cupertino",
+      "bodyMd": "O Great St. Joseph of Cupertino,\nwho while on earth did obtain from God the grace\nto be asked at your examination only the questions you knew,\nobtain for me a like favor in the examinations for which I am now preparing.\nIn return I promise to make you known and cause you to be invoked.\nThrough Christ our Lord.\nAmen.",
+      "source": "St Anthony's R.C. Church, \"Prayer to St. Joseph of Cupertino for success in Examinations\", https://pointfortinrc.wordpress.com/prayers/prayers/prayer-to-st-joseph-of-cupertino-for-success-in-examinations/, retrieved 2026-08-22"
+    },
+    "fr": {
+      "title": "Prière à Saint Joseph de Cupertino avant les examens",
+      "attribution": "Traditionnelle, invoquant saint Joseph de Cupertino",
+      "bodyMd": "Ô saint Joseph de Cupertino,\nqui aimes à te montrer favorable envers ceux qui ont recours à toi,\nje viens implorer ton aide pour cet examen que je dois passer.\nMalgré mon travail, ma bonne volonté,\nje crains de me laisser troubler et de ne pouvoir répondre convenablement.\nFais de même à mon égard :\naccorde-moi l'assurance dans mes réponses\net donne à mon intelligence la promptitude et la vivacité.\nJe te le demande pour l'amour de Jésus, de Marie et de saint François\ndont tu fus l'enfant et le serviteur fidèle.\nAmen.",
+      "source": "Église catholique romaine-Genève, « Trois prières pour réussir ses examens », https://www.eglisecatholique-ge.ch/actualites/trois-prieres-pour-reussir-ses-examens/, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+    }
+  }
 }
