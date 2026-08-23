@@ -529,9 +529,10 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
                 .clip(shape)
                 .background(
                     Brush.horizontalGradient(
-                        0f to PassionRedDeep.copy(alpha = 0.55f),
-                        0.35f to PassionRedDeep.copy(alpha = 0.18f),
-                        0.62f to Color.Transparent,
+                        0f to PassionRedDeep.copy(alpha = 0.92f),
+                        0.28f to PassionRedDeep.copy(alpha = 0.6f),
+                        0.5f to PassionRedDeep.copy(alpha = 0.22f),
+                        0.78f to Color.Transparent,
                     ),
                 ),
         )
