@@ -520,6 +520,22 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
                 .clip(shape),
         )
 
+        // A light fade over the art's left side so it blends into the
+        // card's own red rather than sitting as a flat pasted image,
+        // matching the soft blend on the Holy Rosary card.
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(shape)
+                .background(
+                    Brush.horizontalGradient(
+                        0f to PassionRedDeep.copy(alpha = 0.55f),
+                        0.35f to PassionRedDeep.copy(alpha = 0.18f),
+                        0.62f to Color.Transparent,
+                    ),
+                ),
+        )
+
         Column(modifier = Modifier.padding(18.dp)) {
             Text(
                 text = "WAY OF THE CROSS",
