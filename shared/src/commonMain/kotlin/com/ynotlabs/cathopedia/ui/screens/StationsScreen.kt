@@ -53,12 +53,12 @@ import com.ynotlabs.cathopedia.stations.StationsData
 import kotlin.math.abs
 import kotlin.math.min
 
-private val StationsBg = Color(0xFF061A13)
-private val StationsSurface = Color(0xFF0C271E)
-private val StationsSurfaceRaised = Color(0xFF123127)
-private val StationsBorder = Color(0xFF315444)
+private val StationsBg = Color(0xFF1A0505)
+private val StationsSurface = Color(0xFF2B0A0A)
+private val StationsSurfaceRaised = Color(0xFF3D0F0F)
+private val StationsBorder = Color(0xFF6B1A1A)
 private val StationsGold = Color(0xFFD8B24C)
-private val StationsGoldSoft = Color(0xFF9D8858)
+private val StationsGoldSoft = Color(0xFFB08D57)
 private val StationsCream = Color(0xFFF4ECDD)
 
 private const val CARD_WIDTH_DP = 220
