@@ -423,7 +423,10 @@ private fun RosaryHeroCard(
         )
 
         // Soft glow bloom behind the sharp art, same treatment as the
-        // cathedral image on the Settings screen's top-right corner.
+        // cathedral image on the Settings screen's top-right corner. Kept
+        // inside the card's own clip (Rectangle edge treatment, not
+        // Unbounded) so the glow softens the art without spilling past
+        // the rounded corners.
         Image(
             painter = painterResource(Res.drawable.rosary),
             contentDescription = null,
@@ -432,8 +435,9 @@ private fun RosaryHeroCard(
                 .align(Alignment.CenterEnd)
                 .padding(end = 8.dp)
                 .size(150.dp)
+                .clip(shape)
                 .alpha(0.7f)
-                .blur(radius = 22.dp, edgeTreatment = BlurredEdgeTreatment.Unbounded),
+                .blur(radius = 14.dp, edgeTreatment = BlurredEdgeTreatment.Rectangle),
         )
 
         Image(
@@ -548,7 +552,10 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
             .padding(18.dp),
     ) {
         // Soft glow bloom behind the sharp art, same treatment as the
-        // cathedral image on the Settings screen's top-right corner.
+        // cathedral image on the Settings screen's top-right corner. Kept
+        // inside the card's own clip (Rectangle edge treatment, not
+        // Unbounded) so the glow softens the art without spilling past
+        // the rounded corners.
         Image(
             painter = painterResource(Res.drawable.way_of_the_cross_bg),
             contentDescription = null,
@@ -557,8 +564,9 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
                 .align(Alignment.CenterEnd)
                 .fillMaxHeight()
                 .width(230.dp)
+                .clip(RoundedCornerShape(24.dp))
                 .alpha(0.65f)
-                .blur(radius = 22.dp, edgeTreatment = BlurredEdgeTreatment.Unbounded),
+                .blur(radius = 14.dp, edgeTreatment = BlurredEdgeTreatment.Rectangle),
         )
 
         Image(
