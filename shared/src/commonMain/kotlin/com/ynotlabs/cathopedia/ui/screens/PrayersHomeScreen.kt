@@ -76,7 +76,7 @@ import com.ynotlabs.cathopedia.resources.prayer_category_penitential
 import com.ynotlabs.cathopedia.resources.prayer_category_saints
 import com.ynotlabs.cathopedia.resources.prayer_category_sequences
 import com.ynotlabs.cathopedia.resources.rosary
-import com.ynotlabs.cathopedia.resources.way_of_the_cross_bg
+import com.ynotlabs.cathopedia.resources.way_of_the_cross_background
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
@@ -485,11 +485,13 @@ private fun RosaryHeroCard(
 
 @Composable
 private fun WayOfTheCrossCard(onClick: () -> Unit) {
+    val shape = RoundedCornerShape(24.dp)
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(170.dp)
-            .clip(RoundedCornerShape(24.dp))
+            .clip(shape)
             .background(
                 Brush.horizontalGradient(
                     listOf(
@@ -501,28 +503,24 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
             .border(
                 width = 1.dp,
                 color = PrayerGoldSoft.copy(alpha = 0.45f),
-                shape = RoundedCornerShape(24.dp),
+                shape = shape,
             )
-            .clickable(onClick = onClick)
-            .padding(18.dp),
+            .clickable(onClick = onClick),
     ) {
-        // The whole image is softly blurred and bleeds toward the text —
-        // same dreamy, blended treatment as the cathedral image on the
-        // Settings screen's top-right corner — rather than a sharp cutout
-        // with a hard gradient cutoff line.
+        // The user-supplied artwork is already composed as a full card
+        // background (red velvet backdrop, golden crucifix right-aligned,
+        // open space on the left for the text), so it fills the whole
+        // card rather than sitting as a right-aligned inset cutout.
         Image(
-            painter = painterResource(Res.drawable.way_of_the_cross_bg),
+            painter = painterResource(Res.drawable.way_of_the_cross_background),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .align(Alignment.CenterEnd)
-                .fillMaxHeight()
-                .width(230.dp)
-                .clip(RoundedCornerShape(24.dp))
-                .blur(radius = 2.5.dp, edgeTreatment = BlurredEdgeTreatment.Rectangle),
+                .fillMaxSize()
+                .clip(shape),
         )
 
-        Column {
+        Column(modifier = Modifier.padding(18.dp)) {
             Text(
                 text = "WAY OF THE CROSS",
                 color = PrayerGold,
