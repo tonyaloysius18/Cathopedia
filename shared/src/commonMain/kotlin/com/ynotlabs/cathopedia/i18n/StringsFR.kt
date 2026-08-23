@@ -257,6 +257,12 @@ val FR: Strings = Strings().apply {
     detailOverviewTitle = "Aperçu"
     detailCoatOfArmsTitle = "Armoiries"
     detailLifeAndLegacyTitle = "Vie & Héritage"
+
+    stationsScreenTitle = "Chemin de Croix"
+    stationsIndicator = "Station {number} sur 14"
+    stationsVersicleLabel = "Verset"
+    stationsResponseLabel = "Répons"
+    stationsMeditationLabel = "Méditation"
     detailConnectedTitle = "Connexions"
     detailSourceTitle = "Source"
     detailSaintTag = "SAINT"

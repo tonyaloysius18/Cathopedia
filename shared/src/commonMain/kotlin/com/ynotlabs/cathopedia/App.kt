@@ -71,6 +71,7 @@ import com.ynotlabs.cathopedia.ui.screens.SavedScreen
 import com.ynotlabs.cathopedia.ui.screens.SearchScreen
 import com.ynotlabs.cathopedia.ui.screens.SettingsScreen
 import com.ynotlabs.cathopedia.ui.screens.SplashScreen
+import com.ynotlabs.cathopedia.ui.screens.StationsScreen
 import com.ynotlabs.cathopedia.ui.theme.CathopediaTheme
 import com.ynotlabs.cathopedia.ui.theme.ThemeMode
 import com.ynotlabs.cathopedia.ui.theme.toAccentColor
@@ -299,6 +300,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     language = language,
                     onOpenPrayer = { slug -> nav.navigate(Destination.PrayerDetail(slug)) },
                     onOpenRosary = { nav.navigate(Destination.RosaryScreen) },
+                    onOpenStations = { nav.navigate(Destination.StationsScreen) },
                 )
 
                 is Destination.PrayerDetail -> PrayerDetailScreen(
@@ -310,6 +312,11 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
 
                 is Destination.RosaryScreen -> RosaryScreen(
                     repository = repository,
+                    language = language,
+                    onBack = nav::back,
+                )
+
+                is Destination.StationsScreen -> StationsScreen(
                     language = language,
                     onBack = nav::back,
                 )

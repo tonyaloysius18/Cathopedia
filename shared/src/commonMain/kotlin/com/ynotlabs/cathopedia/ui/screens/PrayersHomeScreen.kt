@@ -112,6 +112,7 @@ fun PrayersHomeScreen(
     language: String,
     onOpenPrayer: (slug: String) -> Unit,
     onOpenRosary: () -> Unit,
+    onOpenStations: () -> Unit,
 ) {
     val s = LocalStrings.current
 
@@ -177,6 +178,7 @@ fun PrayersHomeScreen(
                 onSectionSelected = { quickSection = it },
                 onSelect = ::openPrayer,
                 onOpenRosary = onOpenRosary,
+                onOpenStations = onOpenStations,
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth(),
@@ -279,6 +281,7 @@ private fun PrayerHomeBody(
     onSectionSelected: (PrayerQuickSection) -> Unit,
     onSelect: (PrayerSummary) -> Unit,
     onOpenRosary: () -> Unit,
+    onOpenStations: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val s = LocalStrings.current
@@ -302,7 +305,7 @@ private fun PrayerHomeBody(
 
             Spacer(Modifier.height(12.dp))
 
-            WayOfTheCrossCard()
+            WayOfTheCrossCard(onClick = onOpenStations)
 
             Spacer(Modifier.height(18.dp))
 
@@ -486,7 +489,7 @@ private fun RosaryHeroCard(
 }
 
 @Composable
-private fun WayOfTheCrossCard() {
+private fun WayOfTheCrossCard(onClick: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -505,6 +508,7 @@ private fun WayOfTheCrossCard() {
                 color = PrayerGoldSoft.copy(alpha = 0.45f),
                 shape = RoundedCornerShape(24.dp),
             )
+            .clickable(onClick = onClick)
             .padding(18.dp),
     ) {
         Column {
@@ -532,23 +536,6 @@ private fun WayOfTheCrossCard() {
                 text = "Meditate on the fourteen Stations of the Cross.",
                 color = PrayerMuted,
                 fontSize = 13.sp,
-            )
-        }
-
-        Surface(
-            modifier = Modifier
-                .align(Alignment.TopEnd),
-            shape = RoundedCornerShape(12.dp),
-            color = Color.Black.copy(alpha = 0.3f),
-            border = BorderStroke(0.5.dp, PrayerGoldSoft.copy(alpha = 0.5f)),
-        ) {
-            Text(
-                text = "COMING SOON",
-                modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
-                color = PrayerGoldSoft,
-                fontSize = 9.sp,
-                fontWeight = FontWeight.Bold,
-                letterSpacing = 0.8.sp,
             )
         }
     }

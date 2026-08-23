@@ -298,6 +298,13 @@ class Strings {
     var detailOverviewTitle: String = "Overview"
     var detailCoatOfArmsTitle: String = "Coat of Arms"
     var detailLifeAndLegacyTitle: String = "Life & Legacy"
+
+    // Stations of the Cross
+    var stationsScreenTitle: String = "Way of the Cross"
+    var stationsIndicator: String = "Station {number} of 14"
+    var stationsVersicleLabel: String = "Versicle"
+    var stationsResponseLabel: String = "Response"
+    var stationsMeditationLabel: String = "Meditation"
     var detailConnectedTitle: String = "Connected"
     var detailSourceTitle: String = "Source"
     var detailSaintTag: String = "SAINT"
