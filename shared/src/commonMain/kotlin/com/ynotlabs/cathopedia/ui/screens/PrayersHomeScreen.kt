@@ -27,10 +27,8 @@ import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.AutoStories
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Event
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
@@ -67,12 +65,14 @@ import com.ynotlabs.cathopedia.model.PrayerSummary
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.prayer_category_eucharistic
 import com.ynotlabs.cathopedia.resources.prayer_category_everyday
+import com.ynotlabs.cathopedia.resources.prayer_category_favorites
 import com.ynotlabs.cathopedia.resources.prayer_category_holy_spirit
 import com.ynotlabs.cathopedia.resources.prayer_category_marian
 import com.ynotlabs.cathopedia.resources.prayer_category_occasional
 import com.ynotlabs.cathopedia.resources.prayer_category_penitential
 import com.ynotlabs.cathopedia.resources.prayer_category_saints
 import com.ynotlabs.cathopedia.resources.prayer_category_sequences
+import com.ynotlabs.cathopedia.resources.rosary
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
@@ -88,8 +88,11 @@ private val PrayerGold = Color(0xFFD8B24C)
 private val PrayerGoldSoft = Color(0xFF9D8858)
 private val PrayerCream = Color(0xFFF4ECDD)
 private val PrayerMuted = Color(0xFFB4AD98)
-private val RosaryPurple = Color(0xFF2A1838)
-private val RosaryPurpleLight = Color(0xFF5C356F)
+private val MarianBlueDeep = Color(0xFF002B5C)
+private val MarianBlue = Color(0xFF0055A4)
+private val MarianBlueLight = Color(0xFF4285F4)
+private val PassionRedDeep = Color(0xFF4B0A0A)
+private val PassionRed = Color(0xFF8B0000)
 
 private enum class PrayerQuickSection {
     FAVOURITES,
@@ -378,14 +381,14 @@ private fun RosaryHeroCard(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(210.dp)
+            .height(150.dp)
             .clip(shape)
             .background(
                 Brush.horizontalGradient(
                     listOf(
-                        RosaryPurple,
-                        Color(0xFF382149),
-                        Color(0xFF241631),
+                        MarianBlueDeep,
+                        MarianBlue,
+                        Color(0xFF003D7A),
                     ),
                 ),
             )
@@ -399,11 +402,11 @@ private fun RosaryHeroCard(
         Box(
             modifier = Modifier
                 .align(Alignment.CenterEnd)
-                .size(190.dp)
+                .size(140.dp)
                 .background(
                     Brush.radialGradient(
                         colors = listOf(
-                            RosaryPurpleLight.copy(alpha = 0.62f),
+                            MarianBlueLight.copy(alpha = 0.35f),
                             Color.Transparent,
                         ),
                     ),
@@ -411,16 +414,20 @@ private fun RosaryHeroCard(
                 ),
         )
 
-        RosaryBeadDecoration(
+        Image(
+            painter = painterResource(Res.drawable.rosary),
+            contentDescription = null,
+            contentScale = ContentScale.Fit,
             modifier = Modifier
                 .align(Alignment.CenterEnd)
-                .padding(end = 18.dp),
+                .padding(end = 15.dp)
+                .size(122.dp),
         )
 
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(18.dp),
+                .padding(start = 18.dp, end = 18.dp, top = 18.dp, bottom = 10.dp),
         ) {
             Text(
                 text = s.prayersRosaryCardTitle.uppercase(),
@@ -454,7 +461,7 @@ private fun RosaryHeroCard(
                 Row(
                     modifier = Modifier
                         .clickable(onClick = onClick)
-                        .padding(horizontal = 16.dp, vertical = 10.dp),
+                        .padding(horizontal = 14.dp, vertical = 6.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
@@ -488,8 +495,8 @@ private fun WayOfTheCrossCard() {
             .background(
                 Brush.horizontalGradient(
                     listOf(
-                        PrayerSurfaceRaised,
-                        PrayerSurface,
+                        PassionRedDeep,
+                        PassionRed,
                     ),
                 ),
             )
@@ -527,66 +534,22 @@ private fun WayOfTheCrossCard() {
                 fontSize = 13.sp,
             )
         }
-    }
-}
-
-@Composable
-private fun RosaryBeadDecoration(
-    modifier: Modifier = Modifier,
-) {
-    Box(
-        modifier = modifier.size(150.dp),
-        contentAlignment = Alignment.Center,
-    ) {
-        // Decorative approximation of rosary beads using Compose circles.
-        repeat(12) { index ->
-            val angleBucket = index % 4
-            val x = when (angleBucket) {
-                0 -> 0.dp
-                1 -> 42.dp
-                2 -> 0.dp
-                else -> (-42).dp
-            }
-            val y = when (angleBucket) {
-                0 -> (-52).dp
-                1 -> 0.dp
-                2 -> 52.dp
-                else -> 0.dp
-            }
-
-            Box(
-                modifier = Modifier
-                    .padding(start = x.coerceAtLeast(0.dp), top = y.coerceAtLeast(0.dp))
-                    .size(if (index % 3 == 0) 15.dp else 11.dp)
-                    .background(
-                        if (index % 3 == 0) PrayerGold else Color(0xFF684B78),
-                        CircleShape,
-                    )
-                    .border(
-                        width = 0.7.dp,
-                        color = PrayerGold.copy(alpha = 0.38f),
-                        shape = CircleShape,
-                    ),
-            )
-        }
 
         Surface(
-            modifier = Modifier.size(58.dp),
-            shape = CircleShape,
-            color = Color(0xFF2A1838),
-            border = BorderStroke(
-                width = 1.2.dp,
-                color = PrayerGold.copy(alpha = 0.62f),
-            ),
+            modifier = Modifier
+                .align(Alignment.TopEnd),
+            shape = RoundedCornerShape(12.dp),
+            color = Color.Black.copy(alpha = 0.3f),
+            border = BorderStroke(0.5.dp, PrayerGoldSoft.copy(alpha = 0.5f)),
         ) {
-            Box(contentAlignment = Alignment.Center) {
-                Icon(
-                    imageVector = Icons.Filled.Star,
-                    contentDescription = null,
-                    tint = PrayerGold,
-                    modifier = Modifier.size(28.dp),
-                )
-            }
+            Text(
+                text = "COMING SOON",
+                modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
+                color = PrayerGoldSoft,
+                fontSize = 9.sp,
+                fontWeight = FontWeight.Bold,
+                letterSpacing = 0.8.sp,
+            )
         }
     }
 }
@@ -621,23 +584,9 @@ private fun QuickPrayerCategories(
                     PrayerQuickSection.EVERYDAY -> "Daily prayers"
                     else -> "Explore"
                 },
-                icon = when (section) {
-                    PrayerQuickSection.FAVOURITES -> Icons.Filled.Favorite
-                    else -> null
-                },
-                categoryIcon = when (section) {
-                    PrayerQuickSection.FAVOURITES -> null
-                    PrayerQuickSection.EVERYDAY -> Res.drawable.prayer_category_everyday
-                    PrayerQuickSection.MARIAN -> Res.drawable.prayer_category_marian
-                    PrayerQuickSection.HOLY_SPIRIT -> Res.drawable.prayer_category_holy_spirit
-                    PrayerQuickSection.EUCHARISTIC -> Res.drawable.prayer_category_eucharistic
-                    PrayerQuickSection.SAINTS -> Res.drawable.prayer_category_saints
-                    PrayerQuickSection.PENITENTIAL -> Res.drawable.prayer_category_penitential
-                    PrayerQuickSection.CHAPLETS_NOVENAS -> Res.drawable.prayer_category_sequences
-                    PrayerQuickSection.OCCASIONAL -> Res.drawable.prayer_category_occasional
-                },
+                icon = getSectionIcon(section),
                 selected = selected == section,
-                modifier = Modifier.width(108.dp),
+                modifier = Modifier.width(118.dp),
                 onClick = { onSelected(section) },
             )
         }
@@ -648,8 +597,7 @@ private fun QuickPrayerCategories(
 private fun QuickPrayerTile(
     title: String,
     subtitle: String,
-    icon: ImageVector?,
-    categoryIcon: DrawableResource?,
+    icon: CategoryIcon,
     selected: Boolean,
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
@@ -658,7 +606,7 @@ private fun QuickPrayerTile(
 
     Column(
         modifier = modifier
-            .height(128.dp)
+            .height(112.dp)
             .clip(shape)
             .background(
                 if (selected) PrayerSurfaceRaised else PrayerSurface,
@@ -669,49 +617,54 @@ private fun QuickPrayerTile(
                 shape = shape,
             )
             .clickable(onClick = onClick)
-            .padding(horizontal = 7.dp, vertical = 10.dp),
+            .padding(horizontal = 7.dp, vertical = 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        if (categoryIcon != null) {
-            Image(
-                painter = painterResource(categoryIcon),
-                contentDescription = null,
-                contentScale = ContentScale.Fit,
-                modifier = Modifier.size(46.dp),
-            )
-        } else {
-            Surface(
-                modifier = Modifier.size(46.dp),
-                shape = CircleShape,
-                color = PrayerGold.copy(alpha = if (selected) 0.14f else 0.07f),
-                border = BorderStroke(
-                    width = 1.dp,
-                    color = PrayerGold.copy(alpha = if (selected) 0.52f else 0.24f),
-                ),
-            ) {
-                Box(contentAlignment = Alignment.Center) {
-                    Icon(
-                        imageVector = icon ?: Icons.Filled.Star,
-                        contentDescription = null,
-                        tint = PrayerGold,
-                        modifier = Modifier.size(23.dp),
-                    )
+        when (icon) {
+            is CategoryIcon.Resource -> {
+                Image(
+                    painter = painterResource(icon.res),
+                    contentDescription = null,
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.size(42.dp),
+                )
+            }
+            is CategoryIcon.Vector -> {
+                Surface(
+                    modifier = Modifier.size(42.dp),
+                    shape = CircleShape,
+                    color = PrayerGold.copy(alpha = if (selected) 0.14f else 0.07f),
+                    border = BorderStroke(
+                        width = 1.dp,
+                        color = PrayerGold.copy(alpha = if (selected) 0.52f else 0.24f),
+                    ),
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(
+                            imageVector = icon.imageVector,
+                            contentDescription = null,
+                            tint = PrayerGold,
+                            modifier = Modifier.size(21.dp),
+                        )
+                    }
                 }
             }
         }
 
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(6.dp))
 
         Text(
             text = title,
             color = PrayerCream,
             fontFamily = FontFamily.Serif,
-            fontSize = 13.sp,
+            fontSize = 12.sp,
             fontWeight = FontWeight.SemiBold,
-            maxLines = 1,
+            maxLines = 2,
+            textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+            lineHeight = 14.sp,
         )
 
-        Spacer(Modifier.height(2.dp))
+        Spacer(Modifier.weight(1f))
 
         Text(
             text = subtitle,
@@ -773,7 +726,7 @@ private fun PremiumPrayerRow(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(92.dp)
+            .height(70.dp)
             .clip(shape)
             .background(
                 Brush.horizontalGradient(
@@ -792,22 +745,35 @@ private fun PremiumPrayerRow(
             .padding(horizontal = 12.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Surface(
-            modifier = Modifier.size(54.dp),
-            shape = CircleShape,
-            color = PrayerGold.copy(alpha = 0.08f),
-            border = BorderStroke(
-                width = 1.dp,
-                color = PrayerGold.copy(alpha = 0.28f),
-            ),
-        ) {
-            Box(contentAlignment = Alignment.Center) {
-                Icon(
-                    imageVector = prayerIcon(prayer),
+        val icon = getCategoryIcon(prayer.category)
+        when (icon) {
+            is CategoryIcon.Resource -> {
+                Image(
+                    painter = painterResource(icon.res),
                     contentDescription = null,
-                    tint = PrayerGold,
-                    modifier = Modifier.size(26.dp),
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.size(54.dp),
                 )
+            }
+            is CategoryIcon.Vector -> {
+                Surface(
+                    modifier = Modifier.size(54.dp),
+                    shape = CircleShape,
+                    color = PrayerGold.copy(alpha = 0.08f),
+                    border = BorderStroke(
+                        width = 1.dp,
+                        color = PrayerGold.copy(alpha = 0.28f),
+                    ),
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(
+                            imageVector = icon.imageVector,
+                            contentDescription = null,
+                            tint = PrayerGold,
+                            modifier = Modifier.size(26.dp),
+                        )
+                    }
+                }
             }
         }
 
@@ -840,21 +806,6 @@ private fun PremiumPrayerRow(
                 color = PrayerGoldSoft,
                 fontSize = 10.sp,
             )
-        } else {
-            Surface(
-                modifier = Modifier.size(32.dp),
-                shape = CircleShape,
-                color = PrayerGold.copy(alpha = 0.08f),
-            ) {
-                Box(contentAlignment = Alignment.Center) {
-                    Icon(
-                        imageVector = Icons.Filled.ArrowForward,
-                        contentDescription = "Open prayer",
-                        tint = PrayerGold,
-                        modifier = Modifier.size(16.dp),
-                    )
-                }
-            }
         }
     }
 }
@@ -1004,6 +955,34 @@ private fun highlight(
     }
 }
 
+private sealed class CategoryIcon {
+    data class Vector(val imageVector: ImageVector) : CategoryIcon()
+    data class Resource(val res: DrawableResource) : CategoryIcon()
+}
+
+private fun getCategoryIcon(category: PrayerCategory): CategoryIcon = when (category) {
+    PrayerCategory.EVERYDAY -> CategoryIcon.Resource(Res.drawable.prayer_category_everyday)
+    PrayerCategory.MARIAN -> CategoryIcon.Resource(Res.drawable.prayer_category_marian)
+    PrayerCategory.HOLY_SPIRIT -> CategoryIcon.Resource(Res.drawable.prayer_category_holy_spirit)
+    PrayerCategory.EUCHARISTIC -> CategoryIcon.Resource(Res.drawable.prayer_category_eucharistic)
+    PrayerCategory.SAINTS -> CategoryIcon.Resource(Res.drawable.prayer_category_saints)
+    PrayerCategory.PENITENTIAL -> CategoryIcon.Resource(Res.drawable.prayer_category_penitential)
+    PrayerCategory.SEQUENCES -> CategoryIcon.Resource(Res.drawable.prayer_category_sequences)
+    PrayerCategory.OCCASIONAL -> CategoryIcon.Resource(Res.drawable.prayer_category_occasional)
+}
+
+private fun getSectionIcon(section: PrayerQuickSection): CategoryIcon = when (section) {
+    PrayerQuickSection.FAVOURITES -> CategoryIcon.Resource(Res.drawable.prayer_category_favorites)
+    PrayerQuickSection.EVERYDAY -> getCategoryIcon(PrayerCategory.EVERYDAY)
+    PrayerQuickSection.MARIAN -> getCategoryIcon(PrayerCategory.MARIAN)
+    PrayerQuickSection.HOLY_SPIRIT -> getCategoryIcon(PrayerCategory.HOLY_SPIRIT)
+    PrayerQuickSection.EUCHARISTIC -> getCategoryIcon(PrayerCategory.EUCHARISTIC)
+    PrayerQuickSection.SAINTS -> getCategoryIcon(PrayerCategory.SAINTS)
+    PrayerQuickSection.PENITENTIAL -> getCategoryIcon(PrayerCategory.PENITENTIAL)
+    PrayerQuickSection.CHAPLETS_NOVENAS -> getCategoryIcon(PrayerCategory.SEQUENCES)
+    PrayerQuickSection.OCCASIONAL -> getCategoryIcon(PrayerCategory.OCCASIONAL)
+}
+
 private fun prayersForSection(
     section: PrayerQuickSection,
     favorites: List<PrayerSummary>,
@@ -1035,17 +1014,6 @@ private fun prayersForSection(
 
     PrayerQuickSection.OCCASIONAL ->
         byCategory[PrayerCategory.OCCASIONAL].orEmpty()
-}
-
-private fun prayerIcon(prayer: PrayerSummary): ImageVector {
-    val key = prayer.title.lowercase()
-
-    return when {
-        "mary" in key || "marian" in key -> Icons.Filled.Favorite
-        "creed" in key -> Icons.Filled.AutoStories
-        "morning" in key || "evening" in key -> Icons.Filled.Event
-        else -> Icons.Filled.Star
-    }
 }
 
 private fun prayerOpeningLine(title: String): String {

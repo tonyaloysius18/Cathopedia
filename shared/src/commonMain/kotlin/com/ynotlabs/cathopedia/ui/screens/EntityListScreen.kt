@@ -218,23 +218,40 @@ fun EntityListScreen(
     onBack: () -> Unit,
     onItemSelected: (ContentSummary) -> Unit,
     listState: LazyListState = rememberLazyListState(),
+    initialItems: List<ContentSummary>? = null,
+    initialSelectedCentury: String? = null,
+    initialHeaderHeightPx: Int = 0,
+    onItemsLoaded: (List<ContentSummary>) -> Unit = {},
+    onCenturySelectionChanged: (String?) -> Unit = {},
+    onHeaderHeightChanged: (Int) -> Unit = {},
 ) {
     val s = LocalStrings.current
-    var items by remember(type) { mutableStateOf<List<ContentSummary>?>(null) }
+    var items by remember(type, language) { mutableStateOf(initialItems) }
     var query by remember(type) { mutableStateOf("") }
     var searchVisible by remember(type) { mutableStateOf(false) }
-    var selectedCentury by remember(type) { mutableStateOf<String?>(null) }
+    var selectedCentury by remember(type, language) { mutableStateOf(initialSelectedCentury) }
     var selectedRank by remember(type) { mutableStateOf<String?>(null) }
     var sortOption by remember(type) { mutableStateOf(EntitySortOption.EARLIEST_FIRST) }
     var showFilterSheet by remember(type) { mutableStateOf(false) }
+    var hasObservedCenturySelection by remember(type) { mutableStateOf(false) }
 
     LaunchedEffect(type, language) {
-        items = repository.listByType(type, language)
+        if (items == null) {
+            val loadedItems = repository.listByType(type, language)
+            items = loadedItems
+            onItemsLoaded(loadedItems)
+        }
     }
 
     LaunchedEffect(selectedCentury) {
         if (type == ContentType.POPE) {
-            listState.scrollToItem(0)
+            // This screen is recreated after returning from a pope detail. Do not
+            // let the effect's initial run reset the hoisted list state to Peter.
+            if (hasObservedCenturySelection) {
+                listState.scrollToItem(0)
+            } else {
+                hasObservedCenturySelection = true
+            }
         }
     }
 
@@ -289,7 +306,7 @@ fun EntityListScreen(
         }
     }
 
-    var headerHeightPx by remember(type) { mutableIntStateOf(0) }
+    var headerHeightPx by remember(type, language) { mutableIntStateOf(initialHeaderHeightPx) }
     val headerHeightDp = with(LocalDensity.current) { headerHeightPx.toDp() }
 
     CompositionLocalProvider(
@@ -367,7 +384,13 @@ fun EntityListScreen(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .onGloballyPositioned { headerHeightPx = it.size.height }
+                .onGloballyPositioned {
+                    val measuredHeight = it.size.height
+                    if (measuredHeight != headerHeightPx) {
+                        headerHeightPx = measuredHeight
+                        onHeaderHeightChanged(measuredHeight)
+                    }
+                }
                 .shadow(
                     elevation = 14.dp,
                     shape = RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp),
@@ -396,7 +419,10 @@ fun EntityListScreen(
                 CenturyChipStrip(
                     centuries = allCenturies,
                     selectedCentury = selectedCentury,
-                    onCenturySelected = { selectedCentury = it },
+                    onCenturySelected = {
+                        selectedCentury = it
+                        onCenturySelectionChanged(it)
+                    },
                 )
             }
 
@@ -420,7 +446,10 @@ fun EntityListScreen(
             ranks = allRanks,
             selectedRank = selectedRank,
             selectedSort = sortOption,
-            onCenturySelected = { selectedCentury = it },
+            onCenturySelected = {
+                selectedCentury = it
+                onCenturySelectionChanged(it)
+            },
             onRankSelected = { selectedRank = it },
             onSortSelected = { sortOption = it },
             onDismiss = { showFilterSheet = false },

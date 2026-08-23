@@ -161,7 +161,7 @@ fun PrayerDetailScreen(
 }
 
 /** Kept low so the reading text — the whole point of this screen — stays comfortably legible over it. */
-private const val PRAYER_BACKGROUND_ALPHA = 0.14f
+private const val PRAYER_BACKGROUND_ALPHA = 0.28f
 
 @Composable
 private fun PrayerReadingContent(

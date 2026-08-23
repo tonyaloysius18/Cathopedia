@@ -1,8 +1,17 @@
 package com.ynotlabs.cathopedia
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.togetherWith
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -122,11 +131,13 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
 
     val nav = rememberAppNavController(Destination.Splash)
 
-    // EntityListScreen is torn down and recreated by the `when` router below every
-    // time you navigate away and back (e.g. into a detail screen), so its own
-    // rememberLazyListState() can't survive that — hoisted here, one per content
-    // type, so scroll position (the Popes list in particular) is preserved.
-    val entityListScrollStates = remember { mutableStateMapOf<ContentType, LazyListState>() }
+    // EntityListScreen is torn down and recreated by the `when` router below.
+    // Retain both its position and the data that determines what that position
+    // means, otherwise a filtered Popes list briefly rebuilds as the full list.
+    val entityListScrollStates = remember { mutableStateMapOf<Pair<ContentType, String>, LazyListState>() }
+    val entityListItemCaches = remember { mutableStateMapOf<Pair<ContentType, String>, List<ContentSummary>>() }
+    val entityListSelectedCenturies = remember { mutableStateMapOf<Pair<ContentType, String>, String>() }
+    val entityListHeaderHeights = remember { mutableStateMapOf<Pair<ContentType, String>, Int>() }
 
     // Scroll-to-shrink for the bottom pill bar, ported from Itinera's App.kt: the
     // bar shrinks while a screen scrolls down and springs back on scroll up.
@@ -162,7 +173,58 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
         val showBottomBar = destination in TAB_DESTINATIONS
 
         Box(modifier = Modifier.fillMaxSize().nestedScroll(navBarScrollConnection)) {
-            when (val current = destination) {
+            AnimatedContent(
+                targetState = destination,
+                modifier = Modifier.fillMaxSize(),
+                transitionSpec = {
+                    val from = initialState
+                    val to = targetState
+                    when {
+                        from is Destination.EntityList &&
+                                to is Destination.EntityDetail &&
+                                from.type == to.type -> {
+                            slideInHorizontally(
+                                animationSpec = tween(
+                                    durationMillis = 220,
+                                    easing = LinearOutSlowInEasing,
+                                ),
+                                initialOffsetX = { fullWidth -> fullWidth },
+                            ).togetherWith(ExitTransition.KeepUntilTransitionsFinished).also {
+                                it.targetContentZIndex = 1f
+                            } using null
+                        }
+
+                        from is Destination.EntityDetail &&
+                                to is Destination.EntityList &&
+                                from.type == to.type -> {
+                            slideInHorizontally(
+                                animationSpec = tween(
+                                    durationMillis = 260,
+                                    easing = FastOutSlowInEasing,
+                                ),
+                                initialOffsetX = { fullWidth -> -fullWidth / 10 },
+                            ).togetherWith(
+                                slideOutHorizontally(
+                                    animationSpec = tween(
+                                        durationMillis = 260,
+                                        easing = FastOutSlowInEasing,
+                                    ),
+                                    targetOffsetX = { fullWidth -> fullWidth },
+                                ),
+                            ).also {
+                                // Keep the restored list underneath while the detail
+                                // screen slides away to the right.
+                                it.targetContentZIndex = -1f
+                            } using null
+                        }
+
+                        else ->
+                            (EnterTransition.None togetherWith ExitTransition.None) using null
+                    }
+                },
+                label = "screenNavigation",
+            ) { animatedDestination ->
+            when (val current = animatedDestination) {
                 is Destination.Splash -> SplashScreen(isFirstRun = !onboardingComplete, repository = repository) { firstRun ->
                     nav.resetTo(if (firstRun) Destination.LanguageStartup else Destination.Home)
                 }
@@ -199,14 +261,29 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     onCategorySelected = { type -> nav.navigate(Destination.EntityList(type)) },
                 )
 
-                is Destination.EntityList -> EntityListScreen(
-                    type = current.type,
-                    repository = repository,
-                    language = language,
-                    onBack = nav::back,
-                    onItemSelected = { item: ContentSummary -> nav.navigate(Destination.EntityDetail(item.type, item.id)) },
-                    listState = entityListScrollStates.getOrPut(current.type) { LazyListState() },
-                )
+                is Destination.EntityList -> {
+                    val listKey = current.type to language
+                    EntityListScreen(
+                        type = current.type,
+                        repository = repository,
+                        language = language,
+                        onBack = nav::back,
+                        onItemSelected = { item: ContentSummary -> nav.navigate(Destination.EntityDetail(item.type, item.id)) },
+                        listState = entityListScrollStates.getOrPut(listKey) { LazyListState() },
+                        initialItems = entityListItemCaches[listKey],
+                        initialSelectedCentury = entityListSelectedCenturies[listKey],
+                        initialHeaderHeightPx = entityListHeaderHeights[listKey] ?: 0,
+                        onItemsLoaded = { entityListItemCaches[listKey] = it },
+                        onCenturySelectionChanged = { century ->
+                            if (century == null) {
+                                entityListSelectedCenturies.remove(listKey)
+                            } else {
+                                entityListSelectedCenturies[listKey] = century
+                            }
+                        },
+                        onHeaderHeightChanged = { entityListHeaderHeights[listKey] = it },
+                    )
+                }
 
                 is Destination.EntityDetail -> EntityDetailScreen(
                     type = current.type,
@@ -286,6 +363,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                 )
 
                 is Destination.About -> AboutScreen(onBack = nav::back)
+            }
             }
 
             // Floating pill nav bar, ported from Itinera's SlidingPillBar — an
