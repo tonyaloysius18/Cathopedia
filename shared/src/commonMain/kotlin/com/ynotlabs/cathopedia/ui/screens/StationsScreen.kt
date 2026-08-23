@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
 import androidx.compose.foundation.layout.Arrangement
@@ -42,6 +43,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -49,9 +51,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.stations.Station
+import com.ynotlabs.cathopedia.stations.StationImages
 import com.ynotlabs.cathopedia.stations.StationsData
 import kotlin.math.abs
 import kotlin.math.min
+import org.jetbrains.compose.resources.painterResource
 
 private val StationsBg = Color(0xFF1A0505)
 private val StationsSurface = Color(0xFF2B0A0A)
@@ -59,10 +63,11 @@ private val StationsSurfaceRaised = Color(0xFF3D0F0F)
 private val StationsBorder = Color(0xFF6B1A1A)
 private val StationsGold = Color(0xFFD8B24C)
 private val StationsGoldSoft = Color(0xFFB08D57)
+private val StationsProgressActive = Color(0xFFE07A5F)
 private val StationsCream = Color(0xFFF4ECDD)
 
 private const val CARD_WIDTH_DP = 220
-private const val CARD_HEIGHT_DP = 300
+private const val CARD_HEIGHT_DP = 380
 private const val MAX_ROTATION_DEG = 42f
 private const val MAX_SCALE_DROP = 0.26f
 private const val MAX_ALPHA_DROP = 0.55f
@@ -213,6 +218,29 @@ private fun StationCard(
             ),
         contentAlignment = Alignment.BottomStart,
     ) {
+        StationImages.forNumber(station.number)?.let { image ->
+            Image(
+                painter = painterResource(image),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 12.dp, bottom = 64.dp),
+            )
+        }
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        0f to Color.Transparent,
+                        0.62f to Color.Transparent,
+                        1f to StationsSurface.copy(alpha = 0.96f),
+                    ),
+                ),
+        )
+
         Surface(
             modifier = Modifier
                 .align(Alignment.TopEnd)
@@ -265,7 +293,7 @@ private fun StationDots(count: Int, currentIndex: Int) {
                     .padding(horizontal = 3.dp)
                     .size(if (i == currentIndex) 8.dp else 6.dp)
                     .clip(CircleShape)
-                    .background(if (i == currentIndex) StationsGold else StationsBorder),
+                    .background(if (i == currentIndex) StationsProgressActive else StationsBorder),
             )
         }
     }

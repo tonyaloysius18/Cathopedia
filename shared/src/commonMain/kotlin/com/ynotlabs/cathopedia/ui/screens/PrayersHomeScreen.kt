@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -43,6 +44,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.BlurredEdgeTreatment
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -73,6 +77,7 @@ import com.ynotlabs.cathopedia.resources.prayer_category_penitential
 import com.ynotlabs.cathopedia.resources.prayer_category_saints
 import com.ynotlabs.cathopedia.resources.prayer_category_sequences
 import com.ynotlabs.cathopedia.resources.rosary
+import com.ynotlabs.cathopedia.resources.way_of_the_cross_bg
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
@@ -384,7 +389,7 @@ private fun RosaryHeroCard(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(150.dp)
+            .height(170.dp)
             .clip(shape)
             .background(
                 Brush.horizontalGradient(
@@ -417,14 +422,45 @@ private fun RosaryHeroCard(
                 ),
         )
 
+        // Soft glow bloom behind the sharp art, same treatment as the
+        // cathedral image on the Settings screen's top-right corner.
         Image(
             painter = painterResource(Res.drawable.rosary),
             contentDescription = null,
             contentScale = ContentScale.Fit,
             modifier = Modifier
                 .align(Alignment.CenterEnd)
-                .padding(end = 15.dp)
-                .size(122.dp),
+                .padding(end = 8.dp)
+                .size(150.dp)
+                .alpha(0.7f)
+                .blur(radius = 22.dp, edgeTreatment = BlurredEdgeTreatment.Unbounded),
+        )
+
+        Image(
+            painter = painterResource(Res.drawable.rosary),
+            contentDescription = null,
+            contentScale = ContentScale.Fit,
+            modifier = Modifier
+                .align(Alignment.CenterEnd)
+                .padding(end = 8.dp)
+                .size(150.dp)
+                .clip(RoundedCornerShape(24.dp)),
+        )
+
+        Box(
+            modifier = Modifier
+                .align(Alignment.CenterEnd)
+                .fillMaxHeight()
+                .width(190.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(
+                            MarianBlueDeep.copy(alpha = 0.95f),
+                            MarianBlue.copy(alpha = 0.35f),
+                            Color.Transparent,
+                        ),
+                    ),
+                ),
         )
 
         Column(
@@ -493,7 +529,7 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(150.dp)
+            .height(170.dp)
             .clip(RoundedCornerShape(24.dp))
             .background(
                 Brush.horizontalGradient(
@@ -511,6 +547,59 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
             .clickable(onClick = onClick)
             .padding(18.dp),
     ) {
+        // Soft glow bloom behind the sharp art, same treatment as the
+        // cathedral image on the Settings screen's top-right corner.
+        Image(
+            painter = painterResource(Res.drawable.way_of_the_cross_bg),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .align(Alignment.CenterEnd)
+                .fillMaxHeight()
+                .width(230.dp)
+                .alpha(0.65f)
+                .blur(radius = 22.dp, edgeTreatment = BlurredEdgeTreatment.Unbounded),
+        )
+
+        Image(
+            painter = painterResource(Res.drawable.way_of_the_cross_bg),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .align(Alignment.CenterEnd)
+                .fillMaxHeight()
+                .width(230.dp)
+                .clip(RoundedCornerShape(24.dp)),
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(
+                            Color.Transparent,
+                            Color.Transparent,
+                            Color.Transparent,
+                        ),
+                    ),
+                ),
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        listOf(
+                            Color.Transparent,
+                            Color.Transparent,
+                            Color.Transparent,
+                        ),
+                    ),
+                ),
+        )
+
         Column {
             Text(
                 text = "WAY OF THE CROSS",
