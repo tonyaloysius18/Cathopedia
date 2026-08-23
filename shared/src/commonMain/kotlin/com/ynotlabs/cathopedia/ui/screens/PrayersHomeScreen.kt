@@ -44,8 +44,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.BlurredEdgeTreatment
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -75,7 +73,7 @@ import com.ynotlabs.cathopedia.resources.prayer_category_occasional
 import com.ynotlabs.cathopedia.resources.prayer_category_penitential
 import com.ynotlabs.cathopedia.resources.prayer_category_saints
 import com.ynotlabs.cathopedia.resources.prayer_category_sequences
-import com.ynotlabs.cathopedia.resources.rosary
+import com.ynotlabs.cathopedia.resources.rosary_background
 import com.ynotlabs.cathopedia.resources.way_of_the_cross_background
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.DrawableResource
@@ -94,7 +92,6 @@ private val PrayerCream = Color(0xFFF4ECDD)
 private val PrayerMuted = Color(0xFFB4AD98)
 private val MarianBlueDeep = Color(0xFF002B5C)
 private val MarianBlue = Color(0xFF0055A4)
-private val MarianBlueLight = Color(0xFF4285F4)
 private val PassionRedDeep = Color(0xFF4B0A0A)
 private val PassionRed = Color(0xFF8B0000)
 
@@ -406,20 +403,34 @@ private fun RosaryHeroCard(
             )
             .clickable(onClick = onClick),
     ) {
-        // The whole image is softly blurred and bleeds toward the text —
-        // same dreamy, blended treatment as the cathedral image on the
-        // Settings screen's top-right corner — rather than a sharp cutout
-        // with a hard gradient cutoff line.
+        // The user-supplied artwork is already composed as a full card
+        // background (deep blue velvet backdrop, rosary right-aligned,
+        // open space on the left for the text), matching the treatment
+        // on the Way of the Cross card.
         Image(
-            painter = painterResource(Res.drawable.rosary),
+            painter = painterResource(Res.drawable.rosary_background),
             contentDescription = null,
-            contentScale = ContentScale.Fit,
+            contentScale = ContentScale.Crop,
             modifier = Modifier
-                .align(Alignment.CenterEnd)
-                .fillMaxHeight()
-                .width(230.dp)
+                .fillMaxSize()
+                .clip(shape),
+        )
+
+        // A fade over the art's left side so it blends into the card's
+        // own blue as the text reaches the image, matching the Way of
+        // the Cross card's treatment.
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
                 .clip(shape)
-                .blur(radius = 2.5.dp, edgeTreatment = BlurredEdgeTreatment.Rectangle),
+                .background(
+                    Brush.horizontalGradient(
+                        0f to MarianBlueDeep.copy(alpha = 0.92f),
+                        0.28f to MarianBlueDeep.copy(alpha = 0.6f),
+                        0.5f to MarianBlueDeep.copy(alpha = 0.22f),
+                        0.78f to Color.Transparent,
+                    ),
+                ),
         )
 
         Column(
