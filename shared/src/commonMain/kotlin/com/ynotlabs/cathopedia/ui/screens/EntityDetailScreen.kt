@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -70,6 +71,7 @@ import com.ynotlabs.cathopedia.model.ContentCategory
 import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.model.RelatedItem
 import com.ynotlabs.cathopedia.ui.Portraits
+import com.ynotlabs.cathopedia.ui.PopeCoatsOfArms
 import com.ynotlabs.cathopedia.ui.accentColor
 import com.ynotlabs.cathopedia.ui.label
 import com.ynotlabs.cathopedia.ui.singularLabel
@@ -802,6 +804,12 @@ private fun DetailContent(
                 )
             }
 
+            if (type == ContentType.POPE) {
+                Spacer(Modifier.height(22.dp))
+                SectionTitle(s.detailCoatOfArmsTitle)
+                CoatOfArmsSection(popeId = id)
+            }
+
             if (data.body.isNotBlank()) {
                 Spacer(Modifier.height(22.dp))
                 SectionTitle(s.detailLifeAndLegacyTitle)
@@ -885,6 +893,36 @@ private fun SectionTitle(
             fontSize = 12.sp,
             letterSpacing = 1.2.sp,
             fontWeight = FontWeight.Bold,
+        )
+    }
+}
+
+/** Only meaningful for [ContentType.POPE] — see [PopeCoatsOfArms]'s doc on why null is expected, not an error. */
+@Composable
+private fun CoatOfArmsSection(popeId: String) {
+    val s = LocalStrings.current
+    val coatOfArms = PopeCoatsOfArms.forPope(popeId)
+
+    if (coatOfArms != null) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(180.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            Image(
+                painter = painterResource(coatOfArms),
+                contentDescription = s.detailCoatOfArmsTitle,
+                contentScale = ContentScale.Fit,
+                modifier = Modifier.fillMaxHeight(),
+            )
+        }
+    } else {
+        Text(
+            text = s.detailCoatOfArmsUnavailable,
+            color = DetailCream.copy(alpha = 0.68f),
+            fontSize = 13.sp,
+            lineHeight = 19.sp,
         )
     }
 }

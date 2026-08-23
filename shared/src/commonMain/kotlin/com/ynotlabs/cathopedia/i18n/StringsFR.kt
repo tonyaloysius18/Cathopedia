@@ -255,6 +255,9 @@ val FR: Strings = Strings().apply {
     listUseFrenchOrdinals = true
 
     detailOverviewTitle = "Aperçu"
+    detailCoatOfArmsTitle = "Armoiries"
+    detailCoatOfArmsUnavailable =
+        "Pas d'armoiries — l'héraldique papale personnelle n'existait pas avant le XIIIe siècle."
     detailLifeAndLegacyTitle = "Vie & Héritage"
     detailConnectedTitle = "Connexions"
     detailSourceTitle = "Source"

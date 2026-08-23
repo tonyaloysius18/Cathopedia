@@ -1,0 +1,831 @@
+{
+  "innocent-iii": {
+    "english": "Innocent III",
+    "commons_file": "File:C o a Inocentius III.png",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/d/d0/C_o_a_Inocentius_III.png",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Innocent III",
+    "match_basis": "manual-review-ok (spelling variant / shared family shield)"
+  },
+  "honorius-iii": {
+    "english": "Honorius III",
+    "commons_file": "File:C_o_a_Onorio_IV.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/9/98/C_o_a_Onorio_IV.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Honorius III",
+    "match_basis": "name"
+  },
+  "gregory-ix": {
+    "english": "Gregory IX",
+    "commons_file": "File:C_o_a_Innocenzo_III.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/2/20/C_o_a_Innocenzo_III.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Gregory IX",
+    "match_basis": "manual-review-ok (spelling variant / shared family shield)"
+  },
+  "celestine-iv": {
+    "english": "Celestine IV",
+    "commons_file": "File:C o a Celestino IV.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/C_o_a_Celestino_IV.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Celestine IV",
+    "match_basis": "name"
+  },
+  "innocent-iv": {
+    "english": "Innocent IV",
+    "commons_file": null,
+    "commons_url": null,
+    "license": null,
+    "source": null,
+    "wikipedia_page": "Pope Innocent IV",
+    "match_basis": null,
+    "note": "no coat_of_arms field on enwiki infobox"
+  },
+  "alexander-iv": {
+    "english": "Alexander IV",
+    "commons_file": "File:C o a Innocenzo III.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/2/20/C_o_a_Innocenzo_III.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Alexander IV",
+    "match_basis": "manual-review-ok (spelling variant / shared family shield)"
+  },
+  "urban-iv": {
+    "english": "Urban IV",
+    "commons_file": "File:C o a Urbanus IV.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/7/77/C_o_a_Urbanus_IV.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Urban IV",
+    "match_basis": "name"
+  },
+  "clement-iv": {
+    "english": "Clement IV",
+    "commons_file": "File:C o a Clemente IV.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/c/c3/C_o_a_Clemente_IV.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Clement IV",
+    "match_basis": "name"
+  },
+  "gregory-x": {
+    "english": "Gregory X",
+    "commons_file": "File:C o a Gregorio X.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/8/8c/C_o_a_Gregorio_X.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Gregory X",
+    "match_basis": "name"
+  },
+  "john-xxi": {
+    "english": "John XXI",
+    "commons_file": "File:C o a Johannes XXI.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/C_o_a_Johannes_XXI.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope John XXI",
+    "match_basis": "manual-review-ok (spelling variant / shared family shield)"
+  },
+  "innocent-v": {
+    "english": "Innocent V",
+    "commons_file": "File:C o a Innocenzo V.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/9/97/C_o_a_Innocenzo_V.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Innocent V",
+    "match_basis": "name"
+  },
+  "adrian-v": {
+    "english": "Adrian V",
+    "commons_file": "File:C o a Adriano V.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/C_o_a_Adriano_V.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Adrian V",
+    "match_basis": "name"
+  },
+  "nicholas-iii": {
+    "english": "Nicholas III",
+    "commons_file": "File:C o a Niccolo III.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/C_o_a_Niccolo_III.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Nicholas III",
+    "match_basis": "name"
+  },
+  "martin-iv": {
+    "english": "Martin IV",
+    "commons_file": "File:C o a Martino IV.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/C_o_a_Martino_IV.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Martin IV",
+    "match_basis": "name"
+  },
+  "honorius-iv": {
+    "english": "Honorius IV",
+    "commons_file": "File:C o a Onorio IV.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/9/98/C_o_a_Onorio_IV.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Honorius IV",
+    "match_basis": "name"
+  },
+  "nicholas-iv": {
+    "english": "Nicholas IV",
+    "commons_file": "File:C o a Niccolo IV.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/6/67/C_o_a_Niccolo_IV.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Nicholas IV",
+    "match_basis": "name"
+  },
+  "celestine-v": {
+    "english": "Celestine V",
+    "commons_file": "File:C o a Celestinus V.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/a/a3/C_o_a_Celestinus_V.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Celestine V",
+    "match_basis": "manual-review-ok (spelling variant / shared family shield)"
+  },
+  "boniface-viii": {
+    "english": "Boniface VIII",
+    "commons_file": "File:Coat of arms of Bonifacius VIII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Coat_of_arms_of_Bonifacius_VIII.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Boniface VIII",
+    "match_basis": "name"
+  },
+  "benedict-xi": {
+    "english": "Benedict XI",
+    "commons_file": "File:Coat of arms of Pope Benedict XI.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/8/80/Coat_of_arms_of_Pope_Benedict_XI.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Benedict XI",
+    "match_basis": "name"
+  },
+  "clement-v": {
+    "english": "Clement V",
+    "commons_file": "File:C_o_a_Clemens V.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/4/45/C_o_a_Clemens_V.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Clement V",
+    "match_basis": "name"
+  },
+  "john-xxii": {
+    "english": "John XXII",
+    "commons_file": "File:C o a Johannes XXII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/c/cb/C_o_a_Johannes_XXII.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope John XXII",
+    "match_basis": "manual-review-ok (spelling variant / shared family shield)"
+  },
+  "benedict-xii": {
+    "english": "Benedict XII",
+    "commons_file": "File:Coat of arms of Pope Benedict XII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/0/08/Coat_of_arms_of_Pope_Benedict_XII.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Benedict XII",
+    "match_basis": "name"
+  },
+  "clement-vi": {
+    "english": "Clement VI",
+    "commons_file": "File:C o a Beaufort Popes.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/2/27/C_o_a_Beaufort_Popes.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Clement VI",
+    "match_basis": "manual-review-ok (spelling variant / shared family shield)"
+  },
+  "innocent-vi": {
+    "english": "Innocent VI",
+    "commons_file": "File:C o a Innocenzo VI.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/C_o_a_Innocenzo_VI.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Innocent VI",
+    "match_basis": "name"
+  },
+  "urban-v": {
+    "english": "Urban V",
+    "commons_file": "File:C o a Urbano V.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/C_o_a_Urbano_V.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Urban V",
+    "match_basis": "name"
+  },
+  "gregory-xi": {
+    "english": "Gregory XI",
+    "commons_file": "File:C o a Gregorio XI.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/C_o_a_Gregorio_XI.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Gregory XI",
+    "match_basis": "name"
+  },
+  "urban-vi": {
+    "english": "Urban VI",
+    "commons_file": "File:C o a Urbanus VI.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/e/e8/C_o_a_Urbanus_VI.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Urban VI",
+    "match_basis": "name"
+  },
+  "boniface-ix": {
+    "english": "Boniface IX",
+    "commons_file": "File:C o a Bonifacio IX.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/1/1b/C_o_a_Bonifacio_IX.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Boniface IX",
+    "match_basis": "name"
+  },
+  "innocent-vii": {
+    "english": "Innocent VII",
+    "commons_file": "File:C o a Innocenzo VII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/d/df/C_o_a_Innocenzo_VII.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Innocent VII",
+    "match_basis": "name"
+  },
+  "gregory-xii": {
+    "english": "Gregory XII",
+    "commons_file": "File:C o a Gregorio XII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/9/95/C_o_a_Gregorio_XII.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Gregory XII",
+    "match_basis": "name"
+  },
+  "martin-v": {
+    "english": "Martin V",
+    "commons_file": "File:C o a Martinus V.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/0/06/C_o_a_Martinus_V.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Martin V",
+    "match_basis": "name"
+  },
+  "eugene-iv": {
+    "english": "Eugene IV",
+    "commons_file": "File:Coat of arms of Pope Eugene IV.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Coat_of_arms_of_Pope_Eugene_IV.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Eugene IV",
+    "match_basis": "name"
+  },
+  "nicholas-v": {
+    "english": "Nicholas V",
+    "commons_file": "File:C o a Nicolaus V.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/6/69/C_o_a_Nicolaus_V.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Nicholas V",
+    "match_basis": "name"
+  },
+  "callixtus-iii": {
+    "english": "Callixtus III",
+    "commons_file": "File:C o a Callistus III.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/C_o_a_Callistus_III.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Callixtus III",
+    "match_basis": "name"
+  },
+  "pius-ii": {
+    "english": "Pius II",
+    "commons_file": "File:C o a Piccolomini Popes.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/C_o_a_Piccolomini_Popes.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Pius II",
+    "match_basis": "family:piccolomini"
+  },
+  "paul-ii": {
+    "english": "Paul II",
+    "commons_file": "File:C o a Paulus II.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/2/20/C_o_a_Paulus_II.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Paul II",
+    "match_basis": "name"
+  },
+  "sixtus-iv": {
+    "english": "Sixtus IV",
+    "commons_file": "File:C o a popes Della Rovere.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/C_o_a_popes_Della_Rovere.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Sixtus IV",
+    "match_basis": "family:della rovere"
+  },
+  "innocent-viii": {
+    "english": "Innocent VIII",
+    "commons_file": "File:C o a Inocentius VIII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/C_o_a_Inocentius_VIII.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Innocent VIII",
+    "match_basis": "manual-review-ok (spelling variant / shared family shield)"
+  },
+  "alexander-vi": {
+    "english": "Alexander VI",
+    "commons_file": "File:C o a Alexander VI.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/C_o_a_Alexander_VI.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Alexander VI",
+    "match_basis": "name"
+  },
+  "pius-iii": {
+    "english": "Pius III",
+    "commons_file": "File:C o a Piccolomini Popes.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/C_o_a_Piccolomini_Popes.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Pius III",
+    "match_basis": "family:piccolomini"
+  },
+  "julius-ii": {
+    "english": "Julius II",
+    "commons_file": "File:C o a popes Della Rovere.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/C_o_a_popes_Della_Rovere.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Julius II",
+    "match_basis": "family:della rovere"
+  },
+  "leo-x": {
+    "english": "Leo X",
+    "commons_file": "File:C o a Medici popes.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/a/a4/C_o_a_Medici_popes.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Leo X",
+    "match_basis": "manual-review-ok (spelling variant / shared family shield)"
+  },
+  "adrian-vi": {
+    "english": "Adrian VI",
+    "commons_file": "File:C o a Hadrianus VI.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/0/01/C_o_a_Hadrianus_VI.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Adrian VI",
+    "match_basis": "name"
+  },
+  "clement-vii": {
+    "english": "Clement VII",
+    "commons_file": "File:Medici popes.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Medici_popes.svg",
+    "license": "Public domain",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Clement VII",
+    "match_basis": "family:medici"
+  },
+  "paul-iii": {
+    "english": "Paul III",
+    "commons_file": "File:C o a Paulus III.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/C_o_a_Paulus_III.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Paul III",
+    "match_basis": "name"
+  },
+  "julius-iii": {
+    "english": "Julius III",
+    "commons_file": "File:C o a Iulius III.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/9/94/C_o_a_Iulius_III.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Julius III",
+    "match_basis": "name"
+  },
+  "paul-iv": {
+    "english": "Paul IV",
+    "commons_file": "File:C o a Paulus IV.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/c/c4/C_o_a_Paulus_IV.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Paul IV",
+    "match_basis": "name"
+  },
+  "marcellus-ii": {
+    "english": "Marcellus II",
+    "commons_file": "File:C o a Marcelus II.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/f/fb/C_o_a_Marcelus_II.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Marcellus II",
+    "match_basis": "manual-review-ok (spelling variant / shared family shield)"
+  },
+  "pius-iv": {
+    "english": "Pius IV",
+    "commons_file": "File:Pius IV Coat of Arms.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/4/41/Pius_IV_Coat_of_Arms.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Pius IV",
+    "match_basis": "name"
+  },
+  "pius-v": {
+    "english": "Pius V",
+    "commons_file": "File:C o a Pius V.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/e/ec/C_o_a_Pius_V.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Pius V",
+    "match_basis": "name"
+  },
+  "gregory-xiii": {
+    "english": "Gregory XIII",
+    "commons_file": "File:C o a Gregorius XIII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/C_o_a_Gregorius_XIII.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Gregory XIII",
+    "match_basis": "name"
+  },
+  "sixtus-v": {
+    "english": "Sixtus V",
+    "commons_file": "File:C o a Sixtus V.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/C_o_a_Sixtus_V.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Sixtus V",
+    "match_basis": "name"
+  },
+  "gregory-xiv": {
+    "english": "Gregory XIV",
+    "commons_file": "File:C o a Gregorius XIV.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/3/33/C_o_a_Gregorius_XIV.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Gregory XIV",
+    "match_basis": "name"
+  },
+  "urban-vii": {
+    "english": "Urban VII",
+    "commons_file": "File:C o a Urbanus VII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/4/42/C_o_a_Urbanus_VII.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Urban VII",
+    "match_basis": "name"
+  },
+  "innocent-ix": {
+    "english": "Innocent IX",
+    "commons_file": "File:C o a Inocentius IX.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/d/d1/C_o_a_Inocentius_IX.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Innocent IX",
+    "match_basis": "manual-review-ok (spelling variant / shared family shield)"
+  },
+  "clement-viii": {
+    "english": "Clement VIII",
+    "commons_file": "File:C o a Clementem VIII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/d/d1/C_o_a_Clementem_VIII.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Clement VIII",
+    "match_basis": "name"
+  },
+  "leo-xi": {
+    "english": "Leo XI",
+    "commons_file": "File:Medici popes.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Medici_popes.svg",
+    "license": "Public domain",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Leo XI",
+    "match_basis": "family:medici"
+  },
+  "paul-v": {
+    "english": "Paul V",
+    "commons_file": "File:C o a Paulus V.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/c/c7/C_o_a_Paulus_V.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Paul V",
+    "match_basis": "name"
+  },
+  "gregory-xv": {
+    "english": "Gregory XV",
+    "commons_file": "File:C o a Gregorius XV.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/5/5c/C_o_a_Gregorius_XV.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Gregory XV",
+    "match_basis": "name"
+  },
+  "urban-viii": {
+    "english": "Urban VIII",
+    "commons_file": "File:C o a Urbanus VIII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/5/5a/C_o_a_Urbanus_VIII.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Urban VIII",
+    "match_basis": "name"
+  },
+  "innocent-x": {
+    "english": "Innocent X",
+    "commons_file": "File:C o a Inocentius X.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/0/0e/C_o_a_Inocentius_X.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Innocent X",
+    "match_basis": "manual-review-ok (spelling variant / shared family shield)"
+  },
+  "alexander-vii": {
+    "english": "Alexander VII",
+    "commons_file": "File:C o a Alexander VII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/c/c0/C_o_a_Alexander_VII.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Alexander VII",
+    "match_basis": "name"
+  },
+  "clement-ix": {
+    "english": "Clement IX",
+    "commons_file": "File:C o a Clementem IX.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/7/79/C_o_a_Clementem_IX.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Clement IX",
+    "match_basis": "name"
+  },
+  "clement-x": {
+    "english": "Clement X",
+    "commons_file": "File:C o a Clementem X.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/C_o_a_Clementem_X.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Clement X",
+    "match_basis": "name"
+  },
+  "innocent-xi": {
+    "english": "Innocent XI",
+    "commons_file": "File:Coat of arms of Innocentius XI.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Coat_of_arms_of_Innocentius_XI.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Innocent XI",
+    "match_basis": "name"
+  },
+  "alexander-viii": {
+    "english": "Alexander VIII",
+    "commons_file": "File:C o a Alexander VIII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/4/49/C_o_a_Alexander_VIII.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Alexander VIII",
+    "match_basis": "name"
+  },
+  "innocent-xii": {
+    "english": "Innocent XII",
+    "commons_file": "File:C o a Inocentius XII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/5/5e/C_o_a_Inocentius_XII.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Innocent XII",
+    "match_basis": "manual-review-ok (spelling variant / shared family shield)"
+  },
+  "clement-xi": {
+    "english": "Clement XI",
+    "commons_file": "File:C o a Clementem XI.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/C_o_a_Clementem_XI.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Clement XI",
+    "match_basis": "name"
+  },
+  "innocent-xiii": {
+    "english": "Innocent XIII",
+    "commons_file": "File:C o a Inocentius XIII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/4/42/C_o_a_Inocentius_XIII.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Innocent XIII",
+    "match_basis": "manual-review-ok (spelling variant / shared family shield)"
+  },
+  "benedict-xiii": {
+    "english": "Benedict XIII",
+    "commons_file": "File:C o a Benedictus XIII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/C_o_a_Benedictus_XIII.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Benedict XIII",
+    "match_basis": "name"
+  },
+  "clement-xii": {
+    "english": "Clement XII",
+    "commons_file": "File:C o a Clementem XII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/a/ad/C_o_a_Clementem_XII.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Clement XII",
+    "match_basis": "name"
+  },
+  "benedict-xiv": {
+    "english": "Benedict XIV",
+    "commons_file": "File:C o a Benedictus XIV.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/6/66/C_o_a_Benedictus_XIV.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Benedict XIV",
+    "match_basis": "name"
+  },
+  "clement-xiii": {
+    "english": "Clement XIII",
+    "commons_file": "File:C o a Clementem XIII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/C_o_a_Clementem_XIII.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Clement XIII",
+    "match_basis": "name"
+  },
+  "clement-xiv": {
+    "english": "Clement XIV",
+    "commons_file": "File:C o a Clementem XIV.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/3/30/C_o_a_Clementem_XIV.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Clement XIV",
+    "match_basis": "name"
+  },
+  "pius-vi": {
+    "english": "Pius VI",
+    "commons_file": "File:C o a Pius VI.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/b/be/C_o_a_Pius_VI.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Pius VI",
+    "match_basis": "name"
+  },
+  "pius-vii": {
+    "english": "Pius VII",
+    "commons_file": "File:C o a Pius VII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/9/98/C_o_a_Pius_VII.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Pius VII",
+    "match_basis": "name"
+  },
+  "leo-xii": {
+    "english": "Leo XII",
+    "commons_file": "File:C o a Leon XII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/5/51/C_o_a_Leon_XII.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Leo XII",
+    "match_basis": "name"
+  },
+  "pius-viii": {
+    "english": "Pius VIII",
+    "commons_file": "File:C o a Pius VIII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/4/41/C_o_a_Pius_VIII.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Pius VIII",
+    "match_basis": "name"
+  },
+  "gregory-xvi": {
+    "english": "Gregory XVI",
+    "commons_file": "File:C o a Gregorius XVI.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/1/1e/C_o_a_Gregorius_XVI.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Gregory XVI",
+    "match_basis": "name"
+  },
+  "pius-ix": {
+    "english": "Pius IX",
+    "commons_file": "File:C o a Pius IX.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/6/65/C_o_a_Pius_IX.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Pius IX",
+    "match_basis": "name"
+  },
+  "leo-xiii": {
+    "english": "Leo XIII",
+    "commons_file": "File:C o a Leon XIII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/C_o_a_Leon_XIII.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Leo XIII",
+    "match_basis": "name"
+  },
+  "pius-x": {
+    "english": "Pius X",
+    "commons_file": "File:C o a Pius X (b).svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/e/ea/C_o_a_Pius_X_%28b%29.svg",
+    "license": "CC BY 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Pius X",
+    "match_basis": "name"
+  },
+  "benedict-xv": {
+    "english": "Benedict XV",
+    "commons_file": "File:C o a Benedictus XV.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/C_o_a_Benedictus_XV.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Benedict XV",
+    "match_basis": "name"
+  },
+  "pius-xi": {
+    "english": "Pius XI",
+    "commons_file": "File:C o a Pius XI.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/C_o_a_Pius_XI.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Pius XI",
+    "match_basis": "name"
+  },
+  "pius-xii": {
+    "english": "Pius XII",
+    "commons_file": "File:C o a Pius XII (2).svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/0/08/C_o_a_Pius_XII_%282%29.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Pius XII",
+    "match_basis": "name"
+  },
+  "john-xxiii": {
+    "english": "John XXIII",
+    "commons_file": "File:C o a Johannes XXIII.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/C_o_a_Johannes_XXIII.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope John XXIII",
+    "match_basis": "manual-review-ok (spelling variant / shared family shield)"
+  },
+  "paul-vi": {
+    "english": "Paul VI",
+    "commons_file": "File:C o a Paulus VI.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/0/00/C_o_a_Paulus_VI.svg",
+    "license": "CC BY-SA 4.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Paul VI",
+    "match_basis": "name"
+  },
+  "john-paul-i": {
+    "english": "John Paul I",
+    "commons_file": "File:C o a Johannes Paulus I.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/d/d0/C_o_a_Johannes_Paulus_I.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope John Paul I",
+    "match_basis": "manual-review-ok (spelling variant / shared family shield)"
+  },
+  "john-paul-ii": {
+    "english": "John Paul II",
+    "commons_file": "File:Coat of arms of Ioannes Paulus II.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/8/83/Coat_of_arms_of_Ioannes_Paulus_II.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope John Paul II",
+    "match_basis": "name"
+  },
+  "benedict-xvi": {
+    "english": "Benedict XVI",
+    "commons_file": "File:Coat of arms of Benedictus XVI.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Coat_of_arms_of_Benedictus_XVI.svg",
+    "license": "CC BY-SA 3.0",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Benedict XVI",
+    "match_basis": "name"
+  },
+  "francis": {
+    "english": "Francis",
+    "commons_file": "File:Coat of arms of Franciscus.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Coat_of_arms_of_Franciscus.svg",
+    "license": "CC BY-SA 2.5",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Francis",
+    "match_basis": "name"
+  },
+  "leo-xiv": {
+    "english": "Leo XIV",
+    "commons_file": "File:Coat of arms of Leone XIV.svg",
+    "commons_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Coat_of_arms_of_Leone_XIV.svg",
+    "license": "CC BY-SA 2.5",
+    "source": "enwiki-infobox",
+    "wikipedia_page": "Pope Leo XIV",
+    "match_basis": "name"
+  }
+}
