@@ -297,8 +297,6 @@ class Strings {
     // Entity detail
     var detailOverviewTitle: String = "Overview"
     var detailCoatOfArmsTitle: String = "Coat of Arms"
-    var detailCoatOfArmsUnavailable: String =
-        "No coat of arms — personal papal heraldry did not exist until the 13th century."
     var detailLifeAndLegacyTitle: String = "Life & Legacy"
     var detailConnectedTitle: String = "Connected"
     var detailSourceTitle: String = "Source"

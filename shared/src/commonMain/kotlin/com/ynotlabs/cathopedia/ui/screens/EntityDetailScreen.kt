@@ -804,7 +804,7 @@ private fun DetailContent(
                 )
             }
 
-            if (type == ContentType.POPE) {
+            if (type == ContentType.POPE && PopeCoatsOfArms.forPope(id) != null) {
                 Spacer(Modifier.height(22.dp))
                 SectionTitle(s.detailCoatOfArmsTitle)
                 CoatOfArmsSection(popeId = id)
@@ -897,32 +897,27 @@ private fun SectionTitle(
     }
 }
 
-/** Only meaningful for [ContentType.POPE] — see [PopeCoatsOfArms]'s doc on why null is expected, not an error. */
+/**
+ * Only called when [PopeCoatsOfArms.forPope] is non-null for this pope — the caller
+ * omits the whole "Coat of Arms" section (title included) rather than show an empty
+ * state for popes before personal papal heraldry existed. See [PopeCoatsOfArms]'s doc.
+ */
 @Composable
 private fun CoatOfArmsSection(popeId: String) {
     val s = LocalStrings.current
-    val coatOfArms = PopeCoatsOfArms.forPope(popeId)
+    val coatOfArms = PopeCoatsOfArms.forPope(popeId) ?: return
 
-    if (coatOfArms != null) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(180.dp),
-            contentAlignment = Alignment.Center,
-        ) {
-            Image(
-                painter = painterResource(coatOfArms),
-                contentDescription = s.detailCoatOfArmsTitle,
-                contentScale = ContentScale.Fit,
-                modifier = Modifier.fillMaxHeight(),
-            )
-        }
-    } else {
-        Text(
-            text = s.detailCoatOfArmsUnavailable,
-            color = DetailCream.copy(alpha = 0.68f),
-            fontSize = 13.sp,
-            lineHeight = 19.sp,
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(180.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        Image(
+            painter = painterResource(coatOfArms),
+            contentDescription = s.detailCoatOfArmsTitle,
+            contentScale = ContentScale.Fit,
+            modifier = Modifier.fillMaxHeight(),
         )
     }
 }
