@@ -45,7 +45,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.BlurredEdgeTreatment
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
@@ -407,64 +406,20 @@ private fun RosaryHeroCard(
             )
             .clickable(onClick = onClick),
     ) {
-        Box(
-            modifier = Modifier
-                .align(Alignment.CenterEnd)
-                .size(140.dp)
-                .background(
-                    Brush.radialGradient(
-                        colors = listOf(
-                            MarianBlueLight.copy(alpha = 0.35f),
-                            Color.Transparent,
-                        ),
-                    ),
-                    CircleShape,
-                ),
-        )
-
-        // Soft glow bloom behind the sharp art, same treatment as the
-        // cathedral image on the Settings screen's top-right corner. Kept
-        // inside the card's own clip (Rectangle edge treatment, not
-        // Unbounded) so the glow softens the art without spilling past
-        // the rounded corners.
+        // The whole image is softly blurred and bleeds toward the text —
+        // same dreamy, blended treatment as the cathedral image on the
+        // Settings screen's top-right corner — rather than a sharp cutout
+        // with a hard gradient cutoff line.
         Image(
             painter = painterResource(Res.drawable.rosary),
             contentDescription = null,
             contentScale = ContentScale.Fit,
-            modifier = Modifier
-                .align(Alignment.CenterEnd)
-                .padding(end = 8.dp)
-                .size(150.dp)
-                .clip(shape)
-                .alpha(0.7f)
-                .blur(radius = 14.dp, edgeTreatment = BlurredEdgeTreatment.Rectangle),
-        )
-
-        Image(
-            painter = painterResource(Res.drawable.rosary),
-            contentDescription = null,
-            contentScale = ContentScale.Fit,
-            modifier = Modifier
-                .align(Alignment.CenterEnd)
-                .padding(end = 8.dp)
-                .size(150.dp)
-                .clip(RoundedCornerShape(24.dp)),
-        )
-
-        Box(
             modifier = Modifier
                 .align(Alignment.CenterEnd)
                 .fillMaxHeight()
-                .width(190.dp)
-                .background(
-                    Brush.horizontalGradient(
-                        listOf(
-                            MarianBlueDeep.copy(alpha = 0.95f),
-                            MarianBlue.copy(alpha = 0.35f),
-                            Color.Transparent,
-                        ),
-                    ),
-                ),
+                .width(230.dp)
+                .clip(shape)
+                .blur(radius = 2.5.dp, edgeTreatment = BlurredEdgeTreatment.Rectangle),
         )
 
         Column(
@@ -551,11 +506,10 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
             .clickable(onClick = onClick)
             .padding(18.dp),
     ) {
-        // Soft glow bloom behind the sharp art, same treatment as the
-        // cathedral image on the Settings screen's top-right corner. Kept
-        // inside the card's own clip (Rectangle edge treatment, not
-        // Unbounded) so the glow softens the art without spilling past
-        // the rounded corners.
+        // The whole image is softly blurred and bleeds toward the text —
+        // same dreamy, blended treatment as the cathedral image on the
+        // Settings screen's top-right corner — rather than a sharp cutout
+        // with a hard gradient cutoff line.
         Image(
             painter = painterResource(Res.drawable.way_of_the_cross_bg),
             contentDescription = null,
@@ -565,47 +519,7 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
                 .fillMaxHeight()
                 .width(230.dp)
                 .clip(RoundedCornerShape(24.dp))
-                .alpha(0.65f)
-                .blur(radius = 14.dp, edgeTreatment = BlurredEdgeTreatment.Rectangle),
-        )
-
-        Image(
-            painter = painterResource(Res.drawable.way_of_the_cross_bg),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .align(Alignment.CenterEnd)
-                .fillMaxHeight()
-                .width(230.dp)
-                .clip(RoundedCornerShape(24.dp)),
-        )
-
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(
-                    Brush.horizontalGradient(
-                        listOf(
-                            Color.Transparent,
-                            Color.Transparent,
-                            Color.Transparent,
-                        ),
-                    ),
-                ),
-        )
-
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(
-                    Brush.verticalGradient(
-                        listOf(
-                            Color.Transparent,
-                            Color.Transparent,
-                            Color.Transparent,
-                        ),
-                    ),
-                ),
+                .blur(radius = 2.5.dp, edgeTreatment = BlurredEdgeTreatment.Rectangle),
         )
 
         Column {
