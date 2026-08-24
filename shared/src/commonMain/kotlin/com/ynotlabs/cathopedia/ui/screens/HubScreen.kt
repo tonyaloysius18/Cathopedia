@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -34,7 +35,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -43,6 +46,7 @@ import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.model.HubDetail
 import com.ynotlabs.cathopedia.model.HubSectionSummary
+import com.ynotlabs.cathopedia.ui.hubAssetPainter
 
 /**
  * Hub → section list. The hub is data (see docs/briefs/topic-hubs.md) — nothing about a
@@ -79,6 +83,7 @@ fun HubScreen(
 
     val hub = detail
     val accent = hub?.summary?.accentColor?.toComposeColorOrNull() ?: MaterialTheme.colorScheme.primary
+    val heroPainter = hubAssetPainter(hub?.summary?.heroAsset)
 
     LazyColumn(
         modifier = Modifier
@@ -103,6 +108,21 @@ fun HubScreen(
         }
 
         if (hub != null) {
+            heroPainter?.let { painter ->
+                item {
+                    Image(
+                        painter = painter,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(140.dp)
+                            .padding(bottom = 14.dp)
+                            .clip(RoundedCornerShape(18.dp)),
+                        contentScale = ContentScale.Crop,
+                    )
+                }
+            }
+
             item {
                 Column(modifier = Modifier.fillMaxWidth().padding(bottom = 20.dp)) {
                     Text(

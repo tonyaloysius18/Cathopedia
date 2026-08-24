@@ -52,6 +52,7 @@ import com.ynotlabs.cathopedia.model.HubFactSheetDetail
 import com.ynotlabs.cathopedia.model.HubHotspotDetail
 import com.ynotlabs.cathopedia.model.HubSectionSummary
 import com.ynotlabs.cathopedia.model.HubStepperDetail
+import com.ynotlabs.cathopedia.ui.hubAssetPainter
 import com.ynotlabs.cathopedia.ui.components.DiagramCircleShape
 import com.ynotlabs.cathopedia.ui.components.DiagramHotspot
 import com.ynotlabs.cathopedia.ui.components.DiagramPolygonShape
@@ -243,10 +244,11 @@ private fun androidx.compose.foundation.lazy.LazyListScope.diagramSectionBody(
         }
 
         diagram?.let { d ->
-            // Placeholder artwork until T7 supplies the real per-hub SVGs (docs/briefs/topic-hubs.md)
-            // — the viewer itself (pan/zoom/tap/hotspot sheet) is fully real, only the image is a stand-in.
+            // hubAssetPainter falls back to null for any asset with no bundled drawable yet;
+            // the flat color keeps the viewer (pan/zoom/tap/hotspot sheet) usable regardless.
+            val fallback = ColorPainter(MaterialTheme.colorScheme.surfaceContainerLow)
             InteractiveDiagram(
-                painter = ColorPainter(MaterialTheme.colorScheme.surfaceContainerLow),
+                painter = hubAssetPainter(d.asset) ?: fallback,
                 aspectRatio = d.aspectRatio,
                 minZoom = d.minZoom,
                 maxZoom = d.maxZoom,
