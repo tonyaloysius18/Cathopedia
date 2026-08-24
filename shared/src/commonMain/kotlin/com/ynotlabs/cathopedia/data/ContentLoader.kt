@@ -56,7 +56,8 @@ object ContentLoader {
         database.preferenceQueries.setPreference(CONTENT_VERSION_KEY, CONTENT_VERSION)
     }
 
-    private fun insert(database: CathopediaDatabase, catalog: ContentCatalog) {
+    /** internal (not private) so the hub-seeding test can call it without a Res-backed catalog.json. */
+    internal fun insert(database: CathopediaDatabase, catalog: ContentCatalog) {
         catalog.saints.forEach { s ->
             database.saintQueries.insertSaint(s.id, s.feastDay, s.canonizationYear, s.patronage, s.imageUrl, s.sourceUrl)
             s.text.forEach { (lang, t) ->
