@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cathopedia.app/schema/hub-strings.schema.json",
+  "title": "Cathopedia Hub Strings",
+  "description": "All human-readable text for one hub in one language. Kept separate from structure so translators never touch layout and adding a language never touches content files.",
+  "type": "object",
+  "required": ["schemaVersion", "hubId", "lang", "strings"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "type": "integer", "const": 1 },
+    "hubId": { "type": "string", "pattern": "^[a-z0-9_.]+$" },
+    "lang": { "type": "string", "pattern": "^[a-z]{2}(-[A-Z]{2})?$" },
+    "contentVersion": { "type": "integer", "minimum": 1 },
+    "translationStatus": {
+      "type": "string",
+      "enum": ["COMPLETE", "PARTIAL", "MACHINE_DRAFT"],
+      "description": "PARTIAL and MACHINE_DRAFT let the app fall back to the default language per missing key rather than shipping half-translated screens."
+    },
+    "strings": {
+      "type": "object",
+      "description": "Flat map of stringKey -> text. Inline markup: **bold**, *italic*, and entity links [[type:id|label]].",
+      "propertyNames": { "pattern": "^[a-z0-9_.]+$" },
+      "additionalProperties": { "type": "string" }
+    }
+  }
+}

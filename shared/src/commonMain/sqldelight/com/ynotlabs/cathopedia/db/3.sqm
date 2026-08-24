@@ -1,0 +1,107 @@
+CREATE TABLE topic_hub (
+    id             TEXT NOT NULL PRIMARY KEY,
+    slug           TEXT NOT NULL UNIQUE,
+    title_key      TEXT NOT NULL,
+    subtitle_key   TEXT,
+    intro_key      TEXT,
+    icon           TEXT,
+    hero_asset     TEXT,
+    accent_color   TEXT,
+    sort_order     INTEGER NOT NULL,
+    content_version INTEGER NOT NULL
+);
+
+CREATE TABLE hub_section (
+    id            TEXT NOT NULL PRIMARY KEY,
+    hub_id        TEXT NOT NULL,
+    sort_order    INTEGER NOT NULL,
+    status        TEXT NOT NULL,       -- PUBLISHED | STUB
+    layout        TEXT NOT NULL,       -- ARTICLES | DIAGRAM | STEPPER | TIMELINE | FACT_SHEET | COLLECTION
+    title_key     TEXT NOT NULL,
+    summary_key   TEXT,
+    icon          TEXT,
+    hero_asset    TEXT,
+    accent_color  TEXT,
+    fact_sheet_id TEXT,
+    stepper_id    TEXT,
+    timeline_id   TEXT,
+    collection_query TEXT,             -- JSON, null unless layout = COLLECTION
+    FOREIGN KEY (hub_id) REFERENCES topic_hub(id) ON DELETE CASCADE
+);
+CREATE INDEX hub_section_hub_idx ON hub_section(hub_id, sort_order);
+
+CREATE TABLE hub_article (
+    id             TEXT NOT NULL PRIMARY KEY,
+    section_id     TEXT NOT NULL,
+    sort_order     INTEGER NOT NULL,
+    title_key      TEXT NOT NULL,
+    lead_key       TEXT,
+    hero_asset     TEXT,
+    reading_time   INTEGER,
+    blocks_json    TEXT NOT NULL,
+    related_json   TEXT NOT NULL DEFAULT '[]',
+    sources_json   TEXT NOT NULL DEFAULT '[]',
+    FOREIGN KEY (section_id) REFERENCES hub_section(id) ON DELETE CASCADE
+);
+CREATE INDEX hub_article_section_idx ON hub_article(section_id, sort_order);
+
+CREATE TABLE hub_fact_sheet (
+    id         TEXT NOT NULL PRIMARY KEY,
+    hub_id     TEXT NOT NULL,
+    title_key  TEXT NOT NULL,
+    facts_json TEXT NOT NULL,
+    FOREIGN KEY (hub_id) REFERENCES topic_hub(id) ON DELETE CASCADE
+);
+
+CREATE TABLE hub_diagram (
+    id            TEXT NOT NULL PRIMARY KEY,
+    hub_id        TEXT NOT NULL,
+    title_key     TEXT,
+    caption_key   TEXT,
+    asset         TEXT NOT NULL,
+    aspect_ratio  REAL NOT NULL,
+    min_zoom      REAL NOT NULL DEFAULT 1.0,
+    max_zoom      REAL NOT NULL DEFAULT 5.0,
+    focus_x       REAL,
+    focus_y       REAL,
+    FOREIGN KEY (hub_id) REFERENCES topic_hub(id) ON DELETE CASCADE
+);
+
+CREATE TABLE hub_hotspot (
+    id           TEXT NOT NULL PRIMARY KEY,
+    diagram_id   TEXT NOT NULL,
+    label_key    TEXT NOT NULL,
+    blurb_key    TEXT,
+    tour_order   INTEGER,
+    shape_json   TEXT NOT NULL,        -- {"type":"rect"|"circle"|"polygon", ...} normalized 0..1
+    target_type  TEXT,
+    target_id    TEXT,
+    FOREIGN KEY (diagram_id) REFERENCES hub_diagram(id) ON DELETE CASCADE
+);
+CREATE INDEX hub_hotspot_diagram_idx ON hub_hotspot(diagram_id, tour_order);
+CREATE INDEX hub_hotspot_target_idx ON hub_hotspot(target_type, target_id);
+
+CREATE TABLE hub_stepper (
+    id         TEXT NOT NULL PRIMARY KEY,
+    hub_id     TEXT NOT NULL,
+    title_key  TEXT NOT NULL,
+    intro_key  TEXT,
+    steps_json TEXT NOT NULL,
+    FOREIGN KEY (hub_id) REFERENCES topic_hub(id) ON DELETE CASCADE
+);
+
+CREATE TABLE hub_timeline (
+    id          TEXT NOT NULL PRIMARY KEY,
+    hub_id      TEXT NOT NULL,
+    title_key   TEXT NOT NULL,
+    events_json TEXT NOT NULL,
+    FOREIGN KEY (hub_id) REFERENCES topic_hub(id) ON DELETE CASCADE
+);
+
+CREATE TABLE localized_text (
+    key   TEXT NOT NULL,
+    lang  TEXT NOT NULL,
+    value TEXT NOT NULL,
+    PRIMARY KEY (key, lang)
+);
+CREATE INDEX localized_text_lang_idx ON localized_text(lang);

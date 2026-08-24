@@ -1,0 +1,418 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cathopedia.app/schema/hub-content.schema.json",
+  "title": "Cathopedia Topic Hub Content",
+  "description": "Structure-only content file for one topic hub. All human-readable text lives in companion string files (hub-strings.schema.json) keyed by language.",
+  "type": "object",
+  "required": ["schemaVersion", "contentVersion", "hub", "sections"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "description": "Bump only on breaking format changes. The app refuses files with a higher schemaVersion than it understands.",
+      "const": 1
+    },
+    "contentVersion": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Bump on every content edit. Drives the incremental seed/update via Ktor."
+    },
+    "hub": { "$ref": "#/$defs/hub" },
+    "sections": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/section" } },
+    "articles": { "type": "array", "items": { "$ref": "#/$defs/article" } },
+    "factSheets": { "type": "array", "items": { "$ref": "#/$defs/factSheet" } },
+    "diagrams": { "type": "array", "items": { "$ref": "#/$defs/diagram" } },
+    "steppers": { "type": "array", "items": { "$ref": "#/$defs/stepper" } },
+    "timelines": { "type": "array", "items": { "$ref": "#/$defs/timeline" } }
+  },
+
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_.]+$",
+      "description": "Stable, lowercase, dot-namespaced. Never reuse an id for different content."
+    },
+    "stringKey": {
+      "type": "string",
+      "pattern": "^[a-z0-9_.]+$",
+      "description": "Key resolved against the string file for the active language. Inline markup allowed in the resolved value: **bold**, *italic*, and entity links [[type:id|label]] where type is one of pope, saint, church, article, place, document, artwork."
+    },
+    "asset": {
+      "type": "string",
+      "description": "Path relative to composeResources/files/content/, e.g. hub/holy_see/sistine_ceiling.svg. Prefer SVG/vector for diagrams so hotspots stay resolution-independent."
+    },
+
+    "hub": {
+      "type": "object",
+      "required": ["id", "slug", "titleKey", "sortOrder"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "titleKey": { "$ref": "#/$defs/stringKey" },
+        "subtitleKey": { "$ref": "#/$defs/stringKey" },
+        "introKey": { "$ref": "#/$defs/stringKey" },
+        "icon": { "type": "string", "description": "Logical icon name resolved by the app, not a file path." },
+        "heroAsset": { "$ref": "#/$defs/asset" },
+        "accentColor": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "sortOrder": { "type": "integer" },
+        "tags": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "section": {
+      "type": "object",
+      "required": ["id", "sortOrder", "layout", "titleKey", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "sortOrder": { "type": "integer" },
+        "status": {
+          "type": "string",
+          "enum": ["PUBLISHED", "STUB"],
+          "description": "STUB sections render in the hub list with a 'coming soon' affordance and are not navigable."
+        },
+        "layout": {
+          "type": "string",
+          "enum": ["ARTICLES", "DIAGRAM", "STEPPER", "TIMELINE", "FACT_SHEET", "COLLECTION"],
+          "description": "Chooses the section renderer. A section may still attach extra blocks of other kinds."
+        },
+        "titleKey": { "$ref": "#/$defs/stringKey" },
+        "summaryKey": { "$ref": "#/$defs/stringKey" },
+        "icon": { "type": "string" },
+        "heroAsset": { "$ref": "#/$defs/asset" },
+        "accentColor": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "articleIds": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "factSheetId": { "$ref": "#/$defs/id" },
+        "diagramIds": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "stepperId": { "$ref": "#/$defs/id" },
+        "timelineId": { "$ref": "#/$defs/id" },
+        "collectionQuery": {
+          "type": "object",
+          "description": "For layout=COLLECTION: a declarative query over existing entities (popes, saints, documents) so sections like Papal Tombs stay derived rather than duplicated.",
+          "required": ["entityType"],
+          "additionalProperties": false,
+          "properties": {
+            "entityType": { "type": "string", "enum": ["POPE", "SAINT", "CHURCH", "DOCUMENT", "COUNCIL"] },
+            "filter": { "type": "object", "additionalProperties": { "type": ["string", "number", "boolean", "array"] } },
+            "groupBy": { "type": "string" },
+            "sortBy": { "type": "string" }
+          }
+        }
+      }
+    },
+
+    "article": {
+      "type": "object",
+      "required": ["id", "sectionId", "sortOrder", "titleKey", "blocks"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "sectionId": { "$ref": "#/$defs/id" },
+        "sortOrder": { "type": "integer" },
+        "titleKey": { "$ref": "#/$defs/stringKey" },
+        "leadKey": { "$ref": "#/$defs/stringKey" },
+        "heroAsset": { "$ref": "#/$defs/asset" },
+        "readingTimeMinutes": { "type": "integer", "minimum": 1 },
+        "blocks": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/block" } },
+        "related": { "type": "array", "items": { "$ref": "#/$defs/entityRef" } },
+        "sources": { "type": "array", "items": { "$ref": "#/$defs/source" } }
+      }
+    },
+
+    "block": {
+      "type": "object",
+      "required": ["type"],
+      "discriminator": { "propertyName": "type" },
+      "oneOf": [
+        {
+          "properties": {
+            "type": { "const": "heading" },
+            "level": { "type": "integer", "enum": [2, 3] },
+            "textKey": { "$ref": "#/$defs/stringKey" }
+          },
+          "required": ["type", "textKey"], "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "paragraph" },
+            "textKey": { "$ref": "#/$defs/stringKey" }
+          },
+          "required": ["type", "textKey"], "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "list" },
+            "style": { "type": "string", "enum": ["bullet", "numbered"] },
+            "itemKeys": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/stringKey" } }
+          },
+          "required": ["type", "itemKeys"], "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "quote" },
+            "textKey": { "$ref": "#/$defs/stringKey" },
+            "attributionKey": { "$ref": "#/$defs/stringKey" }
+          },
+          "required": ["type", "textKey"], "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "callout" },
+            "tone": { "type": "string", "enum": ["info", "note", "warning", "devotional"] },
+            "titleKey": { "$ref": "#/$defs/stringKey" },
+            "textKey": { "$ref": "#/$defs/stringKey" }
+          },
+          "required": ["type", "textKey"], "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "image" },
+            "asset": { "$ref": "#/$defs/asset" },
+            "captionKey": { "$ref": "#/$defs/stringKey" },
+            "credit": { "type": "string", "description": "Rights line. Required for anything not drawn in-house." },
+            "license": { "type": "string", "description": "e.g. PUBLIC_DOMAIN, CC-BY-SA-4.0, IN_HOUSE, LICENSED" }
+          },
+          "required": ["type", "asset", "license"], "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "factGrid" },
+            "facts": {
+              "type": "array", "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": ["labelKey", "valueKey"],
+                "additionalProperties": false,
+                "properties": {
+                  "labelKey": { "$ref": "#/$defs/stringKey" },
+                  "valueKey": { "$ref": "#/$defs/stringKey" },
+                  "icon": { "type": "string" }
+                }
+              }
+            }
+          },
+          "required": ["type", "facts"], "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "diagramRef" },
+            "diagramId": { "$ref": "#/$defs/id" }
+          },
+          "required": ["type", "diagramId"], "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "stepperRef" },
+            "stepperId": { "$ref": "#/$defs/id" }
+          },
+          "required": ["type", "stepperId"], "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "timelineRef" },
+            "timelineId": { "$ref": "#/$defs/id" }
+          },
+          "required": ["type", "timelineId"], "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "entityCards" },
+            "titleKey": { "$ref": "#/$defs/stringKey" },
+            "refs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/entityRef" } }
+          },
+          "required": ["type", "refs"], "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "externalLink" },
+            "labelKey": { "$ref": "#/$defs/stringKey" },
+            "url": { "type": "string", "format": "uri" },
+            "reason": { "type": "string", "description": "Why we link out instead of embedding, e.g. LICENSED_TEXT." }
+          },
+          "required": ["type", "labelKey", "url"], "additionalProperties": false
+        }
+      ]
+    },
+
+    "entityRef": {
+      "type": "object",
+      "required": ["type", "id"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "type": "string", "enum": ["ARTICLE", "POPE", "SAINT", "CHURCH", "PRAYER", "DOCUMENT", "COUNCIL", "ARTWORK", "PLACE"] },
+        "id": { "$ref": "#/$defs/id" },
+        "labelKey": { "$ref": "#/$defs/stringKey" }
+      }
+    },
+
+    "source": {
+      "type": "object",
+      "required": ["label"],
+      "additionalProperties": false,
+      "properties": {
+        "label": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "accessed": { "type": "string", "format": "date" }
+      }
+    },
+
+    "factSheet": {
+      "type": "object",
+      "required": ["id", "titleKey", "facts"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "titleKey": { "$ref": "#/$defs/stringKey" },
+        "facts": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["id", "labelKey", "valueKey"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "$ref": "#/$defs/id" },
+              "labelKey": { "$ref": "#/$defs/stringKey" },
+              "valueKey": { "$ref": "#/$defs/stringKey" },
+              "icon": { "type": "string" },
+              "footnoteKey": { "$ref": "#/$defs/stringKey" },
+              "volatile": {
+                "type": "boolean",
+                "default": false,
+                "description": "True for figures that drift (population, ticket prices). Surfaced to the content pipeline for periodic review."
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "diagram": {
+      "type": "object",
+      "required": ["id", "asset", "aspectRatio", "hotspots"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "titleKey": { "$ref": "#/$defs/stringKey" },
+        "captionKey": { "$ref": "#/$defs/stringKey" },
+        "asset": { "$ref": "#/$defs/asset" },
+        "aspectRatio": { "type": "number", "exclusiveMinimum": 0, "description": "width / height of the artwork." },
+        "minZoom": { "type": "number", "default": 1 },
+        "maxZoom": { "type": "number", "default": 5 },
+        "initialFocus": { "$ref": "#/$defs/point" },
+        "hotspots": { "type": "array", "items": { "$ref": "#/$defs/hotspot" } }
+      }
+    },
+
+    "point": {
+      "type": "object",
+      "required": ["x", "y"],
+      "additionalProperties": false,
+      "properties": {
+        "x": { "type": "number", "minimum": 0, "maximum": 1 },
+        "y": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+
+    "hotspot": {
+      "type": "object",
+      "required": ["id", "shape", "labelKey"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "labelKey": { "$ref": "#/$defs/stringKey" },
+        "blurbKey": { "$ref": "#/$defs/stringKey" },
+        "order": { "type": "integer", "description": "Optional guided-tour order; enables next/previous in the detail sheet." },
+        "shape": {
+          "oneOf": [
+            {
+              "type": "object",
+              "required": ["type", "x", "y", "w", "h"],
+              "additionalProperties": false,
+              "properties": {
+                "type": { "const": "rect" },
+                "x": { "type": "number" }, "y": { "type": "number" },
+                "w": { "type": "number" }, "h": { "type": "number" }
+              }
+            },
+            {
+              "type": "object",
+              "required": ["type", "cx", "cy", "r"],
+              "additionalProperties": false,
+              "properties": {
+                "type": { "const": "circle" },
+                "cx": { "type": "number" }, "cy": { "type": "number" }, "r": { "type": "number" }
+              }
+            },
+            {
+              "type": "object",
+              "required": ["type", "points"],
+              "additionalProperties": false,
+              "properties": {
+                "type": { "const": "polygon" },
+                "points": { "type": "array", "minItems": 3, "items": { "$ref": "#/$defs/point" } }
+              }
+            }
+          ],
+          "description": "All coordinates normalized 0..1 against the artwork box, so the same data works at any density and on any screen."
+        },
+        "target": { "$ref": "#/$defs/entityRef" }
+      }
+    },
+
+    "stepper": {
+      "type": "object",
+      "required": ["id", "titleKey", "steps"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "titleKey": { "$ref": "#/$defs/stringKey" },
+        "introKey": { "$ref": "#/$defs/stringKey" },
+        "steps": {
+          "type": "array", "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["id", "order", "titleKey", "bodyKey"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "$ref": "#/$defs/id" },
+              "order": { "type": "integer" },
+              "titleKey": { "$ref": "#/$defs/stringKey" },
+              "bodyKey": { "$ref": "#/$defs/stringKey" },
+              "latinKey": { "$ref": "#/$defs/stringKey" },
+              "icon": { "type": "string" },
+              "asset": { "$ref": "#/$defs/asset" }
+            }
+          }
+        }
+      }
+    },
+
+    "timeline": {
+      "type": "object",
+      "required": ["id", "titleKey", "events"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "titleKey": { "$ref": "#/$defs/stringKey" },
+        "events": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["id", "year", "titleKey"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "$ref": "#/$defs/id" },
+              "year": { "type": "integer", "description": "Negative for BC. Use the start year for spans." },
+              "endYear": { "type": "integer" },
+              "approximate": { "type": "boolean", "default": false },
+              "titleKey": { "$ref": "#/$defs/stringKey" },
+              "bodyKey": { "$ref": "#/$defs/stringKey" },
+              "ref": { "$ref": "#/$defs/entityRef" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
