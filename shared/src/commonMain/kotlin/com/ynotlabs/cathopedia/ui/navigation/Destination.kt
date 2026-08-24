@@ -9,12 +9,15 @@ sealed interface Destination {
     data object Intro : Destination
     data object Home : Destination
     data object Explore : Destination
+    data class Hub(val hubId: String) : Destination
+    data class HubSection(val hubId: String, val sectionId: String) : Destination
     data class EntityList(val type: ContentType) : Destination
     data class EntityDetail(val type: ContentType, val id: String) : Destination
     data object PrayersHome : Destination
     data class PrayerDetail(val slug: String) : Destination
     data object RosaryScreen : Destination
     data object StationsScreen : Destination
+    data object Vestments : Destination
     data object Search : Destination
     data object Saved : Destination
     data object Settings : Destination

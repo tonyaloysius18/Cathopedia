@@ -60,6 +60,8 @@ import com.ynotlabs.cathopedia.ui.screens.EntityDetailScreen
 import com.ynotlabs.cathopedia.ui.screens.EntityListScreen
 import com.ynotlabs.cathopedia.ui.screens.ExploreScreen
 import com.ynotlabs.cathopedia.ui.screens.HomeScreen
+import com.ynotlabs.cathopedia.ui.screens.HubScreen
+import com.ynotlabs.cathopedia.ui.screens.HubSectionScreen
 import com.ynotlabs.cathopedia.ui.screens.IntroScreen
 import com.ynotlabs.cathopedia.ui.screens.LanguageScreen
 import com.ynotlabs.cathopedia.ui.screens.LanguageScreenStartup
@@ -260,6 +262,23 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     repository = repository,
                     language = language,
                     onCategorySelected = { type -> nav.navigate(Destination.EntityList(type)) },
+                    onHubSelected = { hub -> nav.navigate(Destination.Hub(hub.id)) },
+                )
+
+                is Destination.Hub -> HubScreen(
+                    hubId = current.hubId,
+                    repository = repository,
+                    language = language,
+                    onBack = nav::back,
+                    onSectionSelected = { section -> nav.navigate(Destination.HubSection(current.hubId, section.id)) },
+                )
+
+                is Destination.HubSection -> HubSectionScreen(
+                    hubId = current.hubId,
+                    sectionId = current.sectionId,
+                    repository = repository,
+                    language = language,
+                    onBack = nav::back,
                 )
 
                 is Destination.EntityList -> {

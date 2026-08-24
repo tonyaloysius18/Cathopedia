@@ -153,6 +153,8 @@ class Strings {
     var exploreSearchPlaceholder: String = "Search saints, popes, places..."
     var exploreNoResultsFound: String = "No results found"
     var exploreTryAnotherCategory: String = "Try another category or keyword."
+    var exploreHubsHeader: String = "Topic Hubs"
+    var hubSectionComingSoon: String = "Coming soon"
     var countHolyLives: String = "{count} holy lives"
     var countPontiffs: String = "{count} pontiffs"
     var countWitnesses: String = "{count} witnesses of Christ"

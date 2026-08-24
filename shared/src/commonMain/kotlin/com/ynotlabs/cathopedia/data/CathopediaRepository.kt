@@ -8,6 +8,9 @@ import com.ynotlabs.cathopedia.model.ChurchDetail
 import com.ynotlabs.cathopedia.model.ContentSummary
 import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.model.FeastDetail
+import com.ynotlabs.cathopedia.model.HubDetail
+import com.ynotlabs.cathopedia.model.HubSectionSummary
+import com.ynotlabs.cathopedia.model.HubSummary
 import com.ynotlabs.cathopedia.model.MiracleDetail
 import com.ynotlabs.cathopedia.model.MysteryDetail
 import com.ynotlabs.cathopedia.model.MysterySet
@@ -560,6 +563,51 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
                 .executeAsList()
                 .associate { it.key to it.value_ }
         }
+
+    suspend fun listHubs(): List<HubSummary> = withContext(Dispatchers.Default) {
+        database.hubContentQueries.selectHubsOrdered().executeAsList().map {
+            HubSummary(
+                id = it.id,
+                slug = it.slug,
+                titleKey = it.title_key,
+                subtitleKey = it.subtitle_key,
+                icon = it.icon,
+                heroAsset = it.hero_asset,
+                accentColor = it.accent_color,
+                sortOrder = it.sort_order.toInt(),
+            )
+        }
+    }
+
+    suspend fun hubDetail(hubId: String): HubDetail? = withContext(Dispatchers.Default) {
+        val hub = database.hubContentQueries.selectHub(hubId).executeAsOneOrNull() ?: return@withContext null
+        val sections = database.hubContentQueries.selectSections(hubId).executeAsList().map {
+            HubSectionSummary(
+                id = it.id,
+                sortOrder = it.sort_order.toInt(),
+                status = it.status,
+                layout = it.layout,
+                titleKey = it.title_key,
+                summaryKey = it.summary_key,
+                icon = it.icon,
+                accentColor = it.accent_color,
+            )
+        }
+        HubDetail(
+            summary = HubSummary(
+                id = hub.id,
+                slug = hub.slug,
+                titleKey = hub.title_key,
+                subtitleKey = hub.subtitle_key,
+                icon = hub.icon,
+                heroAsset = hub.hero_asset,
+                accentColor = hub.accent_color,
+                sortOrder = hub.sort_order.toInt(),
+            ),
+            introKey = hub.intro_key,
+            sections = sections,
+        )
+    }
 
     private fun String.hyphenatedToTitle(): String =
         this.split("-").joinToString(" ") { it.replaceFirstChar { char -> if (char.isLowerCase()) char.titlecase() else char.toString() } }

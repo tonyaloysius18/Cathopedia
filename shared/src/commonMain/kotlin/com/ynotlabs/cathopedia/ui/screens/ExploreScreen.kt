@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
@@ -50,6 +51,7 @@ import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.model.ContentCategory
 import com.ynotlabs.cathopedia.model.ContentType
+import com.ynotlabs.cathopedia.model.HubSummary
 import com.ynotlabs.cathopedia.ui.displayName
 import com.ynotlabs.cathopedia.ui.label
 import org.jetbrains.compose.resources.painterResource
@@ -75,13 +77,19 @@ fun ExploreScreen(
     repository: CathopediaRepository,
     language: String,
     onCategorySelected: (ContentType) -> Unit,
+    onHubSelected: (HubSummary) -> Unit,
 ) {
     val s = LocalStrings.current
     var counts by remember { mutableStateOf<Map<ContentType, Int>>(emptyMap()) }
     var query by remember { mutableStateOf("") }
+    var hubs by remember { mutableStateOf<List<HubSummary>>(emptyList()) }
+    var hubStrings by remember { mutableStateOf<Map<String, String>>(emptyMap()) }
 
     LaunchedEffect(language) {
         counts = ContentType.entries.associateWith { repository.listByType(it, language).size }
+        hubs = repository.listHubs()
+        val keys = hubs.flatMap { listOfNotNull(it.titleKey, it.subtitleKey) }.toSet()
+        hubStrings = repository.resolveHubStrings(keys, language)
     }
 
     LazyColumn(
@@ -98,6 +106,21 @@ fun ExploreScreen(
     ) {
         item {
             ExploreHero(query) { query = it }
+        }
+
+        if (hubs.isNotEmpty() && query.isBlank()) {
+            item {
+                ExploreSectionHeader(s.exploreHubsHeader.uppercase())
+            }
+            items(hubs, key = { it.id }) { hub ->
+                HubExploreCard(
+                    hub = hub,
+                    title = hubStrings[hub.titleKey].orEmpty(),
+                    subtitle = hub.subtitleKey?.let { hubStrings[it] },
+                    onClick = { onHubSelected(hub) },
+                )
+                Spacer(Modifier.height(12.dp))
+            }
         }
 
         ContentCategory.entries.forEach { category ->
@@ -588,6 +611,63 @@ private fun WideExploreCard(
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontSize = 11.sp,
                         lineHeight = 16.sp,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun HubExploreCard(
+    hub: HubSummary,
+    title: String,
+    subtitle: String?,
+    onClick: () -> Unit,
+) {
+    val accent = hub.accentColor?.let { hex ->
+        val cleaned = hex.removePrefix("#")
+        cleaned.toLongOrNull(16)?.let { value ->
+            if (cleaned.length == 6) Color(0xFF000000 or value) else Color(value)
+        }
+    } ?: MaterialTheme.colorScheme.primary
+
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(96.dp)
+            .clickable(onClick = onClick),
+        shape = RoundedCornerShape(20.dp),
+        border = BorderStroke(1.2.dp, accent.copy(alpha = 0.35f)),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxSize().padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(8.dp)
+                    .background(accent, androidx.compose.foundation.shape.CircleShape),
+            )
+            Spacer(Modifier.size(14.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = title,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 17.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                if (subtitle != null) {
+                    Text(
+                        text = subtitle,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        fontSize = 12.sp,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                     )
