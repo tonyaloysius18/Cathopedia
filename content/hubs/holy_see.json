@@ -1,7 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": 1,
-
+  "contentVersion": 2,
   "hub": {
     "id": "holy_see",
     "slug": "holy-see",
@@ -12,9 +11,13 @@
     "heroAsset": "hub/holy_see/hero_colonnade.svg",
     "accentColor": "#B8963E",
     "sortOrder": 1,
-    "tags": ["vatican", "papacy", "rome", "pilgrimage"]
+    "tags": [
+      "vatican",
+      "papacy",
+      "rome",
+      "pilgrimage"
+    ]
   },
-
   "sections": [
     {
       "id": "holy_see.vatican_city",
@@ -31,40 +34,45 @@
         "art.vatican_city.lateran_treaty",
         "art.vatican_city.how_it_runs"
       ],
-      "diagramIds": ["diag.vatican_city_plan"]
+      "diagramIds": [
+        "diag.vatican_city_plan"
+      ]
     },
     {
       "id": "holy_see.st_peters",
       "sortOrder": 2,
-      "status": "STUB",
-      "layout": "DIAGRAM",
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
       "titleKey": "sec.st_peters.title",
       "summaryKey": "sec.st_peters.summary",
-      "icon": "ic_basilica"
+      "icon": "ic_basilica",
+      "articleIds": [
+        "art.st_peters.overview"
+      ]
     },
     {
       "id": "holy_see.papal_tombs",
       "sortOrder": 3,
-      "status": "STUB",
-      "layout": "COLLECTION",
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
       "titleKey": "sec.papal_tombs.title",
       "summaryKey": "sec.papal_tombs.summary",
       "icon": "ic_tomb",
-      "collectionQuery": {
-        "entityType": "POPE",
-        "filter": { "hasBurialPlace": true },
-        "groupBy": "burialPlaceId",
-        "sortBy": "reignStart"
-      }
+      "articleIds": [
+        "art.papal_tombs.overview"
+      ]
     },
     {
       "id": "holy_see.museums",
       "sortOrder": 4,
-      "status": "STUB",
+      "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.museums.title",
       "summaryKey": "sec.museums.summary",
-      "icon": "ic_museum"
+      "icon": "ic_museum",
+      "articleIds": [
+        "art.museums.overview"
+      ]
     },
     {
       "id": "holy_see.sistine_chapel",
@@ -79,78 +87,125 @@
         "art.sistine.history",
         "art.sistine.layout"
       ],
-      "diagramIds": ["diag.sistine_ceiling"]
+      "diagramIds": [
+        "diag.sistine_ceiling"
+      ]
     },
     {
       "id": "holy_see.conclave",
       "sortOrder": 6,
-      "status": "STUB",
+      "status": "PUBLISHED",
       "layout": "STEPPER",
       "titleKey": "sec.conclave.title",
       "summaryKey": "sec.conclave.summary",
-      "icon": "ic_smoke"
+      "icon": "ic_smoke",
+      "stepperId": "step.conclave"
     },
     {
       "id": "holy_see.councils",
       "sortOrder": 7,
-      "status": "STUB",
+      "status": "PUBLISHED",
       "layout": "TIMELINE",
       "titleKey": "sec.councils.title",
       "summaryKey": "sec.councils.summary",
-      "icon": "ic_council"
+      "icon": "ic_council",
+      "timelineId": "tl.councils"
     },
     {
       "id": "holy_see.canon_law",
       "sortOrder": 8,
-      "status": "STUB",
+      "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.canon_law.title",
       "summaryKey": "sec.canon_law.summary",
-      "icon": "ic_scroll"
+      "icon": "ic_scroll",
+      "articleIds": [
+        "art.canon_law.overview"
+      ]
     },
     {
       "id": "holy_see.papal_documents",
       "sortOrder": 9,
-      "status": "STUB",
-      "layout": "COLLECTION",
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
       "titleKey": "sec.papal_documents.title",
       "summaryKey": "sec.papal_documents.summary",
       "icon": "ic_letter",
-      "collectionQuery": {
-        "entityType": "DOCUMENT",
-        "filter": { "kind": ["ENCYCLICAL", "APOSTOLIC_CONSTITUTION", "APOSTOLIC_EXHORTATION", "MOTU_PROPRIO"] },
-        "groupBy": "popeId",
-        "sortBy": "publishedYear"
-      }
+      "articleIds": [
+        "art.papal_documents.overview"
+      ]
     },
     {
       "id": "holy_see.seeing_the_pope",
       "sortOrder": 10,
-      "status": "STUB",
+      "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.seeing_the_pope.title",
       "summaryKey": "sec.seeing_the_pope.summary",
-      "icon": "ic_crowd"
+      "icon": "ic_crowd",
+      "articleIds": [
+        "art.seeing_the_pope.overview"
+      ]
     }
   ],
-
   "factSheets": [
     {
       "id": "fact.vatican_city",
       "titleKey": "fact.vatican_city.title",
       "facts": [
-        { "id": "fact.vatican_city.area", "labelKey": "fact.vatican_city.area.label", "valueKey": "fact.vatican_city.area.value", "icon": "ic_area" },
-        { "id": "fact.vatican_city.population", "labelKey": "fact.vatican_city.population.label", "valueKey": "fact.vatican_city.population.value", "icon": "ic_people", "footnoteKey": "fact.vatican_city.population.footnote", "volatile": true },
-        { "id": "fact.vatican_city.founded", "labelKey": "fact.vatican_city.founded.label", "valueKey": "fact.vatican_city.founded.value", "icon": "ic_calendar" },
-        { "id": "fact.vatican_city.head_of_state", "labelKey": "fact.vatican_city.head_of_state.label", "valueKey": "fact.vatican_city.head_of_state.value", "icon": "ic_keys" },
-        { "id": "fact.vatican_city.languages", "labelKey": "fact.vatican_city.languages.label", "valueKey": "fact.vatican_city.languages.value", "icon": "ic_language" },
-        { "id": "fact.vatican_city.currency", "labelKey": "fact.vatican_city.currency.label", "valueKey": "fact.vatican_city.currency.value", "icon": "ic_coin" },
-        { "id": "fact.vatican_city.defence", "labelKey": "fact.vatican_city.defence.label", "valueKey": "fact.vatican_city.defence.value", "icon": "ic_halberd" },
-        { "id": "fact.vatican_city.domain", "labelKey": "fact.vatican_city.domain.label", "valueKey": "fact.vatican_city.domain.value", "icon": "ic_globe" }
+        {
+          "id": "fact.vatican_city.area",
+          "labelKey": "fact.vatican_city.area.label",
+          "valueKey": "fact.vatican_city.area.value",
+          "icon": "ic_area"
+        },
+        {
+          "id": "fact.vatican_city.population",
+          "labelKey": "fact.vatican_city.population.label",
+          "valueKey": "fact.vatican_city.population.value",
+          "icon": "ic_people",
+          "footnoteKey": "fact.vatican_city.population.footnote",
+          "volatile": true
+        },
+        {
+          "id": "fact.vatican_city.founded",
+          "labelKey": "fact.vatican_city.founded.label",
+          "valueKey": "fact.vatican_city.founded.value",
+          "icon": "ic_calendar"
+        },
+        {
+          "id": "fact.vatican_city.head_of_state",
+          "labelKey": "fact.vatican_city.head_of_state.label",
+          "valueKey": "fact.vatican_city.head_of_state.value",
+          "icon": "ic_keys"
+        },
+        {
+          "id": "fact.vatican_city.languages",
+          "labelKey": "fact.vatican_city.languages.label",
+          "valueKey": "fact.vatican_city.languages.value",
+          "icon": "ic_language"
+        },
+        {
+          "id": "fact.vatican_city.currency",
+          "labelKey": "fact.vatican_city.currency.label",
+          "valueKey": "fact.vatican_city.currency.value",
+          "icon": "ic_coin"
+        },
+        {
+          "id": "fact.vatican_city.defence",
+          "labelKey": "fact.vatican_city.defence.label",
+          "valueKey": "fact.vatican_city.defence.value",
+          "icon": "ic_halberd"
+        },
+        {
+          "id": "fact.vatican_city.domain",
+          "labelKey": "fact.vatican_city.domain.label",
+          "valueKey": "fact.vatican_city.domain.value",
+          "icon": "ic_globe"
+        }
       ]
     }
   ],
-
   "articles": [
     {
       "id": "art.vatican_city.holy_see_vs_state",
@@ -160,17 +215,38 @@
       "leadKey": "art.holy_see_vs_state.lead",
       "readingTimeMinutes": 3,
       "blocks": [
-        { "type": "paragraph", "textKey": "art.holy_see_vs_state.p1" },
-        { "type": "paragraph", "textKey": "art.holy_see_vs_state.p2" },
-        { "type": "heading", "level": 2, "textKey": "art.holy_see_vs_state.h_difference" },
+        {
+          "type": "paragraph",
+          "textKey": "art.holy_see_vs_state.p1"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.holy_see_vs_state.p2"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.holy_see_vs_state.h_difference"
+        },
         {
           "type": "factGrid",
           "facts": [
-            { "labelKey": "art.holy_see_vs_state.grid.see.label", "valueKey": "art.holy_see_vs_state.grid.see.value", "icon": "ic_keys" },
-            { "labelKey": "art.holy_see_vs_state.grid.state.label", "valueKey": "art.holy_see_vs_state.grid.state.value", "icon": "ic_city_walls" }
+            {
+              "labelKey": "art.holy_see_vs_state.grid.see.label",
+              "valueKey": "art.holy_see_vs_state.grid.see.value",
+              "icon": "ic_keys"
+            },
+            {
+              "labelKey": "art.holy_see_vs_state.grid.state.label",
+              "valueKey": "art.holy_see_vs_state.grid.state.value",
+              "icon": "ic_city_walls"
+            }
           ]
         },
-        { "type": "paragraph", "textKey": "art.holy_see_vs_state.p3" },
+        {
+          "type": "paragraph",
+          "textKey": "art.holy_see_vs_state.p3"
+        },
         {
           "type": "callout",
           "tone": "note",
@@ -179,12 +255,23 @@
         }
       ],
       "related": [
-        { "type": "ARTICLE", "id": "art.vatican_city.lateran_treaty" },
-        { "type": "ARTICLE", "id": "art.vatican_city.how_it_runs" }
+        {
+          "type": "ARTICLE",
+          "id": "art.vatican_city.lateran_treaty"
+        },
+        {
+          "type": "ARTICLE",
+          "id": "art.vatican_city.how_it_runs"
+        }
       ],
       "sources": [
-        { "label": "Annuario Pontificio", "accessed": "2026-08-24" },
-        { "label": "Lateran Treaty (1929), text of the Conciliation" }
+        {
+          "label": "Annuario Pontificio",
+          "accessed": "2026-08-24"
+        },
+        {
+          "label": "Lateran Treaty (1929), text of the Conciliation"
+        }
       ]
     },
     {
@@ -195,11 +282,28 @@
       "leadKey": "art.lateran_treaty.lead",
       "readingTimeMinutes": 4,
       "blocks": [
-        { "type": "paragraph", "textKey": "art.lateran_treaty.p1" },
-        { "type": "heading", "level": 2, "textKey": "art.lateran_treaty.h_roman_question" },
-        { "type": "paragraph", "textKey": "art.lateran_treaty.p2" },
-        { "type": "paragraph", "textKey": "art.lateran_treaty.p3" },
-        { "type": "heading", "level": 2, "textKey": "art.lateran_treaty.h_what_it_did" },
+        {
+          "type": "paragraph",
+          "textKey": "art.lateran_treaty.p1"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.lateran_treaty.h_roman_question"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.lateran_treaty.p2"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.lateran_treaty.p3"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.lateran_treaty.h_what_it_did"
+        },
         {
           "type": "list",
           "style": "bullet",
@@ -210,10 +314,22 @@
             "art.lateran_treaty.li4"
           ]
         },
-        { "type": "timelineRef", "timelineId": "tl.roman_question" }
+        {
+          "type": "timelineRef",
+          "timelineId": "tl.roman_question"
+        }
       ],
-      "related": [{ "type": "ARTICLE", "id": "art.vatican_city.how_it_runs" }],
-      "sources": [{ "label": "Lateran Treaty, 11 February 1929" }]
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.vatican_city.how_it_runs"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Lateran Treaty, 11 February 1929"
+        }
+      ]
     },
     {
       "id": "art.vatican_city.how_it_runs",
@@ -223,9 +339,19 @@
       "leadKey": "art.how_it_runs.lead",
       "readingTimeMinutes": 5,
       "blocks": [
-        { "type": "paragraph", "textKey": "art.how_it_runs.p1" },
-        { "type": "heading", "level": 2, "textKey": "art.how_it_runs.h_curia" },
-        { "type": "paragraph", "textKey": "art.how_it_runs.p2" },
+        {
+          "type": "paragraph",
+          "textKey": "art.how_it_runs.p1"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.how_it_runs.h_curia"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.how_it_runs.p2"
+        },
         {
           "type": "list",
           "style": "bullet",
@@ -236,9 +362,19 @@
             "art.how_it_runs.li_economy"
           ]
         },
-        { "type": "heading", "level": 2, "textKey": "art.how_it_runs.h_daily_life" },
-        { "type": "paragraph", "textKey": "art.how_it_runs.p3" },
-        { "type": "diagramRef", "diagramId": "diag.vatican_city_plan" },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.how_it_runs.h_daily_life"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.how_it_runs.p3"
+        },
+        {
+          "type": "diagramRef",
+          "diagramId": "diag.vatican_city_plan"
+        },
         {
           "type": "externalLink",
           "labelKey": "art.how_it_runs.link_praedicate",
@@ -246,7 +382,11 @@
           "reason": "LICENSED_TEXT"
         }
       ],
-      "sources": [{ "label": "Praedicate Evangelium (2022)" }]
+      "sources": [
+        {
+          "label": "Praedicate Evangelium (2022)"
+        }
+      ]
     },
     {
       "id": "art.sistine.history",
@@ -256,29 +396,87 @@
       "leadKey": "art.sistine_history.lead",
       "readingTimeMinutes": 6,
       "blocks": [
-        { "type": "paragraph", "textKey": "art.sistine_history.p1" },
-        { "type": "heading", "level": 2, "textKey": "art.sistine_history.h_walls" },
-        { "type": "paragraph", "textKey": "art.sistine_history.p2" },
+        {
+          "type": "paragraph",
+          "textKey": "art.sistine_history.p1"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.sistine_history.h_walls"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.sistine_history.p2"
+        },
         {
           "type": "entityCards",
           "titleKey": "art.sistine_history.cards_painters",
           "refs": [
-            { "type": "ARTWORK", "id": "art_work.perugino_keys", "labelKey": "art.sistine_history.card_perugino" },
-            { "type": "ARTWORK", "id": "art_work.botticelli_temptation", "labelKey": "art.sistine_history.card_botticelli" },
-            { "type": "ARTWORK", "id": "art_work.ghirlandaio_calling", "labelKey": "art.sistine_history.card_ghirlandaio" }
+            {
+              "type": "ARTWORK",
+              "id": "art_work.perugino_keys",
+              "labelKey": "art.sistine_history.card_perugino"
+            },
+            {
+              "type": "ARTWORK",
+              "id": "art_work.botticelli_temptation",
+              "labelKey": "art.sistine_history.card_botticelli"
+            },
+            {
+              "type": "ARTWORK",
+              "id": "art_work.ghirlandaio_calling",
+              "labelKey": "art.sistine_history.card_ghirlandaio"
+            }
           ]
         },
-        { "type": "heading", "level": 2, "textKey": "art.sistine_history.h_ceiling" },
-        { "type": "paragraph", "textKey": "art.sistine_history.p3" },
-        { "type": "paragraph", "textKey": "art.sistine_history.p4" },
-        { "type": "heading", "level": 2, "textKey": "art.sistine_history.h_judgement" },
-        { "type": "paragraph", "textKey": "art.sistine_history.p5" },
-        { "type": "heading", "level": 2, "textKey": "art.sistine_history.h_restoration" },
-        { "type": "paragraph", "textKey": "art.sistine_history.p6" },
-        { "type": "timelineRef", "timelineId": "tl.sistine" }
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.sistine_history.h_ceiling"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.sistine_history.p3"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.sistine_history.p4"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.sistine_history.h_judgement"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.sistine_history.p5"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.sistine_history.h_restoration"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.sistine_history.p6"
+        },
+        {
+          "type": "timelineRef",
+          "timelineId": "tl.sistine"
+        }
       ],
-      "related": [{ "type": "ARTICLE", "id": "art.sistine.layout" }],
-      "sources": [{ "label": "Vatican Museums, Sistine Chapel restoration reports" }]
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.sistine.layout"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vatican Museums, Sistine Chapel restoration reports"
+        }
+      ]
     },
     {
       "id": "art.sistine.layout",
@@ -288,10 +486,23 @@
       "leadKey": "art.sistine_layout.lead",
       "readingTimeMinutes": 5,
       "blocks": [
-        { "type": "paragraph", "textKey": "art.sistine_layout.p1" },
-        { "type": "diagramRef", "diagramId": "diag.sistine_ceiling" },
-        { "type": "heading", "level": 2, "textKey": "art.sistine_layout.h_reading_order" },
-        { "type": "paragraph", "textKey": "art.sistine_layout.p2" },
+        {
+          "type": "paragraph",
+          "textKey": "art.sistine_layout.p1"
+        },
+        {
+          "type": "diagramRef",
+          "diagramId": "diag.sistine_ceiling"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.sistine_layout.h_reading_order"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.sistine_layout.p2"
+        },
         {
           "type": "list",
           "style": "numbered",
@@ -308,13 +519,193 @@
           "titleKey": "art.sistine_layout.callout.title",
           "textKey": "art.sistine_layout.callout.body"
         },
-        { "type": "heading", "level": 2, "textKey": "art.sistine_layout.h_conclave" },
-        { "type": "paragraph", "textKey": "art.sistine_layout.p3" }
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.sistine_layout.h_conclave"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.sistine_layout.p3"
+        }
       ],
-      "related": [{ "type": "ARTICLE", "id": "art.sistine.history" }]
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.sistine.history"
+        }
+      ]
+    },
+    {
+      "id": "art.st_peters.overview",
+      "sectionId": "holy_see.st_peters",
+      "sortOrder": 1,
+      "titleKey": "art.st_peters.title",
+      "leadKey": "art.st_peters.lead",
+      "readingTimeMinutes": 3,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.st_peters.p1"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.st_peters.p2"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.st_peters.h_inside"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.st_peters.p3"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.st_peters.callout.title",
+          "textKey": "art.st_peters.callout.body"
+        }
+      ]
+    },
+    {
+      "id": "art.papal_tombs.overview",
+      "sectionId": "holy_see.papal_tombs",
+      "sortOrder": 1,
+      "titleKey": "art.papal_tombs.title",
+      "leadKey": "art.papal_tombs.lead",
+      "readingTimeMinutes": 3,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.papal_tombs.p1"
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": [
+            "art.papal_tombs.list.peter",
+            "art.papal_tombs.list.jp2",
+            "art.papal_tombs.list.renaissance"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.papal_tombs.p2"
+        }
+      ]
+    },
+    {
+      "id": "art.museums.overview",
+      "sectionId": "holy_see.museums",
+      "sortOrder": 1,
+      "titleKey": "art.museums.title",
+      "leadKey": "art.museums.lead",
+      "readingTimeMinutes": 3,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.museums.p1"
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": [
+            "art.museums.list.raphael",
+            "art.museums.list.maps",
+            "art.museums.list.pinacoteca",
+            "art.museums.list.egyptian"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.museums.p2"
+        }
+      ]
+    },
+    {
+      "id": "art.canon_law.overview",
+      "sectionId": "holy_see.canon_law",
+      "sortOrder": 1,
+      "titleKey": "art.canon_law.title",
+      "leadKey": "art.canon_law.lead",
+      "readingTimeMinutes": 2,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.canon_law.p1"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.canon_law.p2"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.canon_law.callout.title",
+          "textKey": "art.canon_law.callout.body"
+        }
+      ]
+    },
+    {
+      "id": "art.papal_documents.overview",
+      "sectionId": "holy_see.papal_documents",
+      "sortOrder": 1,
+      "titleKey": "art.papal_documents.title",
+      "leadKey": "art.papal_documents.lead",
+      "readingTimeMinutes": 3,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.papal_documents.p1"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "art.papal_documents.grid.encyclical.label",
+              "valueKey": "art.papal_documents.grid.encyclical.value"
+            },
+            {
+              "labelKey": "art.papal_documents.grid.constitution.label",
+              "valueKey": "art.papal_documents.grid.constitution.value"
+            },
+            {
+              "labelKey": "art.papal_documents.grid.exhortation.label",
+              "valueKey": "art.papal_documents.grid.exhortation.value"
+            },
+            {
+              "labelKey": "art.papal_documents.grid.motu_proprio.label",
+              "valueKey": "art.papal_documents.grid.motu_proprio.value"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.papal_documents.p2"
+        }
+      ]
+    },
+    {
+      "id": "art.seeing_the_pope.overview",
+      "sectionId": "holy_see.seeing_the_pope",
+      "sortOrder": 1,
+      "titleKey": "art.seeing_the_pope.title",
+      "leadKey": "art.seeing_the_pope.lead",
+      "readingTimeMinutes": 2,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.seeing_the_pope.p1"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.seeing_the_pope.p2"
+        }
+      ]
     }
   ],
-
   "diagrams": [
     {
       "id": "diag.vatican_city_plan",
@@ -330,32 +721,67 @@
           "labelKey": "diag.vcp.st_peters.label",
           "blurbKey": "diag.vcp.st_peters.blurb",
           "order": 1,
-          "shape": { "type": "rect", "x": 0.46, "y": 0.55, "w": 0.20, "h": 0.16 },
-          "target": { "type": "CHURCH", "id": "church.st_peters_basilica" }
+          "shape": {
+            "type": "rect",
+            "x": 0.46,
+            "y": 0.55,
+            "w": 0.2,
+            "h": 0.16
+          },
+          "target": {
+            "type": "CHURCH",
+            "id": "church.st_peters_basilica"
+          }
         },
         {
           "id": "hs.vcp.st_peters_square",
           "labelKey": "diag.vcp.square.label",
           "blurbKey": "diag.vcp.square.blurb",
           "order": 2,
-          "shape": { "type": "circle", "cx": 0.74, "cy": 0.62, "r": 0.10 },
-          "target": { "type": "PLACE", "id": "place.st_peters_square" }
+          "shape": {
+            "type": "circle",
+            "cx": 0.74,
+            "cy": 0.62,
+            "r": 0.1
+          },
+          "target": {
+            "type": "PLACE",
+            "id": "place.st_peters_square"
+          }
         },
         {
           "id": "hs.vcp.museums",
           "labelKey": "diag.vcp.museums.label",
           "blurbKey": "diag.vcp.museums.blurb",
           "order": 3,
-          "shape": { "type": "rect", "x": 0.30, "y": 0.14, "w": 0.26, "h": 0.22 },
-          "target": { "type": "PLACE", "id": "place.vatican_museums" }
+          "shape": {
+            "type": "rect",
+            "x": 0.3,
+            "y": 0.14,
+            "w": 0.26,
+            "h": 0.22
+          },
+          "target": {
+            "type": "PLACE",
+            "id": "place.vatican_museums"
+          }
         },
         {
           "id": "hs.vcp.sistine",
           "labelKey": "diag.vcp.sistine.label",
           "blurbKey": "diag.vcp.sistine.blurb",
           "order": 4,
-          "shape": { "type": "rect", "x": 0.41, "y": 0.42, "w": 0.09, "h": 0.11 },
-          "target": { "type": "PLACE", "id": "place.sistine_chapel" }
+          "shape": {
+            "type": "rect",
+            "x": 0.41,
+            "y": 0.42,
+            "w": 0.09,
+            "h": 0.11
+          },
+          "target": {
+            "type": "PLACE",
+            "id": "place.sistine_chapel"
+          }
         },
         {
           "id": "hs.vcp.gardens",
@@ -365,36 +791,83 @@
           "shape": {
             "type": "polygon",
             "points": [
-              { "x": 0.06, "y": 0.30 }, { "x": 0.34, "y": 0.34 },
-              { "x": 0.38, "y": 0.72 }, { "x": 0.14, "y": 0.80 },
-              { "x": 0.04, "y": 0.56 }
+              {
+                "x": 0.06,
+                "y": 0.3
+              },
+              {
+                "x": 0.34,
+                "y": 0.34
+              },
+              {
+                "x": 0.38,
+                "y": 0.72
+              },
+              {
+                "x": 0.14,
+                "y": 0.8
+              },
+              {
+                "x": 0.04,
+                "y": 0.56
+              }
             ]
           },
-          "target": { "type": "PLACE", "id": "place.vatican_gardens" }
+          "target": {
+            "type": "PLACE",
+            "id": "place.vatican_gardens"
+          }
         },
         {
           "id": "hs.vcp.apostolic_palace",
           "labelKey": "diag.vcp.palace.label",
           "blurbKey": "diag.vcp.palace.blurb",
           "order": 6,
-          "shape": { "type": "rect", "x": 0.44, "y": 0.36, "w": 0.14, "h": 0.14 },
-          "target": { "type": "PLACE", "id": "place.apostolic_palace" }
+          "shape": {
+            "type": "rect",
+            "x": 0.44,
+            "y": 0.36,
+            "w": 0.14,
+            "h": 0.14
+          },
+          "target": {
+            "type": "PLACE",
+            "id": "place.apostolic_palace"
+          }
         },
         {
           "id": "hs.vcp.santa_marta",
           "labelKey": "diag.vcp.santa_marta.label",
           "blurbKey": "diag.vcp.santa_marta.blurb",
           "order": 7,
-          "shape": { "type": "rect", "x": 0.40, "y": 0.76, "w": 0.10, "h": 0.08 },
-          "target": { "type": "PLACE", "id": "place.domus_sanctae_marthae" }
+          "shape": {
+            "type": "rect",
+            "x": 0.4,
+            "y": 0.76,
+            "w": 0.1,
+            "h": 0.08
+          },
+          "target": {
+            "type": "PLACE",
+            "id": "place.domus_sanctae_marthae"
+          }
         },
         {
           "id": "hs.vcp.governorate",
           "labelKey": "diag.vcp.governorate.label",
           "blurbKey": "diag.vcp.governorate.blurb",
           "order": 8,
-          "shape": { "type": "rect", "x": 0.26, "y": 0.62, "w": 0.11, "h": 0.09 },
-          "target": { "type": "PLACE", "id": "place.governorate_palace" }
+          "shape": {
+            "type": "rect",
+            "x": 0.26,
+            "y": 0.62,
+            "w": 0.11,
+            "h": 0.09
+          },
+          "target": {
+            "type": "PLACE",
+            "id": "place.governorate_palace"
+          }
         }
       ]
     },
@@ -406,56 +879,549 @@
       "aspectRatio": 0.33,
       "minZoom": 1,
       "maxZoom": 6,
-      "initialFocus": { "x": 0.5, "y": 0.5 },
+      "initialFocus": {
+        "x": 0.5,
+        "y": 0.5
+      },
       "hotspots": [
-        { "id": "hs.sc.g1", "order": 1, "labelKey": "diag.sc.g1.label", "blurbKey": "diag.sc.g1.blurb", "shape": { "type": "rect", "x": 0.42, "y": 0.06, "w": 0.16, "h": 0.07 }, "target": { "type": "ARTWORK", "id": "art_work.separation_light_darkness" } },
-        { "id": "hs.sc.g2", "order": 2, "labelKey": "diag.sc.g2.label", "blurbKey": "diag.sc.g2.blurb", "shape": { "type": "rect", "x": 0.36, "y": 0.14, "w": 0.28, "h": 0.09 }, "target": { "type": "ARTWORK", "id": "art_work.creation_sun_moon_plants" } },
-        { "id": "hs.sc.g3", "order": 3, "labelKey": "diag.sc.g3.label", "blurbKey": "diag.sc.g3.blurb", "shape": { "type": "rect", "x": 0.42, "y": 0.24, "w": 0.16, "h": 0.07 }, "target": { "type": "ARTWORK", "id": "art_work.separation_land_water" } },
-        { "id": "hs.sc.g4", "order": 4, "labelKey": "diag.sc.g4.label", "blurbKey": "diag.sc.g4.blurb", "shape": { "type": "rect", "x": 0.36, "y": 0.32, "w": 0.28, "h": 0.09 }, "target": { "type": "ARTWORK", "id": "art_work.creation_of_adam" } },
-        { "id": "hs.sc.g5", "order": 5, "labelKey": "diag.sc.g5.label", "blurbKey": "diag.sc.g5.blurb", "shape": { "type": "rect", "x": 0.42, "y": 0.42, "w": 0.16, "h": 0.07 }, "target": { "type": "ARTWORK", "id": "art_work.creation_of_eve" } },
-        { "id": "hs.sc.g6", "order": 6, "labelKey": "diag.sc.g6.label", "blurbKey": "diag.sc.g6.blurb", "shape": { "type": "rect", "x": 0.36, "y": 0.50, "w": 0.28, "h": 0.09 }, "target": { "type": "ARTWORK", "id": "art_work.fall_and_expulsion" } },
-        { "id": "hs.sc.g7", "order": 7, "labelKey": "diag.sc.g7.label", "blurbKey": "diag.sc.g7.blurb", "shape": { "type": "rect", "x": 0.42, "y": 0.60, "w": 0.16, "h": 0.07 }, "target": { "type": "ARTWORK", "id": "art_work.sacrifice_of_noah" } },
-        { "id": "hs.sc.g8", "order": 8, "labelKey": "diag.sc.g8.label", "blurbKey": "diag.sc.g8.blurb", "shape": { "type": "rect", "x": 0.36, "y": 0.68, "w": 0.28, "h": 0.09 }, "target": { "type": "ARTWORK", "id": "art_work.the_flood" } },
-        { "id": "hs.sc.g9", "order": 9, "labelKey": "diag.sc.g9.label", "blurbKey": "diag.sc.g9.blurb", "shape": { "type": "rect", "x": 0.42, "y": 0.78, "w": 0.16, "h": 0.07 }, "target": { "type": "ARTWORK", "id": "art_work.drunkenness_of_noah" } },
-
-        { "id": "hs.sc.jonah", "order": 10, "labelKey": "diag.sc.jonah.label", "blurbKey": "diag.sc.jonah.blurb", "shape": { "type": "rect", "x": 0.44, "y": 0.01, "w": 0.12, "h": 0.05 }, "target": { "type": "ARTWORK", "id": "art_work.prophet_jonah" } },
-        { "id": "hs.sc.jeremiah", "order": 11, "labelKey": "diag.sc.jeremiah.label", "blurbKey": "diag.sc.jeremiah.blurb", "shape": { "type": "rect", "x": 0.20, "y": 0.10, "w": 0.14, "h": 0.06 }, "target": { "type": "ARTWORK", "id": "art_work.prophet_jeremiah" } },
-        { "id": "hs.sc.libyan_sibyl", "order": 12, "labelKey": "diag.sc.libyan.label", "blurbKey": "diag.sc.libyan.blurb", "shape": { "type": "rect", "x": 0.66, "y": 0.10, "w": 0.14, "h": 0.06 }, "target": { "type": "ARTWORK", "id": "art_work.libyan_sibyl" } },
-        { "id": "hs.sc.persian_sibyl", "order": 13, "labelKey": "diag.sc.persian.label", "blurbKey": "diag.sc.persian.blurb", "shape": { "type": "rect", "x": 0.20, "y": 0.26, "w": 0.14, "h": 0.06 }, "target": { "type": "ARTWORK", "id": "art_work.persian_sibyl" } },
-        { "id": "hs.sc.daniel", "order": 14, "labelKey": "diag.sc.daniel.label", "blurbKey": "diag.sc.daniel.blurb", "shape": { "type": "rect", "x": 0.66, "y": 0.26, "w": 0.14, "h": 0.06 }, "target": { "type": "ARTWORK", "id": "art_work.prophet_daniel" } },
-        { "id": "hs.sc.ezekiel", "order": 15, "labelKey": "diag.sc.ezekiel.label", "blurbKey": "diag.sc.ezekiel.blurb", "shape": { "type": "rect", "x": 0.20, "y": 0.42, "w": 0.14, "h": 0.06 }, "target": { "type": "ARTWORK", "id": "art_work.prophet_ezekiel" } },
-        { "id": "hs.sc.cumaean_sibyl", "order": 16, "labelKey": "diag.sc.cumaean.label", "blurbKey": "diag.sc.cumaean.blurb", "shape": { "type": "rect", "x": 0.66, "y": 0.42, "w": 0.14, "h": 0.06 }, "target": { "type": "ARTWORK", "id": "art_work.cumaean_sibyl" } },
-        { "id": "hs.sc.erythraean_sibyl", "order": 17, "labelKey": "diag.sc.erythraean.label", "blurbKey": "diag.sc.erythraean.blurb", "shape": { "type": "rect", "x": 0.20, "y": 0.58, "w": 0.14, "h": 0.06 }, "target": { "type": "ARTWORK", "id": "art_work.erythraean_sibyl" } },
-        { "id": "hs.sc.isaiah", "order": 18, "labelKey": "diag.sc.isaiah.label", "blurbKey": "diag.sc.isaiah.blurb", "shape": { "type": "rect", "x": 0.66, "y": 0.58, "w": 0.14, "h": 0.06 }, "target": { "type": "ARTWORK", "id": "art_work.prophet_isaiah" } },
-        { "id": "hs.sc.joel", "order": 19, "labelKey": "diag.sc.joel.label", "blurbKey": "diag.sc.joel.blurb", "shape": { "type": "rect", "x": 0.20, "y": 0.74, "w": 0.14, "h": 0.06 }, "target": { "type": "ARTWORK", "id": "art_work.prophet_joel" } },
-        { "id": "hs.sc.delphic_sibyl", "order": 20, "labelKey": "diag.sc.delphic.label", "blurbKey": "diag.sc.delphic.blurb", "shape": { "type": "rect", "x": 0.66, "y": 0.74, "w": 0.14, "h": 0.06 }, "target": { "type": "ARTWORK", "id": "art_work.delphic_sibyl" } },
-        { "id": "hs.sc.zechariah", "order": 21, "labelKey": "diag.sc.zechariah.label", "blurbKey": "diag.sc.zechariah.blurb", "shape": { "type": "rect", "x": 0.44, "y": 0.90, "w": 0.12, "h": 0.05 }, "target": { "type": "ARTWORK", "id": "art_work.prophet_zechariah" } }
+        {
+          "id": "hs.sc.g1",
+          "order": 1,
+          "labelKey": "diag.sc.g1.label",
+          "blurbKey": "diag.sc.g1.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.42,
+            "y": 0.06,
+            "w": 0.16,
+            "h": 0.07
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.separation_light_darkness"
+          }
+        },
+        {
+          "id": "hs.sc.g2",
+          "order": 2,
+          "labelKey": "diag.sc.g2.label",
+          "blurbKey": "diag.sc.g2.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.36,
+            "y": 0.14,
+            "w": 0.28,
+            "h": 0.09
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.creation_sun_moon_plants"
+          }
+        },
+        {
+          "id": "hs.sc.g3",
+          "order": 3,
+          "labelKey": "diag.sc.g3.label",
+          "blurbKey": "diag.sc.g3.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.42,
+            "y": 0.24,
+            "w": 0.16,
+            "h": 0.07
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.separation_land_water"
+          }
+        },
+        {
+          "id": "hs.sc.g4",
+          "order": 4,
+          "labelKey": "diag.sc.g4.label",
+          "blurbKey": "diag.sc.g4.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.36,
+            "y": 0.32,
+            "w": 0.28,
+            "h": 0.09
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.creation_of_adam"
+          }
+        },
+        {
+          "id": "hs.sc.g5",
+          "order": 5,
+          "labelKey": "diag.sc.g5.label",
+          "blurbKey": "diag.sc.g5.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.42,
+            "y": 0.42,
+            "w": 0.16,
+            "h": 0.07
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.creation_of_eve"
+          }
+        },
+        {
+          "id": "hs.sc.g6",
+          "order": 6,
+          "labelKey": "diag.sc.g6.label",
+          "blurbKey": "diag.sc.g6.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.36,
+            "y": 0.5,
+            "w": 0.28,
+            "h": 0.09
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.fall_and_expulsion"
+          }
+        },
+        {
+          "id": "hs.sc.g7",
+          "order": 7,
+          "labelKey": "diag.sc.g7.label",
+          "blurbKey": "diag.sc.g7.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.42,
+            "y": 0.6,
+            "w": 0.16,
+            "h": 0.07
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.sacrifice_of_noah"
+          }
+        },
+        {
+          "id": "hs.sc.g8",
+          "order": 8,
+          "labelKey": "diag.sc.g8.label",
+          "blurbKey": "diag.sc.g8.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.36,
+            "y": 0.68,
+            "w": 0.28,
+            "h": 0.09
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.the_flood"
+          }
+        },
+        {
+          "id": "hs.sc.g9",
+          "order": 9,
+          "labelKey": "diag.sc.g9.label",
+          "blurbKey": "diag.sc.g9.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.42,
+            "y": 0.78,
+            "w": 0.16,
+            "h": 0.07
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.drunkenness_of_noah"
+          }
+        },
+        {
+          "id": "hs.sc.jonah",
+          "order": 10,
+          "labelKey": "diag.sc.jonah.label",
+          "blurbKey": "diag.sc.jonah.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.44,
+            "y": 0.01,
+            "w": 0.12,
+            "h": 0.05
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.prophet_jonah"
+          }
+        },
+        {
+          "id": "hs.sc.jeremiah",
+          "order": 11,
+          "labelKey": "diag.sc.jeremiah.label",
+          "blurbKey": "diag.sc.jeremiah.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.2,
+            "y": 0.1,
+            "w": 0.14,
+            "h": 0.06
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.prophet_jeremiah"
+          }
+        },
+        {
+          "id": "hs.sc.libyan_sibyl",
+          "order": 12,
+          "labelKey": "diag.sc.libyan.label",
+          "blurbKey": "diag.sc.libyan.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.66,
+            "y": 0.1,
+            "w": 0.14,
+            "h": 0.06
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.libyan_sibyl"
+          }
+        },
+        {
+          "id": "hs.sc.persian_sibyl",
+          "order": 13,
+          "labelKey": "diag.sc.persian.label",
+          "blurbKey": "diag.sc.persian.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.2,
+            "y": 0.26,
+            "w": 0.14,
+            "h": 0.06
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.persian_sibyl"
+          }
+        },
+        {
+          "id": "hs.sc.daniel",
+          "order": 14,
+          "labelKey": "diag.sc.daniel.label",
+          "blurbKey": "diag.sc.daniel.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.66,
+            "y": 0.26,
+            "w": 0.14,
+            "h": 0.06
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.prophet_daniel"
+          }
+        },
+        {
+          "id": "hs.sc.ezekiel",
+          "order": 15,
+          "labelKey": "diag.sc.ezekiel.label",
+          "blurbKey": "diag.sc.ezekiel.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.2,
+            "y": 0.42,
+            "w": 0.14,
+            "h": 0.06
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.prophet_ezekiel"
+          }
+        },
+        {
+          "id": "hs.sc.cumaean_sibyl",
+          "order": 16,
+          "labelKey": "diag.sc.cumaean.label",
+          "blurbKey": "diag.sc.cumaean.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.66,
+            "y": 0.42,
+            "w": 0.14,
+            "h": 0.06
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.cumaean_sibyl"
+          }
+        },
+        {
+          "id": "hs.sc.erythraean_sibyl",
+          "order": 17,
+          "labelKey": "diag.sc.erythraean.label",
+          "blurbKey": "diag.sc.erythraean.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.2,
+            "y": 0.58,
+            "w": 0.14,
+            "h": 0.06
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.erythraean_sibyl"
+          }
+        },
+        {
+          "id": "hs.sc.isaiah",
+          "order": 18,
+          "labelKey": "diag.sc.isaiah.label",
+          "blurbKey": "diag.sc.isaiah.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.66,
+            "y": 0.58,
+            "w": 0.14,
+            "h": 0.06
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.prophet_isaiah"
+          }
+        },
+        {
+          "id": "hs.sc.joel",
+          "order": 19,
+          "labelKey": "diag.sc.joel.label",
+          "blurbKey": "diag.sc.joel.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.2,
+            "y": 0.74,
+            "w": 0.14,
+            "h": 0.06
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.prophet_joel"
+          }
+        },
+        {
+          "id": "hs.sc.delphic_sibyl",
+          "order": 20,
+          "labelKey": "diag.sc.delphic.label",
+          "blurbKey": "diag.sc.delphic.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.66,
+            "y": 0.74,
+            "w": 0.14,
+            "h": 0.06
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.delphic_sibyl"
+          }
+        },
+        {
+          "id": "hs.sc.zechariah",
+          "order": 21,
+          "labelKey": "diag.sc.zechariah.label",
+          "blurbKey": "diag.sc.zechariah.blurb",
+          "shape": {
+            "type": "rect",
+            "x": 0.44,
+            "y": 0.9,
+            "w": 0.12,
+            "h": 0.05
+          },
+          "target": {
+            "type": "ARTWORK",
+            "id": "art_work.prophet_zechariah"
+          }
+        }
       ]
     }
   ],
-
   "timelines": [
     {
       "id": "tl.roman_question",
       "titleKey": "tl.roman_question.title",
       "events": [
-        { "id": "tl.rq.1870", "year": 1870, "titleKey": "tl.rq.1870.title", "bodyKey": "tl.rq.1870.body" },
-        { "id": "tl.rq.1871", "year": 1871, "titleKey": "tl.rq.1871.title", "bodyKey": "tl.rq.1871.body" },
-        { "id": "tl.rq.1929", "year": 1929, "titleKey": "tl.rq.1929.title", "bodyKey": "tl.rq.1929.body" },
-        { "id": "tl.rq.1984", "year": 1984, "titleKey": "tl.rq.1984.title", "bodyKey": "tl.rq.1984.body" }
+        {
+          "id": "tl.rq.1870",
+          "year": 1870,
+          "titleKey": "tl.rq.1870.title",
+          "bodyKey": "tl.rq.1870.body"
+        },
+        {
+          "id": "tl.rq.1871",
+          "year": 1871,
+          "titleKey": "tl.rq.1871.title",
+          "bodyKey": "tl.rq.1871.body"
+        },
+        {
+          "id": "tl.rq.1929",
+          "year": 1929,
+          "titleKey": "tl.rq.1929.title",
+          "bodyKey": "tl.rq.1929.body"
+        },
+        {
+          "id": "tl.rq.1984",
+          "year": 1984,
+          "titleKey": "tl.rq.1984.title",
+          "bodyKey": "tl.rq.1984.body"
+        }
       ]
     },
     {
       "id": "tl.sistine",
       "titleKey": "tl.sistine.title",
       "events": [
-        { "id": "tl.sc.1473", "year": 1473, "endYear": 1481, "titleKey": "tl.sc.1473.title", "bodyKey": "tl.sc.1473.body" },
-        { "id": "tl.sc.1481", "year": 1481, "endYear": 1482, "titleKey": "tl.sc.1481.title", "bodyKey": "tl.sc.1481.body" },
-        { "id": "tl.sc.1492", "year": 1492, "titleKey": "tl.sc.1492.title", "bodyKey": "tl.sc.1492.body" },
-        { "id": "tl.sc.1508", "year": 1508, "endYear": 1512, "titleKey": "tl.sc.1508.title", "bodyKey": "tl.sc.1508.body" },
-        { "id": "tl.sc.1536", "year": 1536, "endYear": 1541, "titleKey": "tl.sc.1536.title", "bodyKey": "tl.sc.1536.body" },
-        { "id": "tl.sc.1564", "year": 1564, "titleKey": "tl.sc.1564.title", "bodyKey": "tl.sc.1564.body" },
-        { "id": "tl.sc.1980", "year": 1980, "endYear": 1999, "titleKey": "tl.sc.1980.title", "bodyKey": "tl.sc.1980.body" }
+        {
+          "id": "tl.sc.1473",
+          "year": 1473,
+          "endYear": 1481,
+          "titleKey": "tl.sc.1473.title",
+          "bodyKey": "tl.sc.1473.body"
+        },
+        {
+          "id": "tl.sc.1481",
+          "year": 1481,
+          "endYear": 1482,
+          "titleKey": "tl.sc.1481.title",
+          "bodyKey": "tl.sc.1481.body"
+        },
+        {
+          "id": "tl.sc.1492",
+          "year": 1492,
+          "titleKey": "tl.sc.1492.title",
+          "bodyKey": "tl.sc.1492.body"
+        },
+        {
+          "id": "tl.sc.1508",
+          "year": 1508,
+          "endYear": 1512,
+          "titleKey": "tl.sc.1508.title",
+          "bodyKey": "tl.sc.1508.body"
+        },
+        {
+          "id": "tl.sc.1536",
+          "year": 1536,
+          "endYear": 1541,
+          "titleKey": "tl.sc.1536.title",
+          "bodyKey": "tl.sc.1536.body"
+        },
+        {
+          "id": "tl.sc.1564",
+          "year": 1564,
+          "titleKey": "tl.sc.1564.title",
+          "bodyKey": "tl.sc.1564.body"
+        },
+        {
+          "id": "tl.sc.1980",
+          "year": 1980,
+          "endYear": 1999,
+          "titleKey": "tl.sc.1980.title",
+          "bodyKey": "tl.sc.1980.body"
+        }
+      ]
+    },
+    {
+      "id": "tl.councils",
+      "titleKey": "timeline.councils.title",
+      "events": [
+        {
+          "id": "tl.councils.nicaea1",
+          "year": 325,
+          "titleKey": "timeline.councils.nicaea1.title",
+          "bodyKey": "timeline.councils.nicaea1.body"
+        },
+        {
+          "id": "tl.councils.ephesus",
+          "year": 431,
+          "titleKey": "timeline.councils.ephesus.title",
+          "bodyKey": "timeline.councils.ephesus.body"
+        },
+        {
+          "id": "tl.councils.chalcedon",
+          "year": 451,
+          "titleKey": "timeline.councils.chalcedon.title",
+          "bodyKey": "timeline.councils.chalcedon.body"
+        },
+        {
+          "id": "tl.councils.lateran4",
+          "year": 1215,
+          "titleKey": "timeline.councils.lateran4.title",
+          "bodyKey": "timeline.councils.lateran4.body"
+        },
+        {
+          "id": "tl.councils.trent",
+          "year": 1545,
+          "endYear": 1563,
+          "titleKey": "timeline.councils.trent.title",
+          "bodyKey": "timeline.councils.trent.body"
+        },
+        {
+          "id": "tl.councils.vatican1",
+          "year": 1869,
+          "endYear": 1870,
+          "titleKey": "timeline.councils.vatican1.title",
+          "bodyKey": "timeline.councils.vatican1.body"
+        },
+        {
+          "id": "tl.councils.vatican2",
+          "year": 1962,
+          "endYear": 1965,
+          "titleKey": "timeline.councils.vatican2.title",
+          "bodyKey": "timeline.councils.vatican2.body"
+        }
+      ]
+    }
+  ],
+  "steppers": [
+    {
+      "id": "step.conclave",
+      "titleKey": "stepper.conclave.title",
+      "introKey": "stepper.conclave.intro",
+      "steps": [
+        {
+          "id": "step.conclave.1",
+          "order": 1,
+          "titleKey": "stepper.conclave.step1.title",
+          "bodyKey": "stepper.conclave.step1.body"
+        },
+        {
+          "id": "step.conclave.2",
+          "order": 2,
+          "titleKey": "stepper.conclave.step2.title",
+          "bodyKey": "stepper.conclave.step2.body"
+        },
+        {
+          "id": "step.conclave.3",
+          "order": 3,
+          "titleKey": "stepper.conclave.step3.title",
+          "bodyKey": "stepper.conclave.step3.body"
+        },
+        {
+          "id": "step.conclave.4",
+          "order": 4,
+          "titleKey": "stepper.conclave.step4.title",
+          "bodyKey": "stepper.conclave.step4.body"
+        },
+        {
+          "id": "step.conclave.5",
+          "order": 5,
+          "titleKey": "stepper.conclave.step5.title",
+          "bodyKey": "stepper.conclave.step5.body"
+        },
+        {
+          "id": "step.conclave.6",
+          "order": 6,
+          "titleKey": "stepper.conclave.step6.title",
+          "bodyKey": "stepper.conclave.step6.body"
+        }
       ]
     }
   ]

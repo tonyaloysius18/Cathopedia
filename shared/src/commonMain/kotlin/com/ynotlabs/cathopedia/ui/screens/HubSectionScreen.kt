@@ -146,6 +146,14 @@ fun HubSectionScreen(
                 "TIMELINE" -> timelineSectionBody(current.timelineId, repository, language)
                 else -> collectionSectionBody(s.hubSectionComingSoon)
             }
+
+            // A section's primary layout doesn't have to be the only content it carries —
+            // e.g. the Sistine Chapel is DIAGRAM-primary but also has articles on its history.
+            // articlesSectionBody already renders nothing when there are none for this section.
+            if (current.layout != "ARTICLES") {
+                item { Spacer(Modifier.height(16.dp)) }
+                articlesSectionBody(sectionId, repository, language, onArticleSelected)
+            }
         }
     }
 }
