@@ -22,7 +22,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -35,6 +34,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.ColorPainter
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.semantics.LiveRegionMode
@@ -54,7 +54,10 @@ import com.ynotlabs.cathopedia.model.PrayerDetail
 import com.ynotlabs.cathopedia.rosary.RosarySequence
 import com.ynotlabs.cathopedia.rosary.mysterySetForDate
 import com.ynotlabs.cathopedia.ui.components.FilterChipsRow
+import com.ynotlabs.cathopedia.ui.components.InteractiveDiagram
 import com.ynotlabs.cathopedia.ui.components.PrayerBodyText
+import com.ynotlabs.cathopedia.ui.hubAssetPainter
+import com.ynotlabs.cathopedia.ui.theme.rosaryColors
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 import kotlinx.coroutines.launch
@@ -83,7 +86,6 @@ fun RosaryScreen(
     var mode by remember { mutableStateOf(RosaryMode.GUIDED) }
     var mysterySet by remember { mutableStateOf(mysterySetForDate(LiturgicalCalendar.today())) }
     var currentIndex by remember { mutableStateOf(0) }
-    var organicShape by remember { mutableStateOf(true) }
     var resumePrompt by remember { mutableStateOf<ResumeState?>(null) }
     var sessionReady by remember { mutableStateOf(false) }
 
@@ -98,8 +100,6 @@ fun RosaryScreen(
     // Load any saved session once, deciding whether to offer resume vs. just
     // starting fresh — see the resume-window comment above.
     LaunchedEffect(Unit) {
-        organicShape = repository.getPreference(PreferenceKeys.ROSARY_ORGANIC_SHAPE)?.toBooleanStrictOrNull() ?: true
-
         val savedSet = repository.getPreference(PreferenceKeys.ROSARY_MYSTERY_SET)?.let { MysterySet.fromTag(it) }
         val savedIndex = repository.getPreference(PreferenceKeys.ROSARY_CURRENT_INDEX)?.toIntOrNull()
         val savedStartedAt = repository.getPreference(PreferenceKeys.ROSARY_SESSION_STARTED_AT)?.toLongOrNull()
@@ -200,13 +200,8 @@ fun RosaryScreen(
 
                 RosaryMode.MAP -> RosaryMapContent(
                     currentIndex = sequence.steps.getOrNull(currentIndex)?.beadIndex ?: 0,
-                    organicShape = organicShape,
-                    onOrganicShapeChange = {
-                        organicShape = it
-                        repository.setPreference(PreferenceKeys.ROSARY_ORGANIC_SHAPE, it.toString())
-                    },
-                    onBeadTap = { bead ->
-                        val stepIndex = sequence.steps.indexOfFirst { it.beadIndex == bead.index }
+                    onBeadTap = { beadIndex ->
+                        val stepIndex = sequence.steps.indexOfFirst { it.beadIndex == beadIndex }
                         if (stepIndex >= 0) {
                             currentIndex = stepIndex
                             persistSession(stepIndex, mysterySet, repository.getPreference(PreferenceKeys.ROSARY_SESSION_STARTED_AT)?.toLongOrNull() ?: Clock.System.now().toEpochMilliseconds())
@@ -413,28 +408,24 @@ private fun MysterySetPicker(
 @Composable
 private fun RosaryMapContent(
     currentIndex: Int,
-    organicShape: Boolean,
-    onOrganicShapeChange: (Boolean) -> Unit,
-    onBeadTap: (RosaryBead) -> Unit,
+    onBeadTap: (Int) -> Unit,
 ) {
-    val s = LocalStrings.current
-    val seed = remember { LiturgicalCalendar.today().toEpochDays().toInt() }
-
-    Column(modifier = Modifier.fillMaxSize()) {
-        RosaryCanvas(
-            currentIndex = currentIndex,
-            onBeadTap = onBeadTap,
-            seed = if (organicShape) seed else 0,
-            organic = if (organicShape) 1f else 0f,
-            modifier = Modifier.fillMaxSize().padding(bottom = 8.dp),
+    Column(
+        modifier = Modifier.fillMaxSize().padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        InteractiveDiagram(
+            painter = hubAssetPainter("rosary_marian.png") ?: ColorPainter(rosaryColors().vespers),
+            aspectRatio = 600f / 900f,
+            hotspots = rosaryBeadHotspots,
+            highlightedId = currentIndex.toString(),
+            showHotspotHints = false,
+            showDetailSheet = false,
+            minZoom = 1f,
+            maxZoom = 3.5f,
+            onHotspotTap = { hotspot -> hotspot.id.toIntOrNull()?.let(onBeadTap) },
+            modifier = Modifier.fillMaxWidth(),
         )
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Text(s.rosaryOrganicShape, modifier = Modifier.padding(end = 12.dp))
-            Switch(checked = organicShape, onCheckedChange = onOrganicShapeChange)
-        }
     }
 }
 

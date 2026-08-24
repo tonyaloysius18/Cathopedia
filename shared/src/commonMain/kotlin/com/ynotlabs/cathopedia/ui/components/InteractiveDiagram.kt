@@ -79,6 +79,13 @@ data class DiagramPolygonShape(val points: List<Offset>) : DiagramHotspotShape
  * "read more" action via [onReadMore] — the caller resolves what the target actually is, this
  * component only knows the hotspot's own data. Hotspots sharing a non-null [DiagramHotspot.order]
  * get previous/next controls on the sheet for a guided tour.
+ *
+ * [onHotspotTap] fires immediately on every tap-selected hotspot, independent of the sheet — for
+ * a caller like the Rosary screen where tapping a bead should advance the prayer right away, not
+ * wait on a "read more" tap. Set [showDetailSheet] false to suppress the sheet entirely for that
+ * kind of "the artwork itself is the control" use. [highlightedId], when set, draws that one
+ * hotspot's hint outline emphasized (thicker, brighter) regardless of [showHotspotHints] — e.g.
+ * the Rosary's current bead.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -90,8 +97,11 @@ fun InteractiveDiagram(
     minZoom: Float = 1f,
     maxZoom: Float = 5f,
     showHotspotHints: Boolean = true,
+    showDetailSheet: Boolean = true,
+    highlightedId: String? = null,
     readMoreLabel: String = "",
     onReadMore: (DiagramHotspot) -> Unit = {},
+    onHotspotTap: (DiagramHotspot) -> Unit = {},
 ) {
     var scale by remember { mutableStateOf(1f) }
     var pan by remember { mutableStateOf(Offset.Zero) }
@@ -122,7 +132,11 @@ fun InteractiveDiagram(
                     val pivot = Offset(containerSize.width / 2f, containerSize.height / 2f)
                     val world = (tap - pan - pivot) / scale + pivot
                     val normalized = Offset(world.x / containerSize.width, world.y / containerSize.height)
-                    selected = hotspots.asReversed().firstOrNull { hitTest(it.shape, normalized) }
+                    val hit = hotspots.asReversed().firstOrNull { hitTest(it.shape, normalized) }
+                    if (hit != null) {
+                        onHotspotTap(hit)
+                        if (showDetailSheet) selected = hit
+                    }
                 }
             },
     ) {
@@ -143,9 +157,14 @@ fun InteractiveDiagram(
                 contentScale = ContentScale.FillBounds,
             )
 
-            if (showHotspotHints) {
+            if (showHotspotHints || highlightedId != null) {
                 androidx.compose.foundation.Canvas(modifier = Modifier.fillMaxSize()) {
-                    hotspots.forEach { hotspot -> drawHotspotHint(hotspot.shape, size) }
+                    hotspots.forEach { hotspot ->
+                        val isHighlighted = hotspot.id == highlightedId
+                        if (isHighlighted || showHotspotHints) {
+                            drawHotspotHint(hotspot.shape, size, emphasized = isHighlighted)
+                        }
+                    }
                 }
             }
         }
@@ -223,9 +242,13 @@ private fun pointInPolygon(point: Offset, points: List<Offset>): Boolean {
     return inside
 }
 
-private fun androidx.compose.ui.graphics.drawscope.DrawScope.drawHotspotHint(shape: DiagramHotspotShape, canvasSize: Size) {
-    val strokeColor = Color.White.copy(alpha = 0.55f)
-    val stroke = Stroke(width = 1.5f)
+private fun androidx.compose.ui.graphics.drawscope.DrawScope.drawHotspotHint(
+    shape: DiagramHotspotShape,
+    canvasSize: Size,
+    emphasized: Boolean = false,
+) {
+    val strokeColor = if (emphasized) Color(0xFFE0C848) else Color.White.copy(alpha = 0.55f)
+    val stroke = Stroke(width = if (emphasized) 3.5f else 1.5f)
     when (shape) {
         is DiagramRectShape -> drawRect(
             color = strokeColor,
