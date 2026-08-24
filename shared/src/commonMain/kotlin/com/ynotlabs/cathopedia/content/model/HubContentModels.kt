@@ -2,6 +2,7 @@ package com.ynotlabs.cathopedia.content.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
 
 /**
  * Wire models for the topic-hub content format (schemaVersion 1).
@@ -75,7 +76,7 @@ enum class SectionLayout { ARTICLES, DIAGRAM, STEPPER, TIMELINE, FACT_SHEET, COL
 @Serializable
 data class CollectionQuery(
     val entityType: EntityType,
-    val filter: Map<String, String> = emptyMap(),
+    val filter: Map<String, JsonElement> = emptyMap(),
     val groupBy: String? = null,
     val sortBy: String? = null,
 )

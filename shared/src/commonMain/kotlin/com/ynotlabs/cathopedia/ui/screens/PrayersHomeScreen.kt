@@ -45,6 +45,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -416,6 +417,26 @@ private fun RosaryHeroCard(
                 .clip(shape),
         )
 
+
+        // Soft blurred transition behind the text area only. The rosary artwork
+        // stays sharp while the image fades naturally into the blue background.
+        Box(
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth(0.55f)
+                .align(Alignment.CenterStart)
+                .blur(18.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(
+                            MarianBlueDeep.copy(alpha = 0.95f),
+                            MarianBlueDeep.copy(alpha = 0.25f),
+                            Color.Transparent,
+                        ),
+                    ),
+                ),
+        )
+
         // A fade over the art's left side so it blends into the card's
         // own blue as the text reaches the image, matching the Way of
         // the Cross card's treatment.
@@ -529,6 +550,25 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
             modifier = Modifier
                 .fillMaxSize()
                 .clip(shape),
+        )
+
+        // Soft blurred transition near the text edge. The crucifix remains
+        // crisp on the right side while the red artwork fades smoothly.
+        Box(
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth(0.55f)
+                .align(Alignment.CenterStart)
+                .blur(18.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(
+                            PassionRedDeep.copy(alpha = 0.95f),
+                            PassionRedDeep.copy(alpha = 0.25f),
+                            Color.Transparent,
+                        ),
+                    ),
+                ),
         )
 
         // A light fade over the art's left side so it blends into the

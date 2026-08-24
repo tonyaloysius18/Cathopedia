@@ -78,6 +78,7 @@ import com.ynotlabs.cathopedia.ui.screens.SearchScreen
 import com.ynotlabs.cathopedia.ui.screens.SettingsScreen
 import com.ynotlabs.cathopedia.ui.screens.SplashScreen
 import com.ynotlabs.cathopedia.ui.screens.StationsScreen
+import com.ynotlabs.cathopedia.ui.screens.VestmentsScreen
 import com.ynotlabs.cathopedia.ui.theme.CathopediaTheme
 import com.ynotlabs.cathopedia.ui.theme.ThemeMode
 import com.ynotlabs.cathopedia.ui.theme.toAccentColor
@@ -266,7 +267,12 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     repository = repository,
                     language = language,
                     onCategorySelected = { type -> nav.navigate(Destination.EntityList(type)) },
+                    onVestmentsSelected = { nav.navigate(Destination.Vestments) },
                     onHubSelected = { hub -> nav.navigate(Destination.Hub(hub.id)) },
+                )
+
+                is Destination.Vestments -> VestmentsScreen(
+                    onBackClick = nav::back
                 )
 
                 is Destination.Hub -> HubScreen(

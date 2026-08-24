@@ -71,12 +71,15 @@ import com.ynotlabs.cathopedia.resources.churches_shrines_icon
 import com.ynotlabs.cathopedia.resources.marian_apparitions_icon
 import com.ynotlabs.cathopedia.resources.eucharistic_miracles_icon
 import com.ynotlabs.cathopedia.resources.liturgical_feasts_icon
+import com.ynotlabs.cathopedia.resources.explore_vestments
+import com.ynotlabs.cathopedia.resources.liturgical_vestments_icon
 
 @Composable
 fun ExploreScreen(
     repository: CathopediaRepository,
     language: String,
     onCategorySelected: (ContentType) -> Unit,
+    onVestmentsSelected: () -> Unit,
     onHubSelected: (HubSummary) -> Unit,
 ) {
     val s = LocalStrings.current
@@ -100,7 +103,7 @@ fun ExploreScreen(
         contentPadding = PaddingValues(
             start = 20.dp,
             end = 20.dp,
-            bottom = 20.dp,
+            bottom = 120.dp,
         ),
         verticalArrangement = Arrangement.spacedBy(0.dp),
     ) {
@@ -150,6 +153,18 @@ fun ExploreScreen(
                                 types = visibleTypes,
                                 counts = counts,
                                 onCategorySelected = onCategorySelected,
+                                onVestmentsSelected = onVestmentsSelected,
+                            )
+                        }
+                    }
+
+                    ContentCategory.FEASTS -> {
+                        item {
+                            EventsSection(
+                                types = visibleTypes,
+                                counts = counts,
+                                onCategorySelected = onCategorySelected,
+                                onVestmentsSelected = onVestmentsSelected,
                             )
                         }
                     }
@@ -393,6 +408,7 @@ private fun EventsSection(
     types: List<ContentType>,
     counts: Map<ContentType, Int>,
     onCategorySelected: (ContentType) -> Unit,
+    onVestmentsSelected: () -> Unit,
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
         types.chunked(2).forEach { rowTypes ->
@@ -410,8 +426,80 @@ private fun EventsSection(
                 }
 
                 if (rowTypes.size == 1) {
-                    Spacer(Modifier.weight(1f))
+                    val singleType = rowTypes.first()
+                    if (singleType == ContentType.FEAST) {
+                        VestmentsSectionCard(
+                            onClick = onVestmentsSelected,
+                            modifier = Modifier.weight(1f)
+                        )
+                    } else {
+                        Spacer(Modifier.weight(1f))
+                    }
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun VestmentsSectionCard(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Card(
+        modifier = modifier
+            .aspectRatio(1.3f)
+            .clickable(onClick = onClick),
+        shape = RoundedCornerShape(22.dp),
+        border = BorderStroke(1.2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
+    ) {
+        Box(Modifier.fillMaxSize()) {
+
+            Image(
+                painter = painterResource(Res.drawable.explore_vestments),
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 8.dp),
+                contentScale = ContentScale.Fit,
+                alignment = Alignment.CenterEnd,
+            )
+
+            ArtworkFadeOverlay(
+                includeBottomFade = true,
+            )
+
+            Image(
+                painter = painterResource(Res.drawable.liturgical_vestments_icon),
+                contentDescription = null,
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .padding(12.dp)
+                    .size(30.dp),
+                contentScale = ContentScale.Fit,
+            )
+
+            Column(
+                modifier = Modifier
+                    .align(Alignment.BottomStart)
+                    .padding(12.dp),
+            ) {
+                Text(
+                    text = "Sacred Vestments",
+                    color = MaterialTheme.colorScheme.onBackground,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 15.sp,
+                    lineHeight = 20.sp,
+                    maxLines = 2,
+                )
+
+                Text(
+                    text = "Liturgical garments",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    fontSize = 11.sp,
+                )
             }
         }
     }
