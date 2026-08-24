@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -35,11 +34,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.painter.ColorPainter
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ynotlabs.cathopedia.content.model.CircleShape
 import com.ynotlabs.cathopedia.content.model.EntityRef
+import com.ynotlabs.cathopedia.content.model.PolygonShape
+import com.ynotlabs.cathopedia.content.model.RectShape
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.model.HubArticleSummary
@@ -48,6 +52,11 @@ import com.ynotlabs.cathopedia.model.HubFactSheetDetail
 import com.ynotlabs.cathopedia.model.HubHotspotDetail
 import com.ynotlabs.cathopedia.model.HubSectionSummary
 import com.ynotlabs.cathopedia.model.HubStepperDetail
+import com.ynotlabs.cathopedia.ui.components.DiagramCircleShape
+import com.ynotlabs.cathopedia.ui.components.DiagramHotspot
+import com.ynotlabs.cathopedia.ui.components.DiagramPolygonShape
+import com.ynotlabs.cathopedia.ui.components.DiagramRectShape
+import com.ynotlabs.cathopedia.ui.components.InteractiveDiagram
 import com.ynotlabs.cathopedia.model.HubTimelineDetail
 
 /**
@@ -216,13 +225,15 @@ private fun androidx.compose.foundation.lazy.LazyListScope.diagramSectionBody(
 ) {
     if (diagramId == null) return
     item {
+        val s = LocalStrings.current
         var diagram by remember(diagramId) { mutableStateOf<HubDiagramDetail?>(null) }
         var strings by remember(diagramId) { mutableStateOf<Map<String, String>>(emptyMap()) }
-        var selected by remember(diagramId) { mutableStateOf<HubHotspotDetail?>(null) }
+        var hotspotById by remember(diagramId) { mutableStateOf<Map<String, HubHotspotDetail>>(emptyMap()) }
 
         LaunchedEffect(diagramId, language) {
             val loaded = repository.hubDiagram(diagramId) ?: return@LaunchedEffect
             diagram = loaded
+            hotspotById = loaded.hotspots.associateBy { it.id }
             val keys = buildSet {
                 loaded.titleKey?.let(::add)
                 loaded.captionKey?.let(::add)
@@ -232,92 +243,42 @@ private fun androidx.compose.foundation.lazy.LazyListScope.diagramSectionBody(
         }
 
         diagram?.let { d ->
-            // Static placeholder box until T6's InteractiveDiagram (pan/zoom/tap) lands —
-            // the hotspots are already real data, just listed rather than plotted on the artwork.
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .aspectRatio(d.aspectRatio)
-                    .background(MaterialTheme.colorScheme.surfaceContainerLow, RoundedCornerShape(18.dp)),
-                contentAlignment = Alignment.Center,
-            ) {
-                Text(
-                    text = strings[d.captionKey].orEmpty(),
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    fontSize = 12.sp,
-                )
-            }
+            // Placeholder artwork until T7 supplies the real per-hub SVGs (docs/briefs/topic-hubs.md)
+            // — the viewer itself (pan/zoom/tap/hotspot sheet) is fully real, only the image is a stand-in.
+            InteractiveDiagram(
+                painter = ColorPainter(MaterialTheme.colorScheme.surfaceContainerLow),
+                aspectRatio = d.aspectRatio,
+                minZoom = d.minZoom,
+                maxZoom = d.maxZoom,
+                hotspots = d.hotspots.map { it.toDiagramHotspot(strings) },
+                readMoreLabel = s.continueLabel,
+                onReadMore = { uiHotspot ->
+                    hotspotById[uiHotspot.id]?.target?.let(onEntityRefSelected)
+                },
+            )
 
-            Spacer(Modifier.height(12.dp))
-
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                d.hotspots.sortedBy { it.order ?: Int.MAX_VALUE }.forEach { hotspot ->
-                    HotspotRow(
-                        label = strings[hotspot.labelKey].orEmpty(),
-                        onClick = { selected = hotspot },
-                    )
+            d.captionKey?.let { key ->
+                strings[key]?.let { caption ->
+                    Spacer(Modifier.height(8.dp))
+                    Text(text = caption, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp)
                 }
             }
         }
-
-        selected?.let { hotspot ->
-            HotspotDetailCard(
-                label = strings[hotspot.labelKey].orEmpty(),
-                blurb = hotspot.blurbKey?.let { strings[it] },
-                onReadMore = hotspot.target?.let { ref -> { onEntityRefSelected(ref) } },
-                onDismiss = { selected = null },
-            )
-        }
     }
 }
 
-@Composable
-private fun HotspotRow(label: String, onClick: () -> Unit) {
-    Surface(
-        modifier = Modifier.fillMaxWidth().clickable(onClick = onClick),
-        shape = RoundedCornerShape(14.dp),
-        color = MaterialTheme.colorScheme.surfaceContainerLow,
-        contentColor = MaterialTheme.colorScheme.onSurface,
-    ) {
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 10.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Box(modifier = Modifier.size(6.dp).background(MaterialTheme.colorScheme.primary, CircleShape))
-            Spacer(Modifier.width(10.dp))
-            Text(text = label, color = MaterialTheme.colorScheme.onBackground, fontSize = 14.sp)
-        }
-    }
-}
-
-@Composable
-private fun HotspotDetailCard(label: String, blurb: String?, onReadMore: (() -> Unit)?, onDismiss: () -> Unit) {
-    val s = LocalStrings.current
-    Surface(
-        modifier = Modifier.fillMaxWidth().padding(top = 10.dp).clickable(onClick = onDismiss),
-        shape = RoundedCornerShape(16.dp),
-        color = MaterialTheme.colorScheme.surfaceContainerHigh,
-        contentColor = MaterialTheme.colorScheme.onSurface,
-    ) {
-        Column(modifier = Modifier.padding(14.dp)) {
-            Text(text = label, fontFamily = FontFamily.Serif, fontSize = 16.sp)
-            if (blurb != null) {
-                Spacer(Modifier.height(6.dp))
-                Text(text = blurb, fontSize = 13.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            }
-            if (onReadMore != null) {
-                Spacer(Modifier.height(8.dp))
-                Text(
-                    text = s.continueLabel,
-                    color = MaterialTheme.colorScheme.primary,
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 13.sp,
-                    modifier = Modifier.clickable(onClick = onReadMore),
-                )
-            }
-        }
-    }
-}
+private fun HubHotspotDetail.toDiagramHotspot(strings: Map<String, String>) = DiagramHotspot(
+    id = id,
+    label = strings[labelKey].orEmpty(),
+    blurb = blurbKey?.let { strings[it] },
+    order = order,
+    hasTarget = target != null,
+    shape = when (val s = shape) {
+        is RectShape -> DiagramRectShape(s.x, s.y, s.w, s.h)
+        is CircleShape -> DiagramCircleShape(s.cx, s.cy, s.r)
+        is PolygonShape -> DiagramPolygonShape(s.points.map { Offset(it.x, it.y) })
+    },
+)
 
 private fun androidx.compose.foundation.lazy.LazyListScope.factSheetSectionBody(
     factSheetId: String?,
