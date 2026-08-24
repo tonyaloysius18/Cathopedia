@@ -100,7 +100,7 @@ import org.jetbrains.compose.resources.DrawableResource
  * isn't a 1:1 mapping over every pope - personal papal heraldry only began
  * around Innocent III (1198), so popes before that have no entry here at all,
  * and [forPope] returning null is the honest "no coat of arms exists" case,
- * not a missing-asset bug. See content/popes/coat-of-arms-sources.json for the
+ * not a missing-asset bug. See content/sources/pope-coat-of-arms-sources.json for the
  * citation backing each entry.
  *
  * Sourced from each pope's English Wikipedia infobox `coat_of_arms` field,
