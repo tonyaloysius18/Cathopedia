@@ -271,7 +271,9 @@ val compileContent by tasks.registering {
         val catalog = buildString {
             append("{\n")
             contentTypes.forEach { type -> append("\"$type\": ${collectArray(type)},\n") }
-            append("\"relations\": $relationsJson\n")
+            append("\"relations\": $relationsJson,\n")
+            append("\"hubs\": ${collectArray("hubs")},\n")
+            append("\"hubStrings\": ${collectArray("strings")}\n")
             append("}\n")
         }
 

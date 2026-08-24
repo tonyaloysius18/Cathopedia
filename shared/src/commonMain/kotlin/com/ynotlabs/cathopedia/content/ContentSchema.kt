@@ -1,5 +1,7 @@
 package com.ynotlabs.cathopedia.content
 
+import com.ynotlabs.cathopedia.content.model.HubDocument
+import com.ynotlabs.cathopedia.content.model.HubStrings
 import kotlinx.serialization.Serializable
 
 /** Mirrors the field names used in every /content/&lt;type&gt;/&lt;id&gt;.json file. */
@@ -151,4 +153,6 @@ data class ContentCatalog(
     val prayers: List<PrayerContent> = emptyList(),
     val mysteries: List<MysteryContent> = emptyList(),
     val relations: List<RelationContent> = emptyList(),
+    val hubs: List<HubDocument> = emptyList(),
+    val hubStrings: List<HubStrings> = emptyList(),
 )

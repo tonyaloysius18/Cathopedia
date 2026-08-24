@@ -2,10 +2,23 @@ package com.ynotlabs.cathopedia.data
 
 import com.ynotlabs.cathopedia.content.ContentCatalog
 import com.ynotlabs.cathopedia.content.LocalizedText
+import com.ynotlabs.cathopedia.content.model.HUB_SCHEMA_VERSION
+import com.ynotlabs.cathopedia.content.model.HubDocument
+import com.ynotlabs.cathopedia.content.model.HubStrings
 import com.ynotlabs.cathopedia.db.CathopediaDatabase
+import com.ynotlabs.cathopedia.db.Hub_article
+import com.ynotlabs.cathopedia.db.Hub_diagram
+import com.ynotlabs.cathopedia.db.Hub_fact_sheet
+import com.ynotlabs.cathopedia.db.Hub_hotspot
+import com.ynotlabs.cathopedia.db.Hub_section
+import com.ynotlabs.cathopedia.db.Hub_stepper
+import com.ynotlabs.cathopedia.db.Hub_timeline
+import com.ynotlabs.cathopedia.db.Localized_text
+import com.ynotlabs.cathopedia.db.Topic_hub
 import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.model.PRAYER_SEARCH_ENTITY_TYPE
 import com.ynotlabs.cathopedia.resources.Res
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 /**
@@ -24,10 +37,17 @@ object ContentLoader {
      * this just controls whether it re-runs on an existing install rather
      * than only ever loading once on a database with zero rows.
      */
-    private const val CONTENT_VERSION = "27"
+    private const val CONTENT_VERSION = "28"
     private const val CONTENT_VERSION_KEY = "content_version"
 
-    private val json = Json { ignoreUnknownKeys = true }
+    // classDiscriminator/explicitNulls are only exercised by the hub content's sealed
+    // Block/HotspotShape hierarchy (see HubContentModels.kt) — harmless no-ops for every
+    // other (non-polymorphic) content type decoded through this same instance.
+    private val json = Json {
+        ignoreUnknownKeys = true
+        classDiscriminator = "type"
+        explicitNulls = false
+    }
 
     suspend fun loadIfEmpty(database: CathopediaDatabase) {
         val loadedVersion = database.preferenceQueries.getPreference(CONTENT_VERSION_KEY).executeAsOneOrNull()
@@ -110,6 +130,143 @@ object ContentLoader {
 
         catalog.relations.forEach { r ->
             database.relationQueries.insertRelation(r.from.type, r.from.id, r.to.type, r.to.id, r.kind)
+        }
+
+        catalog.hubs.forEach { hub -> insertHub(database, hub) }
+
+        catalog.hubStrings.forEach { file ->
+            file.strings.forEach { (key, value) ->
+                database.hubContentQueries.insertString(Localized_text(key, file.lang, value))
+            }
+        }
+    }
+
+    /** One transaction per hub, as required by the topic-hub brief (docs/briefs/topic-hubs.md, T2). */
+    private fun insertHub(database: CathopediaDatabase, doc: HubDocument) {
+        if (doc.schemaVersion > HUB_SCHEMA_VERSION) {
+            println("ContentLoader: skipping hub '${doc.hub.id}' — schemaVersion ${doc.schemaVersion} exceeds supported $HUB_SCHEMA_VERSION")
+            return
+        }
+
+        database.transaction {
+            val hub = doc.hub
+            database.hubContentQueries.insertHub(
+                Topic_hub(
+                    id = hub.id,
+                    slug = hub.slug,
+                    title_key = hub.titleKey,
+                    subtitle_key = hub.subtitleKey,
+                    intro_key = hub.introKey,
+                    icon = hub.icon,
+                    hero_asset = hub.heroAsset,
+                    accent_color = hub.accentColor,
+                    sort_order = hub.sortOrder.toLong(),
+                    content_version = doc.contentVersion.toLong(),
+                ),
+            )
+
+            doc.sections.forEach { s ->
+                database.hubContentQueries.insertSection(
+                    Hub_section(
+                        id = s.id,
+                        hub_id = hub.id,
+                        sort_order = s.sortOrder.toLong(),
+                        status = s.status.name,
+                        layout = s.layout.name,
+                        title_key = s.titleKey,
+                        summary_key = s.summaryKey,
+                        icon = s.icon,
+                        hero_asset = s.heroAsset,
+                        accent_color = s.accentColor,
+                        fact_sheet_id = s.factSheetId,
+                        stepper_id = s.stepperId,
+                        timeline_id = s.timelineId,
+                        collection_query = s.collectionQuery?.let { json.encodeToString(it) },
+                    ),
+                )
+            }
+
+            doc.articles.forEach { a ->
+                database.hubContentQueries.insertArticle(
+                    Hub_article(
+                        id = a.id,
+                        section_id = a.sectionId,
+                        sort_order = a.sortOrder.toLong(),
+                        title_key = a.titleKey,
+                        lead_key = a.leadKey,
+                        hero_asset = a.heroAsset,
+                        reading_time = a.readingTimeMinutes?.toLong(),
+                        blocks_json = json.encodeToString(a.blocks),
+                        related_json = json.encodeToString(a.related),
+                        sources_json = json.encodeToString(a.sources),
+                    ),
+                )
+            }
+
+            doc.factSheets.forEach { f ->
+                database.hubContentQueries.insertFactSheet(
+                    Hub_fact_sheet(
+                        id = f.id,
+                        hub_id = hub.id,
+                        title_key = f.titleKey,
+                        facts_json = json.encodeToString(f.facts),
+                    ),
+                )
+            }
+
+            doc.diagrams.forEach { d ->
+                database.hubContentQueries.insertDiagram(
+                    Hub_diagram(
+                        id = d.id,
+                        hub_id = hub.id,
+                        title_key = d.titleKey,
+                        caption_key = d.captionKey,
+                        asset = d.asset,
+                        aspect_ratio = d.aspectRatio.toDouble(),
+                        min_zoom = d.minZoom.toDouble(),
+                        max_zoom = d.maxZoom.toDouble(),
+                        focus_x = d.initialFocus?.x?.toDouble(),
+                        focus_y = d.initialFocus?.y?.toDouble(),
+                    ),
+                )
+                d.hotspots.forEach { h ->
+                    database.hubContentQueries.insertHotspot(
+                        Hub_hotspot(
+                            id = h.id,
+                            diagram_id = d.id,
+                            label_key = h.labelKey,
+                            blurb_key = h.blurbKey,
+                            tour_order = h.order?.toLong(),
+                            shape_json = json.encodeToString(h.shape),
+                            target_type = h.target?.type?.name,
+                            target_id = h.target?.id,
+                        ),
+                    )
+                }
+            }
+
+            doc.steppers.forEach { s ->
+                database.hubContentQueries.insertStepper(
+                    Hub_stepper(
+                        id = s.id,
+                        hub_id = hub.id,
+                        title_key = s.titleKey,
+                        intro_key = s.introKey,
+                        steps_json = json.encodeToString(s.steps),
+                    ),
+                )
+            }
+
+            doc.timelines.forEach { t ->
+                database.hubContentQueries.insertTimeline(
+                    Hub_timeline(
+                        id = t.id,
+                        hub_id = hub.id,
+                        title_key = t.titleKey,
+                        events_json = json.encodeToString(t.events),
+                    ),
+                )
+            }
         }
     }
 
