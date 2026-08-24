@@ -546,6 +546,21 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
         ContentLoader.loadIfEmpty(database)
     }
 
+    // ---- Topic hubs ----
+
+    /**
+     * Batch-resolves hub string [keys] for [language], falling back to English per key —
+     * the SQL itself does the per-key COALESCE (see selectStrings in HubContent.sq), so a
+     * partially-translated language degrades key-by-key rather than screen-by-screen.
+     */
+    suspend fun resolveHubStrings(keys: Collection<String>, language: String): Map<String, String> =
+        withContext(Dispatchers.Default) {
+            if (keys.isEmpty()) return@withContext emptyMap()
+            database.hubContentQueries.selectStrings(lang = language, fallbackLang = "en", keys = keys)
+                .executeAsList()
+                .associate { it.key to it.value_ }
+        }
+
     private fun String.hyphenatedToTitle(): String =
         this.split("-").joinToString(" ") { it.replaceFirstChar { char -> if (char.isLowerCase()) char.titlecase() else char.toString() } }
 }
