@@ -51,6 +51,9 @@ import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.model.RelatedItem
 import com.ynotlabs.cathopedia.notifications.FeastNotificationScheduler
 import com.ynotlabs.cathopedia.notifications.UpcomingFeastNotification
+import com.ynotlabs.cathopedia.content.model.EntityRef
+import com.ynotlabs.cathopedia.content.model.EntityType
+import com.ynotlabs.cathopedia.ui.navigation.AppNavController
 import com.ynotlabs.cathopedia.ui.navigation.BottomNavBar
 import com.ynotlabs.cathopedia.ui.navigation.Destination
 import com.ynotlabs.cathopedia.ui.navigation.rememberAppNavController
@@ -60,6 +63,7 @@ import com.ynotlabs.cathopedia.ui.screens.EntityDetailScreen
 import com.ynotlabs.cathopedia.ui.screens.EntityListScreen
 import com.ynotlabs.cathopedia.ui.screens.ExploreScreen
 import com.ynotlabs.cathopedia.ui.screens.HomeScreen
+import com.ynotlabs.cathopedia.ui.screens.HubArticleScreen
 import com.ynotlabs.cathopedia.ui.screens.HubScreen
 import com.ynotlabs.cathopedia.ui.screens.HubSectionScreen
 import com.ynotlabs.cathopedia.ui.screens.IntroScreen
@@ -279,6 +283,16 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     repository = repository,
                     language = language,
                     onBack = nav::back,
+                    onArticleSelected = { article -> nav.navigate(Destination.HubArticle(current.hubId, article.id)) },
+                    onEntityRefSelected = { ref -> navigateToHubEntityRef(nav, current.hubId, ref) },
+                )
+
+                is Destination.HubArticle -> HubArticleScreen(
+                    articleId = current.articleId,
+                    repository = repository,
+                    language = language,
+                    onBack = nav::back,
+                    onEntityRefSelected = { ref -> navigateToHubEntityRef(nav, current.hubId, ref) },
                 )
 
                 is Destination.EntityList -> {
@@ -415,5 +429,22 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
             }
         }
     }
+    }
+}
+
+/**
+ * Routes a hub entity link/hotspot target (docs/briefs/topic-hubs.md, T5) onto an existing
+ * screen where one exists. DOCUMENT/COUNCIL/ARTWORK/PLACE have no destination yet — they're the
+ * COLLECTION-layout sections' territory (papal_documents etc.), not part of this hub; a tap is a
+ * no-op rather than a crash until that's built.
+ */
+private fun navigateToHubEntityRef(nav: AppNavController, hubId: String, ref: EntityRef) {
+    when (ref.type) {
+        EntityType.ARTICLE -> nav.navigate(Destination.HubArticle(hubId, ref.id))
+        EntityType.POPE -> nav.navigate(Destination.EntityDetail(ContentType.POPE, ref.id))
+        EntityType.SAINT -> nav.navigate(Destination.EntityDetail(ContentType.SAINT, ref.id))
+        EntityType.CHURCH -> nav.navigate(Destination.EntityDetail(ContentType.CHURCH, ref.id))
+        EntityType.PRAYER -> nav.navigate(Destination.PrayerDetail(ref.id))
+        EntityType.DOCUMENT, EntityType.COUNCIL, EntityType.ARTWORK, EntityType.PLACE -> Unit
     }
 }

@@ -7,10 +7,21 @@ import com.ynotlabs.cathopedia.model.BookmarkItem
 import com.ynotlabs.cathopedia.model.ChurchDetail
 import com.ynotlabs.cathopedia.model.ContentSummary
 import com.ynotlabs.cathopedia.model.ContentType
+import com.ynotlabs.cathopedia.content.hubContentJson
+import com.ynotlabs.cathopedia.content.model.Block
+import com.ynotlabs.cathopedia.content.model.EntityRef
+import com.ynotlabs.cathopedia.content.model.EntityType
 import com.ynotlabs.cathopedia.model.FeastDetail
+import com.ynotlabs.cathopedia.model.HubArticleDetail
+import com.ynotlabs.cathopedia.model.HubArticleSummary
 import com.ynotlabs.cathopedia.model.HubDetail
+import com.ynotlabs.cathopedia.model.HubDiagramDetail
+import com.ynotlabs.cathopedia.model.HubFactSheetDetail
+import com.ynotlabs.cathopedia.model.HubHotspotDetail
 import com.ynotlabs.cathopedia.model.HubSectionSummary
+import com.ynotlabs.cathopedia.model.HubStepperDetail
 import com.ynotlabs.cathopedia.model.HubSummary
+import com.ynotlabs.cathopedia.model.HubTimelineDetail
 import com.ynotlabs.cathopedia.model.MiracleDetail
 import com.ynotlabs.cathopedia.model.MysteryDetail
 import com.ynotlabs.cathopedia.model.MysterySet
@@ -25,6 +36,7 @@ import com.ynotlabs.cathopedia.model.SaintDetail
 import com.ynotlabs.cathopedia.liturgical.LiturgicalCalendar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.decodeFromString
 import kotlinx.datetime.LocalDate
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
@@ -591,6 +603,10 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
                 summaryKey = it.summary_key,
                 icon = it.icon,
                 accentColor = it.accent_color,
+                factSheetId = it.fact_sheet_id,
+                stepperId = it.stepper_id,
+                timelineId = it.timeline_id,
+                diagramId = it.diagram_id,
             )
         }
         HubDetail(
@@ -607,6 +623,84 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
             introKey = hub.intro_key,
             sections = sections,
         )
+    }
+
+    suspend fun hubArticlesForSection(sectionId: String): List<HubArticleSummary> = withContext(Dispatchers.Default) {
+        database.hubContentQueries.selectArticlesForSection(sectionId).executeAsList().map {
+            HubArticleSummary(
+                id = it.id,
+                sortOrder = it.sort_order.toInt(),
+                titleKey = it.title_key,
+                leadKey = it.lead_key,
+                readingTimeMinutes = it.reading_time?.toInt(),
+            )
+        }
+    }
+
+    suspend fun hubArticle(articleId: String): HubArticleDetail? = withContext(Dispatchers.Default) {
+        val row = database.hubContentQueries.selectArticle(articleId).executeAsOneOrNull() ?: return@withContext null
+        HubArticleDetail(
+            id = row.id,
+            titleKey = row.title_key,
+            leadKey = row.lead_key,
+            // A block this app version doesn't recognize (schemaVersion is gated at ingestion in
+            // ContentLoader, but this is the belt to that suspenders) drops the whole list rather
+            // than the article — Article detail then just renders lead/related/sources, never crashes.
+            blocks = runCatching { hubContentJson.decodeFromString<List<Block>>(row.blocks_json) }.getOrDefault(emptyList()),
+            related = hubContentJson.decodeFromString(row.related_json),
+            sources = hubContentJson.decodeFromString(row.sources_json),
+        )
+    }
+
+    suspend fun hubDiagram(diagramId: String): HubDiagramDetail? = withContext(Dispatchers.Default) {
+        val row = database.hubContentQueries.selectDiagram(diagramId).executeAsOneOrNull() ?: return@withContext null
+        val hotspots = database.hubContentQueries.selectHotspots(diagramId).executeAsList().map {
+            HubHotspotDetail(
+                id = it.id,
+                labelKey = it.label_key,
+                blurbKey = it.blurb_key,
+                order = it.tour_order?.toInt(),
+                shape = hubContentJson.decodeFromString(it.shape_json),
+                target = if (it.target_type != null && it.target_id != null) {
+                    EntityRef(type = EntityType.valueOf(it.target_type), id = it.target_id)
+                } else {
+                    null
+                },
+            )
+        }
+        HubDiagramDetail(
+            id = row.id,
+            titleKey = row.title_key,
+            captionKey = row.caption_key,
+            asset = row.asset,
+            aspectRatio = row.aspect_ratio.toFloat(),
+            minZoom = row.min_zoom.toFloat(),
+            maxZoom = row.max_zoom.toFloat(),
+            hotspots = hotspots,
+        )
+    }
+
+    suspend fun hubFactSheet(factSheetId: String): HubFactSheetDetail? = withContext(Dispatchers.Default) {
+        database.hubContentQueries.selectFactSheet(factSheetId).executeAsOneOrNull()?.let { row ->
+            HubFactSheetDetail(id = row.id, titleKey = row.title_key, facts = hubContentJson.decodeFromString(row.facts_json))
+        }
+    }
+
+    suspend fun hubStepper(stepperId: String): HubStepperDetail? = withContext(Dispatchers.Default) {
+        database.hubContentQueries.selectStepper(stepperId).executeAsOneOrNull()?.let { row ->
+            HubStepperDetail(
+                id = row.id,
+                titleKey = row.title_key,
+                introKey = row.intro_key,
+                steps = hubContentJson.decodeFromString(row.steps_json),
+            )
+        }
+    }
+
+    suspend fun hubTimeline(timelineId: String): HubTimelineDetail? = withContext(Dispatchers.Default) {
+        database.hubContentQueries.selectTimeline(timelineId).executeAsOneOrNull()?.let { row ->
+            HubTimelineDetail(id = row.id, titleKey = row.title_key, events = hubContentJson.decodeFromString(row.events_json))
+        }
     }
 
     private fun String.hyphenatedToTitle(): String =

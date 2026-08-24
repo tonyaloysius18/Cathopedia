@@ -1,19 +1,31 @@
 package com.ynotlabs.cathopedia.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -27,13 +39,22 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ynotlabs.cathopedia.content.model.EntityRef
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.model.HubArticleSummary
+import com.ynotlabs.cathopedia.model.HubDiagramDetail
+import com.ynotlabs.cathopedia.model.HubFactSheetDetail
+import com.ynotlabs.cathopedia.model.HubHotspotDetail
 import com.ynotlabs.cathopedia.model.HubSectionSummary
+import com.ynotlabs.cathopedia.model.HubStepperDetail
+import com.ynotlabs.cathopedia.model.HubTimelineDetail
 
 /**
- * Section shell: resolves and shows the section's own header (title/summary) while the
- * per-[layout][HubSectionSummary.layout] body renderers land in T5 (docs/briefs/topic-hubs.md).
+ * Section shell: resolves the section's own header, then dispatches to one renderer per
+ * [HubSectionSummary.layout] (docs/briefs/topic-hubs.md, T5). ARTICLES and DIAGRAM are the two
+ * complete renderers; STEPPER/TIMELINE/FACT_SHEET render their data plainly; COLLECTION is a
+ * stub (it self-populates from the pope/document knowledge graph later, not part of this hub).
  */
 @Composable
 fun HubSectionScreen(
@@ -42,6 +63,8 @@ fun HubSectionScreen(
     repository: CathopediaRepository,
     language: String,
     onBack: () -> Unit,
+    onArticleSelected: (HubArticleSummary) -> Unit,
+    onEntityRefSelected: (EntityRef) -> Unit,
 ) {
     val s = LocalStrings.current
     var section by remember(sectionId) { mutableStateOf<HubSectionSummary?>(null) }
@@ -57,46 +80,392 @@ fun HubSectionScreen(
         strings = repository.resolveHubStrings(keys, language)
     }
 
-    Column(
+    val current = section
+
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
-            .statusBarsPadding()
-            .padding(horizontal = 20.dp),
+            .statusBarsPadding(),
+        contentPadding = PaddingValues(start = 20.dp, end = 20.dp, bottom = 120.dp),
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(top = 8.dp, bottom = 12.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            IconButton(onClick = onBack) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = s.back,
-                    tint = MaterialTheme.colorScheme.onBackground,
-                )
-            }
-        }
-
-        section?.let { current ->
-            Text(
-                text = strings[current.titleKey].orEmpty(),
-                color = MaterialTheme.colorScheme.onBackground,
-                fontFamily = FontFamily.Serif,
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Medium,
-            )
-
-            current.summaryKey?.let { key ->
-                strings[key]?.let { summary ->
-                    Spacer(Modifier.height(8.dp))
-                    Text(
-                        text = summary,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        fontSize = 15.sp,
-                        lineHeight = 21.sp,
+        item {
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(top = 8.dp, bottom = 12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                IconButton(onClick = onBack) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = s.back,
+                        tint = MaterialTheme.colorScheme.onBackground,
                     )
                 }
             }
         }
+
+        if (current != null) {
+            item {
+                Column(modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)) {
+                    Text(
+                        text = strings[current.titleKey].orEmpty(),
+                        color = MaterialTheme.colorScheme.onBackground,
+                        fontFamily = FontFamily.Serif,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Medium,
+                    )
+                    current.summaryKey?.let { key ->
+                        strings[key]?.let { summary ->
+                            Spacer(Modifier.height(8.dp))
+                            Text(
+                                text = summary,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                fontSize = 15.sp,
+                                lineHeight = 21.sp,
+                            )
+                        }
+                    }
+                }
+            }
+
+            when (current.layout) {
+                "ARTICLES" -> articlesSectionBody(sectionId, repository, language, onArticleSelected)
+                "DIAGRAM" -> diagramSectionBody(current.diagramId, repository, language, onEntityRefSelected)
+                "FACT_SHEET" -> factSheetSectionBody(current.factSheetId, repository, language)
+                "STEPPER" -> stepperSectionBody(current.stepperId, repository, language)
+                "TIMELINE" -> timelineSectionBody(current.timelineId, repository, language)
+                else -> collectionSectionBody(s.hubSectionComingSoon)
+            }
+        }
+    }
+}
+
+private fun androidx.compose.foundation.lazy.LazyListScope.articlesSectionBody(
+    sectionId: String,
+    repository: CathopediaRepository,
+    language: String,
+    onArticleSelected: (HubArticleSummary) -> Unit,
+) {
+    item {
+        var articles by remember(sectionId) { mutableStateOf<List<HubArticleSummary>>(emptyList()) }
+        var titles by remember(sectionId) { mutableStateOf<Map<String, String>>(emptyMap()) }
+
+        LaunchedEffect(sectionId, language) {
+            val loaded = repository.hubArticlesForSection(sectionId).sortedBy { it.sortOrder }
+            articles = loaded
+            val keys = loaded.flatMap { listOfNotNull(it.titleKey, it.leadKey) }.toSet()
+            titles = repository.resolveHubStrings(keys, language)
+        }
+
+        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            articles.forEach { article ->
+                ArticleRow(
+                    title = titles[article.titleKey].orEmpty(),
+                    lead = article.leadKey?.let { titles[it] },
+                    onClick = { onArticleSelected(article) },
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun ArticleRow(title: String, lead: String?, onClick: () -> Unit) {
+    Surface(
+        modifier = Modifier.fillMaxWidth().clickable(onClick = onClick),
+        shape = RoundedCornerShape(16.dp),
+        color = MaterialTheme.colorScheme.surfaceContainerLow,
+        contentColor = MaterialTheme.colorScheme.onSurface,
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(14.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = title,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 16.sp,
+                )
+                if (lead != null) {
+                    Spacer(Modifier.height(3.dp))
+                    Text(
+                        text = lead,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        fontSize = 12.sp,
+                        maxLines = 2,
+                    )
+                }
+            }
+            Icon(
+                imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.size(14.dp),
+            )
+        }
+    }
+}
+
+private fun androidx.compose.foundation.lazy.LazyListScope.diagramSectionBody(
+    diagramId: String?,
+    repository: CathopediaRepository,
+    language: String,
+    onEntityRefSelected: (EntityRef) -> Unit,
+) {
+    if (diagramId == null) return
+    item {
+        var diagram by remember(diagramId) { mutableStateOf<HubDiagramDetail?>(null) }
+        var strings by remember(diagramId) { mutableStateOf<Map<String, String>>(emptyMap()) }
+        var selected by remember(diagramId) { mutableStateOf<HubHotspotDetail?>(null) }
+
+        LaunchedEffect(diagramId, language) {
+            val loaded = repository.hubDiagram(diagramId) ?: return@LaunchedEffect
+            diagram = loaded
+            val keys = buildSet {
+                loaded.titleKey?.let(::add)
+                loaded.captionKey?.let(::add)
+                loaded.hotspots.forEach { h -> add(h.labelKey); h.blurbKey?.let(::add) }
+            }
+            strings = repository.resolveHubStrings(keys, language)
+        }
+
+        diagram?.let { d ->
+            // Static placeholder box until T6's InteractiveDiagram (pan/zoom/tap) lands —
+            // the hotspots are already real data, just listed rather than plotted on the artwork.
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(d.aspectRatio)
+                    .background(MaterialTheme.colorScheme.surfaceContainerLow, RoundedCornerShape(18.dp)),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(
+                    text = strings[d.captionKey].orEmpty(),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    fontSize = 12.sp,
+                )
+            }
+
+            Spacer(Modifier.height(12.dp))
+
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                d.hotspots.sortedBy { it.order ?: Int.MAX_VALUE }.forEach { hotspot ->
+                    HotspotRow(
+                        label = strings[hotspot.labelKey].orEmpty(),
+                        onClick = { selected = hotspot },
+                    )
+                }
+            }
+        }
+
+        selected?.let { hotspot ->
+            HotspotDetailCard(
+                label = strings[hotspot.labelKey].orEmpty(),
+                blurb = hotspot.blurbKey?.let { strings[it] },
+                onReadMore = hotspot.target?.let { ref -> { onEntityRefSelected(ref) } },
+                onDismiss = { selected = null },
+            )
+        }
+    }
+}
+
+@Composable
+private fun HotspotRow(label: String, onClick: () -> Unit) {
+    Surface(
+        modifier = Modifier.fillMaxWidth().clickable(onClick = onClick),
+        shape = RoundedCornerShape(14.dp),
+        color = MaterialTheme.colorScheme.surfaceContainerLow,
+        contentColor = MaterialTheme.colorScheme.onSurface,
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 10.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Box(modifier = Modifier.size(6.dp).background(MaterialTheme.colorScheme.primary, CircleShape))
+            Spacer(Modifier.width(10.dp))
+            Text(text = label, color = MaterialTheme.colorScheme.onBackground, fontSize = 14.sp)
+        }
+    }
+}
+
+@Composable
+private fun HotspotDetailCard(label: String, blurb: String?, onReadMore: (() -> Unit)?, onDismiss: () -> Unit) {
+    val s = LocalStrings.current
+    Surface(
+        modifier = Modifier.fillMaxWidth().padding(top = 10.dp).clickable(onClick = onDismiss),
+        shape = RoundedCornerShape(16.dp),
+        color = MaterialTheme.colorScheme.surfaceContainerHigh,
+        contentColor = MaterialTheme.colorScheme.onSurface,
+    ) {
+        Column(modifier = Modifier.padding(14.dp)) {
+            Text(text = label, fontFamily = FontFamily.Serif, fontSize = 16.sp)
+            if (blurb != null) {
+                Spacer(Modifier.height(6.dp))
+                Text(text = blurb, fontSize = 13.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            if (onReadMore != null) {
+                Spacer(Modifier.height(8.dp))
+                Text(
+                    text = s.continueLabel,
+                    color = MaterialTheme.colorScheme.primary,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 13.sp,
+                    modifier = Modifier.clickable(onClick = onReadMore),
+                )
+            }
+        }
+    }
+}
+
+private fun androidx.compose.foundation.lazy.LazyListScope.factSheetSectionBody(
+    factSheetId: String?,
+    repository: CathopediaRepository,
+    language: String,
+) {
+    if (factSheetId == null) return
+    item {
+        var sheet by remember(factSheetId) { mutableStateOf<HubFactSheetDetail?>(null) }
+        var strings by remember(factSheetId) { mutableStateOf<Map<String, String>>(emptyMap()) }
+
+        LaunchedEffect(factSheetId, language) {
+            val loaded = repository.hubFactSheet(factSheetId) ?: return@LaunchedEffect
+            sheet = loaded
+            val keys = loaded.facts.flatMap { listOfNotNull(it.labelKey, it.valueKey, it.footnoteKey) }.toSet()
+            strings = repository.resolveHubStrings(keys, language)
+        }
+
+        sheet?.let { s ->
+            Column(verticalArrangement = Arrangement.spacedBy(1.dp)) {
+                s.facts.forEach { fact ->
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(MaterialTheme.colorScheme.surfaceContainerLow)
+                            .padding(horizontal = 14.dp, vertical = 12.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                    ) {
+                        Text(
+                            text = strings[fact.labelKey].orEmpty(),
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            fontSize = 13.sp,
+                        )
+                        Text(
+                            text = strings[fact.valueKey].orEmpty(),
+                            color = MaterialTheme.colorScheme.onBackground,
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.SemiBold,
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+private fun androidx.compose.foundation.lazy.LazyListScope.stepperSectionBody(
+    stepperId: String?,
+    repository: CathopediaRepository,
+    language: String,
+) {
+    if (stepperId == null) return
+    item {
+        var stepper by remember(stepperId) { mutableStateOf<HubStepperDetail?>(null) }
+        var strings by remember(stepperId) { mutableStateOf<Map<String, String>>(emptyMap()) }
+
+        LaunchedEffect(stepperId, language) {
+            val loaded = repository.hubStepper(stepperId) ?: return@LaunchedEffect
+            stepper = loaded
+            val keys = loaded.steps.flatMap { listOfNotNull(it.titleKey, it.bodyKey, it.latinKey) }.toSet()
+            strings = repository.resolveHubStrings(keys, language)
+        }
+
+        stepper?.let { st ->
+            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                st.steps.sortedBy { it.order }.forEach { step ->
+                    Row(modifier = Modifier.fillMaxWidth()) {
+                        Text(
+                            text = "${step.order}.",
+                            color = MaterialTheme.colorScheme.primary,
+                            fontWeight = FontWeight.SemiBold,
+                            fontSize = 14.sp,
+                            modifier = Modifier.width(28.dp),
+                        )
+                        Column {
+                            Text(
+                                text = strings[step.titleKey].orEmpty(),
+                                color = MaterialTheme.colorScheme.onBackground,
+                                fontFamily = FontFamily.Serif,
+                                fontSize = 15.sp,
+                            )
+                            Text(
+                                text = strings[step.bodyKey].orEmpty(),
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                fontSize = 13.sp,
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+private fun androidx.compose.foundation.lazy.LazyListScope.timelineSectionBody(
+    timelineId: String?,
+    repository: CathopediaRepository,
+    language: String,
+) {
+    if (timelineId == null) return
+    item {
+        var timeline by remember(timelineId) { mutableStateOf<HubTimelineDetail?>(null) }
+        var strings by remember(timelineId) { mutableStateOf<Map<String, String>>(emptyMap()) }
+
+        LaunchedEffect(timelineId, language) {
+            val loaded = repository.hubTimeline(timelineId) ?: return@LaunchedEffect
+            timeline = loaded
+            val keys = loaded.events.flatMap { listOfNotNull(it.titleKey, it.bodyKey) }.toSet()
+            strings = repository.resolveHubStrings(keys, language)
+        }
+
+        timeline?.let { tl ->
+            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                tl.events.sortedBy { it.year }.forEach { event ->
+                    Row(modifier = Modifier.fillMaxWidth()) {
+                        Text(
+                            text = (if (event.approximate) "c. " else "") + event.year.toString(),
+                            color = MaterialTheme.colorScheme.primary,
+                            fontWeight = FontWeight.SemiBold,
+                            fontSize = 13.sp,
+                            modifier = Modifier.width(56.dp),
+                        )
+                        Column {
+                            Text(
+                                text = strings[event.titleKey].orEmpty(),
+                                color = MaterialTheme.colorScheme.onBackground,
+                                fontFamily = FontFamily.Serif,
+                                fontSize = 15.sp,
+                            )
+                            event.bodyKey?.let { key ->
+                                strings[key]?.let { body ->
+                                    Text(text = body, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+private fun androidx.compose.foundation.lazy.LazyListScope.collectionSectionBody(comingSoonLabel: String) {
+    item {
+        Text(
+            text = comingSoonLabel,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            fontSize = 13.sp,
+        )
     }
 }

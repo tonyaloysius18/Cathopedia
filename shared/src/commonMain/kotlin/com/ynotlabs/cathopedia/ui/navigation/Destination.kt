@@ -11,6 +11,7 @@ sealed interface Destination {
     data object Explore : Destination
     data class Hub(val hubId: String) : Destination
     data class HubSection(val hubId: String, val sectionId: String) : Destination
+    data class HubArticle(val hubId: String, val articleId: String) : Destination
     data class EntityList(val type: ContentType) : Destination
     data class EntityDetail(val type: ContentType, val id: String) : Destination
     data object PrayersHome : Destination

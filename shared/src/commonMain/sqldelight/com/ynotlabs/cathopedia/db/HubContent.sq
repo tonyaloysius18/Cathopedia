@@ -33,6 +33,8 @@ CREATE TABLE hub_section (
     stepper_id    TEXT,
     timeline_id   TEXT,
     collection_query TEXT,             -- JSON, null unless layout = COLLECTION
+    diagram_id    TEXT,                -- first entry of Section.diagramIds; every DIAGRAM section in
+                                        -- the content so far carries exactly one, see content/hubs/holy_see.json
     FOREIGN KEY (hub_id) REFERENCES topic_hub(id) ON DELETE CASCADE
 );
 CREATE INDEX hub_section_hub_idx ON hub_section(hub_id, sort_order);

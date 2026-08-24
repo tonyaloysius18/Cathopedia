@@ -2,6 +2,7 @@ package com.ynotlabs.cathopedia.data
 
 import com.ynotlabs.cathopedia.content.ContentCatalog
 import com.ynotlabs.cathopedia.content.LocalizedText
+import com.ynotlabs.cathopedia.content.hubContentJson
 import com.ynotlabs.cathopedia.content.model.HUB_SCHEMA_VERSION
 import com.ynotlabs.cathopedia.content.model.HubDocument
 import com.ynotlabs.cathopedia.content.model.HubStrings
@@ -19,7 +20,6 @@ import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.model.PRAYER_SEARCH_ENTITY_TYPE
 import com.ynotlabs.cathopedia.resources.Res
 import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 
 /**
  * Loads the compiled content bundle (`/content` → `:shared:compileContent` →
@@ -37,17 +37,14 @@ object ContentLoader {
      * this just controls whether it re-runs on an existing install rather
      * than only ever loading once on a database with zero rows.
      */
-    private const val CONTENT_VERSION = "28"
+    private const val CONTENT_VERSION = "29"
     private const val CONTENT_VERSION_KEY = "content_version"
 
-    // classDiscriminator/explicitNulls are only exercised by the hub content's sealed
-    // Block/HotspotShape hierarchy (see HubContentModels.kt) — harmless no-ops for every
-    // other (non-polymorphic) content type decoded through this same instance.
-    private val json = Json {
-        ignoreUnknownKeys = true
-        classDiscriminator = "type"
-        explicitNulls = false
-    }
+    // classDiscriminator/explicitNulls (from com.ynotlabs.cathopedia.content.hubContentJson) are
+    // only exercised by the hub content's sealed Block/HotspotShape hierarchy (see
+    // HubContentModels.kt) — harmless no-ops for every other (non-polymorphic) content type
+    // decoded through this same instance.
+    private val json = hubContentJson
 
     suspend fun loadIfEmpty(database: CathopediaDatabase) {
         val loadedVersion = database.preferenceQueries.getPreference(CONTENT_VERSION_KEY).executeAsOneOrNull()
@@ -182,6 +179,7 @@ object ContentLoader {
                         stepper_id = s.stepperId,
                         timeline_id = s.timelineId,
                         collection_query = s.collectionQuery?.let { json.encodeToString(it) },
+                        diagram_id = s.diagramIds.firstOrNull(),
                     ),
                 )
             }

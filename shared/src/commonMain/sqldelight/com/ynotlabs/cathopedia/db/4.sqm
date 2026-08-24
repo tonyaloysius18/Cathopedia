@@ -1,0 +1,4 @@
+-- hub_section had no way to reference the diagram it displays for DIAGRAM-layout sections
+-- (see docs/briefs/topic-hubs.md T5) — content already carries Section.diagramIds, this was
+-- just missing from the storage schema.
+ALTER TABLE hub_section ADD COLUMN diagram_id TEXT;
