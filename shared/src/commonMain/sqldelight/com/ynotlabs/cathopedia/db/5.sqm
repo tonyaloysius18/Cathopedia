@@ -1,0 +1,47 @@
+-- Fix missing tables that were added to .sq files after the first release without migrations.
+-- This ensures existing users (especially on iOS where the database file persists across builds)
+-- have the Prayer and Mystery tables.
+
+CREATE TABLE IF NOT EXISTS PrayerEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    category TEXT NOT NULL,
+    sortOrder INTEGER NOT NULL,
+    isSequence INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS PrayerText (
+    prayerId TEXT NOT NULL,
+    language TEXT NOT NULL,
+    title TEXT NOT NULL,
+    subtitle TEXT,
+    bodyMd TEXT NOT NULL,
+    attribution TEXT,
+    source TEXT NOT NULL,
+    PRIMARY KEY (prayerId, language),
+    FOREIGN KEY (prayerId) REFERENCES PrayerEntity(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS PrayerUserState (
+    prayerId TEXT NOT NULL PRIMARY KEY,
+    isFavorite INTEGER NOT NULL DEFAULT 0,
+    lastOpenedAt INTEGER,
+    timesPrayed INTEGER NOT NULL DEFAULT 0,
+    FOREIGN KEY (prayerId) REFERENCES PrayerEntity(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS MysteryEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    mysterySet TEXT NOT NULL,
+    sortOrder INTEGER NOT NULL,
+    scriptureRef TEXT
+);
+
+CREATE TABLE IF NOT EXISTS MysteryText (
+    mysteryId TEXT NOT NULL,
+    language TEXT NOT NULL,
+    title TEXT NOT NULL,
+    fruit TEXT NOT NULL,
+    meditation TEXT,
+    PRIMARY KEY (mysteryId, language),
+    FOREIGN KEY (mysteryId) REFERENCES MysteryEntity(id) ON DELETE CASCADE
+);
