@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "hubId": "rosary",
+  "lang": "fr",
+  "contentVersion": 1,
+  "translationStatus": "COMPLETE",
+  "strings": {
+    "rosary.title": "Saint Rosaire",
+    "rosary.landing.subtitle": "Priez les mystères avec un guide grain par grain.",
+    "rosary.landing.diagram_description": "Un Rosaire complet : crucifix, grains du pendant, médaille et cinq dizaines.",
+    "rosary.start": "Commencer le Rosaire",
+    "rosary.back": "Retour",
+    "rosary.resume.title": "Continuer votre Rosaire",
+    "rosary.resume.progress": "Mystères {set} · prière {step}",
+    "rosary.resume.action": "Reprendre",
+    "rosary.meter.title": "Vos Rosaires",
+    "rosary.meter.total": "Terminés",
+    "rosary.meter.this_month": "Ce mois-ci",
+    "rosary.mystery.joyful": "joyeux",
+    "rosary.mystery.sorrowful": "douloureux",
+    "rosary.mystery.glorious": "glorieux",
+    "rosary.mystery.luminous": "lumineux"
+  }
+}

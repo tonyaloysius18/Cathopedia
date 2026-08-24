@@ -1,76 +1,21 @@
 package com.ynotlabs.cathopedia.ui.screens
 
+import com.ynotlabs.cathopedia.rosary.rosaryLayout
 import com.ynotlabs.cathopedia.ui.components.DiagramCircleShape
 import com.ynotlabs.cathopedia.ui.components.DiagramHotspot
 
 /**
  * Tap targets over rosary_marian.png (see InteractiveDiagram.kt), one per prayer step —
- * id is the bead's prayer-order index (0 = crucifix ... 61 = last Hail Mary), matching
- * RosaryBead.index in RosaryCanvas.kt so MysterySequence.steps[*].beadIndex still resolves.
- * Positions were computed to match the loop+tail geometry the artwork was actually drawn to
- * (a clean ellipse, not RosaryCanvas's organic wobble) -- generated, not hand-placed.
+ * id is the bead's prayer-order index (0 = crucifix … 61 = last Hail Mary), matching
+ * [com.ynotlabs.cathopedia.rosary.RosaryBead.index] so a step's beadIndex still resolves.
+ *
+ * Derived from the shared [rosaryLayout] rather than a second hand-placed table, so the
+ * flat-image map and the sprite-composed landing (A4) can never drift apart.
  */
-internal val rosaryBeadHotspots: List<DiagramHotspot> = listOf(
-    DiagramHotspot(id = "0", label = "", shape = DiagramCircleShape(cx = 0.4833f, cy = 0.9222f, r = 0.045f)),
-    DiagramHotspot(id = "1", label = "", shape = DiagramCircleShape(cx = 0.4775f, cy = 0.8635f, r = 0.028f)),
-    DiagramHotspot(id = "2", label = "", shape = DiagramCircleShape(cx = 0.4883f, cy = 0.795f, r = 0.02f)),
-    DiagramHotspot(id = "3", label = "", shape = DiagramCircleShape(cx = 0.5021f, cy = 0.741f, r = 0.02f)),
-    DiagramHotspot(id = "4", label = "", shape = DiagramCircleShape(cx = 0.5149f, cy = 0.6873f, r = 0.02f)),
-    DiagramHotspot(id = "5", label = "", shape = DiagramCircleShape(cx = 0.5207f, cy = 0.6202f, r = 0.028f)),
-    DiagramHotspot(id = "6", label = "", shape = DiagramCircleShape(cx = 0.5f, cy = 0.55f, r = 0.035f)),
-    DiagramHotspot(id = "7", label = "", shape = DiagramCircleShape(cx = 0.4608f, cy = 0.5486f, r = 0.028f)),
-    DiagramHotspot(id = "8", label = "", shape = DiagramCircleShape(cx = 0.4221f, cy = 0.5446f, r = 0.02f)),
-    DiagramHotspot(id = "9", label = "", shape = DiagramCircleShape(cx = 0.3844f, cy = 0.5378f, r = 0.02f)),
-    DiagramHotspot(id = "10", label = "", shape = DiagramCircleShape(cx = 0.3481f, cy = 0.5285f, r = 0.02f)),
-    DiagramHotspot(id = "11", label = "", shape = DiagramCircleShape(cx = 0.3138f, cy = 0.5168f, r = 0.02f)),
-    DiagramHotspot(id = "12", label = "", shape = DiagramCircleShape(cx = 0.2818f, cy = 0.5027f, r = 0.02f)),
-    DiagramHotspot(id = "13", label = "", shape = DiagramCircleShape(cx = 0.2525f, cy = 0.4865f, r = 0.02f)),
-    DiagramHotspot(id = "14", label = "", shape = DiagramCircleShape(cx = 0.2264f, cy = 0.4684f, r = 0.02f)),
-    DiagramHotspot(id = "15", label = "", shape = DiagramCircleShape(cx = 0.2036f, cy = 0.4486f, r = 0.02f)),
-    DiagramHotspot(id = "16", label = "", shape = DiagramCircleShape(cx = 0.1847f, cy = 0.4273f, r = 0.02f)),
-    DiagramHotspot(id = "17", label = "", shape = DiagramCircleShape(cx = 0.1696f, cy = 0.4049f, r = 0.02f)),
-    DiagramHotspot(id = "18", label = "", shape = DiagramCircleShape(cx = 0.1588f, cy = 0.3815f, r = 0.028f)),
-    DiagramHotspot(id = "19", label = "", shape = DiagramCircleShape(cx = 0.1522f, cy = 0.3576f, r = 0.02f)),
-    DiagramHotspot(id = "20", label = "", shape = DiagramCircleShape(cx = 0.15f, cy = 0.3333f, r = 0.02f)),
-    DiagramHotspot(id = "21", label = "", shape = DiagramCircleShape(cx = 0.1522f, cy = 0.3091f, r = 0.02f)),
-    DiagramHotspot(id = "22", label = "", shape = DiagramCircleShape(cx = 0.1588f, cy = 0.2851f, r = 0.02f)),
-    DiagramHotspot(id = "23", label = "", shape = DiagramCircleShape(cx = 0.1696f, cy = 0.2618f, r = 0.02f)),
-    DiagramHotspot(id = "24", label = "", shape = DiagramCircleShape(cx = 0.1847f, cy = 0.2393f, r = 0.02f)),
-    DiagramHotspot(id = "25", label = "", shape = DiagramCircleShape(cx = 0.2036f, cy = 0.2181f, r = 0.02f)),
-    DiagramHotspot(id = "26", label = "", shape = DiagramCircleShape(cx = 0.2264f, cy = 0.1982f, r = 0.02f)),
-    DiagramHotspot(id = "27", label = "", shape = DiagramCircleShape(cx = 0.2525f, cy = 0.1801f, r = 0.02f)),
-    DiagramHotspot(id = "28", label = "", shape = DiagramCircleShape(cx = 0.2818f, cy = 0.1639f, r = 0.02f)),
-    DiagramHotspot(id = "29", label = "", shape = DiagramCircleShape(cx = 0.3138f, cy = 0.1499f, r = 0.028f)),
-    DiagramHotspot(id = "30", label = "", shape = DiagramCircleShape(cx = 0.3481f, cy = 0.1381f, r = 0.02f)),
-    DiagramHotspot(id = "31", label = "", shape = DiagramCircleShape(cx = 0.3844f, cy = 0.1288f, r = 0.02f)),
-    DiagramHotspot(id = "32", label = "", shape = DiagramCircleShape(cx = 0.4221f, cy = 0.1221f, r = 0.02f)),
-    DiagramHotspot(id = "33", label = "", shape = DiagramCircleShape(cx = 0.4608f, cy = 0.118f, r = 0.02f)),
-    DiagramHotspot(id = "34", label = "", shape = DiagramCircleShape(cx = 0.5f, cy = 0.1167f, r = 0.02f)),
-    DiagramHotspot(id = "35", label = "", shape = DiagramCircleShape(cx = 0.5392f, cy = 0.118f, r = 0.02f)),
-    DiagramHotspot(id = "36", label = "", shape = DiagramCircleShape(cx = 0.5779f, cy = 0.1221f, r = 0.02f)),
-    DiagramHotspot(id = "37", label = "", shape = DiagramCircleShape(cx = 0.6156f, cy = 0.1288f, r = 0.02f)),
-    DiagramHotspot(id = "38", label = "", shape = DiagramCircleShape(cx = 0.6519f, cy = 0.1381f, r = 0.02f)),
-    DiagramHotspot(id = "39", label = "", shape = DiagramCircleShape(cx = 0.6862f, cy = 0.1499f, r = 0.02f)),
-    DiagramHotspot(id = "40", label = "", shape = DiagramCircleShape(cx = 0.7182f, cy = 0.1639f, r = 0.028f)),
-    DiagramHotspot(id = "41", label = "", shape = DiagramCircleShape(cx = 0.7475f, cy = 0.1801f, r = 0.02f)),
-    DiagramHotspot(id = "42", label = "", shape = DiagramCircleShape(cx = 0.7736f, cy = 0.1982f, r = 0.02f)),
-    DiagramHotspot(id = "43", label = "", shape = DiagramCircleShape(cx = 0.7964f, cy = 0.2181f, r = 0.02f)),
-    DiagramHotspot(id = "44", label = "", shape = DiagramCircleShape(cx = 0.8153f, cy = 0.2393f, r = 0.02f)),
-    DiagramHotspot(id = "45", label = "", shape = DiagramCircleShape(cx = 0.8304f, cy = 0.2618f, r = 0.02f)),
-    DiagramHotspot(id = "46", label = "", shape = DiagramCircleShape(cx = 0.8412f, cy = 0.2851f, r = 0.02f)),
-    DiagramHotspot(id = "47", label = "", shape = DiagramCircleShape(cx = 0.8478f, cy = 0.3091f, r = 0.02f)),
-    DiagramHotspot(id = "48", label = "", shape = DiagramCircleShape(cx = 0.85f, cy = 0.3333f, r = 0.02f)),
-    DiagramHotspot(id = "49", label = "", shape = DiagramCircleShape(cx = 0.8478f, cy = 0.3576f, r = 0.02f)),
-    DiagramHotspot(id = "50", label = "", shape = DiagramCircleShape(cx = 0.8412f, cy = 0.3815f, r = 0.02f)),
-    DiagramHotspot(id = "51", label = "", shape = DiagramCircleShape(cx = 0.8304f, cy = 0.4049f, r = 0.028f)),
-    DiagramHotspot(id = "52", label = "", shape = DiagramCircleShape(cx = 0.8153f, cy = 0.4273f, r = 0.02f)),
-    DiagramHotspot(id = "53", label = "", shape = DiagramCircleShape(cx = 0.7964f, cy = 0.4486f, r = 0.02f)),
-    DiagramHotspot(id = "54", label = "", shape = DiagramCircleShape(cx = 0.7736f, cy = 0.4684f, r = 0.02f)),
-    DiagramHotspot(id = "55", label = "", shape = DiagramCircleShape(cx = 0.7475f, cy = 0.4865f, r = 0.02f)),
-    DiagramHotspot(id = "56", label = "", shape = DiagramCircleShape(cx = 0.7182f, cy = 0.5027f, r = 0.02f)),
-    DiagramHotspot(id = "57", label = "", shape = DiagramCircleShape(cx = 0.6862f, cy = 0.5168f, r = 0.02f)),
-    DiagramHotspot(id = "58", label = "", shape = DiagramCircleShape(cx = 0.6519f, cy = 0.5285f, r = 0.02f)),
-    DiagramHotspot(id = "59", label = "", shape = DiagramCircleShape(cx = 0.6156f, cy = 0.5378f, r = 0.02f)),
-    DiagramHotspot(id = "60", label = "", shape = DiagramCircleShape(cx = 0.5779f, cy = 0.5446f, r = 0.02f)),
-    DiagramHotspot(id = "61", label = "", shape = DiagramCircleShape(cx = 0.5392f, cy = 0.5486f, r = 0.02f)),
-)
+internal val rosaryBeadHotspots: List<DiagramHotspot> = rosaryLayout.map { bead ->
+    DiagramHotspot(
+        id = bead.index.toString(),
+        label = "",
+        shape = DiagramCircleShape(cx = bead.x, cy = bead.y, r = bead.radius),
+    )
+}

@@ -45,12 +45,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.data.PreferenceKeys
+import com.ynotlabs.cathopedia.data.RosarySessionRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.liturgical.LiturgicalCalendar
 import com.ynotlabs.cathopedia.model.MysteryDetail
 import com.ynotlabs.cathopedia.model.MysterySet
 import com.ynotlabs.cathopedia.model.PrayerDetail
+import com.ynotlabs.cathopedia.model.RosaryMeter
+import com.ynotlabs.cathopedia.model.RosarySessionState
 import com.ynotlabs.cathopedia.rosary.RosarySequence
 import com.ynotlabs.cathopedia.rosary.mysterySetForDate
 import com.ynotlabs.cathopedia.ui.components.FilterChipsRow
@@ -77,17 +80,80 @@ private const val RESUME_WINDOW_MS = 4 * 60 * 60 * 1000L
 @Composable
 fun RosaryScreen(
     repository: CathopediaRepository,
+    sessionRepository: RosarySessionRepository,
     language: String,
+    onBack: () -> Unit,
+) {
+    var showLanding by remember { mutableStateOf(true) }
+    var resumeSession by remember { mutableStateOf<RosarySessionState?>(null) }
+    var requestedResume by remember { mutableStateOf<RosarySessionState?>(null) }
+    var meter by remember {
+        mutableStateOf(
+            RosaryMeter(
+                totalCompleted = 0,
+                completedThisMonth = 0,
+                byMysterySet = emptyMap(),
+                completionTimestamps = emptyList(),
+            ),
+        )
+    }
+    var localized by remember(language) { mutableStateOf<Map<String, String>>(emptyMap()) }
+
+    LaunchedEffect(showLanding, language) {
+        if (showLanding) {
+            sessionRepository.abandonStale()
+            resumeSession = sessionRepository.resumeInProgress()
+            meter = sessionRepository.meter()
+            localized = repository.resolveHubStrings(
+                RosaryStringKeys.landing + MysterySet.entries.map { "rosary.mystery.${it.tag}" },
+                language,
+            )
+        }
+    }
+
+    if (showLanding) {
+        RosaryLandingScreen(
+            strings = localized,
+            resumeSession = resumeSession,
+            meter = meter,
+            onStart = {
+                requestedResume = null
+                showLanding = false
+            },
+            onResume = { session ->
+                requestedResume = session
+                showLanding = false
+            },
+            onBack = onBack,
+        )
+    } else {
+        LegacyRosaryScreen(
+            repository = repository,
+            language = language,
+            initialResume = requestedResume,
+            onBack = { showLanding = true },
+        )
+    }
+}
+
+@OptIn(ExperimentalTime::class)
+@Composable
+private fun LegacyRosaryScreen(
+    repository: CathopediaRepository,
+    language: String,
+    initialResume: RosarySessionState?,
     onBack: () -> Unit,
 ) {
     val s = LocalStrings.current
     val scope = rememberCoroutineScope()
 
     var mode by remember { mutableStateOf(RosaryMode.GUIDED) }
-    var mysterySet by remember { mutableStateOf(mysterySetForDate(LiturgicalCalendar.today())) }
-    var currentIndex by remember { mutableStateOf(0) }
+    var mysterySet by remember(initialResume) {
+        mutableStateOf(initialResume?.mysterySet ?: mysterySetForDate(LiturgicalCalendar.today()))
+    }
+    var currentIndex by remember(initialResume) { mutableStateOf(initialResume?.currentStepIndex ?: 0) }
     var resumePrompt by remember { mutableStateOf<ResumeState?>(null) }
-    var sessionReady by remember { mutableStateOf(false) }
+    var sessionReady by remember(initialResume) { mutableStateOf(initialResume != null) }
 
     val sequence = remember(mysterySet) { RosarySequence(mysterySet) }
 
@@ -100,6 +166,7 @@ fun RosaryScreen(
     // Load any saved session once, deciding whether to offer resume vs. just
     // starting fresh — see the resume-window comment above.
     LaunchedEffect(Unit) {
+        if (initialResume != null) return@LaunchedEffect
         val savedSet = repository.getPreference(PreferenceKeys.ROSARY_MYSTERY_SET)?.let { MysterySet.fromTag(it) }
         val savedIndex = repository.getPreference(PreferenceKeys.ROSARY_CURRENT_INDEX)?.toIntOrNull()
         val savedStartedAt = repository.getPreference(PreferenceKeys.ROSARY_SESSION_STARTED_AT)?.toLongOrNull()

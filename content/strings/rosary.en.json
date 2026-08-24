@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "hubId": "rosary",
+  "lang": "en",
+  "contentVersion": 1,
+  "translationStatus": "COMPLETE",
+  "strings": {
+    "rosary.title": "Holy Rosary",
+    "rosary.landing.subtitle": "Pray the mysteries with a bead-by-bead guide.",
+    "rosary.landing.diagram_description": "A complete Rosary: crucifix, pendant beads, centerpiece, and five decades.",
+    "rosary.start": "Start Rosary",
+    "rosary.back": "Back",
+    "rosary.resume.title": "Continue your Rosary",
+    "rosary.resume.progress": "{set} mysteries · prayer {step}",
+    "rosary.resume.action": "Resume",
+    "rosary.meter.title": "Your Rosaries",
+    "rosary.meter.total": "Completed",
+    "rosary.meter.this_month": "This month",
+    "rosary.mystery.joyful": "Joyful",
+    "rosary.mystery.sorrowful": "Sorrowful",
+    "rosary.mystery.glorious": "Glorious",
+    "rosary.mystery.luminous": "Luminous"
+  }
+}

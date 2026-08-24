@@ -351,6 +351,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
 
                 is Destination.RosaryScreen -> RosaryScreen(
                     repository = repository,
+                    sessionRepository = container.rosarySessionRepository,
                     language = language,
                     onBack = nav::back,
                 )
