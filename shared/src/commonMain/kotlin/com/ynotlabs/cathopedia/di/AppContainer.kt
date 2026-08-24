@@ -2,6 +2,7 @@ package com.ynotlabs.cathopedia.di
 
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.data.DatabaseDriverFactory
+import com.ynotlabs.cathopedia.data.RosarySessionRepository
 import com.ynotlabs.cathopedia.db.CathopediaDatabase
 
 /**
@@ -12,4 +13,5 @@ import com.ynotlabs.cathopedia.db.CathopediaDatabase
 class AppContainer(driverFactory: DatabaseDriverFactory) {
     val database: CathopediaDatabase = CathopediaDatabase(driverFactory.createDriver())
     val repository: CathopediaRepository = CathopediaRepository(database)
+    val rosarySessionRepository: RosarySessionRepository = RosarySessionRepository(database)
 }

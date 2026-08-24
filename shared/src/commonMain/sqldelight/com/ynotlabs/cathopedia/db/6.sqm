@@ -1,0 +1,13 @@
+-- Rosary session persistence (rosary-screen-brief.md, A3) — added to RosarySession.sq
+-- after the schema's first releases, so existing installs need the table created here.
+CREATE TABLE IF NOT EXISTS rosary_session (
+    id TEXT NOT NULL PRIMARY KEY,
+    mystery_set TEXT NOT NULL,
+    started_at INTEGER NOT NULL,
+    completed_at INTEGER,
+    current_step_index INTEGER NOT NULL DEFAULT 0,
+    decades_completed INTEGER NOT NULL DEFAULT 0,
+    duration_seconds INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE INDEX IF NOT EXISTS rosary_session_in_progress ON rosary_session(started_at) WHERE completed_at IS NULL;

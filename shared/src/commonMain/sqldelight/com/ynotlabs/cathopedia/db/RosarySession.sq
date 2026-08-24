@@ -1,0 +1,81 @@
+-- One row per Rosary the user has started. User-state, not content — like
+-- PrayerUserState and Bookmark it shares the single bundled/runtime database
+-- (see CathopediaRepository's single-database note). completed_at is NULL while
+-- a session is in progress; that NULL is what resumeInProgress and the meter's
+-- "total completed" both key off, so it is the one column never to default.
+--
+-- current_step_index tracks the PrayerStep the user is on (see RosarySequence),
+-- so an interrupted Rosary reopens on the exact bead. decades_completed and
+-- duration_seconds feed the meter (A7) and are cheap to overwrite on every
+-- advance via saveProgress.
+CREATE TABLE rosary_session (
+    id TEXT NOT NULL PRIMARY KEY,
+    mystery_set TEXT NOT NULL,
+    started_at INTEGER NOT NULL,
+    completed_at INTEGER,
+    current_step_index INTEGER NOT NULL DEFAULT 0,
+    decades_completed INTEGER NOT NULL DEFAULT 0,
+    duration_seconds INTEGER NOT NULL DEFAULT 0
+);
+
+-- Resume lookups and the "in progress" filter scan by completed_at; a partial
+-- index keeps that cheap without indexing the far larger completed history.
+CREATE INDEX rosary_session_in_progress ON rosary_session(started_at) WHERE completed_at IS NULL;
+
+startSession:
+INSERT INTO rosary_session(id, mystery_set, started_at, completed_at, current_step_index, decades_completed, duration_seconds)
+VALUES (:id, :mysterySet, :startedAt, NULL, 0, 0, 0);
+
+-- Called on every advance — a plain UPDATE of the row startSession created, so
+-- it stays a single-row write with no read-modify-write.
+saveProgress:
+UPDATE rosary_session
+SET current_step_index = :currentStepIndex,
+    decades_completed = :decadesCompleted,
+    duration_seconds = :durationSeconds
+WHERE id = :id;
+
+complete:
+UPDATE rosary_session
+SET completed_at = :completedAt,
+    current_step_index = :currentStepIndex,
+    decades_completed = :decadesCompleted,
+    duration_seconds = :durationSeconds
+WHERE id = :id;
+
+-- Drops in-progress sessions older than the cutoff so a week-old half-Rosary
+-- never resurfaces as a Resume card. Only ever touches unfinished rows.
+abandonStale:
+DELETE FROM rosary_session
+WHERE completed_at IS NULL AND started_at < :cutoff;
+
+-- The most recently started unfinished session, or none.
+resumeInProgress:
+SELECT * FROM rosary_session
+WHERE completed_at IS NULL
+ORDER BY started_at DESC
+LIMIT 1;
+
+selectSession:
+SELECT * FROM rosary_session WHERE id = :id;
+
+-- Cumulative — only ever grows (A7: no losable statistic).
+countCompleted:
+SELECT COUNT(*) FROM rosary_session WHERE completed_at IS NOT NULL;
+
+-- Completed on/after a caller-supplied month-start epoch.
+countCompletedSince:
+SELECT COUNT(*) FROM rosary_session WHERE completed_at IS NOT NULL AND completed_at >= :since;
+
+-- Per-mystery-set tally of completed Rosaries, for the meter's breakdown.
+countCompletedByMysterySet:
+SELECT mystery_set, COUNT(*) AS total
+FROM rosary_session
+WHERE completed_at IS NOT NULL
+GROUP BY mystery_set;
+
+-- Completion days (epoch millis) for the meter's calendar heat-map, newest first.
+selectCompletedTimestamps:
+SELECT completed_at FROM rosary_session
+WHERE completed_at IS NOT NULL
+ORDER BY completed_at DESC;
