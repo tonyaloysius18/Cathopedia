@@ -1,13 +1,16 @@
 package com.ynotlabs.cathopedia.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
@@ -22,6 +25,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
@@ -29,6 +33,12 @@ import com.ynotlabs.cathopedia.model.MysterySet
 import com.ynotlabs.cathopedia.model.RosaryMeter
 import com.ynotlabs.cathopedia.model.RosarySessionState
 import com.ynotlabs.cathopedia.ui.components.RosaryComposition
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 
 internal object RosaryStringKeys {
     const val Title = "rosary.title"
@@ -42,6 +52,9 @@ internal object RosaryStringKeys {
     const val MeterTitle = "rosary.meter.title"
     const val MeterTotal = "rosary.meter.total"
     const val MeterMonth = "rosary.meter.this_month"
+    const val MeterRecent = "rosary.meter.recent"
+    const val MeterBreakdown = "rosary.meter.breakdown"
+    const val MeterDayDescription = "rosary.meter.day_description"
 
     val landing = setOf(
         Title,
@@ -55,6 +68,9 @@ internal object RosaryStringKeys {
         MeterTitle,
         MeterTotal,
         MeterMonth,
+        MeterRecent,
+        MeterBreakdown,
+        MeterDayDescription,
     )
 }
 
@@ -175,6 +191,7 @@ private fun ResumeRosaryCard(
     }
 }
 
+@OptIn(ExperimentalTime::class)
 @Composable
 private fun RosaryMeterSummary(
     meter: RosaryMeter,
@@ -182,6 +199,13 @@ private fun RosaryMeterSummary(
     modifier: Modifier = Modifier,
 ) {
     fun text(key: String): String = strings[key].orEmpty()
+    val zone = TimeZone.currentSystemDefault()
+    val today = Clock.System.now().toLocalDateTime(zone).date
+    val countsByDay = rosaryCompletionCountsByDay(meter.completionTimestamps, zone)
+    val recentDays = (34 downTo 0).map { daysAgo ->
+        LocalDate.fromEpochDays(today.toEpochDays() - daysAgo)
+    }
+
     Card(modifier = modifier.fillMaxWidth()) {
         Column(modifier = Modifier.padding(20.dp)) {
             Text(text(RosaryStringKeys.MeterTitle), style = MaterialTheme.typography.titleMedium)
@@ -200,6 +224,59 @@ private fun RosaryMeterSummary(
                     modifier = Modifier.weight(1f),
                 )
             }
+
+            Text(
+                text = text(RosaryStringKeys.MeterRecent),
+                style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = 22.dp, bottom = 8.dp),
+            )
+            recentDays.chunked(7).forEach { week ->
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    week.forEach { day ->
+                        val count = countsByDay[day] ?: 0
+                        val intensity = when {
+                            count <= 0 -> 0.08f
+                            count == 1 -> 0.24f
+                            count == 2 -> 0.4f
+                            else -> 0.58f
+                        }
+                        Box(
+                            modifier = Modifier
+                                .weight(1f)
+                                .aspectRatio(1f)
+                                .padding(3.dp)
+                                .clip(RoundedCornerShape(4.dp))
+                                .background(MaterialTheme.colorScheme.primary.copy(alpha = intensity))
+                                .semantics {
+                                    contentDescription = text(RosaryStringKeys.MeterDayDescription)
+                                        .replace("{date}", day.toString())
+                                        .replace("{count}", count.toString())
+                                },
+                        )
+                    }
+                }
+            }
+
+            Text(
+                text = text(RosaryStringKeys.MeterBreakdown),
+                style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = 18.dp, bottom = 6.dp),
+            )
+            MysterySet.entries.forEach { set ->
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Text(mysterySetName(set, strings), style = MaterialTheme.typography.bodyMedium)
+                    Text(
+                        text = (meter.byMysterySet[set] ?: 0).toString(),
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.primary,
+                    )
+                }
+            }
         }
     }
 }
@@ -214,3 +291,12 @@ private fun MeterValue(value: String, label: String, modifier: Modifier = Modifi
 
 internal fun mysterySetName(set: MysterySet, strings: Map<String, String>): String =
     strings["rosary.mystery.${set.tag}"].orEmpty()
+
+@OptIn(ExperimentalTime::class)
+internal fun rosaryCompletionCountsByDay(
+    timestamps: List<Long>,
+    timeZone: TimeZone,
+): Map<LocalDate, Int> = timestamps
+    .map { Instant.fromEpochMilliseconds(it).toLocalDateTime(timeZone).date }
+    .groupingBy { it }
+    .eachCount()

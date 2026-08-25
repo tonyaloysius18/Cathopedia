@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "fr",
-  "contentVersion": 3,
+  "contentVersion": 4,
   "translationStatus": "COMPLETE",
   "strings": {
     "rosary.title": "Saint Rosaire",
@@ -37,6 +37,9 @@
     "rosary.praying.bead.cross": "Croix",
     "rosary.praying.bead.our_father": "Grain du Notre Père",
     "rosary.praying.bead.hail_mary": "Grain du Je vous salue Marie",
-    "rosary.praying.bead.centerpiece": "Médaille centrale"
+    "rosary.praying.bead.centerpiece": "Médaille centrale",
+    "rosary.meter.recent": "Jours récents",
+    "rosary.meter.breakdown": "Par série de mystères",
+    "rosary.meter.day_description": "{date} : {count} Rosaires terminés"
   }
 }
