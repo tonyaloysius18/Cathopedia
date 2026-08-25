@@ -3,7 +3,6 @@ package com.ynotlabs.cathopedia.ui.screens
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
 import androidx.compose.foundation.layout.Arrangement
@@ -25,7 +24,6 @@ import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -49,15 +47,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.ColorMatrix
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.contentDescription
@@ -78,8 +68,9 @@ import com.ynotlabs.cathopedia.rosary.rosaryLayout
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.rosary_spacer_gold
 import com.ynotlabs.cathopedia.ui.components.PrayerBodyText
+import com.ynotlabs.cathopedia.ui.components.RosarySpriteRenderer
+import com.ynotlabs.cathopedia.ui.components.RosarySpriteUiModel
 import com.ynotlabs.cathopedia.ui.components.beadSprite
-import com.ynotlabs.cathopedia.ui.theme.rosaryColors
 import kotlin.math.abs
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
@@ -422,8 +413,6 @@ private fun CarouselSlot(
     contentDescription: String,
     showSpacer: Boolean,
 ) {
-    val colors = rosaryColors()
-    val density = LocalDensity.current
     val distance by remember(listState, index) {
         derivedStateOf {
             val layout = listState.layoutInfo
@@ -432,72 +421,29 @@ private fun CarouselSlot(
             ((info.offset + info.size / 2f) - viewportCenter) / info.size.coerceAtLeast(1)
         }
     }
-    val clamped = distance.coerceIn(-3f, 3f)
-    val fade = (1f - abs(clamped) * 0.18f).coerceIn(0.28f, 1f)
-    val scale = (1f - abs(clamped) * 0.09f).coerceIn(0.7f, 1f)
-    val inward = if (carouselOnLeft) 1f else -1f
     val beadSize = when (bead.kind) {
         BeadKind.HAIL_MARY -> 44.dp
         BeadKind.OUR_FATHER -> 52.dp
         BeadKind.CENTERPIECE -> 60.dp
         BeadKind.CROSS -> 72.dp
     }
-    val desaturated = remember {
-        ColorFilter.colorMatrix(ColorMatrix().apply { setToSaturation(0.28f) })
-    }
 
     Box(
         modifier = Modifier.height(68.dp).fillMaxWidth(),
         contentAlignment = Alignment.Center,
     ) {
-        if (current) {
-            Box(
-                Modifier
-                    .size(66.dp)
-                    .drawBehind {
-                        drawCircle(
-                            brush = Brush.radialGradient(
-                                0f to colors.candle.copy(alpha = 0.42f),
-                                1f to colors.candle.copy(alpha = 0f),
-                            ),
-                        )
-                    },
-            )
-        }
-
-        val sprite = beadSprite(bead)
-        if (sprite != null) {
-            Image(
-                painter = painterResource(sprite),
+        RosarySpriteRenderer(
+            model = RosarySpriteUiModel(
+                sprite = beadSprite(bead),
+                displaySize = beadSize,
                 contentDescription = contentDescription,
-                contentScale = ContentScale.Fit,
-                colorFilter = if (prayed) desaturated else null,
-                modifier = Modifier
-                    .size(beadSize)
-                    .graphicsLayer {
-                        cameraDistance = 12f * density.density
-                        rotationX = (clamped * 22f).coerceIn(-70f, 70f)
-                        scaleX = scale
-                        scaleY = scale
-                        alpha = fade
-                        translationX = inward * abs(clamped) * 5.dp.toPx()
-                    },
-            )
-        } else {
-            Box(
-                Modifier
-                    .size(beadSize)
-                    .graphicsLayer {
-                        rotationX = (clamped * 22f).coerceIn(-70f, 70f)
-                        scaleX = scale
-                        scaleY = scale
-                        alpha = fade
-                    }
-                    .clip(CircleShape)
-                    .background(colors.marian.copy(alpha = if (prayed) 0.38f else 0.72f))
-                    .semantics { this.contentDescription = contentDescription },
-            )
-        }
+                isCurrent = current,
+                isPrayed = prayed,
+            ),
+            distanceFromCenter = distance,
+            carouselOnLeft = carouselOnLeft,
+            modifier = Modifier.fillMaxSize(),
+        )
 
         if (showSpacer) {
             Image(
