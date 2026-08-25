@@ -68,6 +68,7 @@ import com.ynotlabs.cathopedia.rosary.rosaryLayout
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.rosary_spacer_gold
 import com.ynotlabs.cathopedia.ui.components.PrayerBodyText
+import com.ynotlabs.cathopedia.ui.components.RosaryComposition
 import com.ynotlabs.cathopedia.ui.components.RosarySpriteRenderer
 import com.ynotlabs.cathopedia.ui.components.RosarySpriteUiModel
 import com.ynotlabs.cathopedia.ui.components.beadSprite
@@ -107,6 +108,7 @@ internal object RosaryPrayingStringKeys {
         BeadOurFather,
         BeadHailMary,
         BeadCenterpiece,
+        RosaryStringKeys.DiagramDescription,
     )
 }
 
@@ -190,33 +192,61 @@ internal fun RosaryPrayingScreen(
             )
         },
     ) { padding ->
-        Row(modifier = Modifier.fillMaxSize().padding(padding)) {
-            if (carouselOnLeft) {
-                RosaryCarousel(
+        BoxWithConstraints(modifier = Modifier.fillMaxSize().padding(padding)) {
+            val showFullRosary = maxWidth >= RosaryWideLayoutBreakpoint
+            Row(modifier = Modifier.fillMaxSize()) {
+                if (carouselOnLeft) {
+                    RosaryCarousel(
+                        state = state,
+                        strings = strings,
+                        carouselOnLeft = true,
+                        onNodeSelected = { state = state.jumpToNode(it) },
+                    )
+                }
+                if (showFullRosary && carouselOnLeft) {
+                    PrayingRosaryDiagram(strings = strings, modifier = Modifier.weight(0.82f))
+                }
+                PrayerPane(
                     state = state,
                     strings = strings,
-                    carouselOnLeft = true,
-                    onNodeSelected = { state = state.jumpToNode(it) },
+                    prayer = prayer,
+                    mystery = mystery,
+                    onAdvance = ::advance,
+                    onBack = { state = state.back() },
+                    modifier = Modifier.weight(1.08f),
                 )
-            }
-            PrayerPane(
-                state = state,
-                strings = strings,
-                prayer = prayer,
-                mystery = mystery,
-                onAdvance = ::advance,
-                onBack = { state = state.back() },
-                modifier = Modifier.weight(1f),
-            )
-            if (!carouselOnLeft) {
-                RosaryCarousel(
-                    state = state,
-                    strings = strings,
-                    carouselOnLeft = false,
-                    onNodeSelected = { state = state.jumpToNode(it) },
-                )
+                if (showFullRosary && !carouselOnLeft) {
+                    PrayingRosaryDiagram(strings = strings, modifier = Modifier.weight(0.82f))
+                }
+                if (!carouselOnLeft) {
+                    RosaryCarousel(
+                        state = state,
+                        strings = strings,
+                        carouselOnLeft = false,
+                        onNodeSelected = { state = state.jumpToNode(it) },
+                    )
+                }
             }
         }
+    }
+}
+
+@Composable
+private fun PrayingRosaryDiagram(
+    strings: Map<String, String>,
+    modifier: Modifier = Modifier,
+) {
+    Box(
+        modifier = modifier.fillMaxHeight().padding(horizontal = 20.dp, vertical = 12.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        RosaryComposition(
+            modifier = Modifier
+                .fillMaxWidth()
+                .semantics {
+                    contentDescription = strings[RosaryStringKeys.DiagramDescription].orEmpty()
+                },
+        )
     }
 }
 
