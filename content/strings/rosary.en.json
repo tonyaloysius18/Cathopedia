@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "en",
-  "contentVersion": 2,
+  "contentVersion": 3,
   "translationStatus": "COMPLETE",
   "strings": {
     "rosary.title": "Holy Rosary",
@@ -24,6 +24,19 @@
     "rosary.mystery_dialog.message": "Today's set is selected. You may choose any set.",
     "rosary.mystery_dialog.today": "Today",
     "rosary.mystery_dialog.cancel": "Cancel",
-    "rosary.mystery_dialog.begin": "Begin"
+    "rosary.mystery_dialog.begin": "Begin",
+    "rosary.praying.close": "Close",
+    "rosary.praying.progress": "Prayer {current} of {total}",
+    "rosary.praying.decade": "Decade {ordinal}",
+    "rosary.praying.decade_progress": "Decade {ordinal} · prayer {current} of {total}",
+    "rosary.praying.tap_hint": "Continue to the next prayer",
+    "rosary.praying.back_hint": "Return to the previous prayer",
+    "rosary.praying.text_unavailable": "This prayer's text is not yet available.",
+    "rosary.praying.mystery_fruit": "Fruit: {fruit}",
+    "rosary.praying.carousel_description": "Scrollable Rosary beads. Scroll to move to another bead.",
+    "rosary.praying.bead.cross": "Cross",
+    "rosary.praying.bead.our_father": "Our Father bead",
+    "rosary.praying.bead.hail_mary": "Hail Mary bead",
+    "rosary.praying.bead.centerpiece": "Centerpiece"
   }
 }

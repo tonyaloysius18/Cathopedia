@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "fr",
-  "contentVersion": 2,
+  "contentVersion": 3,
   "translationStatus": "COMPLETE",
   "strings": {
     "rosary.title": "Saint Rosaire",
@@ -24,6 +24,19 @@
     "rosary.mystery_dialog.message": "Les mystères du jour sont sélectionnés. Vous pouvez en choisir d'autres.",
     "rosary.mystery_dialog.today": "Aujourd'hui",
     "rosary.mystery_dialog.cancel": "Annuler",
-    "rosary.mystery_dialog.begin": "Commencer"
+    "rosary.mystery_dialog.begin": "Commencer",
+    "rosary.praying.close": "Fermer",
+    "rosary.praying.progress": "Prière {current} sur {total}",
+    "rosary.praying.decade": "Dizaine {ordinal}",
+    "rosary.praying.decade_progress": "Dizaine {ordinal} · prière {current} sur {total}",
+    "rosary.praying.tap_hint": "Continuer vers la prière suivante",
+    "rosary.praying.back_hint": "Revenir à la prière précédente",
+    "rosary.praying.text_unavailable": "Le texte de cette prière n'est pas encore disponible.",
+    "rosary.praying.mystery_fruit": "Fruit : {fruit}",
+    "rosary.praying.carousel_description": "Grains du Rosaire défilants. Faites défiler pour changer de grain.",
+    "rosary.praying.bead.cross": "Croix",
+    "rosary.praying.bead.our_father": "Grain du Notre Père",
+    "rosary.praying.bead.hail_mary": "Grain du Je vous salue Marie",
+    "rosary.praying.bead.centerpiece": "Médaille centrale"
   }
 }

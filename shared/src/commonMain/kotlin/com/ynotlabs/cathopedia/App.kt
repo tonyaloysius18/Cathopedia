@@ -108,6 +108,9 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
     var notificationsEnabled by remember {
         mutableStateOf(repository.getPreference(PreferenceKeys.NOTIFICATIONS_ENABLED) == "true")
     }
+    var rosaryCarouselOnLeft by remember {
+        mutableStateOf(repository.getPreference(PreferenceKeys.ROSARY_CAROUSEL_ON_LEFT) == "true")
+    }
     var notificationsPermissionDenied by remember { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
 
@@ -352,6 +355,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                 is Destination.RosaryScreen -> RosaryScreen(
                     repository = repository,
                     sessionRepository = container.rosarySessionRepository,
+                    carouselOnLeft = rosaryCarouselOnLeft,
                     language = language,
                     onBack = nav::back,
                 )
@@ -377,6 +381,11 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     language = language,
                     themeMode = themeMode,
                     notificationsEnabled = notificationsEnabled,
+                    rosaryCarouselOnLeft = rosaryCarouselOnLeft,
+                    onRosaryCarouselSideChanged = { onLeft ->
+                        rosaryCarouselOnLeft = onLeft
+                        repository.setPreference(PreferenceKeys.ROSARY_CAROUSEL_ON_LEFT, onLeft.toString())
+                    },
                     onOpenLanguage = { nav.navigate(Destination.LanguageSettings) },
                     onOpenAppearance = { nav.navigate(Destination.Appearance) },
                     onOpenNotifications = { nav.navigate(Destination.Notifications) },

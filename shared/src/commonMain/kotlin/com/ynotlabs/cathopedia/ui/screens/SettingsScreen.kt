@@ -23,6 +23,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.SwapHoriz
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -56,6 +57,8 @@ fun SettingsScreen(
     language: String,
     themeMode: ThemeMode,
     notificationsEnabled: Boolean,
+    rosaryCarouselOnLeft: Boolean,
+    onRosaryCarouselSideChanged: (Boolean) -> Unit,
     onOpenLanguage: () -> Unit,
     onOpenAppearance: () -> Unit,
     onOpenNotifications: () -> Unit,
@@ -104,6 +107,15 @@ fun SettingsScreen(
                     label = s.settingsNotificationsRowLabel,
                     value = if (notificationsEnabled) s.settingsNotificationsRowValueOn else s.settingsNotificationsRowValueOff,
                     onClick = onOpenNotifications,
+                )
+
+                SettingsDivider()
+
+                PremiumIconSettingsRow(
+                    icon = Icons.Filled.SwapHoriz,
+                    label = s.settingsRosaryCarouselSideLabel,
+                    value = if (rosaryCarouselOnLeft) s.settingsRosaryCarouselLeft else s.settingsRosaryCarouselRight,
+                    onClick = { onRosaryCarouselSideChanged(!rosaryCarouselOnLeft) },
                 )
             }
 
