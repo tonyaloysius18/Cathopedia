@@ -84,9 +84,13 @@ fun RosaryScreen(
     language: String,
     onBack: () -> Unit,
 ) {
+    val scope = rememberCoroutineScope()
     var showLanding by remember { mutableStateOf(true) }
     var resumeSession by remember { mutableStateOf<RosarySessionState?>(null) }
     var requestedResume by remember { mutableStateOf<RosarySessionState?>(null) }
+    val todayMysterySet = remember { mysterySetForDate(LiturgicalCalendar.today()) }
+    var selectedMysterySet by remember { mutableStateOf(todayMysterySet) }
+    var showMysteryDialog by remember { mutableStateOf(false) }
     var meter by remember {
         mutableStateOf(
             RosaryMeter(
@@ -105,7 +109,8 @@ fun RosaryScreen(
             resumeSession = sessionRepository.resumeInProgress()
             meter = sessionRepository.meter()
             localized = repository.resolveHubStrings(
-                RosaryStringKeys.landing + MysterySet.entries.map { "rosary.mystery.${it.tag}" },
+                RosaryStringKeys.landing + MysteryDialogStringKeys.all +
+                    MysterySet.entries.map { "rosary.mystery.${it.tag}" },
                 language,
             )
         }
@@ -117,8 +122,8 @@ fun RosaryScreen(
             resumeSession = resumeSession,
             meter = meter,
             onStart = {
-                requestedResume = null
-                showLanding = false
+                selectedMysterySet = todayMysterySet
+                showMysteryDialog = true
             },
             onResume = { session ->
                 requestedResume = session
@@ -126,6 +131,23 @@ fun RosaryScreen(
             },
             onBack = onBack,
         )
+        if (showMysteryDialog) {
+            RosaryMysterySelectionDialog(
+                strings = localized,
+                todaySet = todayMysterySet,
+                selected = selectedMysterySet,
+                onSelect = { selectedMysterySet = it },
+                onConfirm = {
+                    showMysteryDialog = false
+                    scope.launch {
+                        val id = sessionRepository.startSession(selectedMysterySet)
+                        requestedResume = sessionRepository.session(id)
+                        showLanding = false
+                    }
+                },
+                onDismiss = { showMysteryDialog = false },
+            )
+        }
     } else {
         LegacyRosaryScreen(
             repository = repository,

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "en",
-  "contentVersion": 1,
+  "contentVersion": 2,
   "translationStatus": "COMPLETE",
   "strings": {
     "rosary.title": "Holy Rosary",
@@ -19,6 +19,11 @@
     "rosary.mystery.joyful": "Joyful",
     "rosary.mystery.sorrowful": "Sorrowful",
     "rosary.mystery.glorious": "Glorious",
-    "rosary.mystery.luminous": "Luminous"
+    "rosary.mystery.luminous": "Luminous",
+    "rosary.mystery_dialog.title": "Choose the mysteries",
+    "rosary.mystery_dialog.message": "Today's set is selected. You may choose any set.",
+    "rosary.mystery_dialog.today": "Today",
+    "rosary.mystery_dialog.cancel": "Cancel",
+    "rosary.mystery_dialog.begin": "Begin"
   }
 }

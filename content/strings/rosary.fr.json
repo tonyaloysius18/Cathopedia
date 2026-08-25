@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "fr",
-  "contentVersion": 1,
+  "contentVersion": 2,
   "translationStatus": "COMPLETE",
   "strings": {
     "rosary.title": "Saint Rosaire",
@@ -19,6 +19,11 @@
     "rosary.mystery.joyful": "joyeux",
     "rosary.mystery.sorrowful": "douloureux",
     "rosary.mystery.glorious": "glorieux",
-    "rosary.mystery.luminous": "lumineux"
+    "rosary.mystery.luminous": "lumineux",
+    "rosary.mystery_dialog.title": "Choisir les mystères",
+    "rosary.mystery_dialog.message": "Les mystères du jour sont sélectionnés. Vous pouvez en choisir d'autres.",
+    "rosary.mystery_dialog.today": "Aujourd'hui",
+    "rosary.mystery_dialog.cancel": "Annuler",
+    "rosary.mystery_dialog.begin": "Commencer"
   }
 }
