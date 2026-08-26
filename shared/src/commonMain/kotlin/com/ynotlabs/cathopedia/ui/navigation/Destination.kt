@@ -35,6 +35,5 @@ enum class Tab(val label: String, val glyph: String, val destination: Destinatio
     HOME("Home", "✧", Destination.Home),
     EXPLORE("Explore", "☰", Destination.Explore),
     PRAYERS("Prayers", "🕀", Destination.PrayersHome),
-    SEARCH("Search", "⌕", Destination.Search),
     SETTINGS("Settings", "⚙", Destination.Settings),
 }

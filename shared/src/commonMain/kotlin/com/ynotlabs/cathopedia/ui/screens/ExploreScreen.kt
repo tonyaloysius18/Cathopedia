@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -61,9 +62,11 @@ import com.ynotlabs.cathopedia.resources.explore_churches
 import com.ynotlabs.cathopedia.resources.explore_eucharistic
 import com.ynotlabs.cathopedia.resources.explore_feasts
 import com.ynotlabs.cathopedia.resources.explore_bg
+import com.ynotlabs.cathopedia.resources.explore_holy_see
 import com.ynotlabs.cathopedia.resources.explore_marian
 import com.ynotlabs.cathopedia.resources.explore_popes
 import com.ynotlabs.cathopedia.resources.explore_saints
+import com.ynotlabs.cathopedia.resources.holy_see_icon
 import com.ynotlabs.cathopedia.resources.saints_icon
 import com.ynotlabs.cathopedia.resources.popes_icon
 import com.ynotlabs.cathopedia.resources.apostles_icon
@@ -105,7 +108,7 @@ fun ExploreScreen(
             end = 20.dp,
             bottom = 120.dp,
         ),
-        verticalArrangement = Arrangement.spacedBy(0.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         item {
             ExploreHero(query) { query = it }
@@ -122,7 +125,6 @@ fun ExploreScreen(
                     subtitle = hub.subtitleKey?.let { hubStrings[it] },
                     onClick = { onHubSelected(hub) },
                 )
-                Spacer(Modifier.height(12.dp))
             }
         }
 
@@ -225,7 +227,7 @@ private fun ExploreHero(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 10.dp, bottom = 0.dp),
+            .padding(top = 4.dp, bottom = 0.dp),
     ) {
         // Header artwork follows the same treatment as Settings:
         // artwork on the top-right with green fades keeping the text readable.
@@ -241,7 +243,7 @@ private fun ExploreHero(
                     .align(Alignment.TopEnd)
                     .fillMaxWidth(0.58f)
                     .height(126.dp)
-                    .padding(top = 4.dp),
+                    .offset(y = (-10).dp),
                 contentScale = ContentScale.Fit,
                 alignment = Alignment.TopEnd,
             )
@@ -342,7 +344,7 @@ private fun ExploreSectionHeader(title: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 14.dp, bottom = 12.dp),
+            .padding(top = 0.dp, bottom = 0.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
@@ -653,7 +655,6 @@ private fun WideExploreCard(
         modifier = Modifier
             .fillMaxWidth()
             .height(122.dp)
-            .padding(bottom = 12.dp)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
         border = BorderStroke(1.2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
@@ -715,6 +716,7 @@ private fun HubExploreCard(
     subtitle: String?,
     onClick: () -> Unit,
 ) {
+    val isHolySee = hub.id == "holy_see"
     val accent = hub.accentColor?.let { hex ->
         val cleaned = hex.removePrefix("#")
         cleaned.toLongOrNull(16)?.let { value ->
@@ -725,40 +727,69 @@ private fun HubExploreCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(96.dp)
+            .height(122.dp)
             .clickable(onClick = onClick),
-        shape = RoundedCornerShape(20.dp),
-        border = BorderStroke(1.2.dp, accent.copy(alpha = 0.35f)),
+        shape = RoundedCornerShape(22.dp),
+        border = BorderStroke(1.2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
-        Row(
-            modifier = Modifier.fillMaxSize().padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Box(
-                modifier = Modifier
-                    .size(8.dp)
-                    .background(accent, androidx.compose.foundation.shape.CircleShape),
-            )
-            Spacer(Modifier.size(14.dp))
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = title,
-                    color = MaterialTheme.colorScheme.onBackground,
-                    fontFamily = FontFamily.Serif,
-                    fontSize = 17.sp,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
+        Box(Modifier.fillMaxSize()) {
+            if (isHolySee) {
+                Image(
+                    painter = painterResource(Res.drawable.explore_holy_see),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
+                    contentScale = ContentScale.Fit,
+                    alignment = Alignment.BottomEnd,
                 )
-                if (subtitle != null) {
+            }
+
+            ArtworkFadeOverlay()
+
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(14.dp),
+                verticalArrangement = Arrangement.SpaceBetween,
+            ) {
+                if (isHolySee) {
+                    Image(
+                        painter = painterResource(Res.drawable.holy_see_icon),
+                        contentDescription = null,
+                        modifier = Modifier.size(30.dp),
+                        contentScale = ContentScale.Fit,
+                    )
+                } else {
+                    Box(
+                        modifier = Modifier
+                            .size(8.dp)
+                            .background(accent, androidx.compose.foundation.shape.CircleShape),
+                    )
+                }
+
+                Column {
                     Text(
-                        text = subtitle,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        fontSize = 12.sp,
+                        text = title,
+                        color = MaterialTheme.colorScheme.onBackground,
+                        fontFamily = FontFamily.Serif,
+                        fontSize = 15.sp,
+                        lineHeight = 20.sp,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                     )
+                    if (subtitle != null) {
+                        Text(
+                            text = subtitle,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            fontSize = 11.sp,
+                            lineHeight = 16.sp,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                        )
+                    }
                 }
             }
         }

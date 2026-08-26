@@ -22,8 +22,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.SwapHoriz
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -42,6 +40,7 @@ import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.ic_about
 import com.ynotlabs.cathopedia.resources.ic_appearance
+import com.ynotlabs.cathopedia.resources.ic_notification
 import com.ynotlabs.cathopedia.ui.theme.ThemeMode
 import com.ynotlabs.cathopedia.ui.theme.label
 import org.jetbrains.compose.resources.DrawableResource
@@ -57,8 +56,6 @@ fun SettingsScreen(
     language: String,
     themeMode: ThemeMode,
     notificationsEnabled: Boolean,
-    rosaryCarouselOnLeft: Boolean,
-    onRosaryCarouselSideChanged: (Boolean) -> Unit,
     onOpenLanguage: () -> Unit,
     onOpenAppearance: () -> Unit,
     onOpenNotifications: () -> Unit,
@@ -102,20 +99,11 @@ fun SettingsScreen(
 
                 SettingsDivider()
 
-                PremiumIconSettingsRow(
-                    icon = Icons.Filled.Notifications,
+                PremiumSettingsRow(
+                    icon =  Res.drawable.ic_notification,
                     label = s.settingsNotificationsRowLabel,
                     value = if (notificationsEnabled) s.settingsNotificationsRowValueOn else s.settingsNotificationsRowValueOff,
                     onClick = onOpenNotifications,
-                )
-
-                SettingsDivider()
-
-                PremiumIconSettingsRow(
-                    icon = Icons.Filled.SwapHoriz,
-                    label = s.settingsRosaryCarouselSideLabel,
-                    value = if (rosaryCarouselOnLeft) s.settingsRosaryCarouselLeft else s.settingsRosaryCarouselRight,
-                    onClick = { onRosaryCarouselSideChanged(!rosaryCarouselOnLeft) },
                 )
             }
 
@@ -332,81 +320,6 @@ private fun PremiumSettingsRow(
                 contentDescription = null,
                 modifier = Modifier.size(35.dp),
                 contentScale = ContentScale.Fit,
-            )
-        }
-
-        Spacer(Modifier.width(14.dp))
-
-        Column(
-            modifier = Modifier.weight(1f),
-        ) {
-            Text(
-                text = label,
-                color = MaterialTheme.colorScheme.primary,
-                fontFamily = FontFamily.Serif,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Medium,
-            )
-
-            Spacer(Modifier.height(3.dp))
-
-            Text(
-                text = value,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                fontSize = 12.5.sp,
-                lineHeight = 16.sp,
-            )
-        }
-
-        Box(
-            modifier = Modifier
-                .size(34.dp)
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.07f)),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(21.dp),
-            )
-        }
-    }
-}
-
-/** Same layout as [PremiumSettingsRow], for rows with no bespoke PNG icon yet. */
-@Composable
-private fun PremiumIconSettingsRow(
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
-    label: String,
-    value: String,
-    onClick: () -> Unit,
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClick)
-            .padding(horizontal = 14.dp, vertical = 13.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Box(
-            modifier = Modifier
-                .size(48.dp)
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.background.copy(alpha = 0.58f))
-                .border(
-                    width = 1.dp,
-                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.74f),
-                    shape = CircleShape,
-                ),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(24.dp),
             )
         }
 

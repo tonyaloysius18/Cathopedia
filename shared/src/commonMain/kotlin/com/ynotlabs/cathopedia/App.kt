@@ -12,14 +12,19 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.CompositionLocalProvider
@@ -56,6 +61,7 @@ import com.ynotlabs.cathopedia.content.model.EntityType
 import com.ynotlabs.cathopedia.ui.navigation.AppNavController
 import com.ynotlabs.cathopedia.ui.navigation.BottomNavBar
 import com.ynotlabs.cathopedia.ui.navigation.Destination
+import com.ynotlabs.cathopedia.ui.navigation.FloatingSearchButton
 import com.ynotlabs.cathopedia.ui.navigation.rememberAppNavController
 import com.ynotlabs.cathopedia.ui.screens.AboutScreen
 import com.ynotlabs.cathopedia.ui.screens.AppearanceScreen
@@ -107,9 +113,6 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
     }
     var notificationsEnabled by remember {
         mutableStateOf(repository.getPreference(PreferenceKeys.NOTIFICATIONS_ENABLED) == "true")
-    }
-    var rosaryCarouselOnLeft by remember {
-        mutableStateOf(repository.getPreference(PreferenceKeys.ROSARY_CAROUSEL_ON_LEFT) == "true")
     }
     var notificationsPermissionDenied by remember { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
@@ -355,7 +358,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                 is Destination.RosaryScreen -> RosaryScreen(
                     repository = repository,
                     sessionRepository = container.rosarySessionRepository,
-                    carouselOnLeft = rosaryCarouselOnLeft,
+                    carouselOnLeft = false,
                     language = language,
                     onBack = nav::back,
                 )
@@ -381,11 +384,6 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     language = language,
                     themeMode = themeMode,
                     notificationsEnabled = notificationsEnabled,
-                    rosaryCarouselOnLeft = rosaryCarouselOnLeft,
-                    onRosaryCarouselSideChanged = { onLeft ->
-                        rosaryCarouselOnLeft = onLeft
-                        repository.setPreference(PreferenceKeys.ROSARY_CAROUSEL_ON_LEFT, onLeft.toString())
-                    },
                     onOpenLanguage = { nav.navigate(Destination.LanguageSettings) },
                     onOpenAppearance = { nav.navigate(Destination.Appearance) },
                     onOpenNotifications = { nav.navigate(Destination.Notifications) },
@@ -426,7 +424,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
             // overlay above the content rather than a docked Scaffold bottomBar,
             // so screens scroll underneath it.
             if (showBottomBar) {
-                Box(
+                Row(
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
                         .fillMaxWidth()
@@ -438,9 +436,19 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                             scaleY = animatedBarScale
                             transformOrigin = TransformOrigin(0.5f, 1f)
                         },
-                    contentAlignment = Alignment.BottomCenter,
+                    verticalAlignment = Alignment.Bottom,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    BottomNavBar(selected = nav.selectedTab, onSelect = nav::selectTab)
+                    val isSearch = nav.current == Destination.Search
+                    BottomNavBar(
+                        selected = if (isSearch) null else nav.selectedTab,
+                        onSelect = nav::selectTab,
+                        modifier = Modifier.weight(1f)
+                    )
+                    FloatingSearchButton(
+                        onClick = { nav.navigate(Destination.Search) },
+                        isSelected = isSearch
+                    )
                 }
             }
         }
