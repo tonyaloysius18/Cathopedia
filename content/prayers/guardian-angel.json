@@ -7,17 +7,20 @@
     "en": {
       "title": "Angel of God",
       "bodyMd": "Angel of God, my guardian dear,\nto whom God's love commits me here,\never this day, be at my side,\nto light and guard, rule and guide.\nAmen.",
-      "source": "EWTN prayer library, \"Prayer To Your Guardian Angel\", https://www.ewtn.com/catholicism/devotions/prayer-to-your-guardian-angel-373, retrieved 2026-08-22"
+      "source": "EWTN prayer library, \"Prayer To Your Guardian Angel\", https://www.ewtn.com/catholicism/devotions/prayer-to-your-guardian-angel-373, retrieved 2026-08-22",
+      "about": "The Guardian Angel prayer entrusts the day to the angel appointed by God for guidance and protection. It asks for light, care, and direction in every choice."
     },
     "la": {
       "title": "Angele Dei",
       "bodyMd": "Angele Dei, qui custos es mei,\nme tibi commissum pietate superna;\nhac nocte illumina,\ncustodi, rege, et guberna.\nAmen.",
-      "source": "LiederNet Archive, \"Angele Dei / Qui custos es mei\", https://www.lieder.net/lieder/get_text.html?TextId=601414, retrieved 2026-08-22"
+      "source": "LiederNet Archive, \"Angele Dei / Qui custos es mei\", https://www.lieder.net/lieder/get_text.html?TextId=601414, retrieved 2026-08-22",
+      "about": "Oratio Angele Dei diem angelo a Deo ad custodiam et regimen dato committit atque lumen, curam et directionem in omnibus electionibus petit."
     },
     "fr": {
       "title": "Ange de Dieu",
       "bodyMd": "Ange de Dieu, qui êtes mon gardien,\nà qui la Bonté Divine m'a confié,\néclairez-moi, gardez-moi,\ndirigez-moi et gouvernez-moi.\nAmen.",
-      "source": "evangelium-vitae.org, « Ange de Dieu, qui êtes mon gardien » (attribué au pape Pie VI, 20 septembre 1796), https://evangelium-vitae.org/veillez-et-priez/texte-priere/152/avec-les-anges/ange-de-dieu-qui-ecirctes-mon-gardien.htm, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+      "source": "evangelium-vitae.org, « Ange de Dieu, qui êtes mon gardien » (attribué au pape Pie VI, 20 septembre 1796), https://evangelium-vitae.org/veillez-et-priez/texte-priere/152/avec-les-anges/ange-de-dieu-qui-ecirctes-mon-gardien.htm, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md",
+      "about": "La prière à l’ange gardien confie la journée à l’ange donné par Dieu pour guider et protéger. Elle demande lumière, vigilance et direction dans chaque décision."
     }
   }
 }

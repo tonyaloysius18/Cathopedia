@@ -7,17 +7,20 @@
     "en": {
       "title": "Eternal Rest",
       "bodyMd": "> V. Eternal rest grant unto them, O Lord.\n> R. And let the perpetual light shine upon them.\n\nAnd may the souls of all the faithful departed,\nthrough the mercy of God, rest in peace.\nAmen.",
-      "source": "EWTN, \"Prayer for the Poor Souls in Purgatory\", https://www.ewtn.com/catholicism/teachings/prayer-for-the-poor-souls-in-purgatory-163, retrieved 2026-08-22"
+      "source": "EWTN, \"Prayer for the Poor Souls in Purgatory\", https://www.ewtn.com/catholicism/teachings/prayer-for-the-poor-souls-in-purgatory-163, retrieved 2026-08-22",
+      "about": "Eternal Rest is a brief prayer asking God to grant light, peace, and rest to the faithful departed. It is commonly prayed at funerals, cemeteries, and whenever the dead are remembered."
     },
     "la": {
       "title": "Requiem Aeternam",
       "bodyMd": "> V. Requiem aeternam dona eis, Domine.\n> R. Et lux perpetua luceat eis.\n\nFidelium animae, per misericordiam Dei,\nrequiescant in pace.\nAmen.",
-      "source": "EWTN, \"Prayer for the Poor Souls in Purgatory\", https://www.ewtn.com/catholicism/teachings/prayer-for-the-poor-souls-in-purgatory-163, retrieved 2026-08-22"
+      "source": "EWTN, \"Prayer for the Poor Souls in Purgatory\", https://www.ewtn.com/catholicism/teachings/prayer-for-the-poor-souls-in-purgatory-163, retrieved 2026-08-22",
+      "about": "Requiem Aeternam brevis est oratio qua Deus rogatur ut fidelibus defunctis lucem, pacem et requiem concedat; in exsequiis, coemeteriis et commemoratione mortuorum saepe recitatur."
     },
     "fr": {
       "title": "Repos éternel",
       "bodyMd": "Donne-leur, Seigneur, le repos éternel.\nEt que brille sur eux la lumière de ta face.\nQu'ils reposent en paix.\nAmen.",
-      "source": "Hozana, « La prière du repos éternel (Requiem aeternam) », https://hozana.org/priere/defunts/repos-eternel, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+      "source": "Hozana, « La prière du repos éternel (Requiem aeternam) », https://hozana.org/priere/defunts/repos-eternel, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md",
+      "about": "Le Repos éternel est une brève prière demandant à Dieu d’accorder lumière, paix et repos aux fidèles défunts. Elle est couramment récitée aux funérailles, dans les cimetières et chaque fois que l’on fait mémoire des morts."
     }
   }
 }

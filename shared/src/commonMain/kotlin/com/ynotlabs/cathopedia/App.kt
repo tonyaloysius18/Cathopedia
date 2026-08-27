@@ -3,6 +3,8 @@ package com.ynotlabs.cathopedia
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
@@ -194,6 +196,12 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     val from = initialState
                     val to = targetState
                     when {
+                        from is Destination.Splash -> {
+                            fadeIn(tween(durationMillis = 350)).togetherWith(
+                                fadeOut(tween(durationMillis = 350)),
+                            ) using null
+                        }
+
                         from is Destination.EntityList &&
                                 to is Destination.EntityDetail &&
                                 from.type == to.type -> {

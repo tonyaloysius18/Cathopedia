@@ -7,17 +7,20 @@
     "en": {
       "title": "Grace Before Meals",
       "bodyMd": "Bless us, O Lord, and these Thy gifts,\nwhich we are about to receive from Thy bounty,\nthrough Christ our Lord.\nAmen.",
-      "source": "EWTN, \"Meal Prayers for the Christmas Season\", https://www.ewtn.com/catholicism/library/meal-prayers-for-the-christmas-season-11900, retrieved 2026-08-22"
+      "source": "EWTN, \"Meal Prayers for the Christmas Season\", https://www.ewtn.com/catholicism/library/meal-prayers-for-the-christmas-season-11900, retrieved 2026-08-22",
+      "about": "Grace Before Meals asks God to bless the food and those who share it. This simple household prayer receives daily nourishment with gratitude and remembers those in need."
     },
     "la": {
       "title": "Benedictio Mensae (ante)",
       "bodyMd": "Benedic nos Domine et haec tua dona,\nquae de tua largitate sumus sumpturi.\nPer Christum Dominum nostrum.\nAmen.",
-      "source": "Latin Prayer (latinprayer.org), \"Prayer before meals\", https://latinprayer.org/en/prayers/prayer-before-meals/, retrieved 2026-08-22"
+      "source": "Latin Prayer (latinprayer.org), \"Prayer before meals\", https://latinprayer.org/en/prayers/prayer-before-meals/, retrieved 2026-08-22",
+      "about": "Benedictio ante mensam Deum rogat ut cibum et participantes benedicat; hoc simplex familiae precationis officium alimentum cotidianum grato animo suscipit et egentium meminit."
     },
     "fr": {
       "title": "Bénédicité",
       "bodyMd": "Bénissez-nous Seigneur, bénissez ce repas,\nceux qui l'ont préparé,\net procurez du pain à ceux qui n'en ont pas.\nAinsi soit-il.",
-      "source": "Catholiques de France (catholiquedefrance.fr), « Le Bénédicité / les Grâces », https://catholiquedefrance.fr/le-benedicite-les-graces/, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+      "source": "Catholiques de France (catholiquedefrance.fr), « Le Bénédicité / les Grâces », https://catholiquedefrance.fr/le-benedicite-les-graces/, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md",
+      "about": "Le bénédicité demande à Dieu de bénir la nourriture et ceux qui la partagent. Cette simple prière familiale accueille avec gratitude la nourriture quotidienne et rappelle ceux qui sont dans le besoin."
     }
   }
 }

@@ -3,6 +3,7 @@ package com.ynotlabs.cathopedia
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import com.ynotlabs.cathopedia.data.DatabaseDriverFactory
 import com.ynotlabs.cathopedia.di.AppContainer
 import com.ynotlabs.cathopedia.notifications.FeastNotificationScheduler
@@ -13,6 +14,7 @@ class MainActivity : ComponentActivity() {
     private val notificationScheduler = FeastNotificationScheduler(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
         val container = AppContainer(DatabaseDriverFactory(applicationContext))

@@ -7,17 +7,20 @@
     "en": {
       "title": "Glory Be",
       "bodyMd": "Glory be to the Father, and to the Son, and to the Holy Spirit.\nAs it was in the beginning, is now, and ever shall be,\nworld without end.\nAmen.",
-      "source": "EWTN, \"The Glory Be (Gloria Patri)\", https://www.ewtn.com/catholicism/teachings/glory-be-gloria-patri-12744, retrieved 2026-08-22"
+      "source": "EWTN, \"The Glory Be (Gloria Patri)\", https://www.ewtn.com/catholicism/teachings/glory-be-gloria-patri-12744, retrieved 2026-08-22",
+      "about": "The Glory Be is a short doxology praising the Father, Son, and Holy Spirit. Its words proclaim that the glory of the eternal Trinity endures through every age."
     },
     "la": {
       "title": "Gloria Patri",
       "bodyMd": "Gloria Patri, et Filio, et Spiritui Sancto.\nSicut erat in principio, et nunc, et semper,\net in saecula saeculorum.\nAmen.",
-      "source": "EWTN, \"The Glory Be (Gloria Patri)\", https://www.ewtn.com/catholicism/teachings/glory-be-gloria-patri-12744, retrieved 2026-08-22"
+      "source": "EWTN, \"The Glory Be (Gloria Patri)\", https://www.ewtn.com/catholicism/teachings/glory-be-gloria-patri-12744, retrieved 2026-08-22",
+      "about": "Gloria Patri brevis est doxologia Patrem, Filium et Spiritum Sanctum laudans atque gloriam Trinitatis aeternae per omnia saecula manere profitens."
     },
     "fr": {
       "title": "Gloire au Père",
       "bodyMd": "Gloire au Père, et au Fils, et au Saint-Esprit,\ncomme il était au commencement, maintenant et toujours,\net dans les siècles des siècles.\nAmen.",
-      "source": "Wikipédia (fr), « Gloire au Père », https://fr.wikipedia.org/wiki/Gloire_au_P%C3%A8re, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md"
+      "source": "Wikipédia (fr), « Gloire au Père », https://fr.wikipedia.org/wiki/Gloire_au_P%C3%A8re, retrieved 2026-08-22 — provisional pending AELF licence, per content/README.md",
+      "about": "Le Gloire au Père est une courte doxologie qui loue le Père, le Fils et le Saint-Esprit. Ses paroles proclament que la gloire de la Trinité éternelle demeure à travers tous les siècles."
     }
   }
 }
