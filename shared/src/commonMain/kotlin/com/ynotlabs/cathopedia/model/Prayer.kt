@@ -45,6 +45,7 @@ data class PrayerDetail(
     val title: String,
     val subtitle: String?,
     val bodyMd: String,
+    val about: String,
     val attribution: String?,
     val source: String,
     /** Every language this prayer has a row for — drives the detail screen's language toggle. */

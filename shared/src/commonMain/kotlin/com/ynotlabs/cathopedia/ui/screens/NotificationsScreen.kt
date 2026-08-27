@@ -149,7 +149,7 @@ private fun NotificationsHeader(
                 shape = CircleShape,
                 color = MaterialTheme.colorScheme.surface.copy(alpha = 0.88f),
                 border = BorderStroke(
-                    width = 1.dp,
+                    width = 2.dp,
                     color = MaterialTheme.colorScheme.primary.copy(alpha = 0.55f),
                 ),
             ) {
@@ -199,7 +199,7 @@ private fun FeastToggleCard(
         shape = shape,
         color = MaterialTheme.colorScheme.surface,
         border = BorderStroke(
-            width = 1.dp,
+            width = 2.dp,
             color = MaterialTheme.colorScheme.outline.copy(alpha = 0.72f),
         ),
     ) {
@@ -262,7 +262,7 @@ private fun NotificationsInfoCard(text: String) {
         shape = RoundedCornerShape(17.dp),
         color = MaterialTheme.colorScheme.surface.copy(alpha = 0.90f),
         border = BorderStroke(
-            width = 1.dp,
+            width = 2.dp,
             color = MaterialTheme.colorScheme.outline.copy(alpha = 0.64f),
         ),
     ) {

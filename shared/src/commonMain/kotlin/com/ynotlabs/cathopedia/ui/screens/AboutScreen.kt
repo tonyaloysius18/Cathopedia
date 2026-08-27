@@ -359,7 +359,7 @@ private fun AboutHero(
                 shape = CircleShape,
                 color = MaterialTheme.colorScheme.surface.copy(alpha = 0.88f),
                 border = BorderStroke(
-                    width = 1.dp,
+                    width = 2.dp,
                     color = MaterialTheme.colorScheme.primary.copy(alpha = 0.55f),
                 ),
             ) {
@@ -496,7 +496,7 @@ private fun AboutCard(
         shape = RoundedCornerShape(20.dp),
         color = MaterialTheme.colorScheme.surface.copy(alpha = 0.96f),
         border = BorderStroke(
-            width = 1.dp,
+            width = 2.dp,
             color = MaterialTheme.colorScheme.outline.copy(alpha = 0.72f),
         ),
     ) {
@@ -523,7 +523,7 @@ private fun InfoRow(
             shape = CircleShape,
             color = MaterialTheme.colorScheme.primary.copy(alpha = 0.08f),
             border = BorderStroke(
-                width = 1.dp,
+                width = 2.dp,
                 color = MaterialTheme.colorScheme.primary.copy(alpha = 0.28f),
             ),
         ) {

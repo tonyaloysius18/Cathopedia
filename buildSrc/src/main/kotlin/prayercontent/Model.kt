@@ -13,6 +13,7 @@ data class PrayerLocalizedTextFile(
     val title: String,
     val subtitle: String? = null,
     val bodyMd: String,
+    val about: String = "",
     val attribution: String? = null,
     val source: String,
 )

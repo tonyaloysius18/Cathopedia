@@ -1,32 +1,37 @@
 package com.ynotlabs.cathopedia.ui.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.layout.ContentScale
-import org.jetbrains.compose.resources.painterResource
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material3.FilterChip
-import androidx.compose.material3.FilterChipDefaults
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Switch
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -36,8 +41,13 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
@@ -49,17 +59,18 @@ import com.ynotlabs.cathopedia.ui.PrayerPortraits
 import com.ynotlabs.cathopedia.ui.components.KeepScreenOn
 import com.ynotlabs.cathopedia.ui.components.PrayerBodyText
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.painterResource
 
 private const val HOLY_ROSARY_ID = "holy-rosary"
 private val FONT_SCALE_STEPS = listOf(0.85f, 1.0f, 1.15f, 1.3f, 1.45f)
 private const val DEFAULT_FONT_SCALE_INDEX = 1
 
-/**
- * Reachable via [com.ynotlabs.cathopedia.ui.navigation.Destination.PrayerDetail]
- * (including the `cathopedia://prayer/{slug}` deep link mapping). [language]
- * seeds the reading language but the in-screen toggle can diverge from it —
- * someone reading the app in English may still want the Latin text.
- */
+private val PrayerBg = Color(0xFF061A13)
+private val PrayerGold = Color(0xFFD6AE3D)
+private val PrayerGoldSoft = Color(0xFFAA9158)
+private val PrayerCream = Color(0xFFF4ECDD)
+private val PrayerMuted = Color(0xFFB7B09D)
+
 @Composable
 fun PrayerDetailScreen(
     slug: String,
@@ -73,73 +84,70 @@ fun PrayerDetailScreen(
     var readingLanguage by remember(slug) { mutableStateOf(language) }
     var detail by remember(slug) { mutableStateOf<PrayerDetail?>(null) }
     var isFavorite by remember(slug) { mutableStateOf(false) }
-    var showSource by remember(slug) { mutableStateOf(false) }
     var keepScreenOn by remember(slug) { mutableStateOf(false) }
     var fontScaleIndex by remember(slug) { mutableStateOf(DEFAULT_FONT_SCALE_INDEX) }
 
     LaunchedEffect(slug) {
         isFavorite = repository.isPrayerFavorite(slug)
         fontScaleIndex = FONT_SCALE_STEPS.indexOf(
-            repository.getPreference(PreferenceKeys.PRAYER_FONT_SCALE)?.toFloatOrNull() ?: FONT_SCALE_STEPS[DEFAULT_FONT_SCALE_INDEX],
+            repository.getPreference(PreferenceKeys.PRAYER_FONT_SCALE)?.toFloatOrNull()
+                ?: FONT_SCALE_STEPS[DEFAULT_FONT_SCALE_INDEX],
         ).takeIf { it >= 0 } ?: DEFAULT_FONT_SCALE_INDEX
         repository.recordPrayerRecited(slug)
     }
 
-    LaunchedEffect(slug, language) {
-        readingLanguage = language
-    }
-
-    LaunchedEffect(slug, readingLanguage) {
-        detail = repository.prayerDetail(slug, readingLanguage)
-    }
+    LaunchedEffect(slug, language) { readingLanguage = language }
+    LaunchedEffect(slug, readingLanguage) { detail = repository.prayerDetail(slug, readingLanguage) }
 
     KeepScreenOn(enabled = keepScreenOn)
 
     val current = detail
+
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(current?.title ?: s.prayerDetailTitle) },
-                navigationIcon = {
-                    IconButton(onClick = onBack) { Text("←", fontSize = 22.sp) }
-                },
-                actions = {
-                    if (current != null && !(current.isSequence && current.id != HOLY_ROSARY_ID)) {
-                        IconButton(
-                            onClick = {
-                                scope.launch { isFavorite = repository.togglePrayerFavorite(slug) }
-                            },
-                        ) {
-                            Icon(
-                                imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                                contentDescription = if (isFavorite) s.detailRemoveFromFavorites else s.detailSaveToFavorites,
-                            )
-                        }
-                    }
-                },
-            )
-        },
+        containerColor = Color.Transparent,
     ) { padding ->
-        Box(modifier = Modifier.fillMaxSize().padding(padding)) {
-            PrayerPortraits.forPrayer(slug)?.let { background ->
+        Box(modifier = Modifier.fillMaxSize()) {
+            // Fill the entire screen with the prayer artwork
+            PrayerPortraits.forPrayer(slug)?.let { portrait ->
                 Image(
-                    painter = painterResource(background),
+                    painter = painterResource(portrait),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxSize().alpha(PRAYER_BACKGROUND_ALPHA),
+                    modifier = Modifier.fillMaxSize(),
                 )
             }
 
+            // A single translucent veil keeps text readable without hiding the artwork.
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        Brush.verticalGradient(
+                            colors = listOf(
+                                PrayerBg.copy(alpha = 0.78f),
+                                PrayerBg.copy(alpha = 0.62f),
+                                PrayerBg.copy(alpha = 0.48f),
+                                PrayerBg.copy(alpha = 0.66f),
+                            ),
+                        ),
+                    ),
+            )
+
             when {
-                current == null -> Box(modifier = Modifier.fillMaxSize()) {
-                    Text(s.loading, modifier = Modifier.padding(24.dp))
-                }
-                current.isSequence && current.id != HOLY_ROSARY_ID -> Box(
-                    modifier = Modifier.fillMaxSize().padding(24.dp),
+                current == null -> Box(
+                    modifier = Modifier.fillMaxSize().padding(padding),
                     contentAlignment = Alignment.Center,
                 ) {
-                    Text(s.prayerDetailSequenceComingSoon, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text(s.loading, color = PrayerMuted)
                 }
+
+                current.isSequence && current.id != HOLY_ROSARY_ID -> Box(
+                    modifier = Modifier.fillMaxSize().padding(padding).padding(24.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(s.prayerDetailSequenceComingSoon, color = PrayerMuted)
+                }
+
                 else -> PrayerReadingContent(
                     detail = current,
                     readingLanguage = readingLanguage,
@@ -147,21 +155,53 @@ fun PrayerDetailScreen(
                     fontScale = FONT_SCALE_STEPS[fontScaleIndex],
                     onFontScaleChange = { newIndex ->
                         fontScaleIndex = newIndex
-                        repository.setPreference(PreferenceKeys.PRAYER_FONT_SCALE, FONT_SCALE_STEPS[newIndex].toString())
+                        repository.setPreference(
+                            PreferenceKeys.PRAYER_FONT_SCALE,
+                            FONT_SCALE_STEPS[newIndex].toString(),
+                        )
                     },
                     keepScreenOn = keepScreenOn,
                     onKeepScreenOnChange = { keepScreenOn = it },
-                    showSource = showSource,
-                    onShowSourceChange = { showSource = it },
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.fillMaxSize().padding(padding),
                 )
+            }
+
+            // Buttons must be last in the Box Z-order to be clickable above the content.
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .statusBarsPadding()
+                    .padding(start = 18.dp, end = 18.dp, top = 10.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                HeroCircleButton(onClick = onBack) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = s.back,
+                        tint = PrayerCream,
+                        modifier = Modifier.size(24.dp),
+                    )
+                }
+
+                if (current != null && !(current.isSequence && current.id != HOLY_ROSARY_ID)) {
+                    HeroCircleButton(
+                        onClick = {
+                            scope.launch { isFavorite = repository.togglePrayerFavorite(slug) }
+                        },
+                    ) {
+                        Icon(
+                            imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                            contentDescription = if (isFavorite) s.detailRemoveFromFavorites else s.detailSaveToFavorites,
+                            tint = PrayerCream,
+                            modifier = Modifier.size(22.dp),
+                        )
+                    }
+                }
             }
         }
     }
 }
-
-/** Kept low so the reading text — the whole point of this screen — stays comfortably legible over it. */
-private const val PRAYER_BACKGROUND_ALPHA = 0.28f
 
 @Composable
 private fun PrayerReadingContent(
@@ -172,168 +212,335 @@ private fun PrayerReadingContent(
     onFontScaleChange: (Int) -> Unit,
     keepScreenOn: Boolean,
     onKeepScreenOnChange: (Boolean) -> Unit,
-    showSource: Boolean,
-    onShowSourceChange: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val s = LocalStrings.current
-    val hasLatin = "la" in detail.availableLanguages
+    Column(
+        modifier = modifier
+            .verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Spacer(Modifier.height(8.dp))
 
-    BoxWithConstraints(modifier = modifier) {
-        val isWideEnoughForParallel = maxWidth >= 600.dp
+        Box(modifier = Modifier.padding(horizontal = 20.dp)) {
+            SacredPrayerHeader(
+                title = detail.title,
+                subtitle = detail.subtitle,
+            )
+        }
 
-        Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(24.dp)) {
-            if (detail.availableLanguages.size > 1) {
-                LanguageToggleRow(
+        Spacer(Modifier.height(22.dp))
+
+        if (detail.availableLanguages.size > 1) {
+            Box(modifier = Modifier.padding(horizontal = 20.dp)) {
+                LanguageSegmentedControl(
                     available = detail.availableLanguages,
                     selected = readingLanguage,
                     onSelect = onLanguageChange,
-                    modifier = Modifier.padding(bottom = 16.dp),
                 )
             }
+            Spacer(Modifier.height(18.dp))
+        }
 
-            ReadingControlsRow(
+        Box(modifier = Modifier.padding(horizontal = 20.dp)) {
+            PrayerCard(
+                detail = detail,
                 fontScale = fontScale,
                 onFontScaleChange = onFontScaleChange,
                 keepScreenOn = keepScreenOn,
                 onKeepScreenOnChange = onKeepScreenOnChange,
-                modifier = Modifier.padding(bottom = 20.dp),
             )
+        }
 
-            if (detail.subtitle != null) {
-                Text(
-                    text = detail.subtitle,
-                    style = MaterialTheme.typography.titleLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(bottom = 16.dp),
-                )
-            }
+        Spacer(Modifier.height(18.dp))
 
-            // Reading comfort is the point of this screen: generous line height
-            // and a comfortable measure rather than the app's usual list-row density.
-            // A blank bodyMd means this prayer's list row is showing (its title
-            // falls back to a slug-derived label, see CathopediaRepository) but
-            // no text has actually been sourced yet.
-            if (detail.bodyMd.isBlank()) {
-                Text(
-                    text = s.prayerTextNotYetAvailable,
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            } else if (hasLatin && isWideEnoughForParallel) {
-                Row(horizontalArrangement = Arrangement.spacedBy(32.dp)) {
-                    PrayerBodyText(
-                        bodyMd = detail.bodyMd,
-                        color = MaterialTheme.colorScheme.onSurface,
-                        fontScale = fontScale,
-                        modifier = Modifier.weight(1f),
-                    )
-                }
-            } else {
-                PrayerBodyText(
-                    bodyMd = detail.bodyMd,
-                    color = MaterialTheme.colorScheme.onSurface,
-                    fontScale = fontScale,
-                )
-            }
-
-            if (detail.source.isNotBlank() || detail.attribution != null) {
-                SourceFooter(
+        if (detail.about.isNotBlank()) {
+            Box(modifier = Modifier.padding(horizontal = 20.dp)) {
+                AboutPrayerCard(
                     detail = detail,
-                    expanded = showSource,
-                    onExpandedChange = onShowSourceChange,
-                    modifier = Modifier.padding(top = 32.dp),
                 )
             }
+        }
+        Spacer(Modifier.height(28.dp))
+    }
+}
+
+@Composable
+private fun SacredPrayerHeader(
+    title: String,
+    subtitle: String?,
+) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Box(
+            modifier = Modifier
+                .size(78.dp)
+                .border(2.dp, PrayerGold.copy(alpha = 0.75f), CircleShape)
+                .background(Color.Transparent, CircleShape),
+            contentAlignment = Alignment.Center,
+        ) {
+            Text("✝", color = PrayerGold, fontSize = 38.sp)
+        }
+
+        Spacer(Modifier.height(14.dp))
+
+        Text(
+            text = title,
+            color = PrayerCream,
+            fontFamily = FontFamily.Serif,
+            fontSize = 34.sp,
+            lineHeight = 39.sp,
+            textAlign = TextAlign.Center,
+        )
+
+        subtitle?.takeIf { it.isNotBlank() }?.let {
+            Spacer(Modifier.height(8.dp))
+            Text(
+                text = it.uppercase(),
+                color = PrayerGoldSoft,
+                style = MaterialTheme.typography.labelMedium,
+                fontWeight = FontWeight.SemiBold,
+                letterSpacing = 1.2.sp,
+                textAlign = TextAlign.Center,
+            )
         }
     }
 }
 
 @Composable
-private fun LanguageToggleRow(
+private fun LanguageSegmentedControl(
     available: List<String>,
     selected: String,
     onSelect: (String) -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     val s = LocalStrings.current
-    Row(modifier = modifier, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        available.forEach { lang ->
-            FilterChip(
-                selected = lang == selected,
-                onClick = { onSelect(lang) },
-                label = { Text(languageLabel(lang, s)) },
-                colors = FilterChipDefaults.filterChipColors(),
-            )
+
+    Surface(
+        color = Color.Transparent,
+        shape = RoundedCornerShape(26.dp),
+        border = androidx.compose.foundation.BorderStroke(2.dp, PrayerGold.copy(alpha = 0.75f)),
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        Row(
+            modifier = Modifier.padding(4.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+        ) {
+            available.forEach { lang ->
+                val isSelected = lang == selected
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .clip(RoundedCornerShape(22.dp))
+                        .background(Color.Transparent)
+                        .border(
+                            width = if (isSelected) 2.dp else 0.dp,
+                            color = if (isSelected) PrayerGold else Color.Transparent,
+                            shape = RoundedCornerShape(22.dp),
+                        )
+                        .clickable { onSelect(lang) }
+                        .padding(vertical = 12.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text = languageLabel(lang, s),
+                        color = if (isSelected) PrayerCream else PrayerMuted,
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
+                    )
+                }
+            }
         }
     }
 }
 
 @Composable
-private fun ReadingControlsRow(
+private fun PrayerCard(
+    detail: PrayerDetail,
     fontScale: Float,
     onFontScaleChange: (Int) -> Unit,
     keepScreenOn: Boolean,
     onKeepScreenOnChange: (Boolean) -> Unit,
-    modifier: Modifier = Modifier,
 ) {
     val s = LocalStrings.current
-    val currentIndex = FONT_SCALE_STEPS.indexOf(fontScale).takeIf { it >= 0 } ?: DEFAULT_FONT_SCALE_INDEX
 
-    Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
-        Text(s.prayerDetailFontSize, style = MaterialTheme.typography.labelLarge, modifier = Modifier.padding(end = 8.dp))
-        IconButton(
-            onClick = { if (currentIndex > 0) onFontScaleChange(currentIndex - 1) },
-            modifier = Modifier.semantics { contentDescription = s.prayerDetailFontSmaller },
-        ) {
-            Text("A-")
-        }
-        IconButton(
-            onClick = { if (currentIndex < FONT_SCALE_STEPS.lastIndex) onFontScaleChange(currentIndex + 1) },
-            modifier = Modifier.semantics { contentDescription = s.prayerDetailFontLarger },
-        ) {
-            Text("A+")
-        }
+    Card(
+        shape = RoundedCornerShape(28.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
+        border = androidx.compose.foundation.BorderStroke(2.dp, PrayerGold.copy(alpha = 0.75f)),
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        Column(modifier = Modifier.padding(22.dp)) {
+            Text(
+                text = "“",
+                color = PrayerGold,
+                fontFamily = FontFamily.Serif,
+                fontSize = 38.sp,
+                lineHeight = 32.sp,
+            )
 
-        Text(
-            s.prayerDetailKeepScreenOn,
-            style = MaterialTheme.typography.labelLarge,
-            modifier = Modifier.weight(1f).padding(start = 16.dp),
-        )
-        Switch(checked = keepScreenOn, onCheckedChange = onKeepScreenOnChange)
+            if (detail.bodyMd.isBlank()) {
+                Text(
+                    text = s.prayerTextNotYetAvailable,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = PrayerMuted,
+                )
+            } else {
+                PrayerBodyText(
+                    bodyMd = detail.bodyMd,
+                    color = PrayerCream,
+                    fontScale = fontScale,
+                )
+            }
+
+            Spacer(Modifier.height(20.dp))
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(1.dp)
+                    .background(
+                        Brush.horizontalGradient(
+                            colors = listOf(Color.Transparent, PrayerGold.copy(alpha = 0.55f), Color.Transparent),
+                        ),
+                    ),
+            )
+
+            Spacer(Modifier.height(16.dp))
+
+            ReadingActionRow(
+                fontScale = fontScale,
+                onFontScaleChange = onFontScaleChange,
+                keepScreenOn = keepScreenOn,
+                onKeepScreenOnChange = onKeepScreenOnChange,
+            )
+        }
     }
 }
 
 @Composable
-private fun SourceFooter(
-    detail: PrayerDetail,
-    expanded: Boolean,
-    onExpandedChange: (Boolean) -> Unit,
-    modifier: Modifier = Modifier,
+private fun ReadingActionRow(
+    fontScale: Float,
+    onFontScaleChange: (Int) -> Unit,
+    keepScreenOn: Boolean,
+    onKeepScreenOnChange: (Boolean) -> Unit,
 ) {
     val s = LocalStrings.current
-    Column(modifier = modifier) {
-        TextButton(onClick = { onExpandedChange(!expanded) }) {
-            Text(if (expanded) s.prayerDetailHideSource else s.prayerDetailShowSource)
+    val currentIndex = FONT_SCALE_STEPS.indexOf(fontScale).takeIf { it >= 0 } ?: DEFAULT_FONT_SCALE_INDEX
+
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        verticalAlignment = Alignment.Top,
+    ) {
+        RoundAction(
+            label = s.prayerDetailFontSmaller,
+            icon = { Text("A−", color = PrayerCream, fontSize = 18.sp, fontWeight = FontWeight.SemiBold) },
+            onClick = { if (currentIndex > 0) onFontScaleChange(currentIndex - 1) },
+        )
+        RoundAction(
+            label = s.prayerDetailFontLarger,
+            icon = { Text("A+", color = PrayerCream, fontSize = 18.sp, fontWeight = FontWeight.SemiBold) },
+            onClick = { if (currentIndex < FONT_SCALE_STEPS.lastIndex) onFontScaleChange(currentIndex + 1) },
+        )
+        RoundAction(
+            label = s.prayerDetailKeepScreenOn,
+            active = keepScreenOn,
+            icon = { Text("☀", color = if (keepScreenOn) PrayerGold else PrayerCream, fontSize = 20.sp) },
+            onClick = { onKeepScreenOnChange(!keepScreenOn) },
+        )
+    }
+}
+
+@Composable
+private fun RoundAction(
+    label: String,
+    active: Boolean = false,
+    icon: @Composable () -> Unit,
+    onClick: () -> Unit,
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.width(88.dp),
+    ) {
+        Box(
+            modifier = Modifier
+                .size(48.dp)
+                .clip(CircleShape)
+                .background(Color.Transparent)
+                .border(2.dp, if (active) PrayerGold else PrayerGold.copy(alpha = 0.75f), CircleShape)
+                .clickable(onClick = onClick),
+            contentAlignment = Alignment.Center,
+        ) {
+            icon()
         }
-        if (expanded) {
-            Column(modifier = Modifier.padding(top = 8.dp)) {
-                if (detail.attribution != null) {
-                    Text(
-                        text = "${s.prayerDetailAttribution}: ${detail.attribution}",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                }
-                if (detail.source.isNotBlank()) {
-                    Text(
-                        text = "${s.prayerDetailBySource}: ${detail.source}",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                }
+        Spacer(Modifier.height(7.dp))
+        Text(
+            text = label,
+            color = if (active) PrayerGold else PrayerMuted,
+            style = MaterialTheme.typography.labelSmall,
+            textAlign = TextAlign.Center,
+            maxLines = 2,
+        )
+    }
+}
+
+@Composable
+private fun AboutPrayerCard(
+    detail: PrayerDetail,
+) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(24.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
+        border = androidx.compose.foundation.BorderStroke(
+            2.dp,
+            PrayerGold.copy(alpha = 0.75f),
+        ),
+    ) {
+        Column(modifier = Modifier.padding(18.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    Icons.Default.Info,
+                    contentDescription = null,
+                    tint = PrayerGold,
+                    modifier = Modifier.size(20.dp),
+                )
+                Spacer(Modifier.width(9.dp))
+                Text(
+                    text = "ABOUT THIS PRAYER",
+                    color = PrayerGold,
+                    style = MaterialTheme.typography.labelLarge,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.8.sp,
+                )
+            }
+
+            if (detail.about.isNotBlank()) {
+                Spacer(Modifier.height(12.dp))
+                Text(
+                    text = detail.about,
+                    color = PrayerCream,
+                    style = MaterialTheme.typography.bodyMedium,
+                    lineHeight = 22.sp,
+                )
             }
         }
+    }
+}
+
+@Composable
+private fun HeroCircleButton(
+    onClick: () -> Unit,
+    content: @Composable () -> Unit,
+) {
+    Box(
+        modifier = Modifier
+            .size(48.dp)
+            .clip(CircleShape)
+            .background(Color.Black.copy(alpha = 0.28f))
+            .border(2.dp, Color.White.copy(alpha = 0.08f), CircleShape)
+            .clickable(onClick = onClick),
+        contentAlignment = Alignment.Center,
+    ) {
+        content()
     }
 }
 

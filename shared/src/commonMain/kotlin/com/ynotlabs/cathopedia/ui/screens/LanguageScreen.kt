@@ -171,7 +171,7 @@ private fun SettingsLanguageHero(
                 shape = CircleShape,
                 color = MaterialTheme.colorScheme.surface.copy(alpha = 0.88f),
                 border = BorderStroke(
-                    width = 1.dp,
+                    width = 2.dp,
                     color = MaterialTheme.colorScheme.primary.copy(alpha = 0.55f),
                 ),
             ) {
@@ -275,7 +275,7 @@ private fun SettingsLanguageRow(
                 },
             )
             .border(
-                width = if (selected) 1.7.dp else 1.dp,
+                width = 2.dp,
                 color = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline.copy(alpha = 0.76f),
                 shape = shape,
             )
@@ -290,7 +290,7 @@ private fun SettingsLanguageRow(
             shape = CircleShape,
             color = MaterialTheme.colorScheme.background.copy(alpha = 0.56f),
             border = BorderStroke(
-                width = 1.dp,
+                width = 2.dp,
                 color = MaterialTheme.colorScheme.primary.copy(alpha = 0.42f),
             ),
         ) {
@@ -339,7 +339,7 @@ private fun SettingsLanguageRow(
                     shape = RoundedCornerShape(50),
                     color = MaterialTheme.colorScheme.primary.copy(alpha = 0.07f),
                     border = BorderStroke(
-                        width = 1.dp,
+                        width = 2.dp,
                         color = MaterialTheme.colorScheme.primary.copy(alpha = 0.24f),
                     ),
                 ) {
@@ -363,7 +363,7 @@ private fun LanguageInfoCard() {
         shape = RoundedCornerShape(17.dp),
         color = MaterialTheme.colorScheme.surface.copy(alpha = 0.90f),
         border = BorderStroke(
-            width = 1.dp,
+            width = 2.dp,
             color = MaterialTheme.colorScheme.outline.copy(alpha = 0.64f),
         ),
     ) {

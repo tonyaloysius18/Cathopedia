@@ -1,0 +1,2 @@
+-- Add about column to PrayerText (missed in 5.sqm migration but present in Prayer.sq)
+ALTER TABLE PrayerText ADD COLUMN about TEXT NOT NULL DEFAULT '';

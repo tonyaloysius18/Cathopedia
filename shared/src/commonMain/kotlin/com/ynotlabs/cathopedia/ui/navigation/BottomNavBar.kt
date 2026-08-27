@@ -290,8 +290,6 @@ fun BottomNavBar(
                 val itemBias = if (count <= 1) 0f else -1f + 2f * index / (count - 1)
                 val selectedness = (1f - abs(bias - itemBias) / step).coerceIn(0f, 1f)
 
-                // When search is active (!hasSelection), we want all icons to be
-                // in a straight line and slightly larger.
                 val visualSelectedness = if (hasSelection) selectedness else 0f
 
                 Box(
@@ -304,25 +302,18 @@ fun BottomNavBar(
                         ) { onSelect(tab) },
                     contentAlignment = Alignment.Center,
                 ) {
-                    // Column center is 20dp below the bubble center. This lift
-                    // places the selected PNG (plus its label, when shown)
-                    // exactly at the center of the raised circle while
-                    // unselected icons remain centered in the flat pill.
-                    val verticalOffset = with(LocalDensity.current) {
+                    val density = LocalDensity.current
+                    val verticalOffset = with(density) {
                         ((-20).dp * visualSelectedness).toPx()
                     }
 
-                    val iconSize = if (hasSelection) {
-                        36.dp + (6.dp * visualSelectedness)
-                    } else {
-                        40.dp
-                    }
+                    val iconSize = 44.dp
 
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         modifier = Modifier.graphicsLayer {
                             translationY = verticalOffset
-                            alpha = if (hasSelection) (0.82f + (0.18f * visualSelectedness)) else 1f
+                            alpha = if (hasSelection) (0.82f + (0.18f * selectedness)) else 1f
                         },
                     ) {
                         Image(
@@ -366,7 +357,7 @@ fun FloatingSearchButton(
             }
             .clip(CircleShape)
             .background(barBackgroundColor)
-            .border(1.2.dp, if (isSelected) DarkGoldBright else rimColor, CircleShape)
+            .border(2.dp, if (isSelected) DarkGoldBright else rimColor, CircleShape)
             .clickable(onClick = onClick),
         contentAlignment = Alignment.Center
     ) {
@@ -393,7 +384,7 @@ fun FloatingSearchButton(
             painter = painterResource(Res.drawable.nav_search),
             contentDescription = "Search",
             contentScale = ContentScale.Fit,
-            modifier = Modifier.size(34.dp),
+            modifier = Modifier.size(44.dp),
             alpha = if (isSelected) 1f else 0.82f
         )
     }

@@ -280,7 +280,7 @@ private fun SettingsGroup(
             .clip(RoundedCornerShape(20.dp))
             .background(MaterialTheme.colorScheme.surface)
             .border(
-                width = 1.dp,
+                width = 2.dp,
                 color = MaterialTheme.colorScheme.outline.copy(alpha = 0.72f),
                 shape = RoundedCornerShape(20.dp),
             ),
@@ -309,7 +309,7 @@ private fun PremiumSettingsRow(
                 .clip(CircleShape)
                 .background(MaterialTheme.colorScheme.background.copy(alpha = 0.58f))
                 .border(
-                    width = 1.dp,
+                    width = 2.dp,
                     color = MaterialTheme.colorScheme.primary.copy(alpha = 0.74f),
                     shape = CircleShape,
                 ),
@@ -383,7 +383,7 @@ private fun InspirationCard() {
             .height(122.dp)
             .clip(RoundedCornerShape(18.dp))
             .border(
-                width = 1.dp,
+                width = 2.dp,
                 color = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.55f),
                 shape = RoundedCornerShape(18.dp),
             ),

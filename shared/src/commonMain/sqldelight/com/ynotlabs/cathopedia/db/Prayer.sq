@@ -19,6 +19,7 @@ CREATE TABLE PrayerText (
     title TEXT NOT NULL,
     subtitle TEXT,
     bodyMd TEXT NOT NULL,
+    about TEXT NOT NULL DEFAULT '',
     attribution TEXT,
     source TEXT NOT NULL,
     PRIMARY KEY (prayerId, language),
@@ -30,8 +31,8 @@ INSERT OR REPLACE INTO PrayerEntity(id, category, sortOrder, isSequence)
 VALUES (?, ?, ?, ?);
 
 insertPrayerText:
-INSERT OR REPLACE INTO PrayerText(prayerId, language, title, subtitle, bodyMd, attribution, source)
-VALUES (?, ?, ?, ?, ?, ?, ?);
+INSERT OR REPLACE INTO PrayerText(prayerId, language, title, subtitle, bodyMd, about, attribution, source)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?);
 
 selectPrayersByCategory:
 SELECT PrayerEntity.id AS id, PrayerText.title AS title, PrayerText.subtitle AS subtitle,
@@ -44,7 +45,7 @@ ORDER BY PrayerEntity.sortOrder ASC;
 selectPrayerDetail:
 SELECT PrayerEntity.id AS id, PrayerEntity.category AS category, PrayerEntity.isSequence AS isSequence,
        PrayerText.title AS title, PrayerText.subtitle AS subtitle, PrayerText.bodyMd AS bodyMd,
-       PrayerText.attribution AS attribution, PrayerText.source AS source
+       PrayerText.about AS about, PrayerText.attribution AS attribution, PrayerText.source AS source
 FROM PrayerEntity
 LEFT JOIN PrayerText ON PrayerText.prayerId = PrayerEntity.id AND PrayerText.language = :language
 WHERE PrayerEntity.id = :id;

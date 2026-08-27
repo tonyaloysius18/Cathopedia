@@ -158,7 +158,7 @@ private fun AppearanceHeader(
                 shape = CircleShape,
                 color = MaterialTheme.colorScheme.surface.copy(alpha = 0.88f),
                 border = BorderStroke(
-                    width = 1.dp,
+                    width = 2.dp,
                     color = MaterialTheme.colorScheme.primary.copy(alpha = 0.55f),
                 ),
             ) {
@@ -300,7 +300,7 @@ private fun ThemeChoiceCard(
             .clip(shape)
             .background(cardBackground)
             .border(
-                width = if (selected) 2.dp else 1.dp,
+                width = 2.dp,
                 color = if (selected) MaterialTheme.colorScheme.primary else idleBorder,
                 shape = shape,
             )
@@ -347,7 +347,7 @@ private fun ThemeChoiceCard(
                         modifier = Modifier
                             .size(27.dp)
                             .border(
-                                width = 1.2.dp,
+                                width = 2.dp,
                                 color = if (isItemLight) Color(0xFF858782) else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.78f),
                                 shape = CircleShape,
                             ),
@@ -446,7 +446,7 @@ private fun ThemeInfo(
         shape = RoundedCornerShape(17.dp),
         color = MaterialTheme.colorScheme.surface.copy(alpha = 0.90f),
         border = BorderStroke(
-            width = 1.dp,
+            width = 2.dp,
             color = MaterialTheme.colorScheme.outline.copy(alpha = 0.64f),
         ),
     ) {
@@ -459,7 +459,7 @@ private fun ThemeInfo(
                 shape = CircleShape,
                 color = MaterialTheme.colorScheme.primary.copy(alpha = 0.09f),
                 border = BorderStroke(
-                    width = 1.dp,
+                    width = 2.dp,
                     color = MaterialTheme.colorScheme.primary.copy(alpha = 0.26f),
                 ),
             ) {
@@ -509,7 +509,7 @@ private fun ThemePreview(
             .clip(cardShape)
             .background(cardBackground)
             .border(
-                width = 1.25.dp,
+                width = 2.dp,
                 color = if (isLightPreview) Color(0xFF9D8858).copy(alpha = 0.48f) else Color(0xFF2D715D).copy(alpha = 0.78f),
                 shape = cardShape,
             ),

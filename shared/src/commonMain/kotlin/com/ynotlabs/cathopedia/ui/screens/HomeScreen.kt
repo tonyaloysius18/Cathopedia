@@ -24,6 +24,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.AutoStories
 import androidx.compose.material.icons.filled.Church
+import androidx.compose.material.icons.filled.Event
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
@@ -49,13 +50,17 @@ import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.i18n.Strings
+import com.ynotlabs.cathopedia.liturgical.DailyMassReadings
+import com.ynotlabs.cathopedia.liturgical.DailyReadingsCalendar
 import com.ynotlabs.cathopedia.liturgical.LiturgicalCalendar
 import com.ynotlabs.cathopedia.liturgical.LiturgicalSeason
+import com.ynotlabs.cathopedia.liturgical.ReadingKind
+import com.ynotlabs.cathopedia.liturgical.ScriptureReference
 import com.ynotlabs.cathopedia.model.ContentSummary
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.cathopedia_app_logo_transparent
+import com.ynotlabs.cathopedia.resources.daily_readings_card_bg
 import com.ynotlabs.cathopedia.resources.settings_header_bg
-import com.ynotlabs.cathopedia.resources.settings_quote_bg
 import com.ynotlabs.cathopedia.ui.Portraits
 import com.ynotlabs.cathopedia.ui.singularLabel
 import com.ynotlabs.cathopedia.ui.theme.LocalLiturgicalAccent
@@ -75,6 +80,7 @@ fun HomeScreen(
     repository: CathopediaRepository,
     language: String,
     onItemSelected: (ContentSummary) -> Unit,
+    onReadingSelected: ((ScriptureReference) -> Unit)? = null,
 ) {
     val s = LocalStrings.current
     val today = remember { LiturgicalCalendar.today() }
@@ -83,12 +89,21 @@ fun HomeScreen(
     var continueReading by remember { mutableStateOf<ContentSummary?>(null) }
     var discover by remember { mutableStateOf<ContentSummary?>(null) }
     var feastOfTheDay by remember { mutableStateOf<ContentSummary?>(null) }
+    var saintsOfToday by remember { mutableStateOf<List<ContentSummary>>(emptyList()) }
+    var dailyReadings by remember(today) { mutableStateOf<DailyMassReadings?>(null) }
+    var dailyReadingsLoaded by remember(today) { mutableStateOf(false) }
     var loaded by remember { mutableStateOf(false) }
+
+    LaunchedEffect(today) {
+        dailyReadings = DailyReadingsCalendar.readingsFor(today)
+        dailyReadingsLoaded = true
+    }
 
     LaunchedEffect(language) {
         continueReading = repository.mostRecentlyViewed()
         discover = repository.discoverPick(language)
         feastOfTheDay = repository.feastOfToday(language, today)
+        saintsOfToday = repository.saintsOfToday(language)
         loaded = true
     }
 
@@ -106,7 +121,11 @@ fun HomeScreen(
                 .fillMaxWidth()
                 .padding(horizontal = 18.dp),
         ) {
-            DailyFaithCard()
+            DailyReadingsCard(
+                readings = dailyReadings,
+                loaded = dailyReadingsLoaded,
+                onReadingSelected = onReadingSelected,
+            )
 
             Spacer(Modifier.height(22.dp))
 
@@ -124,6 +143,25 @@ fun HomeScreen(
                 )
 
                 Spacer(Modifier.height(22.dp))
+            }
+
+            if (saintsOfToday.isNotEmpty()) {
+                HomeSectionHeader(
+                    title = s.homeSaintsOfToday,
+                    icon = Icons.Filled.Event,
+                )
+
+                Spacer(Modifier.height(9.dp))
+
+                saintsOfToday.forEach { saint ->
+                    EditorialHomeCard(
+                        item = saint,
+                        onClick = { onItemSelected(saint) },
+                    )
+                    Spacer(Modifier.height(18.dp))
+                }
+
+                Spacer(Modifier.height(4.dp))
             }
 
             if (continueReading != null) {
@@ -168,7 +206,7 @@ fun HomeScreen(
                     shape = RoundedCornerShape(20.dp),
                     color = HomeSurface,
                     border = BorderStroke(
-                        width = 1.dp,
+                        width = 2.dp,
                         color = HomeBorder.copy(alpha = 0.72f),
                     ),
                 ) {
@@ -272,32 +310,13 @@ private fun HomeHero(seasonLabel: String) {
                     fontWeight = FontWeight.Medium,
                 )
             }
-
-            Surface(
-                modifier = Modifier.size(44.dp),
-                shape = CircleShape,
-                color = HomeSurface.copy(alpha = 0.80f),
-                border = BorderStroke(
-                    width = 1.dp,
-                    color = HomeGoldSoft.copy(alpha = 0.48f),
-                ),
-            ) {
-                Box(contentAlignment = Alignment.Center) {
-                    Icon(
-                        imageVector = Icons.Filled.Search,
-                        contentDescription = "Search",
-                        tint = HomeGold,
-                        modifier = Modifier.size(22.dp),
-                    )
-                }
-            }
         }
 
         Text(
-            text = "Your Catholic encyclopedia\nfor faith and life",
+            text = "Your Catholic encyclopedia\nfor faith and life. ",
             modifier = Modifier
                 .align(Alignment.BottomStart)
-                .padding(start = 20.dp, bottom = 18.dp),
+                .padding(start = 20.dp, bottom = 35.dp),
             color = HomeCream.copy(alpha = 0.90f),
             fontSize = 14.sp,
             lineHeight = 19.sp,
@@ -309,7 +328,7 @@ private fun HomeHero(seasonLabel: String) {
                 .padding(end = 20.dp, bottom = 18.dp),
             shape = RoundedCornerShape(50),
             color = HomeSurface.copy(alpha = 0.80f),
-            border = BorderStroke(width = 1.dp, color = liturgicalAccent.copy(alpha = 0.55f)),
+            border = BorderStroke(width = 2.dp, color = liturgicalAccent.copy(alpha = 0.55f)),
         ) {
             Row(
                 modifier = Modifier.padding(horizontal = 11.dp, vertical = 7.dp),
@@ -336,41 +355,43 @@ private fun HomeHero(seasonLabel: String) {
 }
 
 @Composable
-private fun DailyFaithCard() {
+private fun DailyReadingsCard(
+    readings: DailyMassReadings?,
+    loaded: Boolean,
+    onReadingSelected: ((ScriptureReference) -> Unit)?,
+) {
+    val s = LocalStrings.current
     val shape = RoundedCornerShape(24.dp)
-
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(196.dp)
             .clip(shape)
             .background(HomeSurface)
             .border(
-                width = 1.dp,
+                width = 2.dp,
                 color = HomeGoldSoft.copy(alpha = 0.50f),
                 shape = shape,
             ),
     ) {
         Image(
-            painter = painterResource(Res.drawable.settings_quote_bg),
+            painter = painterResource(Res.drawable.daily_readings_card_bg),
             contentDescription = null,
             modifier = Modifier
-                .align(Alignment.CenterEnd)
-                .fillMaxSize(),
+                .matchParentSize(),
             contentScale = ContentScale.Crop,
             alignment = Alignment.CenterEnd,
+            alpha = 0.60f
         )
 
         Box(
             modifier = Modifier
-                .fillMaxSize()
+                .matchParentSize()
                 .background(
                     Brush.horizontalGradient(
                         colorStops = arrayOf(
-                            0.00f to HomeBg.copy(alpha = 0.98f),
-                            0.42f to HomeBg.copy(alpha = 0.94f),
-                            0.72f to HomeBg.copy(alpha = 0.54f),
-                            1.00f to HomeBg.copy(alpha = 0.08f),
+                            0.00f to HomeBg.copy(alpha = 0.99f),
+                            0.56f to HomeBg.copy(alpha = 0.94f),
+                            1.00f to HomeBg.copy(alpha = 0.38f),
                         ),
                     ),
                 ),
@@ -378,56 +399,155 @@ private fun DailyFaithCard() {
 
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(18.dp),
+                .fillMaxWidth()
+                .padding(horizontal = 18.dp, vertical = 16.dp),
         ) {
-            Text(
-                text = "“",
-                color = HomeGold,
-                fontFamily = FontFamily.Serif,
-                fontSize = 34.sp,
-                lineHeight = 28.sp,
-            )
-
-            Spacer(Modifier.height(2.dp))
-
-            Text(
-                text = "Faith is the realization of what is hoped for and evidence of things not seen.",
-                modifier = Modifier.fillMaxWidth(0.68f),
-                color = HomeCream,
-                fontFamily = FontFamily.Serif,
-                fontSize = 17.sp,
-                lineHeight = 23.sp,
-            )
-
-            Spacer(Modifier.weight(1f))
-
-            Text(
-                text = "Hebrews 11:1",
-                color = HomeGold,
-                fontSize = 12.sp,
-                fontWeight = FontWeight.SemiBold,
-            )
-        }
-
-        Row(
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(bottom = 12.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            repeat(3) { index ->
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 Box(
                     modifier = Modifier
-                        .padding(horizontal = 4.dp)
-                        .size(if (index == 0) 7.dp else 6.dp)
-                        .background(
-                            if (index == 0) HomeGold else HomeMuted.copy(alpha = 0.28f),
-                            CircleShape,
-                        ),
+                        .size(30.dp)
+                        .background(HomeGold.copy(alpha = 0.14f), CircleShape),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.AutoStories,
+                        contentDescription = null,
+                        tint = HomeGold,
+                        modifier = Modifier.size(17.dp),
+                    )
+                }
+
+                Spacer(Modifier.width(10.dp))
+
+                Text(
+                    text = s.homeTodaysReadings.uppercase(),
+                    color = HomeGold,
+                    fontSize = 10.sp,
+                    letterSpacing = 1.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+            }
+
+            Spacer(Modifier.height(9.dp))
+
+            Text(
+                text = readings?.title ?: if (loaded) s.homeTodaysReadings else s.loading,
+                color = HomeCream,
+                fontFamily = FontFamily.Serif,
+                fontSize = 18.sp,
+                lineHeight = 22.sp,
+                fontWeight = FontWeight.SemiBold,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+            )
+
+            Spacer(Modifier.height(10.dp))
+
+            when {
+                readings == null -> Text(
+                    text = if (loaded) s.homeReadingsUnavailable else "${s.loading}…",
+                    color = HomeMuted,
+                    fontSize = 12.sp,
+                    lineHeight = 17.sp,
+                )
+
+                readings.readings.isEmpty() -> Text(
+                    text = s.homeReadingsVary,
+                    color = HomeMuted,
+                    fontSize = 12.sp,
+                    lineHeight = 17.sp,
+                )
+
+                else -> readings.readings.forEachIndexed { index, reference ->
+                    ReadingReferenceRow(
+                        reference = reference,
+                        onClick = onReadingSelected?.let { callback -> { callback(reference) } },
+                    )
+                    if (index != readings.readings.lastIndex) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(1.dp)
+                                .background(HomeBorder.copy(alpha = 0.42f)),
+                        )
+                    }
+                }
+            }
+
+            readings?.featuredVerse?.let { verse ->
+                Spacer(Modifier.height(8.dp))
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(1.dp)
+                        .background(HomeGoldSoft.copy(alpha = 0.38f)),
+                )
+
+                Spacer(Modifier.height(8.dp))
+
+                Text(
+                    text = "${s.homeVerseOfTheDay.uppercase()}  •  ${verse.citation.replace("-", "–")}",
+                    color = HomeGold,
+                    fontSize = 9.sp,
+                    letterSpacing = 0.7.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+
+                Spacer(Modifier.height(5.dp))
+
+                Text(
+                    text = "“${verse.text}”",
+                    color = HomeCream.copy(alpha = 0.94f),
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 12.5.sp,
+                    lineHeight = 15.5.sp,
+                    maxLines = 6,
+                    overflow = TextOverflow.Ellipsis,
                 )
             }
         }
+    }
+}
+
+@Composable
+private fun ReadingReferenceRow(
+    reference: ScriptureReference,
+    onClick: (() -> Unit)?,
+) {
+    val s = LocalStrings.current
+    val interactionModifier = if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .then(interactionModifier)
+            .padding(vertical = 7.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = when (reference.kind) {
+                ReadingKind.FIRST_READING -> s.homeFirstReading
+                ReadingKind.SECOND_READING -> s.homeSecondReading
+                ReadingKind.GOSPEL -> s.homeGospel
+            }.uppercase(),
+            modifier = Modifier.width(94.dp),
+            color = HomeGoldSoft,
+            fontSize = 9.sp,
+            letterSpacing = 0.65.sp,
+            fontWeight = FontWeight.Bold,
+        )
+
+        Text(
+            text = reference.citation.replace("-", "–"),
+            color = HomeCream,
+            fontFamily = FontFamily.Serif,
+            fontSize = 15.sp,
+            lineHeight = 18.sp,
+            fontWeight = FontWeight.Medium,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
     }
 }
 
@@ -506,7 +626,7 @@ private fun EditorialHomeCard(
                 ),
             )
             .border(
-                width = 1.dp,
+                width = 2.dp,
                 color = HomeBorder.copy(alpha = 0.78f),
                 shape = shape,
             )
@@ -523,7 +643,7 @@ private fun EditorialHomeCard(
                     .height(166.dp)
                     .clip(RoundedCornerShape(18.dp))
                     .border(
-                        width = 1.dp,
+                        width = 2.dp,
                         color = HomeGoldSoft.copy(alpha = 0.50f),
                         shape = RoundedCornerShape(18.dp),
                     ),

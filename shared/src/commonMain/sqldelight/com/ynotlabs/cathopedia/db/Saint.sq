@@ -41,3 +41,10 @@ SELECT SaintEntity.id AS id, SaintText.name AS name, SaintText.summary AS summar
 FROM SaintEntity
 JOIN SaintText ON SaintText.saintId = SaintEntity.id AND SaintText.language = :language
 WHERE SaintEntity.id = :id;
+
+selectSaintsByFeastDay:
+SELECT SaintEntity.id AS id, SaintText.name AS name, SaintText.summary AS summary,
+       SaintEntity.feastDay AS feastDay, SaintEntity.imageUrl AS imageUrl
+FROM SaintEntity
+JOIN SaintText ON SaintText.saintId = SaintEntity.id AND SaintText.language = :language
+WHERE SaintEntity.feastDay = :feastDay;

@@ -676,7 +676,7 @@ private fun PremiumFilterChip(
         modifier = Modifier.clickable(onClick = onClick),
         color = background,
         shape = RoundedCornerShape(50),
-        border = androidx.compose.foundation.BorderStroke(1.dp, border),
+        border = androidx.compose.foundation.BorderStroke(2.dp, border),
     ) {
         Text(
             text = text,
@@ -767,7 +767,7 @@ private fun PremiumEntityCard(
         color = cardColor,
         shape = RoundedCornerShape(22.dp),
         border = androidx.compose.foundation.BorderStroke(
-            width = 1.dp,
+            width = 2.dp,
             color = if (pressed) EntityGoldSoft.copy(alpha = 0.75f) else EntityBorder,
         ),
         shadowElevation = if (pressed) 7.dp else 0.dp,
@@ -787,7 +787,7 @@ private fun PremiumEntityCard(
                         )
                         .clip(RoundedCornerShape(16.dp))
                         .border(
-                            width = 1.dp,
+                            width = 2.dp,
                             color = EntityGoldSoft.copy(alpha = 0.7f),
                             shape = RoundedCornerShape(16.dp),
                         ),
@@ -819,7 +819,7 @@ private fun PremiumEntityCard(
                         )
                         .clip(RoundedCornerShape(16.dp))
                         .background(EntityPlaceholderBg)
-                        .border(1.dp, EntityBorder, RoundedCornerShape(16.dp)),
+                        .border(2.dp, EntityBorder, RoundedCornerShape(16.dp)),
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
@@ -922,7 +922,7 @@ private fun PremiumEntityCard(
                 shape = CircleShape,
                 color = EntityIconCircleBg,
                 border = androidx.compose.foundation.BorderStroke(
-                    1.dp,
+                    2.dp,
                     EntityGoldSoft.copy(alpha = 0.7f),
                 ),
             ) {
@@ -1137,7 +1137,7 @@ private fun SortChoice(
         modifier = modifier
             .clip(RoundedCornerShape(12.dp))
             .background(bg)
-            .border(1.dp, border, RoundedCornerShape(12.dp))
+            .border(2.dp, border, RoundedCornerShape(12.dp))
             .clickable(onClick = onClick)
             .padding(horizontal = 12.dp, vertical = 12.dp),
         contentAlignment = Alignment.Center,

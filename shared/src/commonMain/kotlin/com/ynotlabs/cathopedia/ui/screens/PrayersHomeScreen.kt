@@ -344,7 +344,7 @@ private fun PrayerHomeBody(
                     shape = RoundedCornerShape(18.dp),
                     color = PrayerSurface,
                     border = BorderStroke(
-                        width = 1.dp,
+                        width = 2.dp,
                         color = PrayerBorder.copy(alpha = 0.66f),
                     ),
                 ) {
@@ -398,7 +398,7 @@ private fun RosaryHeroCard(
                 ),
             )
             .border(
-                width = 1.dp,
+                width = 2.dp,
                 color = PrayerGoldSoft.copy(alpha = 0.52f),
                 shape = shape,
             )
@@ -484,7 +484,7 @@ private fun RosaryHeroCard(
                 shape = RoundedCornerShape(22.dp),
                 color = Color.Transparent,
                 border = BorderStroke(
-                    width = 1.dp,
+                    width = 2.dp,
                     color = PrayerGold.copy(alpha = 0.78f),
                 ),
             ) {
@@ -533,7 +533,7 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
                 ),
             )
             .border(
-                width = 1.dp,
+                width = 2.dp,
                 color = PrayerGoldSoft.copy(alpha = 0.45f),
                 shape = shape,
             )
@@ -676,13 +676,14 @@ private fun QuickPrayerTile(
                 if (selected) PrayerSurfaceRaised else PrayerSurface,
             )
             .border(
-                width = if (selected) 1.4.dp else 1.dp,
+                width = 2.dp,
                 color = if (selected) PrayerGold else PrayerBorder.copy(alpha = 0.70f),
                 shape = shape,
             )
             .clickable(onClick = onClick)
             .padding(horizontal = 7.dp, vertical = 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
     ) {
         when (icon) {
             is CategoryIcon.Resource -> {
@@ -699,7 +700,7 @@ private fun QuickPrayerTile(
                     shape = CircleShape,
                     color = PrayerGold.copy(alpha = if (selected) 0.14f else 0.07f),
                     border = BorderStroke(
-                        width = 1.dp,
+                        width = 2.dp,
                         color = PrayerGold.copy(alpha = if (selected) 0.52f else 0.24f),
                     ),
                 ) {
@@ -715,7 +716,7 @@ private fun QuickPrayerTile(
             }
         }
 
-        Spacer(Modifier.height(6.dp))
+        Spacer(Modifier.height(5.dp))
 
         Text(
             text = title,
@@ -728,7 +729,7 @@ private fun QuickPrayerTile(
             lineHeight = 14.sp,
         )
 
-        Spacer(Modifier.weight(1f))
+        Spacer(Modifier.height(1.dp))
 
         Text(
             text = subtitle,
@@ -801,7 +802,7 @@ private fun PremiumPrayerRow(
                 ),
             )
             .border(
-                width = 1.dp,
+                width = 2.dp,
                 color = PrayerBorder.copy(alpha = 0.64f),
                 shape = shape,
             )
@@ -825,7 +826,7 @@ private fun PremiumPrayerRow(
                     shape = CircleShape,
                     color = PrayerGold.copy(alpha = 0.08f),
                     border = BorderStroke(
-                        width = 1.dp,
+                        width = 2.dp,
                         color = PrayerGold.copy(alpha = 0.28f),
                     ),
                 ) {
@@ -893,7 +894,7 @@ private fun PrayerSearchResults(
                 shape = CircleShape,
                 color = PrayerGold.copy(alpha = 0.07f),
                 border = BorderStroke(
-                    width = 1.dp,
+                    width = 2.dp,
                     color = PrayerGold.copy(alpha = 0.26f),
                 ),
             ) {

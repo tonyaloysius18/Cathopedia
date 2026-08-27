@@ -53,15 +53,36 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
     suspend fun listSaints(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
         database.saintQueries.selectAllSaints(language)
             .executeAsList()
-            .map { 
+            .map {
                 ContentSummary(
-                    type = ContentType.SAINT, 
-                    id = it.id, 
-                    name = it.name, 
-                    summary = it.summary, 
+                    type = ContentType.SAINT,
+                    id = it.id,
+                    name = it.name,
+                    summary = it.summary,
                     imageUrl = it.imageUrl,
                     feastDay = it.feastDay
-                ) 
+                )
+            }
+    }
+
+    suspend fun saintsOfToday(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
+        val today = LiturgicalCalendar.today()
+        val feastDay = "${today.monthNumber.toString().padStart(2, '0')}-${today.dayOfMonth.toString().padStart(2, '0')}"
+        saintsByFeastDay(feastDay, language)
+    }
+
+    suspend fun saintsByFeastDay(feastDay: String, language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
+        database.saintQueries.selectSaintsByFeastDay(language, feastDay)
+            .executeAsList()
+            .map {
+                ContentSummary(
+                    type = ContentType.SAINT,
+                    id = it.id,
+                    name = it.name,
+                    summary = it.summary,
+                    imageUrl = it.imageUrl,
+                    feastDay = it.feastDay
+                )
             }
     }
 
@@ -319,7 +340,7 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
                 // columns as nullable even though every row is written by insertSearchEntry
                 // with real values — safe to assert non-null here.
                 val entityType = it.entityType ?: return@mapNotNull null
-                
+
                 // ContentSearch index shared by encyclopedia (7 types) and prayers.
                 // Prayers are handled by searchPrayers() from the Prayers tab, but
                 // global search needs to filter them out here because they don't
@@ -333,6 +354,7 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
                     summary = it.summary!!
                 )
             }
+            .distinctBy { it.type.tag + it.id }
     }
 
     /** Dispatches to the right per-type list query — used wherever the UI works across all 7 types generically. */
@@ -446,6 +468,7 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
                 title = it.title ?: it.id.hyphenatedToTitle(),
                 subtitle = it.subtitle,
                 bodyMd = it.bodyMd ?: "",
+                about = it.about ?: "",
                 attribution = it.attribution,
                 source = it.source ?: "",
                 availableLanguages = database.prayerQueries.selectPrayerLanguages(id).executeAsList(),
@@ -479,7 +502,7 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
                         it.isSequence == 1L
                     )
                 }
-            }
+            }.distinctBy { it.id }
         }
 
     /**

@@ -241,7 +241,7 @@ private fun IntroTopBar(
             shape = RoundedCornerShape(18.dp),
             color = IntroSurface.copy(alpha = 0.80f),
             border = BorderStroke(
-                width = 1.dp,
+                width = 2.dp,
                 color = IntroGoldSoft.copy(alpha = 0.45f),
             ),
         ) {
@@ -275,7 +275,7 @@ private fun IntroArtwork(
                 ),
             )
             .border(
-                width = 1.dp,
+                width = 2.dp,
                 color = IntroBorder.copy(alpha = 0.76f),
                 shape = shape,
             ),
@@ -397,7 +397,7 @@ private fun OfflineArtwork() {
                 shape = CircleShape,
                 color = IntroBg.copy(alpha = 0.62f),
                 border = BorderStroke(
-                    width = 1.4.dp,
+                    width = 2.dp,
                     color = IntroGold.copy(alpha = 0.58f),
                 ),
             ) {
@@ -481,7 +481,7 @@ private fun SearchArtwork() {
             shape = RoundedCornerShape(32.dp),
             color = IntroBg.copy(alpha = 0.70f),
             border = BorderStroke(
-                width = 1.2.dp,
+                width = 2.dp,
                 color = IntroGold.copy(alpha = 0.48f),
             ),
         ) {
@@ -541,7 +541,7 @@ private fun SacredIconBubble(
         shape = CircleShape,
         color = if (selected) IntroSurfaceRaised else IntroBg.copy(alpha = 0.70f),
         border = BorderStroke(
-            width = if (selected) 1.6.dp else 1.dp,
+            width = 2.dp,
             color = if (selected) IntroGold else IntroGold.copy(alpha = 0.30f),
         ),
         shadowElevation = if (selected) 6.dp else 0.dp,

@@ -399,7 +399,7 @@ private fun SearchInitialState() {
             shape = CircleShape,
             color = SearchGold.copy(alpha = 0.05f),
             border = BorderStroke(
-                width = 1.dp,
+                width = 2.dp,
                 color = SearchGold.copy(alpha = 0.15f),
             ),
         ) {
@@ -496,7 +496,7 @@ private fun RecentSearchCard(
         shape = RoundedCornerShape(20.dp),
         color = SearchSurface.copy(alpha = 0.92f),
         border = BorderStroke(
-            width = 1.dp,
+            width = 2.dp,
             color = SearchBorder.copy(alpha = 0.72f),
         ),
     ) {
@@ -514,7 +514,7 @@ private fun RecentSearchCard(
                         shape = CircleShape,
                         color = SearchGold.copy(alpha = 0.07f),
                         border = BorderStroke(
-                            width = 1.dp,
+                            width = 2.dp,
                             color = SearchGold.copy(alpha = 0.22f),
                         ),
                     ) {
@@ -579,7 +579,7 @@ private fun SearchTipsCard() {
         shape = RoundedCornerShape(18.dp),
         color = SearchSurface.copy(alpha = 0.92f),
         border = BorderStroke(
-            width = 1.dp,
+            width = 2.dp,
             color = SearchGoldSoft.copy(alpha = 0.35f),
         ),
     ) {
@@ -592,7 +592,7 @@ private fun SearchTipsCard() {
                 shape = CircleShape,
                 color = SearchGold.copy(alpha = 0.08f),
                 border = BorderStroke(
-                    width = 1.dp,
+                    width = 2.dp,
                     color = SearchGold.copy(alpha = 0.26f),
                 ),
             ) {
@@ -722,7 +722,7 @@ private fun SearchResultCard(
                 ),
             )
             .border(
-                width = 1.dp,
+                width = 2.dp,
                 color = SearchBorder.copy(alpha = 0.76f),
                 shape = shape,
             )
@@ -739,7 +739,7 @@ private fun SearchResultCard(
                     .height(106.dp)
                     .clip(RoundedCornerShape(14.dp))
                     .border(
-                        width = 1.dp,
+                        width = 2.dp,
                         color = SearchGoldSoft.copy(alpha = 0.42f),
                         shape = RoundedCornerShape(14.dp),
                     ),
@@ -801,7 +801,7 @@ private fun SearchEmptyState() {
             shape = CircleShape,
             color = SearchGold.copy(alpha = 0.07f),
             border = BorderStroke(
-                width = 1.dp,
+                width = 2.dp,
                 color = SearchGold.copy(alpha = 0.25f),
             ),
         ) {

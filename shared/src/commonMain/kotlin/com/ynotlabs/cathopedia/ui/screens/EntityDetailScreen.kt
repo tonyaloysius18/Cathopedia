@@ -633,8 +633,8 @@ private fun HeroCircleButton(
         modifier = Modifier
             .size(48.dp)
             .clip(CircleShape)
-            .background(Color.Black.copy(alpha = 0.46f))
-            .border(1.dp, Color.White.copy(alpha = 0.08f), CircleShape)
+            .background(Color.Black.copy(alpha = 0.28f))
+            .border(2.dp, Color.White.copy(alpha = 0.08f), CircleShape)
             .clickable(onClick = onClick),
         contentAlignment = Alignment.Center,
     ) {
@@ -658,7 +658,7 @@ private fun DetailActionBar(
         color = DetailActionBar.copy(alpha = 0.98f),
         shape = RoundedCornerShape(18.dp),
         border = androidx.compose.foundation.BorderStroke(
-            width = 1.dp,
+            width = 2.dp,
             color = DetailBorder,
         ),
         shadowElevation = 8.dp,
@@ -860,7 +860,7 @@ private fun PremiumSectionCard(
             .clip(RoundedCornerShape(22.dp))
             .background(DetailSurface)
             .border(
-                width = 1.dp,
+                width = 2.dp,
                 color = DetailBorder.copy(alpha = 0.78f),
                 shape = RoundedCornerShape(22.dp),
             )
@@ -1024,7 +1024,7 @@ private fun FactCard(
             .clip(RoundedCornerShape(14.dp))
             .background(DetailSurfaceElevated)
             .border(
-                width = 1.dp,
+                width = 2.dp,
                 color = DetailGoldSoft.copy(alpha = 0.55f),
                 shape = RoundedCornerShape(14.dp),
             )
@@ -1138,7 +1138,7 @@ private fun SourceCard(
             .clip(RoundedCornerShape(22.dp))
             .background(DetailSurface)
             .border(
-                width = 1.dp,
+                width = 2.dp,
                 color = DetailBorder.copy(alpha = 0.78f),
                 shape = RoundedCornerShape(22.dp),
             )
@@ -1152,7 +1152,7 @@ private fun SourceCard(
                 .clip(RoundedCornerShape(15.dp))
                 .background(DetailSurfaceElevated)
                 .border(
-                    width = 1.dp,
+                    width = 2.dp,
                     color = DetailGoldSoft.copy(alpha = 0.45f),
                     shape = RoundedCornerShape(15.dp),
                 )
@@ -1292,7 +1292,7 @@ private fun PortraitLightbox(
                     .size(48.dp)
                     .clip(CircleShape)
                     .background(Color.Black.copy(alpha = 0.55f))
-                    .border(1.dp, Color.White.copy(alpha = 0.12f), CircleShape)
+                    .border(2.dp, Color.White.copy(alpha = 0.12f), CircleShape)
                     .clickable(onClick = onDismiss),
                 contentAlignment = Alignment.Center,
             ) {

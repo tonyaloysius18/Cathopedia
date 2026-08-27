@@ -103,6 +103,13 @@ data class PrayerLocalizedText(
     val title: String,
     val subtitle: String? = null,
     val bodyMd: String,
+    /**
+     * Short contextual description shown in the prayer detail screen.
+     *
+     * Defaults to an empty string so older prayer JSON files continue to
+     * deserialize while their descriptions are added gradually.
+     */
+    val about: String = "",
     val attribution: String? = null,
     val source: String,
 )

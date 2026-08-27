@@ -37,7 +37,7 @@ object ContentLoader {
      * this just controls whether it re-runs on an existing install rather
      * than only ever loading once on a database with zero rows.
      */
-    private const val CONTENT_VERSION = "35"
+    private const val CONTENT_VERSION = "36"
     private const val CONTENT_VERSION_KEY = "content_version"
 
     // classDiscriminator/explicitNulls (from com.ynotlabs.cathopedia.content.hubContentJson) are
@@ -113,7 +113,16 @@ object ContentLoader {
         catalog.prayers.forEach { p ->
             database.prayerQueries.insertPrayer(p.id, p.category, p.sortOrder, if (p.isSequence) 1L else 0L)
             p.text.forEach { (lang, t) ->
-                database.prayerQueries.insertPrayerText(p.id, lang, t.title, t.subtitle, t.bodyMd, t.attribution, t.source)
+                database.prayerQueries.insertPrayerText(
+                    p.id,
+                    lang,
+                    t.title,
+                    t.subtitle,
+                    t.bodyMd,
+                    t.about,
+                    t.attribution,
+                    t.source,
+                )
                 database.searchQueries.insertSearchEntry(PRAYER_SEARCH_ENTITY_TYPE, p.id, lang, t.title, t.subtitle ?: "", t.bodyMd)
             }
             database.prayerUserStateQueries.insertPrayerUserStateDefault(p.id)
@@ -270,6 +279,7 @@ object ContentLoader {
     }
 
     private fun index(database: CathopediaDatabase, type: ContentType, id: String, language: String, text: LocalizedText) {
+        database.searchQueries.deleteSearchEntriesFor(type.tag, id, language)
         database.searchQueries.insertSearchEntry(type.tag, id, language, text.name, text.summary, text.body)
     }
 

@@ -908,7 +908,7 @@ private fun VestmentCard(vestment: Vestment) {
             .fillMaxWidth()
             .clip(shape)
             .background(VestSurface)
-            .border(1.dp, VestBorder.copy(alpha = 0.55f), shape)
+            .border(2.dp, VestBorder.copy(alpha = 0.55f), shape)
     ) {
         Column(
             modifier = Modifier
@@ -1027,7 +1027,7 @@ private fun LiturgicalColorCard(
         modifier = modifier
             .clip(shape)
             .background(VestSurface)
-            .border(1.dp, VestBorder.copy(alpha = 0.55f), shape)
+            .border(2.dp, VestBorder.copy(alpha = 0.55f), shape)
             .padding(14.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -1038,7 +1038,7 @@ private fun LiturgicalColorCard(
                     .background(color.swatch)
                     .then(
                         if (color.needsBorder) {
-                            Modifier.border(1.dp, VestBorder, CircleShape)
+                            Modifier.border(2.dp, VestBorder, CircleShape)
                         } else {
                             Modifier
                         },

@@ -187,7 +187,7 @@ fun LanguageScreenStartup(
                 shape = CircleShape,
                 color = MaterialTheme.colorScheme.primary.copy(alpha = 0.08f),
                 border = BorderStroke(
-                    width = 1.dp,
+                    width = 2.dp,
                     color = MaterialTheme.colorScheme.primary.copy(alpha = 0.26f),
                 ),
             ) {
@@ -245,7 +245,7 @@ private fun StartupLanguageRow(
                 },
             )
             .border(
-                width = if (selected) 1.7.dp else 1.dp,
+                width = 2.dp,
                 color = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline.copy(alpha = 0.78f),
                 shape = shape,
             )
@@ -260,7 +260,7 @@ private fun StartupLanguageRow(
             shape = CircleShape,
             color = MaterialTheme.colorScheme.background.copy(alpha = 0.56f),
             border = BorderStroke(
-                width = 1.dp,
+                width = 2.dp,
                 color = MaterialTheme.colorScheme.primary.copy(alpha = 0.42f),
             ),
         ) {
@@ -307,7 +307,7 @@ private fun StartupLanguageRow(
                     shape = RoundedCornerShape(50),
                     color = MaterialTheme.colorScheme.primary.copy(alpha = 0.07f),
                     border = BorderStroke(
-                        width = 1.dp,
+                        width = 2.dp,
                         color = MaterialTheme.colorScheme.primary.copy(alpha = 0.24f),
                     ),
                 ) {
