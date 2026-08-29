@@ -3,5 +3,27 @@
   "category": "sequences",
   "sortOrder": 1,
   "isSequence": true,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "The Holy Rosary",
+      "subtitle": "Contemplate the life of Christ with Mary",
+      "bodyMd": "Use Cathopedia’s guided Rosary to pray one set of five mysteries or the complete twenty mysteries.\n\nBegin with the **Apostles’ Creed**, one **Our Father**, three **Hail Marys**, and one **Glory Be**. For each mystery, announce the mystery, pause for meditation, then pray one **Our Father**, ten **Hail Marys**, and one **Glory Be**. Conclude with the **Hail Holy Queen** and the Rosary closing prayer.",
+      "about": "The Rosary is a contemplative prayer centered on Jesus Christ. Through the joyful, luminous, sorrowful, and glorious mysteries, the faithful meditate on the Gospel in the company of the Blessed Virgin Mary.",
+      "source": "Vatican News, “The Rosary”, https://www.vaticannews.va/en/prayers/the-rosary.html, accessed 2026-08-28"
+    },
+    "fr": {
+      "title": "Le Saint Rosaire",
+      "subtitle": "Contempler la vie du Christ avec Marie",
+      "bodyMd": "Utilisez le Rosaire guidé de Cathopedia pour prier une série de cinq mystères ou l’ensemble des vingt mystères.\n\nCommencer par le **Credo**, un **Notre Père**, trois **Je vous salue Marie** et un **Gloire au Père**. Pour chaque mystère, annoncer le mystère, prendre un temps de méditation, puis réciter un **Notre Père**, dix **Je vous salue Marie** et un **Gloire au Père**. Terminer par le **Salve Regina** et la prière finale du Rosaire.",
+      "about": "Le Rosaire est une prière contemplative centrée sur Jésus-Christ. À travers les mystères joyeux, lumineux, douloureux et glorieux, les fidèles méditent l’Évangile en compagnie de la Bienheureuse Vierge Marie.",
+      "source": "Vatican News, « Rosaire », https://www.vaticannews.va/fr/priere/rosaire.html, consulté le 2026-08-28"
+    },
+    "la": {
+      "title": "Sanctum Rosarium",
+      "subtitle": "Vitam Christi cum Maria contemplari",
+      "bodyMd": "Initio dicantur **Credo**, unum **Pater noster**, tres **Ave Maria**, et unum **Gloria Patri**. In singulis mysteriis dicantur unum **Pater noster**, decem **Ave Maria**, et unum **Gloria Patri**. In fine dicantur **Salve Regina** et oratio conclusiva.",
+      "about": "Rosarium oratio contemplativa est quae mysteria vitae Iesu Christi cum Beata Maria Virgine meditatur.",
+      "source": "Ioannes Paulus II, Rosarium Virginis Mariae (2002), Latin text, https://www.vatican.va/content/john-paul-ii/la/apost_letters/2002/documents/hf_jp-ii_apl_20021016_rosarium-virginis-mariae.html, accessed 2026-08-28"
+    }
+  }
 }

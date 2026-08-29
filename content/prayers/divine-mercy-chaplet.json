@@ -3,5 +3,27 @@
   "category": "sequences",
   "sortOrder": 2,
   "isSequence": true,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Chaplet of Divine Mercy",
+      "subtitle": "A rosary-based prayer for God's mercy",
+      "bodyMd": "## How to pray\n\nMake the Sign of the Cross, then pray the **Our Father**, the **Hail Mary**, and the **Apostles’ Creed**.\n\n### On each large bead\n\nEternal Father, I offer You the Body and Blood, Soul and Divinity of Your dearly beloved Son, Our Lord Jesus Christ, in atonement for our sins and those of the whole world.\n\n### On each of the ten small beads\n\nFor the sake of His sorrowful Passion, have mercy on us and on the whole world.\n\nRepeat these prayers for all five decades.\n\n### Concluding prayer — three times\n\nHoly God, Holy Mighty One, Holy Immortal One, have mercy on us and on the whole world.\n\n### Optional closing prayer\n\nEternal God, in whom mercy is endless and the treasury of compassion inexhaustible, look kindly upon us and increase Your mercy in us, that in difficult moments we might not despair nor become despondent, but with great confidence submit ourselves to Your holy will, which is Love and Mercy itself.",
+      "about": "The Chaplet of Divine Mercy is prayed on ordinary rosary beads. It was promoted through the devotion associated with Saint Faustina Kowalska and asks the Father to show mercy through the sorrowful Passion of Christ.",
+      "source": "United States Conference of Catholic Bishops, “How To Pray the Chaplet of Divine Mercy”, https://www.usccb.org/prayers/how-pray-chaplet-divine-mercy, accessed 2026-08-28"
+    },
+    "fr": {
+      "title": "Chapelet de la Divine Miséricorde",
+      "subtitle": "Une prière sur le chapelet pour implorer la miséricorde de Dieu",
+      "bodyMd": "## Comment prier\n\nFaire le signe de croix, puis réciter le **Notre Père**, le **Je vous salue Marie** et le **Credo**.\n\n### Sur chaque gros grain\n\nPère éternel, je T’offre le Corps et le Sang, l’Âme et la Divinité de Ton Fils bien-aimé, notre Seigneur Jésus-Christ, en réparation de nos péchés et de ceux du monde entier.\n\n### Sur chacun des dix petits grains\n\nPar Sa douloureuse Passion, sois miséricordieux pour nous et pour le monde entier.\n\nRépéter ces prières pendant les cinq dizaines.\n\n### Prière finale — trois fois\n\nDieu Saint, Dieu Fort, Dieu Éternel, prends pitié de nous et du monde entier.\n\n### Prière de clôture facultative\n\nDieu éternel, dont la miséricorde est insondable et le trésor de compassion inépuisable, pose sur nous Ton regard bienveillant et augmente en nous Ta miséricorde, afin que, dans les moments difficiles, nous ne désespérions pas et ne perdions pas courage, mais que nous nous soumettions avec une grande confiance à Ta sainte volonté, qui est l’Amour et la Miséricorde mêmes.",
+      "about": "Le Chapelet de la Divine Miséricorde se récite sur un chapelet ordinaire. Diffusé par la dévotion liée à sainte Faustine Kowalska, il demande au Père de faire miséricorde par la douloureuse Passion du Christ.",
+      "source": "Vatican News, « Chapelet de la Divine Miséricorde », https://www.vaticannews.va/fr/priere/chapelet-de-la-divine-misericorde.html, consulté le 2026-08-28"
+    },
+    "la": {
+      "title": "Corona Divinae Misericordiae",
+      "subtitle": "Preces misericordiae corona mariali recitandae",
+      "bodyMd": "## Modus orandi\n\nDicantur **Pater noster**, **Ave Maria**, et **Credo**.\n\n### In granis maioribus\n\nPater aeterne, offero Tibi Corpus et Sanguinem, animam et divinitatem dilectissimi Filii Tui, Domini nostri Iesu Christi, in propitiatione pro peccatis nostris et totius mundi.\n\n### In granis minoribus\n\nPro dolorosa Eius passione, miserere nobis et totius mundi.\n\nQuinque decades perficiantur.\n\n### In conclusione — ter\n\nSanctus Deus, Sanctus Fortis, Sanctus Immortalis, miserere nobis et totius mundi.",
+      "about": "Corona Divinae Misericordiae in corona mariali recitatur atque misericordiam Patris per Passionem Christi implorat.",
+      "source": "Wikisource Latina, « Corona Divinae Misericordiae », https://la.wikisource.org/wiki/Corona_Divinae_Misericordiae, accessed 2026-08-28"
+    }
+  }
 }

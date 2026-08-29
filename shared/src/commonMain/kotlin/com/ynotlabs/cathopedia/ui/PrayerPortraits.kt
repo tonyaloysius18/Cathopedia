@@ -16,6 +16,7 @@ import com.ynotlabs.cathopedia.resources.prayer_full_before_exams
 import com.ynotlabs.cathopedia.resources.prayer_full_confiteor
 import com.ynotlabs.cathopedia.resources.prayer_full_de_profundis
 import com.ynotlabs.cathopedia.resources.prayer_full_divine_mercy_chaplet
+import com.ynotlabs.cathopedia.resources.prayer_full_divine_mercy_novena
 import com.ynotlabs.cathopedia.resources.prayer_full_divine_praises
 import com.ynotlabs.cathopedia.resources.prayer_full_eternal_rest
 import com.ynotlabs.cathopedia.resources.prayer_full_evening_prayer
@@ -41,7 +42,18 @@ import com.ynotlabs.cathopedia.resources.prayer_full_memorare
 import com.ynotlabs.cathopedia.resources.prayer_full_montfort_consecration
 import com.ynotlabs.cathopedia.resources.prayer_full_morning_offering
 import com.ynotlabs.cathopedia.resources.prayer_full_nicene_creed
+import com.ynotlabs.cathopedia.resources.prayer_full_novena_to_our_lady_of_guadalupe
+import com.ynotlabs.cathopedia.resources.prayer_full_novena_to_our_lady_of_perpetual_help
+import com.ynotlabs.cathopedia.resources.prayer_full_novena_to_our_lady_of_the_miraculous_medal
+import com.ynotlabs.cathopedia.resources.prayer_full_novena_to_st_anthony
+import com.ynotlabs.cathopedia.resources.prayer_full_novena_to_st_joseph
+import com.ynotlabs.cathopedia.resources.prayer_full_novena_to_st_jude
+import com.ynotlabs.cathopedia.resources.prayer_full_novena_to_st_michael
+import com.ynotlabs.cathopedia.resources.prayer_full_novena_to_st_rita
+import com.ynotlabs.cathopedia.resources.prayer_full_novena_to_st_therese
 import com.ynotlabs.cathopedia.resources.prayer_full_novena_to_the_holy_spirit
+import com.ynotlabs.cathopedia.resources.prayer_full_novena_to_the_immaculate_conception
+import com.ynotlabs.cathopedia.resources.prayer_full_novena_to_the_sacred_heart
 import com.ynotlabs.cathopedia.resources.prayer_full_o_salutaris_hostia
 import com.ynotlabs.cathopedia.resources.prayer_full_our_father
 import com.ynotlabs.cathopedia.resources.prayer_full_peace_prayer_of_st_francis
@@ -95,6 +107,7 @@ object PrayerPortraits {
         "confiteor" to Res.drawable.prayer_full_confiteor,
         "de-profundis" to Res.drawable.prayer_full_de_profundis,
         "divine-mercy-chaplet" to Res.drawable.prayer_full_divine_mercy_chaplet,
+        "divine-mercy-novena" to Res.drawable.prayer_full_divine_mercy_novena,
         "divine-praises" to Res.drawable.prayer_full_divine_praises,
         "eternal-rest" to Res.drawable.prayer_full_eternal_rest,
         "evening-prayer" to Res.drawable.prayer_full_evening_prayer,
@@ -120,7 +133,18 @@ object PrayerPortraits {
         "montfort-consecration" to Res.drawable.prayer_full_montfort_consecration,
         "morning-offering" to Res.drawable.prayer_full_morning_offering,
         "nicene-creed" to Res.drawable.prayer_full_nicene_creed,
+        "novena-to-our-lady-of-guadalupe" to Res.drawable.prayer_full_novena_to_our_lady_of_guadalupe,
+        "novena-to-our-lady-of-perpetual-help" to Res.drawable.prayer_full_novena_to_our_lady_of_perpetual_help,
+        "novena-to-our-lady-of-the-miraculous-medal" to Res.drawable.prayer_full_novena_to_our_lady_of_the_miraculous_medal,
+        "novena-to-st-anthony" to Res.drawable.prayer_full_novena_to_st_anthony,
+        "novena-to-st-joseph" to Res.drawable.prayer_full_novena_to_st_joseph,
+        "novena-to-st-jude" to Res.drawable.prayer_full_novena_to_st_jude,
+        "novena-to-st-michael" to Res.drawable.prayer_full_novena_to_st_michael,
+        "novena-to-st-rita" to Res.drawable.prayer_full_novena_to_st_rita,
+        "novena-to-st-therese" to Res.drawable.prayer_full_novena_to_st_therese,
         "novena-to-the-holy-spirit" to Res.drawable.prayer_full_novena_to_the_holy_spirit,
+        "novena-to-the-immaculate-conception" to Res.drawable.prayer_full_novena_to_the_immaculate_conception,
+        "novena-to-the-sacred-heart" to Res.drawable.prayer_full_novena_to_the_sacred_heart,
         "o-salutaris-hostia" to Res.drawable.prayer_full_o_salutaris_hostia,
         "our-father" to Res.drawable.prayer_full_our_father,
         "peace-prayer-of-st-francis" to Res.drawable.prayer_full_peace_prayer_of_st_francis,

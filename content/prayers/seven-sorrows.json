@@ -3,5 +3,20 @@
   "category": "sequences",
   "sortOrder": 4,
   "isSequence": true,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Rosary of the Seven Sorrows",
+      "subtitle": "Meditating with Mary on the Passion of Christ",
+      "bodyMd": "## How to pray\n\nBegin with an **Act of Contrition**. For each sorrow, announce the mystery, pause to meditate, then pray **one Our Father and seven Hail Marys**.\n\n1. **The prophecy of Simeon** — Luke 2:25–35\n2. **The flight into Egypt** — Matthew 2:13–15\n3. **The Child Jesus lost in the Temple** — Luke 2:41–50\n4. **Mary meets Jesus carrying the Cross** — Luke 23:27–31\n5. **Mary stands beneath the Cross** — John 19:25–30\n6. **Jesus is taken down from the Cross** — John 19:31–37\n7. **Jesus is laid in the tomb** — John 19:38–42\n\nConclude with **three Hail Marys** in honor of Our Lady’s tears, then pray one **Our Father**, one **Hail Mary**, and one **Glory Be** for the intentions of the Holy Father.\n\nRepeat three times:\n\n> Virgin most sorrowful, pray for us.",
+      "about": "The Seven Sorrows devotion accompanies Mary through seven Gospel moments of suffering, from Simeon’s prophecy to the burial of Jesus. Its repeated Hail Marys unite contemplation of her sorrows with the Passion of Christ.",
+      "source": "EWTN, “How do you pray the Seven Sorrows Rosary?”, https://www.ewtn.com/catholicism/seasons-and-feast-days/how-do-you-pray-the-seven-sorrows-rosary-21939, accessed 2026-08-28; Scripture references supplied from the Gospel passages"
+    },
+    "fr": {
+      "title": "Chapelet des Sept Douleurs",
+      "subtitle": "Méditer avec Marie la Passion du Christ",
+      "bodyMd": "## Comment prier\n\nCommencer par un **acte de contrition**. Pour chaque douleur, annoncer le mystère, prendre un temps de méditation, puis réciter **un Notre Père et sept Je vous salue Marie**.\n\n1. **La prophétie de Syméon** — Luc 2, 25–35\n2. **La fuite en Égypte** — Matthieu 2, 13–15\n3. **L’Enfant Jésus perdu au Temple** — Luc 2, 41–50\n4. **Marie rencontre Jésus portant sa Croix** — Luc 23, 27–31\n5. **Marie se tient au pied de la Croix** — Jean 19, 25–30\n6. **Jésus est descendu de la Croix** — Jean 19, 31–37\n7. **Jésus est déposé au tombeau** — Jean 19, 38–42\n\nTerminer par **trois Je vous salue Marie** en l’honneur des larmes de Notre-Dame, puis réciter un **Notre Père**, un **Je vous salue Marie** et un **Gloire au Père** aux intentions du Saint-Père.\n\nRépéter trois fois :\n\n> Vierge très douloureuse, priez pour nous.",
+      "about": "La dévotion des Sept Douleurs accompagne Marie dans sept moments de souffrance rapportés par les Évangiles, de la prophétie de Syméon à la mise au tombeau de Jésus. Les Je vous salue Marie répétés unissent la contemplation de ses douleurs à la Passion du Christ.",
+      "source": "EWTN, “How do you pray the Seven Sorrows Rosary?”, https://www.ewtn.com/catholicism/seasons-and-feast-days/how-do-you-pray-the-seven-sorrows-rosary-21939, consulté le 2026-08-28 ; traduction française Cathopedia et références évangéliques"
+    }
+  }
 }

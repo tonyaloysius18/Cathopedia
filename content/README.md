@@ -64,7 +64,8 @@ and `source` is required, not optional:
 
 `category` must be one of PrayerCategory's tags (`everyday`, `marian`,
 `holy-spirit`, `eucharistic`, `saints`, `penitential`, `sequences`,
-`occasional`). Only the six `sequences` prayers should set `isSequence: true`.
+`occasional`). Only prayers registered in `KNOWN_SEQUENCE_SLUGS` in
+`buildSrc/src/main/kotlin/prayercontent/Model.kt` should set `isSequence: true`.
 
 ### Prayer texts: provenance, not recall
 
@@ -90,7 +91,7 @@ is mandatory on every language row — it's what makes that audit possible.
 build always validates) and fails on: malformed JSON, an `id` that doesn't
 match its filename, a duplicate `id`, an unknown `category`, a `sortOrder`
 collision within a category, `isSequence: true` on a slug that isn't one of
-the six known sequences, a prayer missing `en` or `fr` once it has *any*
+the registered sequences, a prayer missing `en` or `fr` once it has *any*
 language sourced, a blank `title`/`bodyMd`/`source`, or markdown that fails
 to parse. A completely empty `"text": {}` is tolerated as a warning, not an
 error — pass `-PstrictPrayerValidation` (what CI uses) to promote that to a

@@ -1,0 +1,396 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": 1,
+  "hub": {
+    "id": "catechism",
+    "slug": "catechism",
+    "titleKey": "cat.title",
+    "subtitleKey": "cat.subtitle",
+    "introKey": "cat.intro",
+    "icon": "ic_book",
+    "accentColor": "#A6763C",
+    "sortOrder": 2,
+    "tags": ["catechism", "faith", "doctrine", "sacraments", "morality"]
+  },
+  "sections": [
+    {
+      "id": "cat.creed",
+      "sortOrder": 1,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "cat.creed.title",
+      "summaryKey": "cat.creed.summary",
+      "icon": "ic_creed",
+      "articleIds": ["art.cat.trinity", "art.cat.creeds", "art.cat.four_marks", "art.cat.last_things"]
+    },
+    {
+      "id": "cat.sacraments",
+      "sortOrder": 2,
+      "status": "PUBLISHED",
+      "layout": "FACT_SHEET",
+      "titleKey": "cat.sacraments.title",
+      "summaryKey": "cat.sacraments.summary",
+      "icon": "ic_chalice",
+      "factSheetId": "cat.fs.sacraments",
+      "articleIds": ["art.cat.what_is_sacrament"]
+    },
+    {
+      "id": "cat.confession",
+      "sortOrder": 3,
+      "status": "PUBLISHED",
+      "layout": "STEPPER",
+      "titleKey": "cat.confession.title",
+      "summaryKey": "cat.confession.summary",
+      "icon": "ic_confessional",
+      "stepperId": "cat.step.confession",
+      "articleIds": ["art.cat.confession_prayers"]
+    },
+    {
+      "id": "cat.commandments",
+      "sortOrder": 4,
+      "status": "PUBLISHED",
+      "layout": "FACT_SHEET",
+      "titleKey": "cat.commandments.title",
+      "summaryKey": "cat.commandments.summary",
+      "icon": "ic_tablets",
+      "factSheetId": "cat.fs.commandments",
+      "articleIds": ["art.cat.great_commandments"]
+    },
+    {
+      "id": "cat.gifts",
+      "sortOrder": 5,
+      "status": "PUBLISHED",
+      "layout": "FACT_SHEET",
+      "titleKey": "cat.gifts.title",
+      "summaryKey": "cat.gifts.summary",
+      "icon": "ic_dove",
+      "factSheetId": "cat.fs.gifts",
+      "articleIds": ["art.cat.gifts_prayers"]
+    },
+    {
+      "id": "cat.fruits",
+      "sortOrder": 6,
+      "status": "PUBLISHED",
+      "layout": "FACT_SHEET",
+      "titleKey": "cat.fruits.title",
+      "summaryKey": "cat.fruits.summary",
+      "icon": "ic_vine",
+      "factSheetId": "cat.fs.fruits"
+    },
+    {
+      "id": "cat.virtues",
+      "sortOrder": 7,
+      "status": "PUBLISHED",
+      "layout": "FACT_SHEET",
+      "titleKey": "cat.virtues.title",
+      "summaryKey": "cat.virtues.summary",
+      "icon": "ic_shield",
+      "factSheetId": "cat.fs.virtues"
+    },
+    {
+      "id": "cat.capital_sins",
+      "sortOrder": 8,
+      "status": "PUBLISHED",
+      "layout": "FACT_SHEET",
+      "titleKey": "cat.sins.title",
+      "summaryKey": "cat.sins.summary",
+      "icon": "ic_flame",
+      "factSheetId": "cat.fs.sins"
+    },
+    {
+      "id": "cat.beatitudes",
+      "sortOrder": 9,
+      "status": "PUBLISHED",
+      "layout": "FACT_SHEET",
+      "titleKey": "cat.beatitudes.title",
+      "summaryKey": "cat.beatitudes.summary",
+      "icon": "ic_mount",
+      "factSheetId": "cat.fs.beatitudes"
+    },
+    {
+      "id": "cat.works_of_mercy",
+      "sortOrder": 10,
+      "status": "PUBLISHED",
+      "layout": "FACT_SHEET",
+      "titleKey": "cat.mercy.title",
+      "summaryKey": "cat.mercy.summary",
+      "icon": "ic_hands",
+      "factSheetId": "cat.fs.mercy"
+    },
+    {
+      "id": "cat.precepts",
+      "sortOrder": 11,
+      "status": "PUBLISHED",
+      "layout": "FACT_SHEET",
+      "titleKey": "cat.precepts.title",
+      "summaryKey": "cat.precepts.summary",
+      "icon": "ic_calendar",
+      "factSheetId": "cat.fs.precepts"
+    }
+  ],
+  "articles": [
+    {
+      "id": "art.cat.trinity",
+      "sectionId": "cat.creed",
+      "sortOrder": 1,
+      "titleKey": "art.trinity.title",
+      "leadKey": "art.trinity.lead",
+      "readingTimeMinutes": 2,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.trinity.p1" },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.trinity.li1", "art.trinity.li2", "art.trinity.li3"] },
+        { "type": "callout", "tone": "devotional", "titleKey": "art.trinity.callout.title", "textKey": "art.trinity.callout.body" }
+      ]
+    },
+    {
+      "id": "art.cat.creeds",
+      "sectionId": "cat.creed",
+      "sortOrder": 2,
+      "titleKey": "art.creeds.title",
+      "leadKey": "art.creeds.lead",
+      "readingTimeMinutes": 2,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.creeds.p1" },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.creeds.li1", "art.creeds.li2"] },
+        { "type": "entityCards", "titleKey": "art.creeds.cards.title", "refs": [
+          { "type": "PRAYER", "id": "apostles-creed", "labelKey": "art.creeds.ref.apostles" },
+          { "type": "PRAYER", "id": "nicene-creed", "labelKey": "art.creeds.ref.nicene" }
+        ] }
+      ]
+    },
+    {
+      "id": "art.cat.four_marks",
+      "sectionId": "cat.creed",
+      "sortOrder": 3,
+      "titleKey": "art.marks.title",
+      "leadKey": "art.marks.lead",
+      "readingTimeMinutes": 2,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.marks.p1" },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.marks.li1", "art.marks.li2", "art.marks.li3", "art.marks.li4"] }
+      ]
+    },
+    {
+      "id": "art.cat.last_things",
+      "sectionId": "cat.creed",
+      "sortOrder": 4,
+      "titleKey": "art.last.title",
+      "leadKey": "art.last.lead",
+      "readingTimeMinutes": 2,
+      "blocks": [
+        { "type": "list", "style": "bullet", "itemKeys": ["art.last.li1", "art.last.li2", "art.last.li3", "art.last.li4"] },
+        { "type": "callout", "tone": "note", "titleKey": "art.last.callout.title", "textKey": "art.last.callout.body" }
+      ]
+    },
+    {
+      "id": "art.cat.what_is_sacrament",
+      "sectionId": "cat.sacraments",
+      "sortOrder": 1,
+      "titleKey": "art.sacrament.title",
+      "leadKey": "art.sacrament.lead",
+      "readingTimeMinutes": 2,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.sacrament.p1" },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.sacrament.li1", "art.sacrament.li2", "art.sacrament.li3"] }
+      ]
+    },
+    {
+      "id": "art.cat.confession_prayers",
+      "sectionId": "cat.confession",
+      "sortOrder": 1,
+      "titleKey": "art.confprayers.title",
+      "leadKey": "art.confprayers.lead",
+      "readingTimeMinutes": 1,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.confprayers.p1" },
+        { "type": "entityCards", "titleKey": "art.confprayers.cards.title", "refs": [
+          { "type": "PRAYER", "id": "examination-of-conscience", "labelKey": "art.confprayers.ref.examen" },
+          { "type": "PRAYER", "id": "before-confession", "labelKey": "art.confprayers.ref.before" },
+          { "type": "PRAYER", "id": "act-of-contrition", "labelKey": "art.confprayers.ref.contrition" },
+          { "type": "PRAYER", "id": "after-confession", "labelKey": "art.confprayers.ref.after" }
+        ] }
+      ]
+    },
+    {
+      "id": "art.cat.great_commandments",
+      "sectionId": "cat.commandments",
+      "sortOrder": 1,
+      "titleKey": "art.great.title",
+      "leadKey": "art.great.lead",
+      "readingTimeMinutes": 1,
+      "blocks": [
+        { "type": "quote", "textKey": "art.great.quote", "attributionKey": "art.great.quote.attr" },
+        { "type": "paragraph", "textKey": "art.great.p1" }
+      ]
+    },
+    {
+      "id": "art.cat.gifts_prayers",
+      "sectionId": "cat.gifts",
+      "sortOrder": 1,
+      "titleKey": "art.giftsprayers.title",
+      "leadKey": "art.giftsprayers.lead",
+      "readingTimeMinutes": 1,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.giftsprayers.p1" },
+        { "type": "entityCards", "titleKey": "art.giftsprayers.cards.title", "refs": [
+          { "type": "PRAYER", "id": "veni-creator", "labelKey": "art.giftsprayers.ref.venicreator" },
+          { "type": "PRAYER", "id": "veni-sancte-spiritus", "labelKey": "art.giftsprayers.ref.venisancte" },
+          { "type": "PRAYER", "id": "prayer-for-the-seven-gifts", "labelKey": "art.giftsprayers.ref.seven" }
+        ] }
+      ]
+    }
+  ],
+  "factSheets": [
+    {
+      "id": "cat.fs.sacraments",
+      "titleKey": "cat.fs.sacraments.title",
+      "facts": [
+        { "id": "sac.baptism", "labelKey": "sac.baptism.label", "valueKey": "sac.baptism.value", "footnoteKey": "sac.group.initiation" },
+        { "id": "sac.confirmation", "labelKey": "sac.confirmation.label", "valueKey": "sac.confirmation.value", "footnoteKey": "sac.group.initiation" },
+        { "id": "sac.eucharist", "labelKey": "sac.eucharist.label", "valueKey": "sac.eucharist.value", "footnoteKey": "sac.group.initiation" },
+        { "id": "sac.penance", "labelKey": "sac.penance.label", "valueKey": "sac.penance.value", "footnoteKey": "sac.group.healing" },
+        { "id": "sac.anointing", "labelKey": "sac.anointing.label", "valueKey": "sac.anointing.value", "footnoteKey": "sac.group.healing" },
+        { "id": "sac.orders", "labelKey": "sac.orders.label", "valueKey": "sac.orders.value", "footnoteKey": "sac.group.service" },
+        { "id": "sac.matrimony", "labelKey": "sac.matrimony.label", "valueKey": "sac.matrimony.value", "footnoteKey": "sac.group.service" }
+      ]
+    },
+    {
+      "id": "cat.fs.commandments",
+      "titleKey": "cat.fs.commandments.title",
+      "facts": [
+        { "id": "cmd.1", "labelKey": "cmd.1.label", "valueKey": "cmd.1.value" },
+        { "id": "cmd.2", "labelKey": "cmd.2.label", "valueKey": "cmd.2.value" },
+        { "id": "cmd.3", "labelKey": "cmd.3.label", "valueKey": "cmd.3.value" },
+        { "id": "cmd.4", "labelKey": "cmd.4.label", "valueKey": "cmd.4.value" },
+        { "id": "cmd.5", "labelKey": "cmd.5.label", "valueKey": "cmd.5.value" },
+        { "id": "cmd.6", "labelKey": "cmd.6.label", "valueKey": "cmd.6.value" },
+        { "id": "cmd.7", "labelKey": "cmd.7.label", "valueKey": "cmd.7.value" },
+        { "id": "cmd.8", "labelKey": "cmd.8.label", "valueKey": "cmd.8.value" },
+        { "id": "cmd.9", "labelKey": "cmd.9.label", "valueKey": "cmd.9.value" },
+        { "id": "cmd.10", "labelKey": "cmd.10.label", "valueKey": "cmd.10.value" }
+      ]
+    },
+    {
+      "id": "cat.fs.gifts",
+      "titleKey": "cat.fs.gifts.title",
+      "facts": [
+        { "id": "gift.wisdom", "labelKey": "gift.wisdom.label", "valueKey": "gift.wisdom.value" },
+        { "id": "gift.understanding", "labelKey": "gift.understanding.label", "valueKey": "gift.understanding.value" },
+        { "id": "gift.counsel", "labelKey": "gift.counsel.label", "valueKey": "gift.counsel.value" },
+        { "id": "gift.fortitude", "labelKey": "gift.fortitude.label", "valueKey": "gift.fortitude.value" },
+        { "id": "gift.knowledge", "labelKey": "gift.knowledge.label", "valueKey": "gift.knowledge.value" },
+        { "id": "gift.piety", "labelKey": "gift.piety.label", "valueKey": "gift.piety.value" },
+        { "id": "gift.fear", "labelKey": "gift.fear.label", "valueKey": "gift.fear.value" }
+      ]
+    },
+    {
+      "id": "cat.fs.fruits",
+      "titleKey": "cat.fs.fruits.title",
+      "facts": [
+        { "id": "fruit.charity", "labelKey": "fruit.charity.label", "valueKey": "fruit.charity.value" },
+        { "id": "fruit.joy", "labelKey": "fruit.joy.label", "valueKey": "fruit.joy.value" },
+        { "id": "fruit.peace", "labelKey": "fruit.peace.label", "valueKey": "fruit.peace.value" },
+        { "id": "fruit.patience", "labelKey": "fruit.patience.label", "valueKey": "fruit.patience.value" },
+        { "id": "fruit.kindness", "labelKey": "fruit.kindness.label", "valueKey": "fruit.kindness.value" },
+        { "id": "fruit.goodness", "labelKey": "fruit.goodness.label", "valueKey": "fruit.goodness.value" },
+        { "id": "fruit.generosity", "labelKey": "fruit.generosity.label", "valueKey": "fruit.generosity.value" },
+        { "id": "fruit.gentleness", "labelKey": "fruit.gentleness.label", "valueKey": "fruit.gentleness.value" },
+        { "id": "fruit.faithfulness", "labelKey": "fruit.faithfulness.label", "valueKey": "fruit.faithfulness.value" },
+        { "id": "fruit.modesty", "labelKey": "fruit.modesty.label", "valueKey": "fruit.modesty.value" },
+        { "id": "fruit.self_control", "labelKey": "fruit.self_control.label", "valueKey": "fruit.self_control.value" },
+        { "id": "fruit.chastity", "labelKey": "fruit.chastity.label", "valueKey": "fruit.chastity.value" }
+      ]
+    },
+    {
+      "id": "cat.fs.virtues",
+      "titleKey": "cat.fs.virtues.title",
+      "facts": [
+        { "id": "virt.faith", "labelKey": "virt.faith.label", "valueKey": "virt.faith.value", "footnoteKey": "virt.group.theological" },
+        { "id": "virt.hope", "labelKey": "virt.hope.label", "valueKey": "virt.hope.value", "footnoteKey": "virt.group.theological" },
+        { "id": "virt.charity", "labelKey": "virt.charity.label", "valueKey": "virt.charity.value", "footnoteKey": "virt.group.theological" },
+        { "id": "virt.prudence", "labelKey": "virt.prudence.label", "valueKey": "virt.prudence.value", "footnoteKey": "virt.group.cardinal" },
+        { "id": "virt.justice", "labelKey": "virt.justice.label", "valueKey": "virt.justice.value", "footnoteKey": "virt.group.cardinal" },
+        { "id": "virt.fortitude", "labelKey": "virt.fortitude.label", "valueKey": "virt.fortitude.value", "footnoteKey": "virt.group.cardinal" },
+        { "id": "virt.temperance", "labelKey": "virt.temperance.label", "valueKey": "virt.temperance.value", "footnoteKey": "virt.group.cardinal" }
+      ]
+    },
+    {
+      "id": "cat.fs.sins",
+      "titleKey": "cat.fs.sins.title",
+      "facts": [
+        { "id": "sin.pride", "labelKey": "sin.pride.label", "valueKey": "sin.pride.value" },
+        { "id": "sin.greed", "labelKey": "sin.greed.label", "valueKey": "sin.greed.value" },
+        { "id": "sin.lust", "labelKey": "sin.lust.label", "valueKey": "sin.lust.value" },
+        { "id": "sin.envy", "labelKey": "sin.envy.label", "valueKey": "sin.envy.value" },
+        { "id": "sin.gluttony", "labelKey": "sin.gluttony.label", "valueKey": "sin.gluttony.value" },
+        { "id": "sin.wrath", "labelKey": "sin.wrath.label", "valueKey": "sin.wrath.value" },
+        { "id": "sin.sloth", "labelKey": "sin.sloth.label", "valueKey": "sin.sloth.value" }
+      ]
+    },
+    {
+      "id": "cat.fs.beatitudes",
+      "titleKey": "cat.fs.beatitudes.title",
+      "facts": [
+        { "id": "beat.1", "labelKey": "beat.1.label", "valueKey": "beat.1.value" },
+        { "id": "beat.2", "labelKey": "beat.2.label", "valueKey": "beat.2.value" },
+        { "id": "beat.3", "labelKey": "beat.3.label", "valueKey": "beat.3.value" },
+        { "id": "beat.4", "labelKey": "beat.4.label", "valueKey": "beat.4.value" },
+        { "id": "beat.5", "labelKey": "beat.5.label", "valueKey": "beat.5.value" },
+        { "id": "beat.6", "labelKey": "beat.6.label", "valueKey": "beat.6.value" },
+        { "id": "beat.7", "labelKey": "beat.7.label", "valueKey": "beat.7.value" },
+        { "id": "beat.8", "labelKey": "beat.8.label", "valueKey": "beat.8.value" }
+      ]
+    },
+    {
+      "id": "cat.fs.mercy",
+      "titleKey": "cat.fs.mercy.title",
+      "facts": [
+        { "id": "mercy.c1", "labelKey": "mercy.c1.label", "valueKey": "mercy.c1.value", "footnoteKey": "mercy.group.corporal" },
+        { "id": "mercy.c2", "labelKey": "mercy.c2.label", "valueKey": "mercy.c2.value", "footnoteKey": "mercy.group.corporal" },
+        { "id": "mercy.c3", "labelKey": "mercy.c3.label", "valueKey": "mercy.c3.value", "footnoteKey": "mercy.group.corporal" },
+        { "id": "mercy.c4", "labelKey": "mercy.c4.label", "valueKey": "mercy.c4.value", "footnoteKey": "mercy.group.corporal" },
+        { "id": "mercy.c5", "labelKey": "mercy.c5.label", "valueKey": "mercy.c5.value", "footnoteKey": "mercy.group.corporal" },
+        { "id": "mercy.c6", "labelKey": "mercy.c6.label", "valueKey": "mercy.c6.value", "footnoteKey": "mercy.group.corporal" },
+        { "id": "mercy.c7", "labelKey": "mercy.c7.label", "valueKey": "mercy.c7.value", "footnoteKey": "mercy.group.corporal" },
+        { "id": "mercy.s1", "labelKey": "mercy.s1.label", "valueKey": "mercy.s1.value", "footnoteKey": "mercy.group.spiritual" },
+        { "id": "mercy.s2", "labelKey": "mercy.s2.label", "valueKey": "mercy.s2.value", "footnoteKey": "mercy.group.spiritual" },
+        { "id": "mercy.s3", "labelKey": "mercy.s3.label", "valueKey": "mercy.s3.value", "footnoteKey": "mercy.group.spiritual" },
+        { "id": "mercy.s4", "labelKey": "mercy.s4.label", "valueKey": "mercy.s4.value", "footnoteKey": "mercy.group.spiritual" },
+        { "id": "mercy.s5", "labelKey": "mercy.s5.label", "valueKey": "mercy.s5.value", "footnoteKey": "mercy.group.spiritual" },
+        { "id": "mercy.s6", "labelKey": "mercy.s6.label", "valueKey": "mercy.s6.value", "footnoteKey": "mercy.group.spiritual" },
+        { "id": "mercy.s7", "labelKey": "mercy.s7.label", "valueKey": "mercy.s7.value", "footnoteKey": "mercy.group.spiritual" }
+      ]
+    },
+    {
+      "id": "cat.fs.precepts",
+      "titleKey": "cat.fs.precepts.title",
+      "facts": [
+        { "id": "prec.1", "labelKey": "prec.1.label", "valueKey": "prec.1.value", "footnoteKey": "prec.group.precepts" },
+        { "id": "prec.2", "labelKey": "prec.2.label", "valueKey": "prec.2.value", "footnoteKey": "prec.group.precepts" },
+        { "id": "prec.3", "labelKey": "prec.3.label", "valueKey": "prec.3.value", "footnoteKey": "prec.group.precepts" },
+        { "id": "prec.4", "labelKey": "prec.4.label", "valueKey": "prec.4.value", "footnoteKey": "prec.group.precepts" },
+        { "id": "prec.5", "labelKey": "prec.5.label", "valueKey": "prec.5.value", "footnoteKey": "prec.group.precepts" },
+        { "id": "prec.holydays", "labelKey": "prec.holydays.label", "valueKey": "prec.holydays.value", "footnoteKey": "prec.group.observance" },
+        { "id": "prec.fasting", "labelKey": "prec.fasting.label", "valueKey": "prec.fasting.value", "footnoteKey": "prec.group.observance" },
+        { "id": "prec.abstinence", "labelKey": "prec.abstinence.label", "valueKey": "prec.abstinence.value", "footnoteKey": "prec.group.observance" },
+        { "id": "prec.communion_fast", "labelKey": "prec.communion_fast.label", "valueKey": "prec.communion_fast.value", "footnoteKey": "prec.group.observance" }
+      ]
+    }
+  ],
+  "steppers": [
+    {
+      "id": "cat.step.confession",
+      "titleKey": "cat.step.confession.title",
+      "introKey": "cat.step.confession.intro",
+      "steps": [
+        { "id": "conf.1", "order": 1, "titleKey": "conf.1.title", "bodyKey": "conf.1.body" },
+        { "id": "conf.2", "order": 2, "titleKey": "conf.2.title", "bodyKey": "conf.2.body" },
+        { "id": "conf.3", "order": 3, "titleKey": "conf.3.title", "bodyKey": "conf.3.body" },
+        { "id": "conf.4", "order": 4, "titleKey": "conf.4.title", "bodyKey": "conf.4.body" },
+        { "id": "conf.5", "order": 5, "titleKey": "conf.5.title", "bodyKey": "conf.5.body" },
+        { "id": "conf.6", "order": 6, "titleKey": "conf.6.title", "bodyKey": "conf.6.body" },
+        { "id": "conf.7", "order": 7, "titleKey": "conf.7.title", "bodyKey": "conf.7.body" }
+      ]
+    }
+  ]
+}

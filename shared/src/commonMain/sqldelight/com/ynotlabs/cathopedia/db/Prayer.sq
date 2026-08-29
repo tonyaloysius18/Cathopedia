@@ -34,6 +34,9 @@ insertPrayerText:
 INSERT OR REPLACE INTO PrayerText(prayerId, language, title, subtitle, bodyMd, about, attribution, source)
 VALUES (?, ?, ?, ?, ?, ?, ?, ?);
 
+deletePrayer:
+DELETE FROM PrayerEntity WHERE id = :id;
+
 selectPrayersByCategory:
 SELECT PrayerEntity.id AS id, PrayerText.title AS title, PrayerText.subtitle AS subtitle,
        PrayerEntity.category AS category, PrayerEntity.isSequence AS isSequence

@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -18,22 +19,27 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.Strings
+import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.arch_bishop
 import com.ynotlabs.cathopedia.resources.bishop
@@ -95,7 +101,6 @@ private const val MINISTER_MAX_SHADE_ALPHA = 0.6f
 private val VestBg = Color(0xFF061A13)
 private val VestSurface = Color(0xFF0C271E)
 private val VestSurfaceRaised = Color(0xFF123127)
-private val VestBorder = Color(0xFF315444)
 private val VestGold = Color(0xFFD8B24C)
 private val VestGoldSoft = Color(0xFF9D8858)
 private val VestCream = Color(0xFFF4ECDD)
@@ -108,6 +113,7 @@ data class Vestment(
     val detail: String,
     val colorNote: String? = null,
     val image: DrawableResource? = null,
+    val sourceName: String = name,
 )
 
 data class Minister(
@@ -498,17 +504,44 @@ private val liturgicalColors = listOf(
     ),
 )
 
+private fun Strings.vestmentText(source: String): String = vestmentTranslations[source] ?: source
+
+private fun Minister.localized(s: Strings): Minister = copy(
+    name = s.vestmentText(name),
+    title = s.vestmentText(title),
+    description = s.vestmentText(description),
+    vestments = vestments.map { it.localized(s) },
+)
+
+private fun Vestment.localized(s: Strings): Vestment = copy(
+    name = s.vestmentText(name),
+    purpose = s.vestmentText(purpose),
+    significance = s.vestmentText(significance),
+    detail = s.vestmentText(detail),
+    colorNote = colorNote?.let(s::vestmentText),
+)
+
+private fun LiturgicalColor.localized(s: Strings): LiturgicalColor = copy(
+    name = s.vestmentText(name),
+    occasion = s.vestmentText(occasion),
+    meaning = s.vestmentText(meaning),
+)
+
 @Composable
 fun VestmentsScreen(
     onBackClick: () -> Unit = {},
 ) {
     val s = LocalStrings.current
+    val localizedMinisters = remember(s) { ministers.map { it.localized(s) } }
+    val localizedLiturgicalColors = remember(s) { liturgicalColors.map { it.localized(s) } }
     val listState = rememberLazyListState()
     val density = LocalDensity.current
     val cardWidthPx = with(density) { MINISTER_CARD_WIDTH_DP.dp.toPx() }
     val scope = rememberCoroutineScope()
 
     var selectedIndex by remember { mutableStateOf(1) }
+    var headerHeightPx by remember { mutableIntStateOf(0) }
+    val headerHeightDp = with(density) { headerHeightPx.toDp() }
 
     LaunchedEffect(listState) {
         snapshotFlow { listState.layoutInfo }
@@ -522,40 +555,20 @@ fun VestmentsScreen(
             }
     }
 
-    val selected = ministers[selectedIndex]
+    val selected = localizedMinisters[selectedIndex]
 
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(VestBg)
-            .statusBarsPadding(),
+            .background(VestBg),
     ) {
-        VestmentsHeader(onBackClick = onBackClick, backDescription = s.back)
-
-        Spacer(Modifier.height(4.dp))
-
-        MinisterCarousel(
-            ministers = ministers,
-            listState = listState,
-            cardWidthPx = cardWidthPx,
-            currentIndex = selectedIndex,
-            onCardClick = { index ->
-                scope.launch { listState.animateScrollToItem(index) }
-            },
-        )
-
-        Spacer(Modifier.height(14.dp))
-
-        MinisterDots(count = ministers.size, currentIndex = selectedIndex)
-
         LazyColumn(
             modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth(),
+                .fillMaxSize()
+                .padding(top = headerHeightDp + 16.dp),
             contentPadding = PaddingValues(
                 start = 18.dp,
                 end = 18.dp,
-                top = 16.dp,
                 bottom = 124.dp,
             ),
         ) {
@@ -565,7 +578,7 @@ fun VestmentsScreen(
                 Spacer(Modifier.height(22.dp))
 
                 VestmentsSectionHeader(
-                    title = "Vestments & Regalia",
+                    title = s.vestmentsRegaliaSection,
                     count = selected.vestments.size,
                 )
 
@@ -573,7 +586,7 @@ fun VestmentsScreen(
             }
 
             items(selected.vestments, key = { "${selected.id}-${it.name}" }) { vestment ->
-                VestmentCard(vestment = vestment.copy(image = vestmentImage(vestment.name, selected.id)))
+                VestmentCard(vestment = vestment.copy(image = vestmentImage(vestment.sourceName, selected.id)))
                 Spacer(Modifier.height(10.dp))
             }
 
@@ -581,14 +594,14 @@ fun VestmentsScreen(
                 Spacer(Modifier.height(12.dp))
 
                 VestmentsSectionHeader(
-                    title = "Liturgical Colors",
-                    count = liturgicalColors.size,
+                    title = s.vestmentsColorsSection,
+                    count = localizedLiturgicalColors.size,
                 )
 
                 Spacer(Modifier.height(6.dp))
 
                 Text(
-                    text = "The color of many vestments changes with the season or feast being celebrated.",
+                    text = s.vestmentsColorsDescription,
                     color = VestMuted,
                     fontSize = 12.5.sp,
                     lineHeight = 17.sp,
@@ -596,77 +609,111 @@ fun VestmentsScreen(
 
                 Spacer(Modifier.height(12.dp))
 
-                LiturgicalColorGrid(colors = liturgicalColors)
+                LiturgicalColorGrid(colors = localizedLiturgicalColors)
             }
         }
+
+        VestmentsHeaderCard(
+            ministers = localizedMinisters,
+            listState = listState,
+            cardWidthPx = cardWidthPx,
+            currentIndex = selectedIndex,
+            onBackClick = onBackClick,
+            onCardClick = { index ->
+                scope.launch { listState.animateScrollToItem(index) }
+            },
+            modifier = Modifier.onGloballyPositioned {
+                headerHeightPx = it.size.height
+            }
+        )
     }
 }
 
 @Composable
-private fun VestmentsHeader(
-    onBackClick: () -> Unit,
-    backDescription: String,
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 10.dp, end = 18.dp, top = 6.dp, bottom = 4.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        IconButton(onClick = onBackClick) {
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                contentDescription = backDescription,
-                tint = VestCream,
-            )
-        }
-
-        Spacer(Modifier.width(4.dp))
-
-        Column {
-            Text(
-                text = "Sacred Vestments",
-                color = VestCream,
-                fontFamily = FontFamily.Serif,
-                fontSize = 22.sp,
-                fontWeight = FontWeight.SemiBold,
-            )
-
-            Text(
-                text = "The sacred garments worn at the Holy Eucharist",
-                color = VestGoldSoft,
-                fontSize = 12.sp,
-            )
-        }
-    }
-}
-
-@Composable
-private fun MinisterCarousel(
+private fun VestmentsHeaderCard(
     ministers: List<Minister>,
     listState: LazyListState,
     cardWidthPx: Float,
     currentIndex: Int,
+    onBackClick: () -> Unit,
     onCardClick: (Int) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-    LazyRow(
-        state = listState,
-        flingBehavior = rememberSnapFlingBehavior(listState),
-        contentPadding = PaddingValues(horizontal = MINISTER_SIDE_PADDING_DP.dp),
-        horizontalArrangement = Arrangement.spacedBy(18.dp),
-        modifier = Modifier
+    val s = LocalStrings.current
+    Surface(
+        modifier = modifier
             .fillMaxWidth()
-            .height(MINISTER_CARD_HEIGHT_DP.dp),
+            .shadow(
+                elevation = 14.dp,
+                shape = RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp),
+                clip = false
+            ),
+        color = VestSurface,
+        shape = RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp),
+        border = BorderStroke(1.dp, VestGold.copy(alpha = 0.35f)),
     ) {
-        itemsIndexed(ministers, key = { _, minister -> minister.id }) { index, minister ->
-            MinisterFigureCard(
-                minister = minister,
-                index = index,
-                listState = listState,
-                cardWidthPx = cardWidthPx,
-                isSelected = index == currentIndex,
-                onClick = { onCardClick(index) },
-            )
+        Column(
+            modifier = Modifier
+                .statusBarsPadding()
+                .padding(bottom = 20.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, end = 18.dp, top = 6.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                CathopediaBackButton(
+                    onClick = onBackClick,
+                    contentDescription = s.back,
+                )
+
+                Spacer(Modifier.width(10.dp))
+
+                Column {
+                    Text(
+                        text = s.vestmentsTitle,
+                        color = VestCream,
+                        fontFamily = FontFamily.Serif,
+                        fontSize = 25.sp,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+
+                    Text(
+                        text = s.vestmentsSubtitle,
+                        color = VestGoldSoft,
+                        fontSize = 14.sp,
+                    )
+                }
+            }
+
+            Spacer(Modifier.height(12.dp))
+
+            LazyRow(
+                state = listState,
+                flingBehavior = rememberSnapFlingBehavior(listState),
+                contentPadding = PaddingValues(horizontal = MINISTER_SIDE_PADDING_DP.dp),
+                horizontalArrangement = Arrangement.spacedBy(18.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(MINISTER_CARD_HEIGHT_DP.dp),
+            ) {
+                itemsIndexed(ministers, key = { _, minister -> minister.id }) { index, minister ->
+                    MinisterFigureCard(
+                        minister = minister,
+                        index = index,
+                        listState = listState,
+                        cardWidthPx = cardWidthPx,
+                        isSelected = index == currentIndex,
+                        onClick = { onCardClick(index) },
+                    )
+                }
+            }
+
+            Spacer(Modifier.height(18.dp))
+
+            MinisterDots(count = ministers.size, currentIndex = currentIndex)
         }
     }
 }
@@ -714,7 +761,7 @@ private fun MinisterFigureCard(
             )
             .border(
                 width = if (isSelected) 1.6.dp else 1.dp,
-                color = if (isSelected) VestGold else VestBorder.copy(alpha = 0.5f),
+                color = if (isSelected) VestGold else VestGold.copy(alpha = 0.35f),
                 shape = shape,
             )
             .clickable(onClick = onClick)
@@ -725,9 +772,7 @@ private fun MinisterFigureCard(
                 val shade = min(abs(normalized), 1f) * MINISTER_MAX_SHADE_ALPHA
                 if (shade <= 0f) return@drawWithContent
 
-                // Simulates a curved, cylindrical surface: the trailing edge
-                // (turning away from the viewer) darkens, the leading edge
-                // (turning toward the viewer) stays lit.
+                // Simulates a curved, cylindrical surface
                 val gradient = if (normalized >= 0f) {
                     Brush.horizontalGradient(
                         0f to Color.Transparent,
@@ -748,7 +793,19 @@ private fun MinisterFigureCard(
             contentScale = ContentScale.Fit,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(15.dp),
+                .padding(start = 10.dp, top = 10.dp, end = 15.dp),
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        0f to Color.Transparent,
+                        0.62f to Color.Transparent,
+                        1f to VestSurface.copy(alpha = 0.96f),
+                    ),
+                ),
         )
     }
 }
@@ -765,7 +822,7 @@ private fun MinisterDots(count: Int, currentIndex: Int) {
                     .padding(horizontal = 3.dp)
                     .size(if (i == currentIndex) 8.dp else 6.dp)
                     .clip(CircleShape)
-                    .background(if (i == currentIndex) VestGold else VestBorder),
+                    .background(if (i == currentIndex) VestGold else VestGold.copy(alpha = 0.22f)),
             )
         }
     }
@@ -901,14 +958,19 @@ private fun vestmentImage(name: String, ministerId: String): DrawableResource? =
 
 @Composable
 private fun VestmentCard(vestment: Vestment) {
+    val s = LocalStrings.current
     val shape = RoundedCornerShape(20.dp)
 
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .clip(shape)
-            .background(VestSurface)
-            .border(2.dp, VestBorder.copy(alpha = 0.55f), shape)
+            .background(
+                Brush.verticalGradient(
+                    listOf(VestSurfaceRaised, VestSurface),
+                ),
+            )
+            .border(1.dp, VestGold.copy(alpha = 0.35f), shape)
     ) {
         Column(
             modifier = Modifier
@@ -946,15 +1008,15 @@ private fun VestmentCard(vestment: Vestment) {
 
             Spacer(Modifier.height(16.dp))
 
-            VestmentDetailRow(label = "Purpose", body = vestment.purpose)
+            VestmentDetailRow(label = s.vestmentsPurposeLabel, body = vestment.purpose)
 
             Spacer(Modifier.height(10.dp))
 
-            VestmentDetailRow(label = "Significance", body = vestment.significance)
+            VestmentDetailRow(label = s.vestmentsSignificanceLabel, body = vestment.significance)
 
             Spacer(Modifier.height(10.dp))
 
-            VestmentDetailRow(label = "Good to know", body = vestment.detail)
+            VestmentDetailRow(label = s.vestmentsGoodToKnowLabel, body = vestment.detail)
         }
 
 
@@ -1021,13 +1083,18 @@ private fun LiturgicalColorCard(
     color: LiturgicalColor,
     modifier: Modifier = Modifier,
 ) {
+    val s = LocalStrings.current
     val shape = RoundedCornerShape(18.dp)
 
     Column(
         modifier = modifier
             .clip(shape)
-            .background(VestSurface)
-            .border(2.dp, VestBorder.copy(alpha = 0.55f), shape)
+            .background(
+                Brush.verticalGradient(
+                    listOf(VestSurfaceRaised, VestSurface),
+                ),
+            )
+            .border(1.dp, VestGold.copy(alpha = 0.35f), shape)
             .padding(14.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -1038,7 +1105,7 @@ private fun LiturgicalColorCard(
                     .background(color.swatch)
                     .then(
                         if (color.needsBorder) {
-                            Modifier.border(2.dp, VestBorder, CircleShape)
+                            Modifier.border(1.dp, VestGold.copy(alpha = 0.5f), CircleShape)
                         } else {
                             Modifier
                         },
@@ -1059,7 +1126,7 @@ private fun LiturgicalColorCard(
         Spacer(Modifier.height(10.dp))
 
         Text(
-            text = "WORN FOR",
+            text = s.vestmentsWornForLabel.uppercase(),
             color = VestGoldSoft,
             fontSize = 9.5.sp,
             letterSpacing = 0.7.sp,
@@ -1078,7 +1145,7 @@ private fun LiturgicalColorCard(
         Spacer(Modifier.height(8.dp))
 
         Text(
-            text = "SIGNIFICANCE",
+            text = s.vestmentsSignificanceLabel.uppercase(),
             color = VestGoldSoft,
             fontSize = 9.5.sp,
             letterSpacing = 0.7.sp,

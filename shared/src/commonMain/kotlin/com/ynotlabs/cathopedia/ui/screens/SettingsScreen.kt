@@ -22,6 +22,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.filled.Message
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -37,9 +39,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.ic_about
 import com.ynotlabs.cathopedia.resources.ic_appearance
+import com.ynotlabs.cathopedia.resources.ic_feedback
 import com.ynotlabs.cathopedia.resources.ic_notification
 import com.ynotlabs.cathopedia.ui.theme.ThemeMode
 import com.ynotlabs.cathopedia.ui.theme.label
@@ -61,6 +65,7 @@ fun SettingsScreen(
     onOpenNotifications: () -> Unit,
     onOpenSaved: () -> Unit,
     onOpenAbout: () -> Unit,
+    onOpenFeedback: () -> Unit,
 ) {
     val s = LocalStrings.current
     Column(
@@ -84,7 +89,7 @@ fun SettingsScreen(
                 PremiumSettingsRow(
                     icon = Res.drawable.ic_language,
                     label = s.settingsLanguageRowLabel,
-                    value = languageDisplayName(language),
+                    value = languageDisplayName(language, s),
                     onClick = onOpenLanguage,
                 )
 
@@ -126,6 +131,15 @@ fun SettingsScreen(
                     label = s.settingsAboutRowLabel,
                     value = s.settingsAboutRowValue,
                     onClick = onOpenAbout,
+                )
+
+                SettingsDivider()
+
+                PremiumSettingsRow(
+                    icon = Res.drawable.ic_feedback,
+                    label = s.settingsFeedbackRowLabel,
+                    value = s.settingsFeedbackRowValue,
+                    onClick = onOpenFeedback,
                 )
             }
 
@@ -364,6 +378,80 @@ private fun PremiumSettingsRow(
 }
 
 @Composable
+private fun PremiumSettingsRowVector(
+    icon: ImageVector,
+    label: String,
+    value: String,
+    onClick: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(horizontal = 14.dp, vertical = 13.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Box(
+            modifier = Modifier
+                .size(48.dp)
+                .clip(CircleShape)
+                .background(MaterialTheme.colorScheme.background.copy(alpha = 0.58f))
+                .border(
+                    width = 2.dp,
+                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.74f),
+                    shape = CircleShape,
+                ),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(24.dp),
+            )
+        }
+
+        Spacer(Modifier.width(14.dp))
+
+        Column(
+            modifier = Modifier.weight(1f),
+        ) {
+            Text(
+                text = label,
+                color = MaterialTheme.colorScheme.primary,
+                fontFamily = FontFamily.Serif,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Medium,
+            )
+
+            Spacer(Modifier.height(3.dp))
+
+            Text(
+                text = value,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                fontSize = 12.5.sp,
+                lineHeight = 16.sp,
+            )
+        }
+
+        Box(
+            modifier = Modifier
+                .size(34.dp)
+                .clip(CircleShape)
+                .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.07f)),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(
+                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(21.dp),
+            )
+        }
+    }
+}
+
+@Composable
 private fun SettingsDivider() {
     Box(
         modifier = Modifier
@@ -446,12 +534,12 @@ private fun InspirationCard() {
     }
 }
 
-private fun languageDisplayName(language: String): String =
+private fun languageDisplayName(language: String, s: Strings): String =
     when (language.lowercase()) {
-        "en", "eng", "english" -> "English"
-        "fr", "fra", "fre", "french", "français" -> "Français"
-        "es", "spa", "spanish", "español" -> "Español"
-        "it", "ita", "italian", "italiano" -> "Italiano"
-        "de", "deu", "ger", "german", "deutsch" -> "Deutsch"
+        "en", "eng", "english" -> s.languageNameEnglish
+        "fr", "fra", "fre", "french", "français" -> s.languageNameFrench
+        "es", "spa", "spanish", "español" -> s.languageNameSpanish
+        "it", "ita", "italian", "italiano" -> s.languageNameItalian
+        "de", "deu", "ger", "german", "deutsch" -> s.languageNameGerman
         else -> language.uppercase()
     }

@@ -44,14 +44,25 @@ val KNOWN_PRAYER_CATEGORIES: Set<String> = setOf(
     "occasional",
 )
 
-/** The only prayers allowed isSequence = true (Appendix A's `sequences` row). */
+/** Every prayer currently allowed to opt into the sequence/novena catalogue. */
 val KNOWN_SEQUENCE_SLUGS: Set<String> = setOf(
     "holy-rosary",
     "divine-mercy-chaplet",
-    "stations-of-the-cross",
     "seven-sorrows",
     "novena-to-the-holy-spirit",
     "st-andrew-christmas-novena",
+    "novena-to-st-joseph",
+    "novena-to-the-sacred-heart",
+    "novena-to-our-lady-of-perpetual-help",
+    "novena-to-the-immaculate-conception",
+    "novena-to-st-jude",
+    "novena-to-st-anthony",
+    "divine-mercy-novena",
+    "novena-to-st-therese",
+    "novena-to-our-lady-of-the-miraculous-medal",
+    "novena-to-st-rita",
+    "novena-to-st-michael",
+    "novena-to-our-lady-of-guadalupe",
 )
 
 /** A prayer must have both to ship; `la` is optional. */

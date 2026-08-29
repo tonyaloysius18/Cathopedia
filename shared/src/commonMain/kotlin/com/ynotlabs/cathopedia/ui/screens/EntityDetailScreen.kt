@@ -75,6 +75,7 @@ import com.ynotlabs.cathopedia.ui.PopeCoatsOfArms
 import com.ynotlabs.cathopedia.ui.accentColor
 import com.ynotlabs.cathopedia.ui.label
 import com.ynotlabs.cathopedia.ui.singularLabel
+import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.connected_basilica
 import com.ynotlabs.cathopedia.resources.connected_person
@@ -152,7 +153,6 @@ private val DetailSurface: Color @Composable get() = if (LocalMarianTheme.curren
 private val DetailSurfaceElevated: Color @Composable get() = if (LocalMarianTheme.current) MarianSurfaceElevated else if (LocalFeastTheme.current) FeastSurfaceElevated else if (LocalPopeTheme.current) PopeSurfaceElevated else if (LocalApostleTheme.current) ApostleSurfaceElevated else if (LocalMiracleTheme.current) MiracleSurfaceElevated else if (LocalChurchTheme.current) ChurchSurfaceElevated else MaterialTheme.colorScheme.surfaceContainerHighest
 private val DetailBorder: Color @Composable get() = if (LocalMarianTheme.current) MarianBorder else if (LocalFeastTheme.current) FeastBorder else if (LocalPopeTheme.current) PopeBorder else if (LocalApostleTheme.current) ApostleBorder else if (LocalMiracleTheme.current) MiracleBorder else if (LocalChurchTheme.current) ChurchBorder else MaterialTheme.colorScheme.outline
 private val DetailGold: Color @Composable get() = if (LocalMarianTheme.current) MarianGold else if (LocalFeastTheme.current) FeastGold else if (LocalPopeTheme.current) PopeGold else if (LocalApostleTheme.current) ApostleGold else if (LocalMiracleTheme.current) MiracleGold else if (LocalChurchTheme.current) ChurchGold else MaterialTheme.colorScheme.primary
-private val DetailGoldSoft: Color @Composable get() = if (LocalMarianTheme.current) MarianGoldSoft else if (LocalFeastTheme.current) FeastGoldSoft else if (LocalPopeTheme.current) PopeGoldSoft else if (LocalApostleTheme.current) ApostleGoldSoft else if (LocalMiracleTheme.current) MiracleGoldSoft else if (LocalChurchTheme.current) ChurchGoldSoft else MaterialTheme.colorScheme.secondary
 private val DetailCream: Color @Composable get() = if (LocalMarianTheme.current) MarianCream else if (LocalFeastTheme.current) FeastCream else if (LocalPopeTheme.current) PopeCream else if (LocalApostleTheme.current) ApostleCream else if (LocalMiracleTheme.current) MiracleCream else if (LocalChurchTheme.current) ChurchCream else MaterialTheme.colorScheme.onBackground
 private val DetailMuted: Color @Composable get() = if (LocalMarianTheme.current) MarianMuted else if (LocalFeastTheme.current) FeastMuted else if (LocalPopeTheme.current) PopeMuted else if (LocalApostleTheme.current) ApostleMuted else if (LocalMiracleTheme.current) MiracleMuted else if (LocalChurchTheme.current) ChurchMuted else MaterialTheme.colorScheme.onSurfaceVariant
 private val DetailActionBar: Color @Composable get() = if (LocalMarianTheme.current) MarianActionBar else if (LocalFeastTheme.current) FeastActionBar else if (LocalPopeTheme.current) PopeActionBar else if (LocalApostleTheme.current) ApostleActionBar else if (LocalMiracleTheme.current) MiracleActionBar else if (LocalChurchTheme.current) ChurchActionBar else MaterialTheme.colorScheme.surfaceDim
@@ -506,16 +506,10 @@ private fun DetailHero(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            HeroCircleButton(
+            CathopediaBackButton(
                 onClick = onBack,
-            ) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = s.back,
-                    tint = DetailCream,
-                    modifier = Modifier.size(24.dp),
-                )
-            }
+                contentDescription = s.back,
+            )
 
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 HeroCircleButton(onClick = onBookmark) {
@@ -860,8 +854,8 @@ private fun PremiumSectionCard(
             .clip(RoundedCornerShape(22.dp))
             .background(DetailSurface)
             .border(
-                width = 2.dp,
-                color = DetailBorder.copy(alpha = 0.78f),
+                width = 1.dp,
+                color = DetailGold.copy(alpha = 0.35f),
                 shape = RoundedCornerShape(22.dp),
             )
             .padding(18.dp),
@@ -1024,8 +1018,8 @@ private fun FactCard(
             .clip(RoundedCornerShape(14.dp))
             .background(DetailSurfaceElevated)
             .border(
-                width = 2.dp,
-                color = DetailGoldSoft.copy(alpha = 0.55f),
+                width = 1.dp,
+                color = DetailGold.copy(alpha = 0.35f),
                 shape = RoundedCornerShape(14.dp),
             )
             .padding(horizontal = 12.dp, vertical = 12.dp),
@@ -1138,8 +1132,8 @@ private fun SourceCard(
             .clip(RoundedCornerShape(22.dp))
             .background(DetailSurface)
             .border(
-                width = 2.dp,
-                color = DetailBorder.copy(alpha = 0.78f),
+                width = 1.dp,
+                color = DetailGold.copy(alpha = 0.35f),
                 shape = RoundedCornerShape(22.dp),
             )
             .padding(18.dp),
@@ -1152,8 +1146,8 @@ private fun SourceCard(
                 .clip(RoundedCornerShape(15.dp))
                 .background(DetailSurfaceElevated)
                 .border(
-                    width = 2.dp,
-                    color = DetailGoldSoft.copy(alpha = 0.45f),
+                    width = 1.dp,
+                    color = DetailGold.copy(alpha = 0.35f),
                     shape = RoundedCornerShape(15.dp),
                 )
                 .padding(14.dp),
@@ -1217,14 +1211,10 @@ private fun CompactNoPortraitHeader(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            HeroCircleButton(onClick = onBack) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = s.back,
-                    tint = DetailCream,
-                    modifier = Modifier.size(23.dp),
-                )
-            }
+            CathopediaBackButton(
+                onClick = onBack,
+                contentDescription = s.back,
+            )
 
             Spacer(Modifier.weight(1f))
 
@@ -1284,25 +1274,14 @@ private fun PortraitLightbox(
                     .padding(horizontal = 4.dp, vertical = 72.dp),
             )
 
-            Box(
+            CathopediaBackButton(
+                onClick = onDismiss,
+                contentDescription = s.closeFullImage,
                 modifier = Modifier
                     .align(Alignment.TopStart)
                     .statusBarsPadding()
-                    .padding(16.dp)
-                    .size(48.dp)
-                    .clip(CircleShape)
-                    .background(Color.Black.copy(alpha = 0.55f))
-                    .border(2.dp, Color.White.copy(alpha = 0.12f), CircleShape)
-                    .clickable(onClick = onDismiss),
-                contentAlignment = Alignment.Center,
-            ) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = s.closeFullImage,
-                    tint = Color.White,
-                    modifier = Modifier.size(24.dp),
-                )
-            }
+                    .padding(16.dp),
+            )
 
             Column(
                 modifier = Modifier

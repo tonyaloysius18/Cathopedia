@@ -3,5 +3,27 @@
   "category": "sequences",
   "sortOrder": 5,
   "isSequence": true,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Novena to the Holy Spirit",
+      "subtitle": "Nine days of prayer before Pentecost",
+      "bodyMd": "## Daily prayer\n\nCome, Holy Spirit, fill the hearts of Thy faithful and enkindle in them the fire of Thy love.\n\n> V. Send forth Thy Spirit and they shall be created.\n> R. And Thou shalt renew the face of the earth.\n\nLet us pray. O God, Who didst instruct the hearts of the faithful by the light of the Holy Spirit, grant us in the same Spirit to be truly wise, and ever to rejoice in His consolation. Through Christ our Lord. Amen.\n\nPray one **Our Father**, one **Hail Mary**, and one **Glory Be**, then offer the intention for the day:\n\n1. **Charity and joy** — that divine love may govern every part of our lives.\n2. **Peace and patience** — that we may remain faithful in trial.\n3. **Kindness and goodness** — that our lives may bear the fruit of mercy.\n4. **Faithfulness** — that we may trust God and keep His commandments.\n5. **Gentleness** — that our words and actions may reflect Christ.\n6. **Self-control and purity** — that our hearts may be undivided.\n7. **The gift of wisdom** — that we may judge all things in God’s light.\n8. **The seven gifts of the Spirit** — wisdom, understanding, counsel, fortitude, knowledge, piety, and fear of the Lord.\n9. **A new Pentecost** — that the Church may be renewed for mission and holiness.\n\nConclude each day: **Holy Spirit, dwell in us and make us faithful witnesses of Jesus Christ. Amen.**",
+      "about": "The Pentecost Novena recalls the nine days during which Mary and the Apostles persevered in prayer between the Ascension and Pentecost. It is traditionally begun on the Friday after Ascension Thursday.",
+      "source": "The Catholic Prayer Book and Manual of Meditations (1845), “Novena of the Holy Ghost”, public-domain text via Wikisource, https://en.wikisource.org/wiki/The_Catholic_Prayer_Book_and_Manual_of_Meditations/Novena_of_the_Holy_Ghost, accessed 2026-08-28; daily intentions condensed for mobile use"
+    },
+    "fr": {
+      "title": "Neuvaine à l’Esprit Saint",
+      "subtitle": "Neuf jours de prière avant la Pentecôte",
+      "bodyMd": "## Prière quotidienne\n\nViens, Esprit Saint, remplis les cœurs de tes fidèles et embrase-les du feu de ton amour.\n\n> V. Envoie ton Esprit, et tout sera créé.\n> R. Et tu renouvelleras la face de la terre.\n\nPrions. Seigneur notre Dieu, par la lumière de l’Esprit Saint, tu as instruit les cœurs de tes fidèles ; rends-nous dociles à ce même Esprit afin d’apprécier ce qui est juste et de goûter toujours le réconfort de sa présence. Par le Christ notre Seigneur. Amen.\n\nRéciter un **Notre Père**, un **Je vous salue Marie** et un **Gloire au Père**, puis offrir l’intention du jour :\n\n1. **Charité et joie** — pour que l’amour divin gouverne toute notre vie.\n2. **Paix et patience** — pour demeurer fidèles dans l’épreuve.\n3. **Bonté et bienveillance** — pour que notre vie porte le fruit de la miséricorde.\n4. **Fidélité** — pour mettre notre confiance en Dieu et garder ses commandements.\n5. **Douceur** — pour que nos paroles et nos actes reflètent le Christ.\n6. **Maîtrise de soi et pureté** — pour que notre cœur soit sans partage.\n7. **Don de sagesse** — pour juger toute chose dans la lumière de Dieu.\n8. **Les sept dons de l’Esprit** — sagesse, intelligence, conseil, force, science, piété et crainte du Seigneur.\n9. **Une nouvelle Pentecôte** — pour que l’Église soit renouvelée dans la mission et la sainteté.\n\nConclure chaque jour : **Esprit Saint, demeure en nous et fais de nous des témoins fidèles de Jésus-Christ. Amen.**",
+      "about": "La neuvaine de Pentecôte rappelle les neuf jours durant lesquels Marie et les Apôtres ont persévéré dans la prière entre l’Ascension et la Pentecôte. Elle commence traditionnellement le vendredi suivant l’Ascension.",
+      "source": "The Catholic Prayer Book and Manual of Meditations (1845), « Novena of the Holy Ghost », texte du domaine public via Wikisource, https://en.wikisource.org/wiki/The_Catholic_Prayer_Book_and_Manual_of_Meditations/Novena_of_the_Holy_Ghost, consulté le 2026-08-28 ; traduction française Cathopedia et intentions condensées pour l’application"
+    },
+    "la": {
+      "title": "Novena ad Spiritum Sanctum",
+      "subtitle": "Novem dies orationis ante Pentecosten",
+      "bodyMd": "## Oratio quotidiana\n\nVeni, Sancte Spiritus, reple tuorum corda fidelium, et tui amoris in eis ignem accende.\n\n> V. Emitte Spiritum tuum, et creabuntur.\n> R. Et renovabis faciem terrae.\n\nOremus. Deus, qui corda fidelium Sancti Spiritus illustratione docuisti, da nobis in eodem Spiritu recta sapere et de eius semper consolatione gaudere. Per Christum Dominum nostrum. Amen.\n\nDicantur **Pater noster**, **Ave Maria**, et **Gloria Patri**. Intentio diei offeratur pro fructibus et donis Spiritus Sancti, atque ultimo die pro nova Pentecoste in Ecclesia.\n\nConclude: **Spiritus Sancte, habita in nobis et fac nos fideles testes Iesu Christi. Amen.**",
+      "about": "Haec novena novem dies commemorat quibus Maria et Apostoli inter Ascensionem et Pentecosten in oratione perseveraverunt.",
+      "source": "EWTN, “Come, Holy Spirit” (Latin text), https://www.ewtn.com/catholicism/devotions/come-holy-spirit-13402, accessed 2026-08-28"
+    }
+  }
 }

@@ -29,6 +29,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -55,6 +56,8 @@ import com.ynotlabs.cathopedia.liturgical.LiturgicalCalendar
 import com.ynotlabs.cathopedia.model.BookmarkItem
 import com.ynotlabs.cathopedia.model.ContentSummary
 import com.ynotlabs.cathopedia.model.ContentType
+import com.ynotlabs.cathopedia.model.PrayerCategory
+import com.ynotlabs.cathopedia.model.PrayerSummary
 import com.ynotlabs.cathopedia.model.RelatedItem
 import com.ynotlabs.cathopedia.notifications.FeastNotificationScheduler
 import com.ynotlabs.cathopedia.notifications.UpcomingFeastNotification
@@ -70,6 +73,7 @@ import com.ynotlabs.cathopedia.ui.screens.AppearanceScreen
 import com.ynotlabs.cathopedia.ui.screens.EntityDetailScreen
 import com.ynotlabs.cathopedia.ui.screens.EntityListScreen
 import com.ynotlabs.cathopedia.ui.screens.ExploreScreen
+import com.ynotlabs.cathopedia.ui.screens.FeedbackScreen
 import com.ynotlabs.cathopedia.ui.screens.HomeScreen
 import com.ynotlabs.cathopedia.ui.screens.HubArticleScreen
 import com.ynotlabs.cathopedia.ui.screens.HubScreen
@@ -79,6 +83,7 @@ import com.ynotlabs.cathopedia.ui.screens.LanguageScreen
 import com.ynotlabs.cathopedia.ui.screens.LanguageScreenStartup
 import com.ynotlabs.cathopedia.ui.screens.NotificationsScreen
 import com.ynotlabs.cathopedia.ui.screens.PrayerDetailScreen
+import com.ynotlabs.cathopedia.ui.screens.PrayerQuickSection
 import com.ynotlabs.cathopedia.ui.screens.PrayersHomeScreen
 import com.ynotlabs.cathopedia.ui.screens.RosaryScreen
 import com.ynotlabs.cathopedia.ui.screens.SavedScreen
@@ -154,6 +159,16 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
     val entityListItemCaches = remember { mutableStateMapOf<Pair<ContentType, String>, List<ContentSummary>>() }
     val entityListSelectedCenturies = remember { mutableStateMapOf<Pair<ContentType, String>, String>() }
     val entityListHeaderHeights = remember { mutableStateMapOf<Pair<ContentType, String>, Int>() }
+
+    // Retain PrayersHome state across detail-page visits.
+    var prayersQuickSection by remember { mutableStateOf(PrayerQuickSection.EVERYDAY) }
+    val prayersQuickSectionScrollState = rememberLazyListState()
+    val prayersHomeScrollState = rememberLazyListState()
+    // The loaded prayer lists are hoisted here so returning from a prayer detail
+    // finds the list already populated — otherwise it re-loads from empty and the
+    // scroll position snaps back to the top.
+    var prayersFavorites by remember { mutableStateOf<List<PrayerSummary>>(emptyList()) }
+    var prayersByCategory by remember { mutableStateOf<Map<PrayerCategory, List<PrayerSummary>>>(emptyMap()) }
 
     // Scroll-to-shrink for the bottom pill bar, ported from Itinera's App.kt: the
     // bar shrinks while a screen scrolls down and springs back on scroll up.
@@ -295,6 +310,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     language = language,
                     onBack = nav::back,
                     onSectionSelected = { section -> nav.navigate(Destination.HubSection(current.hubId, section.id)) },
+                    onArticleSelected = { articleId -> nav.navigate(Destination.HubArticle(current.hubId, articleId)) },
                 )
 
                 is Destination.HubSection -> HubSectionScreen(
@@ -351,9 +367,19 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                 is Destination.PrayersHome -> PrayersHomeScreen(
                     repository = repository,
                     language = language,
+                    favorites = prayersFavorites,
+                    byCategory = prayersByCategory,
+                    onDataLoaded = { favorites, byCategory ->
+                        prayersFavorites = favorites
+                        prayersByCategory = byCategory
+                    },
                     onOpenPrayer = { slug -> nav.navigate(Destination.PrayerDetail(slug)) },
                     onOpenRosary = { nav.navigate(Destination.RosaryScreen) },
                     onOpenStations = { nav.navigate(Destination.StationsScreen) },
+                    quickSection = prayersQuickSection,
+                    onQuickSectionChange = { prayersQuickSection = it },
+                    quickSectionState = prayersQuickSectionScrollState,
+                    scrollState = prayersHomeScrollState,
                 )
 
                 is Destination.PrayerDetail -> PrayerDetailScreen(
@@ -397,6 +423,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     onOpenNotifications = { nav.navigate(Destination.Notifications) },
                     onOpenSaved = { nav.navigate(Destination.Saved) },
                     onOpenAbout = { nav.navigate(Destination.About) },
+                    onOpenFeedback = { nav.navigate(Destination.Feedback) },
                 )
 
                 is Destination.Appearance -> AppearanceScreen(
@@ -425,6 +452,8 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                 )
 
                 is Destination.About -> AboutScreen(onBack = nav::back)
+
+                is Destination.Feedback -> FeedbackScreen(onBack = nav::back)
             }
             }
 

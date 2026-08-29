@@ -630,6 +630,8 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
                 stepperId = it.stepper_id,
                 timelineId = it.timeline_id,
                 diagramId = it.diagram_id,
+                articleIds = database.hubContentQueries.selectArticlesForSection(it.id)
+                    .executeAsList().map { article -> article.id },
             )
         }
         HubDetail(

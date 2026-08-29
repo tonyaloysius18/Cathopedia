@@ -1,7 +1,9 @@
 package com.ynotlabs.cathopedia.ui.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -9,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -33,6 +36,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -40,16 +44,19 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.stations.Station
 import com.ynotlabs.cathopedia.stations.StationImages
 import com.ynotlabs.cathopedia.stations.StationsData
@@ -60,37 +67,34 @@ import org.jetbrains.compose.resources.painterResource
 private val StationsBg = Color(0xFF1A0505)
 private val StationsSurface = Color(0xFF2B0A0A)
 private val StationsSurfaceRaised = Color(0xFF3D0F0F)
-private val StationsBorder = Color(0xFF6B1A1A)
 private val StationsGold = Color(0xFFD8B24C)
 private val StationsGoldSoft = Color(0xFFB08D57)
 private val StationsProgressActive = Color(0xFFE07A5F)
 private val StationsCream = Color(0xFFF4ECDD)
 
 private const val CARD_WIDTH_DP = 220
-private const val CARD_HEIGHT_DP = 380
+private const val CARD_HEIGHT_DP = 330
 private const val MAX_ROTATION_DEG = 42f
 private const val MAX_SCALE_DROP = 0.26f
 private const val MAX_ALPHA_DROP = 0.55f
 
 /**
  * The Stations of the Cross carousel. Reachable via
- * [com.ynotlabs.cathopedia.ui.navigation.Destination.StationsScreen]. Each
- * card is a plain color panel today — [Station] carries no image yet, only
- * text — swap in real artwork per station once it's generated (see
- * content/prayers/rosary-hero-image-prompt.md-style prompts to be written).
+ * [com.ynotlabs.cathopedia.ui.navigation.Destination.StationsScreen].
  */
 @Composable
 fun StationsScreen(
     language: String,
     onBack: () -> Unit,
 ) {
-    val s = LocalStrings.current
     val stations = StationsData.stations
     val listState = rememberLazyListState()
     val density = LocalDensity.current
     val cardWidthPx = with(density) { CARD_WIDTH_DP.dp.toPx() }
 
     var currentIndex by remember { mutableStateOf(0) }
+    var headerHeightPx by remember { mutableIntStateOf(0) }
+    val headerHeightDp = with(density) { headerHeightPx.toDp() }
 
     LaunchedEffect(listState) {
         snapshotFlow { listState.layoutInfo }
@@ -105,96 +109,144 @@ fun StationsScreen(
     }
 
     val current = stations.getOrNull(currentIndex) ?: stations.first()
-    val sidePaddingDp = 90.dp
 
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(StationsBg)
-            .statusBarsPadding(),
+            .background(StationsBg),
     ) {
-        Row(
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 10.dp, end = 18.dp, top = 6.dp, bottom = 4.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            IconButton(onClick = onBack) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = s.back,
-                    tint = StationsCream,
-                )
-            }
-
-            Spacer(Modifier.width(4.dp))
-
-            Column {
-                Text(
-                    text = s.stationsScreenTitle,
-                    color = StationsCream,
-                    fontFamily = FontFamily.Serif,
-                    fontSize = 22.sp,
-                    fontWeight = FontWeight.SemiBold,
-                )
-                Text(
-                    text = s.stationsIndicator.replace("{number}", (currentIndex + 1).toString()),
-                    color = StationsGoldSoft,
-                    fontSize = 12.sp,
-                )
-            }
-        }
-
-        Spacer(Modifier.height(18.dp))
-
-        LazyRow(
-            state = listState,
-            flingBehavior = rememberSnapFlingBehavior(listState),
-            contentPadding = PaddingValues(horizontal = sidePaddingDp),
-            horizontalArrangement = Arrangement.spacedBy(20.dp),
-            modifier = Modifier.fillMaxWidth().height(CARD_HEIGHT_DP.dp),
-        ) {
-            itemsIndexed(stations, key = { _, station -> station.id }) { index, station ->
-                StationCard(
-                    station = station,
-                    index = index,
-                    listState = listState,
-                    cardWidthPx = cardWidthPx,
-                )
-            }
-        }
-
-        Spacer(Modifier.height(22.dp))
-
-        StationDots(count = stations.size, currentIndex = currentIndex)
-
-        Spacer(Modifier.height(18.dp))
-
-        StationTextPanel(
-            station = current,
-            language = language,
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth()
+                .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(horizontal = 20.dp),
+                .padding(top = headerHeightDp + 16.dp),
+        ) {
+            StationTextPanel(
+                station = current,
+                language = language,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp),
+            )
+        }
+
+        StationsHeaderCard(
+            currentIndex = currentIndex,
+            stations = stations,
+            listState = listState,
+            cardWidthPx = cardWidthPx,
+            language = language,
+            onBack = onBack,
+            modifier = Modifier.onGloballyPositioned {
+                headerHeightPx = it.size.height
+            }
         )
+    }
+}
+
+@Composable
+private fun StationsHeaderCard(
+    currentIndex: Int,
+    stations: List<Station>,
+    listState: androidx.compose.foundation.lazy.LazyListState,
+    cardWidthPx: Float,
+    language: String,
+    onBack: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val s = LocalStrings.current
+    Surface(
+        modifier = modifier
+            .fillMaxWidth()
+            .shadow(
+                elevation = 14.dp,
+                shape = RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp),
+                clip = false
+            ),
+        color = StationsSurface,
+        shape = RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp),
+        border = BorderStroke(1.dp, StationsGold.copy(alpha = 0.35f)),
+    ) {
+        Column(
+            modifier = Modifier
+                .statusBarsPadding()
+                .padding(bottom = 16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 6.dp, end = 16.dp, top = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                CathopediaBackButton(
+                    onClick = onBack,
+                    contentDescription = s.back,
+                )
+
+                Spacer(Modifier.width(10.dp))
+
+                Column {
+                    Text(
+                        text = s.stationsScreenTitle,
+                        color = StationsCream,
+                        fontFamily = FontFamily.Serif,
+                        fontSize = 25.sp,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                    Text(
+                        text = s.stationsIndicator.replace("{number}", (currentIndex + 1).toString()),
+                        color = StationsGoldSoft,
+                        fontSize = 14.sp,
+                    )
+                }
+            }
+
+            Spacer(Modifier.height(8.dp))
+
+            val sidePaddingDp = 90.dp
+            LazyRow(
+                state = listState,
+                flingBehavior = rememberSnapFlingBehavior(listState),
+                contentPadding = PaddingValues(horizontal = sidePaddingDp),
+                horizontalArrangement = Arrangement.spacedBy(20.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(CARD_HEIGHT_DP.dp),
+            ) {
+                itemsIndexed(stations, key = { _, station -> station.id }) { index, station ->
+                    StationCard(
+                        station = station,
+                        language = language,
+                        index = index,
+                        listState = listState,
+                        cardWidthPx = cardWidthPx,
+                    )
+                }
+            }
+
+            Spacer(Modifier.height(16.dp))
+
+            StationDots(count = stations.size, currentIndex = currentIndex)
+        }
     }
 }
 
 @Composable
 private fun StationCard(
     station: Station,
+    language: String,
     index: Int,
     listState: androidx.compose.foundation.lazy.LazyListState,
     cardWidthPx: Float,
 ) {
+    val s = LocalStrings.current
     Box(
         modifier = Modifier
             .width(CARD_WIDTH_DP.dp)
-            .fillMaxSize()
+            .fillMaxHeight()
             .graphicsLayer {
-                cameraDistance = 16f * density
+                cameraDistance = 16f * (density)
                 val layoutInfo = listState.layoutInfo
                 val itemInfo = layoutInfo.visibleItemsInfo.firstOrNull { it.index == index }
                 if (itemInfo != null) {
@@ -210,7 +262,12 @@ private fun StationCard(
                     translationX = -normalized * cardWidthPx * 0.18f
                 }
             }
-            .clip(RoundedCornerShape(22.dp))
+            .border(
+                width = 1.dp,
+                color = StationsGold.copy(alpha = 0.45f),
+                shape = RoundedCornerShape(26.dp)
+            )
+            .clip(RoundedCornerShape(26.dp))
             .background(
                 Brush.verticalGradient(
                     listOf(StationsSurfaceRaised, StationsSurface),
@@ -222,10 +279,10 @@ private fun StationCard(
             Image(
                 painter = painterResource(image),
                 contentDescription = null,
-                contentScale = ContentScale.Crop,
+                contentScale = ContentScale.Fit,
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(top = 12.dp, bottom = 64.dp),
+                    .padding(start = 10.dp, top = 10.dp, end = 15.dp),
             )
         }
 
@@ -262,7 +319,7 @@ private fun StationCard(
 
         Column(modifier = Modifier.padding(18.dp)) {
             Text(
-                text = "STATION ${station.number}",
+                text = s.stationsNumberLabel.replace("{number}", station.number.toString()).uppercase(),
                 color = StationsGoldSoft,
                 fontSize = 10.5.sp,
                 letterSpacing = 1.1.sp,
@@ -270,7 +327,7 @@ private fun StationCard(
             )
             Spacer(Modifier.height(6.dp))
             Text(
-                text = station.titleEn,
+                text = if (language == "fr") station.titleFr else station.titleEn,
                 color = StationsCream,
                 fontFamily = FontFamily.Serif,
                 fontSize = 18.sp,
@@ -293,7 +350,7 @@ private fun StationDots(count: Int, currentIndex: Int) {
                     .padding(horizontal = 3.dp)
                     .size(if (i == currentIndex) 8.dp else 6.dp)
                     .clip(CircleShape)
-                    .background(if (i == currentIndex) StationsProgressActive else StationsBorder),
+                    .background(if (i == currentIndex) StationsProgressActive else StationsGold.copy(alpha = 0.22f)),
             )
         }
     }
@@ -326,6 +383,7 @@ private fun StationTextPanel(
         Surface(
             shape = RoundedCornerShape(16.dp),
             color = StationsSurface,
+            border = BorderStroke(1.dp, StationsGold.copy(alpha = 0.35f)),
             modifier = Modifier.fillMaxWidth(),
         ) {
             Column(modifier = Modifier.padding(16.dp)) {

@@ -227,6 +227,7 @@ fun HomeScreen(
 
 @Composable
 private fun HomeHero(seasonLabel: String) {
+    val s = LocalStrings.current
     val liturgicalAccent = LocalLiturgicalAccent.current
 
     Box(
@@ -304,7 +305,7 @@ private fun HomeHero(seasonLabel: String) {
                 Spacer(Modifier.height(3.dp))
 
                 Text(
-                    text = "Faith • Knowledge • Tradition",
+                    text = s.brandTagline,
                     color = HomeGold,
                     fontSize = 11.5.sp,
                     fontWeight = FontWeight.Medium,
@@ -313,7 +314,7 @@ private fun HomeHero(seasonLabel: String) {
         }
 
         Text(
-            text = "Your Catholic encyclopedia\nfor faith and life. ",
+            text = s.homeHeroDescription,
             modifier = Modifier
                 .align(Alignment.BottomStart)
                 .padding(start = 20.dp, bottom = 35.dp),

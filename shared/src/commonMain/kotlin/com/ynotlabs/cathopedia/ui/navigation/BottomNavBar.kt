@@ -37,6 +37,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
+import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.ui.theme.DarkGoldBright
 import com.ynotlabs.cathopedia.ui.theme.DarkPillSurface
 import com.ynotlabs.cathopedia.ui.theme.LightGoldText
@@ -335,6 +336,7 @@ fun FloatingSearchButton(
     isSelected: Boolean,
     modifier: Modifier = Modifier,
 ) {
+    val s = LocalStrings.current
     val isLightMode = MaterialTheme.colorScheme.background.red > 0.5f
     val barBackgroundColor = if (isLightMode) {
         Color(0x732E5A44) // ~45% opaque green
@@ -382,7 +384,7 @@ fun FloatingSearchButton(
 
         Image(
             painter = painterResource(Res.drawable.nav_search),
-            contentDescription = "Search",
+            contentDescription = s.searchDesc,
             contentScale = ContentScale.Fit,
             modifier = Modifier.size(44.dp),
             alpha = if (isSelected) 1f else 0.82f

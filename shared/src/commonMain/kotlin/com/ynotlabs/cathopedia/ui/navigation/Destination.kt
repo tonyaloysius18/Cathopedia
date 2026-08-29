@@ -25,6 +25,7 @@ sealed interface Destination {
     data object Appearance : Destination
     data object Notifications : Destination
     data object About : Destination
+    data object Feedback : Destination
 }
 
 /**

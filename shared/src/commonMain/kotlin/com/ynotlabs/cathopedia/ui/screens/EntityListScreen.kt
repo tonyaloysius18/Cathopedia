@@ -73,6 +73,7 @@ import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.i18n.Strings
+import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.model.ContentSummary
 import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.ui.Portraits
@@ -483,18 +484,10 @@ private fun EntityTopArea(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.Top,
         ) {
-            IconButton(
+            CathopediaBackButton(
                 onClick = onBack,
-                modifier = Modifier
-                    .size(40.dp),
-            ) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = s.back,
-                    tint = EntityCream,
-                    modifier = Modifier.size(25.dp),
-                )
-            }
+                contentDescription = s.back,
+            )
 
             Spacer(Modifier.width(8.dp))
 
@@ -767,8 +760,8 @@ private fun PremiumEntityCard(
         color = cardColor,
         shape = RoundedCornerShape(22.dp),
         border = androidx.compose.foundation.BorderStroke(
-            width = 2.dp,
-            color = if (pressed) EntityGoldSoft.copy(alpha = 0.75f) else EntityBorder,
+            width = 1.dp,
+            color = if (pressed) EntityGold.copy(alpha = 0.6f) else EntityGold.copy(alpha = 0.35f),
         ),
         shadowElevation = if (pressed) 7.dp else 0.dp,
     ) {

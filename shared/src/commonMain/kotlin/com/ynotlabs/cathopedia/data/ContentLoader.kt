@@ -37,7 +37,7 @@ object ContentLoader {
      * this just controls whether it re-runs on an existing install rather
      * than only ever loading once on a database with zero rows.
      */
-    private const val CONTENT_VERSION = "36"
+    private const val CONTENT_VERSION = "44"
     private const val CONTENT_VERSION_KEY = "content_version"
 
     // classDiscriminator/explicitNulls (from com.ynotlabs.cathopedia.content.hubContentJson) are
@@ -109,6 +109,18 @@ object ContentLoader {
                 index(database, ContentType.FEAST, f.id, lang, t)
             }
         }
+
+        // Stations has its own complete guided screen and card. Remove the
+        // legacy prayer-catalogue copy when upgrading an existing install so
+        // it cannot linger in Chaplets & Novenas or prayer search.
+        listOf("en", "fr", "la").forEach { language ->
+            database.searchQueries.deleteSearchEntriesFor(
+                entityType = PRAYER_SEARCH_ENTITY_TYPE,
+                entityId = "stations-of-the-cross",
+                language = language,
+            )
+        }
+        database.prayerQueries.deletePrayer("stations-of-the-cross")
 
         catalog.prayers.forEach { p ->
             database.prayerQueries.insertPrayer(p.id, p.category, p.sortOrder, if (p.isSequence) 1L else 0L)

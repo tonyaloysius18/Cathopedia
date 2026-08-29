@@ -34,7 +34,21 @@ data class HubSectionSummary(
     val stepperId: String?,
     val timelineId: String?,
     val diagramId: String?,
-)
+    val articleIds: List<String> = emptyList(),
+) {
+    /**
+     * A section that is nothing but a single article (no fact sheet, diagram, stepper or timeline
+     * of its own) has no reason to show the intermediate section-list screen — the row opens the
+     * article directly. Returns that article's id, or null when the section screen is still needed.
+     */
+    val directArticleId: String?
+        get() = articleIds.singleOrNull()
+            ?.takeIf {
+                layout == "ARTICLES" &&
+                    factSheetId == null && stepperId == null &&
+                    timelineId == null && diagramId == null
+            }
+}
 
 data class HubDetail(
     val summary: HubSummary,

@@ -3,5 +3,20 @@
   "category": "sequences",
   "sortOrder": 6,
   "isSequence": true,
-  "text": {}
+  "text": {
+    "en": {
+      "title": "Saint Andrew Christmas Novena",
+      "subtitle": "Prayed from November 30 until Christmas",
+      "bodyMd": "Pray this prayer **fifteen times each day** from the Feast of Saint Andrew, November 30, until Christmas Day.\n\nHail and blessed be the hour and moment in which the Son of God was born of the most pure Virgin Mary, at midnight, in Bethlehem, in the piercing cold.\n\nIn that hour, vouchsafe, O my God, to hear my prayer and grant my desires through the merits of Our Saviour Jesus Christ and of His blessed Mother. Amen.",
+      "about": "The Saint Andrew Christmas Novena is an Advent devotion traditionally begun on Saint Andrew’s feast. Unlike a nine-day novena, it continues throughout Advent and fixes the heart on the mystery of Christ’s birth.",
+      "source": "Traditional public-domain Saint Andrew Christmas prayer; text reproduced by St. Andrew Catholic Church, bulletin of 15 December 2024, https://container.parishesonline.com/bulletins/14/0560/20241215B.pdf, accessed 2026-08-28"
+    },
+    "fr": {
+      "title": "Neuvaine de Noël à saint André",
+      "subtitle": "Priée du 30 novembre jusqu’à Noël",
+      "bodyMd": "Réciter cette prière **quinze fois par jour** depuis la fête de saint André, le 30 novembre, jusqu’au jour de Noël.\n\nSalut et bénis soient l’heure et le moment où le Fils de Dieu est né de la très pure Vierge Marie, à minuit, à Bethléem, dans le froid pénétrant.\n\nEn cette heure, daigne, ô mon Dieu, écouter ma prière et exaucer mes désirs par les mérites de notre Sauveur Jésus-Christ et de sa bienheureuse Mère. Amen.",
+      "about": "La neuvaine de Noël à saint André est une dévotion de l’Avent commencée traditionnellement le jour de la fête de saint André. Contrairement à une neuvaine de neuf jours, elle se poursuit durant tout l’Avent et tourne le cœur vers le mystère de la naissance du Christ.",
+      "source": "Prière traditionnelle de Noël à saint André, domaine public ; traduction française Cathopedia d’après le texte reproduit par St. Andrew Catholic Church, https://container.parishesonline.com/bulletins/14/0560/20241215B.pdf, consulté le 2026-08-28"
+    }
+  }
 }

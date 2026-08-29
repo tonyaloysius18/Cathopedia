@@ -38,7 +38,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -60,13 +59,17 @@ import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.explore_apostles
 import com.ynotlabs.cathopedia.resources.explore_churches
 import com.ynotlabs.cathopedia.resources.explore_eucharistic
+import com.ynotlabs.cathopedia.resources.explore_catechism
 import com.ynotlabs.cathopedia.resources.explore_feasts
 import com.ynotlabs.cathopedia.resources.explore_bg
 import com.ynotlabs.cathopedia.resources.explore_holy_see
+import com.ynotlabs.cathopedia.resources.explore_sacred_symbols
 import com.ynotlabs.cathopedia.resources.explore_marian
 import com.ynotlabs.cathopedia.resources.explore_popes
 import com.ynotlabs.cathopedia.resources.explore_saints
 import com.ynotlabs.cathopedia.resources.holy_see_icon
+import com.ynotlabs.cathopedia.resources.catechism_icon
+import com.ynotlabs.cathopedia.resources.sacred_symbols_icon
 import com.ynotlabs.cathopedia.resources.saints_icon
 import com.ynotlabs.cathopedia.resources.popes_icon
 import com.ynotlabs.cathopedia.resources.apostles_icon
@@ -94,7 +97,7 @@ fun ExploreScreen(
     LaunchedEffect(language) {
         counts = ContentType.entries.associateWith { repository.listByType(it, language).size }
         hubs = repository.listHubs()
-        val keys = hubs.flatMap { listOfNotNull(it.titleKey, it.subtitleKey) }.toSet()
+        val keys = hubs.asSequence().flatMap { listOfNotNull(it.titleKey, it.subtitleKey) }.toSet()
         hubStrings = repository.resolveHubStrings(keys, language)
     }
 
@@ -123,8 +126,7 @@ fun ExploreScreen(
                     hub = hub,
                     title = hubStrings[hub.titleKey].orEmpty(),
                     subtitle = hub.subtitleKey?.let { hubStrings[it] },
-                    onClick = { onHubSelected(hub) },
-                )
+                ) { onHubSelected(hub) }
             }
         }
 
@@ -432,7 +434,7 @@ private fun EventsSection(
                     if (singleType == ContentType.FEAST) {
                         VestmentsSectionCard(
                             onClick = onVestmentsSelected,
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier.weight(1f),
                         )
                     } else {
                         Spacer(Modifier.weight(1f))
@@ -448,6 +450,7 @@ private fun VestmentsSectionCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val s = LocalStrings.current
     Card(
         modifier = modifier
             .aspectRatio(1.3f)
@@ -489,7 +492,7 @@ private fun VestmentsSectionCard(
                     .padding(12.dp),
             ) {
                 Text(
-                    text = "Sacred Vestments",
+                    text = s.exploreVestmentsTitle,
                     color = MaterialTheme.colorScheme.onBackground,
                     fontFamily = FontFamily.Serif,
                     fontSize = 15.sp,
@@ -498,7 +501,7 @@ private fun VestmentsSectionCard(
                 )
 
                 Text(
-                    text = "Liturgical garments",
+                    text = s.exploreVestmentsSubtitle,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontSize = 11.sp,
                 )
@@ -671,7 +674,7 @@ private fun WideExploreCard(
                 alignment = Alignment.BottomEnd,
             )
 
-            val needsStrongerWideFade = type == ContentType.CHURCH || type == ContentType.FEAST
+            val needsStrongerWideFade = (type == ContentType.CHURCH) || (type == ContentType.FEAST)
 
             ArtworkFadeOverlay(
                 wideCardFade = needsStrongerWideFade,
@@ -717,6 +720,8 @@ private fun HubExploreCard(
     onClick: () -> Unit,
 ) {
     val isHolySee = hub.id == "holy_see"
+    val isCatechism = hub.id == "catechism"
+    val isSymbols = hub.id == "symbols"
     val accent = hub.accentColor?.let { hex ->
         val cleaned = hex.removePrefix("#")
         cleaned.toLongOrNull(16)?.let { value ->
@@ -745,6 +750,26 @@ private fun HubExploreCard(
                     contentScale = ContentScale.Fit,
                     alignment = Alignment.BottomEnd,
                 )
+            } else if (isCatechism) {
+                Image(
+                    painter = painterResource(Res.drawable.explore_catechism),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
+                    contentScale = ContentScale.Fit,
+                    alignment = Alignment.BottomEnd,
+                )
+            } else if (isSymbols) {
+                Image(
+                    painter = painterResource(Res.drawable.explore_sacred_symbols),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
+                    contentScale = ContentScale.Fit,
+                    alignment = Alignment.BottomEnd,
+                )
             }
 
             ArtworkFadeOverlay()
@@ -758,6 +783,20 @@ private fun HubExploreCard(
                 if (isHolySee) {
                     Image(
                         painter = painterResource(Res.drawable.holy_see_icon),
+                        contentDescription = null,
+                        modifier = Modifier.size(30.dp),
+                        contentScale = ContentScale.Fit,
+                    )
+                } else if (isCatechism) {
+                    Image(
+                        painter = painterResource(Res.drawable.catechism_icon),
+                        contentDescription = null,
+                        modifier = Modifier.size(30.dp),
+                        contentScale = ContentScale.Fit,
+                    )
+                } else if (isSymbols) {
+                    Image(
+                        painter = painterResource(Res.drawable.sacred_symbols_icon),
                         contentDescription = null,
                         modifier = Modifier.size(30.dp),
                         contentScale = ContentScale.Fit,
@@ -780,9 +819,9 @@ private fun HubExploreCard(
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                     )
-                    if (subtitle != null) {
+                    subtitle?.let {
                         Text(
-                            text = subtitle,
+                            text = it,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontSize = 11.sp,
                             lineHeight = 16.sp,
@@ -874,6 +913,7 @@ private fun CategoryGlyph(
     modifier: Modifier = Modifier,
     size: androidx.compose.ui.unit.Dp = 40.dp,
 ) {
+    val s = LocalStrings.current
     val iconPainter = when (type) {
         ContentType.SAINT -> painterResource(Res.drawable.saints_icon)
         ContentType.POPE -> painterResource(Res.drawable.popes_icon)
@@ -886,7 +926,7 @@ private fun CategoryGlyph(
 
     Image(
         painter = iconPainter,
-        contentDescription = "$title icon",
+        contentDescription = s.exploreCardIconDescription.replace("{title}", title),
         contentScale = ContentScale.Fit,
         modifier = modifier.size(size),
     )

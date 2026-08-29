@@ -111,6 +111,21 @@ prayer title and body will sit on top of that area.
 - **novena-to-the-holy-spirit** — The apostles and Mary gathered in the upper room in candlelight, expectant upturned faces, nine days of waiting suggested by quiet stillness.
 - **st-andrew-christmas-novena** — A single candle in a frosted window at night, snow falling outside, a distant star visible above rooftops.
 
+### Novenas
+
+- **divine-mercy-novena** — The merciful Christ standing in a soft dark interior, one hand raised in blessing, two broad rays — one pale, one red — streaming from his breast toward the viewer, gentle golden glow, reverent and still (complements the abstract `divine-mercy-chaplet` rays with a figure).
+- **novena-to-our-lady-of-guadalupe** — Our Lady of Guadalupe: Mary with hands joined in prayer, wrapped in a star-strewn turquoise mantle and rose-gold robe, standing on a crescent moon within a full-body aureole of golden rays, tumbling Castilian roses at her feet, warm dawn light above.
+- **novena-to-our-lady-of-perpetual-help** — The Byzantine icon of Our Lady of Perpetual Help rendered as warm oil: Mary in deep blue holding the Child Jesus, two small archangels bearing the instruments of the Passion at the upper corners, luminous gold-leaf background catching soft light.
+- **novena-to-our-lady-of-the-miraculous-medal** — Mary standing on a globe with a serpent crushed beneath her foot, arms lowered and open, rays of grace streaming from her outstretched hands, a faint oval frame of light around her, pale blue and gold, radiant empty sky above.
+- **novena-to-st-anthony** — St. Anthony of Padua in brown Franciscan habit cradling the Child Jesus on an open book, a white lily in one hand, tender golden light, quiet monastic wall behind with open space above.
+- **novena-to-st-joseph** — St. Joseph standing as guardian, holding a flowering staff of lilies with the young Christ child at his side, protective and gentle, warm light from above a plain carpenter's dwelling (distinct from the workbench scene of `to-you-o-blessed-joseph`).
+- **novena-to-st-jude** — St. Jude Thaddeus in green and gold robes, a small flame of light hovering above his head, holding a medallion image of Christ against his chest and a wooden staff, warm steady light, open golden sky behind.
+- **novena-to-st-michael** — St. Michael as vigilant sentinel: standing at rest with spear and shield, wings folded high, gazing outward in watchful stillness on a rampart at dawn, cool blue-gold light and open sky (distinct from the triumphant sword-over-serpent of `st-michael`).
+- **novena-to-st-rita** — St. Rita of Cascia in the black Augustinian habit, a single thorn-wound of light on her forehead, holding a crucifix and a cluster of deep red roses, soft candlelight, austere convent cell with dim open wall above.
+- **novena-to-st-therese** — St. Thérèse of Lisieux, a young Carmelite in brown and cream habit, holding an armful of roses against a crucifix, a gentle shower of rose petals falling through soft light, serene expression, luminous pale sky behind.
+- **novena-to-the-immaculate-conception** — The Immaculate Conception: Mary in white and blue standing on a crescent moon, crowned with twelve stars, hands open at her sides, a serpent beneath her feet, radiant blue-white light and open luminous heavens above.
+- **novena-to-the-sacred-heart** — The Sacred Heart of Jesus: Christ in red and white robes, one hand raised in blessing and the other gesturing to his radiant heart crowned with thorns and crowned with flame at his breast, warm golden rays, tender gaze, soft glowing sky behind.
+
 ---
 
 ## Once you have the images

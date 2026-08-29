@@ -1,0 +1,1562 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": 1,
+  "hub": {
+    "id": "symbols",
+    "slug": "symbols",
+    "titleKey": "hub.symbols.title",
+    "subtitleKey": "hub.symbols.subtitle",
+    "introKey": "hub.symbols.intro",
+    "icon": "ic_symbols",
+    "accentColor": "#8A6D3B",
+    "sortOrder": 3,
+    "tags": [
+      "symbols",
+      "iconography",
+      "sacred art",
+      "signs"
+    ]
+  },
+  "sections": [
+    {
+      "id": "symbols.crosses",
+      "sortOrder": 1,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.symbols.crosses.title",
+      "summaryKey": "sec.symbols.crosses.summary",
+      "icon": "ic_cross",
+      "articleIds": [
+        "art.symbols.crosses"
+      ]
+    },
+    {
+      "id": "symbols.holy_name",
+      "sortOrder": 2,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.symbols.holy_name.title",
+      "summaryKey": "sec.symbols.holy_name.summary",
+      "icon": "ic_chi_rho",
+      "articleIds": [
+        "art.symbols.holy_name"
+      ]
+    },
+    {
+      "id": "symbols.christ",
+      "sortOrder": 3,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.symbols.christ.title",
+      "summaryKey": "sec.symbols.christ.summary",
+      "icon": "ic_lamb",
+      "articleIds": [
+        "art.symbols.christ"
+      ]
+    },
+    {
+      "id": "symbols.evangelists",
+      "sortOrder": 4,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.symbols.evangelists.title",
+      "summaryKey": "sec.symbols.evangelists.summary",
+      "icon": "ic_evangelists",
+      "articleIds": [
+        "art.symbols.evangelists"
+      ]
+    },
+    {
+      "id": "symbols.spirit_trinity",
+      "sortOrder": 5,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.symbols.spirit_trinity.title",
+      "summaryKey": "sec.symbols.spirit_trinity.summary",
+      "icon": "ic_dove",
+      "articleIds": [
+        "art.symbols.spirit_trinity"
+      ]
+    },
+    {
+      "id": "symbols.eucharist_sacraments",
+      "sortOrder": 6,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.symbols.eucharist_sacraments.title",
+      "summaryKey": "sec.symbols.eucharist_sacraments.summary",
+      "icon": "ic_chalice",
+      "articleIds": [
+        "art.symbols.eucharist_sacraments"
+      ]
+    },
+    {
+      "id": "symbols.pope_bishops",
+      "sortOrder": 7,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.symbols.pope_bishops.title",
+      "summaryKey": "sec.symbols.pope_bishops.summary",
+      "icon": "ic_keys",
+      "articleIds": [
+        "art.symbols.pope_bishops"
+      ]
+    },
+    {
+      "id": "symbols.scripture_apostles",
+      "sortOrder": 8,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.symbols.scripture_apostles.title",
+      "summaryKey": "sec.symbols.scripture_apostles.summary",
+      "icon": "ic_scroll",
+      "articleIds": [
+        "art.symbols.scripture_apostles"
+      ]
+    },
+    {
+      "id": "symbols.our_lady",
+      "sortOrder": 9,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.symbols.our_lady.title",
+      "summaryKey": "sec.symbols.our_lady.summary",
+      "icon": "ic_star",
+      "articleIds": [
+        "art.symbols.our_lady"
+      ]
+    },
+    {
+      "id": "symbols.saints",
+      "sortOrder": 10,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.symbols.saints.title",
+      "summaryKey": "sec.symbols.saints.summary",
+      "icon": "ic_halo",
+      "articleIds": [
+        "art.symbols.saints"
+      ]
+    },
+    {
+      "id": "symbols.resurrection",
+      "sortOrder": 11,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.symbols.resurrection.title",
+      "summaryKey": "sec.symbols.resurrection.summary",
+      "icon": "ic_phoenix",
+      "articleIds": [
+        "art.symbols.resurrection"
+      ]
+    },
+    {
+      "id": "symbols.orders",
+      "sortOrder": 12,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.symbols.orders.title",
+      "summaryKey": "sec.symbols.orders.summary",
+      "icon": "ic_habit",
+      "articleIds": [
+        "art.symbols.orders"
+      ]
+    }
+  ],
+  "articles": [
+    {
+      "id": "art.symbols.crosses",
+      "sectionId": "symbols.crosses",
+      "sortOrder": 1,
+      "titleKey": "art.symbols.crosses.title",
+      "leadKey": "art.symbols.crosses.lead",
+      "readingTimeMinutes": 3,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.cross.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_cross.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.cross.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.crucifix.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_crucifix.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.crucifix.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.inri.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_inri.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.inri.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.papal_cross.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_papal_cross.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.papal_cross.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.jerusalem_cross.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_jerusalem_cross.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.jerusalem_cross.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.maltese_cross.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_maltese_cross.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.maltese_cross.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.tau_cross.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_tau_cross.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.tau_cross.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.st_andrew_cross.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_st_andrew_cross.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.st_andrew_cross.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.christ_king.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_christ_king.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.christ_king.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.symbols.holy_name",
+      "sectionId": "symbols.holy_name",
+      "sortOrder": 1,
+      "titleKey": "art.symbols.holy_name.title",
+      "leadKey": "art.symbols.holy_name.lead",
+      "readingTimeMinutes": 2,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.chi_rho.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_chi_rho.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.chi_rho.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.chi_rho_alpha_omega.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_chi_rho_alpha_omega.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.chi_rho_alpha_omega.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.ihs.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_ihs.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.ihs.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.alpha_omega.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_alpha_omega.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.alpha_omega.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.ichthys.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_ichthys.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.ichthys.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.labarum.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_labarum.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.labarum.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.symbols.christ",
+      "sectionId": "symbols.christ",
+      "sortOrder": 1,
+      "titleKey": "art.symbols.christ.title",
+      "leadKey": "art.symbols.christ.lead",
+      "readingTimeMinutes": 2,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.agnus_dei.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_agnus_dei.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.agnus_dei.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.good_shepherd.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_good_shepherd.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.good_shepherd.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.sacred_heart.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_sacred_heart.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.sacred_heart.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.crown_of_thorns.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_crown_of_thorns.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.crown_of_thorns.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.five_wounds.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_five_wounds.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.five_wounds.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.pelican.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_pelican.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.pelican.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.pantocrator.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_pantocrator.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.pantocrator.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.symbols.evangelists",
+      "sectionId": "symbols.evangelists",
+      "sortOrder": 1,
+      "titleKey": "art.symbols.evangelists.title",
+      "leadKey": "art.symbols.evangelists.lead",
+      "readingTimeMinutes": 2,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.tetramorph.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_tetramorph.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.tetramorph.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.evangelist_matthew.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_evangelist_matthew.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.evangelist_matthew.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.evangelist_mark.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_evangelist_mark.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.evangelist_mark.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.evangelist_luke.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_evangelist_luke.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.evangelist_luke.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.evangelist_john.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_evangelist_john.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.evangelist_john.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.symbols.spirit_trinity",
+      "sectionId": "symbols.spirit_trinity",
+      "sortOrder": 1,
+      "titleKey": "art.symbols.spirit_trinity.title",
+      "leadKey": "art.symbols.spirit_trinity.lead",
+      "readingTimeMinutes": 2,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.dove.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_dove.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.dove.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.tongues_of_fire.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_tongues_of_fire.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.tongues_of_fire.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.seven_flames.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_seven_flames.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.seven_flames.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.triangle.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_triangle.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.triangle.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.all_seeing_eye.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_all_seeing_eye.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.all_seeing_eye.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.three_circles.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_three_circles.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.three_circles.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.trefoil.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_trefoil.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.trefoil.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.hand_of_god.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_hand_of_god.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.hand_of_god.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.symbols.eucharist_sacraments",
+      "sectionId": "symbols.eucharist_sacraments",
+      "sortOrder": 1,
+      "titleKey": "art.symbols.eucharist_sacraments.title",
+      "leadKey": "art.symbols.eucharist_sacraments.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.chalice_host.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_chalice_host.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.chalice_host.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.wheat_grapes.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_wheat_grapes.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.wheat_grapes.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.monstrance.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_monstrance.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.monstrance.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.vine_branches.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_vine_branches.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.vine_branches.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.bread_fish.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_bread_fish.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.bread_fish.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.candle.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_candle.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.candle.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.paschal_candle.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_paschal_candle.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.paschal_candle.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.thurible.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_thurible.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.thurible.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.baptismal_shell.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_baptismal_shell.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.baptismal_shell.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.holy_oils.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_holy_oils.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.holy_oils.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.wedding_rings.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_wedding_rings.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.wedding_rings.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.laying_on_hands.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_laying_on_hands.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.laying_on_hands.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.symbols.pope_bishops",
+      "sectionId": "symbols.pope_bishops",
+      "sortOrder": 1,
+      "titleKey": "art.symbols.pope_bishops.title",
+      "leadKey": "art.symbols.pope_bishops.lead",
+      "readingTimeMinutes": 3,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.keys_of_peter.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_keys_of_peter.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.keys_of_peter.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.papal_tiara.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_papal_tiara.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.papal_tiara.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.ferula.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_ferula.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.ferula.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.pallium.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_pallium.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.pallium.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.mitre.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_mitre.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.mitre.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.crozier.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_crozier.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.crozier.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.cathedra.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_cathedra.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.cathedra.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.pectoral_cross.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_pectoral_cross.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.pectoral_cross.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.episcopal_ring.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_episcopal_ring.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.episcopal_ring.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.barque_of_peter.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_barque_of_peter.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.barque_of_peter.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.rock.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_rock.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.rock.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.symbols.scripture_apostles",
+      "sectionId": "symbols.scripture_apostles",
+      "sortOrder": 1,
+      "titleKey": "art.symbols.scripture_apostles.title",
+      "leadKey": "art.symbols.scripture_apostles.lead",
+      "readingTimeMinutes": 2,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.gospel_book.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_gospel_book.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.gospel_book.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.seven_seals.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_seven_seals.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.seven_seals.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.scroll.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_scroll.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.scroll.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.sword.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_sword.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.sword.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.net_boat.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_net_boat.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.net_boat.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.anchor.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_anchor.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.anchor.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.seven_branched_lamp.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_seven_branched_lamp.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.seven_branched_lamp.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.symbols.our_lady",
+      "sectionId": "symbols.our_lady",
+      "sortOrder": 1,
+      "titleKey": "art.symbols.our_lady.title",
+      "leadKey": "art.symbols.our_lady.lead",
+      "readingTimeMinutes": 3,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.immaculate_heart.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_immaculate_heart.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.immaculate_heart.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.marian_monogram.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_marian_monogram.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.marian_monogram.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.fleur_de_lis.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_fleur_de_lis.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.fleur_de_lis.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.rose.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_rose.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.rose.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.twelve_stars.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_twelve_stars.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.twelve_stars.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.crescent_moon.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_crescent_moon.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.crescent_moon.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.serpent.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_serpent.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.serpent.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.miraculous_medal.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_miraculous_medal.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.miraculous_medal.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.rosary.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_rosary.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.rosary.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.symbols.saints",
+      "sectionId": "symbols.saints",
+      "sortOrder": 1,
+      "titleKey": "art.symbols.saints.title",
+      "leadKey": "art.symbols.saints.lead",
+      "readingTimeMinutes": 2,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.halo.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_halo.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.halo.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.cruciform_halo.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_cruciform_halo.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.cruciform_halo.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.palm.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_palm.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.palm.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.crown.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_crown.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.crown.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.scallop_shell.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_scallop_shell.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.scallop_shell.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.joseph_lily.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_joseph_lily.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.joseph_lily.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.symbols.resurrection",
+      "sectionId": "symbols.resurrection",
+      "sortOrder": 1,
+      "titleKey": "art.symbols.resurrection.title",
+      "leadKey": "art.symbols.resurrection.lead",
+      "readingTimeMinutes": 2,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.phoenix.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_phoenix.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.phoenix.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.peacock.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_peacock.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.peacock.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.butterfly.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_butterfly.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.butterfly.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.pomegranate.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_pomegranate.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.pomegranate.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.tree_of_life.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_tree_of_life.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.tree_of_life.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.symbols.orders",
+      "sectionId": "symbols.orders",
+      "sortOrder": 1,
+      "titleKey": "art.symbols.orders.title",
+      "leadKey": "art.symbols.orders.lead",
+      "readingTimeMinutes": 2,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.franciscan_arms.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_franciscan_arms.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.franciscan_arms.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.dominican_cross.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_dominican_cross.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.dominican_cross.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.carmelite_shield.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_carmelite_shield.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.carmelite_shield.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.jesuit_ihs.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_jesuit_ihs.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.jesuit_ihs.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.benedictine_medal.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_benedictine_medal.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.benedictine_medal.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "sym.augustinian_heart.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_augustinian_heart.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "sym.augustinian_heart.desc"
+        }
+      ]
+    }
+  ]
+}

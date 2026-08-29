@@ -1,8 +1,11 @@
 package com.ynotlabs.cathopedia.ui.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -16,8 +19,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -30,29 +31,49 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import org.jetbrains.compose.resources.painterResource
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.model.HubDetail
 import com.ynotlabs.cathopedia.model.HubSectionSummary
+import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.resources.cross_divider
+import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.ui.hubAssetPainter
 
+private val HubBackground = Color(0xFF061A13)
+private val HubCard = Color(0xFF0A241B)
+private val HubCardDeep = Color(0xFF081F17)
+private val HubGold = Color(0xFFD6AE3D)
+private val HubCream = Color(0xFFF4ECDD)
+private val HubMuted = Color(0xFFB7B09D)
+
 /**
- * Hub → section list. The hub is data (see docs/briefs/topic-hubs.md) — nothing about a
- * specific hub is hardcoded here, every visible string is a `*_key` resolved through
- * [CathopediaRepository.resolveHubStrings]. STUB sections render dimmed and are not
- * clickable; only PUBLISHED sections navigate anywhere.
+ * Premium hub screen used by Cathopedia topic hubs.
+ *
+ * The screen remains completely data driven:
+ * - titles/subtitles/intro are resolved from hub string keys
+ * - sections come from HubDetail
+ * - STUB sections remain disabled
+ * - PUBLISHED sections preserve the existing navigation flow
  */
 @Composable
 fun HubScreen(
@@ -61,176 +82,278 @@ fun HubScreen(
     language: String,
     onBack: () -> Unit,
     onSectionSelected: (HubSectionSummary) -> Unit,
+    onArticleSelected: (String) -> Unit,
 ) {
     val s = LocalStrings.current
+
     var detail by remember(hubId) { mutableStateOf<HubDetail?>(null) }
     var strings by remember(hubId) { mutableStateOf<Map<String, String>>(emptyMap()) }
 
     LaunchedEffect(hubId, language) {
         val loaded = repository.hubDetail(hubId) ?: return@LaunchedEffect
         detail = loaded
+
         val keys = buildSet {
             add(loaded.summary.titleKey)
             loaded.summary.subtitleKey?.let(::add)
             loaded.introKey?.let(::add)
+
             loaded.sections.forEach { section ->
                 add(section.titleKey)
                 section.summaryKey?.let(::add)
             }
         }
+
         strings = repository.resolveHubStrings(keys, language)
     }
 
     val hub = detail
-    val accent = hub?.summary?.accentColor?.toComposeColorOrNull() ?: MaterialTheme.colorScheme.primary
-    val heroPainter = hubAssetPainter(hub?.summary?.heroAsset)
+    val accent = hub?.summary?.accentColor
+        ?.toComposeColorOrNull()
+        ?: HubGold
+    var headerHeightPx by remember(hubId, language) { mutableIntStateOf(0) }
+    val headerHeightDp = with(LocalDensity.current) { headerHeightPx.toDp() }
 
-    LazyColumn(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
-            .statusBarsPadding(),
-        contentPadding = PaddingValues(start = 20.dp, end = 20.dp, bottom = 120.dp),
+            .background(HubBackground),
     ) {
-        item {
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(top = 8.dp, bottom = 12.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                IconButton(onClick = onBack) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = s.back,
-                        tint = MaterialTheme.colorScheme.onBackground,
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(
+                start = 20.dp,
+                top = headerHeightDp + 28.dp,
+                end = 20.dp,
+                bottom = 132.dp,
+            ),
+        ) {
+            if (hub != null) {
+                item {
+                    SacredDivider()
+                    Spacer(Modifier.height(18.dp))
+                }
+
+                val rows = hub.sections.chunked(2)
+
+                rows.forEachIndexed { rowIndex, rowSections ->
+                    item(key = "hub-row-$rowIndex") {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(10.dp),
+                        ) {
+                            rowSections.forEach { section ->
+                                HubSectionCard(
+                                    modifier = Modifier.weight(1f),
+                                    section = section,
+                                    title = strings[section.titleKey].orEmpty(),
+                                    summary = section.summaryKey?.let { strings[it] },
+                                    accent = accent,
+                                    comingSoon = s.hubSectionComingSoon,
+                                    onClick = {
+                                        section.directArticleId
+                                            ?.let(onArticleSelected)
+                                            ?: onSectionSelected(section)
+                                    },
+                                )
+                            }
+
+                            if (rowSections.size == 1) {
+                                Spacer(modifier = Modifier.weight(1f))
+                            }
+                        }
+
+                        Spacer(Modifier.height(10.dp))
+                    }
+                }
+            }
+        }
+
+        HubHeaderPanel(
+            title = hub?.let { strings[it.summary.titleKey] }.orEmpty(),
+            subtitle = hub?.summary?.subtitleKey?.let { strings[it] }.orEmpty(),
+            intro = hub?.introKey?.let { strings[it] }.orEmpty(),
+            accent = accent,
+            backDescription = s.back,
+            onBack = onBack,
+            modifier = Modifier.onGloballyPositioned {
+                val measuredHeight = it.size.height
+                if (measuredHeight != headerHeightPx) headerHeightPx = measuredHeight
+            },
+        )
+    }
+}
+
+@Composable
+private fun HubHeaderPanel(
+    title: String,
+    subtitle: String,
+    intro: String,
+    accent: Color,
+    backDescription: String,
+    onBack: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .shadow(
+                elevation = 14.dp,
+                shape = RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp),
+                clip = false,
+            )
+            .clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp))
+            .background(HubCardDeep)
+            .statusBarsPadding()
+            .padding(start = 18.dp, top = 6.dp, end = 18.dp, bottom = 18.dp),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.Top,
+        ) {
+            CathopediaBackButton(
+                onClick = onBack,
+                contentDescription = backDescription,
+            )
+
+            Spacer(Modifier.width(8.dp))
+
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = title,
+                    color = HubCream,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 29.sp,
+                    lineHeight = 32.sp,
+                    fontWeight = FontWeight.Medium,
+                    maxLines = 2,
+                )
+
+                if (subtitle.isNotBlank()) {
+                    Spacer(Modifier.height(3.dp))
+                    Text(
+                        text = subtitle,
+                        color = accent,
+                        fontSize = 13.sp,
+                        lineHeight = 17.sp,
+                        fontWeight = FontWeight.SemiBold,
                     )
                 }
             }
         }
 
-        if (hub != null) {
-            heroPainter?.let { painter ->
-                item {
-                    Image(
-                        painter = painter,
-                        contentDescription = null,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(140.dp)
-                            .padding(bottom = 14.dp)
-                            .clip(RoundedCornerShape(18.dp)),
-                        contentScale = ContentScale.Crop,
-                    )
-                }
-            }
-
-            item {
-                Column(modifier = Modifier.fillMaxWidth().padding(bottom = 20.dp)) {
-                    Text(
-                        text = strings[hub.summary.titleKey].orEmpty(),
-                        color = MaterialTheme.colorScheme.onBackground,
-                        fontFamily = FontFamily.Serif,
-                        fontSize = 28.sp,
-                        lineHeight = 34.sp,
-                        fontWeight = FontWeight.Medium,
-                    )
-
-                    hub.summary.subtitleKey?.let { key ->
-                        strings[key]?.let { subtitle ->
-                            Spacer(Modifier.height(6.dp))
-                            Text(
-                                text = subtitle,
-                                color = accent,
-                                fontSize = 15.sp,
-                                fontWeight = FontWeight.SemiBold,
-                            )
-                        }
-                    }
-
-                    hub.introKey?.let { key ->
-                        strings[key]?.let { intro ->
-                            Spacer(Modifier.height(10.dp))
-                            Text(
-                                text = intro,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                fontSize = 15.sp,
-                                lineHeight = 21.sp,
-                            )
-                        }
-                    }
-                }
-            }
-
-            items(hub.sections, key = { it.id }) { section ->
-                HubSectionRow(
-                    section = section,
-                    title = strings[section.titleKey].orEmpty(),
-                    summary = section.summaryKey?.let { strings[it] },
-                    accent = accent,
-                    onClick = { onSectionSelected(section) },
-                )
-                Spacer(Modifier.height(10.dp))
-            }
+        if (intro.isNotBlank()) {
+            Spacer(Modifier.height(10.dp))
+            Text(
+                text = intro,
+                color = HubMuted,
+                fontSize = 13.sp,
+                lineHeight = 18.sp,
+                modifier = Modifier.padding(start = 56.dp),
+            )
         }
     }
 }
 
 @Composable
-private fun HubSectionRow(
+private fun SacredDivider() {
+    Image(
+        painter = painterResource(Res.drawable.cross_divider),
+        contentDescription = null,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(28.dp)
+            .padding(horizontal = 8.dp),
+        contentScale = ContentScale.FillWidth
+    )
+}
+
+@Composable
+private fun HubSectionCard(
+    modifier: Modifier,
     section: HubSectionSummary,
     title: String,
     summary: String?,
     accent: Color,
+    comingSoon: String,
     onClick: () -> Unit,
 ) {
-    val s = LocalStrings.current
     val isStub = section.status == "STUB"
 
     Surface(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(enabled = !isStub, onClick = onClick),
-        shape = RoundedCornerShape(18.dp),
-        color = MaterialTheme.colorScheme.surfaceContainerLow,
-        contentColor = MaterialTheme.colorScheme.onSurface,
+        modifier = modifier
+            .height(140.dp)
+            .alpha(if (isStub) 0.58f else 1f)
+            .clickable(
+                enabled = !isStub,
+                onClick = onClick,
+            ),
+        shape = RoundedCornerShape(23.dp),
+        color = Color.Transparent,
+        border = BorderStroke(
+            width = 1.dp,
+            color = if (isStub) {
+                HubMuted.copy(alpha = 0.18f)
+            } else {
+                accent.copy(alpha = 0.40f)
+            },
+        ),
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically,
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        listOf(
+                            HubCard.copy(alpha = 0.78f),
+                            HubCardDeep.copy(alpha = 0.94f),
+                        ),
+                    ),
+                ),
         ) {
             Box(
                 modifier = Modifier
-                    .size(10.dp)
-                    .background(if (isStub) MaterialTheme.colorScheme.outline else accent, CircleShape),
+                    .align(Alignment.CenterStart)
+                    .width(3.dp)
+                    .height(54.dp)
+                    .clip(RoundedCornerShape(topEnd = 3.dp, bottomEnd = 3.dp))
+                    .background(accent),
             )
 
-            Spacer(Modifier.width(12.dp))
-
-            Column(modifier = Modifier.weight(1f)) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(14.dp),
+            ) {
                 Text(
                     text = title,
-                    color = if (isStub) {
-                        MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
-                    } else {
-                        MaterialTheme.colorScheme.onBackground
-                    },
+                    color = HubCream,
                     fontFamily = FontFamily.Serif,
                     fontSize = 16.sp,
+                    lineHeight = 20.sp,
+                    fontWeight = FontWeight.Medium,
+                    maxLines = 2,
+                    modifier = Modifier.padding(end = 20.dp),
                 )
-                if (summary != null) {
-                    Spacer(Modifier.height(3.dp))
+
+                if (!summary.isNullOrBlank()) {
+                    Spacer(Modifier.height(7.dp))
+
                     Text(
                         text = summary,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = if (isStub) 0.5f else 1f),
+                        color = HubMuted,
                         fontSize = 12.sp,
-                        maxLines = 2,
+                        lineHeight = 17.sp,
+                        maxLines = 3,
                     )
                 }
+
                 if (isStub) {
-                    Spacer(Modifier.height(3.dp))
+                    Spacer(Modifier.height(10.dp))
                     Text(
-                        text = s.hubSectionComingSoon,
-                        color = MaterialTheme.colorScheme.outline,
-                        fontSize = 11.sp,
+                        text = comingSoon,
+                        color = HubMuted,
+                        fontSize = 10.sp,
                         fontWeight = FontWeight.SemiBold,
                     )
                 }
@@ -240,18 +363,27 @@ private fun HubSectionRow(
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.size(14.dp),
+                    tint = accent.copy(alpha = 0.86f),
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(top = 18.dp, end = 14.dp)
+                        .size(14.dp),
                 )
             }
         }
     }
 }
 
-/** `#RRGGBB` or `#AARRGGBB` hex string → [Color]; null (never a crash) for anything else. */
+/** `#RRGGBB` or `#AARRGGBB` hex string → [Color]; null for anything invalid. */
 private fun String.toComposeColorOrNull(): Color? {
     val hex = removePrefix("#")
     if (hex.length != 6 && hex.length != 8) return null
+
     val value = hex.toLongOrNull(16) ?: return null
-    return if (hex.length == 6) Color(0xFF000000 or value) else Color(value)
+
+    return if (hex.length == 6) {
+        Color(0xFF000000 or value)
+    } else {
+        Color(value)
+    }
 }

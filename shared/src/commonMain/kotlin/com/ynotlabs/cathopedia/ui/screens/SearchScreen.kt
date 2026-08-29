@@ -201,6 +201,7 @@ private fun SearchHeader(
     onClear: () -> Unit,
     onSubmit: () -> Unit,
 ) {
+    val s = LocalStrings.current
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -261,7 +262,7 @@ private fun SearchHeader(
                 Spacer(Modifier.height(8.dp))
 
                 Text(
-                    text = "Search Cathopedia",
+                    text = s.searchCathopedia,
                     color = SearchCream,
                     fontFamily = FontFamily.Serif,
                     fontSize = 32.sp,
@@ -272,7 +273,7 @@ private fun SearchHeader(
                 Spacer(Modifier.height(5.dp))
 
                 Text(
-                    text = "Explore the richness of the Catholic faith",
+                    text = s.searchHeroSubtitle,
                     color = SearchMuted,
                     fontSize = 14.sp,
                     lineHeight = 18.sp,
@@ -286,7 +287,7 @@ private fun SearchHeader(
             singleLine = true,
             placeholder = {
                 Text(
-                    text = "Search saints, popes, places, topics...",
+                    text = s.searchPlaceholder,
                     color = SearchMuted.copy(alpha = 0.82f),
                     fontSize = 14.sp,
                 )
@@ -311,7 +312,7 @@ private fun SearchHeader(
                         Box(contentAlignment = Alignment.Center) {
                             Icon(
                                 imageVector = Icons.Filled.Close,
-                                contentDescription = "Clear search",
+                                contentDescription = s.searchClear,
                                 tint = SearchGold,
                                 modifier = Modifier.size(17.dp),
                             )
@@ -350,6 +351,7 @@ private fun SearchLandingContent(
     onRemoveRecent: (String) -> Unit,
     onClearAll: () -> Unit,
 ) {
+    val s = LocalStrings.current
     if (recentSearches.isEmpty()) {
         SearchInitialState()
     } else {
@@ -363,8 +365,8 @@ private fun SearchLandingContent(
         ) {
             item {
                 SearchSectionHeader(
-                    title = "Recent searches",
-                    actionText = "Clear all",
+                    title = s.searchRecent,
+                    actionText = s.searchClearAll,
                     onAction = onClearAll,
                 )
             }
@@ -388,6 +390,7 @@ private fun SearchLandingContent(
 
 @Composable
 private fun SearchInitialState() {
+    val s = LocalStrings.current
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -416,7 +419,7 @@ private fun SearchInitialState() {
         Spacer(Modifier.height(20.dp))
 
         Text(
-            text = "Ready to discover?",
+            text = s.searchReadyTitle,
             color = SearchCream.copy(alpha = 0.9f),
             fontFamily = FontFamily.Serif,
             fontSize = 20.sp,
@@ -427,7 +430,7 @@ private fun SearchInitialState() {
         Spacer(Modifier.height(8.dp))
 
         Text(
-            text = "Type a name, place, or topic to start exploring the richness of the faith.",
+            text = s.searchReadyBody,
             color = SearchMuted,
             fontSize = 13.sp,
             lineHeight = 18.sp,
@@ -491,6 +494,7 @@ private fun RecentSearchCard(
     onClick: (String) -> Unit,
     onRemove: (String) -> Unit,
 ) {
+    val s = LocalStrings.current
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
@@ -550,7 +554,7 @@ private fun RecentSearchCard(
                         Box(contentAlignment = Alignment.Center) {
                             Icon(
                                 imageVector = Icons.Filled.Close,
-                                contentDescription = "Remove",
+                                contentDescription = s.searchRemoveRecent,
                                 tint = SearchGoldSoft,
                                 modifier = Modifier.size(17.dp),
                             )
@@ -574,6 +578,7 @@ private fun RecentSearchCard(
 
 @Composable
 private fun SearchTipsCard() {
+    val s = LocalStrings.current
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(18.dp),
@@ -610,7 +615,7 @@ private fun SearchTipsCard() {
 
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = "SEARCH TIPS",
+                    text = s.searchTipsTitle.uppercase(),
                     color = SearchGold,
                     fontSize = 10.5.sp,
                     letterSpacing = 1.sp,
@@ -620,7 +625,7 @@ private fun SearchTipsCard() {
                 Spacer(Modifier.height(4.dp))
 
                 Text(
-                    text = "Search by name, title, place, keyword, or topic to quickly find Catholic content.",
+                    text = s.searchTipsBody,
                     color = SearchMuted,
                     fontSize = 12.sp,
                     lineHeight = 17.sp,
@@ -676,7 +681,8 @@ private fun SearchResultsContent(
             ) {
                 item {
                     Text(
-                        text = "${visibleResults.size} ${if (visibleResults.size == 1) "result" else "results"}",
+                        text = (if (visibleResults.size == 1) s.searchOneResult else s.searchManyResults)
+                            .replace("{count}", visibleResults.size.toString()),
                         color = SearchMuted,
                         fontSize = 11.5.sp,
                         modifier = Modifier.padding(bottom = 9.dp),
@@ -790,6 +796,7 @@ private fun SearchResultCard(
 
 @Composable
 private fun SearchEmptyState() {
+    val s = LocalStrings.current
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -818,7 +825,7 @@ private fun SearchEmptyState() {
         Spacer(Modifier.height(18.dp))
 
         Text(
-            text = "No results found",
+            text = s.exploreNoResultsFound,
             color = SearchCream,
             fontFamily = FontFamily.Serif,
             fontSize = 22.sp,
@@ -828,7 +835,7 @@ private fun SearchEmptyState() {
         Spacer(Modifier.height(7.dp))
 
         Text(
-            text = "Try another name, place, title, or Catholic topic.",
+            text = s.searchNoResultsDetail,
             color = SearchMuted,
             fontSize = 13.sp,
             lineHeight = 18.sp,

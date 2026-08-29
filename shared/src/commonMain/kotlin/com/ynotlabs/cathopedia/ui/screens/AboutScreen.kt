@@ -53,6 +53,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.i18n.Strings
+import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.back_arrow
 import com.ynotlabs.cathopedia.resources.cathopedia_app_logo_transparent
@@ -352,26 +353,10 @@ private fun AboutHero(
                 .statusBarsPadding()
                 .padding(start = 18.dp, end = 18.dp, top = 10.dp, bottom = 12.dp),
         ) {
-            Surface(
-                modifier = Modifier
-                    .size(42.dp)
-                    .clickable(onClick = onBack),
-                shape = CircleShape,
-                color = MaterialTheme.colorScheme.surface.copy(alpha = 0.88f),
-                border = BorderStroke(
-                    width = 2.dp,
-                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.55f),
-                ),
-            ) {
-                Box(contentAlignment = Alignment.Center) {
-                    Image(
-                        painter = painterResource(Res.drawable.back_arrow),
-                        contentDescription = s.back,
-                        modifier = Modifier.size(34.dp),
-                        contentScale = ContentScale.Fit,
-                    )
-                }
-            }
+            CathopediaBackButton(
+                onClick = onBack,
+                contentDescription = s.back,
+            )
 
             Spacer(Modifier.weight(1f))
 

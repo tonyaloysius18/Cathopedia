@@ -1,6 +1,9 @@
 package com.ynotlabs.cathopedia.ui.components
 
 import androidx.compose.foundation.Image
+import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.resources.back_arrow
+import org.jetbrains.compose.resources.painterResource
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.detectTransformGestures
@@ -13,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -22,7 +26,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -204,7 +207,11 @@ fun InteractiveDiagram(
                     Spacer(Modifier.height(16.dp))
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = androidx.compose.foundation.layout.Arrangement.SpaceBetween) {
                         IconButton(onClick = { if (hasPrev) selected = tourHotspots[tourIndex - 1] }, enabled = hasPrev) {
-                            Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
+                            Icon(
+                                painter = painterResource(Res.drawable.back_arrow),
+                                contentDescription = null,
+                                modifier = Modifier.size(20.dp)
+                            )
                         }
                         IconButton(onClick = { if (hasNext) selected = tourHotspots[tourIndex + 1] }, enabled = hasNext) {
                             Icon(Icons.AutoMirrored.Filled.ArrowForward, contentDescription = null)

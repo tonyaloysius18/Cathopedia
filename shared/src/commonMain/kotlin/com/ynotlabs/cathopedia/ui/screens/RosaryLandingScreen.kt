@@ -44,6 +44,7 @@ import com.ynotlabs.cathopedia.model.RosaryMeter
 import com.ynotlabs.cathopedia.model.RosarySessionState
 import com.ynotlabs.cathopedia.rosary.BeadKind
 import com.ynotlabs.cathopedia.rosary.rosaryLayout
+import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.ui.components.RosaryComposition
 import com.ynotlabs.cathopedia.ui.components.RosarySpriteRenderer
 import com.ynotlabs.cathopedia.ui.components.RosarySpriteUiModel
@@ -119,12 +120,10 @@ internal fun RosaryLandingScreen(
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = text(RosaryStringKeys.Back),
-                        )
-                    }
+                    CathopediaBackButton(
+                        onClick = onBack,
+                        contentDescription = text(RosaryStringKeys.Back),
+                    )
                 },
             )
         },

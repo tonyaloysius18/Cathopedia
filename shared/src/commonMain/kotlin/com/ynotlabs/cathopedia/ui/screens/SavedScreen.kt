@@ -27,6 +27,7 @@ import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.model.BookmarkItem
 import com.ynotlabs.cathopedia.ui.components.FilterChipsRow
+import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 
 private enum class SavedFilter { ALL, NOTES }
 
@@ -58,7 +59,10 @@ fun SavedScreen(
             TopAppBar(
                 title = { Text(s.savedTitle) },
                 navigationIcon = {
-                    IconButton(onClick = onBack) { Text("←", fontSize = 22.sp) }
+                    CathopediaBackButton(
+                        onClick = onBack,
+                        contentDescription = s.back,
+                    )
                 },
             )
         },

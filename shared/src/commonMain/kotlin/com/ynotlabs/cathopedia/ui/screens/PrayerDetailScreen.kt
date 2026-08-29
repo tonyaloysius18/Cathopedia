@@ -54,14 +54,19 @@ import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.data.PreferenceKeys
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.i18n.Strings
+import com.ynotlabs.cathopedia.model.PrayerCategory
 import com.ynotlabs.cathopedia.model.PrayerDetail
+import com.ynotlabs.cathopedia.ui.getCategoryIcon
+import com.ynotlabs.cathopedia.ui.CategoryIcon
 import com.ynotlabs.cathopedia.ui.PrayerPortraits
+import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.resources.cross_divider
 import com.ynotlabs.cathopedia.ui.components.KeepScreenOn
+import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.ui.components.PrayerBodyText
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 
-private const val HOLY_ROSARY_ID = "holy-rosary"
 private val FONT_SCALE_STEPS = listOf(0.85f, 1.0f, 1.15f, 1.3f, 1.45f)
 private const val DEFAULT_FONT_SCALE_INDEX = 1
 
@@ -141,13 +146,6 @@ fun PrayerDetailScreen(
                     Text(s.loading, color = PrayerMuted)
                 }
 
-                current.isSequence && current.id != HOLY_ROSARY_ID -> Box(
-                    modifier = Modifier.fillMaxSize().padding(padding).padding(24.dp),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Text(s.prayerDetailSequenceComingSoon, color = PrayerMuted)
-                }
-
                 else -> PrayerReadingContent(
                     detail = current,
                     readingLanguage = readingLanguage,
@@ -175,16 +173,12 @@ fun PrayerDetailScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                HeroCircleButton(onClick = onBack) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = s.back,
-                        tint = PrayerCream,
-                        modifier = Modifier.size(24.dp),
-                    )
-                }
+                CathopediaBackButton(
+                    onClick = onBack,
+                    contentDescription = s.back,
+                )
 
-                if (current != null && !(current.isSequence && current.id != HOLY_ROSARY_ID)) {
+                if (current != null) {
                     HeroCircleButton(
                         onClick = {
                             scope.launch { isFavorite = repository.togglePrayerFavorite(slug) }
@@ -225,6 +219,7 @@ private fun PrayerReadingContent(
             SacredPrayerHeader(
                 title = detail.title,
                 subtitle = detail.subtitle,
+                category = detail.category,
             )
         }
 
@@ -253,12 +248,10 @@ private fun PrayerReadingContent(
 
         Spacer(Modifier.height(18.dp))
 
-        if (detail.about.isNotBlank()) {
-            Box(modifier = Modifier.padding(horizontal = 20.dp)) {
-                AboutPrayerCard(
-                    detail = detail,
-                )
-            }
+        Box(modifier = Modifier.padding(horizontal = 20.dp)) {
+            AboutPrayerCard(
+                detail = detail,
+            )
         }
         Spacer(Modifier.height(28.dp))
     }
@@ -268,16 +261,28 @@ private fun PrayerReadingContent(
 private fun SacredPrayerHeader(
     title: String,
     subtitle: String?,
+    category: PrayerCategory,
 ) {
+    val icon = getCategoryIcon(category)
+
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Box(
-            modifier = Modifier
-                .size(78.dp)
-                .border(2.dp, PrayerGold.copy(alpha = 0.75f), CircleShape)
-                .background(Color.Transparent, CircleShape),
-            contentAlignment = Alignment.Center,
-        ) {
-            Text("✝", color = PrayerGold, fontSize = 38.sp)
+        when (icon) {
+            is CategoryIcon.Resource -> {
+                Image(
+                    painter = painterResource(icon.res),
+                    contentDescription = null,
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.size(70.dp),
+                )
+            }
+            is CategoryIcon.Vector -> {
+                Icon(
+                    imageVector = icon.imageVector,
+                    contentDescription = null,
+                    tint = PrayerGold,
+                    modifier = Modifier.size(48.dp),
+                )
+            }
         }
 
         Spacer(Modifier.height(14.dp))
@@ -390,17 +395,16 @@ private fun PrayerCard(
                 )
             }
 
-            Spacer(Modifier.height(20.dp))
+            Spacer(Modifier.height(32.dp))
 
-            Box(
+            Image(
+                painter = painterResource(Res.drawable.cross_divider),
+                contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(1.dp)
-                    .background(
-                        Brush.horizontalGradient(
-                            colors = listOf(Color.Transparent, PrayerGold.copy(alpha = 0.55f), Color.Transparent),
-                        ),
-                    ),
+                    .height(28.dp)
+                    .padding(horizontal = 8.dp),
+                contentScale = ContentScale.FillWidth
             )
 
             Spacer(Modifier.height(16.dp))
@@ -486,6 +490,7 @@ private fun RoundAction(
 private fun AboutPrayerCard(
     detail: PrayerDetail,
 ) {
+    val s = LocalStrings.current
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(24.dp),
@@ -505,7 +510,7 @@ private fun AboutPrayerCard(
                 )
                 Spacer(Modifier.width(9.dp))
                 Text(
-                    text = "ABOUT THIS PRAYER",
+                    text = s.prayerDetailAboutTitle.uppercase(),
                     color = PrayerGold,
                     style = MaterialTheme.typography.labelLarge,
                     fontWeight = FontWeight.Bold,
@@ -513,15 +518,13 @@ private fun AboutPrayerCard(
                 )
             }
 
-            if (detail.about.isNotBlank()) {
-                Spacer(Modifier.height(12.dp))
-                Text(
-                    text = detail.about,
-                    color = PrayerCream,
-                    style = MaterialTheme.typography.bodyMedium,
-                    lineHeight = 22.sp,
-                )
-            }
+            Spacer(Modifier.height(12.dp))
+            Text(
+                text = detail.about.ifBlank { s.prayerDetailAboutFallback },
+                color = PrayerCream,
+                style = MaterialTheme.typography.bodyMedium,
+                lineHeight = 22.sp,
+            )
         }
     }
 }

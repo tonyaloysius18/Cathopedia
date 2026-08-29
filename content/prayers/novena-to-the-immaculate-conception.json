@@ -1,0 +1,29 @@
+{
+  "id": "novena-to-the-immaculate-conception",
+  "category": "sequences",
+  "sortOrder": 10,
+  "isSequence": true,
+  "text": {
+    "en": {
+      "title": "Novena to the Immaculate Conception",
+      "subtitle": "Traditionally prayed November 29 to December 7",
+      "bodyMd": "Pray for **nine consecutive days**. Name your intention, then pray:\n\nImmaculate Virgin, Mary conceived without sin, remember that you were preserved from every stain because you were chosen to be the Mother of God and the mother, refuge, and advocate of sinners.\n\nWith confidence in your intercession, I ask you to look with favor upon the intention of this novena and to obtain the graces I seek, if they accord with God’s holy will.\n\nObtain for me purity of heart, constancy in prayer, humility in service, and love for your Son. Help me to resist sin and to consecrate every thought, word, and action to the greater glory of God. Amen.\n\n> O Mary, conceived without sin, pray for us who have recourse to thee.\n\nConclude with one **Our Father**, one **Hail Mary**, and one **Glory Be**.",
+      "about": "The novena prepares for the Solemnity of the Immaculate Conception on December 8, celebrating God’s grace that preserved Mary from original sin from the first moment of her conception.",
+      "source": "Mary, Help of Christians (1909), “Novena in Honor of the Immaculate Conception”, public domain via Wikisource, https://en.wikisource.org/wiki/Mary,_help_of_Christians/Novena_1:_In_Honor_of_the_Immaculate_Conception_of_the_Blessed_Virgin_Mary, accessed 2026-08-28; abridged traditional form"
+    },
+    "fr": {
+      "title": "Neuvaine à l’Immaculée Conception",
+      "subtitle": "Traditionnellement priée du 29 novembre au 7 décembre",
+      "bodyMd": "Prier pendant **neuf jours consécutifs**. Présenter son intention, puis prier :\n\nVierge immaculée, Marie conçue sans péché, souvenez-vous que vous avez été préservée de toute tache parce que vous avez été choisie pour être la Mère de Dieu et la mère, le refuge et l’avocate des pécheurs.\n\nConfiant dans votre intercession, je vous demande de regarder avec faveur l’intention de cette neuvaine et d’obtenir les grâces que je sollicite, si elles s’accordent à la sainte volonté de Dieu.\n\nObtenez-moi la pureté du cœur, la persévérance dans la prière, l’humilité dans le service et l’amour de votre Fils. Aidez-moi à résister au péché et à consacrer chaque pensée, chaque parole et chaque action à la plus grande gloire de Dieu. Amen.\n\n> Ô Marie conçue sans péché, priez pour nous qui avons recours à vous.\n\nTerminer par un **Notre Père**, un **Je vous salue Marie** et un **Gloire au Père**.",
+      "about": "La neuvaine prépare à la solennité de l’Immaculée Conception, le 8 décembre. Elle célèbre la grâce de Dieu qui a préservé Marie du péché originel dès le premier instant de sa conception.",
+      "source": "Mary, Help of Christians (1909), « Novena in Honor of the Immaculate Conception », domaine public via Wikisource, https://en.wikisource.org/wiki/Mary,_help_of_Christians/Novena_1:_In_Honor_of_the_Immaculate_Conception_of_the_Blessed_Virgin_Mary, consulté le 2026-08-28 ; traduction française Cathopedia d’une forme traditionnelle abrégée"
+    },
+    "la": {
+      "title": "Novena Immaculatae Conceptionis",
+      "subtitle": "A die XXIX Novembris ad diem VII Decembris",
+      "bodyMd": "Per **novem dies continuos** intentio proponatur.\n\nO Maria, sine labe concepta, ora pro nobis qui ad te confugimus. Impetra nobis puritatem cordis, constantiam in oratione, humilitatem in servitio et amorem Filii tui. Amen.\n\nDicantur **Pater noster**, **Ave Maria**, et **Gloria Patri**.",
+      "about": "Novena fideles ad sollemnitatem Immaculatae Conceptionis die VIII Decembris praeparat.",
+      "source": "Traditional Latin invocation associated with the Miraculous Medal; novena structure adapted from Mary, Help of Christians (1909)"
+    }
+  }
+}

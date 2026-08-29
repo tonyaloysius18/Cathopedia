@@ -12,6 +12,9 @@ kotlin = "2.3.21"
 kotlinxCoroutinesCore = "1.9.0"
 kotlinxDatetime = "0.8.0"
 kotlinxSerializationJson = "1.7.3"
+ktorClientCore = "3.0.3"
+coil = "3.0.4"
+peekaboo = "0.5.2"
 material3 = "1.11.0-alpha07"
 media3Exoplayer = "1.11.0"
 media3Ui = "1.11.0"
@@ -43,6 +46,13 @@ sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", versi
 sqldelight-coroutines-extensions = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
 sqldelight-dialect = { module = "app.cash.sqldelight:sqlite-3-38-dialect", version.ref = "sqldelight" }
 requery-sqlite-android = { module = "com.github.requery:sqlite-android", version.ref = "requerySqliteAndroid" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktorClientCore" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktorClientCore" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktorClientCore" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktorClientCore" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktorClientCore" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+peekaboo-image-picker = { module = "io.github.onseok:peekaboo-image-picker", version.ref = "peekaboo" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

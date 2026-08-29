@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": 2,
+  "contentVersion": 3,
   "hub": {
     "id": "holy_see",
     "slug": "holy-see",
@@ -146,6 +146,69 @@
       "articleIds": [
         "art.seeing_the_pope.overview"
       ]
+    },
+    {
+      "id": "holy_see.swiss_guard",
+      "sortOrder": 11,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.swiss_guard.title",
+      "summaryKey": "sec.swiss_guard.summary",
+      "icon": "ic_halberd",
+      "factSheetId": "fact.swiss_guard",
+      "articleIds": [
+        "art.swiss_guard.overview"
+      ]
+    },
+    {
+      "id": "holy_see.papal_states",
+      "sortOrder": 12,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.papal_states.title",
+      "summaryKey": "sec.papal_states.summary",
+      "icon": "ic_crown",
+      "articleIds": [
+        "art.papal_states.overview"
+      ],
+      "timelineId": "tl.papal_states"
+    },
+    {
+      "id": "holy_see.diplomacy",
+      "sortOrder": 13,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.diplomacy.title",
+      "summaryKey": "sec.diplomacy.summary",
+      "icon": "ic_globe",
+      "articleIds": [
+        "art.diplomacy.overview"
+      ]
+    },
+    {
+      "id": "holy_see.insignia",
+      "sortOrder": 14,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.insignia.title",
+      "summaryKey": "sec.insignia.summary",
+      "icon": "ic_tiara",
+      "articleIds": [
+        "art.insignia.overview"
+      ]
+    },
+    {
+      "id": "holy_see.jubilee",
+      "sortOrder": 15,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.jubilee.title",
+      "summaryKey": "sec.jubilee.summary",
+      "icon": "ic_holy_door",
+      "articleIds": [
+        "art.jubilee.overview"
+      ],
+      "timelineId": "tl.jubilees"
     }
   ],
   "factSheets": [
@@ -202,6 +265,44 @@
           "labelKey": "fact.vatican_city.domain.label",
           "valueKey": "fact.vatican_city.domain.value",
           "icon": "ic_globe"
+        }
+      ]
+    },
+    {
+      "id": "fact.swiss_guard",
+      "titleKey": "fact.swiss_guard.title",
+      "facts": [
+        {
+          "id": "fact.swiss_guard.founded",
+          "labelKey": "fact.swiss_guard.founded.label",
+          "valueKey": "fact.swiss_guard.founded.value",
+          "icon": "ic_calendar"
+        },
+        {
+          "id": "fact.swiss_guard.strength",
+          "labelKey": "fact.swiss_guard.strength.label",
+          "valueKey": "fact.swiss_guard.strength.value",
+          "icon": "ic_people",
+          "volatile": true
+        },
+        {
+          "id": "fact.swiss_guard.motto",
+          "labelKey": "fact.swiss_guard.motto.label",
+          "valueKey": "fact.swiss_guard.motto.value",
+          "icon": "ic_scroll"
+        },
+        {
+          "id": "fact.swiss_guard.requirements",
+          "labelKey": "fact.swiss_guard.requirements.label",
+          "valueKey": "fact.swiss_guard.requirements.value",
+          "icon": "ic_halberd"
+        },
+        {
+          "id": "fact.swiss_guard.oath_day",
+          "labelKey": "fact.swiss_guard.oath_day.label",
+          "valueKey": "fact.swiss_guard.oath_day.value",
+          "icon": "ic_calendar",
+          "footnoteKey": "fact.swiss_guard.oath_day.footnote"
         }
       ]
     }
@@ -702,6 +803,313 @@
         {
           "type": "paragraph",
           "textKey": "art.seeing_the_pope.p2"
+        }
+      ]
+    },
+    {
+      "id": "art.swiss_guard.overview",
+      "sectionId": "holy_see.swiss_guard",
+      "sortOrder": 1,
+      "titleKey": "art.swiss_guard.title",
+      "leadKey": "art.swiss_guard.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.swiss_guard.p1"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.swiss_guard.p2"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.swiss_guard.h_sack"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.swiss_guard.p3"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.swiss_guard.callout.title",
+          "textKey": "art.swiss_guard.callout.body"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.swiss_guard.h_today"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.swiss_guard.p4"
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": [
+            "art.swiss_guard.li_swiss",
+            "art.swiss_guard.li_catholic",
+            "art.swiss_guard.li_age",
+            "art.swiss_guard.li_training"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.swiss_guard.h_uniform"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.swiss_guard.p5"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Pontifical Swiss Guard, official history"
+        }
+      ]
+    },
+    {
+      "id": "art.papal_states.overview",
+      "sectionId": "holy_see.papal_states",
+      "sortOrder": 1,
+      "titleKey": "art.papal_states.title",
+      "leadKey": "art.papal_states.lead",
+      "readingTimeMinutes": 5,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.papal_states.p1"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.papal_states.h_origins"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.papal_states.p2"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.papal_states.p3"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.papal_states.callout.title",
+          "textKey": "art.papal_states.callout.body"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.papal_states.h_end"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.papal_states.p4"
+        },
+        {
+          "type": "timelineRef",
+          "timelineId": "tl.papal_states"
+        }
+      ],
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.vatican_city.lateran_treaty"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Annuario Pontificio; standard histories of the Papal States"
+        }
+      ]
+    },
+    {
+      "id": "art.diplomacy.overview",
+      "sectionId": "holy_see.diplomacy",
+      "sortOrder": 1,
+      "titleKey": "art.diplomacy.title",
+      "leadKey": "art.diplomacy.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.diplomacy.p1"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.diplomacy.h_nuncio"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.diplomacy.p2"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.diplomacy.h_concordat"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.diplomacy.p3"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.diplomacy.h_un"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.diplomacy.p4"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "titleKey": "art.diplomacy.callout.title",
+          "textKey": "art.diplomacy.callout.body"
+        }
+      ],
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.vatican_city.holy_see_vs_state"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vienna Convention on Diplomatic Relations (1961)"
+        }
+      ]
+    },
+    {
+      "id": "art.insignia.overview",
+      "sectionId": "holy_see.insignia",
+      "sortOrder": 1,
+      "titleKey": "art.insignia.title",
+      "leadKey": "art.insignia.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.insignia.p1"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "art.insignia.grid.pontiff.label",
+              "valueKey": "art.insignia.grid.pontiff.value",
+              "icon": "ic_keys"
+            },
+            {
+              "labelKey": "art.insignia.grid.vicar.label",
+              "valueKey": "art.insignia.grid.vicar.value",
+              "icon": "ic_cross"
+            },
+            {
+              "labelKey": "art.insignia.grid.bishop.label",
+              "valueKey": "art.insignia.grid.bishop.value",
+              "icon": "ic_basilica"
+            },
+            {
+              "labelKey": "art.insignia.grid.servant.label",
+              "valueKey": "art.insignia.grid.servant.value",
+              "icon": "ic_people"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.insignia.h_symbols"
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": [
+            "art.insignia.li_keys",
+            "art.insignia.li_tiara",
+            "art.insignia.li_ring",
+            "art.insignia.li_pallium",
+            "art.insignia.li_cassock"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.insignia.h_name"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.insignia.p2"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.insignia.callout.title",
+          "textKey": "art.insignia.callout.body"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Annuario Pontificio; Universi Dominici Gregis"
+        }
+      ]
+    },
+    {
+      "id": "art.jubilee.overview",
+      "sectionId": "holy_see.jubilee",
+      "sortOrder": 1,
+      "titleKey": "art.jubilee.title",
+      "leadKey": "art.jubilee.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.jubilee.p1"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.jubilee.p2"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.jubilee.h_door"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.jubilee.p3"
+        },
+        {
+          "type": "callout",
+          "tone": "devotional",
+          "titleKey": "art.jubilee.callout.title",
+          "textKey": "art.jubilee.callout.body"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.jubilee.h_rhythm"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.jubilee.p4"
+        },
+        {
+          "type": "timelineRef",
+          "timelineId": "tl.jubilees"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Incarnationis Mysterium (1998); Spes Non Confundit (2024)"
         }
       ]
     }
@@ -1376,6 +1784,92 @@
           "endYear": 1965,
           "titleKey": "timeline.councils.vatican2.title",
           "bodyKey": "timeline.councils.vatican2.body"
+        }
+      ]
+    },
+    {
+      "id": "tl.papal_states",
+      "titleKey": "tl.papal_states.title",
+      "events": [
+        {
+          "id": "tl.ps.756",
+          "year": 756,
+          "titleKey": "tl.ps.756.title",
+          "bodyKey": "tl.ps.756.body"
+        },
+        {
+          "id": "tl.ps.1309",
+          "year": 1309,
+          "endYear": 1377,
+          "titleKey": "tl.ps.1309.title",
+          "bodyKey": "tl.ps.1309.body"
+        },
+        {
+          "id": "tl.ps.1798",
+          "year": 1798,
+          "titleKey": "tl.ps.1798.title",
+          "bodyKey": "tl.ps.1798.body"
+        },
+        {
+          "id": "tl.ps.1815",
+          "year": 1815,
+          "titleKey": "tl.ps.1815.title",
+          "bodyKey": "tl.ps.1815.body"
+        },
+        {
+          "id": "tl.ps.1861",
+          "year": 1861,
+          "titleKey": "tl.ps.1861.title",
+          "bodyKey": "tl.ps.1861.body"
+        },
+        {
+          "id": "tl.ps.1870",
+          "year": 1870,
+          "titleKey": "tl.ps.1870.title",
+          "bodyKey": "tl.ps.1870.body"
+        }
+      ]
+    },
+    {
+      "id": "tl.jubilees",
+      "titleKey": "tl.jubilees.title",
+      "events": [
+        {
+          "id": "tl.jub.1300",
+          "year": 1300,
+          "titleKey": "tl.jub.1300.title",
+          "bodyKey": "tl.jub.1300.body"
+        },
+        {
+          "id": "tl.jub.1475",
+          "year": 1475,
+          "titleKey": "tl.jub.1475.title",
+          "bodyKey": "tl.jub.1475.body"
+        },
+        {
+          "id": "tl.jub.1983",
+          "year": 1983,
+          "titleKey": "tl.jub.1983.title",
+          "bodyKey": "tl.jub.1983.body"
+        },
+        {
+          "id": "tl.jub.2000",
+          "year": 2000,
+          "titleKey": "tl.jub.2000.title",
+          "bodyKey": "tl.jub.2000.body"
+        },
+        {
+          "id": "tl.jub.2015",
+          "year": 2015,
+          "endYear": 2016,
+          "titleKey": "tl.jub.2015.title",
+          "bodyKey": "tl.jub.2015.body"
+        },
+        {
+          "id": "tl.jub.2025",
+          "year": 2025,
+          "titleKey": "tl.jub.2025.title",
+          "bodyKey": "tl.jub.2025.body"
         }
       ]
     }

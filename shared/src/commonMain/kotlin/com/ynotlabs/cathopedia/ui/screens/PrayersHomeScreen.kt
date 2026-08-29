@@ -20,7 +20,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -64,6 +66,8 @@ import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.model.PrayerCategory
 import com.ynotlabs.cathopedia.model.PrayerSummary
+import com.ynotlabs.cathopedia.ui.CategoryIcon
+import com.ynotlabs.cathopedia.ui.getCategoryIcon
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.prayer_category_eucharistic
 import com.ynotlabs.cathopedia.resources.prayer_category_everyday
@@ -96,7 +100,7 @@ private val MarianBlue = Color(0xFF0055A4)
 private val PassionRedDeep = Color(0xFF4B0A0A)
 private val PassionRed = Color(0xFF8B0000)
 
-private enum class PrayerQuickSection {
+enum class PrayerQuickSection {
     FAVOURITES,
     EVERYDAY,
     MARIAN,
@@ -112,21 +116,29 @@ private enum class PrayerQuickSection {
 fun PrayersHomeScreen(
     repository: CathopediaRepository,
     language: String,
+    favorites: List<PrayerSummary>,
+    byCategory: Map<PrayerCategory, List<PrayerSummary>>,
+    onDataLoaded: (List<PrayerSummary>, Map<PrayerCategory, List<PrayerSummary>>) -> Unit,
     onOpenPrayer: (slug: String) -> Unit,
     onOpenRosary: () -> Unit,
     onOpenStations: () -> Unit,
+    quickSection: PrayerQuickSection,
+    onQuickSectionChange: (PrayerQuickSection) -> Unit,
+    quickSectionState: LazyListState,
+    scrollState: LazyListState,
 ) {
     val s = LocalStrings.current
 
-    var favorites by remember { mutableStateOf<List<PrayerSummary>>(emptyList()) }
-    var byCategory by remember { mutableStateOf<Map<PrayerCategory, List<PrayerSummary>>>(emptyMap()) }
     var query by remember { mutableStateOf("") }
     var searchResults by remember { mutableStateOf<List<PrayerSummary>>(emptyList()) }
-    var quickSection by remember { mutableStateOf(PrayerQuickSection.EVERYDAY) }
 
+    // The loaded prayer data is hoisted to App.kt so it survives navigating into a
+    // prayer and back — keeping the list populated so the retained [scrollState]
+    // restores the scroll position instead of snapping to the top.
     LaunchedEffect(language) {
-        favorites = repository.listFavoritePrayers(language)
-        byCategory = PrayerCategory.entries.associateWith { repository.listPrayers(it, language) }
+        val loadedFavorites = repository.listFavoritePrayers(language)
+        val loadedByCategory = PrayerCategory.entries.associateWith { repository.listPrayers(it, language) }
+        onDataLoaded(loadedFavorites, loadedByCategory)
     }
 
     LaunchedEffect(query, language) {
@@ -177,7 +189,9 @@ fun PrayersHomeScreen(
                 favorites = favorites,
                 byCategory = byCategory,
                 selectedSection = quickSection,
-                onSectionSelected = { quickSection = it },
+                onSectionSelected = onQuickSectionChange,
+                quickSectionState = quickSectionState,
+                scrollState = scrollState,
                 onSelect = ::openPrayer,
                 onOpenRosary = onOpenRosary,
                 onOpenStations = onOpenStations,
@@ -191,6 +205,7 @@ fun PrayersHomeScreen(
 
 @Composable
 private fun PrayerHeader() {
+    val s = LocalStrings.current
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -199,7 +214,7 @@ private fun PrayerHeader() {
     ) {
         Column(modifier = Modifier.weight(1f)) {
             Text(
-                text = "Prayers",
+                text = s.prayersHomeTitle,
                 color = PrayerCream,
                 fontFamily = FontFamily.Serif,
                 fontSize = 32.sp,
@@ -210,7 +225,7 @@ private fun PrayerHeader() {
             Spacer(Modifier.height(2.dp))
 
             Text(
-                text = "Strengthen your faith with daily prayer",
+                text = s.prayersHeaderSubtitle,
                 color = PrayerMuted,
                 fontSize = 13.5.sp,
                 lineHeight = 18.sp,
@@ -281,6 +296,8 @@ private fun PrayerHomeBody(
     byCategory: Map<PrayerCategory, List<PrayerSummary>>,
     selectedSection: PrayerQuickSection,
     onSectionSelected: (PrayerQuickSection) -> Unit,
+    quickSectionState: LazyListState,
+    scrollState: LazyListState,
     onSelect: (PrayerSummary) -> Unit,
     onOpenRosary: () -> Unit,
     onOpenStations: () -> Unit,
@@ -295,6 +312,7 @@ private fun PrayerHomeBody(
 
     LazyColumn(
         modifier = modifier,
+        state = scrollState,
         contentPadding = PaddingValues(
             start = 18.dp,
             end = 18.dp,
@@ -314,6 +332,7 @@ private fun PrayerHomeBody(
             QuickPrayerCategories(
                 selected = selectedSection,
                 favoritesCount = favorites.size,
+                state = quickSectionState,
                 onSelected = onSectionSelected,
             )
 
@@ -321,15 +340,15 @@ private fun PrayerHomeBody(
 
             PrayerSectionHeader(
                 title = when (selectedSection) {
-                    PrayerQuickSection.FAVOURITES -> "My Favourites"
-                    PrayerQuickSection.EVERYDAY -> "Everyday prayers"
-                    PrayerQuickSection.MARIAN -> "Marian prayers"
-                    PrayerQuickSection.HOLY_SPIRIT -> "Holy Spirit prayers"
-                    PrayerQuickSection.EUCHARISTIC -> "Eucharistic prayers"
-                    PrayerQuickSection.SAINTS -> "Saint prayers"
-                    PrayerQuickSection.PENITENTIAL -> "Penitential prayers"
-                    PrayerQuickSection.CHAPLETS_NOVENAS -> "Chaplets & Novenas"
-                    PrayerQuickSection.OCCASIONAL -> "Occasional prayers"
+                    PrayerQuickSection.FAVOURITES -> s.prayersMyFavourites
+                    PrayerQuickSection.EVERYDAY -> s.prayersEverydaySection
+                    PrayerQuickSection.MARIAN -> s.prayersMarianSection
+                    PrayerQuickSection.HOLY_SPIRIT -> s.prayersHolySpiritSection
+                    PrayerQuickSection.EUCHARISTIC -> s.prayersEucharisticSection
+                    PrayerQuickSection.SAINTS -> s.prayersSaintsSection
+                    PrayerQuickSection.PENITENTIAL -> s.prayersPenitentialSection
+                    PrayerQuickSection.CHAPLETS_NOVENAS -> s.prayerCategorySequences
+                    PrayerQuickSection.OCCASIONAL -> s.prayersOccasionalSection
                 },
                 count = visiblePrayers.size,
             )
@@ -350,7 +369,7 @@ private fun PrayerHomeBody(
                 ) {
                     Text(
                         text = if (selectedSection == PrayerQuickSection.FAVOURITES) {
-                            "Your favourite prayers will appear here."
+                            s.prayersFavouriteEmpty
                         } else {
                             s.listContentWillAppear
                         },
@@ -495,7 +514,7 @@ private fun RosaryHeroCard(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
-                        text = "Pray Now",
+                        text = s.prayersPrayNow,
                         color = PrayerGold,
                         fontSize = 13.sp,
                         fontWeight = FontWeight.SemiBold,
@@ -517,6 +536,7 @@ private fun RosaryHeroCard(
 
 @Composable
 private fun WayOfTheCrossCard(onClick: () -> Unit) {
+    val s = LocalStrings.current
     val shape = RoundedCornerShape(24.dp)
 
     Box(
@@ -590,7 +610,7 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
 
         Column(modifier = Modifier.padding(18.dp)) {
             Text(
-                text = "WAY OF THE CROSS",
+                text = s.prayersWayOfCrossTitle.uppercase(),
                 color = PrayerGold,
                 fontSize = 12.sp,
                 letterSpacing = 1.2.sp,
@@ -600,7 +620,7 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
             Spacer(Modifier.height(8.dp))
 
             Text(
-                text = "Walk with Christ through His Passion",
+                text = s.prayersWayOfCrossTagline,
                 color = PrayerCream,
                 fontFamily = FontFamily.Serif,
                 fontSize = 21.sp,
@@ -610,7 +630,7 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
             Spacer(Modifier.height(6.dp))
 
             Text(
-                text = "Meditate on the fourteen Stations of the Cross.",
+                text = s.prayersWayOfCrossDescription,
                 color = PrayerMuted,
                 fontSize = 13.sp,
             )
@@ -622,9 +642,12 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
 private fun QuickPrayerCategories(
     selected: PrayerQuickSection,
     favoritesCount: Int,
+    state: LazyListState,
     onSelected: (PrayerQuickSection) -> Unit,
 ) {
+    val s = LocalStrings.current
     androidx.compose.foundation.lazy.LazyRow(
+        state = state,
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
@@ -633,20 +656,20 @@ private fun QuickPrayerCategories(
 
             QuickPrayerTile(
                 title = when (section) {
-                    PrayerQuickSection.FAVOURITES -> "Favourites"
-                    PrayerQuickSection.EVERYDAY -> "Everyday"
-                    PrayerQuickSection.MARIAN -> "Marian"
-                    PrayerQuickSection.HOLY_SPIRIT -> "Holy Spirit"
-                    PrayerQuickSection.EUCHARISTIC -> "Eucharistic"
-                    PrayerQuickSection.SAINTS -> "Saints"
-                    PrayerQuickSection.PENITENTIAL -> "Penitential"
-                    PrayerQuickSection.CHAPLETS_NOVENAS -> "Chaplets & Novenas"
-                    PrayerQuickSection.OCCASIONAL -> "Occasional"
+                    PrayerQuickSection.FAVOURITES -> s.prayersFavoritesSection
+                    PrayerQuickSection.EVERYDAY -> s.prayerCategoryEveryday
+                    PrayerQuickSection.MARIAN -> s.prayerCategoryMarian
+                    PrayerQuickSection.HOLY_SPIRIT -> s.prayerCategoryHolySpirit
+                    PrayerQuickSection.EUCHARISTIC -> s.prayerCategoryEucharistic
+                    PrayerQuickSection.SAINTS -> s.prayerCategorySaints
+                    PrayerQuickSection.PENITENTIAL -> s.prayerCategoryPenitential
+                    PrayerQuickSection.CHAPLETS_NOVENAS -> s.prayerCategorySequences
+                    PrayerQuickSection.OCCASIONAL -> s.prayerCategoryOccasional
                 },
                 subtitle = when (section) {
-                    PrayerQuickSection.FAVOURITES -> "$favoritesCount saved"
-                    PrayerQuickSection.EVERYDAY -> "Daily prayers"
-                    else -> "Explore"
+                    PrayerQuickSection.FAVOURITES -> s.prayersSavedCount.replace("{count}", favoritesCount.toString())
+                    PrayerQuickSection.EVERYDAY -> s.prayersDailySubtitle
+                    else -> s.prayersExploreSubtitle
                 },
                 icon = getSectionIcon(section),
                 selected = selected == section,
@@ -785,7 +808,6 @@ private fun PremiumPrayerRow(
     query: String? = null,
 ) {
     val s = LocalStrings.current
-    val isComingSoon = prayer.isSequence && prayer.id != HOLY_ROSARY_ID
     val shape = RoundedCornerShape(18.dp)
 
     Row(
@@ -856,7 +878,7 @@ private fun PremiumPrayerRow(
             Spacer(Modifier.height(3.dp))
 
             Text(
-                text = prayer.subtitle ?: prayerOpeningLine(prayer.title),
+                text = prayer.subtitle ?: prayerOpeningLine(prayer.id, s),
                 color = PrayerMuted,
                 fontSize = 11.5.sp,
                 lineHeight = 15.sp,
@@ -865,13 +887,6 @@ private fun PremiumPrayerRow(
             )
         }
 
-        if (isComingSoon) {
-            Text(
-                text = s.prayersSequenceComingSoon,
-                color = PrayerGoldSoft,
-                fontSize = 10.sp,
-            )
-        }
     }
 }
 
@@ -921,7 +936,7 @@ private fun PrayerSearchResults(
             Spacer(Modifier.height(6.dp))
 
             Text(
-                text = "Try another prayer name or devotional keyword.",
+                text = s.prayersSearchSuggestion,
                 color = PrayerMuted,
                 fontSize = 12.5.sp,
             )
@@ -940,7 +955,7 @@ private fun PrayerSearchResults(
     ) {
         item {
             PrayerSectionHeader(
-                title = "Search results",
+                title = s.prayersSearchResults,
                 count = results.size,
             )
             Spacer(Modifier.height(10.dp))
@@ -1020,22 +1035,6 @@ private fun highlight(
     }
 }
 
-private sealed class CategoryIcon {
-    data class Vector(val imageVector: ImageVector) : CategoryIcon()
-    data class Resource(val res: DrawableResource) : CategoryIcon()
-}
-
-private fun getCategoryIcon(category: PrayerCategory): CategoryIcon = when (category) {
-    PrayerCategory.EVERYDAY -> CategoryIcon.Resource(Res.drawable.prayer_category_everyday)
-    PrayerCategory.MARIAN -> CategoryIcon.Resource(Res.drawable.prayer_category_marian)
-    PrayerCategory.HOLY_SPIRIT -> CategoryIcon.Resource(Res.drawable.prayer_category_holy_spirit)
-    PrayerCategory.EUCHARISTIC -> CategoryIcon.Resource(Res.drawable.prayer_category_eucharistic)
-    PrayerCategory.SAINTS -> CategoryIcon.Resource(Res.drawable.prayer_category_saints)
-    PrayerCategory.PENITENTIAL -> CategoryIcon.Resource(Res.drawable.prayer_category_penitential)
-    PrayerCategory.SEQUENCES -> CategoryIcon.Resource(Res.drawable.prayer_category_sequences)
-    PrayerCategory.OCCASIONAL -> CategoryIcon.Resource(Res.drawable.prayer_category_occasional)
-}
-
 private fun getSectionIcon(section: PrayerQuickSection): CategoryIcon = when (section) {
     PrayerQuickSection.FAVOURITES -> CategoryIcon.Resource(Res.drawable.prayer_category_favorites)
     PrayerQuickSection.EVERYDAY -> getCategoryIcon(PrayerCategory.EVERYDAY)
@@ -1076,42 +1075,22 @@ private fun prayersForSection(
 
     PrayerQuickSection.CHAPLETS_NOVENAS ->
         byCategory[PrayerCategory.SEQUENCES].orEmpty()
+            .filter { it.id != HOLY_ROSARY_ID && it.id != "stations-of-the-cross" }
 
     PrayerQuickSection.OCCASIONAL ->
         byCategory[PrayerCategory.OCCASIONAL].orEmpty()
 }
 
-private fun prayerOpeningLine(title: String): String {
-    val key = title.lowercase()
-
-    return when {
-        "sign of the cross" in key ->
-            "In the name of the Father, and of the Son..."
-
-        "our father" in key ->
-            "Our Father, who art in heaven..."
-
-        "hail mary" in key ->
-            "Hail Mary, full of grace..."
-
-        "glory be" in key ->
-            "Glory be to the Father, and to the Son..."
-
-        "apostles" in key && "creed" in key ->
-            "I believe in God, the Father almighty..."
-
-        "nicene" in key && "creed" in key ->
-            "I believe in one God, the Father almighty..."
-
-        "morning offering" in key ->
-            "Begin your day by offering it to God."
-
-        "evening prayer" in key ->
-            "End the day in gratitude and reflection."
-
-        else ->
-            "Open this prayer to read and pray."
-    }
+private fun prayerOpeningLine(id: String, s: Strings): String = when (id) {
+    "sign-of-the-cross" -> s.prayersOpeningSignOfCross
+    "our-father" -> s.prayersOpeningOurFather
+    "hail-mary" -> s.prayersOpeningHailMary
+    "glory-be" -> s.prayersOpeningGloryBe
+    "apostles-creed" -> s.prayersOpeningApostlesCreed
+    "nicene-creed" -> s.prayersOpeningNiceneCreed
+    "morning-offering" -> s.prayersOpeningMorningOffering
+    "evening-prayer" -> s.prayersOpeningEveningPrayer
+    else -> s.prayersOpeningGeneric
 }
 
 private fun categoryLabel(
