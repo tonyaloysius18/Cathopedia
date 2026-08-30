@@ -1,0 +1,418 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": 1,
+  "hub": {
+    "id": "mass",
+    "slug": "holy-mass",
+    "titleKey": "hub.mass.title",
+    "subtitleKey": "hub.mass.subtitle",
+    "introKey": "hub.mass.intro",
+    "icon": "ic_chalice",
+    "accentColor": "#B8963E",
+    "sortOrder": 4,
+    "tags": [
+      "mass",
+      "liturgy",
+      "eucharist",
+      "worship"
+    ]
+  },
+  "sections": [
+    {
+      "id": "mass.structure",
+      "sortOrder": 1,
+      "status": "PUBLISHED",
+      "layout": "STEPPER",
+      "titleKey": "sec.structure.title",
+      "summaryKey": "sec.structure.summary",
+      "icon": "ic_mass",
+      "stepperId": "step.mass_structure"
+    },
+    {
+      "id": "mass.procession",
+      "sortOrder": 2,
+      "status": "PUBLISHED",
+      "layout": "STEPPER",
+      "titleKey": "sec.procession.title",
+      "summaryKey": "sec.procession.summary",
+      "icon": "ic_procession",
+      "stepperId": "step.procession"
+    },
+    {
+      "id": "mass.monstrance",
+      "sortOrder": 3,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.mass.monstrance.title",
+      "summaryKey": "sec.mass.monstrance.summary",
+      "icon": "ic_monstrance",
+      "articleIds": [
+        "art.monstrance.overview"
+      ]
+    },
+    {
+      "id": "mass.thurible",
+      "sortOrder": 4,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.mass.thurible.title",
+      "summaryKey": "sec.mass.thurible.summary",
+      "icon": "ic_thurible",
+      "articleIds": [
+        "art.thurible.overview"
+      ]
+    },
+    {
+      "id": "mass.vessels",
+      "sortOrder": 5,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.vessels.title",
+      "summaryKey": "sec.vessels.summary",
+      "icon": "ic_chalice",
+      "articleIds": [
+        "art.vessels.overview"
+      ]
+    },
+    {
+      "id": "mass.postures",
+      "sortOrder": 6,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.postures.title",
+      "summaryKey": "sec.postures.summary",
+      "icon": "ic_kneel",
+      "articleIds": [
+        "art.postures.overview"
+      ]
+    },
+    {
+      "id": "mass.altar",
+      "sortOrder": 7,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.altar.title",
+      "summaryKey": "sec.altar.summary",
+      "icon": "ic_altar",
+      "articleIds": [
+        "art.altar.overview"
+      ]
+    }
+  ],
+  "articles": [
+    {
+      "id": "art.monstrance.overview",
+      "sectionId": "mass.monstrance",
+      "sortOrder": 1,
+      "titleKey": "art.monstrance.title",
+      "leadKey": "art.monstrance.lead",
+      "readingTimeMinutes": 3,
+      "blocks": [
+        {
+          "type": "image",
+          "asset": "hub/mass/mass_monstrance.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.monstrance.p1"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.monstrance.h_parts"
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": [
+            "art.monstrance.li_cross",
+            "art.monstrance.li_sunburst",
+            "art.monstrance.li_window",
+            "art.monstrance.li_luna",
+            "art.monstrance.li_host",
+            "art.monstrance.li_node",
+            "art.monstrance.li_shaft",
+            "art.monstrance.li_base"
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.monstrance.callout.title",
+          "textKey": "art.monstrance.callout.body"
+        }
+      ]
+    },
+    {
+      "id": "art.thurible.overview",
+      "sectionId": "mass.thurible",
+      "sortOrder": 1,
+      "titleKey": "art.thurible.title",
+      "leadKey": "art.thurible.lead",
+      "readingTimeMinutes": 3,
+      "blocks": [
+        {
+          "type": "image",
+          "asset": "hub/mass/mass_thurible.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.thurible.p1"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.thurible.h_parts"
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": [
+            "art.thurible.li_finial",
+            "art.thurible.li_lid",
+            "art.thurible.li_charcoal",
+            "art.thurible.li_bowl",
+            "art.thurible.li_chains",
+            "art.thurible.li_ring",
+            "art.thurible.li_handle"
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.thurible.callout.title",
+          "textKey": "art.thurible.callout.body"
+        }
+      ]
+    },
+    {
+      "id": "art.vessels.overview",
+      "sectionId": "mass.vessels",
+      "sortOrder": 1,
+      "titleKey": "art.vessels.title",
+      "leadKey": "art.vessels.lead",
+      "readingTimeMinutes": 3,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.vessels.p1"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.vessels.h_list"
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": [
+            "art.vessels.li_chalice",
+            "art.vessels.li_paten",
+            "art.vessels.li_ciborium",
+            "art.vessels.li_cruets",
+            "art.vessels.li_pyx",
+            "art.vessels.li_luna"
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.vessels.callout.title",
+          "textKey": "art.vessels.callout.body"
+        }
+      ]
+    },
+    {
+      "id": "art.postures.overview",
+      "sectionId": "mass.postures",
+      "sortOrder": 1,
+      "titleKey": "art.postures.title",
+      "leadKey": "art.postures.lead",
+      "readingTimeMinutes": 3,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.postures.p1"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.postures.h_postures"
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": [
+            "art.postures.li_stand",
+            "art.postures.li_sit",
+            "art.postures.li_kneel",
+            "art.postures.li_genuflect",
+            "art.postures.li_bow",
+            "art.postures.li_sign"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.postures.h_responses"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.postures.p2"
+        }
+      ]
+    },
+    {
+      "id": "art.altar.overview",
+      "sectionId": "mass.altar",
+      "sortOrder": 1,
+      "titleKey": "art.altar.title",
+      "leadKey": "art.altar.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.altar.p1"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.altar.h_decoration"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.altar.p2"
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": [
+            "art.altar.li_cross",
+            "art.altar.li_candles",
+            "art.altar.li_cloth",
+            "art.altar.li_flowers",
+            "art.altar.li_frontal"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.altar.h_cloths"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.altar.p3"
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": [
+            "art.altar.li_altarcloth",
+            "art.altar.li_corporal",
+            "art.altar.li_purificator",
+            "art.altar.li_pall"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.altar.h_markings"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.altar.p4"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.altar.callout.title",
+          "textKey": "art.altar.callout.body"
+        }
+      ]
+    }
+  ],
+  "steppers": [
+    {
+      "id": "step.mass_structure",
+      "titleKey": "stepper.structure.title",
+      "introKey": "stepper.structure.intro",
+      "steps": [
+        {
+          "id": "step.structure.1",
+          "order": 1,
+          "titleKey": "stepper.structure.intro.title",
+          "bodyKey": "stepper.structure.intro.body"
+        },
+        {
+          "id": "step.structure.2",
+          "order": 2,
+          "titleKey": "stepper.structure.word.title",
+          "bodyKey": "stepper.structure.word.body"
+        },
+        {
+          "id": "step.structure.3",
+          "order": 3,
+          "titleKey": "stepper.structure.eucharist.title",
+          "bodyKey": "stepper.structure.eucharist.body"
+        },
+        {
+          "id": "step.structure.4",
+          "order": 4,
+          "titleKey": "stepper.structure.concluding.title",
+          "bodyKey": "stepper.structure.concluding.body"
+        }
+      ]
+    },
+    {
+      "id": "step.procession",
+      "titleKey": "stepper.procession.title",
+      "introKey": "stepper.procession.intro",
+      "steps": [
+        {
+          "id": "step.procession.1",
+          "order": 1,
+          "titleKey": "stepper.procession.thurifer.title",
+          "bodyKey": "stepper.procession.thurifer.body",
+          "asset": "hub/mass/mass_thurifer.png"
+        },
+        {
+          "id": "step.procession.2",
+          "order": 2,
+          "titleKey": "stepper.procession.cross.title",
+          "bodyKey": "stepper.procession.cross.body",
+          "asset": "hub/mass/mass_crossbearer.png"
+        },
+        {
+          "id": "step.procession.3",
+          "order": 3,
+          "titleKey": "stepper.procession.candle.title",
+          "bodyKey": "stepper.procession.candle.body",
+          "asset": "hub/mass/mass_candlebearer.png"
+        },
+        {
+          "id": "step.procession.4",
+          "order": 4,
+          "titleKey": "stepper.procession.bell.title",
+          "bodyKey": "stepper.procession.bell.body",
+          "asset": "hub/mass/mass_bellringer.png"
+        },
+        {
+          "id": "step.procession.5",
+          "order": 5,
+          "titleKey": "stepper.procession.book.title",
+          "bodyKey": "stepper.procession.book.body",
+          "asset": "hub/mass/mass_bookbearer.png"
+        },
+        {
+          "id": "step.procession.6",
+          "order": 6,
+          "titleKey": "stepper.procession.priest.title",
+          "bodyKey": "stepper.procession.priest.body",
+          "asset": "hub/mass/mass_priest.png"
+        }
+      ]
+    }
+  ]
+}

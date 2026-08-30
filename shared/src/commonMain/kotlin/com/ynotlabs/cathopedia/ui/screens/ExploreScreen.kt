@@ -63,13 +63,11 @@ import com.ynotlabs.cathopedia.resources.explore_catechism
 import com.ynotlabs.cathopedia.resources.explore_feasts
 import com.ynotlabs.cathopedia.resources.explore_bg
 import com.ynotlabs.cathopedia.resources.explore_holy_see
-import com.ynotlabs.cathopedia.resources.explore_sacred_symbols
 import com.ynotlabs.cathopedia.resources.explore_marian
 import com.ynotlabs.cathopedia.resources.explore_popes
 import com.ynotlabs.cathopedia.resources.explore_saints
 import com.ynotlabs.cathopedia.resources.holy_see_icon
 import com.ynotlabs.cathopedia.resources.catechism_icon
-import com.ynotlabs.cathopedia.resources.sacred_symbols_icon
 import com.ynotlabs.cathopedia.resources.saints_icon
 import com.ynotlabs.cathopedia.resources.popes_icon
 import com.ynotlabs.cathopedia.resources.apostles_icon
@@ -78,6 +76,10 @@ import com.ynotlabs.cathopedia.resources.marian_apparitions_icon
 import com.ynotlabs.cathopedia.resources.eucharistic_miracles_icon
 import com.ynotlabs.cathopedia.resources.liturgical_feasts_icon
 import com.ynotlabs.cathopedia.resources.explore_vestments
+import com.ynotlabs.cathopedia.resources.explore_sacred_symbols
+import com.ynotlabs.cathopedia.resources.sacred_symbols_icon
+import com.ynotlabs.cathopedia.resources.explore_holymass
+import com.ynotlabs.cathopedia.resources.holy_mass_icon
 import com.ynotlabs.cathopedia.resources.liturgical_vestments_icon
 
 @Composable
@@ -97,7 +99,7 @@ fun ExploreScreen(
     LaunchedEffect(language) {
         counts = ContentType.entries.associateWith { repository.listByType(it, language).size }
         hubs = repository.listHubs()
-        val keys = hubs.asSequence().flatMap { listOfNotNull(it.titleKey, it.subtitleKey) }.toSet()
+        val keys = hubs.flatMap { listOfNotNull(it.titleKey, it.subtitleKey) }.toSet()
         hubStrings = repository.resolveHubStrings(keys, language)
     }
 
@@ -121,12 +123,61 @@ fun ExploreScreen(
             item {
                 ExploreSectionHeader(s.exploreHubsHeader.uppercase())
             }
-            items(hubs, key = { it.id }) { hub ->
+
+            val holySee = hubs.find { it.id == "holy_see" }
+            val catechism = hubs.find { it.id == "catechism" }
+            val gridHubs = hubs.filter { it.id == "symbols" || it.id == "mass" }
+            val remainingHubs = hubs.filterNot { it.id in setOf("holy_see", "catechism", "symbols", "mass") }
+
+            holySee?.let { hub ->
+                item(key = hub.id) {
+                    HubExploreCard(
+                        hub = hub,
+                        title = hubStrings[hub.titleKey].orEmpty(),
+                        subtitle = hub.subtitleKey?.let { hubStrings[it] },
+                        onClick = { onHubSelected(hub) },
+                    )
+                }
+            }
+
+            if (gridHubs.isNotEmpty()) {
+                item {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        gridHubs.forEach { hub ->
+                            PortraitHubExploreCard(
+                                hub = hub,
+                                title = hubStrings[hub.titleKey].orEmpty(),
+                                subtitle = hub.subtitleKey?.let { hubStrings[it] },
+                                onClick = { onHubSelected(hub) },
+                                modifier = Modifier.weight(1f)
+                            )
+                        }
+                        if (gridHubs.size == 1) Spacer(Modifier.weight(1f))
+                    }
+                }
+            }
+
+            catechism?.let { hub ->
+                item(key = hub.id) {
+                    HubExploreCard(
+                        hub = hub,
+                        title = hubStrings[hub.titleKey].orEmpty(),
+                        subtitle = hub.subtitleKey?.let { hubStrings[it] },
+                        onClick = { onHubSelected(hub) },
+                    )
+                }
+            }
+
+            items(remainingHubs, key = { it.id }) { hub ->
                 HubExploreCard(
                     hub = hub,
                     title = hubStrings[hub.titleKey].orEmpty(),
                     subtitle = hub.subtitleKey?.let { hubStrings[it] },
-                ) { onHubSelected(hub) }
+                    onClick = { onHubSelected(hub) },
+                )
             }
         }
 
@@ -434,7 +485,7 @@ private fun EventsSection(
                     if (singleType == ContentType.FEAST) {
                         VestmentsSectionCard(
                             onClick = onVestmentsSelected,
-                            modifier = Modifier.weight(1f),
+                            modifier = Modifier.weight(1f)
                         )
                     } else {
                         Spacer(Modifier.weight(1f))
@@ -495,15 +546,15 @@ private fun VestmentsSectionCard(
                     text = s.exploreVestmentsTitle,
                     color = MaterialTheme.colorScheme.onBackground,
                     fontFamily = FontFamily.Serif,
-                    fontSize = 15.sp,
-                    lineHeight = 20.sp,
+                    fontSize = 17.sp,
+                    lineHeight = 22.sp,
                     maxLines = 2,
                 )
 
                 Text(
                     text = s.exploreVestmentsSubtitle,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    fontSize = 11.sp,
+                    fontSize = 13.sp,
                 )
             }
         }
@@ -562,16 +613,16 @@ private fun PortraitExploreCard(
                     text = title,
                     color = MaterialTheme.colorScheme.onBackground,
                     fontFamily = FontFamily.Serif,
-                    fontSize = 15.sp,
-                    lineHeight = 20.sp,
+                    fontSize = 17.sp,
+                    lineHeight = 22.sp,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                 )
                 Text(
                     text = humanCountLabel(type, count, s),
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    fontSize = 11.sp,
-                    lineHeight = 16.sp,
+                    fontSize = 13.sp,
+                    lineHeight = 18.sp,
                 )
             }
         }
@@ -629,16 +680,16 @@ private fun EventExploreCard(
                     text = title,
                     color = MaterialTheme.colorScheme.onBackground,
                     fontFamily = FontFamily.Serif,
-                    fontSize = 15.sp,
-                    lineHeight = 20.sp,
+                    fontSize = 17.sp,
+                    lineHeight = 22.sp,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                 )
                 Text(
                     text = humanCountLabel(type, count, s),
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    fontSize = 11.sp,
-                    lineHeight = 16.sp,
+                    fontSize = 13.sp,
+                    lineHeight = 18.sp,
                 )
             }
         }
@@ -657,7 +708,7 @@ private fun WideExploreCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(122.dp)
+            .height(140.dp)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
         border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
@@ -674,7 +725,7 @@ private fun WideExploreCard(
                 alignment = Alignment.BottomEnd,
             )
 
-            val needsStrongerWideFade = (type == ContentType.CHURCH) || (type == ContentType.FEAST)
+            val needsStrongerWideFade = type == ContentType.CHURCH || type == ContentType.FEAST
 
             ArtworkFadeOverlay(
                 wideCardFade = needsStrongerWideFade,
@@ -693,16 +744,113 @@ private fun WideExploreCard(
                         text = title,
                         color = MaterialTheme.colorScheme.onBackground,
                         fontFamily = FontFamily.Serif,
-                        fontSize = 15.sp,
-                        lineHeight = 20.sp,
+                        fontSize = 17.sp,
+                        lineHeight = 22.sp,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                     )
                     Text(
                         text = humanCountLabel(type, count, s),
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        fontSize = 11.sp,
-                        lineHeight = 16.sp,
+                        fontSize = 13.sp,
+                        lineHeight = 18.sp,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun PortraitHubExploreCard(
+    hub: HubSummary,
+    title: String,
+    subtitle: String?,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val isSymbols = hub.id == "symbols"
+    val isHolyMass = hub.id == "mass"
+
+    Card(
+        modifier = modifier
+            .height(156.dp)
+            .clickable(onClick = onClick),
+        shape = RoundedCornerShape(22.dp),
+        border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
+    ) {
+        Box(Modifier.fillMaxSize()) {
+            if (isSymbols) {
+                Image(
+                    painter = painterResource(Res.drawable.explore_sacred_symbols),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = 8.dp, start = 6.dp, end = 2.dp),
+                    contentScale = ContentScale.Fit,
+                    alignment = Alignment.CenterEnd,
+                )
+            } else if (isHolyMass) {
+                Image(
+                    painter = painterResource(Res.drawable.explore_holymass),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = 8.dp, start = 6.dp, end = 2.dp),
+                    contentScale = ContentScale.Fit,
+                    alignment = Alignment.CenterEnd,
+                )
+            }
+
+            ArtworkFadeOverlay(includeBottomFade = true)
+
+            if (isSymbols) {
+                Image(
+                    painter = painterResource(Res.drawable.sacred_symbols_icon),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .align(Alignment.TopStart)
+                        .padding(12.dp)
+                        .size(30.dp),
+                    contentScale = ContentScale.Fit,
+                )
+            } else if (isHolyMass) {
+                Image(
+                    painter = painterResource(Res.drawable.holy_mass_icon),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .align(Alignment.TopStart)
+                        .padding(12.dp)
+                        .size(30.dp),
+                    contentScale = ContentScale.Fit,
+                )
+            }
+
+            Column(
+                modifier = Modifier
+                    .align(Alignment.BottomStart)
+                    .fillMaxWidth()
+                    .padding(12.dp),
+            ) {
+                Text(
+                    text = title,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 17.sp,
+                    lineHeight = 22.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                subtitle?.let {
+                    Text(
+                        text = it,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        fontSize = 13.sp,
+                        lineHeight = 18.sp,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                     )
@@ -722,6 +870,7 @@ private fun HubExploreCard(
     val isHolySee = hub.id == "holy_see"
     val isCatechism = hub.id == "catechism"
     val isSymbols = hub.id == "symbols"
+    val isHolyMass = hub.id == "mass"
     val accent = hub.accentColor?.let { hex ->
         val cleaned = hex.removePrefix("#")
         cleaned.toLongOrNull(16)?.let { value ->
@@ -732,7 +881,7 @@ private fun HubExploreCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(122.dp)
+            .height(140.dp)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
         border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
@@ -763,6 +912,16 @@ private fun HubExploreCard(
             } else if (isSymbols) {
                 Image(
                     painter = painterResource(Res.drawable.explore_sacred_symbols),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
+                    contentScale = ContentScale.Fit,
+                    alignment = Alignment.BottomEnd,
+                )
+            } else if (isHolyMass) {
+                Image(
+                    painter = painterResource(Res.drawable.explore_holymass),
                     contentDescription = null,
                     modifier = Modifier
                         .fillMaxSize()
@@ -801,6 +960,13 @@ private fun HubExploreCard(
                         modifier = Modifier.size(30.dp),
                         contentScale = ContentScale.Fit,
                     )
+                } else if (isHolyMass) {
+                    Image(
+                        painter = painterResource(Res.drawable.holy_mass_icon),
+                        contentDescription = null,
+                        modifier = Modifier.size(30.dp),
+                        contentScale = ContentScale.Fit,
+                    )
                 } else {
                     Box(
                         modifier = Modifier
@@ -814,17 +980,17 @@ private fun HubExploreCard(
                         text = title,
                         color = MaterialTheme.colorScheme.onBackground,
                         fontFamily = FontFamily.Serif,
-                        fontSize = 15.sp,
-                        lineHeight = 20.sp,
+                        fontSize = 17.sp,
+                        lineHeight = 22.sp,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                     )
-                    subtitle?.let {
+                    if (subtitle != null) {
                         Text(
-                            text = it,
+                            text = subtitle,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            fontSize = 11.sp,
-                            lineHeight = 16.sp,
+                            fontSize = 13.sp,
+                            lineHeight = 18.sp,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
                         )

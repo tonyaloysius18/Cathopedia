@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": 3,
+  "contentVersion": 5,
   "hub": {
     "id": "holy_see",
     "slug": "holy-see",
@@ -209,6 +209,28 @@
         "art.jubilee.overview"
       ],
       "timelineId": "tl.jubilees"
+    },
+    {
+      "id": "holy_see.hierarchy",
+      "sortOrder": 16,
+      "status": "PUBLISHED",
+      "layout": "STEPPER",
+      "titleKey": "sec.hierarchy.title",
+      "summaryKey": "sec.hierarchy.summary",
+      "icon": "ic_hierarchy",
+      "stepperId": "step.hierarchy"
+    },
+    {
+      "id": "holy_see.cardinals",
+      "sortOrder": 17,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.cardinals.title",
+      "summaryKey": "sec.cardinals.summary",
+      "icon": "ic_red_hat",
+      "articleIds": [
+        "art.cardinals.overview"
+      ]
     }
   ],
   "factSheets": [
@@ -1112,6 +1134,80 @@
           "label": "Incarnationis Mysterium (1998); Spes Non Confundit (2024)"
         }
       ]
+    },
+    {
+      "id": "art.cardinals.overview",
+      "sectionId": "holy_see.cardinals",
+      "sortOrder": 1,
+      "titleKey": "art.cardinals.title",
+      "leadKey": "art.cardinals.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        {
+          "type": "image",
+          "asset": "hub/holy_see/cardinals_hero.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.cardinals.p1"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.cardinals.h_orders"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.cardinals.p2"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "art.cardinals.grid.bishop.label",
+              "valueKey": "art.cardinals.grid.bishop.value",
+              "icon": "ic_mitre"
+            },
+            {
+              "labelKey": "art.cardinals.grid.priest.label",
+              "valueKey": "art.cardinals.grid.priest.value",
+              "icon": "ic_basilica"
+            },
+            {
+              "labelKey": "art.cardinals.grid.deacon.label",
+              "valueKey": "art.cardinals.grid.deacon.value",
+              "icon": "ic_scroll"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.cardinals.h_role"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.cardinals.p3"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.cardinals.callout.title",
+          "textKey": "art.cardinals.callout.body"
+        }
+      ],
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.vatican_city.how_it_runs"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Annuario Pontificio; Universi Dominici Gregis (1996)"
+        }
+      ]
     }
   ],
   "diagrams": [
@@ -1915,6 +2011,55 @@
           "order": 6,
           "titleKey": "stepper.conclave.step6.title",
           "bodyKey": "stepper.conclave.step6.body"
+        }
+      ]
+    },
+    {
+      "id": "step.hierarchy",
+      "titleKey": "stepper.hierarchy.title",
+      "introKey": "stepper.hierarchy.intro",
+      "steps": [
+        {
+          "id": "step.hierarchy.1",
+          "order": 1,
+          "titleKey": "stepper.hierarchy.laity.title",
+          "bodyKey": "stepper.hierarchy.laity.body",
+          "asset": "hub/holy_see/hierarchy_laity.png"
+        },
+        {
+          "id": "step.hierarchy.2",
+          "order": 2,
+          "titleKey": "stepper.hierarchy.deacons.title",
+          "bodyKey": "stepper.hierarchy.deacons.body",
+          "asset": "hub/holy_see/hierarchy_deacon.png"
+        },
+        {
+          "id": "step.hierarchy.3",
+          "order": 3,
+          "titleKey": "stepper.hierarchy.priests.title",
+          "bodyKey": "stepper.hierarchy.priests.body",
+          "asset": "hub/holy_see/hierarchy_priest.png"
+        },
+        {
+          "id": "step.hierarchy.4",
+          "order": 4,
+          "titleKey": "stepper.hierarchy.bishops.title",
+          "bodyKey": "stepper.hierarchy.bishops.body",
+          "asset": "hub/holy_see/hierarchy_bishop.png"
+        },
+        {
+          "id": "step.hierarchy.5",
+          "order": 5,
+          "titleKey": "stepper.hierarchy.cardinals.title",
+          "bodyKey": "stepper.hierarchy.cardinals.body",
+          "asset": "hub/holy_see/hierarchy_cardinal.png"
+        },
+        {
+          "id": "step.hierarchy.6",
+          "order": 6,
+          "titleKey": "stepper.hierarchy.pope.title",
+          "bodyKey": "stepper.hierarchy.pope.body",
+          "asset": "hub/holy_see/hierarchy_pope.png"
         }
       ]
     }

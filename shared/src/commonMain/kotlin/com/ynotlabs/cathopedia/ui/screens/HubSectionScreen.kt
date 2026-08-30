@@ -9,6 +9,7 @@ import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -75,6 +76,7 @@ import com.ynotlabs.cathopedia.ui.components.DiagramHotspot
 import com.ynotlabs.cathopedia.ui.components.DiagramPolygonShape
 import com.ynotlabs.cathopedia.ui.components.DiagramRectShape
 import com.ynotlabs.cathopedia.ui.components.InteractiveDiagram
+import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.model.HubTimelineDetail
 import org.jetbrains.compose.resources.painterResource
 
@@ -100,6 +102,15 @@ fun HubSectionScreen(
     onArticleSelected: (HubArticleSummary) -> Unit,
     onEntityRefSelected: (EntityRef) -> Unit,
 ) {
+    if (sectionId == "holy_see.hierarchy") {
+        HierarchyCarouselScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+        )
+        return
+    }
+
     val s = LocalStrings.current
     var section by remember(sectionId) { mutableStateOf<HubSectionSummary?>(null) }
     var strings by remember(sectionId) { mutableStateOf<Map<String, String>>(emptyMap()) }
@@ -131,8 +142,20 @@ fun HubSectionScreen(
                 end = 20.dp,
                 bottom = 120.dp,
             ),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             if (current != null) {
+                val summary = strings[current.summaryKey].orEmpty()
+                if (summary.isNotBlank()) {
+                    item {
+                        HubSectionIntroCard(summary)
+                    }
+                }
+
+                item {
+                    SacredDivider()
+                }
+
                 when (current.layout) {
                     "ARTICLES" -> articlesSectionBody(sectionId, repository, language, onArticleSelected)
                     "DIAGRAM" -> diagramSectionBody(current.diagramId, repository, language, onEntityRefSelected)
@@ -146,7 +169,6 @@ fun HubSectionScreen(
                 // e.g. the Sistine Chapel is DIAGRAM-primary but also has articles on its history.
                 // articlesSectionBody already renders nothing when there are none for this section.
                 if (current.layout != "ARTICLES") {
-                    item { Spacer(Modifier.height(16.dp)) }
                     articlesSectionBody(sectionId, repository, language, onArticleSelected)
                 }
             }
@@ -154,7 +176,6 @@ fun HubSectionScreen(
 
         HubSectionHeaderPanel(
             title = current?.let { strings[it.titleKey] }.orEmpty(),
-            summary = current?.summaryKey?.let { strings[it] }.orEmpty(),
             backDescription = s.back,
             onBack = onBack,
             modifier = Modifier.onGloballyPositioned {
@@ -166,17 +187,42 @@ fun HubSectionScreen(
 }
 
 @Composable
+private fun HubSectionIntroCard(text: String) {
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(20.dp),
+        color = HubSectionCard,
+        contentColor = HubSectionCream,
+        border = BorderStroke(1.dp, HubSectionGold.copy(alpha = 0.35f)),
+    ) {
+        Box {
+            Box(
+                modifier = Modifier
+                    .align(Alignment.CenterStart)
+                    .width(3.dp)
+                    .height(54.dp)
+                    .clip(RoundedCornerShape(topEnd = 3.dp, bottomEnd = 3.dp))
+                    .background(HubSectionGold),
+            )
+
+            Text(
+                text = text,
+                color = HubSectionCream,
+                fontSize = 15.sp,
+                lineHeight = 23.sp,
+                modifier = Modifier.padding(start = 22.dp, top = 20.dp, end = 20.dp, bottom = 20.dp),
+            )
+        }
+    }
+}
+
+@Composable
 private fun HubSectionHeaderPanel(
     title: String,
-    summary: String,
     backDescription: String,
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val kicker = summary
-        .substringBefore(" — ")
-        .takeIf { summary.contains(" — ") }
-
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -210,28 +256,35 @@ private fun HubSectionHeaderPanel(
                     lineHeight = 32.sp,
                     fontWeight = FontWeight.Medium,
                 )
-
-                kicker?.let {
-                    Spacer(Modifier.height(4.dp))
-                    Text(
-                        text = it.uppercase(),
-                        color = HubSectionGold,
-                        fontSize = 10.sp,
-                        fontWeight = FontWeight.Medium,
-                        letterSpacing = 1.4.sp,
-                    )
-                }
             }
         }
+    }
+}
 
-        if (summary.isNotBlank()) {
-            Spacer(Modifier.height(10.dp))
-            Text(
-                text = summary,
-                color = HubSectionMuted,
-                fontSize = 13.sp,
-                lineHeight = 18.sp,
-                modifier = Modifier.padding(start = 56.dp),
+@Composable
+private fun HubSectionItemCard(
+    content: @Composable ColumnScope.() -> Unit,
+) {
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(20.dp),
+        color = HubSectionCard,
+        contentColor = HubSectionCream,
+        border = BorderStroke(1.dp, HubSectionGold.copy(alpha = 0.35f)),
+    ) {
+        Box {
+            Box(
+                modifier = Modifier
+                    .align(Alignment.CenterStart)
+                    .width(3.dp)
+                    .height(54.dp)
+                    .clip(RoundedCornerShape(topEnd = 3.dp, bottomEnd = 3.dp))
+                    .background(HubSectionGold),
+            )
+
+            Column(
+                modifier = Modifier.padding(start = 18.dp, top = 14.dp, end = 16.dp, bottom = 14.dp),
+                content = content,
             )
         }
     }
@@ -254,7 +307,7 @@ private fun androidx.compose.foundation.lazy.LazyListScope.articlesSectionBody(
             titles = repository.resolveHubStrings(keys, language)
         }
 
-        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             if (articles.isNotEmpty()) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
@@ -272,7 +325,6 @@ private fun androidx.compose.foundation.lazy.LazyListScope.articlesSectionBody(
                             .background(HubSectionGold.copy(alpha = 0.35f)),
                     )
                 }
-                Spacer(Modifier.height(4.dp))
             }
 
             articles.forEach { article ->
@@ -301,60 +353,49 @@ private fun ArticleRow(
         contentColor = HubSectionCream,
         border = BorderStroke(1.dp, HubSectionGold.copy(alpha = 0.48f)),
     ) {
-        Box {
-            Box(
-                modifier = Modifier
-                    .align(Alignment.CenterStart)
-                    .width(3.dp)
-                    .height(54.dp)
-                    .clip(RoundedCornerShape(topEnd = 3.dp, bottomEnd = 3.dp))
-                    .background(HubSectionGold),
-            )
-
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(start = 17.dp, top = 15.dp, end = 16.dp, bottom = 15.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Column(modifier = Modifier.weight(1f)) {
-                    readingTimeMinutes?.let { minutes ->
-                        Text(
-                            text = "ARTICLE · $minutes MIN",
-                            color = HubSectionGold.copy(alpha = 0.72f),
-                            fontSize = 9.sp,
-                            fontWeight = FontWeight.Medium,
-                            letterSpacing = 1.1.sp,
-                        )
-                        Spacer(Modifier.height(5.dp))
-                    }
-
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 14.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                readingTimeMinutes?.let { minutes ->
                     Text(
-                        text = title,
-                        color = HubSectionCream,
-                        fontFamily = FontFamily.Serif,
-                        fontSize = 18.sp,
-                        lineHeight = 21.sp,
+                        text = "ARTICLE · $minutes MIN",
+                        color = HubSectionGold.copy(alpha = 0.72f),
+                        fontSize = 9.sp,
                         fontWeight = FontWeight.Medium,
+                        letterSpacing = 1.1.sp,
                     )
-
-                    if (lead != null) {
-                        Spacer(Modifier.height(7.dp))
-                        Text(
-                            text = lead,
-                            color = HubSectionMuted,
-                            fontSize = 12.sp,
-                            lineHeight = 17.sp,
-                            maxLines = 2,
-                        )
-                    }
+                    Spacer(Modifier.height(5.dp))
                 }
-                Spacer(Modifier.width(12.dp))
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
-                    contentDescription = null,
-                    tint = HubSectionGold.copy(alpha = 0.86f),
-                    modifier = Modifier.size(14.dp),
+
+                Text(
+                    text = title,
+                    color = HubSectionCream,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 18.sp,
+                    lineHeight = 21.sp,
+                    fontWeight = FontWeight.Medium,
                 )
+
+                if (lead != null) {
+                    Spacer(Modifier.height(7.dp))
+                    Text(
+                        text = lead,
+                        color = HubSectionMuted,
+                        fontSize = 12.sp,
+                        lineHeight = 17.sp,
+                        maxLines = 2,
+                    )
+                }
             }
+            Spacer(Modifier.width(12.dp))
+            Icon(
+                imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
+                contentDescription = null,
+                tint = HubSectionGold.copy(alpha = 0.86f),
+                modifier = Modifier.size(14.dp),
+            )
         }
     }
 }
@@ -613,32 +654,29 @@ private fun androidx.compose.foundation.lazy.LazyListScope.stepperSectionBody(
         }
 
         stepper?.let { st ->
-            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                st.steps.sortedBy { it.order }.forEach { step ->
-                    Row(modifier = Modifier.fillMaxWidth()) {
+            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            st.steps.sortedBy { it.order }.forEach { step ->
+                HubSectionItemCard {
+                    Column(modifier = Modifier.fillMaxWidth()) {
                         Text(
-                            text = "${step.order}.",
-                            color = MaterialTheme.colorScheme.primary,
-                            fontWeight = FontWeight.SemiBold,
-                            fontSize = 14.sp,
-                            modifier = Modifier.width(28.dp),
+                            text = strings[step.titleKey].orEmpty(),
+                            color = HubSectionCream,
+                            fontFamily = FontFamily.Serif,
+                            fontSize = 20.sp,
+                            lineHeight = 24.sp,
+                            fontWeight = FontWeight.Medium,
                         )
-                        Column {
-                            Text(
-                                text = strings[step.titleKey].orEmpty(),
-                                color = MaterialTheme.colorScheme.onBackground,
-                                fontFamily = FontFamily.Serif,
-                                fontSize = 15.sp,
-                            )
-                            Text(
-                                text = strings[step.bodyKey].orEmpty(),
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                fontSize = 13.sp,
-                            )
-                        }
+                        Spacer(Modifier.height(8.dp))
+                        Text(
+                            text = strings[step.bodyKey].orEmpty(),
+                            color = HubSectionMuted,
+                            fontSize = 15.sp,
+                            lineHeight = 21.sp,
+                        )
                     }
                 }
             }
+        }
         }
     }
 }
@@ -661,32 +699,42 @@ private fun androidx.compose.foundation.lazy.LazyListScope.timelineSectionBody(
         }
 
         timeline?.let { tl ->
-            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                tl.events.sortedBy { it.year }.forEach { event ->
+            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            tl.events.sortedBy { it.year }.forEach { event ->
+                HubSectionItemCard {
                     Row(modifier = Modifier.fillMaxWidth()) {
                         Text(
                             text = (if (event.approximate) "c. " else "") + event.year.toString(),
-                            color = MaterialTheme.colorScheme.primary,
+                            color = HubSectionGold,
                             fontWeight = FontWeight.SemiBold,
-                            fontSize = 13.sp,
-                            modifier = Modifier.width(56.dp),
+                            fontSize = 14.sp,
+                            modifier = Modifier.width(64.dp),
                         )
-                        Column {
+                        Column(modifier = Modifier.weight(1f)) {
                             Text(
                                 text = strings[event.titleKey].orEmpty(),
-                                color = MaterialTheme.colorScheme.onBackground,
+                                color = HubSectionCream,
                                 fontFamily = FontFamily.Serif,
-                                fontSize = 15.sp,
+                                fontSize = 18.sp,
+                                lineHeight = 22.sp,
+                                fontWeight = FontWeight.Medium,
                             )
                             event.bodyKey?.let { key ->
                                 strings[key]?.let { body ->
-                                    Text(text = body, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp)
+                                    Spacer(Modifier.height(6.dp))
+                                    Text(
+                                        text = body,
+                                        color = HubSectionMuted,
+                                        fontSize = 14.sp,
+                                        lineHeight = 19.sp
+                                    )
                                 }
                             }
                         }
                     }
                 }
             }
+        }
         }
     }
 }

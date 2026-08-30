@@ -104,6 +104,70 @@ fun HubArticleScreen(
         return
     }
 
+    if (articleId == "art.cat.creeds") {
+        CreedsScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            onEntityRefSelected = onEntityRefSelected,
+        )
+        return
+    }
+
+    if (articleId == "art.cardinals.overview") {
+        CardinalsScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+        )
+        return
+    }
+
+    if (articleId == "art.monstrance.overview") {
+        MonstranceScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+        )
+        return
+    }
+
+    if (articleId == "art.thurible.overview") {
+        ThuribleScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+        )
+        return
+    }
+
+    if (articleId == "art.vessels.overview") {
+        VesselsScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+        )
+        return
+    }
+
+    if (articleId == "art.postures.overview") {
+        PosturesScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+        )
+        return
+    }
+
+    if (articleId == "art.altar.overview") {
+        AltarScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+        )
+        return
+    }
+
     val s = LocalStrings.current
     val isSymbolsArticle = articleId.startsWith("art.symbols.")
     var article by remember(articleId) { mutableStateOf<HubArticleDetail?>(null) }

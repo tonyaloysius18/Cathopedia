@@ -60,7 +60,7 @@ import com.ynotlabs.cathopedia.ui.getCategoryIcon
 import com.ynotlabs.cathopedia.ui.CategoryIcon
 import com.ynotlabs.cathopedia.ui.PrayerPortraits
 import com.ynotlabs.cathopedia.resources.Res
-import com.ynotlabs.cathopedia.resources.cross_divider
+import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.ui.components.KeepScreenOn
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.ui.components.PrayerBodyText
@@ -397,15 +397,7 @@ private fun PrayerCard(
 
             Spacer(Modifier.height(32.dp))
 
-            Image(
-                painter = painterResource(Res.drawable.cross_divider),
-                contentDescription = null,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(28.dp)
-                    .padding(horizontal = 8.dp),
-                contentScale = ContentScale.FillWidth
-            )
+            SacredDivider(modifier = Modifier.padding(horizontal = 32.dp))
 
             Spacer(Modifier.height(16.dp))
 

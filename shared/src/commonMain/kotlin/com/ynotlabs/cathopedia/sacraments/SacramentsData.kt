@@ -1,0 +1,127 @@
+package com.ynotlabs.cathopedia.sacraments
+
+/**
+ * One of the seven sacraments of the Catholic Church. Titles and the short
+ * group label are standard catechetical labels (like a category name, not
+ * quoted magisterial text), so they ship directly as plain Kotlin strings.
+ * The sign/grace/description fields are plain-language summaries drawn from
+ * the Catechism of the Catholic Church (CCC 1210–1666), mirroring the
+ * Stations model in [com.ynotlabs.cathopedia.stations.Station].
+ */
+data class Sacrament(
+    val number: Int,
+    val id: String,
+    val groupEn: String,
+    val groupFr: String,
+    val titleEn: String,
+    val titleFr: String,
+    val signEn: String,
+    val signFr: String,
+    val graceEn: String,
+    val graceFr: String,
+    val descriptionEn: String,
+    val descriptionFr: String,
+)
+
+object SacramentsData {
+    val sacraments: List<Sacrament> = listOf(
+        Sacrament(
+            number = 1,
+            id = "baptism",
+            groupEn = "Sacrament of Initiation",
+            groupFr = "Sacrement de l'initiation",
+            titleEn = "Baptism",
+            titleFr = "Le Baptême",
+            signEn = "Immersion in water, or the pouring of water, with the words: “I baptize you in the name of the Father, and of the Son, and of the Holy Spirit.”",
+            signFr = "L'immersion dans l'eau, ou l'eau versée, avec les paroles : « Je te baptise au nom du Père, et du Fils, et du Saint-Esprit. »",
+            graceEn = "Washes away original and personal sin, makes us children of God and members of the Church, and marks the soul forever.",
+            graceFr = "Efface le péché originel et les péchés personnels, fait de nous des enfants de Dieu et des membres de l'Église, et marque l'âme pour toujours.",
+            descriptionEn = "Baptism is the gateway to the whole sacramental life. Through water and the word a person dies to sin and is reborn as a child of God, receives the Holy Spirit, and is joined to the Body of Christ. It can be received only once, for its mark on the soul is permanent.",
+            descriptionFr = "Le Baptême est la porte de toute la vie sacramentelle. Par l'eau et la parole, l'homme meurt au péché et renaît comme enfant de Dieu, reçoit l'Esprit Saint et est uni au Corps du Christ. Il ne se reçoit qu'une seule fois, car sa marque sur l'âme est indélébile.",
+        ),
+        Sacrament(
+            number = 2,
+            id = "eucharist",
+            groupEn = "Sacrament of Initiation",
+            groupFr = "Sacrement de l'initiation",
+            titleEn = "The Eucharist",
+            titleFr = "L'Eucharistie",
+            signEn = "Bread and wine which, through the priest's words of consecration, become the Body and Blood of Christ.",
+            signFr = "Le pain et le vin qui, par les paroles de consécration du prêtre, deviennent le Corps et le Sang du Christ.",
+            graceEn = "Unites us most intimately to Christ, forgives venial sin, and is the source and summit of the Christian life.",
+            graceFr = "Nous unit le plus intimement au Christ, remet les péchés véniels, et est la source et le sommet de la vie chrétienne.",
+            descriptionEn = "The Eucharist is the true Body and Blood, soul and divinity of Jesus Christ under the appearances of bread and wine. Instituted at the Last Supper, it is offered in every Mass and received in Holy Communion. The Church calls it the source and summit of the whole Christian life.",
+            descriptionFr = "L'Eucharistie est le vrai Corps et le vrai Sang, l'âme et la divinité de Jésus-Christ sous les apparences du pain et du vin. Instituée à la Cène, elle est offerte à chaque messe et reçue dans la communion. L'Église l'appelle la source et le sommet de toute la vie chrétienne.",
+        ),
+        Sacrament(
+            number = 3,
+            id = "confirmation",
+            groupEn = "Sacrament of Initiation",
+            groupFr = "Sacrement de l'initiation",
+            titleEn = "Confirmation",
+            titleFr = "La Confirmation",
+            signEn = "Anointing of the forehead with sacred chrism, with the laying on of hands and the words: “Be sealed with the Gift of the Holy Spirit.”",
+            signFr = "L'onction du front avec le saint chrême, avec l'imposition des mains et les paroles : « Sois marqué de l'Esprit Saint, le don de Dieu. »",
+            graceEn = "Completes baptismal grace and strengthens the Christian with the sevenfold gift of the Holy Spirit to witness to the faith.",
+            graceFr = "Achève la grâce du Baptême et fortifie le chrétien par les sept dons de l'Esprit Saint pour témoigner de la foi.",
+            descriptionEn = "Confirmation perfects what Baptism began. The bishop or priest anoints the confirmand with chrism, sealing them with the Holy Spirit as the apostles were sealed at Pentecost. It deepens the bond with the Church and gives strength to profess and defend the faith in word and deed.",
+            descriptionFr = "La Confirmation parfait ce que le Baptême a commencé. L'évêque ou le prêtre oint le confirmand du chrême, le marquant de l'Esprit Saint comme les apôtres le furent à la Pentecôte. Elle resserre le lien avec l'Église et donne la force de professer et de défendre la foi en parole et en acte.",
+        ),
+        Sacrament(
+            number = 4,
+            id = "penance",
+            groupEn = "Sacrament of Healing",
+            groupFr = "Sacrement de guérison",
+            titleEn = "Penance & Reconciliation",
+            titleFr = "La Pénitence et la Réconciliation",
+            signEn = "The penitent's contrition and confession of sins, and the words of absolution spoken by the priest.",
+            signFr = "La contrition du pénitent et la confession des péchés, et les paroles d'absolution prononcées par le prêtre.",
+            graceEn = "Reconciles the sinner with God and the Church, forgiving sins committed after Baptism and restoring grace.",
+            graceFr = "Réconcilie le pécheur avec Dieu et avec l'Église, remettant les péchés commis après le Baptême et rendant la grâce.",
+            descriptionEn = "In this sacrament of healing a person confesses their sins to a priest, who — acting in the person of Christ — grants God's forgiveness through absolution. It restores the friendship with God lost through sin and brings peace of conscience. Its acts are contrition, confession, and satisfaction.",
+            descriptionFr = "Dans ce sacrement de guérison, le fidèle confesse ses péchés à un prêtre qui, agissant en la personne du Christ, accorde le pardon de Dieu par l'absolution. Il rétablit l'amitié avec Dieu perdue par le péché et donne la paix de la conscience. Ses actes sont la contrition, la confession et la satisfaction.",
+        ),
+        Sacrament(
+            number = 5,
+            id = "matrimony",
+            groupEn = "Sacrament at the Service of Communion",
+            groupFr = "Sacrement au service de la communion",
+            titleEn = "Matrimony",
+            titleFr = "Le Mariage",
+            signEn = "The consent of a baptized man and woman freely exchanged before the Church.",
+            signFr = "Le consentement d'un homme et d'une femme baptisés, librement échangé devant l'Église.",
+            graceEn = "Establishes a lifelong bond and gives the couple grace to love as Christ loves, and to welcome and raise children.",
+            graceFr = "Établit un lien pour la vie et donne aux époux la grâce de s'aimer comme le Christ aime, et d'accueillir et d'élever des enfants.",
+            descriptionEn = "In Matrimony a baptized man and woman give themselves to each other in a covenant of love for life. Their consent, exchanged before God and the Church, makes them ministers of the sacrament to one another. Christ strengthens their union to be faithful, fruitful, and a living sign of his love for the Church.",
+            descriptionFr = "Dans le Mariage, un homme et une femme baptisés se donnent l'un à l'autre dans une alliance d'amour pour la vie. Leur consentement, échangé devant Dieu et l'Église, fait d'eux les ministres du sacrement l'un pour l'autre. Le Christ fortifie leur union pour qu'elle soit fidèle, féconde, et un signe vivant de son amour pour l'Église.",
+        ),
+        Sacrament(
+            number = 6,
+            id = "holy_orders",
+            groupEn = "Sacrament at the Service of Communion",
+            groupFr = "Sacrement au service de la communion",
+            titleEn = "Holy Orders",
+            titleFr = "L'Ordre",
+            signEn = "The laying on of the bishop's hands and the solemn prayer of consecration.",
+            signFr = "L'imposition des mains de l'évêque et la prière solennelle de consécration.",
+            graceEn = "Configures the man to Christ the Head and Shepherd, empowering him to serve as deacon, priest or bishop.",
+            graceFr = "Configure l'homme au Christ Tête et Pasteur, l'habilitant à servir comme diacre, prêtre ou évêque.",
+            descriptionEn = "Through Holy Orders, chosen men are ordained to serve the Church in the person of Christ. Its three degrees are deacon, priest and bishop. Priests preach, forgive sins and offer the Eucharist; bishops hold the fullness of the sacrament and continue the mission of the apostles. Like Baptism, it marks the soul permanently.",
+            descriptionFr = "Par l'Ordre, des hommes choisis sont ordonnés pour servir l'Église en la personne du Christ. Ses trois degrés sont le diacre, le prêtre et l'évêque. Les prêtres prêchent, pardonnent les péchés et offrent l'Eucharistie ; les évêques ont la plénitude du sacrement et poursuivent la mission des apôtres. Comme le Baptême, il marque l'âme pour toujours.",
+        ),
+        Sacrament(
+            number = 7,
+            id = "anointing_of_the_sick",
+            groupEn = "Sacrament of Healing",
+            groupFr = "Sacrement de guérison",
+            titleEn = "Anointing of the Sick",
+            titleFr = "L'Onction des malades",
+            signEn = "Anointing of the forehead and hands with blessed oil, with the Church's prayer for the sick person.",
+            signFr = "L'onction du front et des mains avec l'huile bénite, avec la prière de l'Église pour le malade.",
+            graceEn = "Unites the sick to Christ's Passion, gives strength, peace and courage, forgives sins, and may restore health.",
+            graceFr = "Unit le malade à la Passion du Christ, donne force, paix et courage, remet les péchés, et peut rendre la santé.",
+            descriptionEn = "The Anointing of the Sick is for those who begin to be in danger from illness or old age. The priest anoints them with holy oil, commending them to the suffering and risen Lord. It brings spiritual strength, the forgiveness of sins, and — if God wills — bodily healing. It is not only for the dying.",
+            descriptionFr = "L'Onction des malades est destinée à ceux qui commencent à être en danger par la maladie ou la vieillesse. Le prêtre les oint de l'huile sainte, les confiant au Seigneur souffrant et ressuscité. Elle apporte la force spirituelle, le pardon des péchés et, si Dieu le veut, la guérison du corps. Elle n'est pas réservée aux mourants.",
+        ),
+    )
+}

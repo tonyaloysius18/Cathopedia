@@ -55,7 +55,7 @@ import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.model.HubDetail
 import com.ynotlabs.cathopedia.model.HubSectionSummary
 import com.ynotlabs.cathopedia.resources.Res
-import com.ynotlabs.cathopedia.resources.cross_divider
+import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.ui.hubAssetPainter
 
@@ -129,6 +129,14 @@ fun HubScreen(
             ),
         ) {
             if (hub != null) {
+                val intro = strings[hub.introKey].orEmpty()
+                if (intro.isNotBlank()) {
+                    item {
+                        HubIntroCard(intro)
+                        Spacer(Modifier.height(16.dp))
+                    }
+                }
+
                 item {
                     SacredDivider()
                     Spacer(Modifier.height(18.dp))
@@ -172,7 +180,6 @@ fun HubScreen(
         HubHeaderPanel(
             title = hub?.let { strings[it.summary.titleKey] }.orEmpty(),
             subtitle = hub?.summary?.subtitleKey?.let { strings[it] }.orEmpty(),
-            intro = hub?.introKey?.let { strings[it] }.orEmpty(),
             accent = accent,
             backDescription = s.back,
             onBack = onBack,
@@ -185,10 +192,39 @@ fun HubScreen(
 }
 
 @Composable
+private fun HubIntroCard(text: String) {
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(20.dp),
+        color = HubCard,
+        contentColor = HubCream,
+        border = BorderStroke(1.dp, HubGold.copy(alpha = 0.35f)),
+    ) {
+        Box {
+            Box(
+                modifier = Modifier
+                    .align(Alignment.CenterStart)
+                    .width(3.dp)
+                    .height(54.dp)
+                    .clip(RoundedCornerShape(topEnd = 3.dp, bottomEnd = 3.dp))
+                    .background(HubGold),
+            )
+
+            Text(
+                text = text,
+                color = HubCream,
+                fontSize = 15.sp,
+                lineHeight = 23.sp,
+                modifier = Modifier.padding(start = 22.dp, top = 20.dp, end = 20.dp, bottom = 20.dp),
+            )
+        }
+    }
+}
+
+@Composable
 private fun HubHeaderPanel(
     title: String,
     subtitle: String,
-    intro: String,
     accent: Color,
     backDescription: String,
     onBack: () -> Unit,
@@ -241,31 +277,7 @@ private fun HubHeaderPanel(
                 }
             }
         }
-
-        if (intro.isNotBlank()) {
-            Spacer(Modifier.height(10.dp))
-            Text(
-                text = intro,
-                color = HubMuted,
-                fontSize = 13.sp,
-                lineHeight = 18.sp,
-                modifier = Modifier.padding(start = 56.dp),
-            )
-        }
     }
-}
-
-@Composable
-private fun SacredDivider() {
-    Image(
-        painter = painterResource(Res.drawable.cross_divider),
-        contentDescription = null,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(28.dp)
-            .padding(horizontal = 8.dp),
-        contentScale = ContentScale.FillWidth
-    )
 }
 
 @Composable

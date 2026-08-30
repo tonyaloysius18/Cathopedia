@@ -41,11 +41,11 @@ import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.resources.Res
-import com.ynotlabs.cathopedia.resources.cross_divider
 import com.ynotlabs.cathopedia.resources.holy_trinity_bg
 import com.ynotlabs.cathopedia.resources.the_father
 import com.ynotlabs.cathopedia.resources.the_holysprit
 import com.ynotlabs.cathopedia.resources.the_son
+import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
@@ -176,7 +176,7 @@ fun HolyTrinityScreen(
                 modifier = Modifier.padding(horizontal = 18.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
-                TrinityDivider()
+                SacredDivider()
 
                 Text(
                     text = text("art.trinity.p1"),
@@ -209,19 +209,6 @@ fun HolyTrinityScreen(
             }
         }
     }
-}
-
-@Composable
-private fun TrinityDivider() {
-    Image(
-        painter = painterResource(Res.drawable.cross_divider),
-        contentDescription = null,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(28.dp)
-            .padding(horizontal = 8.dp),
-        contentScale = ContentScale.FillWidth
-    )
 }
 
 @Composable

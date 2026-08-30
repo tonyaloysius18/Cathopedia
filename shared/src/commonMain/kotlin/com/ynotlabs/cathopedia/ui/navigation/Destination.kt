@@ -18,6 +18,8 @@ sealed interface Destination {
     data class PrayerDetail(val slug: String) : Destination
     data object RosaryScreen : Destination
     data object StationsScreen : Destination
+    data object SacramentsScreen : Destination
+    data object ProcessionScreen : Destination
     data object Vestments : Destination
     data object Search : Destination
     data object Saved : Destination

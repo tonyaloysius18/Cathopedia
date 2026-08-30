@@ -90,6 +90,8 @@ import com.ynotlabs.cathopedia.ui.screens.SavedScreen
 import com.ynotlabs.cathopedia.ui.screens.SearchScreen
 import com.ynotlabs.cathopedia.ui.screens.SettingsScreen
 import com.ynotlabs.cathopedia.ui.screens.SplashScreen
+import com.ynotlabs.cathopedia.ui.screens.ProcessionScreen
+import com.ynotlabs.cathopedia.ui.screens.SacramentsScreen
 import com.ynotlabs.cathopedia.ui.screens.StationsScreen
 import com.ynotlabs.cathopedia.ui.screens.VestmentsScreen
 import com.ynotlabs.cathopedia.ui.theme.CathopediaTheme
@@ -309,7 +311,15 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     repository = repository,
                     language = language,
                     onBack = nav::back,
-                    onSectionSelected = { section -> nav.navigate(Destination.HubSection(current.hubId, section.id)) },
+                    onSectionSelected = { section ->
+                        // A few sections open a dedicated carousel screen instead of the
+                        // generic section screen.
+                        when (section.id) {
+                            "cat.sacraments" -> nav.navigate(Destination.SacramentsScreen)
+                            "mass.procession" -> nav.navigate(Destination.ProcessionScreen)
+                            else -> nav.navigate(Destination.HubSection(current.hubId, section.id))
+                        }
+                    },
                     onArticleSelected = { articleId -> nav.navigate(Destination.HubArticle(current.hubId, articleId)) },
                 )
 
@@ -398,6 +408,16 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                 )
 
                 is Destination.StationsScreen -> StationsScreen(
+                    language = language,
+                    onBack = nav::back,
+                )
+
+                is Destination.SacramentsScreen -> SacramentsScreen(
+                    language = language,
+                    onBack = nav::back,
+                )
+
+                is Destination.ProcessionScreen -> ProcessionScreen(
                     language = language,
                     onBack = nav::back,
                 )
