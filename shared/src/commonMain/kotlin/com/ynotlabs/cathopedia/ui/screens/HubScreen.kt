@@ -55,6 +55,7 @@ import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.model.HubDetail
 import com.ynotlabs.cathopedia.model.HubSectionSummary
 import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.ui.hubAssetPainter
@@ -201,14 +202,7 @@ private fun HubIntroCard(text: String) {
         border = BorderStroke(1.dp, HubGold.copy(alpha = 0.35f)),
     ) {
         Box {
-            Box(
-                modifier = Modifier
-                    .align(Alignment.CenterStart)
-                    .width(3.dp)
-                    .height(54.dp)
-                    .clip(RoundedCornerShape(topEnd = 3.dp, bottomEnd = 3.dp))
-                    .background(HubGold),
-            )
+            GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
 
             Text(
                 text = text,
@@ -323,30 +317,37 @@ private fun HubSectionCard(
                     ),
                 ),
         ) {
-            Box(
-                modifier = Modifier
-                    .align(Alignment.CenterStart)
-                    .width(3.dp)
-                    .height(54.dp)
-                    .clip(RoundedCornerShape(topEnd = 3.dp, bottomEnd = 3.dp))
-                    .background(accent),
+            GoldCardAccent(
+                modifier = Modifier.align(Alignment.CenterStart)
             )
 
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(14.dp),
+                    .padding(start = 18.dp, top = 14.dp, end = 16.dp, bottom = 14.dp),
             ) {
-                Text(
-                    text = title,
-                    color = HubCream,
-                    fontFamily = FontFamily.Serif,
-                    fontSize = 16.sp,
-                    lineHeight = 20.sp,
-                    fontWeight = FontWeight.Medium,
-                    maxLines = 2,
-                    modifier = Modifier.padding(end = 20.dp),
-                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = title,
+                        color = HubCream,
+                        fontFamily = FontFamily.Serif,
+                        fontSize = 17.sp,
+                        lineHeight = 22.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        maxLines = 2,
+                        modifier = Modifier.weight(1f).padding(end = 8.dp),
+                    )
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
+                        contentDescription = null,
+                        tint = HubGold.copy(alpha = 0.7f),
+                        modifier = Modifier.size(14.dp),
+                    )
+                }
 
                 if (!summary.isNullOrBlank()) {
                     Spacer(Modifier.height(7.dp))
@@ -371,17 +372,7 @@ private fun HubSectionCard(
                 }
             }
 
-            if (!isStub) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
-                    contentDescription = null,
-                    tint = accent.copy(alpha = 0.86f),
-                    modifier = Modifier
-                        .align(Alignment.TopEnd)
-                        .padding(top = 18.dp, end = 14.dp)
-                        .size(14.dp),
-                )
-            }
+            // Icon is now handled in the header row
         }
     }
 }

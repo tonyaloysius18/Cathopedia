@@ -1,0 +1,1720 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": 1,
+  "hub": {
+    "id": "biblical",
+    "slug": "biblical-characters",
+    "titleKey": "hub.biblical.title",
+    "subtitleKey": "hub.biblical.subtitle",
+    "introKey": "hub.biblical.intro",
+    "icon": "biblical_characters",
+    "accentColor": "#7A5C2E",
+    "sortOrder": 5,
+    "tags": [
+      "bible",
+      "scripture",
+      "old testament",
+      "new testament",
+      "patriarchs",
+      "prophets"
+    ]
+  },
+  "sections": [
+    {
+      "id": "biblical.beginning",
+      "sortOrder": 1,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.biblical.beginning.title",
+      "summaryKey": "sec.biblical.beginning.summary",
+      "icon": "ic_creation",
+      "articleIds": [
+        "art.biblical.beginning"
+      ]
+    },
+    {
+      "id": "biblical.patriarchs",
+      "sortOrder": 2,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.biblical.patriarchs.title",
+      "summaryKey": "sec.biblical.patriarchs.summary",
+      "icon": "ic_tent",
+      "articleIds": [
+        "art.biblical.patriarchs"
+      ]
+    },
+    {
+      "id": "biblical.exodus",
+      "sortOrder": 3,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.biblical.exodus.title",
+      "summaryKey": "sec.biblical.exodus.summary",
+      "icon": "ic_tablets",
+      "articleIds": [
+        "art.biblical.exodus"
+      ]
+    },
+    {
+      "id": "biblical.judges_kings",
+      "sortOrder": 4,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.biblical.judges_kings.title",
+      "summaryKey": "sec.biblical.judges_kings.summary",
+      "icon": "ic_crown",
+      "articleIds": [
+        "art.biblical.judges_kings"
+      ]
+    },
+    {
+      "id": "biblical.prophets",
+      "sortOrder": 5,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.biblical.prophets.title",
+      "summaryKey": "sec.biblical.prophets.summary",
+      "icon": "ic_scroll",
+      "articleIds": [
+        "art.biblical.prophets"
+      ]
+    },
+    {
+      "id": "biblical.women",
+      "sortOrder": 6,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.biblical.women.title",
+      "summaryKey": "sec.biblical.women.summary",
+      "icon": "ic_lily",
+      "articleIds": [
+        "art.biblical.women"
+      ]
+    },
+    {
+      "id": "biblical.new_testament",
+      "sortOrder": 7,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.biblical.new_testament.title",
+      "summaryKey": "sec.biblical.new_testament.summary",
+      "icon": "ic_chi_rho",
+      "articleIds": [
+        "art.biblical.new_testament"
+      ]
+    }
+  ],
+  "articles": [
+    {
+      "id": "art.biblical.beginning",
+      "sectionId": "biblical.beginning",
+      "sortOrder": 1,
+      "titleKey": "art.biblical.beginning.title",
+      "leadKey": "art.biblical.beginning.lead",
+      "readingTimeMinutes": 3,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.adam.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_adam.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.adam.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.eve.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_eve.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.eve.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.cain.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_cain.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.cain.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.abel.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_abel.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.abel.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.seth.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_seth.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.seth.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.enoch.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_enoch.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.enoch.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.noah.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_noah.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.noah.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.biblical.patriarchs",
+      "sectionId": "biblical.patriarchs",
+      "sortOrder": 1,
+      "titleKey": "art.biblical.patriarchs.title",
+      "leadKey": "art.biblical.patriarchs.lead",
+      "readingTimeMinutes": 7,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.abraham.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_abraham.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.abraham.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.sarah.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_sarah.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.sarah.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.hagar.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_hagar.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.hagar.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.ishmael.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_ishmael.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.ishmael.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.lot.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_lot.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.lot.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.melchizedek.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_melchizedek.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.melchizedek.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.isaac.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_isaac.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.isaac.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.rebekah.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_rebekah.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.rebekah.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.esau.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_esau.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.esau.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.jacob.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_jacob.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.jacob.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.rachel.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_rachel.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.rachel.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.leah.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_leah.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.leah.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.joseph_egypt.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_joseph_egypt.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.joseph_egypt.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.judah.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_judah.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.judah.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.biblical.exodus",
+      "sectionId": "biblical.exodus",
+      "sortOrder": 1,
+      "titleKey": "art.biblical.exodus.title",
+      "leadKey": "art.biblical.exodus.lead",
+      "readingTimeMinutes": 3,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.moses.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_moses.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.moses.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.aaron.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_aaron.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.aaron.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.miriam.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_miriam.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.miriam.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.joshua.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_joshua.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.joshua.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.caleb.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_caleb.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.caleb.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.balaam.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_balaam.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.balaam.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.biblical.judges_kings",
+      "sectionId": "biblical.judges_kings",
+      "sortOrder": 1,
+      "titleKey": "art.biblical.judges_kings.title",
+      "leadKey": "art.biblical.judges_kings.lead",
+      "readingTimeMinutes": 9,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.deborah.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_deborah.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.deborah.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.gideon.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_gideon.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.gideon.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.samson.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_samson.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.samson.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.ruth.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_ruth.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.ruth.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.boaz.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_boaz.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.boaz.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.samuel.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_samuel.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.samuel.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.saul.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_saul.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.saul.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.david.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_david.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.david.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.jonathan.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_jonathan.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.jonathan.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.goliath.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_goliath.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.goliath.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.solomon.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_solomon.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.solomon.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.absalom.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_absalom.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.absalom.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.jezebel.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_jezebel.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.jezebel.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.ahab.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_ahab.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.ahab.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.jesse.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_jesse.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.jesse.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.hezekiah.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_hezekiah.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.hezekiah.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.josiah.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_josiah.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.josiah.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.mordecai.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_mordecai.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.mordecai.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.haman.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_haman.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.haman.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.biblical.prophets",
+      "sectionId": "biblical.prophets",
+      "sortOrder": 1,
+      "titleKey": "art.biblical.prophets.title",
+      "leadKey": "art.biblical.prophets.lead",
+      "readingTimeMinutes": 8,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.elijah.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_elijah.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.elijah.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.elisha.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_elisha.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.elisha.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.isaiah.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_isaiah.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.isaiah.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.jeremiah.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_jeremiah.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.jeremiah.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.ezekiel.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_ezekiel.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.ezekiel.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.nathan.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_nathan.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.nathan.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.daniel.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_daniel.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.daniel.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.jonah.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_jonah.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.jonah.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.job.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_job.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.job.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.hosea.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_hosea.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.hosea.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.amos.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_amos.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.amos.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.ezra.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_ezra.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.ezra.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.nehemiah.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_nehemiah.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.nehemiah.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.naaman.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_naaman.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.naaman.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.nebuchadnezzar.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_nebuchadnezzar.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.nebuchadnezzar.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.three_hebrews.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_three_hebrews.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.three_hebrews.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.biblical.women",
+      "sectionId": "biblical.women",
+      "sortOrder": 1,
+      "titleKey": "art.biblical.women.title",
+      "leadKey": "art.biblical.women.lead",
+      "readingTimeMinutes": 3,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.hannah.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_hannah.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.hannah.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.esther.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_esther.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.esther.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.judith.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_judith.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.judith.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.rahab.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_rahab.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.rahab.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.naomi.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_naomi.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.naomi.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.bathsheba.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_bathsheba.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.bathsheba.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.delilah.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_delilah.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.delilah.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.biblical.new_testament",
+      "sectionId": "biblical.new_testament",
+      "sortOrder": 1,
+      "titleKey": "art.biblical.new_testament.title",
+      "leadKey": "art.biblical.new_testament.lead",
+      "readingTimeMinutes": 20,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.jesus.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_jesus.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.jesus.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.john_baptist.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_john_baptist.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.john_baptist.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.zechariah.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_zechariah.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.zechariah.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.elizabeth.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_elizabeth.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.elizabeth.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.mary.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_mary.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.mary.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.joseph.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_joseph.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.joseph.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.magi.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_magi.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.magi.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.herod.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_herod.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.herod.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.peter.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_peter.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.peter.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.andrew.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_andrew.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.andrew.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.james_greater.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_james_greater.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.james_greater.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.john_evangelist.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_john_evangelist.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.john_evangelist.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.thomas.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_thomas.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.thomas.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.matthew.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_matthew.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.matthew.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.judas_iscariot.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_judas_iscariot.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.judas_iscariot.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.paul.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_paul.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.paul.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.mary_magdalene.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_mary_magdalene.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.mary_magdalene.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.lazarus.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_lazarus.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.lazarus.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.stephen.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_stephen.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.stephen.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.simeon.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_simeon.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.simeon.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.anna.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_anna.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.anna.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.nicodemus.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_nicodemus.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.nicodemus.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.zacchaeus.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_zacchaeus.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.zacchaeus.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.martha.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_martha.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.martha.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.mary_bethany.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_mary_bethany.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.mary_bethany.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.pilate.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_pilate.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.pilate.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.barnabas.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_barnabas.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.barnabas.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.timothy.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_timothy.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.timothy.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.philip.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_philip.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.philip.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.bartholomew.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_bartholomew.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.bartholomew.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.simon_zealot.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_simon_zealot.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.simon_zealot.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.jude_thaddeus.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_jude_thaddeus.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.jude_thaddeus.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.james_lesser.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_james_lesser.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.james_lesser.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.matthias.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_matthias.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.matthias.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.luke.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_luke.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.luke.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.mark.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_mark.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.mark.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.joseph_arimathea.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_joseph_arimathea.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.joseph_arimathea.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.caiaphas.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_caiaphas.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.caiaphas.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.cornelius.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_cornelius.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.cornelius.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.dismas.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_dismas.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.dismas.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "fig.samaritan_woman.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/biblical/char_samaritan_woman.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "fig.samaritan_woman.desc"
+        }
+      ]
+    }
+  ]
+}

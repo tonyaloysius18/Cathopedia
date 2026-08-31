@@ -1,6 +1,7 @@
 package com.ynotlabs.cathopedia.ui.screens
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -290,6 +291,7 @@ private fun PrayerSearchBar(
     )
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun PrayerHomeBody(
     favorites: List<PrayerSummary>,
@@ -328,15 +330,26 @@ private fun PrayerHomeBody(
             WayOfTheCrossCard(onClick = onOpenStations)
 
             Spacer(Modifier.height(18.dp))
+        }
 
-            QuickPrayerCategories(
-                selected = selectedSection,
-                favoritesCount = favorites.size,
-                state = quickSectionState,
-                onSelected = onSectionSelected,
-            )
+        stickyHeader {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(PrayerBg)
+                    .padding(vertical = 12.dp),
+            ) {
+                QuickPrayerCategories(
+                    selected = selectedSection,
+                    favoritesCount = favorites.size,
+                    state = quickSectionState,
+                    onSelected = onSectionSelected,
+                )
+            }
+        }
 
-            Spacer(Modifier.height(22.dp))
+        item {
+            Spacer(Modifier.height(10.dp))
 
             PrayerSectionHeader(
                 title = when (selectedSection) {

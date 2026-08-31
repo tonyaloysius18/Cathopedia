@@ -57,6 +57,7 @@ import com.ynotlabs.cathopedia.content.model.EntityRef
 import com.ynotlabs.cathopedia.content.model.EntityType
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 
@@ -266,14 +267,7 @@ private fun CreedsIntroductionCard(body: String) {
             .background(CreedsSurface)
             .border(1.dp, CreedsGold.copy(alpha = 0.16f), RoundedCornerShape(20.dp)),
     ) {
-        Box(
-            modifier = Modifier
-                .align(Alignment.CenterStart)
-                .width(4.dp)
-                .height(84.dp)
-                .clip(RoundedCornerShape(topEnd = 4.dp, bottomEnd = 4.dp))
-                .background(CreedsGold),
-        )
+        GoldCardAccent(Modifier.align(Alignment.CenterStart))
         Text(
             text = body,
             color = CreedsCream,
@@ -300,35 +294,39 @@ private fun CreedPrayerCard(
         color = CreedsSurface,
         border = BorderStroke(1.dp, CreedsGold.copy(alpha = 0.24f)),
     ) {
-        Row(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = title,
-                    color = CreedsCream,
-                    fontFamily = FontFamily.Serif,
-                    fontSize = 19.sp,
-                    lineHeight = 23.sp,
-                    fontWeight = FontWeight.Medium,
-                )
-                Spacer(Modifier.height(4.dp))
-                Text(
-                    text = description,
-                    color = CreedsMuted,
-                    fontSize = 13.sp,
-                    lineHeight = 18.sp,
+        Box {
+            GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
+
+            Row(
+                modifier = Modifier.padding(start = 18.dp, top = 8.dp, end = 16.dp, bottom = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = title,
+                        color = CreedsCream,
+                        fontFamily = FontFamily.Serif,
+                        fontSize = 19.sp,
+                        lineHeight = 23.sp,
+                        fontWeight = FontWeight.Medium,
+                    )
+                    Spacer(Modifier.height(4.dp))
+                    Text(
+                        text = description,
+                        color = CreedsMuted,
+                        fontSize = 13.sp,
+                        lineHeight = 18.sp,
+                    )
+                }
+
+                Spacer(Modifier.width(8.dp))
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
+                    contentDescription = null,
+                    tint = CreedsGold,
+                    modifier = Modifier.size(18.dp),
                 )
             }
-
-            Spacer(Modifier.width(8.dp))
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
-                contentDescription = null,
-                tint = CreedsGold,
-                modifier = Modifier.size(18.dp),
-            )
         }
     }
 }

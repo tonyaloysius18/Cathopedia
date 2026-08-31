@@ -46,6 +46,7 @@ import com.ynotlabs.cathopedia.mass.Vessel
 import com.ynotlabs.cathopedia.mass.VesselImages
 import com.ynotlabs.cathopedia.mass.VesselsData
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
+import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import org.jetbrains.compose.resources.painterResource
 
@@ -153,14 +154,7 @@ private fun VesselsIntroCard(text: String) {
         border = BorderStroke(1.dp, VesselsGold.copy(alpha = 0.35f)),
     ) {
         Box {
-            Box(
-                modifier = Modifier
-                    .align(Alignment.CenterStart)
-                    .width(3.dp)
-                    .height(54.dp)
-                    .clip(RoundedCornerShape(topEnd = 3.dp, bottomEnd = 3.dp))
-                    .background(VesselsGold),
-            )
+            GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
 
             Text(
                 text = text,
@@ -246,47 +240,51 @@ private fun VesselCard(
         color = VesselsSurface,
         border = BorderStroke(1.dp, VesselsGold.copy(alpha = 0.35f)),
     ) {
-        Column(
-            modifier = Modifier.padding(14.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .aspectRatio(1f)
-                    .background(VesselsSurfaceRaised, RoundedCornerShape(14.dp)),
-                contentAlignment = Alignment.Center,
+        Box {
+            GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
+
+            Column(
+                modifier = Modifier.padding(start = 18.dp, top = 14.dp, end = 16.dp, bottom = 14.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                if (painter != null) {
-                    Image(
-                        painter = painter,
-                        contentDescription = null,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(10.dp),
-                    )
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(1f)
+                        .background(VesselsSurfaceRaised, RoundedCornerShape(14.dp)),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    if (painter != null) {
+                        Image(
+                            painter = painter,
+                            contentDescription = null,
+                            contentScale = ContentScale.Fit,
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(10.dp),
+                        )
+                    }
                 }
+
+                Spacer(Modifier.height(10.dp))
+
+                Text(
+                    text = if (isFrench) vessel.nameFr else vessel.nameEn,
+                    color = VesselsCream,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 17.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                )
+                Spacer(Modifier.height(6.dp))
+                Text(
+                    text = if (isFrench) vessel.descFr else vessel.descEn,
+                    color = VesselsCream.copy(alpha = 0.82f),
+                    fontSize = 13.sp,
+                    lineHeight = 18.sp,
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                )
             }
-
-            Spacer(Modifier.height(10.dp))
-
-            Text(
-                text = if (isFrench) vessel.nameFr else vessel.nameEn,
-                color = VesselsCream,
-                fontFamily = FontFamily.Serif,
-                fontSize = 17.sp,
-                fontWeight = FontWeight.SemiBold,
-                textAlign = androidx.compose.ui.text.style.TextAlign.Center,
-            )
-            Spacer(Modifier.height(6.dp))
-            Text(
-                text = if (isFrench) vessel.descFr else vessel.descEn,
-                color = VesselsCream.copy(alpha = 0.82f),
-                fontSize = 13.sp,
-                lineHeight = 18.sp,
-                textAlign = androidx.compose.ui.text.style.TextAlign.Center,
-            )
         }
     }
 }

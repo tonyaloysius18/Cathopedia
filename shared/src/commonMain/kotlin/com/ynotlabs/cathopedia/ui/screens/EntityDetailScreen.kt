@@ -28,8 +28,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Link
 import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.filled.Share
@@ -37,6 +35,7 @@ import androidx.compose.material3.AssistChip
 import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -75,8 +74,9 @@ import com.ynotlabs.cathopedia.ui.PopeCoatsOfArms
 import com.ynotlabs.cathopedia.ui.accentColor
 import com.ynotlabs.cathopedia.ui.label
 import com.ynotlabs.cathopedia.ui.singularLabel
-import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.resources.prayer_category_favorites
+import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.resources.connected_basilica
 import com.ynotlabs.cathopedia.resources.connected_person
 import com.ynotlabs.cathopedia.resources.liturgical_calendar
@@ -512,21 +512,21 @@ private fun DetailHero(
             )
 
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                HeroCircleButton(onClick = onBookmark) {
-                    Icon(
-                        imageVector = if (bookmarked) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                IconButton(onClick = onBookmark, modifier = Modifier.size(48.dp)) {
+                    Image(
+                        painter = painterResource(Res.drawable.prayer_category_favorites),
                         contentDescription = if (bookmarked) s.detailRemoveFromFavorites else s.detailSaveToFavorites,
-                        tint = DetailCream,
-                        modifier = Modifier.size(22.dp),
+                        modifier = Modifier.size(28.dp),
+                        alpha = if (bookmarked) 1f else 0.4f
                     )
                 }
 
-                HeroCircleButton(onClick = onShare) {
+                IconButton(onClick = onShare, modifier = Modifier.size(48.dp)) {
                     Icon(
                         imageVector = Icons.Default.Share,
                         contentDescription = s.detailShare,
                         tint = DetailCream,
-                        modifier = Modifier.size(22.dp),
+                        modifier = Modifier.size(24.dp),
                     )
                 }
             }
@@ -619,24 +619,6 @@ private fun DetailHero(
 }
 
 @Composable
-private fun HeroCircleButton(
-    onClick: () -> Unit,
-    content: @Composable () -> Unit,
-) {
-    Box(
-        modifier = Modifier
-            .size(48.dp)
-            .clip(CircleShape)
-            .background(Color.Black.copy(alpha = 0.28f))
-            .border(2.dp, Color.White.copy(alpha = 0.08f), CircleShape)
-            .clickable(onClick = onClick),
-        contentAlignment = Alignment.Center,
-    ) {
-        content()
-    }
-}
-
-@Composable
 private fun DetailActionBar(
     bookmarked: Boolean,
     hasRelated: Boolean,
@@ -666,11 +648,11 @@ private fun DetailActionBar(
             ActionItem(
                 label = if (bookmarked) s.detailSaved else s.detailSave,
                 icon = {
-                    Icon(
-                        imageVector = if (bookmarked) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                    Image(
+                        painter = painterResource(Res.drawable.prayer_category_favorites),
                         contentDescription = null,
-                        tint = DetailCream,
                         modifier = Modifier.size(23.dp),
+                        alpha = if (bookmarked) 1f else 0.4f
                     )
                 },
                 onClick = onSave,
@@ -1218,12 +1200,12 @@ private fun CompactNoPortraitHeader(
 
             Spacer(Modifier.weight(1f))
 
-            HeroCircleButton(onClick = onBookmark) {
-                Icon(
-                    imageVector = if (bookmarked) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+            IconButton(onClick = onBookmark, modifier = Modifier.size(48.dp)) {
+                Image(
+                    painter = painterResource(Res.drawable.prayer_category_favorites),
                     contentDescription = if (bookmarked) s.detailRemoveFromFavorites else s.detailSaveToFavorites,
-                    tint = DetailCream,
-                    modifier = Modifier.size(22.dp),
+                    modifier = Modifier.size(28.dp),
+                    alpha = if (bookmarked) 1f else 0.4f
                 )
             }
         }

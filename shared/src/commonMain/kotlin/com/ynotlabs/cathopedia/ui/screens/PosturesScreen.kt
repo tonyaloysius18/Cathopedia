@@ -46,6 +46,7 @@ import com.ynotlabs.cathopedia.mass.Posture
 import com.ynotlabs.cathopedia.mass.PostureImages
 import com.ynotlabs.cathopedia.mass.PosturesData
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
+import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import org.jetbrains.compose.resources.painterResource
 
@@ -181,14 +182,7 @@ private fun PosturesIntroCard(text: String) {
         border = BorderStroke(1.dp, PosturesGold.copy(alpha = 0.35f)),
     ) {
         Box {
-            Box(
-                modifier = Modifier
-                    .align(Alignment.CenterStart)
-                    .width(3.dp)
-                    .height(54.dp)
-                    .clip(RoundedCornerShape(topEnd = 3.dp, bottomEnd = 3.dp))
-                    .background(PosturesGold),
-            )
+            GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
 
             Text(
                 text = text,
@@ -274,47 +268,51 @@ private fun PostureCard(
         color = PosturesSurface,
         border = BorderStroke(1.dp, PosturesGold.copy(alpha = 0.35f)),
     ) {
-        Column(
-            modifier = Modifier.padding(14.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .aspectRatio(1f)
-                    .background(PosturesSurfaceRaised, RoundedCornerShape(14.dp)),
-                contentAlignment = Alignment.Center,
+        Box {
+            GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
+
+            Column(
+                modifier = Modifier.padding(start = 18.dp, top = 14.dp, end = 16.dp, bottom = 14.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                if (painter != null) {
-                    Image(
-                        painter = painter,
-                        contentDescription = null,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(10.dp),
-                    )
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(1f)
+                        .background(PosturesSurfaceRaised, RoundedCornerShape(14.dp)),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    if (painter != null) {
+                        Image(
+                            painter = painter,
+                            contentDescription = null,
+                            contentScale = ContentScale.Fit,
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(10.dp),
+                        )
+                    }
                 }
+
+                Spacer(Modifier.height(10.dp))
+
+                Text(
+                    text = if (isFrench) posture.nameFr else posture.nameEn,
+                    color = PosturesCream,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 17.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                )
+                Spacer(Modifier.height(6.dp))
+                Text(
+                    text = if (isFrench) posture.descFr else posture.descEn,
+                    color = PosturesCream.copy(alpha = 0.82f),
+                    fontSize = 13.sp,
+                    lineHeight = 18.sp,
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                )
             }
-
-            Spacer(Modifier.height(10.dp))
-
-            Text(
-                text = if (isFrench) posture.nameFr else posture.nameEn,
-                color = PosturesCream,
-                fontFamily = FontFamily.Serif,
-                fontSize = 17.sp,
-                fontWeight = FontWeight.SemiBold,
-                textAlign = androidx.compose.ui.text.style.TextAlign.Center,
-            )
-            Spacer(Modifier.height(6.dp))
-            Text(
-                text = if (isFrench) posture.descFr else posture.descEn,
-                color = PosturesCream.copy(alpha = 0.82f),
-                fontSize = 13.sp,
-                lineHeight = 18.sp,
-                textAlign = androidx.compose.ui.text.style.TextAlign.Center,
-            )
         }
     }
 }

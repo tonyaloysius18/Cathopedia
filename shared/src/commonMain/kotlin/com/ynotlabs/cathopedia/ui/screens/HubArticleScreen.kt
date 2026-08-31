@@ -23,6 +23,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -37,6 +40,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
@@ -66,6 +70,7 @@ import com.ynotlabs.cathopedia.content.parseHubMarkup
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.model.HubArticleDetail
+import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.ui.hubAssetPainter
 
@@ -75,6 +80,12 @@ private val SymbolCardCream = Color(0xFFF4ECDD)
 private val SymbolCardMuted = Color(0xFFB4AD98)
 
 private data class SymbolCardContent(
+    val heading: HeadingBlock,
+    val image: ImageBlock,
+    val paragraph: ParagraphBlock,
+)
+
+private data class BiblicalCharacterContent(
     val heading: HeadingBlock,
     val image: ImageBlock,
     val paragraph: ParagraphBlock,
@@ -106,6 +117,34 @@ fun HubArticleScreen(
 
     if (articleId == "art.cat.creeds") {
         CreedsScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            onEntityRefSelected = onEntityRefSelected,
+        )
+        return
+    }
+
+    if (articleId == "art.cat.four_marks") {
+        FourMarksScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+        )
+        return
+    }
+
+    if (articleId == "art.cat.last_things") {
+        FourLastThingsScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+        )
+        return
+    }
+
+    if (articleId == "art.cat.confession_prayers") {
+        ConfessionPrayersScreen(
             repository = repository,
             language = language,
             onBack = onBack,
@@ -170,6 +209,7 @@ fun HubArticleScreen(
 
     val s = LocalStrings.current
     val isSymbolsArticle = articleId.startsWith("art.symbols.")
+    val isBiblicalArticle = articleId.startsWith("art.biblical.")
     var article by remember(articleId) { mutableStateOf<HubArticleDetail?>(null) }
     var strings by remember(articleId) { mutableStateOf<Map<String, String>>(emptyMap()) }
 
@@ -200,14 +240,14 @@ fun HubArticleScreen(
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(
                 start = 20.dp,
-                top = if (isSymbolsArticle) headerHeightDp + 16.dp else 0.dp,
+                top = if (isSymbolsArticle || isBiblicalArticle) headerHeightDp + 20.dp else 0.dp,
                 end = 20.dp,
                 bottom = 120.dp
             ),
         ) {
             if (current == null) return@LazyColumn
 
-            if (!isSymbolsArticle) {
+            if (!isSymbolsArticle && !isBiblicalArticle) {
                 item {
                     Column(
                         modifier = Modifier
@@ -247,6 +287,7 @@ fun HubArticleScreen(
             }
 
             val symbolCards = if (isSymbolsArticle) current.blocks.asSymbolCards() else null
+            val biblicalCards = if (isBiblicalArticle) current.blocks.asBiblicalCharacterCards() else null
             if (symbolCards != null) {
                 item {
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -283,6 +324,25 @@ fun HubArticleScreen(
                         Spacer(Modifier.height(14.dp))
                     }
                 }
+            } else if (biblicalCards != null) {
+                item {
+                    BiblicalFiguresLabel(
+                        count = biblicalCards.size,
+                        language = language,
+                    )
+                    Spacer(Modifier.height(16.dp))
+                }
+
+                biblicalCards.forEach { card ->
+                    item {
+                        BiblicalCharacterCard(
+                            card = card,
+                            strings = strings,
+                            onEntityRefSelected = onEntityRefSelected,
+                        )
+                        Spacer(Modifier.height(16.dp))
+                    }
+                }
             } else {
                 current.blocks.forEach { block ->
                     item {
@@ -293,14 +353,14 @@ fun HubArticleScreen(
             }
         }
 
-        if (isSymbolsArticle && current != null) {
+        if ((isSymbolsArticle || isBiblicalArticle) && current != null) {
             HubArticleHeaderCard(
                 title = strings[current.titleKey].orEmpty(),
                 lead = current.leadKey?.let { strings[it] },
                 backDescription = s.back,
                 onBack = onBack,
                 modifier = Modifier.onGloballyPositioned {
-                    headerHeightPx = it.size.height
+                    if (headerHeightPx != it.size.height) headerHeightPx = it.size.height
                 }
             )
         }
@@ -376,6 +436,157 @@ private fun List<Block>.asSymbolCards(): List<SymbolCardContent>? {
         cards += SymbolCardContent(heading, image, paragraph)
     }
     return cards
+}
+
+private fun List<Block>.asBiblicalCharacterCards(): List<BiblicalCharacterContent>? {
+    if (isEmpty() || size % 3 != 0) return null
+    val cards = mutableListOf<BiblicalCharacterContent>()
+    for (index in indices step 3) {
+        val heading = getOrNull(index) as? HeadingBlock ?: return null
+        val image = getOrNull(index + 1) as? ImageBlock ?: return null
+        val paragraph = getOrNull(index + 2) as? ParagraphBlock ?: return null
+        cards += BiblicalCharacterContent(heading, image, paragraph)
+    }
+    return cards
+}
+
+@Composable
+private fun BiblicalFiguresLabel(
+    count: Int,
+    language: String,
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = if (language == "fr") "FIGURES BIBLIQUES · $count" else "BIBLICAL FIGURES · $count",
+            color = MaterialTheme.colorScheme.primary,
+            fontSize = 11.sp,
+            fontWeight = FontWeight.SemiBold,
+            letterSpacing = 1.4.sp,
+        )
+        Spacer(
+            Modifier
+                .padding(start = 12.dp)
+                .height(1.dp)
+                .weight(1f)
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(
+                            MaterialTheme.colorScheme.primary.copy(alpha = 0.65f),
+                            Color.Transparent,
+                        )
+                    )
+                ),
+        )
+    }
+}
+
+@Composable
+private fun BiblicalCharacterCard(
+    card: BiblicalCharacterContent,
+    strings: Map<String, String>,
+    onEntityRefSelected: (EntityRef) -> Unit,
+) {
+    val title = strings[card.heading.textKey].orEmpty()
+    val shape = RoundedCornerShape(22.dp)
+
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = shape,
+        color = MaterialTheme.colorScheme.surface,
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.42f)),
+        shadowElevation = 3.dp,
+    ) {
+        Box {
+            Column(modifier = Modifier.fillMaxWidth()) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(220.dp)
+                        .background(
+                            Brush.verticalGradient(
+                                listOf(
+                                    MaterialTheme.colorScheme.surfaceContainerHigh,
+                                    MaterialTheme.colorScheme.surface,
+                                )
+                            )
+                        ),
+                    contentAlignment = Alignment.BottomCenter,
+                ) {
+                    hubAssetPainter(card.image.asset)?.let { painter ->
+                        Image(
+                            painter = painter,
+                            contentDescription = title,
+                            contentScale = ContentScale.Fit,
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(start = 20.dp, top = 10.dp, end = 20.dp),
+                        )
+                    }
+
+                    GoldCardAccent(
+                        modifier = Modifier.align(Alignment.CenterStart),
+                        color = MaterialTheme.colorScheme.primary,
+                        height = 68.dp,
+                    )
+                }
+
+                Spacer(
+                    Modifier
+                        .fillMaxWidth()
+                        .height(1.dp)
+                        .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.58f))
+                )
+
+                Column(
+                    modifier = Modifier.padding(start = 24.dp, top = 18.dp, end = 20.dp, bottom = 22.dp),
+                ) {
+                    Text(
+                        text = title,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        fontFamily = FontFamily.Serif,
+                        fontSize = 22.sp,
+                        lineHeight = 27.sp,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                    Spacer(Modifier.height(8.dp))
+                    BiblicalMarkupText(
+                        raw = strings[card.paragraph.textKey].orEmpty(),
+                        onEntityRefSelected = onEntityRefSelected,
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun BiblicalMarkupText(
+    raw: String,
+    onEntityRefSelected: (EntityRef) -> Unit,
+) {
+    val annotated = parseHubMarkup(raw)
+    ClickableText(
+        text = annotated,
+        style = TextStyle(
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.9f),
+            fontSize = 15.sp,
+            lineHeight = 23.sp,
+        ),
+        onClick = { offset ->
+            annotated.getStringAnnotations(HUB_ENTITY_LINK_TAG, offset, offset).firstOrNull()?.let { annotation ->
+                val (type, id) = annotation.item.split(":", limit = 2).let { it[0] to it.getOrElse(1) { "" } }
+                if (id.isNotEmpty()) {
+                    runCatching { com.ynotlabs.cathopedia.content.model.EntityType.valueOf(type) }
+                        .getOrNull()
+                        ?.let { onEntityRefSelected(EntityRef(type = it, id = id)) }
+                }
+            }
+        },
+    )
 }
 
 @Composable
@@ -516,12 +727,19 @@ private fun BlockView(block: Block, strings: Map<String, String>, onEntityRefSel
             color = MaterialTheme.colorScheme.surfaceContainerLow,
             border = BorderStroke(1.dp, SymbolCardGold.copy(alpha = 0.35f)),
         ) {
-            Column(Modifier.padding(14.dp)) {
-                MarkupText(strings[block.textKey].orEmpty(), onEntityRefSelected)
-                block.attributionKey?.let { key ->
-                    strings[key]?.let { attribution ->
-                        Spacer(Modifier.height(6.dp))
-                        Text(text = "— $attribution", color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp)
+            Box {
+                GoldCardAccent(Modifier.align(Alignment.CenterStart))
+                Column(Modifier.padding(start = 22.dp, top = 14.dp, end = 14.dp, bottom = 14.dp)) {
+                    MarkupText(strings[block.textKey].orEmpty(), onEntityRefSelected)
+                    block.attributionKey?.let { key ->
+                        strings[key]?.let { attribution ->
+                            Spacer(Modifier.height(6.dp))
+                            Text(
+                                text = "— $attribution",
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                fontSize = 12.sp
+                            )
+                        }
                     }
                 }
             }
@@ -533,14 +751,17 @@ private fun BlockView(block: Block, strings: Map<String, String>, onEntityRefSel
             color = MaterialTheme.colorScheme.primaryContainer,
             border = BorderStroke(1.dp, SymbolCardGold.copy(alpha = 0.45f)),
         ) {
-            Column(Modifier.padding(14.dp)) {
-                block.titleKey?.let { key ->
-                    strings[key]?.let { title ->
-                        Text(text = title, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
-                        Spacer(Modifier.height(4.dp))
+            Box {
+                GoldCardAccent(Modifier.align(Alignment.CenterStart))
+                Column(Modifier.padding(start = 22.dp, top = 14.dp, end = 14.dp, bottom = 14.dp)) {
+                    block.titleKey?.let { key ->
+                        strings[key]?.let { title ->
+                            Text(text = title, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
+                            Spacer(Modifier.height(4.dp))
+                        }
                     }
+                    MarkupText(strings[block.textKey].orEmpty(), onEntityRefSelected)
                 }
-                MarkupText(strings[block.textKey].orEmpty(), onEntityRefSelected)
             }
         }
 
@@ -580,12 +801,30 @@ private fun BlockView(block: Block, strings: Map<String, String>, onEntityRefSel
                     modifier = Modifier.fillMaxWidth().clickable { onEntityRefSelected(ref) },
                     shape = RoundedCornerShape(10.dp),
                     color = MaterialTheme.colorScheme.surfaceContainerLow,
+                    border = BorderStroke(1.dp, SymbolCardGold.copy(alpha = 0.25f)),
                 ) {
-                    Text(
-                        text = ref.labelKey?.let { strings[it] } ?: ref.id,
-                        modifier = Modifier.padding(10.dp),
-                        fontSize = 13.sp,
-                    )
+                    Box {
+                        GoldCardAccent(Modifier.align(Alignment.CenterStart), height = 32.dp)
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 18.dp, top = 10.dp, end = 10.dp, bottom = 10.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Text(
+                                text = ref.labelKey?.let { strings[it] } ?: ref.id,
+                                modifier = Modifier.weight(1f),
+                                fontSize = 13.sp,
+                            )
+                            Icon(
+                                imageVector = Icons.Default.ChevronRight,
+                                contentDescription = null,
+                                tint = SymbolCardGold.copy(alpha = 0.6f),
+                                modifier = Modifier.size(16.dp)
+                            )
+                        }
+                    }
                 }
             }
         }

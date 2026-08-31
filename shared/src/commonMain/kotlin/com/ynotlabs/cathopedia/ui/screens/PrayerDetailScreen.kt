@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -7,6 +8,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,18 +18,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -35,6 +36,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -45,6 +47,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -60,6 +64,7 @@ import com.ynotlabs.cathopedia.ui.getCategoryIcon
 import com.ynotlabs.cathopedia.ui.CategoryIcon
 import com.ynotlabs.cathopedia.ui.PrayerPortraits
 import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.resources.prayer_category_favorites
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.ui.components.KeepScreenOn
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
@@ -85,12 +90,16 @@ fun PrayerDetailScreen(
 ) {
     val s = LocalStrings.current
     val scope = rememberCoroutineScope()
+    val density = LocalDensity.current
 
     var readingLanguage by remember(slug) { mutableStateOf(language) }
     var detail by remember(slug) { mutableStateOf<PrayerDetail?>(null) }
     var isFavorite by remember(slug) { mutableStateOf(false) }
     var keepScreenOn by remember(slug) { mutableStateOf(false) }
     var fontScaleIndex by remember(slug) { mutableStateOf(DEFAULT_FONT_SCALE_INDEX) }
+
+    var buttonsHeightPx by remember { mutableIntStateOf(0) }
+    val buttonsHeight = with(density) { buttonsHeightPx.toDp() }
 
     LaunchedEffect(slug) {
         isFavorite = repository.isPrayerFavorite(slug)
@@ -160,7 +169,10 @@ fun PrayerDetailScreen(
                     },
                     keepScreenOn = keepScreenOn,
                     onKeepScreenOnChange = { keepScreenOn = it },
-                    modifier = Modifier.fillMaxSize().padding(padding),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(bottom = padding.calculateBottomPadding())
+                        .padding(top = buttonsHeight),
                 )
             }
 
@@ -169,7 +181,10 @@ fun PrayerDetailScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .statusBarsPadding()
-                    .padding(start = 18.dp, end = 18.dp, top = 10.dp),
+                    .padding(start = 18.dp, end = 18.dp, top = 10.dp)
+                    .onGloballyPositioned {
+                        if (buttonsHeightPx != it.size.height) buttonsHeightPx = it.size.height
+                    },
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
@@ -179,16 +194,17 @@ fun PrayerDetailScreen(
                 )
 
                 if (current != null) {
-                    HeroCircleButton(
+                    IconButton(
                         onClick = {
                             scope.launch { isFavorite = repository.togglePrayerFavorite(slug) }
                         },
+                        modifier = Modifier.size(48.dp)
                     ) {
-                        Icon(
-                            imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                        Image(
+                            painter = painterResource(Res.drawable.prayer_category_favorites),
                             contentDescription = if (isFavorite) s.detailRemoveFromFavorites else s.detailSaveToFavorites,
-                            tint = PrayerCream,
-                            modifier = Modifier.size(22.dp),
+                            modifier = Modifier.size(38.dp),
+                            alpha = if (isFavorite) 1f else 0.4f
                         )
                     }
                 }
@@ -197,6 +213,7 @@ fun PrayerDetailScreen(
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun PrayerReadingContent(
     detail: PrayerDetail,
@@ -208,12 +225,13 @@ private fun PrayerReadingContent(
     onKeepScreenOnChange: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val sections = remember(detail.bodyMd) { splitPrayerSections(detail.bodyMd) }
+
     Column(
-        modifier = modifier
-            .verticalScroll(rememberScrollState()),
+        modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(2.dp))
 
         Box(modifier = Modifier.padding(horizontal = 20.dp)) {
             SacredPrayerHeader(
@@ -223,37 +241,59 @@ private fun PrayerReadingContent(
             )
         }
 
-        Spacer(Modifier.height(22.dp))
+        Spacer(Modifier.height(16.dp))
 
         if (detail.availableLanguages.size > 1) {
-            Box(modifier = Modifier.padding(horizontal = 20.dp)) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp)
+                    .padding(bottom = 12.dp)
+            ) {
                 LanguageSegmentedControl(
                     available = detail.availableLanguages,
                     selected = readingLanguage,
                     onSelect = onLanguageChange,
                 )
             }
-            Spacer(Modifier.height(18.dp))
         }
 
-        Box(modifier = Modifier.padding(horizontal = 20.dp)) {
-            PrayerCard(
-                detail = detail,
-                fontScale = fontScale,
-                onFontScaleChange = onFontScaleChange,
-                keepScreenOn = keepScreenOn,
-                onKeepScreenOnChange = onKeepScreenOnChange,
-            )
-        }
+        LazyColumn(
+            modifier = Modifier.weight(1f).fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            contentPadding = PaddingValues(bottom = 28.dp)
+        ) {
+            items(sections) { section ->
+                Box(modifier = Modifier.padding(horizontal = 20.dp)) {
+                    PrayerSectionCard(
+                        title = section.title,
+                        bodyMd = section.body,
+                        fontScale = fontScale,
+                        isFirst = section == sections.first(),
+                    )
+                }
+                Spacer(Modifier.height(18.dp))
+            }
 
-        Spacer(Modifier.height(18.dp))
+            item {
+                Box(modifier = Modifier.padding(horizontal = 20.dp)) {
+                    ReadingActionCard(
+                        fontScale = fontScale,
+                        onFontScaleChange = onFontScaleChange,
+                        keepScreenOn = keepScreenOn,
+                        onKeepScreenOnChange = onKeepScreenOnChange,
+                    )
+                }
 
-        Box(modifier = Modifier.padding(horizontal = 20.dp)) {
-            AboutPrayerCard(
-                detail = detail,
-            )
+                Spacer(Modifier.height(18.dp))
+
+                Box(modifier = Modifier.padding(horizontal = 20.dp)) {
+                    AboutPrayerCard(
+                        detail = detail,
+                    )
+                }
+            }
         }
-        Spacer(Modifier.height(28.dp))
     }
 }
 
@@ -285,7 +325,7 @@ private fun SacredPrayerHeader(
             }
         }
 
-        Spacer(Modifier.height(14.dp))
+        Spacer(Modifier.height(10.dp))
 
         Text(
             text = title,
@@ -357,12 +397,11 @@ private fun LanguageSegmentedControl(
 }
 
 @Composable
-private fun PrayerCard(
-    detail: PrayerDetail,
+private fun PrayerSectionCard(
+    title: String?,
+    bodyMd: String,
     fontScale: Float,
-    onFontScaleChange: (Int) -> Unit,
-    keepScreenOn: Boolean,
-    onKeepScreenOnChange: (Boolean) -> Unit,
+    isFirst: Boolean,
 ) {
     val s = LocalStrings.current
 
@@ -373,15 +412,28 @@ private fun PrayerCard(
         modifier = Modifier.fillMaxWidth(),
     ) {
         Column(modifier = Modifier.padding(22.dp)) {
-            Text(
-                text = "“",
-                color = PrayerGold,
-                fontFamily = FontFamily.Serif,
-                fontSize = 38.sp,
-                lineHeight = 32.sp,
-            )
+            if (isFirst) {
+                Text(
+                    text = "“",
+                    color = PrayerGold,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 38.sp,
+                    lineHeight = 32.sp,
+                )
+            }
 
-            if (detail.bodyMd.isBlank()) {
+            if (title != null) {
+                Text(
+                    text = title.uppercase(),
+                    color = PrayerGoldSoft,
+                    style = MaterialTheme.typography.labelLarge,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 1.sp,
+                    modifier = Modifier.padding(bottom = 12.dp)
+                )
+            }
+
+            if (bodyMd.isBlank()) {
                 Text(
                     text = s.prayerTextNotYetAvailable,
                     style = MaterialTheme.typography.bodyLarge,
@@ -389,14 +441,29 @@ private fun PrayerCard(
                 )
             } else {
                 PrayerBodyText(
-                    bodyMd = detail.bodyMd,
+                    bodyMd = bodyMd,
                     color = PrayerCream,
                     fontScale = fontScale,
                 )
             }
+        }
+    }
+}
 
-            Spacer(Modifier.height(32.dp))
-
+@Composable
+private fun ReadingActionCard(
+    fontScale: Float,
+    onFontScaleChange: (Int) -> Unit,
+    keepScreenOn: Boolean,
+    onKeepScreenOnChange: (Boolean) -> Unit,
+) {
+    Card(
+        shape = RoundedCornerShape(24.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
+        border = androidx.compose.foundation.BorderStroke(2.dp, PrayerGold.copy(alpha = 0.75f)),
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        Column(modifier = Modifier.padding(20.dp)) {
             SacredDivider(modifier = Modifier.padding(horizontal = 32.dp))
 
             Spacer(Modifier.height(16.dp))
@@ -521,27 +588,43 @@ private fun AboutPrayerCard(
     }
 }
 
-@Composable
-private fun HeroCircleButton(
-    onClick: () -> Unit,
-    content: @Composable () -> Unit,
-) {
-    Box(
-        modifier = Modifier
-            .size(48.dp)
-            .clip(CircleShape)
-            .background(Color.Black.copy(alpha = 0.28f))
-            .border(2.dp, Color.White.copy(alpha = 0.08f), CircleShape)
-            .clickable(onClick = onClick),
-        contentAlignment = Alignment.Center,
-    ) {
-        content()
-    }
-}
-
 private fun languageLabel(lang: String, s: Strings): String = when (lang) {
     "en" -> s.prayerLanguageEn
     "fr" -> s.prayerLanguageFr
     "la" -> s.prayerLanguageLa
     else -> lang
+}
+
+private data class PrayerSection(
+    val title: String?,
+    val body: String
+)
+
+private fun splitPrayerSections(bodyMd: String): List<PrayerSection> {
+    if (!bodyMd.contains("#")) {
+        return listOf(PrayerSection(null, bodyMd))
+    }
+
+    val sections = mutableListOf<PrayerSection>()
+    val lines = bodyMd.lines()
+    var currentTitle: String? = null
+    var currentBody = StringBuilder()
+
+    for (line in lines) {
+        if (line.trim().startsWith("#")) {
+            if (currentBody.isNotEmpty() || currentTitle != null) {
+                sections.add(PrayerSection(currentTitle, currentBody.toString().trim()))
+            }
+            currentTitle = line.trim().trimStart('#').trim()
+            currentBody = StringBuilder()
+        } else {
+            currentBody.append(line).append("\n")
+        }
+    }
+
+    if (currentBody.isNotEmpty() || currentTitle != null) {
+        sections.add(PrayerSection(currentTitle, currentBody.toString().trim()))
+    }
+
+    return sections
 }

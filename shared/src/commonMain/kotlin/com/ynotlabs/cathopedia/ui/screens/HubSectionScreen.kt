@@ -76,6 +76,7 @@ import com.ynotlabs.cathopedia.ui.components.DiagramHotspot
 import com.ynotlabs.cathopedia.ui.components.DiagramPolygonShape
 import com.ynotlabs.cathopedia.ui.components.DiagramRectShape
 import com.ynotlabs.cathopedia.ui.components.InteractiveDiagram
+import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.model.HubTimelineDetail
 import org.jetbrains.compose.resources.painterResource
@@ -102,6 +103,89 @@ fun HubSectionScreen(
     onArticleSelected: (HubArticleSummary) -> Unit,
     onEntityRefSelected: (EntityRef) -> Unit,
 ) {
+    if (sectionId == "cat.gifts") {
+        GiftsOfHolySpiritScreen(
+            hubId = hubId,
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            onArticleSelected = onArticleSelected,
+        )
+        return
+    }
+
+    if (sectionId == "cat.fruits") {
+        FruitsOfHolySpiritScreen(
+            hubId = hubId,
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            onArticleSelected = onArticleSelected,
+        )
+        return
+    }
+
+    if (sectionId == "cat.commandments") {
+        TenCommandmentsScreen(
+            hubId = hubId,
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            onArticleSelected = onArticleSelected,
+        )
+        return
+    }
+
+    if (sectionId == "cat.capital_sins") {
+        CapitalSinsScreen(
+            hubId = hubId,
+            repository = repository,
+            language = language,
+            onBack = onBack,
+        )
+        return
+    }
+
+    if (sectionId == "cat.beatitudes") {
+        BeatitudesScreen(
+            hubId = hubId,
+            repository = repository,
+            language = language,
+            onBack = onBack,
+        )
+        return
+    }
+
+    if (sectionId == "cat.works_of_mercy") {
+        WorksOfMercyScreen(
+            hubId = hubId,
+            repository = repository,
+            language = language,
+            onBack = onBack,
+        )
+        return
+    }
+
+    if (sectionId == "cat.precepts") {
+        PreceptsScreen(
+            hubId = hubId,
+            repository = repository,
+            language = language,
+            onBack = onBack,
+        )
+        return
+    }
+
+    if (sectionId == "cat.virtues") {
+        VirtuesScreen(
+            hubId = hubId,
+            repository = repository,
+            language = language,
+            onBack = onBack,
+        )
+        return
+    }
+
     if (sectionId == "holy_see.hierarchy") {
         HierarchyCarouselScreen(
             repository = repository,
@@ -196,14 +280,7 @@ private fun HubSectionIntroCard(text: String) {
         border = BorderStroke(1.dp, HubSectionGold.copy(alpha = 0.35f)),
     ) {
         Box {
-            Box(
-                modifier = Modifier
-                    .align(Alignment.CenterStart)
-                    .width(3.dp)
-                    .height(54.dp)
-                    .clip(RoundedCornerShape(topEnd = 3.dp, bottomEnd = 3.dp))
-                    .background(HubSectionGold),
-            )
+            GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
 
             Text(
                 text = text,
@@ -273,14 +350,7 @@ private fun HubSectionItemCard(
         border = BorderStroke(1.dp, HubSectionGold.copy(alpha = 0.35f)),
     ) {
         Box {
-            Box(
-                modifier = Modifier
-                    .align(Alignment.CenterStart)
-                    .width(3.dp)
-                    .height(54.dp)
-                    .clip(RoundedCornerShape(topEnd = 3.dp, bottomEnd = 3.dp))
-                    .background(HubSectionGold),
-            )
+            GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
 
             Column(
                 modifier = Modifier.padding(start = 18.dp, top = 14.dp, end = 16.dp, bottom = 14.dp),
@@ -353,49 +423,53 @@ private fun ArticleRow(
         contentColor = HubSectionCream,
         border = BorderStroke(1.dp, HubSectionGold.copy(alpha = 0.48f)),
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 14.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Column(modifier = Modifier.weight(1f)) {
-                readingTimeMinutes?.let { minutes ->
+        Box {
+            GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
+
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(start = 18.dp, top = 14.dp, end = 16.dp, bottom = 14.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    readingTimeMinutes?.let { minutes ->
+                        Text(
+                            text = "ARTICLE · $minutes MIN",
+                            color = HubSectionGold.copy(alpha = 0.72f),
+                            fontSize = 9.sp,
+                            fontWeight = FontWeight.Medium,
+                            letterSpacing = 1.1.sp,
+                        )
+                        Spacer(Modifier.height(5.dp))
+                    }
+
                     Text(
-                        text = "ARTICLE · $minutes MIN",
-                        color = HubSectionGold.copy(alpha = 0.72f),
-                        fontSize = 9.sp,
+                        text = title,
+                        color = HubSectionCream,
+                        fontFamily = FontFamily.Serif,
+                        fontSize = 18.sp,
+                        lineHeight = 21.sp,
                         fontWeight = FontWeight.Medium,
-                        letterSpacing = 1.1.sp,
                     )
-                    Spacer(Modifier.height(5.dp))
-                }
 
-                Text(
-                    text = title,
-                    color = HubSectionCream,
-                    fontFamily = FontFamily.Serif,
-                    fontSize = 18.sp,
-                    lineHeight = 21.sp,
-                    fontWeight = FontWeight.Medium,
+                    if (lead != null) {
+                        Spacer(Modifier.height(7.dp))
+                        Text(
+                            text = lead,
+                            color = HubSectionMuted,
+                            fontSize = 12.sp,
+                            lineHeight = 17.sp,
+                            maxLines = 2,
+                        )
+                    }
+                }
+                Spacer(Modifier.width(12.dp))
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
+                    contentDescription = null,
+                    tint = HubSectionGold.copy(alpha = 0.86f),
+                    modifier = Modifier.size(14.dp),
                 )
-
-                if (lead != null) {
-                    Spacer(Modifier.height(7.dp))
-                    Text(
-                        text = lead,
-                        color = HubSectionMuted,
-                        fontSize = 12.sp,
-                        lineHeight = 17.sp,
-                        maxLines = 2,
-                    )
-                }
             }
-            Spacer(Modifier.width(12.dp))
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
-                contentDescription = null,
-                tint = HubSectionGold.copy(alpha = 0.86f),
-                modifier = Modifier.size(14.dp),
-            )
         }
     }
 }
