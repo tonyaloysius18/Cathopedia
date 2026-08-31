@@ -1,0 +1,1121 @@
+package com.ynotlabs.cathopedia.ui.screens.prayers
+
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.AutoStories
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Event
+import androidx.compose.material.icons.filled.History
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.blur
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.ynotlabs.cathopedia.data.CathopediaRepository
+import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.Strings
+import com.ynotlabs.cathopedia.model.PrayerCategory
+import com.ynotlabs.cathopedia.model.PrayerSummary
+import com.ynotlabs.cathopedia.ui.CategoryIcon
+import com.ynotlabs.cathopedia.ui.getCategoryIcon
+import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.resources.prayer_category_eucharistic
+import com.ynotlabs.cathopedia.resources.prayer_category_everyday
+import com.ynotlabs.cathopedia.resources.prayer_category_favorites
+import com.ynotlabs.cathopedia.resources.prayer_category_holy_spirit
+import com.ynotlabs.cathopedia.resources.prayer_category_marian
+import com.ynotlabs.cathopedia.resources.prayer_category_occasional
+import com.ynotlabs.cathopedia.resources.prayer_category_penitential
+import com.ynotlabs.cathopedia.resources.prayer_category_saints
+import com.ynotlabs.cathopedia.resources.prayer_category_sequences
+import com.ynotlabs.cathopedia.resources.rosary_background
+import com.ynotlabs.cathopedia.resources.way_of_the_cross_background
+import kotlinx.coroutines.delay
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
+
+private const val SEARCH_DEBOUNCE_MS = 300L
+private const val HOLY_ROSARY_ID = "holy-rosary"
+
+private val PrayerBg = Color(0xFF061A13)
+private val PrayerSurface = Color(0xFF0C271E)
+private val PrayerSurfaceRaised = Color(0xFF123127)
+private val PrayerBorder = Color(0xFF315444)
+private val PrayerGold = Color(0xFFD8B24C)
+private val PrayerGoldSoft = Color(0xFF9D8858)
+private val PrayerCream = Color(0xFFF4ECDD)
+private val PrayerMuted = Color(0xFFB4AD98)
+private val MarianBlueDeep = Color(0xFF002B5C)
+private val MarianBlue = Color(0xFF0055A4)
+private val PassionRedDeep = Color(0xFF4B0A0A)
+private val PassionRed = Color(0xFF8B0000)
+
+enum class PrayerQuickSection {
+    FAVOURITES,
+    EVERYDAY,
+    MARIAN,
+    HOLY_SPIRIT,
+    EUCHARISTIC,
+    SAINTS,
+    PENITENTIAL,
+    CHAPLETS_NOVENAS,
+    OCCASIONAL,
+}
+
+@Composable
+fun PrayersHomeScreen(
+    repository: CathopediaRepository,
+    language: String,
+    favorites: List<PrayerSummary>,
+    byCategory: Map<PrayerCategory, List<PrayerSummary>>,
+    onDataLoaded: (List<PrayerSummary>, Map<PrayerCategory, List<PrayerSummary>>) -> Unit,
+    onOpenPrayer: (slug: String) -> Unit,
+    onOpenRosary: () -> Unit,
+    onOpenStations: () -> Unit,
+    quickSection: PrayerQuickSection,
+    onQuickSectionChange: (PrayerQuickSection) -> Unit,
+    quickSectionState: LazyListState,
+    scrollState: LazyListState,
+) {
+    val s = LocalStrings.current
+
+    var query by remember { mutableStateOf("") }
+    var searchResults by remember { mutableStateOf<List<PrayerSummary>>(emptyList()) }
+
+    // The loaded prayer data is hoisted to App.kt so it survives navigating into a
+    // prayer and back — keeping the list populated so the retained [scrollState]
+    // restores the scroll position instead of snapping to the top.
+    LaunchedEffect(language) {
+        val loadedFavorites = repository.listFavoritePrayers(language)
+        val loadedByCategory = PrayerCategory.entries.associateWith { repository.listPrayers(it, language) }
+        onDataLoaded(loadedFavorites, loadedByCategory)
+    }
+
+    LaunchedEffect(query, language) {
+        if (query.isBlank()) {
+            searchResults = emptyList()
+            return@LaunchedEffect
+        }
+        delay(SEARCH_DEBOUNCE_MS)
+        searchResults = repository.searchPrayers(query, language)
+    }
+
+    fun openPrayer(prayer: PrayerSummary) {
+        if (prayer.isSequence && prayer.id == HOLY_ROSARY_ID) {
+            onOpenRosary()
+        } else {
+            onOpenPrayer(prayer.id)
+        }
+    }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(PrayerBg)
+            .statusBarsPadding(),
+    ) {
+        PrayerHeader()
+
+        PrayerSearchBar(
+            query = query,
+            placeholder = s.prayersSearchPlaceholder,
+            searchDescription = s.searchDesc,
+            closeDescription = s.close,
+            onQueryChange = { query = it },
+            onClear = { query = "" },
+        )
+
+        if (query.isNotBlank()) {
+            PrayerSearchResults(
+                query = query,
+                results = searchResults,
+                onSelect = ::openPrayer,
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth(),
+            )
+        } else {
+            PrayerHomeBody(
+                favorites = favorites,
+                byCategory = byCategory,
+                selectedSection = quickSection,
+                onSectionSelected = onQuickSectionChange,
+                quickSectionState = quickSectionState,
+                scrollState = scrollState,
+                onSelect = ::openPrayer,
+                onOpenRosary = onOpenRosary,
+                onOpenStations = onOpenStations,
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth(),
+            )
+        }
+    }
+}
+
+@Composable
+private fun PrayerHeader() {
+    val s = LocalStrings.current
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 18.dp, end = 18.dp, top = 12.dp, bottom = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = s.prayersHomeTitle,
+                color = PrayerCream,
+                fontFamily = FontFamily.Serif,
+                fontSize = 32.sp,
+                lineHeight = 36.sp,
+                fontWeight = FontWeight.SemiBold,
+            )
+
+            Spacer(Modifier.height(2.dp))
+
+            Text(
+                text = s.prayersHeaderSubtitle,
+                color = PrayerMuted,
+                fontSize = 13.5.sp,
+                lineHeight = 18.sp,
+            )
+        }
+    }
+}
+
+@Composable
+private fun PrayerSearchBar(
+    query: String,
+    placeholder: String,
+    searchDescription: String,
+    closeDescription: String,
+    onQueryChange: (String) -> Unit,
+    onClear: () -> Unit,
+) {
+    OutlinedTextField(
+        value = query,
+        onValueChange = onQueryChange,
+        singleLine = true,
+        placeholder = {
+            Text(
+                text = placeholder,
+                color = PrayerMuted.copy(alpha = 0.82f),
+                fontSize = 14.sp,
+            )
+        },
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Filled.Search,
+                contentDescription = searchDescription,
+                tint = PrayerGold,
+                modifier = Modifier.size(23.dp),
+            )
+        },
+        trailingIcon = {
+            if (query.isNotBlank()) {
+                IconButton(onClick = onClear) {
+                    Icon(
+                        imageVector = Icons.Filled.Close,
+                        contentDescription = closeDescription,
+                        tint = PrayerGoldSoft,
+                    )
+                }
+            }
+        },
+        shape = RoundedCornerShape(24.dp),
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedContainerColor = PrayerSurface,
+            unfocusedContainerColor = PrayerSurface.copy(alpha = 0.90f),
+            focusedBorderColor = PrayerGold.copy(alpha = 0.70f),
+            unfocusedBorderColor = PrayerBorder,
+            focusedTextColor = PrayerCream,
+            unfocusedTextColor = PrayerCream,
+            cursorColor = PrayerGold,
+        ),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 18.dp, vertical = 8.dp)
+            .height(58.dp),
+    )
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+private fun PrayerHomeBody(
+    favorites: List<PrayerSummary>,
+    byCategory: Map<PrayerCategory, List<PrayerSummary>>,
+    selectedSection: PrayerQuickSection,
+    onSectionSelected: (PrayerQuickSection) -> Unit,
+    quickSectionState: LazyListState,
+    scrollState: LazyListState,
+    onSelect: (PrayerSummary) -> Unit,
+    onOpenRosary: () -> Unit,
+    onOpenStations: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val s = LocalStrings.current
+    val visiblePrayers = prayersForSection(
+        section = selectedSection,
+        favorites = favorites,
+        byCategory = byCategory,
+    )
+
+    LazyColumn(
+        modifier = modifier,
+        state = scrollState,
+        contentPadding = PaddingValues(
+            start = 18.dp,
+            end = 18.dp,
+            top = 8.dp,
+            bottom = 124.dp,
+        ),
+    ) {
+        item {
+            RosaryHeroCard(onClick = onOpenRosary)
+
+            Spacer(Modifier.height(12.dp))
+
+            WayOfTheCrossCard(onClick = onOpenStations)
+
+            Spacer(Modifier.height(18.dp))
+        }
+
+        stickyHeader {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(PrayerBg)
+                    .padding(vertical = 12.dp),
+            ) {
+                QuickPrayerCategories(
+                    selected = selectedSection,
+                    favoritesCount = favorites.size,
+                    state = quickSectionState,
+                    onSelected = onSectionSelected,
+                )
+            }
+        }
+
+        item {
+            Spacer(Modifier.height(10.dp))
+
+            PrayerSectionHeader(
+                title = when (selectedSection) {
+                    PrayerQuickSection.FAVOURITES -> s.prayersMyFavourites
+                    PrayerQuickSection.EVERYDAY -> s.prayersEverydaySection
+                    PrayerQuickSection.MARIAN -> s.prayersMarianSection
+                    PrayerQuickSection.HOLY_SPIRIT -> s.prayersHolySpiritSection
+                    PrayerQuickSection.EUCHARISTIC -> s.prayersEucharisticSection
+                    PrayerQuickSection.SAINTS -> s.prayersSaintsSection
+                    PrayerQuickSection.PENITENTIAL -> s.prayersPenitentialSection
+                    PrayerQuickSection.CHAPLETS_NOVENAS -> s.prayerCategorySequences
+                    PrayerQuickSection.OCCASIONAL -> s.prayersOccasionalSection
+                },
+                count = visiblePrayers.size,
+            )
+
+            Spacer(Modifier.height(10.dp))
+        }
+
+        if (visiblePrayers.isEmpty()) {
+            item {
+                Surface(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(18.dp),
+                    color = PrayerSurface,
+                    border = BorderStroke(
+                        width = 2.dp,
+                        color = PrayerBorder.copy(alpha = 0.66f),
+                    ),
+                ) {
+                    Text(
+                        text = if (selectedSection == PrayerQuickSection.FAVOURITES) {
+                            s.prayersFavouriteEmpty
+                        } else {
+                            s.listContentWillAppear
+                        },
+                        modifier = Modifier.padding(18.dp),
+                        color = PrayerMuted,
+                        fontSize = 13.sp,
+                    )
+                }
+            }
+        } else {
+            items(
+                items = visiblePrayers,
+                key = { "${selectedSection.name}-${it.id}" },
+            ) { prayer ->
+                PremiumPrayerRow(
+                    prayer = prayer,
+                    onClick = { onSelect(prayer) },
+                )
+
+                Spacer(Modifier.height(8.dp))
+            }
+        }
+    }
+}
+
+@Composable
+private fun RosaryHeroCard(
+    onClick: () -> Unit,
+) {
+    val s = LocalStrings.current
+    val shape = RoundedCornerShape(24.dp)
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(170.dp)
+            .clip(shape)
+            .background(
+                Brush.horizontalGradient(
+                    listOf(
+                        MarianBlueDeep,
+                        MarianBlue,
+                        Color(0xFF003D7A),
+                    ),
+                ),
+            )
+            .border(
+                width = 2.dp,
+                color = PrayerGoldSoft.copy(alpha = 0.52f),
+                shape = shape,
+            )
+            .clickable(onClick = onClick),
+    ) {
+        // The user-supplied artwork is already composed as a full card
+        // background (deep blue velvet backdrop, rosary right-aligned,
+        // open space on the left for the text), matching the treatment
+        // on the Way of the Cross card.
+        Image(
+            painter = painterResource(Res.drawable.rosary_background),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(shape),
+        )
+
+
+        // Soft blurred transition behind the text area only. The rosary artwork
+        // stays sharp while the image fades naturally into the blue background.
+        Box(
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth(0.55f)
+                .align(Alignment.CenterStart)
+                .blur(18.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(
+                            MarianBlueDeep.copy(alpha = 0.95f),
+                            MarianBlueDeep.copy(alpha = 0.25f),
+                            Color.Transparent,
+                        ),
+                    ),
+                ),
+        )
+
+        // A fade over the art's left side so it blends into the card's
+        // own blue as the text reaches the image, matching the Way of
+        // the Cross card's treatment.
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(shape)
+                .background(
+                    Brush.horizontalGradient(
+                        0f to MarianBlueDeep.copy(alpha = 0.92f),
+                        0.28f to MarianBlueDeep.copy(alpha = 0.6f),
+                        0.5f to MarianBlueDeep.copy(alpha = 0.22f),
+                        0.78f to Color.Transparent,
+                    ),
+                ),
+        )
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(start = 18.dp, end = 18.dp, top = 18.dp, bottom = 10.dp),
+        ) {
+            Text(
+                text = s.prayersRosaryCardTitle.uppercase(),
+                color = PrayerGold,
+                fontFamily = FontFamily.Serif,
+                fontSize = 22.sp,
+                lineHeight = 26.sp,
+                fontWeight = FontWeight.SemiBold,
+            )
+
+            Spacer(Modifier.height(9.dp))
+
+            Text(
+                text = s.prayersRosaryCardSubtitle,
+                modifier = Modifier.fillMaxWidth(0.53f),
+                color = PrayerCream.copy(alpha = 0.90f),
+                fontSize = 13.5.sp,
+                lineHeight = 19.sp,
+            )
+
+            Spacer(Modifier.weight(1f))
+
+            Surface(
+                shape = RoundedCornerShape(22.dp),
+                color = Color.Transparent,
+                border = BorderStroke(
+                    width = 2.dp,
+                    color = PrayerGold.copy(alpha = 0.78f),
+                ),
+            ) {
+                Row(
+                    modifier = Modifier
+                        .clickable(onClick = onClick)
+                        .padding(horizontal = 14.dp, vertical = 6.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        text = s.prayersPrayNow,
+                        color = PrayerGold,
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+
+                    Spacer(Modifier.width(8.dp))
+
+                    Icon(
+                        imageVector = Icons.Filled.ArrowForward,
+                        contentDescription = null,
+                        tint = PrayerGold,
+                        modifier = Modifier.size(17.dp),
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun WayOfTheCrossCard(onClick: () -> Unit) {
+    val s = LocalStrings.current
+    val shape = RoundedCornerShape(24.dp)
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(170.dp)
+            .clip(shape)
+            .background(
+                Brush.horizontalGradient(
+                    listOf(
+                        PassionRedDeep,
+                        PassionRed,
+                    ),
+                ),
+            )
+            .border(
+                width = 2.dp,
+                color = PrayerGoldSoft.copy(alpha = 0.45f),
+                shape = shape,
+            )
+            .clickable(onClick = onClick),
+    ) {
+        // The user-supplied artwork is already composed as a full card
+        // background (red velvet backdrop, golden crucifix right-aligned,
+        // open space on the left for the text), so it fills the whole
+        // card rather than sitting as a right-aligned inset cutout.
+        Image(
+            painter = painterResource(Res.drawable.way_of_the_cross_background),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(shape),
+        )
+
+        // Soft blurred transition near the text edge. The crucifix remains
+        // crisp on the right side while the red artwork fades smoothly.
+        Box(
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth(0.55f)
+                .align(Alignment.CenterStart)
+                .blur(18.dp)
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(
+                            PassionRedDeep.copy(alpha = 0.95f),
+                            PassionRedDeep.copy(alpha = 0.25f),
+                            Color.Transparent,
+                        ),
+                    ),
+                ),
+        )
+
+        // A light fade over the art's left side so it blends into the
+        // card's own red rather than sitting as a flat pasted image,
+        // matching the soft blend on the Holy Rosary card.
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(shape)
+                .background(
+                    Brush.horizontalGradient(
+                        0f to PassionRedDeep.copy(alpha = 0.92f),
+                        0.28f to PassionRedDeep.copy(alpha = 0.6f),
+                        0.5f to PassionRedDeep.copy(alpha = 0.22f),
+                        0.78f to Color.Transparent,
+                    ),
+                ),
+        )
+
+        Column(modifier = Modifier.padding(18.dp)) {
+            Text(
+                text = s.prayersWayOfCrossTitle.uppercase(),
+                color = PrayerGold,
+                fontSize = 12.sp,
+                letterSpacing = 1.2.sp,
+                fontWeight = FontWeight.Bold,
+            )
+
+            Spacer(Modifier.height(8.dp))
+
+            Text(
+                text = s.prayersWayOfCrossTagline,
+                color = PrayerCream,
+                fontFamily = FontFamily.Serif,
+                fontSize = 21.sp,
+                fontWeight = FontWeight.SemiBold,
+            )
+
+            Spacer(Modifier.height(6.dp))
+
+            Text(
+                text = s.prayersWayOfCrossDescription,
+                color = PrayerMuted,
+                fontSize = 13.sp,
+            )
+        }
+    }
+}
+
+@Composable
+private fun QuickPrayerCategories(
+    selected: PrayerQuickSection,
+    favoritesCount: Int,
+    state: LazyListState,
+    onSelected: (PrayerQuickSection) -> Unit,
+) {
+    val s = LocalStrings.current
+    androidx.compose.foundation.lazy.LazyRow(
+        state = state,
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        items(PrayerQuickSection.entries.size) { index ->
+            val section = PrayerQuickSection.entries[index]
+
+            QuickPrayerTile(
+                title = when (section) {
+                    PrayerQuickSection.FAVOURITES -> s.prayersFavoritesSection
+                    PrayerQuickSection.EVERYDAY -> s.prayerCategoryEveryday
+                    PrayerQuickSection.MARIAN -> s.prayerCategoryMarian
+                    PrayerQuickSection.HOLY_SPIRIT -> s.prayerCategoryHolySpirit
+                    PrayerQuickSection.EUCHARISTIC -> s.prayerCategoryEucharistic
+                    PrayerQuickSection.SAINTS -> s.prayerCategorySaints
+                    PrayerQuickSection.PENITENTIAL -> s.prayerCategoryPenitential
+                    PrayerQuickSection.CHAPLETS_NOVENAS -> s.prayerCategorySequences
+                    PrayerQuickSection.OCCASIONAL -> s.prayerCategoryOccasional
+                },
+                subtitle = when (section) {
+                    PrayerQuickSection.FAVOURITES -> s.prayersSavedCount.replace("{count}", favoritesCount.toString())
+                    PrayerQuickSection.EVERYDAY -> s.prayersDailySubtitle
+                    else -> s.prayersExploreSubtitle
+                },
+                icon = getSectionIcon(section),
+                selected = selected == section,
+                modifier = Modifier.width(118.dp),
+                onClick = { onSelected(section) },
+            )
+        }
+    }
+}
+
+@Composable
+private fun QuickPrayerTile(
+    title: String,
+    subtitle: String,
+    icon: CategoryIcon,
+    selected: Boolean,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit,
+) {
+    val shape = RoundedCornerShape(17.dp)
+
+    Column(
+        modifier = modifier
+            .height(112.dp)
+            .clip(shape)
+            .background(
+                if (selected) PrayerSurfaceRaised else PrayerSurface,
+            )
+            .border(
+                width = 2.dp,
+                color = if (selected) PrayerGold else PrayerBorder.copy(alpha = 0.70f),
+                shape = shape,
+            )
+            .clickable(onClick = onClick)
+            .padding(horizontal = 7.dp, vertical = 8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        when (icon) {
+            is CategoryIcon.Resource -> {
+                Image(
+                    painter = painterResource(icon.res),
+                    contentDescription = null,
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.size(42.dp),
+                )
+            }
+            is CategoryIcon.Vector -> {
+                Surface(
+                    modifier = Modifier.size(42.dp),
+                    shape = CircleShape,
+                    color = PrayerGold.copy(alpha = if (selected) 0.14f else 0.07f),
+                    border = BorderStroke(
+                        width = 2.dp,
+                        color = PrayerGold.copy(alpha = if (selected) 0.52f else 0.24f),
+                    ),
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(
+                            imageVector = icon.imageVector,
+                            contentDescription = null,
+                            tint = PrayerGold,
+                            modifier = Modifier.size(21.dp),
+                        )
+                    }
+                }
+            }
+        }
+
+        Spacer(Modifier.height(5.dp))
+
+        Text(
+            text = title,
+            color = PrayerCream,
+            fontFamily = FontFamily.Serif,
+            fontSize = 12.sp,
+            fontWeight = FontWeight.SemiBold,
+            maxLines = 2,
+            textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+            lineHeight = 14.sp,
+        )
+
+        Spacer(Modifier.height(1.dp))
+
+        Text(
+            text = subtitle,
+            color = PrayerMuted,
+            fontSize = 9.5.sp,
+            maxLines = 1,
+        )
+    }
+}
+
+@Composable
+private fun PrayerSectionHeader(
+    title: String,
+    count: Int,
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Box(
+            modifier = Modifier
+                .width(3.dp)
+                .height(22.dp)
+                .background(PrayerGold, RoundedCornerShape(2.dp)),
+        )
+
+        Spacer(Modifier.width(10.dp))
+
+        Text(
+            text = title.uppercase(),
+            color = PrayerGold,
+            fontSize = 10.5.sp,
+            letterSpacing = 1.1.sp,
+            fontWeight = FontWeight.Bold,
+        )
+
+        Spacer(Modifier.width(8.dp))
+
+        Text(
+            text = "• $count",
+            color = PrayerGoldSoft,
+            fontSize = 10.5.sp,
+        )
+
+        Spacer(Modifier.weight(1f))
+    }
+}
+
+@Composable
+private fun PremiumPrayerRow(
+    prayer: PrayerSummary,
+    onClick: () -> Unit,
+    query: String? = null,
+) {
+    val s = LocalStrings.current
+    val shape = RoundedCornerShape(18.dp)
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(70.dp)
+            .clip(shape)
+            .background(
+                Brush.horizontalGradient(
+                    listOf(
+                        PrayerSurfaceRaised,
+                        PrayerSurface,
+                    ),
+                ),
+            )
+            .border(
+                width = 2.dp,
+                color = PrayerBorder.copy(alpha = 0.64f),
+                shape = shape,
+            )
+            .clickable(onClick = onClick)
+            .padding(horizontal = 12.dp, vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        val icon = getCategoryIcon(prayer.category)
+        when (icon) {
+            is CategoryIcon.Resource -> {
+                Image(
+                    painter = painterResource(icon.res),
+                    contentDescription = null,
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.size(54.dp),
+                )
+            }
+            is CategoryIcon.Vector -> {
+                Surface(
+                    modifier = Modifier.size(54.dp),
+                    shape = CircleShape,
+                    color = PrayerGold.copy(alpha = 0.08f),
+                    border = BorderStroke(
+                        width = 2.dp,
+                        color = PrayerGold.copy(alpha = 0.28f),
+                    ),
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(
+                            imageVector = icon.imageVector,
+                            contentDescription = null,
+                            tint = PrayerGold,
+                            modifier = Modifier.size(26.dp),
+                        )
+                    }
+                }
+            }
+        }
+
+        Spacer(Modifier.width(12.dp))
+
+        Column(modifier = Modifier.weight(1f)) {
+            HighlightedText(
+                text = prayer.title,
+                query = query,
+                color = PrayerCream,
+                fontSize = 16.5.sp,
+                fontWeight = FontWeight.SemiBold,
+            )
+
+            Spacer(Modifier.height(3.dp))
+
+            Text(
+                text = prayer.subtitle ?: prayerOpeningLine(prayer.id, s),
+                color = PrayerMuted,
+                fontSize = 11.5.sp,
+                lineHeight = 15.sp,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
+        }
+
+    }
+}
+
+@Composable
+private fun PrayerSearchResults(
+    query: String,
+    results: List<PrayerSummary>,
+    onSelect: (PrayerSummary) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val s = LocalStrings.current
+
+    if (results.isEmpty()) {
+        Column(
+            modifier = modifier.padding(horizontal = 28.dp, vertical = 48.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Surface(
+                modifier = Modifier.size(72.dp),
+                shape = CircleShape,
+                color = PrayerGold.copy(alpha = 0.07f),
+                border = BorderStroke(
+                    width = 2.dp,
+                    color = PrayerGold.copy(alpha = 0.26f),
+                ),
+            ) {
+                Box(contentAlignment = Alignment.Center) {
+                    Icon(
+                        imageVector = Icons.Filled.Search,
+                        contentDescription = null,
+                        tint = PrayerGold,
+                        modifier = Modifier.size(32.dp),
+                    )
+                }
+            }
+
+            Spacer(Modifier.height(16.dp))
+
+            Text(
+                text = s.prayersSearchNoResults,
+                color = PrayerCream,
+                fontFamily = FontFamily.Serif,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.SemiBold,
+            )
+
+            Spacer(Modifier.height(6.dp))
+
+            Text(
+                text = s.prayersSearchSuggestion,
+                color = PrayerMuted,
+                fontSize = 12.5.sp,
+            )
+        }
+        return
+    }
+
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = PaddingValues(
+            start = 18.dp,
+            end = 18.dp,
+            top = 8.dp,
+            bottom = 124.dp,
+        ),
+    ) {
+        item {
+            PrayerSectionHeader(
+                title = s.prayersSearchResults,
+                count = results.size,
+            )
+            Spacer(Modifier.height(10.dp))
+        }
+
+        items(results, key = { it.id }) { prayer ->
+            PremiumPrayerRow(
+                prayer = prayer,
+                query = query,
+                onClick = { onSelect(prayer) },
+            )
+            Spacer(Modifier.height(8.dp))
+        }
+    }
+}
+
+@Composable
+private fun HighlightedText(
+    text: String,
+    query: String?,
+    color: Color,
+    fontSize: androidx.compose.ui.unit.TextUnit,
+    fontWeight: FontWeight,
+) {
+    val annotated = remember(text, query) {
+        highlight(
+            text = text,
+            query = query,
+            highlightColor = PrayerGold,
+        )
+    }
+
+    Text(
+        text = annotated,
+        color = color,
+        fontSize = fontSize,
+        fontWeight = fontWeight,
+        maxLines = 1,
+        overflow = TextOverflow.Ellipsis,
+    )
+}
+
+private fun highlight(
+    text: String,
+    query: String?,
+    highlightColor: Color,
+): AnnotatedString {
+    if (query.isNullOrBlank()) return AnnotatedString(text)
+
+    val lowerText = text.lowercase()
+    val lowerQuery = query.lowercase()
+
+    return buildAnnotatedString {
+        var i = 0
+
+        while (i < text.length) {
+            val idx = lowerText.indexOf(lowerQuery, i)
+
+            if (idx < 0) {
+                append(text.substring(i))
+                break
+            }
+
+            append(text.substring(i, idx))
+
+            withStyle(
+                SpanStyle(
+                    color = highlightColor,
+                    fontWeight = FontWeight.Bold,
+                ),
+            ) {
+                append(text.substring(idx, idx + lowerQuery.length))
+            }
+
+            i = idx + lowerQuery.length
+        }
+    }
+}
+
+private fun getSectionIcon(section: PrayerQuickSection): CategoryIcon = when (section) {
+    PrayerQuickSection.FAVOURITES -> CategoryIcon.Resource(Res.drawable.prayer_category_favorites)
+    PrayerQuickSection.EVERYDAY -> getCategoryIcon(PrayerCategory.EVERYDAY)
+    PrayerQuickSection.MARIAN -> getCategoryIcon(PrayerCategory.MARIAN)
+    PrayerQuickSection.HOLY_SPIRIT -> getCategoryIcon(PrayerCategory.HOLY_SPIRIT)
+    PrayerQuickSection.EUCHARISTIC -> getCategoryIcon(PrayerCategory.EUCHARISTIC)
+    PrayerQuickSection.SAINTS -> getCategoryIcon(PrayerCategory.SAINTS)
+    PrayerQuickSection.PENITENTIAL -> getCategoryIcon(PrayerCategory.PENITENTIAL)
+    PrayerQuickSection.CHAPLETS_NOVENAS -> getCategoryIcon(PrayerCategory.SEQUENCES)
+    PrayerQuickSection.OCCASIONAL -> getCategoryIcon(PrayerCategory.OCCASIONAL)
+}
+
+private fun prayersForSection(
+    section: PrayerQuickSection,
+    favorites: List<PrayerSummary>,
+    byCategory: Map<PrayerCategory, List<PrayerSummary>>,
+): List<PrayerSummary> = when (section) {
+    PrayerQuickSection.FAVOURITES ->
+        favorites
+
+    PrayerQuickSection.EVERYDAY ->
+        byCategory[PrayerCategory.EVERYDAY].orEmpty()
+
+    PrayerQuickSection.MARIAN ->
+        byCategory[PrayerCategory.MARIAN].orEmpty()
+
+    PrayerQuickSection.HOLY_SPIRIT ->
+        byCategory[PrayerCategory.HOLY_SPIRIT].orEmpty()
+
+    PrayerQuickSection.EUCHARISTIC ->
+        byCategory[PrayerCategory.EUCHARISTIC].orEmpty()
+
+    PrayerQuickSection.SAINTS ->
+        byCategory[PrayerCategory.SAINTS].orEmpty()
+
+    PrayerQuickSection.PENITENTIAL ->
+        byCategory[PrayerCategory.PENITENTIAL].orEmpty()
+
+    PrayerQuickSection.CHAPLETS_NOVENAS ->
+        byCategory[PrayerCategory.SEQUENCES].orEmpty()
+            .filter { it.id != HOLY_ROSARY_ID && it.id != "stations-of-the-cross" }
+
+    PrayerQuickSection.OCCASIONAL ->
+        byCategory[PrayerCategory.OCCASIONAL].orEmpty()
+}
+
+private fun prayerOpeningLine(id: String, s: Strings): String = when (id) {
+    "sign-of-the-cross" -> s.prayersOpeningSignOfCross
+    "our-father" -> s.prayersOpeningOurFather
+    "hail-mary" -> s.prayersOpeningHailMary
+    "glory-be" -> s.prayersOpeningGloryBe
+    "apostles-creed" -> s.prayersOpeningApostlesCreed
+    "nicene-creed" -> s.prayersOpeningNiceneCreed
+    "morning-offering" -> s.prayersOpeningMorningOffering
+    "evening-prayer" -> s.prayersOpeningEveningPrayer
+    else -> s.prayersOpeningGeneric
+}
+
+private fun categoryLabel(
+    category: PrayerCategory,
+    s: Strings,
+): String = when (category) {
+    PrayerCategory.EVERYDAY -> s.prayerCategoryEveryday
+    PrayerCategory.MARIAN -> s.prayerCategoryMarian
+    PrayerCategory.HOLY_SPIRIT -> s.prayerCategoryHolySpirit
+    PrayerCategory.EUCHARISTIC -> s.prayerCategoryEucharistic
+    PrayerCategory.SAINTS -> s.prayerCategorySaints
+    PrayerCategory.PENITENTIAL -> s.prayerCategoryPenitential
+    PrayerCategory.SEQUENCES -> s.prayerCategorySequences
+    PrayerCategory.OCCASIONAL -> s.prayerCategoryOccasional
+}
