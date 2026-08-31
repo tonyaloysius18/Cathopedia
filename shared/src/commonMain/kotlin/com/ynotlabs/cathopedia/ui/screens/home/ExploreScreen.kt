@@ -127,9 +127,9 @@ fun ExploreScreen(
             }
 
             val holySee = hubs.find { it.id == "holy_see" }
-            val catechism = hubs.find { it.id == "catechism" }
-            val gridHubs = hubs.filter { it.id == "symbols" || it.id == "mass" }
-            val remainingHubs = hubs.filterNot { it.id in setOf("holy_see", "catechism", "symbols", "mass") }
+            val firstGrid = hubs.filter { it.id == "symbols" || it.id == "mass" }
+            val secondGrid = hubs.filter { it.id == "catechism" || it.id == "biblical" }
+            val remainingHubs = hubs.filterNot { it.id in setOf("holy_see", "catechism", "symbols", "mass", "biblical") }
 
             holySee?.let { hub ->
                 item(key = hub.id) {
@@ -142,13 +142,13 @@ fun ExploreScreen(
                 }
             }
 
-            if (gridHubs.isNotEmpty()) {
+            if (firstGrid.isNotEmpty()) {
                 item {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
-                        gridHubs.forEach { hub ->
+                        firstGrid.sortedBy { it.id != "symbols" }.forEach { hub ->
                             PortraitHubExploreCard(
                                 hub = hub,
                                 title = hubStrings[hub.titleKey].orEmpty(),
@@ -157,19 +157,28 @@ fun ExploreScreen(
                                 modifier = Modifier.weight(1f)
                             )
                         }
-                        if (gridHubs.size == 1) Spacer(Modifier.weight(1f))
+                        if (firstGrid.size == 1) Spacer(Modifier.weight(1f))
                     }
                 }
             }
 
-            catechism?.let { hub ->
-                item(key = hub.id) {
-                    HubExploreCard(
-                        hub = hub,
-                        title = hubStrings[hub.titleKey].orEmpty(),
-                        subtitle = hub.subtitleKey?.let { hubStrings[it] },
-                        onClick = { onHubSelected(hub) },
-                    )
+            if (secondGrid.isNotEmpty()) {
+                item {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        secondGrid.sortedBy { it.id != "catechism" }.forEach { hub ->
+                            PortraitHubExploreCard(
+                                hub = hub,
+                                title = hubStrings[hub.titleKey].orEmpty(),
+                                subtitle = hub.subtitleKey?.let { hubStrings[it] },
+                                onClick = { onHubSelected(hub) },
+                                modifier = Modifier.weight(1f)
+                            )
+                        }
+                        if (secondGrid.size == 1) Spacer(Modifier.weight(1f))
+                    }
                 }
             }
 
@@ -775,6 +784,8 @@ private fun PortraitHubExploreCard(
 ) {
     val isSymbols = hub.id == "symbols"
     val isHolyMass = hub.id == "mass"
+    val isCatechism = hub.id == "catechism"
+    val isBiblical = hub.id == "biblical"
 
     Card(
         modifier = modifier
@@ -786,43 +797,37 @@ private fun PortraitHubExploreCard(
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
         Box(Modifier.fillMaxSize()) {
-            if (isSymbols) {
-                Image(
-                    painter = painterResource(Res.drawable.explore_sacred_symbols),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(top = 8.dp, start = 6.dp, end = 2.dp),
-                    contentScale = ContentScale.Fit,
-                    alignment = Alignment.CenterEnd,
-                )
-            } else if (isHolyMass) {
-                Image(
-                    painter = painterResource(Res.drawable.explore_holymass),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(top = 8.dp, start = 6.dp, end = 2.dp),
-                    contentScale = ContentScale.Fit,
-                    alignment = Alignment.CenterEnd,
-                )
+            val artwork = when {
+                isSymbols -> Res.drawable.explore_sacred_symbols
+                isHolyMass -> Res.drawable.explore_holymass
+                isCatechism -> Res.drawable.explore_catechism
+                isBiblical -> Res.drawable.explore_biblical
+                else -> Res.drawable.explore_bg
             }
+
+            Image(
+                painter = painterResource(artwork),
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 8.dp, start = 6.dp, end = 2.dp),
+                contentScale = ContentScale.Fit,
+                alignment = Alignment.CenterEnd,
+            )
 
             ArtworkFadeOverlay(includeBottomFade = true)
 
-            if (isSymbols) {
+            val icon = when {
+                isSymbols -> Res.drawable.sacred_symbols_icon
+                isHolyMass -> Res.drawable.holy_mass_icon
+                isCatechism -> Res.drawable.catechism_icon
+                isBiblical -> Res.drawable.biblical_characters_icon
+                else -> null
+            }
+
+            if (icon != null) {
                 Image(
-                    painter = painterResource(Res.drawable.sacred_symbols_icon),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .align(Alignment.TopStart)
-                        .padding(12.dp)
-                        .size(30.dp),
-                    contentScale = ContentScale.Fit,
-                )
-            } else if (isHolyMass) {
-                Image(
-                    painter = painterResource(Res.drawable.holy_mass_icon),
+                    painter = painterResource(icon),
                     contentDescription = null,
                     modifier = Modifier
                         .align(Alignment.TopStart)

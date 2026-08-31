@@ -102,8 +102,18 @@
       "stepperId": "step.conclave"
     },
     {
-      "id": "holy_see.councils",
+      "id": "holy_see.canonisation",
       "sortOrder": 7,
+      "status": "PUBLISHED",
+      "layout": "STEPPER",
+      "titleKey": "sec.canonisation.title",
+      "summaryKey": "sec.canonisation.summary",
+      "icon": "ic_halo",
+      "stepperId": "step.canonisation"
+    },
+    {
+      "id": "holy_see.councils",
+      "sortOrder": 8,
       "status": "PUBLISHED",
       "layout": "TIMELINE",
       "titleKey": "sec.councils.title",
@@ -113,7 +123,7 @@
     },
     {
       "id": "holy_see.canon_law",
-      "sortOrder": 8,
+      "sortOrder": 9,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.canon_law.title",
@@ -125,7 +135,7 @@
     },
     {
       "id": "holy_see.papal_documents",
-      "sortOrder": 9,
+      "sortOrder": 10,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.papal_documents.title",
@@ -137,7 +147,7 @@
     },
     {
       "id": "holy_see.seeing_the_pope",
-      "sortOrder": 10,
+      "sortOrder": 11,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.seeing_the_pope.title",
@@ -149,7 +159,7 @@
     },
     {
       "id": "holy_see.swiss_guard",
-      "sortOrder": 11,
+      "sortOrder": 12,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.swiss_guard.title",
@@ -162,7 +172,7 @@
     },
     {
       "id": "holy_see.papal_states",
-      "sortOrder": 12,
+      "sortOrder": 13,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.papal_states.title",
@@ -175,7 +185,7 @@
     },
     {
       "id": "holy_see.diplomacy",
-      "sortOrder": 13,
+      "sortOrder": 14,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.diplomacy.title",
@@ -187,7 +197,7 @@
     },
     {
       "id": "holy_see.insignia",
-      "sortOrder": 14,
+      "sortOrder": 15,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.insignia.title",
@@ -199,7 +209,7 @@
     },
     {
       "id": "holy_see.jubilee",
-      "sortOrder": 15,
+      "sortOrder": 16,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.jubilee.title",
@@ -212,7 +222,7 @@
     },
     {
       "id": "holy_see.hierarchy",
-      "sortOrder": 16,
+      "sortOrder": 17,
       "status": "PUBLISHED",
       "layout": "STEPPER",
       "titleKey": "sec.hierarchy.title",
@@ -222,7 +232,7 @@
     },
     {
       "id": "holy_see.cardinals",
-      "sortOrder": 17,
+      "sortOrder": 18,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.cardinals.title",
@@ -2060,6 +2070,37 @@
           "titleKey": "stepper.hierarchy.pope.title",
           "bodyKey": "stepper.hierarchy.pope.body",
           "asset": "hub/holy_see/hierarchy_pope.png"
+        }
+      ]
+    },
+    {
+      "id": "step.canonisation",
+      "titleKey": "stepper.canonisation.title",
+      "introKey": "stepper.canonisation.intro",
+      "steps": [
+        {
+          "id": "step.canonisation.1",
+          "order": 1,
+          "titleKey": "stepper.canonisation.step1.title",
+          "bodyKey": "stepper.canonisation.step1.body"
+        },
+        {
+          "id": "step.canonisation.2",
+          "order": 2,
+          "titleKey": "stepper.canonisation.step2.title",
+          "bodyKey": "stepper.canonisation.step2.body"
+        },
+        {
+          "id": "step.canonisation.3",
+          "order": 3,
+          "titleKey": "stepper.canonisation.step3.title",
+          "bodyKey": "stepper.canonisation.step3.body"
+        },
+        {
+          "id": "step.canonisation.4",
+          "order": 4,
+          "titleKey": "stepper.canonisation.step4.title",
+          "bodyKey": "stepper.canonisation.step4.body"
         }
       ]
     }

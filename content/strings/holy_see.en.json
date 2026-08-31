@@ -424,6 +424,18 @@
     "art.cardinals.order.deacon.badge": "Roman deaconry",
     "art.cardinals.order.priest.badge": "Roman title",
     "art.cardinals.order.bishop.badge": "Suburbicarian order",
-    "art.cardinals.orders.note": "Cardinal bishop, priest and deacon are orders within the College of Cardinals, not additional degrees of the sacrament of Holy Orders. The shields shown here are illustrative learning emblems, not universal official coats of arms."
+    "art.cardinals.orders.note": "Cardinal bishop, priest and deacon are orders within the College of Cardinals, not additional degrees of the sacrament of Holy Orders. The shields shown here are illustrative learning emblems, not universal official coats of arms.",
+    "sec.canonisation.title": "Steps to Sainthood",
+    "sec.canonisation.summary": "How the Church investigates a holy life and declares a saint — the four stages from Servant of God to canonisation.",
+    "stepper.canonisation.title": "How a Saint Is Made",
+    "stepper.canonisation.intro": "The Church does not so much make saints as recognise them. A cause moves through four stages, each demanding careful proof, and can take decades or even centuries.",
+    "stepper.canonisation.step1.title": "Servant of God",
+    "stepper.canonisation.step1.body": "A cause may open at least five years after death (the pope can waive the wait). The local bishop, with Rome's nihil obstat, opens an investigation into the person's life, writings and reputation for holiness. From this point they are called a Servant of God.",
+    "stepper.canonisation.step2.title": "Venerable — Heroic Virtue",
+    "stepper.canonisation.step2.body": "The evidence is gathered into a formal study, the positio, and examined by the Dicastery for the Causes of Saints. If the pope confirms that the person lived the virtues to a heroic degree — or died a martyr — they are declared Venerable.",
+    "stepper.canonisation.step3.title": "Blessed — Beatification",
+    "stepper.canonisation.step3.body": "One miracle worked through the candidate's intercession must be proven — usually a medically inexplicable healing — and rigorously verified by doctors and theologians. The pope then beatifies the Venerable, who is called Blessed and may be venerated locally. Martyrs may be beatified without a miracle.",
+    "stepper.canonisation.step4.title": "Saint — Canonisation",
+    "stepper.canonisation.step4.body": "A second miracle, occurring after beatification, must be verified. The pope then solemnly canonises the Blessed, declaring them a Saint of the universal Church — worthy of public veneration everywhere, with a feast day and churches dedicated in their name."
   }
 }

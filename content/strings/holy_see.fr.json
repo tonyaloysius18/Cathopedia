@@ -424,6 +424,18 @@
     "art.cardinals.order.deacon.badge": "Diaconie romaine",
     "art.cardinals.order.priest.badge": "Titre romain",
     "art.cardinals.order.bishop.badge": "Ordre suburbicaire",
-    "art.cardinals.orders.note": "Cardinal-évêque, cardinal-prêtre et cardinal-diacre sont des ordres au sein du Collège des cardinaux, et non des degrés supplémentaires du sacrement de l'Ordre. Les écus présentés ici sont des emblèmes pédagogiques illustratifs, et non des armoiries officielles universelles."
+    "art.cardinals.orders.note": "Cardinal-évêque, cardinal-prêtre et cardinal-diacre sont des ordres au sein du Collège des cardinaux, et non des degrés supplémentaires du sacrement de l'Ordre. Les écus présentés ici sont des emblèmes pédagogiques illustratifs, et non des armoiries officielles universelles.",
+    "sec.canonisation.title": "Devenir saint",
+    "sec.canonisation.summary": "Comment l'Église enquête sur une vie sainte et proclame un saint — les quatre étapes, du Serviteur de Dieu à la canonisation.",
+    "stepper.canonisation.title": "Comment on fait un saint",
+    "stepper.canonisation.intro": "L'Église ne fait pas tant les saints qu'elle les reconnaît. Une cause passe par quatre étapes, exigeant chacune des preuves rigoureuses, et peut durer des décennies, voire des siècles.",
+    "stepper.canonisation.step1.title": "Serviteur de Dieu",
+    "stepper.canonisation.step1.body": "Une cause peut s'ouvrir au moins cinq ans après la mort (le pape peut lever ce délai). L'évêque du lieu, avec le nihil obstat de Rome, ouvre une enquête sur la vie, les écrits et la réputation de sainteté de la personne. Dès lors, on l'appelle Serviteur de Dieu.",
+    "stepper.canonisation.step2.title": "Vénérable — vertu héroïque",
+    "stepper.canonisation.step2.body": "Les preuves sont réunies dans une étude formelle, la positio, examinée par le Dicastère pour les causes des saints. Si le pape confirme que la personne a vécu les vertus à un degré héroïque — ou est morte martyre — elle est déclarée Vénérable.",
+    "stepper.canonisation.step3.title": "Bienheureux — béatification",
+    "stepper.canonisation.step3.body": "Un miracle obtenu par l'intercession du candidat doit être prouvé — d'ordinaire une guérison médicalement inexplicable — et rigoureusement vérifié par des médecins et des théologiens. Le pape béatifie alors le Vénérable, appelé Bienheureux, qui peut être vénéré localement. Les martyrs peuvent être béatifiés sans miracle.",
+    "stepper.canonisation.step4.title": "Saint — canonisation",
+    "stepper.canonisation.step4.body": "Un second miracle, survenu après la béatification, doit être vérifié. Le pape canonise alors solennellement le Bienheureux, le déclarant Saint de l'Église universelle — digne d'une vénération publique partout, avec une fête et des églises dédiées à son nom."
   }
 }

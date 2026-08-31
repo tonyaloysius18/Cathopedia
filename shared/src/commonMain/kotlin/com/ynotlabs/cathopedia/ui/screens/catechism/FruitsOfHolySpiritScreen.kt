@@ -38,7 +38,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
@@ -184,26 +183,16 @@ fun FruitsOfHolySpiritScreen(
 
 @Composable
 private fun FruitsHeroCard() {
-    Box(
+    Image(
+        painter = painterResource(Res.drawable.fruits_holy_spirit_hero),
+        contentDescription = null,
+        contentScale = ContentScale.Crop,
         modifier = Modifier
             .fillMaxWidth()
-            .height(160.dp)
+            .aspectRatio(2f)
             .clip(RoundedCornerShape(22.dp))
-            .background(
-                Brush.verticalGradient(
-                    listOf(Color(0xFF0F3024), Color(0xFF061A13))
-                )
-            )
             .border(1.dp, FruitsGold.copy(alpha = 0.35f), RoundedCornerShape(22.dp)),
-        contentAlignment = Alignment.Center
-    ) {
-        Image(
-            painter = painterResource(Res.drawable.symbol_vine_branches),
-            contentDescription = null,
-            contentScale = ContentScale.Fit,
-            modifier = Modifier.size(100.dp)
-        )
-    }
+    )
 }
 
 @Composable
