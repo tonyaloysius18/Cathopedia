@@ -55,6 +55,8 @@ import com.ynotlabs.cathopedia.resources.amice_priest
 import com.ynotlabs.cathopedia.resources.archiepiscopal_cross
 import com.ynotlabs.cathopedia.resources.biretta_cardinal
 import com.ynotlabs.cathopedia.resources.biretta_priest
+import com.ynotlabs.cathopedia.resources.black_chausable
+import com.ynotlabs.cathopedia.resources.blue_chausable
 import com.ynotlabs.cathopedia.resources.cardinal_ring
 import com.ynotlabs.cathopedia.resources.vestment_cardinal
 import com.ynotlabs.cathopedia.resources.chasuble_archbishop
@@ -69,6 +71,7 @@ import com.ynotlabs.cathopedia.resources.dalmatic_deacon
 import com.ynotlabs.cathopedia.resources.episcopal_ring_bishop
 import com.ynotlabs.cathopedia.resources.ferula_pope
 import com.ynotlabs.cathopedia.resources.fishermans_ring
+import com.ynotlabs.cathopedia.resources.gold_chausable
 import com.ynotlabs.cathopedia.resources.mitre_archbishop
 import com.ynotlabs.cathopedia.resources.mitre_bishop
 import com.ynotlabs.cathopedia.resources.mitre_pope
@@ -84,6 +87,11 @@ import com.ynotlabs.cathopedia.resources.stole_priest
 import com.ynotlabs.cathopedia.resources.zucchetto_bishop
 import com.ynotlabs.cathopedia.resources.zucchetto_cardinal
 import com.ynotlabs.cathopedia.resources.zucchetto_priest
+import com.ynotlabs.cathopedia.resources.white_chausable
+import com.ynotlabs.cathopedia.resources.red_chausable
+import com.ynotlabs.cathopedia.resources.green_chausable
+import com.ynotlabs.cathopedia.resources.rose_chausable
+import com.ynotlabs.cathopedia.resources.violet_chausable
 import kotlin.math.abs
 import kotlin.math.min
 import kotlinx.coroutines.launch
@@ -128,6 +136,7 @@ data class Minister(
 data class LiturgicalColor(
     val name: String,
     val swatch: Color,
+    val image: DrawableResource?,
     val occasion: String,
     val meaning: String,
     val needsBorder: Boolean = false,
@@ -455,6 +464,7 @@ private val liturgicalColors = listOf(
     LiturgicalColor(
         name = "White",
         swatch = Color(0xFFF5F0E6),
+        image = Res.drawable.white_chausable,
         occasion = "Christmas, Easter, feasts of Our Lord, Mary, and the angels, and feasts of saints who were not martyrs.",
         meaning = "Purity, innocence, and glory — the joy of the Resurrection and the holiness of God.",
         needsBorder = true,
@@ -462,42 +472,49 @@ private val liturgicalColors = listOf(
     LiturgicalColor(
         name = "Red",
         swatch = Color(0xFFB3221D),
+        image = Res.drawable.red_chausable,
         occasion = "Palm Sunday, Good Friday, Pentecost, and feasts of martyrs, Apostles, and Evangelists.",
         meaning = "The blood of martyrdom and the fire of the Holy Spirit poured out on the Church.",
     ),
     LiturgicalColor(
         name = "Green",
-        swatch = Color(0xFF1F7A4D),
+        swatch = Color(0xFF17A4D),
+        image = Res.drawable.green_chausable,
         occasion = "Ordinary Time, the long season of growth between the great feasts of the liturgical year.",
         meaning = "Hope, and the steady growth of the Christian life and virtue over time.",
     ),
     LiturgicalColor(
-        name = "Violet (Purple)",
+        name = "Violet",
         swatch = Color(0xFF5B2A86),
+        image = Res.drawable.violet_chausable,
         occasion = "Advent and Lent, as well as funerals, All Souls' Day, and other penitential rites.",
         meaning = "Penance, preparation, and quiet mourning as the Church awaits the coming of Christ.",
     ),
     LiturgicalColor(
-        name = "Rose (Pink)",
+        name = "Rose",
         swatch = Color(0xFFE293B3),
+        image = Res.drawable.rose_chausable,
         occasion = "Gaudete Sunday (the third Sunday of Advent) and Laetare Sunday (the fourth Sunday of Lent).",
         meaning = "A brief note of joyful anticipation, lightening the penitential violet at the midpoint of the season.",
     ),
     LiturgicalColor(
         name = "Gold",
         swatch = Color(0xFFD4AF37),
+        image = Res.drawable.gold_chausable,
         occasion = "May substitute for white, red, or green on the most solemn feasts, such as Christmas and Easter.",
         meaning = "The triumph, majesty, and radiant glory of God on the Church's greatest days.",
     ),
     LiturgicalColor(
         name = "Blue",
         swatch = Color(0xFF1F4E9C),
+        image = Res.drawable.blue_chausable,
         occasion = "Not a universal Roman color; permitted by special indult in places such as Spain and Portugal for Marian feasts.",
         meaning = "Honors the purity and heavenly queenship of the Blessed Virgin Mary.",
     ),
     LiturgicalColor(
         name = "Black",
         swatch = Color(0xFF17140F),
+        image = Res.drawable.black_chausable,
         occasion = "Traditionally worn for Requiem Masses, All Souls' Day, and funerals.",
         meaning = "Mourning and the sober reality of death, held in hope of the Resurrection.",
         needsBorder = true,
@@ -1061,6 +1078,7 @@ private fun LiturgicalColorGrid(colors: List<LiturgicalColor>) {
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         colors.chunked(2).forEach { rowColors ->
             Row(
+                modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min),
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
             ) {
                 rowColors.forEach { color ->
@@ -1086,8 +1104,10 @@ private fun LiturgicalColorCard(
     val s = LocalStrings.current
     val shape = RoundedCornerShape(18.dp)
 
-    Column(
+    Box(
         modifier = modifier
+            .fillMaxHeight()
+            .heightIn(min = 230.dp)
             .clip(shape)
             .background(
                 Brush.verticalGradient(
@@ -1095,12 +1115,74 @@ private fun LiturgicalColorCard(
                 ),
             )
             .border(1.dp, VestGold.copy(alpha = 0.35f), shape)
-            .padding(14.dp),
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Column(
+            modifier = Modifier.padding(14.dp),
+        ) {
+            Text(
+                text = color.name,
+                color = VestCream,
+                fontFamily = FontFamily.Serif,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.padding(end = 48.dp),
+            )
+
+            Spacer(Modifier.height(12.dp))
+
+            Text(
+                text = s.vestmentsWornForLabel.uppercase(),
+                color = VestGoldSoft,
+                fontSize = 9.5.sp,
+                letterSpacing = 0.7.sp,
+                fontWeight = FontWeight.Bold,
+            )
+
+            Spacer(Modifier.height(2.dp))
+
+            Text(
+                text = color.occasion,
+                color = VestMuted,
+                fontSize = 12.sp,
+                lineHeight = 16.sp,
+            )
+
+            Spacer(Modifier.height(8.dp))
+
+            Text(
+                text = s.vestmentsSignificanceLabel.uppercase(),
+                color = VestGoldSoft,
+                fontSize = 9.5.sp,
+                letterSpacing = 0.7.sp,
+                fontWeight = FontWeight.Bold,
+            )
+
+            Spacer(Modifier.height(2.dp))
+
+            Text(
+                text = color.meaning,
+                color = VestMuted,
+                fontSize = 12.sp,
+                lineHeight = 16.sp,
+            )
+        }
+
+        if (color.image != null) {
+            Image(
+                painter = painterResource(color.image),
+                contentDescription = color.name,
+                modifier = Modifier
+                    .size(72.dp)
+                    .align(Alignment.TopEnd)
+                    .padding(top = 6.dp, end = 4.dp),
+                contentScale = ContentScale.Fit,
+            )
+        } else {
             Box(
                 modifier = Modifier
+                    .padding(top = 14.dp, end = 14.dp)
                     .size(22.dp)
+                    .align(Alignment.TopEnd)
                     .clip(CircleShape)
                     .background(color.swatch)
                     .then(
@@ -1111,54 +1193,6 @@ private fun LiturgicalColorCard(
                         },
                     ),
             )
-
-            Spacer(Modifier.width(10.dp))
-
-            Text(
-                text = color.name,
-                color = VestCream,
-                fontFamily = FontFamily.Serif,
-                fontSize = 15.sp,
-                fontWeight = FontWeight.SemiBold,
-            )
         }
-
-        Spacer(Modifier.height(10.dp))
-
-        Text(
-            text = s.vestmentsWornForLabel.uppercase(),
-            color = VestGoldSoft,
-            fontSize = 9.5.sp,
-            letterSpacing = 0.7.sp,
-            fontWeight = FontWeight.Bold,
-        )
-
-        Spacer(Modifier.height(2.dp))
-
-        Text(
-            text = color.occasion,
-            color = VestMuted,
-            fontSize = 12.sp,
-            lineHeight = 16.sp,
-        )
-
-        Spacer(Modifier.height(8.dp))
-
-        Text(
-            text = s.vestmentsSignificanceLabel.uppercase(),
-            color = VestGoldSoft,
-            fontSize = 9.5.sp,
-            letterSpacing = 0.7.sp,
-            fontWeight = FontWeight.Bold,
-        )
-
-        Spacer(Modifier.height(2.dp))
-
-        Text(
-            text = color.meaning,
-            color = VestMuted,
-            fontSize = 12.sp,
-            lineHeight = 16.sp,
-        )
     }
 }
