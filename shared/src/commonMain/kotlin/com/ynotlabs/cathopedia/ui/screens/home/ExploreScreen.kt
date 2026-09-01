@@ -10,6 +10,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -131,7 +134,63 @@ fun ExploreScreen(
                 ExploreSectionHeader(s.exploreHubsHeader.uppercase())
             }
 
-            items(hubs, key = { it.id }) { hub ->
+            val holySee = hubs.find { it.id == "holy_see" }
+            val firstGrid = hubs.filter { it.id == "symbols" || it.id == "mass" }
+            val secondGrid = hubs.filter { it.id == "catechism" || it.id == "biblical" }
+            val remainingHubs = hubs.filterNot { it.id in setOf("holy_see", "catechism", "symbols", "mass", "biblical") }
+
+            holySee?.let { hub ->
+                item(key = hub.id) {
+                    HubExploreCard(
+                        hub = hub,
+                        title = hubStrings[hub.titleKey].orEmpty(),
+                        subtitle = hub.subtitleKey?.let { hubStrings[it] },
+                        onClick = { onHubSelected(hub) },
+                    )
+                }
+            }
+
+            if (firstGrid.isNotEmpty()) {
+                item {
+                    Row(
+                        modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        firstGrid.sortedBy { it.id != "symbols" }.forEach { hub ->
+                            PortraitHubExploreCard(
+                                hub = hub,
+                                title = hubStrings[hub.titleKey].orEmpty(),
+                                subtitle = hub.subtitleKey?.let { hubStrings[it] },
+                                onClick = { onHubSelected(hub) },
+                                modifier = Modifier.weight(1f).fillMaxHeight()
+                            )
+                        }
+                        if (firstGrid.size == 1) Spacer(Modifier.weight(1f))
+                    }
+                }
+            }
+
+            if (secondGrid.isNotEmpty()) {
+                item {
+                    Row(
+                        modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        secondGrid.sortedBy { it.id != "catechism" }.forEach { hub ->
+                            PortraitHubExploreCard(
+                                hub = hub,
+                                title = hubStrings[hub.titleKey].orEmpty(),
+                                subtitle = hub.subtitleKey?.let { hubStrings[it] },
+                                onClick = { onHubSelected(hub) },
+                                modifier = Modifier.weight(1f).fillMaxHeight()
+                            )
+                        }
+                        if (secondGrid.size == 1) Spacer(Modifier.weight(1f))
+                    }
+                }
+            }
+
+            items(remainingHubs, key = { it.id }) { hub ->
                 HubExploreCard(
                     hub = hub,
                     title = hubStrings[hub.titleKey].orEmpty(),
@@ -386,7 +445,29 @@ private fun PeopleSection(
     onCategorySelected: (ContentType) -> Unit,
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        types.forEach { type ->
+        val featured = types.take(2)
+
+        if (featured.isNotEmpty()) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                featured.forEach { type ->
+                    PortraitExploreCard(
+                        type = type,
+                        count = counts[type] ?: 0,
+                        onClick = { onCategorySelected(type) },
+                        modifier = Modifier.weight(1f),
+                    )
+                }
+
+                if (featured.size == 1) {
+                    Spacer(Modifier.weight(1f))
+                }
+            }
+        }
+
+        types.drop(2).forEach { type ->
             WideExploreCard(
                 type = type,
                 count = counts[type] ?: 0,
@@ -404,16 +485,32 @@ private fun EventsSection(
     onVestmentsSelected: () -> Unit,
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        types.forEach { type ->
-            WideExploreCard(
-                type = type,
-                count = counts[type] ?: 0,
-                onClick = { onCategorySelected(type) },
-            )
-        }
+        types.chunked(2).forEach { rowTypes ->
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                rowTypes.forEach { type ->
+                    EventExploreCard(
+                        type = type,
+                        count = counts[type] ?: 0,
+                        onClick = { onCategorySelected(type) },
+                        modifier = Modifier.weight(1f),
+                    )
+                }
 
-        if (types.contains(ContentType.FEAST)) {
-            VestmentsSectionCard(onClick = onVestmentsSelected)
+                if (rowTypes.size == 1) {
+                    val singleType = rowTypes.first()
+                    if (singleType == ContentType.FEAST) {
+                        VestmentsSectionCard(
+                            onClick = onVestmentsSelected,
+                            modifier = Modifier.weight(1f)
+                        )
+                    } else {
+                        Spacer(Modifier.weight(1f))
+                    }
+                }
+            }
         }
     }
 }
@@ -426,7 +523,142 @@ private fun VestmentsSectionCard(
     val s = LocalStrings.current
     Card(
         modifier = modifier
-            .fillMaxWidth()
+            .aspectRatio(1.3f)
+            .clickable(onClick = onClick),
+        shape = RoundedCornerShape(22.dp),
+        border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
+    ) {
+        Box(Modifier.fillMaxSize()) {
+
+            Image(
+                painter = painterResource(Res.drawable.explore_vestments),
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 8.dp),
+                contentScale = ContentScale.Fit,
+                alignment = Alignment.CenterEnd,
+            )
+
+            ArtworkFadeOverlay(
+                includeBottomFade = true,
+            )
+
+            Image(
+                painter = painterResource(Res.drawable.liturgical_vestments_icon),
+                contentDescription = null,
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .padding(12.dp)
+                    .size(35.dp),
+                contentScale = ContentScale.Fit,
+            )
+
+            Column(
+                modifier = Modifier
+                    .align(Alignment.BottomStart)
+                    .padding(12.dp),
+            ) {
+                Text(
+                    text = s.exploreVestmentsTitle,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 17.sp,
+                    lineHeight = 22.sp,
+                    maxLines = 2,
+                )
+
+                Text(
+                    text = s.exploreVestmentsSubtitle,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    fontSize = 13.sp,
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun PortraitExploreCard(
+    type: ContentType,
+    count: Int,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val s = LocalStrings.current
+    val title = type.displayName(s)
+
+    Card(
+        modifier = modifier
+            .heightIn(min = 156.dp)
+            .clickable(onClick = onClick),
+        shape = RoundedCornerShape(22.dp),
+        border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
+    ) {
+        Box(Modifier.fillMaxWidth()) {
+            CategoryArtwork(
+                type = type,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(156.dp)
+                    .padding(top = 8.dp, start = 6.dp, end = 2.dp),
+                contentScale = ContentScale.Fit,
+                alignment = Alignment.CenterEnd,
+            )
+
+            ArtworkFadeOverlay(
+                includeBottomFade = true,
+            )
+
+            CategoryGlyph(
+                type = type,
+                title = title,
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .padding(12.dp),
+                size = 35.dp,
+            )
+
+            Column(
+                modifier = Modifier
+                    .align(Alignment.BottomStart)
+                    .fillMaxWidth()
+                    .padding(12.dp),
+            ) {
+                Text(
+                    text = title,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 17.sp,
+                    lineHeight = 22.sp,
+                )
+                Text(
+                    text = humanCountLabel(type, count, s),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    fontSize = 13.sp,
+                    lineHeight = 18.sp,
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun EventExploreCard(
+    type: ContentType,
+    count: Int,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val s = LocalStrings.current
+    val title = type.displayName(s)
+
+    Card(
+        modifier = modifier
             .heightIn(min = 140.dp)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
@@ -435,67 +667,47 @@ private fun VestmentsSectionCard(
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
         Box(Modifier.fillMaxWidth()) {
-            Image(
-                painter = painterResource(Res.drawable.explore_vestments),
-                contentDescription = null,
+            CategoryArtwork(
+                type = type,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(140.dp)
-                    .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
+                    .padding(top = 8.dp, start = 6.dp, end = 2.dp),
                 contentScale = ContentScale.Fit,
-                alignment = Alignment.BottomEnd,
+                alignment = Alignment.CenterEnd,
             )
 
-            ArtworkFadeOverlay(includeBottomFade = true)
+            ArtworkFadeOverlay(
+                includeBottomFade = true,
+            )
+
+            CategoryGlyph(
+                type = type,
+                title = title,
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .padding(12.dp),
+                size = 35.dp,
+            )
 
             Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(14.dp),
-                verticalArrangement = Arrangement.SpaceBetween,
+                    .align(Alignment.BottomStart)
+                    .padding(12.dp),
             ) {
-                Image(
-                    painter = painterResource(Res.drawable.liturgical_vestments_icon),
-                    contentDescription = null,
-                    modifier = Modifier.size(35.dp),
-                    contentScale = ContentScale.Fit,
+                Text(
+                    text = title,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 17.sp,
+                    lineHeight = 22.sp,
                 )
-
-                Column(modifier = Modifier.fillMaxWidth(0.66f)) {
-                    Text(
-                        text = s.exploreVestmentsTitle,
-                        color = MaterialTheme.colorScheme.onBackground,
-                        fontFamily = FontFamily.Serif,
-                        fontSize = 17.sp,
-                        lineHeight = 22.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis,
-                        style = TextStyle(
-                            shadow = Shadow(
-                                color = Color(0xFF04120C).copy(alpha = 0.85f),
-                                offset = Offset(0f, 1f),
-                                blurRadius = 10f,
-                            )
-                        ),
-                    )
-                    Spacer(Modifier.height(2.dp))
-                    Text(
-                        text = s.exploreVestmentsSubtitle,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        fontSize = 13.sp,
-                        lineHeight = 17.sp,
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis,
-                        style = TextStyle(
-                            shadow = Shadow(
-                                color = Color(0xFF04120C).copy(alpha = 0.8f),
-                                offset = Offset(0f, 1f),
-                                blurRadius = 8f,
-                            )
-                        ),
-                    )
-                }
+                Text(
+                    text = humanCountLabel(type, count, s),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    fontSize = 13.sp,
+                    lineHeight = 18.sp,
+                )
             }
         }
     }
@@ -546,39 +758,119 @@ private fun WideExploreCard(
             ) {
                 CategoryGlyph(type = type, title = title, size = 35.dp)
 
-                Column(modifier = Modifier.fillMaxWidth(0.66f)) {
+                Column {
                     Text(
                         text = title,
                         color = MaterialTheme.colorScheme.onBackground,
                         fontFamily = FontFamily.Serif,
                         fontSize = 17.sp,
                         lineHeight = 22.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis,
-                        style = TextStyle(
-                            shadow = Shadow(
-                                color = Color(0xFF04120C).copy(alpha = 0.85f),
-                                offset = Offset(0f, 1f),
-                                blurRadius = 10f,
-                            )
-                        ),
                     )
-                    Spacer(Modifier.height(2.dp))
                     Text(
                         text = humanCountLabel(type, count, s),
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        fontSize = 13.sp,
+                        lineHeight = 18.sp,
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun PortraitHubExploreCard(
+    hub: HubSummary,
+    title: String,
+    subtitle: String?,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val isSymbols = hub.id == "symbols"
+    val isHolyMass = hub.id == "mass"
+    val isCatechism = hub.id == "catechism"
+    val isBiblical = hub.id == "biblical"
+    val isOrders = hub.id == "orders"
+
+    val artwork = when {
+        isSymbols -> Res.drawable.explore_sacred_symbols
+        isHolyMass -> Res.drawable.explore_holymass
+        isCatechism -> Res.drawable.explore_catechism
+        isBiblical -> Res.drawable.explore_biblical
+        else -> Res.drawable.explore_bg
+    }
+    val icon = when {
+        isSymbols -> Res.drawable.sacred_symbols_icon
+        isHolyMass -> Res.drawable.holy_mass_icon
+        isCatechism -> Res.drawable.catechism_icon
+        isBiblical -> Res.drawable.biblical_characters_icon
+        else -> null
+    }
+
+    Card(
+        modifier = modifier
+            .heightIn(min = 186.dp)
+            .clickable(onClick = onClick),
+        shape = RoundedCornerShape(22.dp),
+        border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
+    ) {
+        Column(Modifier.fillMaxWidth()) {
+            // Artwork band — the full image sits here; text lives in its own band below,
+            // so titles are always legible regardless of the image's aspect ratio.
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(124.dp),
+            ) {
+                Image(
+                    painter = painterResource(artwork),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = 10.dp, start = 8.dp, end = 8.dp),
+                    contentScale = ContentScale.Fit,
+                    alignment = Alignment.Center,
+                )
+
+                if (icon != null) {
+                    Image(
+                        painter = painterResource(icon),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .align(Alignment.TopStart)
+                            .padding(10.dp)
+                            .size(32.dp),
+                        contentScale = ContentScale.Fit,
+                    )
+                }
+            }
+
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 14.dp, end = 14.dp, top = 2.dp, bottom = 14.dp),
+            ) {
+                Text(
+                    text = title,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 17.sp,
+                    lineHeight = 21.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                subtitle?.let {
+                    Spacer(Modifier.height(2.dp))
+                    Text(
+                        text = it,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontSize = 13.sp,
                         lineHeight = 17.sp,
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis,
-                        style = TextStyle(
-                            shadow = Shadow(
-                                color = Color(0xFF04120C).copy(alpha = 0.8f),
-                                offset = Offset(0f, 1f),
-                                blurRadius = 8f,
-                            )
-                        ),
                     )
                 }
             }
