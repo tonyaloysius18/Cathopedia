@@ -557,8 +557,6 @@ fun VestmentsScreen(
     val scope = rememberCoroutineScope()
 
     var selectedIndex by remember { mutableStateOf(1) }
-    var headerHeightPx by remember { mutableIntStateOf(0) }
-    val headerHeightDp = with(density) { headerHeightPx.toDp() }
 
     LaunchedEffect(listState) {
         snapshotFlow { listState.layoutInfo }
@@ -579,13 +577,17 @@ fun VestmentsScreen(
             .fillMaxSize()
             .background(VestBg),
     ) {
+        var headerHeightPx by remember { mutableIntStateOf(0) }
+        val headerHeightDp = with(density) { headerHeightPx.toDp() }
+
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = headerHeightDp + 16.dp),
+                .padding(top = headerHeightDp),
             contentPadding = PaddingValues(
                 start = 18.dp,
                 end = 18.dp,
+                top = 16.dp,
                 bottom = 124.dp,
             ),
         ) {
@@ -630,30 +632,33 @@ fun VestmentsScreen(
             }
         }
 
-        VestmentsHeaderCard(
-            ministers = localizedMinisters,
-            listState = listState,
-            cardWidthPx = cardWidthPx,
-            currentIndex = selectedIndex,
-            onBackClick = onBackClick,
-            onCardClick = { index ->
-                scope.launch { listState.animateScrollToItem(index) }
-            },
-            modifier = Modifier.onGloballyPositioned {
-                headerHeightPx = it.size.height
-            }
-        )
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .onGloballyPositioned {
+                    if (headerHeightPx != it.size.height) headerHeightPx = it.size.height
+                }
+        ) {
+            VestmentsTitleHeader(
+                onBackClick = onBackClick,
+            )
+
+            MinisterCarouselCard(
+                ministers = localizedMinisters,
+                listState = listState,
+                cardWidthPx = cardWidthPx,
+                currentIndex = selectedIndex,
+                onCardClick = { index ->
+                    scope.launch { listState.animateScrollToItem(index) }
+                }
+            )
+        }
     }
 }
 
 @Composable
-private fun VestmentsHeaderCard(
-    ministers: List<Minister>,
-    listState: LazyListState,
-    cardWidthPx: Float,
-    currentIndex: Int,
+private fun VestmentsTitleHeader(
     onBackClick: () -> Unit,
-    onCardClick: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val s = LocalStrings.current
@@ -661,52 +666,73 @@ private fun VestmentsHeaderCard(
         modifier = modifier
             .fillMaxWidth()
             .shadow(
-                elevation = 14.dp,
+                elevation = 8.dp,
+                shape = RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp),
+                clip = false
+            ),
+        color = VestSurface,
+        shape = RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp),
+        border = BorderStroke(1.dp, VestGold.copy(alpha = 0.25f)),
+    ) {
+        Row(
+            modifier = Modifier
+                .statusBarsPadding()
+                .fillMaxWidth()
+                .padding(start = 10.dp, end = 18.dp, top = 6.dp, bottom = 16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            CathopediaBackButton(
+                onClick = onBackClick,
+                contentDescription = s.back,
+            )
+
+            Spacer(Modifier.width(10.dp))
+
+            Column {
+                Text(
+                    text = s.vestmentsTitle,
+                    color = VestCream,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 25.sp,
+                    fontWeight = FontWeight.SemiBold,
+                )
+
+                Text(
+                    text = s.vestmentsSubtitle,
+                    color = VestGoldSoft,
+                    fontSize = 14.sp,
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun MinisterCarouselCard(
+    ministers: List<Minister>,
+    listState: LazyListState,
+    cardWidthPx: Float,
+    currentIndex: Int,
+    onCardClick: (Int) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Surface(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(top = 14.dp)
+            .shadow(
+                elevation = 16.dp,
                 shape = RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp),
                 clip = false
             ),
         color = VestSurface,
         shape = RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp),
-        border = BorderStroke(1.dp, VestGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, VestGold.copy(alpha = 0.2f)),
     ) {
         Column(
-            modifier = Modifier
-                .statusBarsPadding()
-                .padding(bottom = 20.dp),
+            modifier = Modifier.padding(bottom = 24.dp, top = 12.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 10.dp, end = 18.dp, top = 6.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                CathopediaBackButton(
-                    onClick = onBackClick,
-                    contentDescription = s.back,
-                )
-
-                Spacer(Modifier.width(10.dp))
-
-                Column {
-                    Text(
-                        text = s.vestmentsTitle,
-                        color = VestCream,
-                        fontFamily = FontFamily.Serif,
-                        fontSize = 25.sp,
-                        fontWeight = FontWeight.SemiBold,
-                    )
-
-                    Text(
-                        text = s.vestmentsSubtitle,
-                        color = VestGoldSoft,
-                        fontSize = 14.sp,
-                    )
-                }
-            }
-
-            Spacer(Modifier.height(12.dp))
-
             LazyRow(
                 state = listState,
                 flingBehavior = rememberSnapFlingBehavior(listState),

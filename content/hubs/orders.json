@@ -1,0 +1,851 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": 1,
+  "hub": {
+    "id": "orders",
+    "slug": "religious-orders",
+    "titleKey": "hub.orders.title",
+    "subtitleKey": "hub.orders.subtitle",
+    "introKey": "hub.orders.intro",
+    "icon": "ic_orders",
+    "accentColor": "#6E5A3C",
+    "sortOrder": 6,
+    "tags": [
+      "orders",
+      "congregations",
+      "religious life",
+      "jesuits",
+      "franciscans",
+      "sisters",
+      "monks"
+    ]
+  },
+  "sections": [
+    {
+      "id": "orders.monastic",
+      "sortOrder": 1,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.orders.monastic.title",
+      "summaryKey": "sec.orders.monastic.summary",
+      "icon": "ic_monastery",
+      "articleIds": [
+        "art.orders.monastic"
+      ]
+    },
+    {
+      "id": "orders.mendicant",
+      "sortOrder": 2,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.orders.mendicant.title",
+      "summaryKey": "sec.orders.mendicant.summary",
+      "icon": "ic_friar",
+      "articleIds": [
+        "art.orders.mendicant"
+      ]
+    },
+    {
+      "id": "orders.clerks_regular",
+      "sortOrder": 3,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.orders.clerks_regular.title",
+      "summaryKey": "sec.orders.clerks_regular.summary",
+      "icon": "ic_cross",
+      "articleIds": [
+        "art.orders.clerks_regular"
+      ]
+    },
+    {
+      "id": "orders.apostolic",
+      "sortOrder": 4,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.orders.apostolic.title",
+      "summaryKey": "sec.orders.apostolic.summary",
+      "icon": "ic_mission",
+      "articleIds": [
+        "art.orders.apostolic"
+      ]
+    },
+    {
+      "id": "orders.women",
+      "sortOrder": 5,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.orders.women.title",
+      "summaryKey": "sec.orders.women.summary",
+      "icon": "ic_sister",
+      "articleIds": [
+        "art.orders.women"
+      ]
+    }
+  ],
+  "articles": [
+    {
+      "id": "art.orders.monastic",
+      "sectionId": "orders.monastic",
+      "sortOrder": 1,
+      "titleKey": "art.orders.monastic.title",
+      "leadKey": "art.orders.monastic.lead",
+      "readingTimeMinutes": 3,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.benedictines.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_benedictines.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.benedictines.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.cistercians.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_cistercians.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.cistercians.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.trappists.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_trappists.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.trappists.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.carthusians.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_carthusians.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.carthusians.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.camaldolese.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_camaldolese.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.camaldolese.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.norbertines.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_norbertines.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.norbertines.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.orders.mendicant",
+      "sectionId": "orders.mendicant",
+      "sortOrder": 1,
+      "titleKey": "art.orders.mendicant.title",
+      "leadKey": "art.orders.mendicant.lead",
+      "readingTimeMinutes": 5,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.franciscans.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_franciscans.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.franciscans.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.capuchins.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_capuchins.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.capuchins.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.conventual_franciscans.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_conventual_franciscans.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.conventual_franciscans.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.dominicans.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_dominicans.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.dominicans.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.carmelites.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_carmelites.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.carmelites.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.discalced_carmelites.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_discalced_carmelites.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.discalced_carmelites.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.augustinians.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_augustinians.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.augustinians.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.servites.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_servites.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.servites.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.trinitarians.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_trinitarians.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.trinitarians.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.mercedarians.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_mercedarians.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.mercedarians.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.orders.clerks_regular",
+      "sectionId": "orders.clerks_regular",
+      "sortOrder": 1,
+      "titleKey": "art.orders.clerks_regular.title",
+      "leadKey": "art.orders.clerks_regular.lead",
+      "readingTimeMinutes": 2,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.jesuits.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_jesuits.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.jesuits.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.theatines.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_theatines.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.theatines.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.barnabites.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_barnabites.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.barnabites.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.piarists.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_piarists.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.piarists.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.oratorians.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_oratorians.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.oratorians.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.orders.apostolic",
+      "sectionId": "orders.apostolic",
+      "sortOrder": 1,
+      "titleKey": "art.orders.apostolic.title",
+      "leadKey": "art.orders.apostolic.lead",
+      "readingTimeMinutes": 6,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.vincentians.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_vincentians.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.vincentians.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.redemptorists.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_redemptorists.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.redemptorists.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.passionists.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_passionists.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.passionists.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.salesians.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_salesians.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.salesians.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.marists.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_marists.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.marists.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.holy_cross.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_holy_cross.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.holy_cross.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.svd.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_svd.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.svd.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.omi.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_omi.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.omi.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.claretians.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_claretians.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.claretians.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.spiritans.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_spiritans.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.spiritans.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.comboni.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_comboni.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.comboni.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.pallottines.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_pallottines.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.pallottines.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.marians.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_marians.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.marians.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.orders.women",
+      "sectionId": "orders.women",
+      "sortOrder": 1,
+      "titleKey": "art.orders.women.title",
+      "leadKey": "art.orders.women.lead",
+      "readingTimeMinutes": 8,
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.poor_clares.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_poor_clares.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.poor_clares.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.carmelite_nuns.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_carmelite_nuns.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.carmelite_nuns.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.visitation.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_visitation.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.visitation.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.ursulines.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_ursulines.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.ursulines.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.daughters_charity.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_daughters_charity.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.daughters_charity.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.sisters_mercy.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_sisters_mercy.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.sisters_mercy.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.sisters_charity_seton.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_sisters_charity_seton.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.sisters_charity_seton.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.missionaries_charity.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_missionaries_charity.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.missionaries_charity.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.servite_sisters.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_servite_sisters.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.servite_sisters.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.bon_secours.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_bon_secours.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.bon_secours.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.salesian_sisters.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_salesian_sisters.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.salesian_sisters.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.little_sisters_poor.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_little_sisters_poor.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.little_sisters_poor.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.good_shepherd.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_good_shepherd.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.good_shepherd.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.presentation.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_presentation.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.presentation.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.loreto_ibvm.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_loreto_ibvm.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.loreto_ibvm.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.ssnd.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_ssnd.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.ssnd.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "ord.sisters_st_joseph.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_sisters_st_joseph.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "ord.sisters_st_joseph.desc"
+        }
+      ]
+    }
+  ]
+}
