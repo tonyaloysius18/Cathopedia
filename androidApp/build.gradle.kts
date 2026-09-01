@@ -18,6 +18,14 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
 
+    // Declared directly here so their Android resources merge into the app.
+    // The shared module uses the KMP library plugin, which does not propagate
+    // its implementation dependencies' resources to the consuming app module
+    // (AGP 9.0.x), so media3's View resources (ExoStyledControls styles, ids,
+    // dimens) must be visible to :androidApp's resource merge.
+    implementation(libs.androidx.media3.ui)
+    implementation(libs.androidx.media3.exoplayer)
+
     implementation(libs.compose.uiToolingPreview)
     debugImplementation(libs.compose.uiTooling)
 }
