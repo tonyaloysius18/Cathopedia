@@ -103,6 +103,13 @@ private data class BiblicalCharacterContent(
     val paragraph: ParagraphBlock,
 )
 
+private data class OrderCardContent(
+    val heading: HeadingBlock,
+    val image: ImageBlock,        // main image (founder portrait, or the sole image)
+    val emblem: ImageBlock?,      // emblem badge overlaid top-right, when present
+    val paragraph: ParagraphBlock,
+)
+
 /**
  * Renders every [Block] type (docs/briefs/topic-hubs.md, T5). `DiagramRefBlock`/`StepperRefBlock`/
  * `TimelineRefBlock` are cross-references into other hub structures — with no in-article renderer
@@ -222,6 +229,7 @@ fun HubArticleScreen(
     val s = LocalStrings.current
     val isSymbolsArticle = articleId.startsWith("art.symbols.")
     val isBiblicalArticle = articleId.startsWith("art.biblical.")
+    val isOrdersArticle = articleId.startsWith("art.orders.")
     var article by remember(articleId) { mutableStateOf<HubArticleDetail?>(null) }
     var strings by remember(articleId) { mutableStateOf<Map<String, String>>(emptyMap()) }
 
@@ -252,14 +260,14 @@ fun HubArticleScreen(
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(
                 start = 20.dp,
-                top = if (isSymbolsArticle || isBiblicalArticle) headerHeightDp + 20.dp else 0.dp,
+                top = if (isSymbolsArticle || isBiblicalArticle || isOrdersArticle) headerHeightDp + 20.dp else 0.dp,
                 end = 20.dp,
                 bottom = 120.dp
             ),
         ) {
             if (current == null) return@LazyColumn
 
-            if (!isSymbolsArticle && !isBiblicalArticle) {
+            if (!isSymbolsArticle && !isBiblicalArticle && !isOrdersArticle) {
                 item {
                     Column(
                         modifier = Modifier
@@ -300,6 +308,7 @@ fun HubArticleScreen(
 
             val symbolCards = if (isSymbolsArticle) current.blocks.asSymbolCards() else null
             val biblicalCards = if (isBiblicalArticle) current.blocks.asBiblicalCharacterCards() else null
+            val orderCards = if (isOrdersArticle) current.blocks.asOrderCards() else null
             if (symbolCards != null) {
                 item {
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -355,6 +364,22 @@ fun HubArticleScreen(
                         Spacer(Modifier.height(16.dp))
                     }
                 }
+            } else if (orderCards != null) {
+                item {
+                    OrdersLabel(count = orderCards.size, language = language)
+                    Spacer(Modifier.height(16.dp))
+                }
+
+                orderCards.forEach { card ->
+                    item {
+                        OrderCard(
+                            card = card,
+                            strings = strings,
+                            onEntityRefSelected = onEntityRefSelected,
+                        )
+                        Spacer(Modifier.height(16.dp))
+                    }
+                }
             } else {
                 current.blocks.forEach { block ->
                     item {
@@ -365,7 +390,7 @@ fun HubArticleScreen(
             }
         }
 
-        if ((isSymbolsArticle || isBiblicalArticle) && current != null) {
+        if ((isSymbolsArticle || isBiblicalArticle || isOrdersArticle) && current != null) {
             HubArticleHeaderCard(
                 title = strings[current.titleKey].orEmpty(),
                 lead = current.leadKey?.let { strings[it] },
@@ -460,6 +485,169 @@ private fun List<Block>.asBiblicalCharacterCards(): List<BiblicalCharacterConten
         cards += BiblicalCharacterContent(heading, image, paragraph)
     }
     return cards
+}
+
+// Each order = heading, one or two images (founder and/or emblem), then a paragraph.
+// Founder is the main image; the emblem (when present alongside a founder) is the top-right badge.
+private fun List<Block>.asOrderCards(): List<OrderCardContent>? {
+    if (isEmpty()) return null
+    val cards = mutableListOf<OrderCardContent>()
+    var i = 0
+    while (i < size) {
+        val heading = getOrNull(i) as? HeadingBlock ?: return null
+        i++
+        val images = mutableListOf<ImageBlock>()
+        while (getOrNull(i) is ImageBlock) {
+            images += getOrNull(i) as ImageBlock
+            i++
+        }
+        val paragraph = getOrNull(i) as? ParagraphBlock ?: return null
+        i++
+        if (images.isEmpty()) return null
+        val founder = images.firstOrNull { it.asset.contains("_founder") }
+        val emblem = images.firstOrNull { it.asset.contains("_emblem") }
+        val main = founder ?: images.first()
+        val badge = if (images.size >= 2) emblem?.takeIf { it != main } else null
+        cards += OrderCardContent(heading, main, badge, paragraph)
+    }
+    return cards
+}
+
+@Composable
+private fun OrdersLabel(count: Int, language: String) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = if (language == "fr") "ORDRES · $count" else "ORDERS · $count",
+            color = MaterialTheme.colorScheme.primary,
+            fontSize = 11.sp,
+            fontWeight = FontWeight.SemiBold,
+            letterSpacing = 1.4.sp,
+        )
+        Spacer(
+            Modifier
+                .padding(start = 12.dp)
+                .height(1.dp)
+                .weight(1f)
+                .background(
+                    Brush.horizontalGradient(
+                        listOf(
+                            MaterialTheme.colorScheme.primary.copy(alpha = 0.65f),
+                            Color.Transparent,
+                        )
+                    )
+                ),
+        )
+    }
+}
+
+@Composable
+private fun OrderCard(
+    card: OrderCardContent,
+    strings: Map<String, String>,
+    onEntityRefSelected: (EntityRef) -> Unit,
+) {
+    val title = strings[card.heading.textKey].orEmpty()
+    val shape = RoundedCornerShape(22.dp)
+
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = shape,
+        color = MaterialTheme.colorScheme.surface,
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.42f)),
+        shadowElevation = 3.dp,
+    ) {
+        Box {
+            Column(modifier = Modifier.fillMaxWidth()) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(220.dp)
+                        .background(
+                            Brush.verticalGradient(
+                                listOf(
+                                    MaterialTheme.colorScheme.surfaceContainerHigh,
+                                    MaterialTheme.colorScheme.surface,
+                                )
+                            )
+                        ),
+                    contentAlignment = Alignment.BottomCenter,
+                ) {
+                    hubAssetPainter(card.image.asset)?.let { painter ->
+                        Image(
+                            painter = painter,
+                            contentDescription = title,
+                            contentScale = ContentScale.Fit,
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(start = 20.dp, top = 10.dp, end = 20.dp),
+                        )
+                    }
+
+                    GoldCardAccent(
+                        modifier = Modifier.align(Alignment.CenterStart),
+                        color = MaterialTheme.colorScheme.primary,
+                        height = 68.dp,
+                    )
+
+                    // Emblem badge, top-right corner of the image card
+                    card.emblem?.let { emblem ->
+                        hubAssetPainter(emblem.asset)?.let { painter ->
+                            Box(
+                                modifier = Modifier
+                                    .align(Alignment.TopEnd)
+                                    .padding(12.dp)
+                                    .size(62.dp)
+                                    .clip(RoundedCornerShape(50))
+                                    .background(Color(0xFF081F17).copy(alpha = 0.55f))
+                                    .border(
+                                        BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)),
+                                        RoundedCornerShape(50),
+                                    )
+                                    .padding(6.dp),
+                                contentAlignment = Alignment.Center,
+                            ) {
+                                Image(
+                                    painter = painter,
+                                    contentDescription = null,
+                                    contentScale = ContentScale.Fit,
+                                    modifier = Modifier.fillMaxSize(),
+                                )
+                            }
+                        }
+                    }
+                }
+
+                Spacer(
+                    Modifier
+                        .fillMaxWidth()
+                        .height(1.dp)
+                        .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.58f))
+                )
+
+                Column(
+                    modifier = Modifier.padding(start = 24.dp, top = 18.dp, end = 20.dp, bottom = 22.dp),
+                ) {
+                    Text(
+                        text = title,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        fontFamily = FontFamily.Serif,
+                        fontSize = 22.sp,
+                        lineHeight = 27.sp,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                    Spacer(Modifier.height(8.dp))
+                    BiblicalMarkupText(
+                        raw = strings[card.paragraph.textKey].orEmpty(),
+                        onEntityRefSelected = onEntityRefSelected,
+                    )
+                }
+            }
+        }
+    }
 }
 
 @Composable

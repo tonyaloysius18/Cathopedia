@@ -85,6 +85,7 @@ import com.ynotlabs.cathopedia.resources.sacred_symbols_icon
 import com.ynotlabs.cathopedia.resources.explore_holymass
 import com.ynotlabs.cathopedia.resources.holy_mass_icon
 import com.ynotlabs.cathopedia.resources.liturgical_vestments_icon
+import com.ynotlabs.cathopedia.resources.religious_order_icon
 
 @Composable
 fun ExploreScreen(
@@ -974,42 +975,42 @@ private fun HubExploreCard(
                     Image(
                         painter = painterResource(Res.drawable.holy_see_icon),
                         contentDescription = null,
-                        modifier = Modifier.size(30.dp),
+                        modifier = Modifier.size(40.dp),
                         contentScale = ContentScale.Fit,
                     )
                 } else if (isCatechism) {
                     Image(
                         painter = painterResource(Res.drawable.catechism_icon),
                         contentDescription = null,
-                        modifier = Modifier.size(30.dp),
+                        modifier = Modifier.size(40.dp),
                         contentScale = ContentScale.Fit,
                     )
                 } else if (isSymbols) {
                     Image(
                         painter = painterResource(Res.drawable.sacred_symbols_icon),
                         contentDescription = null,
-                        modifier = Modifier.size(30.dp),
+                        modifier = Modifier.size(40.dp),
                         contentScale = ContentScale.Fit,
                     )
                 } else if (isHolyMass) {
                     Image(
                         painter = painterResource(Res.drawable.holy_mass_icon),
                         contentDescription = null,
-                        modifier = Modifier.size(30.dp),
+                        modifier = Modifier.size(40.dp),
                         contentScale = ContentScale.Fit,
                     )
                 } else if (isBiblical) {
                     Image(
                         painter = painterResource(Res.drawable.biblical_characters_icon),
                         contentDescription = null,
-                        modifier = Modifier.size(30.dp),
+                        modifier = Modifier.size(40.dp),
                         contentScale = ContentScale.Fit,
                     )
                 } else if (isOrders) {
                     Image(
-                        painter = painterResource(Res.drawable.orders_icon),
+                        painter = painterResource(Res.drawable.religious_order_icon),
                         contentDescription = null,
-                        modifier = Modifier.size(30.dp),
+                        modifier = Modifier.size(40.dp),
                         contentScale = ContentScale.Fit,
                     )
                 } else {
