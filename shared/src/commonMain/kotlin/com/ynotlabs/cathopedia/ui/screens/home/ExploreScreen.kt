@@ -63,7 +63,6 @@ import com.ynotlabs.cathopedia.resources.explore_catechism
 import com.ynotlabs.cathopedia.resources.explore_biblical
 import com.ynotlabs.cathopedia.resources.biblical_characters_icon
 import com.ynotlabs.cathopedia.resources.explore_religious_orders
-import com.ynotlabs.cathopedia.resources.orders_icon
 import com.ynotlabs.cathopedia.resources.explore_feasts
 import com.ynotlabs.cathopedia.resources.explore_bg
 import com.ynotlabs.cathopedia.resources.explore_holy_see
@@ -547,7 +546,7 @@ private fun VestmentsSectionCard(
                 modifier = Modifier
                     .align(Alignment.TopStart)
                     .padding(12.dp)
-                    .size(30.dp),
+                    .size(35.dp),
                 contentScale = ContentScale.Fit,
             )
 
@@ -614,7 +613,7 @@ private fun PortraitExploreCard(
                 modifier = Modifier
                     .align(Alignment.TopStart)
                     .padding(12.dp),
-                size = 30.dp,
+                size = 35.dp,
             )
 
             Column(
@@ -682,7 +681,7 @@ private fun EventExploreCard(
                 modifier = Modifier
                     .align(Alignment.TopStart)
                     .padding(12.dp),
-                size = 30.dp,
+                size = 35.dp,
             )
 
             Column(
@@ -751,7 +750,7 @@ private fun WideExploreCard(
                     .padding(14.dp),
                 verticalArrangement = Arrangement.SpaceBetween,
             ) {
-                CategoryGlyph(type = type, title = title, size = 30.dp)
+                CategoryGlyph(type = type, title = title, size = 35.dp)
 
                 Column {
                     Text(
@@ -789,6 +788,7 @@ private fun PortraitHubExploreCard(
     val isHolyMass = hub.id == "mass"
     val isCatechism = hub.id == "catechism"
     val isBiblical = hub.id == "biblical"
+    val isOrders = hub.id == "orders"
 
     Card(
         modifier = modifier
@@ -835,7 +835,7 @@ private fun PortraitHubExploreCard(
                     modifier = Modifier
                         .align(Alignment.TopStart)
                         .padding(12.dp)
-                        .size(30.dp),
+                        .size(if (isOrders) 70.dp else 35.dp),
                     contentScale = ContentScale.Fit,
                 )
             }
@@ -975,42 +975,42 @@ private fun HubExploreCard(
                     Image(
                         painter = painterResource(Res.drawable.holy_see_icon),
                         contentDescription = null,
-                        modifier = Modifier.size(40.dp),
+                        modifier = Modifier.size(35.dp),
                         contentScale = ContentScale.Fit,
                     )
                 } else if (isCatechism) {
                     Image(
                         painter = painterResource(Res.drawable.catechism_icon),
                         contentDescription = null,
-                        modifier = Modifier.size(40.dp),
+                        modifier = Modifier.size(35.dp),
                         contentScale = ContentScale.Fit,
                     )
                 } else if (isSymbols) {
                     Image(
                         painter = painterResource(Res.drawable.sacred_symbols_icon),
                         contentDescription = null,
-                        modifier = Modifier.size(40.dp),
+                        modifier = Modifier.size(35.dp),
                         contentScale = ContentScale.Fit,
                     )
                 } else if (isHolyMass) {
                     Image(
                         painter = painterResource(Res.drawable.holy_mass_icon),
                         contentDescription = null,
-                        modifier = Modifier.size(40.dp),
+                        modifier = Modifier.size(35.dp),
                         contentScale = ContentScale.Fit,
                     )
                 } else if (isBiblical) {
                     Image(
                         painter = painterResource(Res.drawable.biblical_characters_icon),
                         contentDescription = null,
-                        modifier = Modifier.size(40.dp),
+                        modifier = Modifier.size(35.dp),
                         contentScale = ContentScale.Fit,
                     )
                 } else if (isOrders) {
                     Image(
                         painter = painterResource(Res.drawable.religious_order_icon),
                         contentDescription = null,
-                        modifier = Modifier.size(40.dp),
+                        modifier = Modifier.size(35.dp),
                         contentScale = ContentScale.Fit,
                     )
                 } else {
@@ -1123,7 +1123,7 @@ private fun CategoryGlyph(
     type: ContentType,
     title: String,
     modifier: Modifier = Modifier,
-    size: androidx.compose.ui.unit.Dp = 40.dp,
+    size: androidx.compose.ui.unit.Dp = 35.dp,
 ) {
     val s = LocalStrings.current
     val iconPainter = when (type) {

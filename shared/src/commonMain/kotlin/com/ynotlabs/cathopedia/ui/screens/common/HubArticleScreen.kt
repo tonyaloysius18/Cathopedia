@@ -39,6 +39,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -85,6 +87,9 @@ import com.ynotlabs.cathopedia.model.HubArticleDetail
 import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.ui.hubAssetPainter
+import org.jetbrains.compose.resources.painterResource
+import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.resources.nav_search
 
 private val SymbolCardSurface = Color(0xFF0C271E)
 private val SymbolCardGold = Color(0xFFD8B24C)
@@ -247,6 +252,7 @@ fun HubArticleScreen(
     val current = article
     var headerHeightPx by remember(articleId, language) { mutableIntStateOf(0) }
     val headerHeightDp = with(LocalDensity.current) { headerHeightPx.toDp() }
+    var orderQuery by remember(articleId) { mutableStateOf("") }
 
     Box(
         modifier = Modifier
@@ -365,12 +371,35 @@ fun HubArticleScreen(
                     }
                 }
             } else if (orderCards != null) {
+                val q = orderQuery.trim()
+                val filtered = if (q.isBlank()) orderCards else orderCards.filter { card ->
+                    val name = strings[card.heading.textKey].orEmpty()
+                    val desc = strings[card.paragraph.textKey].orEmpty()
+                    name.contains(q, ignoreCase = true) || desc.contains(q, ignoreCase = true)
+                }
+
                 item {
-                    OrdersLabel(count = orderCards.size, language = language)
+                    OrderSearchField(
+                        query = orderQuery,
+                        onQueryChange = { orderQuery = it },
+                        language = language,
+                    )
+                    Spacer(Modifier.height(14.dp))
+                    OrdersLabel(count = filtered.size, language = language)
                     Spacer(Modifier.height(16.dp))
                 }
 
-                orderCards.forEach { card ->
+                if (filtered.isEmpty()) {
+                    item {
+                        Text(
+                            text = if (language == "fr") "Aucun ordre trouvé." else "No orders found.",
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            fontSize = 15.sp,
+                        )
+                    }
+                }
+
+                filtered.forEach { card ->
                     item {
                         OrderCard(
                             card = card,
@@ -514,6 +543,41 @@ private fun List<Block>.asOrderCards(): List<OrderCardContent>? {
 }
 
 @Composable
+private fun OrderSearchField(
+    query: String,
+    onQueryChange: (String) -> Unit,
+    language: String,
+) {
+    OutlinedTextField(
+        value = query,
+        onValueChange = onQueryChange,
+        modifier = Modifier.fillMaxWidth(),
+        singleLine = true,
+        leadingIcon = {
+            Image(
+                painter = painterResource(Res.drawable.nav_search),
+                contentDescription = null,
+                modifier = Modifier.size(22.dp),
+                contentScale = ContentScale.Fit,
+            )
+        },
+        placeholder = {
+            Text(
+                text = if (language == "fr") "Rechercher un ordre…" else "Search orders…",
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        },
+        shape = RoundedCornerShape(16.dp),
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedBorderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f),
+            unfocusedBorderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f),
+            focusedContainerColor = MaterialTheme.colorScheme.surface,
+            unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+        ),
+    )
+}
+
+@Composable
 private fun OrdersLabel(count: Int, language: String) {
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -600,7 +664,7 @@ private fun OrderCard(
                                 modifier = Modifier
                                     .align(Alignment.TopEnd)
                                     .padding(12.dp)
-                                    .size(62.dp)
+                                    .size(70.dp)
                                     .clip(RoundedCornerShape(50))
                                     .background(Color(0xFF081F17).copy(alpha = 0.55f))
                                     .border(
