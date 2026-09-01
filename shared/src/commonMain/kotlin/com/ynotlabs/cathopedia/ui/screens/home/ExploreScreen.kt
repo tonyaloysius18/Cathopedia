@@ -717,57 +717,63 @@ private fun WideExploreCard(
     val s = LocalStrings.current
     val title = type.displayName(s)
 
+    val needsStrongerWideFade = type == ContentType.CHURCH || type == ContentType.FEAST
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .heightIn(min = 140.dp)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
         border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
-        Box(Modifier.fillMaxWidth()) {
+        Box(
+            Modifier
+                .fillMaxWidth()
+                .height(140.dp)
+        ) {
             CategoryArtwork(
                 type = type,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(140.dp)
-                    .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
+                    .fillMaxSize()
+                    .padding(top = 8.dp),
                 contentScale = ContentScale.Fit,
-                alignment = Alignment.BottomEnd,
+                alignment = Alignment.CenterEnd,
             )
-
-            val needsStrongerWideFade = type == ContentType.CHURCH || type == ContentType.FEAST
 
             ArtworkFadeOverlay(
                 includeBottomFade = true,
                 wideCardFade = needsStrongerWideFade,
             )
 
+            CategoryGlyph(
+                type = type,
+                title = title,
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .padding(12.dp),
+                size = 35.dp,
+            )
+
             Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(14.dp),
-                verticalArrangement = Arrangement.SpaceBetween,
+                    .align(Alignment.BottomStart)
+                    .padding(12.dp),
             ) {
-                CategoryGlyph(type = type, title = title, size = 35.dp)
-
-                Column {
-                    Text(
-                        text = title,
-                        color = MaterialTheme.colorScheme.onBackground,
-                        fontFamily = FontFamily.Serif,
-                        fontSize = 17.sp,
-                        lineHeight = 22.sp,
-                    )
-                    Text(
-                        text = humanCountLabel(type, count, s),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        fontSize = 13.sp,
-                        lineHeight = 18.sp,
-                    )
-                }
+                Text(
+                    text = title,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 17.sp,
+                    lineHeight = 22.sp,
+                )
+                Text(
+                    text = humanCountLabel(type, count, s),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    fontSize = 13.sp,
+                    lineHeight = 18.sp,
+                )
             }
         }
     }
@@ -882,181 +888,91 @@ private fun HubExploreCard(
         }
     } ?: MaterialTheme.colorScheme.primary
 
+    val artwork = when {
+        isHolySee -> Res.drawable.explore_holy_see
+        isCatechism -> Res.drawable.explore_catechism
+        isSymbols -> Res.drawable.explore_sacred_symbols
+        isHolyMass -> Res.drawable.explore_holymass
+        isBiblical -> Res.drawable.explore_biblical
+        isOrders -> Res.drawable.explore_religious_orders
+        else -> Res.drawable.explore_bg
+    }
+    val icon = when {
+        isHolySee -> Res.drawable.holy_see_icon
+        isCatechism -> Res.drawable.catechism_icon
+        isSymbols -> Res.drawable.sacred_symbols_icon
+        isHolyMass -> Res.drawable.holy_mass_icon
+        isBiblical -> Res.drawable.biblical_characters_icon
+        isOrders -> Res.drawable.religious_order_icon
+        else -> null
+    }
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .heightIn(min = 140.dp)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
         border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
-        Box(Modifier.fillMaxWidth()) {
-            if (isHolySee) {
+        Box(
+            Modifier
+                .fillMaxWidth()
+                .height(140.dp)
+        ) {
+            Image(
+                painter = painterResource(artwork),
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 8.dp),
+                contentScale = ContentScale.Fit,
+                alignment = Alignment.CenterEnd,
+            )
+
+            ArtworkFadeOverlay(includeBottomFade = true)
+
+            if (icon != null) {
                 Image(
-                    painter = painterResource(Res.drawable.explore_holy_see),
+                    painter = painterResource(icon),
                     contentDescription = null,
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .height(140.dp)
-                        .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
+                        .align(Alignment.TopStart)
+                        .padding(12.dp)
+                        .size(35.dp),
                     contentScale = ContentScale.Fit,
-                    alignment = Alignment.BottomEnd,
                 )
-            } else if (isCatechism) {
-                Image(
-                    painter = painterResource(Res.drawable.explore_catechism),
-                    contentDescription = null,
+            } else {
+                Box(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .height(140.dp)
-                        .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
-                    contentScale = ContentScale.Fit,
-                    alignment = Alignment.BottomEnd,
-                )
-            } else if (isSymbols) {
-                Image(
-                    painter = painterResource(Res.drawable.explore_sacred_symbols),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(140.dp)
-                        .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
-                    contentScale = ContentScale.Fit,
-                    alignment = Alignment.BottomEnd,
-                )
-            } else if (isHolyMass) {
-                Image(
-                    painter = painterResource(Res.drawable.explore_holymass),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(140.dp)
-                        .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
-                    contentScale = ContentScale.Fit,
-                    alignment = Alignment.BottomEnd,
-                )
-            } else if (isBiblical) {
-                Image(
-                    painter = painterResource(Res.drawable.explore_biblical),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(140.dp)
-                        .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
-                    contentScale = ContentScale.Fit,
-                    alignment = Alignment.BottomEnd,
-                )
-            } else if (isOrders) {
-                Image(
-                    painter = painterResource(Res.drawable.explore_religious_orders),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(140.dp)
-                        .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
-                    contentScale = ContentScale.Fit,
-                    alignment = Alignment.BottomEnd,
+                        .align(Alignment.TopStart)
+                        .padding(12.dp)
+                        .size(8.dp)
+                        .background(accent, androidx.compose.foundation.shape.CircleShape),
                 )
             }
 
-            ArtworkFadeOverlay(
-                includeBottomFade = true,
-            )
-
             Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(14.dp),
-                verticalArrangement = Arrangement.SpaceBetween,
+                    .align(Alignment.BottomStart)
+                    .padding(12.dp),
             ) {
-                if (isHolySee) {
-                    Image(
-                        painter = painterResource(Res.drawable.holy_see_icon),
-                        contentDescription = null,
-                        modifier = Modifier.size(35.dp),
-                        contentScale = ContentScale.Fit,
-                    )
-                } else if (isCatechism) {
-                    Image(
-                        painter = painterResource(Res.drawable.catechism_icon),
-                        contentDescription = null,
-                        modifier = Modifier.size(35.dp),
-                        contentScale = ContentScale.Fit,
-                    )
-                } else if (isSymbols) {
-                    Image(
-                        painter = painterResource(Res.drawable.sacred_symbols_icon),
-                        contentDescription = null,
-                        modifier = Modifier.size(35.dp),
-                        contentScale = ContentScale.Fit,
-                    )
-                } else if (isHolyMass) {
-                    Image(
-                        painter = painterResource(Res.drawable.holy_mass_icon),
-                        contentDescription = null,
-                        modifier = Modifier.size(35.dp),
-                        contentScale = ContentScale.Fit,
-                    )
-                } else if (isBiblical) {
-                    Image(
-                        painter = painterResource(Res.drawable.biblical_characters_icon),
-                        contentDescription = null,
-                        modifier = Modifier.size(35.dp),
-                        contentScale = ContentScale.Fit,
-                    )
-                } else if (isOrders) {
-                    Image(
-                        painter = painterResource(Res.drawable.religious_order_icon),
-                        contentDescription = null,
-                        modifier = Modifier.size(35.dp),
-                        contentScale = ContentScale.Fit,
-                    )
-                } else {
-                    Box(
-                        modifier = Modifier
-                            .size(8.dp)
-                            .background(accent, androidx.compose.foundation.shape.CircleShape),
-                    )
-                }
-
-                Column(modifier = Modifier.fillMaxWidth(0.66f)) {
+                Text(
+                    text = title,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 17.sp,
+                    lineHeight = 22.sp,
+                    maxLines = 2,
+                )
+                subtitle?.let {
                     Text(
-                        text = title,
-                        color = MaterialTheme.colorScheme.onBackground,
-                        fontFamily = FontFamily.Serif,
-                        fontSize = 17.sp,
-                        lineHeight = 22.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis,
-                        style = TextStyle(
-                            shadow = Shadow(
-                                color = Color(0xFF04120C).copy(alpha = 0.85f),
-                                offset = Offset(0f, 1f),
-                                blurRadius = 10f,
-                            )
-                        ),
+                        text = it,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        fontSize = 13.sp,
+                        lineHeight = 18.sp,
                     )
-                    if (subtitle != null) {
-                        Spacer(Modifier.height(2.dp))
-                        Text(
-                            text = subtitle,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            fontSize = 13.sp,
-                            lineHeight = 17.sp,
-                            maxLines = 2,
-                            overflow = TextOverflow.Ellipsis,
-                            style = TextStyle(
-                                shadow = Shadow(
-                                    color = Color(0xFF04120C).copy(alpha = 0.8f),
-                                    offset = Offset(0f, 1f),
-                                    blurRadius = 8f,
-                                )
-                            ),
-                        )
-                    }
                 }
             }
         }
