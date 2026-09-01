@@ -11,9 +11,12 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -38,12 +41,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
@@ -147,7 +153,7 @@ fun ExploreScreen(
             if (firstGrid.isNotEmpty()) {
                 item {
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min),
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                         firstGrid.sortedBy { it.id != "symbols" }.forEach { hub ->
@@ -156,7 +162,7 @@ fun ExploreScreen(
                                 title = hubStrings[hub.titleKey].orEmpty(),
                                 subtitle = hub.subtitleKey?.let { hubStrings[it] },
                                 onClick = { onHubSelected(hub) },
-                                modifier = Modifier.weight(1f)
+                                modifier = Modifier.weight(1f).fillMaxHeight()
                             )
                         }
                         if (firstGrid.size == 1) Spacer(Modifier.weight(1f))
@@ -167,7 +173,7 @@ fun ExploreScreen(
             if (secondGrid.isNotEmpty()) {
                 item {
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min),
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                         secondGrid.sortedBy { it.id != "catechism" }.forEach { hub ->
@@ -176,7 +182,7 @@ fun ExploreScreen(
                                 title = hubStrings[hub.titleKey].orEmpty(),
                                 subtitle = hub.subtitleKey?.let { hubStrings[it] },
                                 onClick = { onHubSelected(hub) },
-                                modifier = Modifier.weight(1f)
+                                modifier = Modifier.weight(1f).fillMaxHeight()
                             )
                         }
                         if (secondGrid.size == 1) Spacer(Modifier.weight(1f))
@@ -586,18 +592,19 @@ private fun PortraitExploreCard(
 
     Card(
         modifier = modifier
-            .height(156.dp)
+            .heightIn(min = 156.dp)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
         border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
-        Box(Modifier.fillMaxSize()) {
+        Box(Modifier.fillMaxWidth()) {
             CategoryArtwork(
                 type = type,
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxWidth()
+                    .height(156.dp)
                     .padding(top = 8.dp, start = 6.dp, end = 2.dp),
                 contentScale = ContentScale.Fit,
                 alignment = Alignment.CenterEnd,
@@ -628,8 +635,6 @@ private fun PortraitExploreCard(
                     fontFamily = FontFamily.Serif,
                     fontSize = 17.sp,
                     lineHeight = 22.sp,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
                 )
                 Text(
                     text = humanCountLabel(type, count, s),
@@ -654,18 +659,19 @@ private fun EventExploreCard(
 
     Card(
         modifier = modifier
-            .aspectRatio(1.3f)
+            .heightIn(min = 140.dp)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
         border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
-        Box(Modifier.fillMaxSize()) {
+        Box(Modifier.fillMaxWidth()) {
             CategoryArtwork(
                 type = type,
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxWidth()
+                    .height(140.dp)
                     .padding(top = 8.dp, start = 6.dp, end = 2.dp),
                 contentScale = ContentScale.Fit,
                 alignment = Alignment.CenterEnd,
@@ -695,8 +701,6 @@ private fun EventExploreCard(
                     fontFamily = FontFamily.Serif,
                     fontSize = 17.sp,
                     lineHeight = 22.sp,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis,
                 )
                 Text(
                     text = humanCountLabel(type, count, s),
@@ -721,18 +725,19 @@ private fun WideExploreCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(140.dp)
+            .heightIn(min = 140.dp)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
         border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
-        Box(Modifier.fillMaxSize()) {
+        Box(Modifier.fillMaxWidth()) {
             CategoryArtwork(
                 type = type,
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxWidth()
+                    .height(140.dp)
                     .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
                 contentScale = ContentScale.Fit,
                 alignment = Alignment.BottomEnd,
@@ -741,12 +746,13 @@ private fun WideExploreCard(
             val needsStrongerWideFade = type == ContentType.CHURCH || type == ContentType.FEAST
 
             ArtworkFadeOverlay(
+                includeBottomFade = true,
                 wideCardFade = needsStrongerWideFade,
             )
 
             Column(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxWidth()
                     .padding(14.dp),
                 verticalArrangement = Arrangement.SpaceBetween,
             ) {
@@ -759,16 +765,12 @@ private fun WideExploreCard(
                         fontFamily = FontFamily.Serif,
                         fontSize = 17.sp,
                         lineHeight = 22.sp,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
                     )
                     Text(
                         text = humanCountLabel(type, count, s),
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontSize = 13.sp,
                         lineHeight = 18.sp,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
                     )
                 }
             }
@@ -790,78 +792,84 @@ private fun PortraitHubExploreCard(
     val isBiblical = hub.id == "biblical"
     val isOrders = hub.id == "orders"
 
+    val artwork = when {
+        isSymbols -> Res.drawable.explore_sacred_symbols
+        isHolyMass -> Res.drawable.explore_holymass
+        isCatechism -> Res.drawable.explore_catechism
+        isBiblical -> Res.drawable.explore_biblical
+        else -> Res.drawable.explore_bg
+    }
+    val icon = when {
+        isSymbols -> Res.drawable.sacred_symbols_icon
+        isHolyMass -> Res.drawable.holy_mass_icon
+        isCatechism -> Res.drawable.catechism_icon
+        isBiblical -> Res.drawable.biblical_characters_icon
+        else -> null
+    }
+
     Card(
         modifier = modifier
-            .height(156.dp)
+            .heightIn(min = 186.dp)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
         border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
-        Box(Modifier.fillMaxSize()) {
-            val artwork = when {
-                isSymbols -> Res.drawable.explore_sacred_symbols
-                isHolyMass -> Res.drawable.explore_holymass
-                isCatechism -> Res.drawable.explore_catechism
-                isBiblical -> Res.drawable.explore_biblical
-                else -> Res.drawable.explore_bg
-            }
-
-            Image(
-                painter = painterResource(artwork),
-                contentDescription = null,
+        Column(Modifier.fillMaxWidth()) {
+            // Artwork band — the full image sits here; text lives in its own band below,
+            // so titles are always legible regardless of the image's aspect ratio.
+            Box(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(top = 8.dp, start = 6.dp, end = 2.dp),
-                contentScale = ContentScale.Fit,
-                alignment = Alignment.CenterEnd,
-            )
-
-            ArtworkFadeOverlay(includeBottomFade = true)
-
-            val icon = when {
-                isSymbols -> Res.drawable.sacred_symbols_icon
-                isHolyMass -> Res.drawable.holy_mass_icon
-                isCatechism -> Res.drawable.catechism_icon
-                isBiblical -> Res.drawable.biblical_characters_icon
-                else -> null
-            }
-
-            if (icon != null) {
+                    .fillMaxWidth()
+                    .height(124.dp),
+            ) {
                 Image(
-                    painter = painterResource(icon),
+                    painter = painterResource(artwork),
                     contentDescription = null,
                     modifier = Modifier
-                        .align(Alignment.TopStart)
-                        .padding(12.dp)
-                        .size(if (isOrders) 70.dp else 35.dp),
+                        .fillMaxSize()
+                        .padding(top = 10.dp, start = 8.dp, end = 8.dp),
                     contentScale = ContentScale.Fit,
+                    alignment = Alignment.Center,
                 )
+
+                if (icon != null) {
+                    Image(
+                        painter = painterResource(icon),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .align(Alignment.TopStart)
+                            .padding(10.dp)
+                            .size(32.dp),
+                        contentScale = ContentScale.Fit,
+                    )
+                }
             }
 
             Column(
                 modifier = Modifier
-                    .align(Alignment.BottomStart)
                     .fillMaxWidth()
-                    .padding(12.dp),
+                    .padding(start = 14.dp, end = 14.dp, top = 2.dp, bottom = 14.dp),
             ) {
                 Text(
                     text = title,
                     color = MaterialTheme.colorScheme.onBackground,
                     fontFamily = FontFamily.Serif,
                     fontSize = 17.sp,
-                    lineHeight = 22.sp,
-                    maxLines = 1,
+                    lineHeight = 21.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                 )
                 subtitle?.let {
+                    Spacer(Modifier.height(2.dp))
                     Text(
                         text = it,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontSize = 13.sp,
-                        lineHeight = 18.sp,
-                        maxLines = 1,
+                        lineHeight = 17.sp,
+                        maxLines = 2,
                         overflow = TextOverflow.Ellipsis,
                     )
                 }
@@ -893,20 +901,21 @@ private fun HubExploreCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(140.dp)
+            .heightIn(min = 140.dp)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
         border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
-        Box(Modifier.fillMaxSize()) {
+        Box(Modifier.fillMaxWidth()) {
             if (isHolySee) {
                 Image(
                     painter = painterResource(Res.drawable.explore_holy_see),
                     contentDescription = null,
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxWidth()
+                        .height(140.dp)
                         .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
                     contentScale = ContentScale.Fit,
                     alignment = Alignment.BottomEnd,
@@ -916,7 +925,8 @@ private fun HubExploreCard(
                     painter = painterResource(Res.drawable.explore_catechism),
                     contentDescription = null,
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxWidth()
+                        .height(140.dp)
                         .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
                     contentScale = ContentScale.Fit,
                     alignment = Alignment.BottomEnd,
@@ -926,7 +936,8 @@ private fun HubExploreCard(
                     painter = painterResource(Res.drawable.explore_sacred_symbols),
                     contentDescription = null,
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxWidth()
+                        .height(140.dp)
                         .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
                     contentScale = ContentScale.Fit,
                     alignment = Alignment.BottomEnd,
@@ -936,7 +947,8 @@ private fun HubExploreCard(
                     painter = painterResource(Res.drawable.explore_holymass),
                     contentDescription = null,
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxWidth()
+                        .height(140.dp)
                         .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
                     contentScale = ContentScale.Fit,
                     alignment = Alignment.BottomEnd,
@@ -946,7 +958,8 @@ private fun HubExploreCard(
                     painter = painterResource(Res.drawable.explore_biblical),
                     contentDescription = null,
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxWidth()
+                        .height(140.dp)
                         .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
                     contentScale = ContentScale.Fit,
                     alignment = Alignment.BottomEnd,
@@ -956,18 +969,21 @@ private fun HubExploreCard(
                     painter = painterResource(Res.drawable.explore_religious_orders),
                     contentDescription = null,
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxWidth()
+                        .height(140.dp)
                         .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
                     contentScale = ContentScale.Fit,
                     alignment = Alignment.BottomEnd,
                 )
             }
 
-            ArtworkFadeOverlay()
+            ArtworkFadeOverlay(
+                includeBottomFade = true,
+            )
 
             Column(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxWidth()
                     .padding(14.dp),
                 verticalArrangement = Arrangement.SpaceBetween,
             ) {
@@ -1021,24 +1037,40 @@ private fun HubExploreCard(
                     )
                 }
 
-                Column {
+                Column(modifier = Modifier.fillMaxWidth(0.66f)) {
                     Text(
                         text = title,
                         color = MaterialTheme.colorScheme.onBackground,
                         fontFamily = FontFamily.Serif,
                         fontSize = 17.sp,
                         lineHeight = 22.sp,
-                        maxLines = 1,
+                        fontWeight = FontWeight.SemiBold,
+                        maxLines = 2,
                         overflow = TextOverflow.Ellipsis,
+                        style = TextStyle(
+                            shadow = Shadow(
+                                color = Color(0xFF04120C).copy(alpha = 0.85f),
+                                offset = Offset(0f, 1f),
+                                blurRadius = 10f,
+                            )
+                        ),
                     )
                     if (subtitle != null) {
+                        Spacer(Modifier.height(2.dp))
                         Text(
                             text = subtitle,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontSize = 13.sp,
-                            lineHeight = 18.sp,
-                            maxLines = 1,
+                            lineHeight = 17.sp,
+                            maxLines = 2,
                             overflow = TextOverflow.Ellipsis,
+                            style = TextStyle(
+                                shadow = Shadow(
+                                    color = Color(0xFF04120C).copy(alpha = 0.8f),
+                                    offset = Offset(0f, 1f),
+                                    blurRadius = 8f,
+                                )
+                            ),
                         )
                     }
                 }
@@ -1084,8 +1116,10 @@ private fun ArtworkFadeOverlay(
                 .background(
                     Brush.verticalGradient(
                         0f to Color.Transparent,
-                        0.58f to Color.Transparent,
-                        1f to bg.copy(alpha = 0.95f),
+                        0.40f to Color.Transparent,
+                        0.66f to bg.copy(alpha = 0.55f),
+                        0.84f to bg.copy(alpha = 0.90f),
+                        1f to bg.copy(alpha = 0.99f),
                     )
                 )
         )

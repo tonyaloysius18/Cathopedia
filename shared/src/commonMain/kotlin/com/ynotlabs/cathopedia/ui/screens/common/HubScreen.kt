@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -288,7 +289,7 @@ private fun HubSectionCard(
 
     Surface(
         modifier = modifier
-            .height(140.dp)
+            .heightIn(min = 140.dp)
             .alpha(if (isStub) 0.58f else 1f)
             .clickable(
                 enabled = !isStub,
@@ -307,7 +308,7 @@ private fun HubSectionCard(
     ) {
         Box(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .background(
                     Brush.verticalGradient(
                         listOf(
@@ -323,7 +324,7 @@ private fun HubSectionCard(
 
             Column(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .fillMaxWidth()
                     .padding(start = 18.dp, top = 14.dp, end = 16.dp, bottom = 14.dp),
             ) {
                 Row(
@@ -338,7 +339,6 @@ private fun HubSectionCard(
                         fontSize = 17.sp,
                         lineHeight = 22.sp,
                         fontWeight = FontWeight.SemiBold,
-                        maxLines = 2,
                         modifier = Modifier.weight(1f).padding(end = 8.dp),
                     )
                     Icon(
@@ -357,7 +357,6 @@ private fun HubSectionCard(
                         color = HubMuted,
                         fontSize = 12.sp,
                         lineHeight = 17.sp,
-                        maxLines = 3,
                     )
                 }
 
