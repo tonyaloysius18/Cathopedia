@@ -62,7 +62,7 @@ import com.ynotlabs.cathopedia.resources.explore_eucharistic
 import com.ynotlabs.cathopedia.resources.explore_catechism
 import com.ynotlabs.cathopedia.resources.explore_biblical
 import com.ynotlabs.cathopedia.resources.biblical_characters_icon
-import com.ynotlabs.cathopedia.resources.explore_orders
+import com.ynotlabs.cathopedia.resources.explore_religious_orders
 import com.ynotlabs.cathopedia.resources.orders_icon
 import com.ynotlabs.cathopedia.resources.explore_feasts
 import com.ynotlabs.cathopedia.resources.explore_bg
@@ -952,7 +952,7 @@ private fun HubExploreCard(
                 )
             } else if (isOrders) {
                 Image(
-                    painter = painterResource(Res.drawable.explore_orders),
+                    painter = painterResource(Res.drawable.explore_religious_orders),
                     contentDescription = null,
                     modifier = Modifier
                         .fillMaxSize()
