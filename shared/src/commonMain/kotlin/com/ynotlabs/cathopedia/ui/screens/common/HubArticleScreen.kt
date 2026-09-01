@@ -12,6 +12,11 @@ import com.ynotlabs.cathopedia.ui.screens.holymass.ThuribleScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.VesselsScreen
 import com.ynotlabs.cathopedia.ui.screens.holysee.CardinalsScreen
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -37,7 +42,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -54,6 +61,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -253,6 +262,7 @@ fun HubArticleScreen(
     var headerHeightPx by remember(articleId, language) { mutableIntStateOf(0) }
     val headerHeightDp = with(LocalDensity.current) { headerHeightPx.toDp() }
     var orderQuery by remember(articleId) { mutableStateOf("") }
+    var searchExpanded by remember(articleId) { mutableStateOf(false) }
 
     Box(
         modifier = Modifier
@@ -379,13 +389,30 @@ fun HubArticleScreen(
                 }
 
                 item {
-                    OrderSearchField(
-                        query = orderQuery,
-                        onQueryChange = { orderQuery = it },
+                    OrdersHeaderRow(
+                        count = filtered.size,
                         language = language,
+                        searchExpanded = searchExpanded,
+                        onToggleSearch = {
+                            searchExpanded = !searchExpanded
+                            if (!searchExpanded) orderQuery = ""
+                        },
                     )
-                    Spacer(Modifier.height(14.dp))
-                    OrdersLabel(count = filtered.size, language = language)
+                    AnimatedVisibility(
+                        visible = searchExpanded,
+                        enter = expandVertically() + fadeIn(),
+                        exit = shrinkVertically() + fadeOut(),
+                    ) {
+                        Column {
+                            Spacer(Modifier.height(12.dp))
+                            OrderSearchField(
+                                query = orderQuery,
+                                onQueryChange = { orderQuery = it },
+                                onClear = { orderQuery = "" },
+                                language = language,
+                            )
+                        }
+                    }
                     Spacer(Modifier.height(16.dp))
                 }
 
@@ -543,42 +570,12 @@ private fun List<Block>.asOrderCards(): List<OrderCardContent>? {
 }
 
 @Composable
-private fun OrderSearchField(
-    query: String,
-    onQueryChange: (String) -> Unit,
+private fun OrdersHeaderRow(
+    count: Int,
     language: String,
+    searchExpanded: Boolean,
+    onToggleSearch: () -> Unit,
 ) {
-    OutlinedTextField(
-        value = query,
-        onValueChange = onQueryChange,
-        modifier = Modifier.fillMaxWidth(),
-        singleLine = true,
-        leadingIcon = {
-            Image(
-                painter = painterResource(Res.drawable.nav_search),
-                contentDescription = null,
-                modifier = Modifier.size(22.dp),
-                contentScale = ContentScale.Fit,
-            )
-        },
-        placeholder = {
-            Text(
-                text = if (language == "fr") "Rechercher un ordre…" else "Search orders…",
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        },
-        shape = RoundedCornerShape(16.dp),
-        colors = OutlinedTextFieldDefaults.colors(
-            focusedBorderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f),
-            unfocusedBorderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f),
-            focusedContainerColor = MaterialTheme.colorScheme.surface,
-            unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-        ),
-    )
-}
-
-@Composable
-private fun OrdersLabel(count: Int, language: String) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
@@ -604,7 +601,86 @@ private fun OrdersLabel(count: Int, language: String) {
                     )
                 ),
         )
+        IconButton(
+            onClick = onToggleSearch,
+            modifier = Modifier.size(38.dp),
+        ) {
+            val tint = if (searchExpanded) {
+                MaterialTheme.colorScheme.primary
+            } else {
+                MaterialTheme.colorScheme.primary.copy(alpha = 0.85f)
+            }
+            if (searchExpanded) {
+                Icon(
+                    imageVector = Icons.Filled.Close,
+                    contentDescription = if (language == "fr") "Fermer la recherche" else "Close search",
+                    tint = tint,
+                    modifier = Modifier.size(22.dp),
+                )
+            } else {
+                Image(
+                    painter = painterResource(Res.drawable.nav_search),
+                    contentDescription = if (language == "fr") "Rechercher" else "Search",
+                    modifier = Modifier.size(22.dp),
+                    contentScale = ContentScale.Fit,
+                )
+            }
+        }
     }
+}
+
+@Composable
+private fun OrderSearchField(
+    query: String,
+    onQueryChange: (String) -> Unit,
+    onClear: () -> Unit,
+    language: String,
+) {
+    val focusRequester = remember { FocusRequester() }
+    LaunchedEffect(Unit) {
+        runCatching { focusRequester.requestFocus() }
+    }
+    OutlinedTextField(
+        value = query,
+        onValueChange = onQueryChange,
+        modifier = Modifier
+            .fillMaxWidth()
+            .focusRequester(focusRequester),
+        singleLine = true,
+        leadingIcon = {
+            Image(
+                painter = painterResource(Res.drawable.nav_search),
+                contentDescription = null,
+                modifier = Modifier.size(22.dp),
+                contentScale = ContentScale.Fit,
+            )
+        },
+        trailingIcon = {
+            if (query.isNotEmpty()) {
+                IconButton(onClick = onClear) {
+                    Icon(
+                        imageVector = Icons.Filled.Close,
+                        contentDescription = if (language == "fr") "Effacer" else "Clear",
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.size(18.dp),
+                    )
+                }
+            }
+        },
+        placeholder = {
+            Text(
+                text = if (language == "fr") "Rechercher un ordre…" else "Search orders…",
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        },
+        shape = RoundedCornerShape(16.dp),
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedBorderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f),
+            unfocusedBorderColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f),
+            focusedContainerColor = MaterialTheme.colorScheme.surface,
+            unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+        ),
+    )
 }
 
 @Composable
