@@ -98,7 +98,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_benedictines.png",
+          "asset": "hub/orders/order_benedictines_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_benedictines_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -112,7 +117,7 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_cistercians.png",
+          "asset": "hub/orders/order_cistercians_founder.png",
           "license": "IN_HOUSE"
         },
         {
@@ -126,7 +131,7 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_trappists.png",
+          "asset": "hub/orders/order_trappists_founder.png",
           "license": "IN_HOUSE"
         },
         {
@@ -140,7 +145,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_carthusians.png",
+          "asset": "hub/orders/order_carthusians_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_carthusians_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -154,7 +164,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_camaldolese.png",
+          "asset": "hub/orders/order_camaldolese_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_camaldolese_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -168,7 +183,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_norbertines.png",
+          "asset": "hub/orders/order_norbertines_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_norbertines_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -192,7 +212,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_franciscans.png",
+          "asset": "hub/orders/order_franciscans_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_franciscans_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -206,7 +231,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_capuchins.png",
+          "asset": "hub/orders/order_capuchins_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_capuchins_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -220,7 +250,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_conventual_franciscans.png",
+          "asset": "hub/orders/order_conventual_franciscans_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_conventual_franciscans_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -234,7 +269,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_dominicans.png",
+          "asset": "hub/orders/order_dominicans_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_dominicans_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -248,7 +288,7 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_carmelites.png",
+          "asset": "hub/orders/order_carmelites_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -262,7 +302,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_discalced_carmelites.png",
+          "asset": "hub/orders/order_discalced_carmelites_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_discalced_carmelites_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -276,7 +321,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_augustinians.png",
+          "asset": "hub/orders/order_augustinians_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_augustinians_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -290,7 +340,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_servites.png",
+          "asset": "hub/orders/order_servites_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_servites_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -304,7 +359,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_trinitarians.png",
+          "asset": "hub/orders/order_trinitarians_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_trinitarians_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -318,7 +378,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_mercedarians.png",
+          "asset": "hub/orders/order_mercedarians_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_mercedarians_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -342,7 +407,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_jesuits.png",
+          "asset": "hub/orders/order_jesuits_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_jesuits_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -356,7 +426,7 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_theatines.png",
+          "asset": "hub/orders/order_theatines_founder.png",
           "license": "IN_HOUSE"
         },
         {
@@ -370,7 +440,7 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_barnabites.png",
+          "asset": "hub/orders/order_barnabites_founder.png",
           "license": "IN_HOUSE"
         },
         {
@@ -384,7 +454,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_piarists.png",
+          "asset": "hub/orders/order_piarists_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_piarists_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -398,7 +473,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_oratorians.png",
+          "asset": "hub/orders/order_oratorians_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_oratorians_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -422,7 +502,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_vincentians.png",
+          "asset": "hub/orders/order_vincentians_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_vincentians_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -436,7 +521,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_redemptorists.png",
+          "asset": "hub/orders/order_redemptorists_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_redemptorists_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -450,7 +540,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_passionists.png",
+          "asset": "hub/orders/order_passionists_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_passionists_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -464,7 +559,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_salesians.png",
+          "asset": "hub/orders/order_salesians_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_salesians_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -478,7 +578,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_marists.png",
+          "asset": "hub/orders/order_marists_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_marists_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -492,7 +597,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_holy_cross.png",
+          "asset": "hub/orders/order_holy_cross_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_holy_cross_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -506,7 +616,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_svd.png",
+          "asset": "hub/orders/order_svd_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_svd_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -520,7 +635,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_omi.png",
+          "asset": "hub/orders/order_omi_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_omi_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -534,7 +654,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_claretians.png",
+          "asset": "hub/orders/order_claretians_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_claretians_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -548,7 +673,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_spiritans.png",
+          "asset": "hub/orders/order_spiritans_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_spiritans_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -562,7 +692,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_comboni.png",
+          "asset": "hub/orders/order_comboni_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_comboni_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -576,7 +711,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_pallottines.png",
+          "asset": "hub/orders/order_pallottines_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_pallottines_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -590,7 +730,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_marians.png",
+          "asset": "hub/orders/order_marians_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_marians_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -614,7 +759,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_poor_clares.png",
+          "asset": "hub/orders/order_poor_clares_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_poor_clares_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -628,7 +778,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_carmelite_nuns.png",
+          "asset": "hub/orders/order_carmelite_nuns_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_carmelite_nuns_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -642,7 +797,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_visitation.png",
+          "asset": "hub/orders/order_visitation_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_visitation_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -656,7 +816,7 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_ursulines.png",
+          "asset": "hub/orders/order_ursulines_founder.png",
           "license": "IN_HOUSE"
         },
         {
@@ -670,7 +830,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_daughters_charity.png",
+          "asset": "hub/orders/order_daughters_charity_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_daughters_charity_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -684,7 +849,7 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_sisters_mercy.png",
+          "asset": "hub/orders/order_sisters_mercy_founder.png",
           "license": "IN_HOUSE"
         },
         {
@@ -698,7 +863,7 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_sisters_charity_seton.png",
+          "asset": "hub/orders/order_sisters_charity_seton_founder.png",
           "license": "IN_HOUSE"
         },
         {
@@ -712,7 +877,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_missionaries_charity.png",
+          "asset": "hub/orders/order_missionaries_charity_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_missionaries_charity_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -726,7 +896,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_servite_sisters.png",
+          "asset": "hub/orders/order_servite_sisters_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_servite_sisters_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -740,7 +915,7 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_bon_secours.png",
+          "asset": "hub/orders/order_bon_secours_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -754,7 +929,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_salesian_sisters.png",
+          "asset": "hub/orders/order_salesian_sisters_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_salesian_sisters_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -768,7 +948,7 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_little_sisters_poor.png",
+          "asset": "hub/orders/order_little_sisters_poor_founder.png",
           "license": "IN_HOUSE"
         },
         {
@@ -782,7 +962,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_good_shepherd.png",
+          "asset": "hub/orders/order_good_shepherd_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_good_shepherd_emblem.png",
           "license": "IN_HOUSE"
         },
         {
@@ -796,7 +981,7 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_presentation.png",
+          "asset": "hub/orders/order_presentation_founder.png",
           "license": "IN_HOUSE"
         },
         {
@@ -810,7 +995,7 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_loreto_ibvm.png",
+          "asset": "hub/orders/order_loreto_ibvm_founder.png",
           "license": "IN_HOUSE"
         },
         {
@@ -824,7 +1009,7 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_ssnd.png",
+          "asset": "hub/orders/order_ssnd_founder.png",
           "license": "IN_HOUSE"
         },
         {
@@ -838,7 +1023,12 @@
         },
         {
           "type": "image",
-          "asset": "hub/orders/order_sisters_st_joseph.png",
+          "asset": "hub/orders/order_sisters_st_joseph_founder.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_sisters_st_joseph_emblem.png",
           "license": "IN_HOUSE"
         },
         {
