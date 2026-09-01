@@ -62,6 +62,8 @@ import com.ynotlabs.cathopedia.resources.explore_eucharistic
 import com.ynotlabs.cathopedia.resources.explore_catechism
 import com.ynotlabs.cathopedia.resources.explore_biblical
 import com.ynotlabs.cathopedia.resources.biblical_characters_icon
+import com.ynotlabs.cathopedia.resources.explore_orders
+import com.ynotlabs.cathopedia.resources.orders_icon
 import com.ynotlabs.cathopedia.resources.explore_feasts
 import com.ynotlabs.cathopedia.resources.explore_bg
 import com.ynotlabs.cathopedia.resources.explore_holy_see
@@ -879,6 +881,7 @@ private fun HubExploreCard(
     val isSymbols = hub.id == "symbols"
     val isHolyMass = hub.id == "mass"
     val isBiblical = hub.id == "biblical"
+    val isOrders = hub.id == "orders"
     val accent = hub.accentColor?.let { hex ->
         val cleaned = hex.removePrefix("#")
         cleaned.toLongOrNull(16)?.let { value ->
@@ -947,6 +950,16 @@ private fun HubExploreCard(
                     contentScale = ContentScale.Fit,
                     alignment = Alignment.BottomEnd,
                 )
+            } else if (isOrders) {
+                Image(
+                    painter = painterResource(Res.drawable.explore_orders),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = 4.dp, bottom = 0.dp, start = 110.dp, end = 0.dp),
+                    contentScale = ContentScale.Fit,
+                    alignment = Alignment.BottomEnd,
+                )
             }
 
             ArtworkFadeOverlay()
@@ -988,6 +1001,13 @@ private fun HubExploreCard(
                 } else if (isBiblical) {
                     Image(
                         painter = painterResource(Res.drawable.biblical_characters_icon),
+                        contentDescription = null,
+                        modifier = Modifier.size(30.dp),
+                        contentScale = ContentScale.Fit,
+                    )
+                } else if (isOrders) {
+                    Image(
+                        painter = painterResource(Res.drawable.orders_icon),
                         contentDescription = null,
                         modifier = Modifier.size(30.dp),
                         contentScale = ContentScale.Fit,
