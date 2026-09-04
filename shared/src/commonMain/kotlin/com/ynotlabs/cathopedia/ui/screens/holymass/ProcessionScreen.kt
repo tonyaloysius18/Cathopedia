@@ -20,6 +20,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -84,9 +86,10 @@ private const val MAX_ALPHA_DROP = 0.55f
 fun ProcessionScreen(
     language: String,
     onBack: () -> Unit,
+    listState: LazyListState = rememberLazyListState(),
+    scrollState: ScrollState = rememberScrollState(),
 ) {
     val ministers = ProcessionData.ministers
-    val listState = rememberLazyListState()
     val density = LocalDensity.current
     val cardWidthPx = with(density) { CARD_WIDTH_DP.dp.toPx() }
 
@@ -116,7 +119,7 @@ fun ProcessionScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(scrollState)
                 .padding(top = headerHeightDp + 16.dp),
         ) {
             ProcessionTextPanel(
@@ -146,7 +149,7 @@ fun ProcessionScreen(
 private fun ProcessionHeaderCard(
     currentIndex: Int,
     ministers: List<Minister>,
-    listState: androidx.compose.foundation.lazy.LazyListState,
+    listState: LazyListState,
     cardWidthPx: Float,
     language: String,
     onBack: () -> Unit,
@@ -234,7 +237,7 @@ private fun ProcessionCard(
     minister: Minister,
     language: String,
     index: Int,
-    listState: androidx.compose.foundation.lazy.LazyListState,
+    listState: LazyListState,
     cardWidthPx: Float,
 ) {
     Box(

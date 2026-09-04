@@ -32,6 +32,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -112,6 +113,13 @@ fun HubSectionScreen(
     onBack: () -> Unit,
     onArticleSelected: (HubArticleSummary) -> Unit,
     onEntityRefSelected: (EntityRef) -> Unit,
+    listState: LazyListState = rememberLazyListState(),
+    initialArticles: List<HubArticleSummary>? = null,
+    initialStrings: Map<String, String>? = null,
+    initialHeaderHeightPx: Int = 0,
+    onArticlesLoaded: (List<HubArticleSummary>) -> Unit = {},
+    onStringsLoaded: (Map<String, String>) -> Unit = {},
+    onHeaderHeightChanged: (Int) -> Unit = {},
 ) {
     if (sectionId == "cat.gifts") {
         GiftsOfHolySpiritScreen(
@@ -120,6 +128,7 @@ fun HubSectionScreen(
             language = language,
             onBack = onBack,
             onArticleSelected = onArticleSelected,
+            listState = listState,
         )
         return
     }
@@ -131,6 +140,7 @@ fun HubSectionScreen(
             language = language,
             onBack = onBack,
             onArticleSelected = onArticleSelected,
+            listState = listState,
         )
         return
     }
@@ -142,6 +152,7 @@ fun HubSectionScreen(
             language = language,
             onBack = onBack,
             onArticleSelected = onArticleSelected,
+            listState = listState,
         )
         return
     }
@@ -152,6 +163,7 @@ fun HubSectionScreen(
             repository = repository,
             language = language,
             onBack = onBack,
+            listState = listState,
         )
         return
     }
@@ -162,6 +174,7 @@ fun HubSectionScreen(
             repository = repository,
             language = language,
             onBack = onBack,
+            listState = listState,
         )
         return
     }
@@ -172,6 +185,7 @@ fun HubSectionScreen(
             repository = repository,
             language = language,
             onBack = onBack,
+            listState = listState,
         )
         return
     }
@@ -182,6 +196,7 @@ fun HubSectionScreen(
             repository = repository,
             language = language,
             onBack = onBack,
+            listState = listState,
         )
         return
     }
@@ -192,6 +207,7 @@ fun HubSectionScreen(
             repository = repository,
             language = language,
             onBack = onBack,
+            listState = listState,
         )
         return
     }
@@ -201,26 +217,31 @@ fun HubSectionScreen(
             repository = repository,
             language = language,
             onBack = onBack,
+            listState = listState,
         )
         return
     }
 
     val s = LocalStrings.current
     var section by remember(sectionId) { mutableStateOf<HubSectionSummary?>(null) }
-    var strings by remember(sectionId) { mutableStateOf<Map<String, String>>(emptyMap()) }
+    var strings by remember(sectionId, language) { mutableStateOf<Map<String, String>>(initialStrings ?: emptyMap()) }
 
     LaunchedEffect(hubId, sectionId, language) {
         val found = repository.hubDetail(hubId)?.sections?.firstOrNull { it.id == sectionId } ?: return@LaunchedEffect
         section = found
-        val keys = buildSet {
-            add(found.titleKey)
-            found.summaryKey?.let(::add)
+        
+        if (strings.isEmpty()) {
+            val keys = buildSet {
+                add(found.titleKey)
+                found.summaryKey?.let(::add)
+            }
+            val loadedStrings = repository.resolveHubStrings(keys, language)
+            strings = loadedStrings
+            onStringsLoaded(loadedStrings)
         }
-        strings = repository.resolveHubStrings(keys, language)
     }
 
-    val current = section
-    var headerHeightPx by remember(sectionId, language) { mutableIntStateOf(0) }
+    var headerHeightPx by remember(sectionId, language) { mutableIntStateOf(initialHeaderHeightPx) }
     val headerHeightDp = with(LocalDensity.current) { headerHeightPx.toDp() }
 
     Box(
@@ -230,6 +251,7 @@ fun HubSectionScreen(
     ) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
+            state = listState,
             contentPadding = PaddingValues(
                 start = 20.dp,
                 top = headerHeightDp + 18.dp,
@@ -238,11 +260,17 @@ fun HubSectionScreen(
             ),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            if (current != null) {
-                val summary = strings[current.summaryKey].orEmpty()
+            if (section != null) {
+                val summary = strings[section!!.summaryKey].orEmpty()
                 if (summary.isNotBlank()) {
                     item {
                         HubSectionIntroCard(summary)
+                    }
+                }
+
+                section!!.heroAsset?.let { asset ->
+                    item {
+                        HubSectionEditorialImage(asset)
                     }
                 }
 
@@ -250,33 +278,65 @@ fun HubSectionScreen(
                     SacredDivider()
                 }
 
-                when (current.layout) {
-                    "ARTICLES" -> articlesSectionBody(sectionId, repository, language, onArticleSelected)
-                    "DIAGRAM" -> diagramSectionBody(current.diagramId, repository, language, onEntityRefSelected)
-                    "FACT_SHEET" -> factSheetSectionBody(current.factSheetId, repository, language)
-                    "STEPPER" -> stepperSectionBody(current.stepperId, repository, language)
-                    "TIMELINE" -> timelineSectionBody(current.timelineId, repository, language)
+                when (section!!.layout) {
+                    "ARTICLES" -> articlesSectionBody(sectionId, repository, language, onArticleSelected, initialArticles, onArticlesLoaded)
+                    "DIAGRAM" -> diagramSectionBody(section!!.diagramId, repository, language, onEntityRefSelected)
+                    "FACT_SHEET" -> factSheetSectionBody(section!!.factSheetId, repository, language)
+                    "STEPPER" -> stepperSectionBody(section!!.stepperId, repository, language)
+                    "TIMELINE" -> timelineSectionBody(section!!.timelineId, repository, language)
                     else -> collectionSectionBody(s.hubSectionComingSoon)
                 }
 
                 // A section's primary layout doesn't have to be the only content it carries —
                 // e.g. the Sistine Chapel is DIAGRAM-primary but also has articles on its history.
                 // articlesSectionBody already renders nothing when there are none for this section.
-                if (current.layout != "ARTICLES") {
-                    articlesSectionBody(sectionId, repository, language, onArticleSelected)
+                if (section!!.layout != "ARTICLES") {
+                    articlesSectionBody(sectionId, repository, language, onArticleSelected, initialArticles, onArticlesLoaded)
                 }
             }
         }
 
         HubSectionHeaderPanel(
-            title = current?.let { strings[it.titleKey] }.orEmpty(),
+            title = section?.let { strings[it.titleKey] }.orEmpty(),
             backDescription = s.back,
             onBack = onBack,
             modifier = Modifier.onGloballyPositioned {
                 val measuredHeight = it.size.height
-                if (measuredHeight != headerHeightPx) headerHeightPx = measuredHeight
+                if (measuredHeight != headerHeightPx) {
+                    headerHeightPx = measuredHeight
+                    onHeaderHeightChanged(measuredHeight)
+                }
             },
         )
+    }
+}
+
+@Composable
+private fun HubSectionEditorialImage(asset: String) {
+    hubAssetPainter(asset)?.let { painter ->
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(1.5f)
+                .clip(RoundedCornerShape(22.dp)),
+        ) {
+            Image(
+                painter = painter,
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize(),
+            )
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        Brush.verticalGradient(
+                            0.52f to Color.Transparent,
+                            1f to HubSectionHeader.copy(alpha = 0.76f),
+                        )
+                    ),
+            )
+        }
     }
 }
 
@@ -375,15 +435,21 @@ private fun androidx.compose.foundation.lazy.LazyListScope.articlesSectionBody(
     repository: CathopediaRepository,
     language: String,
     onArticleSelected: (HubArticleSummary) -> Unit,
+    initialArticles: List<HubArticleSummary>? = null,
+    onArticlesLoaded: (List<HubArticleSummary>) -> Unit = {},
 ) {
     item {
-        var articles by remember(sectionId) { mutableStateOf<List<HubArticleSummary>>(emptyList()) }
-        var titles by remember(sectionId) { mutableStateOf<Map<String, String>>(emptyMap()) }
+        var articles by remember(sectionId, language) { mutableStateOf<List<HubArticleSummary>>(initialArticles ?: emptyList()) }
+        var titles by remember(sectionId, language) { mutableStateOf<Map<String, String>>(emptyMap()) }
 
         LaunchedEffect(sectionId, language) {
-            val loaded = repository.hubArticlesForSection(sectionId).sortedBy { it.sortOrder }
-            articles = loaded
-            val keys = loaded.flatMap { listOfNotNull(it.titleKey, it.leadKey) }.toSet()
+            if (articles.isEmpty()) {
+                val loaded = repository.hubArticlesForSection(sectionId).sortedBy { it.sortOrder }
+                articles = loaded
+                onArticlesLoaded(loaded)
+            }
+            
+            val keys = articles.flatMap { listOfNotNull(it.titleKey, it.leadKey) }.toSet()
             titles = repository.resolveHubStrings(keys, language)
         }
 

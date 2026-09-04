@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -37,10 +39,12 @@ fun SavedScreen(
     repository: CathopediaRepository,
     onBack: () -> Unit,
     onItemSelected: (BookmarkItem) -> Unit,
+    listState: LazyListState = rememberLazyListState(),
 ) {
     val s = LocalStrings.current
     var bookmarks by remember { mutableStateOf<List<BookmarkItem>>(emptyList()) }
     var filter by remember { mutableStateOf(SavedFilter.ALL) }
+    // Removed local listState as it's now a parameter
 
     // Re-entering this branch of the nav `when` (e.g. switching back to the Saved
     // tab after bookmarking something on a detail page) disposes and recomposes
@@ -88,7 +92,10 @@ fun SavedScreen(
                     modifier = Modifier.padding(16.dp),
                 )
             } else {
-                LazyColumn(contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 116.dp)) {
+                LazyColumn(
+                    state = listState,
+                    contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 116.dp)
+                ) {
                     items(visible, key = { it.type.tag + it.id }) { bookmark ->
                         Card(
                             modifier = Modifier

@@ -19,6 +19,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -86,9 +88,10 @@ private const val MAX_ALPHA_DROP = 0.55f
 fun StationsScreen(
     language: String,
     onBack: () -> Unit,
+    listState: LazyListState = rememberLazyListState(),
+    scrollState: ScrollState = rememberScrollState(),
 ) {
     val stations = StationsData.stations
-    val listState = rememberLazyListState()
     val density = LocalDensity.current
     val cardWidthPx = with(density) { CARD_WIDTH_DP.dp.toPx() }
 
@@ -118,7 +121,7 @@ fun StationsScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(scrollState)
                 .padding(top = headerHeightDp + 16.dp),
         ) {
             StationTextPanel(
@@ -148,7 +151,7 @@ fun StationsScreen(
 private fun StationsHeaderCard(
     currentIndex: Int,
     stations: List<Station>,
-    listState: androidx.compose.foundation.lazy.LazyListState,
+    listState: LazyListState,
     cardWidthPx: Float,
     language: String,
     onBack: () -> Unit,
@@ -237,7 +240,7 @@ private fun StationCard(
     station: Station,
     language: String,
     index: Int,
-    listState: androidx.compose.foundation.lazy.LazyListState,
+    listState: LazyListState,
     cardWidthPx: Float,
 ) {
     val s = LocalStrings.current

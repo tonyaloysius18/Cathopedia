@@ -20,6 +20,8 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -64,6 +66,7 @@ fun PosturesScreen(
     @Suppress("UNUSED_PARAMETER") repository: CathopediaRepository,
     language: String,
     onBack: () -> Unit,
+    listState: LazyListState = rememberLazyListState(),
 ) {
     val s = LocalStrings.current
     val isFrench = language == "fr"
@@ -81,6 +84,7 @@ fun PosturesScreen(
     ) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
+            state = listState,
             contentPadding = PaddingValues(
                 start = 20.dp,
                 top = headerHeight + 20.dp,

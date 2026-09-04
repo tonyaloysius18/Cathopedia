@@ -20,6 +20,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -79,9 +81,10 @@ private const val MAX_ALPHA_DROP = 0.55f
 fun SacramentsScreen(
     language: String,
     onBack: () -> Unit,
+    listState: LazyListState = rememberLazyListState(),
+    scrollState: ScrollState = rememberScrollState(),
 ) {
     val sacraments = SacramentsData.sacraments
-    val listState = rememberLazyListState()
     val density = LocalDensity.current
     val cardWidthPx = with(density) { CARD_WIDTH_DP.dp.toPx() }
 
@@ -111,7 +114,7 @@ fun SacramentsScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(scrollState)
                 .padding(top = headerHeightDp + 16.dp),
         ) {
             SacramentTextPanel(
@@ -141,7 +144,7 @@ fun SacramentsScreen(
 private fun SacramentsHeaderCard(
     currentIndex: Int,
     sacraments: List<Sacrament>,
-    listState: androidx.compose.foundation.lazy.LazyListState,
+    listState: LazyListState,
     cardWidthPx: Float,
     language: String,
     onBack: () -> Unit,
@@ -229,7 +232,7 @@ private fun SacramentCard(
     sacrament: Sacrament,
     language: String,
     index: Int,
-    listState: androidx.compose.foundation.lazy.LazyListState,
+    listState: LazyListState,
     cardWidthPx: Float,
 ) {
     val s = LocalStrings.current

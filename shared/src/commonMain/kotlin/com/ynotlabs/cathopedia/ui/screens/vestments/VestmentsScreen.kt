@@ -547,11 +547,12 @@ private fun LiturgicalColor.localized(s: Strings): LiturgicalColor = copy(
 @Composable
 fun VestmentsScreen(
     onBackClick: () -> Unit = {},
+    listState: LazyListState = rememberLazyListState(),
+    scrollState: LazyListState = rememberLazyListState(),
 ) {
     val s = LocalStrings.current
     val localizedMinisters = remember(s) { ministers.map { it.localized(s) } }
     val localizedLiturgicalColors = remember(s) { liturgicalColors.map { it.localized(s) } }
-    val listState = rememberLazyListState()
     val density = LocalDensity.current
     val cardWidthPx = with(density) { MINISTER_CARD_WIDTH_DP.dp.toPx() }
     val scope = rememberCoroutineScope()
@@ -584,6 +585,7 @@ fun VestmentsScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(top = headerHeightDp),
+            state = scrollState,
             contentPadding = PaddingValues(
                 start = 18.dp,
                 end = 18.dp,

@@ -625,6 +625,7 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
                 titleKey = it.title_key,
                 summaryKey = it.summary_key,
                 icon = it.icon,
+                heroAsset = it.hero_asset,
                 accentColor = it.accent_color,
                 factSheetId = it.fact_sheet_id,
                 stepperId = it.stepper_id,
@@ -668,6 +669,7 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
             id = row.id,
             titleKey = row.title_key,
             leadKey = row.lead_key,
+            heroAsset = row.hero_asset,
             // A block this app version doesn't recognize (schemaVersion is gated at ingestion in
             // ContentLoader, but this is the belt to that suspenders) drops the whole list rather
             // than the article — Article detail then just renders lead/related/sources, never crashes.

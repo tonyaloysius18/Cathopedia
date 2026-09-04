@@ -27,6 +27,7 @@ import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -219,6 +220,7 @@ fun EntityListScreen(
     onBack: () -> Unit,
     onItemSelected: (ContentSummary) -> Unit,
     listState: LazyListState = rememberLazyListState(),
+    chipScrollState: ScrollState = rememberScrollState(),
     initialItems: List<ContentSummary>? = null,
     initialSelectedCentury: String? = null,
     initialHeaderHeightPx: Int = 0,
@@ -420,6 +422,7 @@ fun EntityListScreen(
                 CenturyChipStrip(
                     centuries = allCenturies,
                     selectedCentury = selectedCentury,
+                    scrollState = chipScrollState,
                     onCenturySelected = {
                         selectedCentury = it
                         onCenturySelectionChanged(it)
@@ -431,6 +434,7 @@ fun EntityListScreen(
                 RankChipStrip(
                     ranks = allRanks,
                     selectedRank = selectedRank,
+                    scrollState = chipScrollState,
                     onRankSelected = { selectedRank = it },
                 )
             }
@@ -594,13 +598,14 @@ private fun EntityTopArea(
 private fun CenturyChipStrip(
     centuries: List<String>,
     selectedCentury: String?,
+    scrollState: ScrollState,
     onCenturySelected: (String?) -> Unit,
 ) {
     val s = LocalStrings.current
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .horizontalScroll(rememberScrollState())
+            .horizontalScroll(scrollState)
             .padding(horizontal = 18.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
@@ -623,13 +628,14 @@ private fun CenturyChipStrip(
 private fun RankChipStrip(
     ranks: List<String>,
     selectedRank: String?,
+    scrollState: ScrollState,
     onRankSelected: (String?) -> Unit,
 ) {
     val s = LocalStrings.current
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .horizontalScroll(rememberScrollState())
+            .horizontalScroll(scrollState)
             .padding(horizontal = 18.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {

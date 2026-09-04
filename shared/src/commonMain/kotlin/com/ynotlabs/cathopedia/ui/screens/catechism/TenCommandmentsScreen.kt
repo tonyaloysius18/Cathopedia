@@ -22,6 +22,8 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -127,6 +129,7 @@ fun TenCommandmentsScreen(
     language: String,
     onBack: () -> Unit,
     onArticleSelected: (HubArticleSummary) -> Unit,
+    listState: LazyListState = rememberLazyListState(),
 ) {
     val s = LocalStrings.current
     val copy = remember(language) { commandmentsCopy(language) }
@@ -176,6 +179,7 @@ fun TenCommandmentsScreen(
     ) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
+            state = listState,
             contentPadding = PaddingValues(
                 start = 20.dp,
                 top = headerHeight + 20.dp,

@@ -18,6 +18,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
@@ -95,6 +97,8 @@ fun SearchScreen(
     repository: CathopediaRepository,
     language: String,
     onResultSelected: (ContentSummary) -> Unit,
+    landingListState: LazyListState = rememberLazyListState(),
+    resultsListState: LazyListState = rememberLazyListState(),
 ) {
     val s = LocalStrings.current
     val focusManager = LocalFocusManager.current
@@ -177,6 +181,7 @@ fun SearchScreen(
                         recentSearches = emptyList()
                     }
                 },
+                listState = landingListState,
             )
         } else {
             SearchResultsContent(
@@ -189,6 +194,7 @@ fun SearchScreen(
                     commitSearch(result.name)
                     onResultSelected(result)
                 },
+                listState = resultsListState,
             )
         }
     }
@@ -350,12 +356,14 @@ private fun SearchLandingContent(
     onRecentClick: (String) -> Unit,
     onRemoveRecent: (String) -> Unit,
     onClearAll: () -> Unit,
+    listState: LazyListState,
 ) {
     val s = LocalStrings.current
     if (recentSearches.isEmpty()) {
         SearchInitialState()
     } else {
         LazyColumn(
+            state = listState,
             contentPadding = PaddingValues(
                 start = 18.dp,
                 end = 18.dp,
@@ -643,6 +651,7 @@ private fun SearchResultsContent(
     counts: Map<ContentCategory, Int>,
     onFilterChange: (ContentCategory?) -> Unit,
     onResultSelected: (ContentSummary) -> Unit,
+    listState: LazyListState,
 ) {
     val s = LocalStrings.current
 
@@ -672,6 +681,7 @@ private fun SearchResultsContent(
             SearchEmptyState()
         } else {
             LazyColumn(
+                state = listState,
                 contentPadding = PaddingValues(
                     start = 18.dp,
                     end = 18.dp,

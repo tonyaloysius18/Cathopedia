@@ -8,9 +8,12 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -20,6 +23,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -85,35 +90,51 @@ fun HubScreen(
     onBack: () -> Unit,
     onSectionSelected: (HubSectionSummary) -> Unit,
     onArticleSelected: (String) -> Unit,
+    listState: LazyListState = rememberLazyListState(),
+    initialDetail: HubDetail? = null,
+    initialStrings: Map<String, String>? = null,
+    initialHeaderHeightPx: Int = 0,
+    onDetailLoaded: (HubDetail) -> Unit = {},
+    onStringsLoaded: (Map<String, String>) -> Unit = {},
+    onHeaderHeightChanged: (Int) -> Unit = {},
 ) {
     val s = LocalStrings.current
 
-    var detail by remember(hubId) { mutableStateOf<HubDetail?>(null) }
-    var strings by remember(hubId) { mutableStateOf<Map<String, String>>(emptyMap()) }
+    var detail by remember(hubId, language) { mutableStateOf<HubDetail?>(initialDetail) }
+    var strings by remember(hubId, language) { mutableStateOf<Map<String, String>>(initialStrings ?: emptyMap()) }
 
     LaunchedEffect(hubId, language) {
-        val loaded = repository.hubDetail(hubId) ?: return@LaunchedEffect
-        detail = loaded
-
-        val keys = buildSet {
-            add(loaded.summary.titleKey)
-            loaded.summary.subtitleKey?.let(::add)
-            loaded.introKey?.let(::add)
-
-            loaded.sections.forEach { section ->
-                add(section.titleKey)
-                section.summaryKey?.let(::add)
-            }
+        if (detail == null) {
+            val loaded = repository.hubDetail(hubId) ?: return@LaunchedEffect
+            detail = loaded
+            onDetailLoaded(loaded)
         }
 
-        strings = repository.resolveHubStrings(keys, language)
+        if (strings.isEmpty()) {
+            val keys = buildSet {
+                detail?.let { loaded ->
+                    add(loaded.summary.titleKey)
+                    loaded.summary.subtitleKey?.let(::add)
+                    loaded.introKey?.let(::add)
+
+                    loaded.sections.forEach { section ->
+                        add(section.titleKey)
+                        section.summaryKey?.let(::add)
+                    }
+                }
+            }
+
+            val loadedStrings = repository.resolveHubStrings(keys, language)
+            strings = loadedStrings
+            onStringsLoaded(loadedStrings)
+        }
     }
 
     val hub = detail
     val accent = hub?.summary?.accentColor
         ?.toComposeColorOrNull()
         ?: HubGold
-    var headerHeightPx by remember(hubId, language) { mutableIntStateOf(0) }
+    var headerHeightPx by remember(hubId, language) { mutableIntStateOf(initialHeaderHeightPx) }
     val headerHeightDp = with(LocalDensity.current) { headerHeightPx.toDp() }
 
     Box(
@@ -123,6 +144,7 @@ fun HubScreen(
     ) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
+            state = listState,
             contentPadding = PaddingValues(
                 start = 20.dp,
                 top = headerHeightDp + 28.dp,
@@ -139,6 +161,13 @@ fun HubScreen(
                     }
                 }
 
+                hub.summary.heroAsset?.let { asset ->
+                    item {
+                        HubEditorialImage(asset)
+                        Spacer(Modifier.height(18.dp))
+                    }
+                }
+
                 item {
                     SacredDivider()
                     Spacer(Modifier.height(18.dp))
@@ -149,12 +178,12 @@ fun HubScreen(
                 rows.forEachIndexed { rowIndex, rowSections ->
                     item(key = "hub-row-$rowIndex") {
                         Row(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
                             horizontalArrangement = Arrangement.spacedBy(10.dp),
                         ) {
                             rowSections.forEach { section ->
                                 HubSectionCard(
-                                    modifier = Modifier.weight(1f),
+                                    modifier = Modifier.weight(1f).fillMaxHeight(),
                                     section = section,
                                     title = strings[section.titleKey].orEmpty(),
                                     summary = section.summaryKey?.let { strings[it] },
@@ -169,7 +198,7 @@ fun HubScreen(
                             }
 
                             if (rowSections.size == 1) {
-                                Spacer(modifier = Modifier.weight(1f))
+                                Spacer(modifier = Modifier.weight(1f).fillMaxHeight())
                             }
                         }
 
@@ -187,9 +216,41 @@ fun HubScreen(
             onBack = onBack,
             modifier = Modifier.onGloballyPositioned {
                 val measuredHeight = it.size.height
-                if (measuredHeight != headerHeightPx) headerHeightPx = measuredHeight
+                if (measuredHeight != headerHeightPx) {
+                    headerHeightPx = measuredHeight
+                    onHeaderHeightChanged(measuredHeight)
+                }
             },
         )
+    }
+}
+
+@Composable
+private fun HubEditorialImage(asset: String) {
+    hubAssetPainter(asset)?.let { painter ->
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(1.5f)
+                .clip(RoundedCornerShape(22.dp)),
+        ) {
+            Image(
+                painter = painter,
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize(),
+            )
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        Brush.verticalGradient(
+                            0.52f to Color.Transparent,
+                            1f to HubBackground.copy(alpha = 0.72f),
+                        )
+                    ),
+            )
+        }
     }
 }
 
@@ -286,6 +347,7 @@ private fun HubSectionCard(
     onClick: () -> Unit,
 ) {
     val isStub = section.status == "STUB"
+    val keepCommandmentsIntact = section.id == "cat.commandments"
 
     Surface(
         modifier = modifier
@@ -308,7 +370,7 @@ private fun HubSectionCard(
     ) {
         Box(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .background(
                     Brush.verticalGradient(
                         listOf(
@@ -324,28 +386,28 @@ private fun HubSectionCard(
 
             Column(
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxSize()
                     .padding(start = 18.dp, top = 14.dp, end = 16.dp, bottom = 14.dp),
             ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
+                Box(modifier = Modifier.fillMaxWidth()) {
                     Text(
                         text = title,
                         color = HubCream,
                         fontFamily = FontFamily.Serif,
-                        fontSize = 17.sp,
-                        lineHeight = 22.sp,
+                        fontSize = if (keepCommandmentsIntact) 16.sp else 17.sp,
+                        lineHeight = if (keepCommandmentsIntact) 21.sp else 22.sp,
                         fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.weight(1f).padding(end = 8.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(end = if (keepCommandmentsIntact) 0.dp else 22.dp),
                     )
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
                         contentDescription = null,
                         tint = HubGold.copy(alpha = 0.7f),
-                        modifier = Modifier.size(14.dp),
+                        modifier = Modifier
+                            .align(Alignment.TopEnd)
+                            .size(14.dp),
                     )
                 }
 

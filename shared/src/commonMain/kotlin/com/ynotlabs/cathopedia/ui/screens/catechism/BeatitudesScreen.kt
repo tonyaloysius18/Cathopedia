@@ -21,6 +21,8 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
@@ -69,6 +71,7 @@ fun BeatitudesScreen(
     repository: CathopediaRepository,
     language: String,
     onBack: () -> Unit,
+    listState: LazyListState = rememberLazyListState(),
 ) {
     val s = LocalStrings.current
     var section by remember(language) { mutableStateOf<HubSectionSummary?>(null) }
@@ -110,6 +113,7 @@ fun BeatitudesScreen(
     ) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
+            state = listState,
             contentPadding = PaddingValues(
                 start = 20.dp,
                 top = headerHeight + 20.dp,

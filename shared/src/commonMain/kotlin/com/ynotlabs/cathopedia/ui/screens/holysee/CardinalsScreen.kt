@@ -6,15 +6,15 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Surface
@@ -22,6 +22,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -30,13 +31,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
-import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.ui.hubAssetPainter
 
 private val CardinalStringKeys = setOf(
@@ -66,6 +68,7 @@ fun CardinalsScreen(
     repository: CathopediaRepository,
     language: String,
     onBack: () -> Unit,
+    listState: LazyListState = rememberLazyListState(),
 ) {
     val s = LocalStrings.current
     var strings by remember(language) { mutableStateOf<Map<String, String>>(emptyMap()) }
@@ -74,30 +77,19 @@ fun CardinalsScreen(
         strings = repository.resolveHubStrings(CardinalStringKeys, language)
     }
 
-    LazyColumn(
+    var headerHeightPx by remember(language) { mutableIntStateOf(0) }
+    val headerHeight = with(LocalDensity.current) { headerHeightPx.toDp() }
+
+    Box(
         modifier = Modifier
             .fillMaxSize()
             .background(HolySeeBackground),
-        contentPadding = PaddingValues(bottom = 56.dp),
     ) {
-        item {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .statusBarsPadding()
-                    .padding(start = 8.dp, top = 8.dp, end = 20.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                CathopediaBackButton(onClick = onBack, contentDescription = s.back)
-                Text(
-                    text = strings["art.cardinals.title"].orEmpty(),
-                    color = HolySeeCream,
-                    fontFamily = FontFamily.Serif,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.SemiBold,
-                )
-            }
-        }
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            state = listState,
+            contentPadding = PaddingValues(top = headerHeight + 20.dp, bottom = 56.dp),
+        ) {
 
         if (strings.isEmpty()) {
             item {
@@ -147,30 +139,19 @@ fun CardinalsScreen(
                         )
                         Column(modifier = Modifier.padding(20.dp)) {
                             Text(
-                                text = strings["art.cardinals.h_orders"].orEmpty().uppercase(),
-                                color = HolySeeGold,
-                                fontSize = 10.sp,
-                                letterSpacing = 1.2.sp,
-                                fontWeight = FontWeight.Bold,
-                            )
-                            Spacer(Modifier.height(6.dp))
-                            Text(
-                                text = strings["art.cardinals.lead"].orEmpty(),
+                                text = strings["art.cardinals.h_orders"].orEmpty(),
                                 color = HolySeeCream,
                                 fontFamily = FontFamily.Serif,
-                                fontSize = 19.sp,
-                                lineHeight = 24.sp,
-                                fontWeight = FontWeight.Medium,
+                                fontSize = 20.sp,
+                                lineHeight = 25.sp,
+                                fontWeight = FontWeight.SemiBold,
                             )
                         }
                     }
                 }
 
-                Text(
+                HolySeeIntroCard(
                     text = strings["art.cardinals.p1"].orEmpty(),
-                    color = HolySeeCream.copy(alpha = 0.88f),
-                    fontSize = 15.5.sp,
-                    lineHeight = 24.sp,
                     modifier = Modifier.padding(horizontal = 20.dp, vertical = 14.dp),
                 )
 
@@ -254,6 +235,17 @@ fun CardinalsScreen(
                 }
             }
         }
+        }
+
+        HolySeeHeaderPanel(
+            title = strings["art.cardinals.title"].orEmpty(),
+            subtitle = strings["art.cardinals.lead"],
+            backDescription = s.back,
+            onBack = onBack,
+            modifier = Modifier.onGloballyPositioned {
+                if (headerHeightPx != it.size.height) headerHeightPx = it.size.height
+            },
+        )
     }
 }
 

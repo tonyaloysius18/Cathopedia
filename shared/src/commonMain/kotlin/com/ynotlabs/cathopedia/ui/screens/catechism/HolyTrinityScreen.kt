@@ -17,6 +17,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
@@ -81,6 +83,7 @@ fun HolyTrinityScreen(
     repository: CathopediaRepository,
     language: String,
     onBack: () -> Unit,
+    scrollState: LazyListState = rememberLazyListState(),
 ) {
     val s = LocalStrings.current
     var strings by remember(language) { mutableStateOf<Map<String, String>>(emptyMap()) }
@@ -95,6 +98,7 @@ fun HolyTrinityScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(TrinityBackground),
+        state = scrollState,
         contentPadding = PaddingValues(bottom = 120.dp),
     ) {
         item {

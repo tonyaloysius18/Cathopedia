@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -81,6 +82,7 @@ fun HomeScreen(
     language: String,
     onItemSelected: (ContentSummary) -> Unit,
     onReadingSelected: ((ScriptureReference) -> Unit)? = null,
+    scrollState: ScrollState = rememberScrollState(),
 ) {
     val s = LocalStrings.current
     val today = remember { LiturgicalCalendar.today() }
@@ -111,7 +113,7 @@ fun HomeScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(HomeBg)
-            .verticalScroll(rememberScrollState())
+            .verticalScroll(scrollState)
             .padding(bottom = 118.dp),
     ) {
         HomeHero(seasonLabel = season.label(s))

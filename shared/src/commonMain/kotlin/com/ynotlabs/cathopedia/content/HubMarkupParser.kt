@@ -8,17 +8,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 
-/** Tag used on the [AnnotatedString] ranges produced for `[[type:id|label]]` links. */
 const val HUB_ENTITY_LINK_TAG = "hub_entity_link"
 
-/**
- * Resolved hub string value → [AnnotatedString], parsing the inline markup allowed in
- * `hub-strings.schema.json` values: `**bold**`, `*italic*`, and `[[type:id|label]]` entity
- * links. Both emphasis markers recurse into their own content, so nesting (bold containing
- * an italic run or a link) composes correctly. Anything that doesn't close — an unterminated
- * `**`, a `[[` with no matching `]]`, a link missing its `|label` — is emitted as literal
- * text rather than dropped or thrown, since this runs over content authored outside the app.
- */
 fun parseHubMarkup(text: String): AnnotatedString = buildAnnotatedString { appendMarkup(text) }
 
 private fun AnnotatedString.Builder.appendMarkup(text: String) {

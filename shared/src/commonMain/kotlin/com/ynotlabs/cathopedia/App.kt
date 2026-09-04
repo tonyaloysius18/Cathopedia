@@ -30,6 +30,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.ScrollState
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -154,6 +156,35 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
 
     val nav = rememberAppNavController(Destination.Splash)
 
+    // Tab-level scroll states, hoisted so they persist across tab switches.
+    val homeScrollState = rememberScrollState()
+    val exploreScrollState = rememberLazyListState()
+    val prayersHomeScrollState = rememberLazyListState()
+    val prayersQuickSectionScrollState = rememberLazyListState()
+    val searchLandingScrollState = rememberLazyListState()
+    val searchResultsScrollState = rememberLazyListState()
+    val savedScrollState = rememberLazyListState()
+    val vestmentsScrollState = rememberLazyListState()
+    val sacramentsScrollState = rememberLazyListState()
+    val processionScrollState = rememberLazyListState()
+    val stationsScrollState = rememberLazyListState()
+
+    // Hub-level scroll states and data caches, indexed by content IDs.
+    val hubScrollStates = remember { mutableStateMapOf<String, LazyListState>() }
+    val hubDetails = remember { mutableStateMapOf<String, com.ynotlabs.cathopedia.model.HubDetail>() }
+    val hubStringsCache = remember { mutableStateMapOf<String, Map<String, String>>() }
+    val hubHeaderHeights = remember { mutableStateMapOf<String, Int>() }
+
+    val hubSectionScrollStates = remember { mutableStateMapOf<String, LazyListState>() }
+    val hubSectionArticles = remember { mutableStateMapOf<String, List<com.ynotlabs.cathopedia.model.HubArticleSummary>>() }
+    val hubSectionStringsCache = remember { mutableStateMapOf<String, Map<String, String>>() }
+    val hubSectionHeaderHeights = remember { mutableStateMapOf<String, Int>() }
+
+    val hubArticleScrollStates = remember { mutableStateMapOf<String, LazyListState>() }
+    val hubArticleDetails = remember { mutableStateMapOf<String, com.ynotlabs.cathopedia.model.HubArticleDetail>() }
+    val hubArticleStringsCache = remember { mutableStateMapOf<String, Map<String, String>>() }
+    val hubArticleHeaderHeights = remember { mutableStateMapOf<String, Int>() }
+
     // EntityListScreen is torn down and recreated by the `when` router below.
     // Retain both its position and the data that determines what that position
     // means, otherwise a filtered Popes list briefly rebuilds as the full list.
@@ -164,8 +195,6 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
 
     // Retain PrayersHome state across detail-page visits.
     var prayersQuickSection by remember { mutableStateOf(PrayerQuickSection.EVERYDAY) }
-    val prayersQuickSectionScrollState = rememberLazyListState()
-    val prayersHomeScrollState = rememberLazyListState()
     // The loaded prayer lists are hoisted here so returning from a prayer detail
     // finds the list already populated — otherwise it re-loads from empty and the
     // scroll position snaps back to the top.
@@ -292,6 +321,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     repository = repository,
                     language = language,
                     onItemSelected = { item: ContentSummary -> nav.navigate(Destination.EntityDetail(item.type, item.id)) },
+                    scrollState = homeScrollState,
                 )
 
                 is Destination.Explore -> ExploreScreen(
@@ -300,46 +330,73 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     onCategorySelected = { type -> nav.navigate(Destination.EntityList(type)) },
                     onVestmentsSelected = { nav.navigate(Destination.Vestments) },
                     onHubSelected = { hub -> nav.navigate(Destination.Hub(hub.id)) },
+                    listState = exploreScrollState,
                 )
 
                 is Destination.Vestments -> VestmentsScreen(
-                    onBackClick = nav::back
+                    onBackClick = nav::back,
+                    listState = vestmentsScrollState,
                 )
 
-                is Destination.Hub -> HubScreen(
-                    hubId = current.hubId,
-                    repository = repository,
-                    language = language,
-                    onBack = nav::back,
-                    onSectionSelected = { section ->
-                        // A few sections open a dedicated carousel screen instead of the
-                        // generic section screen.
-                        when (section.id) {
-                            "cat.sacraments" -> nav.navigate(Destination.SacramentsScreen)
-                            "mass.procession" -> nav.navigate(Destination.ProcessionScreen)
-                            else -> nav.navigate(Destination.HubSection(current.hubId, section.id))
-                        }
-                    },
-                    onArticleSelected = { articleId -> nav.navigate(Destination.HubArticle(current.hubId, articleId)) },
-                )
+                is Destination.Hub -> {
+                    HubScreen(
+                        hubId = current.hubId,
+                        repository = repository,
+                        language = language,
+                        onBack = nav::back,
+                        onSectionSelected = { section ->
+                            when (section.id) {
+                                "cat.sacraments" -> nav.navigate(Destination.SacramentsScreen)
+                                "mass.procession" -> nav.navigate(Destination.ProcessionScreen)
+                                else -> nav.navigate(Destination.HubSection(current.hubId, section.id))
+                            }
+                        },
+                        onArticleSelected = { articleId -> nav.navigate(Destination.HubArticle(current.hubId, articleId)) },
+                        listState = hubScrollStates.getOrPut(current.hubId) { LazyListState() },
+                        initialDetail = hubDetails[current.hubId],
+                        initialStrings = hubStringsCache[current.hubId],
+                        initialHeaderHeightPx = hubHeaderHeights[current.hubId] ?: 0,
+                        onDetailLoaded = { hubDetails[current.hubId] = it },
+                        onStringsLoaded = { hubStringsCache[current.hubId] = it },
+                        onHeaderHeightChanged = { hubHeaderHeights[current.hubId] = it },
+                    )
+                }
 
-                is Destination.HubSection -> HubSectionScreen(
-                    hubId = current.hubId,
-                    sectionId = current.sectionId,
-                    repository = repository,
-                    language = language,
-                    onBack = nav::back,
-                    onArticleSelected = { article -> nav.navigate(Destination.HubArticle(current.hubId, article.id)) },
-                    onEntityRefSelected = { ref -> navigateToHubEntityRef(nav, current.hubId, ref) },
-                )
+                is Destination.HubSection -> {
+                    HubSectionScreen(
+                        hubId = current.hubId,
+                        sectionId = current.sectionId,
+                        repository = repository,
+                        language = language,
+                        onBack = nav::back,
+                        onArticleSelected = { article -> nav.navigate(Destination.HubArticle(current.hubId, article.id)) },
+                        onEntityRefSelected = { ref -> navigateToHubEntityRef(nav, current.hubId, ref) },
+                        listState = hubSectionScrollStates.getOrPut(current.sectionId) { LazyListState() },
+                        initialArticles = hubSectionArticles[current.sectionId],
+                        initialStrings = hubSectionStringsCache[current.sectionId],
+                        initialHeaderHeightPx = hubSectionHeaderHeights[current.sectionId] ?: 0,
+                        onArticlesLoaded = { hubSectionArticles[current.sectionId] = it },
+                        onStringsLoaded = { hubSectionStringsCache[current.sectionId] = it },
+                        onHeaderHeightChanged = { hubSectionHeaderHeights[current.sectionId] = it },
+                    )
+                }
 
-                is Destination.HubArticle -> HubArticleScreen(
-                    articleId = current.articleId,
-                    repository = repository,
-                    language = language,
-                    onBack = nav::back,
-                    onEntityRefSelected = { ref -> navigateToHubEntityRef(nav, current.hubId, ref) },
-                )
+                is Destination.HubArticle -> {
+                    HubArticleScreen(
+                        articleId = current.articleId,
+                        repository = repository,
+                        language = language,
+                        onBack = nav::back,
+                        onEntityRefSelected = { ref -> navigateToHubEntityRef(nav, current.hubId, ref) },
+                        listState = hubArticleScrollStates.getOrPut(current.articleId) { LazyListState() },
+                        initialArticle = hubArticleDetails[current.articleId],
+                        initialStrings = hubArticleStringsCache[current.articleId],
+                        initialHeaderHeightPx = hubArticleHeaderHeights[current.articleId] ?: 0,
+                        onArticleLoaded = { hubArticleDetails[current.articleId] = it },
+                        onStringsLoaded = { hubArticleStringsCache[current.articleId] = it },
+                        onHeaderHeightChanged = { hubArticleHeaderHeights[current.articleId] = it },
+                    )
+                }
 
                 is Destination.EntityList -> {
                     val listKey = current.type to language
@@ -410,28 +467,34 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                 is Destination.StationsScreen -> StationsScreen(
                     language = language,
                     onBack = nav::back,
+                    listState = stationsScrollState,
                 )
 
                 is Destination.SacramentsScreen -> SacramentsScreen(
                     language = language,
                     onBack = nav::back,
+                    listState = sacramentsScrollState,
                 )
 
                 is Destination.ProcessionScreen -> ProcessionScreen(
                     language = language,
                     onBack = nav::back,
+                    listState = processionScrollState,
                 )
 
                 is Destination.Search -> SearchScreen(
                     repository = repository,
                     language = language,
                     onResultSelected = { result: ContentSummary -> nav.navigate(Destination.EntityDetail(result.type, result.id)) },
+                    landingListState = searchLandingScrollState,
+                    resultsListState = searchResultsScrollState,
                 )
 
                 is Destination.Saved -> SavedScreen(
                     repository = repository,
                     onBack = nav::back,
                     onItemSelected = { bookmark: BookmarkItem -> nav.navigate(Destination.EntityDetail(bookmark.type, bookmark.id)) },
+                    listState = savedScrollState,
                 )
 
                 is Destination.Settings -> SettingsScreen(

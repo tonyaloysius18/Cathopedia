@@ -1,40 +1,41 @@
 package com.ynotlabs.cathopedia.ui.screens.holysee
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.model.HubStepperDetail
-import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 
 @Composable
 fun HierarchyCarouselScreen(
     repository: CathopediaRepository,
     language: String,
     onBack: () -> Unit,
+    listState: LazyListState = rememberLazyListState(),
 ) {
     val s = LocalStrings.current
     var stepper by remember { mutableStateOf<HubStepperDetail?>(null) }
@@ -55,30 +56,19 @@ fun HierarchyCarouselScreen(
         strings = repository.resolveHubStrings(keys, language)
     }
 
-    LazyColumn(
+    var headerHeightPx by remember(language) { mutableIntStateOf(0) }
+    val headerHeight = with(LocalDensity.current) { headerHeightPx.toDp() }
+
+    Box(
         modifier = Modifier
             .fillMaxSize()
             .background(HolySeeBackground),
-        contentPadding = PaddingValues(bottom = 48.dp),
     ) {
-        item {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .statusBarsPadding()
-                    .padding(start = 8.dp, top = 8.dp, end = 20.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                CathopediaBackButton(onClick = onBack, contentDescription = s.back)
-                Text(
-                    text = strings[stepper?.titleKey].orEmpty(),
-                    color = HolySeeCream,
-                    fontFamily = FontFamily.Serif,
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.SemiBold,
-                )
-            }
-        }
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            state = listState,
+            contentPadding = PaddingValues(top = headerHeight + 20.dp, bottom = 48.dp),
+        ) {
 
         val current = stepper
         if (current == null) {
@@ -95,11 +85,8 @@ fun HierarchyCarouselScreen(
         } else {
             item {
                 current.introKey?.let { introKey ->
-                    Text(
+                    HolySeeIntroCard(
                         text = strings[introKey].orEmpty(),
-                        color = HolySeeMuted,
-                        fontSize = 16.sp,
-                        lineHeight = 24.sp,
                         modifier = Modifier.padding(horizontal = 20.dp, vertical = 18.dp),
                     )
                 }
@@ -118,5 +105,15 @@ fun HierarchyCarouselScreen(
                 Spacer(Modifier.height(24.dp))
             }
         }
+        }
+
+        HolySeeHeaderPanel(
+            title = strings[stepper?.titleKey].orEmpty(),
+            backDescription = s.back,
+            onBack = onBack,
+            modifier = Modifier.onGloballyPositioned {
+                if (headerHeightPx != it.size.height) headerHeightPx = it.size.height
+            },
+        )
     }
 }

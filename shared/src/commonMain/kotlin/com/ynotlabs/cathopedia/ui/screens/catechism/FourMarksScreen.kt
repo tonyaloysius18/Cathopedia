@@ -19,6 +19,8 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronRight
@@ -67,12 +69,14 @@ fun FourMarksScreen(
     repository: CathopediaRepository,
     language: String,
     onBack: () -> Unit,
+    listState: LazyListState = rememberLazyListState(),
 ) {
     CatechismCardArticleScreen(
         articleId = "art.cat.four_marks",
         repository = repository,
         language = language,
         onBack = onBack,
+        listState = listState,
     )
 }
 
@@ -81,12 +85,14 @@ fun FourLastThingsScreen(
     repository: CathopediaRepository,
     language: String,
     onBack: () -> Unit,
+    listState: LazyListState = rememberLazyListState(),
 ) {
     CatechismCardArticleScreen(
         articleId = "art.cat.last_things",
         repository = repository,
         language = language,
         onBack = onBack,
+        listState = listState,
     )
 }
 
@@ -96,6 +102,7 @@ fun ConfessionPrayersScreen(
     language: String,
     onBack: () -> Unit,
     onEntityRefSelected: (EntityRef) -> Unit,
+    listState: LazyListState = rememberLazyListState(),
 ) {
     CatechismCardArticleScreen(
         articleId = "art.cat.confession_prayers",
@@ -103,6 +110,7 @@ fun ConfessionPrayersScreen(
         language = language,
         onBack = onBack,
         onEntityRefSelected = onEntityRefSelected,
+        listState = listState,
     )
 }
 
@@ -113,6 +121,7 @@ private fun CatechismCardArticleScreen(
     language: String,
     onBack: () -> Unit,
     onEntityRefSelected: (EntityRef) -> Unit = {},
+    listState: LazyListState = rememberLazyListState(),
 ) {
     val s = LocalStrings.current
     var article by remember(articleId, language) { mutableStateOf<HubArticleDetail?>(null) }
@@ -174,6 +183,7 @@ private fun CatechismCardArticleScreen(
     ) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
+            state = listState,
             contentPadding = PaddingValues(
                 start = 20.dp,
                 top = headerHeight + 20.dp,

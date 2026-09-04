@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -36,6 +37,7 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
@@ -46,10 +48,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.ui.hubAssetPainter
+import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
+import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import kotlin.math.abs
 import kotlin.math.min
 
 internal val HolySeeBackground = Color(0xFF061A13)
+internal val HolySeeHeader = Color(0xFF081F17)
 internal val HolySeeSurface = Color(0xFF0C271E)
 internal val HolySeeSurfaceRaised = Color(0xFF123328)
 internal val HolySeeGold = Color(0xFFD8B24C)
@@ -57,6 +62,89 @@ internal val HolySeeGoldSoft = Color(0xFFB89A58)
 internal val HolySeeCream = Color(0xFFF4ECDD)
 internal val HolySeeMuted = Color(0xFFB7B09D)
 internal val CardinalScarlet = Color(0xFFE06B68)
+
+@Composable
+internal fun HolySeeHeaderPanel(
+    title: String,
+    subtitle: String? = null,
+    backDescription: String,
+    onBack: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val useCompactTitle = title.length > 42
+
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .shadow(
+                elevation = 14.dp,
+                shape = RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp),
+                clip = false,
+            )
+            .clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp))
+            .background(HolySeeHeader)
+            .statusBarsPadding()
+            .padding(start = 18.dp, top = 6.dp, end = 18.dp, bottom = 18.dp),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.Top,
+        ) {
+            CathopediaBackButton(
+                onClick = onBack,
+                contentDescription = backDescription,
+            )
+            Spacer(Modifier.width(8.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = title,
+                    color = HolySeeCream,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = if (useCompactTitle) 25.sp else 29.sp,
+                    lineHeight = if (useCompactTitle) 29.sp else 32.sp,
+                    fontWeight = FontWeight.Medium,
+                )
+                if (!subtitle.isNullOrBlank()) {
+                    Spacer(Modifier.height(7.dp))
+                    Text(
+                        text = subtitle,
+                        color = HolySeeMuted,
+                        fontSize = 13.sp,
+                        lineHeight = 18.sp,
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+internal fun HolySeeIntroCard(
+    text: String,
+    modifier: Modifier = Modifier,
+) {
+    Surface(
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(20.dp),
+        color = HolySeeSurface,
+        contentColor = HolySeeCream,
+        border = BorderStroke(1.dp, HolySeeGold.copy(alpha = 0.40f)),
+    ) {
+        Box {
+            GoldCardAccent(
+                modifier = Modifier.align(Alignment.CenterStart),
+                color = HolySeeGold,
+            )
+            Text(
+                text = text,
+                color = HolySeeCream.copy(alpha = 0.90f),
+                fontSize = 15.sp,
+                lineHeight = 23.sp,
+                modifier = Modifier.padding(start = 22.dp, top = 18.dp, end = 18.dp, bottom = 18.dp),
+            )
+        }
+    }
+}
 
 private const val HOLY_SEE_CARD_WIDTH_DP = 224
 private const val HOLY_SEE_CARD_HEIGHT_DP = 330

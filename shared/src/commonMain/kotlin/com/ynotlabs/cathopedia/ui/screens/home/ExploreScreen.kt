@@ -7,10 +7,12 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -20,6 +22,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -97,6 +101,7 @@ fun ExploreScreen(
     onCategorySelected: (ContentType) -> Unit,
     onVestmentsSelected: () -> Unit,
     onHubSelected: (HubSummary) -> Unit,
+    listState: LazyListState = rememberLazyListState(),
 ) {
     val s = LocalStrings.current
     var counts by remember { mutableStateOf<Map<ContentType, Int>>(emptyMap()) }
@@ -116,6 +121,7 @@ fun ExploreScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
             .statusBarsPadding(),
+        state = listState,
         contentPadding = PaddingValues(
             start = 20.dp,
             end = 20.dp,
@@ -151,7 +157,7 @@ fun ExploreScreen(
             if (firstGrid.isNotEmpty()) {
                 item {
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                         firstGrid.sortedBy { it.id != "symbols" }.forEach { hub ->
@@ -160,10 +166,10 @@ fun ExploreScreen(
                                 title = hubStrings[hub.titleKey].orEmpty(),
                                 subtitle = hub.subtitleKey?.let { hubStrings[it] },
                                 onClick = { onHubSelected(hub) },
-                                modifier = Modifier.weight(1f)
+                                modifier = Modifier.weight(1f).fillMaxHeight()
                             )
                         }
-                        if (firstGrid.size == 1) Spacer(Modifier.weight(1f))
+                        if (firstGrid.size == 1) Spacer(Modifier.weight(1f).fillMaxHeight())
                     }
                 }
             }
@@ -171,7 +177,7 @@ fun ExploreScreen(
             if (secondGrid.isNotEmpty()) {
                 item {
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                         secondGrid.sortedBy { it.id != "catechism" }.forEach { hub ->
@@ -180,10 +186,10 @@ fun ExploreScreen(
                                 title = hubStrings[hub.titleKey].orEmpty(),
                                 subtitle = hub.subtitleKey?.let { hubStrings[it] },
                                 onClick = { onHubSelected(hub) },
-                                modifier = Modifier.weight(1f)
+                                modifier = Modifier.weight(1f).fillMaxHeight()
                             )
                         }
-                        if (secondGrid.size == 1) Spacer(Modifier.weight(1f))
+                        if (secondGrid.size == 1) Spacer(Modifier.weight(1f).fillMaxHeight())
                     }
                 }
             }
@@ -447,7 +453,7 @@ private fun PeopleSection(
 
         if (featured.isNotEmpty()) {
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 featured.forEach { type ->
@@ -455,12 +461,12 @@ private fun PeopleSection(
                         type = type,
                         count = counts[type] ?: 0,
                         onClick = { onCategorySelected(type) },
-                        modifier = Modifier.weight(1f),
+                        modifier = Modifier.weight(1f).fillMaxHeight(),
                     )
                 }
 
                 if (featured.size == 1) {
-                    Spacer(Modifier.weight(1f))
+                    Spacer(Modifier.weight(1f).fillMaxHeight())
                 }
             }
         }
@@ -485,7 +491,7 @@ private fun EventsSection(
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
         types.chunked(2).forEach { rowTypes ->
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 rowTypes.forEach { type ->
@@ -493,7 +499,7 @@ private fun EventsSection(
                         type = type,
                         count = counts[type] ?: 0,
                         onClick = { onCategorySelected(type) },
-                        modifier = Modifier.weight(1f),
+                        modifier = Modifier.weight(1f).fillMaxHeight(),
                     )
                 }
 
@@ -502,10 +508,10 @@ private fun EventsSection(
                     if (singleType == ContentType.FEAST) {
                         VestmentsSectionCard(
                             onClick = onVestmentsSelected,
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier.weight(1f).fillMaxHeight()
                         )
                     } else {
-                        Spacer(Modifier.weight(1f))
+                        Spacer(Modifier.weight(1f).fillMaxHeight())
                     }
                 }
             }
