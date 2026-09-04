@@ -32,6 +32,12 @@
       "pattern": "^[a-z0-9_.]+$",
       "description": "Stable, lowercase, dot-namespaced. Never reuse an id for different content."
     },
+
+    "entityId": {
+      "type": "string",
+      "pattern": "^[a-z0-9_.-]+$",
+      "description": "Id of an entity outside this hub file, e.g. a prayer slug like apostles-creed. Hyphens allowed because cross-domain ids (prayer slugs, saint slugs) use them."
+    },
     "stringKey": {
       "type": "string",
       "pattern": "^[a-z0-9_.]+$",
@@ -241,7 +247,7 @@
       "additionalProperties": false,
       "properties": {
         "type": { "type": "string", "enum": ["ARTICLE", "POPE", "SAINT", "CHURCH", "PRAYER", "DOCUMENT", "COUNCIL", "ARTWORK", "PLACE"] },
-        "id": { "$ref": "#/$defs/id" },
+        "id": { "$ref": "#/$defs/entityId" },
         "labelKey": { "$ref": "#/$defs/stringKey" }
       }
     },
