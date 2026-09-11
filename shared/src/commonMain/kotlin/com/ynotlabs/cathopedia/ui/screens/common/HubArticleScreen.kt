@@ -2,8 +2,13 @@ package com.ynotlabs.cathopedia.ui.screens.common
 
 import com.ynotlabs.cathopedia.ui.screens.catechism.ConfessionPrayersScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.CreedsScreen
-import com.ynotlabs.cathopedia.ui.screens.catechism.FourLastThingsScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.FourMarksScreen
+import com.ynotlabs.cathopedia.ui.screens.catechism.LastThingsScreen
+import com.ynotlabs.cathopedia.ui.screens.catechism.AngelChoirsScreen
+import com.ynotlabs.cathopedia.ui.screens.catechism.WhoCreatedTheBibleScreen
+import com.ynotlabs.cathopedia.ui.screens.holysee.PatriarchAndPopeScreen
+import com.ynotlabs.cathopedia.ui.screens.holymass.MassTypesScreen
+import com.ynotlabs.cathopedia.ui.screens.holymass.LiturgicalYearScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.HolyTrinityScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.AltarScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.MonstranceScreen
@@ -169,6 +174,16 @@ fun HubArticleScreen(
         return
     }
 
+    if (articleId == "art.cat.bible_origin") {
+        WhoCreatedTheBibleScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            listState = listState,
+        )
+        return
+    }
+
     if (articleId == "art.cat.four_marks") {
         FourMarksScreen(
             repository = repository,
@@ -179,8 +194,18 @@ fun HubArticleScreen(
         return
     }
 
+    if (articleId == "art.cat.angels") {
+        AngelChoirsScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            listState = listState,
+        )
+        return
+    }
+
     if (articleId == "art.cat.last_things") {
-        FourLastThingsScreen(
+        LastThingsScreen(
             repository = repository,
             language = language,
             onBack = onBack,
@@ -200,8 +225,38 @@ fun HubArticleScreen(
         return
     }
 
+    if (articleId == "art.holy_see.patriarch_vs_pope") {
+        PatriarchAndPopeScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            listState = listState,
+        )
+        return
+    }
+
     if (articleId == "art.cardinals.overview") {
         CardinalsScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            listState = listState,
+        )
+        return
+    }
+
+    if (articleId == "art.mass.liturgical_year") {
+        LiturgicalYearScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            listState = listState,
+        )
+        return
+    }
+
+    if (articleId == "art.mass.types") {
+        MassTypesScreen(
             repository = repository,
             language = language,
             onBack = onBack,

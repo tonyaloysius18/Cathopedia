@@ -246,8 +246,18 @@
    "stepperId": "step.hierarchy"
   },
   {
-   "id": "holy_see.cardinals",
+   "id": "holy_see.patriarchs",
    "sortOrder": 18,
+   "status": "PUBLISHED",
+   "layout": "ARTICLES",
+   "titleKey": "sec.patriarchs.title",
+   "summaryKey": "sec.patriarchs.summary",
+   "icon": "ic_mitre",
+   "articleIds": ["art.holy_see.patriarch_vs_pope"]
+  },
+  {
+   "id": "holy_see.cardinals",
+   "sortOrder": 19,
    "status": "PUBLISHED",
    "layout": "ARTICLES",
    "titleKey": "sec.cardinals.title",
@@ -260,7 +270,7 @@
   },
   {
    "id": "holy_see.church_offices",
-   "sortOrder": 19,
+   "sortOrder": 20,
    "status": "PUBLISHED",
    "layout": "ARTICLES",
    "titleKey": "sec.church_offices.title",
@@ -278,7 +288,7 @@
   },
   {
    "id": "holy_see.honorary_titles",
-   "sortOrder": 20,
+   "sortOrder": 21,
    "status": "PUBLISHED",
    "layout": "ARTICLES",
    "titleKey": "sec.honorary_titles.title",
@@ -387,6 +397,39 @@
   }
  ],
  "articles": [
+  {
+   "id": "art.holy_see.patriarch_vs_pope",
+   "sectionId": "holy_see.patriarchs",
+   "sortOrder": 1,
+   "titleKey": "art.patpope.title",
+   "leadKey": "art.patpope.lead",
+   "readingTimeMinutes": 3,
+   "blocks": [
+   { "type": "paragraph", "textKey": "art.patpope.intro" },
+   { "type": "image", "asset": "hub/holy_see/patriarch_portrait.png", "captionKey": "art.patpope.patriarch.caption", "license": "IN_HOUSE" },
+   { "type": "image", "asset": "hub/holy_see/hierarchy_pope.png", "captionKey": "art.patpope.pope.caption", "license": "IN_HOUSE" },
+   { "type": "factGrid", "facts": [
+    { "labelKey": "art.patpope.label.who", "valueKey": "art.patpope.patriarch.who" },
+    { "labelKey": "art.patpope.label.authority", "valueKey": "art.patpope.patriarch.authority" },
+    { "labelKey": "art.patpope.label.scope", "valueKey": "art.patpope.patriarch.scope" },
+    { "labelKey": "art.patpope.label.chosen", "valueKey": "art.patpope.patriarch.chosen" },
+    { "labelKey": "art.patpope.label.symbols", "valueKey": "art.patpope.patriarch.symbols", "icon": "hub/holy_see/patriarch_cross.png" }
+   ] },
+   { "type": "factGrid", "facts": [
+    { "labelKey": "art.patpope.label.who", "valueKey": "art.patpope.pope.who" },
+    { "labelKey": "art.patpope.label.authority", "valueKey": "art.patpope.pope.authority" },
+    { "labelKey": "art.patpope.label.scope", "valueKey": "art.patpope.pope.scope" },
+    { "labelKey": "art.patpope.label.chosen", "valueKey": "art.patpope.pope.chosen" },
+    { "labelKey": "art.patpope.label.symbols", "valueKey": "art.patpope.pope.symbols", "icon": "hub/holy_see/papal_keys.png" }
+   ] },
+   { "type": "heading", "level": 2, "textKey": "art.patpope.keypoints.title" },
+   { "type": "list", "style": "bullet", "itemKeys": ["art.patpope.patriarch.k1", "art.patpope.patriarch.k2", "art.patpope.patriarch.k3", "art.patpope.patriarch.k4"] },
+   { "type": "list", "style": "bullet", "itemKeys": ["art.patpope.pope.k1", "art.patpope.pope.k2", "art.patpope.pope.k3", "art.patpope.pope.k4"] },
+   { "type": "callout", "tone": "info", "titleKey": "art.patpope.examples.title", "textKey": "art.patpope.examples.body" },
+   { "type": "callout", "tone": "note", "titleKey": "art.patpope.short.title", "textKey": "art.patpope.short.body" },
+   { "type": "callout", "tone": "devotional", "titleKey": "art.patpope.remember.title", "textKey": "art.patpope.remember.body" }
+   ]
+  },
   {
    "id": "art.vatican_city.holy_see_vs_state",
    "sectionId": "holy_see.vatican_city",

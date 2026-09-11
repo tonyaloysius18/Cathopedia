@@ -21,11 +21,21 @@
       "titleKey": "cat.creed.title",
       "summaryKey": "cat.creed.summary",
       "icon": "ic_creed",
-      "articleIds": ["art.cat.trinity", "art.cat.creeds", "art.cat.four_marks", "art.cat.last_things"]
+      "articleIds": ["art.cat.trinity", "art.cat.creeds", "art.cat.four_marks", "art.cat.last_things", "art.cat.angels"]
+    },
+    {
+      "id": "cat.scripture",
+      "sortOrder": 2,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "cat.scripture.title",
+      "summaryKey": "cat.scripture.summary",
+      "icon": "ic_scroll",
+      "articleIds": ["art.cat.bible_origin"]
     },
     {
       "id": "cat.sacraments",
-      "sortOrder": 2,
+      "sortOrder": 3,
       "status": "PUBLISHED",
       "layout": "FACT_SHEET",
       "titleKey": "cat.sacraments.title",
@@ -36,7 +46,7 @@
     },
     {
       "id": "cat.confession",
-      "sortOrder": 3,
+      "sortOrder": 4,
       "status": "PUBLISHED",
       "layout": "STEPPER",
       "titleKey": "cat.confession.title",
@@ -47,7 +57,7 @@
     },
     {
       "id": "cat.commandments",
-      "sortOrder": 4,
+      "sortOrder": 5,
       "status": "PUBLISHED",
       "layout": "FACT_SHEET",
       "titleKey": "cat.commandments.title",
@@ -58,7 +68,7 @@
     },
     {
       "id": "cat.gifts",
-      "sortOrder": 5,
+      "sortOrder": 6,
       "status": "PUBLISHED",
       "layout": "FACT_SHEET",
       "titleKey": "cat.gifts.title",
@@ -69,7 +79,7 @@
     },
     {
       "id": "cat.fruits",
-      "sortOrder": 6,
+      "sortOrder": 7,
       "status": "PUBLISHED",
       "layout": "FACT_SHEET",
       "titleKey": "cat.fruits.title",
@@ -79,7 +89,7 @@
     },
     {
       "id": "cat.virtues",
-      "sortOrder": 7,
+      "sortOrder": 8,
       "status": "PUBLISHED",
       "layout": "FACT_SHEET",
       "titleKey": "cat.virtues.title",
@@ -89,7 +99,7 @@
     },
     {
       "id": "cat.capital_sins",
-      "sortOrder": 8,
+      "sortOrder": 9,
       "status": "PUBLISHED",
       "layout": "FACT_SHEET",
       "titleKey": "cat.sins.title",
@@ -99,7 +109,7 @@
     },
     {
       "id": "cat.beatitudes",
-      "sortOrder": 9,
+      "sortOrder": 10,
       "status": "PUBLISHED",
       "layout": "FACT_SHEET",
       "titleKey": "cat.beatitudes.title",
@@ -109,7 +119,7 @@
     },
     {
       "id": "cat.works_of_mercy",
-      "sortOrder": 10,
+      "sortOrder": 11,
       "status": "PUBLISHED",
       "layout": "FACT_SHEET",
       "titleKey": "cat.mercy.title",
@@ -119,7 +129,7 @@
     },
     {
       "id": "cat.precepts",
-      "sortOrder": 11,
+      "sortOrder": 12,
       "status": "PUBLISHED",
       "layout": "FACT_SHEET",
       "titleKey": "cat.precepts.title",
@@ -129,6 +139,42 @@
     }
   ],
   "articles": [
+    {
+      "id": "art.cat.angels",
+      "sectionId": "cat.creed",
+      "sortOrder": 5,
+      "titleKey": "art.angels.title",
+      "leadKey": "art.angels.lead",
+      "readingTimeMinutes": 5,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.angels.intro" },
+        { "type": "heading", "level": 2, "textKey": "art.angels.group.first" },
+        { "type": "image", "asset": "hub/catechism/cat_angel_seraphim.png", "captionKey": "art.angels.seraphim.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.angels.seraphim.title", "textKey": "art.angels.seraphim.body" },
+        { "type": "image", "asset": "hub/catechism/cat_angel_cherubim.png", "captionKey": "art.angels.cherubim.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.angels.cherubim.title", "textKey": "art.angels.cherubim.body" },
+        { "type": "image", "asset": "hub/catechism/cat_angel_thrones.png", "captionKey": "art.angels.thrones.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.angels.thrones.title", "textKey": "art.angels.thrones.body" },
+        { "type": "heading", "level": 2, "textKey": "art.angels.group.second" },
+        { "type": "image", "asset": "hub/catechism/cat_angel_dominions.png", "captionKey": "art.angels.dominions.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.angels.dominions.title", "textKey": "art.angels.dominions.body" },
+        { "type": "image", "asset": "hub/catechism/cat_angel_virtues.png", "captionKey": "art.angels.virtues.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.angels.virtues.title", "textKey": "art.angels.virtues.body" },
+        { "type": "image", "asset": "hub/catechism/cat_angel_powers.png", "captionKey": "art.angels.powers.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.angels.powers.title", "textKey": "art.angels.powers.body" },
+        { "type": "heading", "level": 2, "textKey": "art.angels.group.third" },
+        { "type": "image", "asset": "hub/catechism/cat_angel_principalities.png", "captionKey": "art.angels.principalities.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.angels.principalities.title", "textKey": "art.angels.principalities.body" },
+        { "type": "image", "asset": "hub/catechism/cat_angel_archangels.png", "captionKey": "art.angels.archangels.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.angels.archangels.title", "textKey": "art.angels.archangels.body" },
+        { "type": "image", "asset": "hub/catechism/cat_angel_angels.png", "captionKey": "art.angels.angels.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.angels.angels.title", "textKey": "art.angels.angels.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.angels.scripture.title", "textKey": "art.angels.scripture.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.angels.tradition.title", "textKey": "art.angels.tradition.body" },
+        { "type": "callout", "tone": "warning", "titleKey": "art.angels.clarify.title", "textKey": "art.angels.clarify.body" },
+        { "type": "quote", "textKey": "art.angels.quote", "attributionKey": "art.angels.quote.attribution" }
+      ]
+    },
     {
       "id": "art.cat.trinity",
       "sectionId": "cat.creed",
@@ -159,6 +205,34 @@
       ]
     },
     {
+      "id": "art.cat.bible_origin",
+      "sectionId": "cat.scripture",
+      "sortOrder": 1,
+      "titleKey": "art.bible.title",
+      "leadKey": "art.bible.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.bible.p0" },
+        { "type": "image", "asset": "hub/catechism/cat_bible_author_god.png", "captionKey": "art.bible.p1.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.bible.p1.title", "textKey": "art.bible.p1.body" },
+        { "type": "image", "asset": "hub/catechism/cat_bible_human_authors.png", "captionKey": "art.bible.p2.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.bible.p2.title", "textKey": "art.bible.p2.body" },
+        { "type": "image", "asset": "hub/catechism/cat_bible_long_period.png", "captionKey": "art.bible.p3.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.bible.p3.title", "textKey": "art.bible.p3.body" },
+        { "type": "image", "asset": "hub/catechism/cat_bible_holy_spirit.png", "captionKey": "art.bible.p4.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.bible.p4.title", "textKey": "art.bible.p4.body" },
+        { "type": "image", "asset": "hub/catechism/cat_bible_canon_council.png", "captionKey": "art.bible.p5.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.bible.p5.title", "textKey": "art.bible.p5.body" },
+        { "type": "image", "asset": "hub/catechism/cat_bible_handed_down.png", "captionKey": "art.bible.p6.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.bible.p6.title", "textKey": "art.bible.p6.body" },
+        { "type": "stepperRef", "stepperId": "cat.step.bible_journey" },
+        { "type": "heading", "level": 2, "textKey": "art.bible.remember.title" },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.bible.remember1", "art.bible.remember2", "art.bible.remember3", "art.bible.remember4"] },
+        { "type": "callout", "tone": "devotional", "titleKey": "art.bible.bottom.title", "textKey": "art.bible.bottom.body" },
+        { "type": "quote", "textKey": "art.bible.quote", "attributionKey": "art.bible.quote.attribution" }
+      ]
+    },
+    {
       "id": "art.cat.four_marks",
       "sectionId": "cat.creed",
       "sortOrder": 3,
@@ -167,7 +241,10 @@
       "readingTimeMinutes": 2,
       "blocks": [
         { "type": "paragraph", "textKey": "art.marks.p1" },
-        { "type": "list", "style": "bullet", "itemKeys": ["art.marks.li1", "art.marks.li2", "art.marks.li3", "art.marks.li4"] }
+        { "type": "list", "style": "numbered", "itemKeys": ["art.marks.li1", "art.marks.li2", "art.marks.li3", "art.marks.li4"] },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.marks.ref1", "art.marks.ref2", "art.marks.ref3", "art.marks.ref4"] },
+        { "type": "callout", "tone": "note", "titleKey": "art.marks.why.title", "textKey": "art.marks.why.body" },
+        { "type": "callout", "tone": "devotional", "titleKey": "art.marks.closing.title", "textKey": "art.marks.closing.body" }
       ]
     },
     {
@@ -176,10 +253,21 @@
       "sortOrder": 4,
       "titleKey": "art.last.title",
       "leadKey": "art.last.lead",
-      "readingTimeMinutes": 2,
+      "readingTimeMinutes": 4,
       "blocks": [
-        { "type": "list", "style": "bullet", "itemKeys": ["art.last.li1", "art.last.li2", "art.last.li3", "art.last.li4"] },
-        { "type": "callout", "tone": "note", "titleKey": "art.last.callout.title", "textKey": "art.last.callout.body" }
+        { "type": "paragraph", "textKey": "art.last.intro" },
+        { "type": "image", "asset": "hub/catechism/cat_destiny_earth.png", "captionKey": "art.last.earth.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.last.earth.title", "textKey": "art.last.earth.body" },
+        { "type": "image", "asset": "hub/catechism/cat_destiny_purgatory.png", "captionKey": "art.last.purgatory.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.last.purgatory.title", "textKey": "art.last.purgatory.body" },
+        { "type": "image", "asset": "hub/catechism/cat_destiny_heaven.png", "captionKey": "art.last.heaven.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.last.heaven.title", "textKey": "art.last.heaven.body" },
+        { "type": "image", "asset": "hub/catechism/cat_destiny_hell.png", "captionKey": "art.last.hell.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.last.hell.title", "textKey": "art.last.hell.body" },
+        { "type": "heading", "level": 2, "textKey": "art.last.sequence.title" },
+        { "type": "list", "style": "numbered", "itemKeys": ["art.last.seq.1", "art.last.seq.2", "art.last.seq.3", "art.last.seq.4", "art.last.seq.5", "art.last.seq.6"] },
+        { "type": "callout", "tone": "note", "titleKey": "art.last.end.title", "textKey": "art.last.end.body" },
+        { "type": "callout", "tone": "devotional", "titleKey": "art.last.remember.title", "textKey": "art.last.remember.body" }
       ]
     },
     {
@@ -378,6 +466,18 @@
     }
   ],
   "steppers": [
+    {
+      "id": "cat.step.bible_journey",
+      "titleKey": "cat.step.bible_journey.title",
+      "introKey": "cat.step.bible_journey.intro",
+      "steps": [
+        { "id": "step.bible.reveals", "order": 1, "titleKey": "step.bible.reveals.title", "bodyKey": "step.bible.reveals.body", "asset": "hub/catechism/cat_bible_journey_reveals.png" },
+        { "id": "step.bible.write", "order": 2, "titleKey": "step.bible.write.title", "bodyKey": "step.bible.write.body", "asset": "hub/catechism/cat_bible_journey_write.png" },
+        { "id": "step.bible.discern", "order": 3, "titleKey": "step.bible.discern.title", "bodyKey": "step.bible.discern.body", "asset": "hub/catechism/cat_bible_journey_discern.png" },
+        { "id": "step.bible.preserve", "order": 4, "titleKey": "step.bible.preserve.title", "bodyKey": "step.bible.preserve.body", "asset": "hub/catechism/cat_bible_journey_preserve.png" },
+        { "id": "step.bible.reaches", "order": 5, "titleKey": "step.bible.reaches.title", "bodyKey": "step.bible.reaches.body", "asset": "hub/catechism/cat_bible_journey_reaches.png" }
+      ]
+    },
     {
       "id": "cat.step.confession",
       "titleKey": "cat.step.confession.title",

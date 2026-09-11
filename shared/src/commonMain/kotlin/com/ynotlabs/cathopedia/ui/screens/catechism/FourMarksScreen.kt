@@ -1,6 +1,7 @@
 package com.ynotlabs.cathopedia.ui.screens.catechism
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -9,6 +10,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -39,9 +42,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -53,9 +60,20 @@ import com.ynotlabs.cathopedia.content.model.ParagraphBlock
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.model.HubArticleDetail
+import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.resources._01
+import com.ynotlabs.cathopedia.resources._02
+import com.ynotlabs.cathopedia.resources._03
+import com.ynotlabs.cathopedia.resources._04
+import com.ynotlabs.cathopedia.resources.cat_four_marks_apostolic
+import com.ynotlabs.cathopedia.resources.cat_four_marks_catholic
+import com.ynotlabs.cathopedia.resources.cat_four_marks_holy
+import com.ynotlabs.cathopedia.resources.cat_four_marks_one
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
 
 private val MarksBackground = Color(0xFF061A13)
 private val MarksSurface = Color(0xFF0A241B)
@@ -64,6 +82,20 @@ private val MarksGold = Color(0xFFD6AE3D)
 private val MarksCream = Color(0xFFF4ECDD)
 private val MarksMuted = Color(0xFFB7B09D)
 
+private const val FOUR_MARKS_ARTICLE_ID = "art.cat.four_marks"
+
+/** The four marks, in creed order, as the pillar illustration draws them top to bottom. */
+private data class Mark(
+    val ordinal: Int,
+    val name: String,
+    val body: String,
+    val reference: String,
+)
+
+/**
+ * The Four Marks of the Church, presented as four paired illustration and copy cards.
+ * Each generated square illustration is fitted without cropping or stretching.
+ */
 @Composable
 fun FourMarksScreen(
     repository: CathopediaRepository,
@@ -71,13 +103,266 @@ fun FourMarksScreen(
     onBack: () -> Unit,
     listState: LazyListState = rememberLazyListState(),
 ) {
-    CatechismCardArticleScreen(
-        articleId = "art.cat.four_marks",
-        repository = repository,
-        language = language,
-        onBack = onBack,
-        listState = listState,
-    )
+    val s = LocalStrings.current
+    var article by remember(language) { mutableStateOf<HubArticleDetail?>(null) }
+    var strings by remember(language) { mutableStateOf<Map<String, String>>(emptyMap()) }
+
+    LaunchedEffect(language) {
+        val loaded = repository.hubArticle(FOUR_MARKS_ARTICLE_ID) ?: return@LaunchedEffect
+        article = loaded
+        val keys = buildSet {
+            add(loaded.titleKey)
+            loaded.leadKey?.let(::add)
+            loaded.blocks.forEach { block ->
+                when (block) {
+                    is ParagraphBlock -> add(block.textKey)
+                    is ListBlock -> addAll(block.itemKeys)
+                    is CalloutBlock -> {
+                        block.titleKey?.let(::add)
+                        add(block.textKey)
+                    }
+                    else -> Unit
+                }
+            }
+        }
+        strings = repository.resolveHubStrings(keys, language)
+    }
+
+    val current = article
+    val intro = current?.blocks
+        ?.filterIsInstance<ParagraphBlock>()
+        ?.firstOrNull()
+        ?.let { strings[it.textKey] }
+        .orEmpty()
+
+    // The article carries two lists: the marks themselves, then their scripture refs.
+    val lists = current?.blocks?.filterIsInstance<ListBlock>().orEmpty()
+    val markItems = lists.getOrNull(0)?.itemKeys?.mapNotNull(strings::get).orEmpty()
+    val references = lists.getOrNull(1)?.itemKeys?.map { strings[it].orEmpty() }.orEmpty()
+    val marks = markItems.mapIndexed { index, item ->
+        val separator = " — "
+        Mark(
+            ordinal = index + 1,
+            name = item.substringBefore(separator, item),
+            body = item.substringAfter(separator, ""),
+            reference = references.getOrNull(index).orEmpty(),
+        )
+    }
+
+    val callouts = current?.blocks
+        ?.filterIsInstance<CalloutBlock>()
+        ?.map { block -> block.titleKey?.let(strings::get) to strings[block.textKey].orEmpty() }
+        .orEmpty()
+
+    var selected by remember(language) { mutableIntStateOf(-1) }
+    var headerHeightPx by remember(language) { mutableIntStateOf(0) }
+    val headerHeight = with(LocalDensity.current) { headerHeightPx.toDp() }
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MarksBackground),
+    ) {
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            state = listState,
+            contentPadding = PaddingValues(
+                start = 16.dp,
+                top = headerHeight + 20.dp,
+                end = 16.dp,
+                bottom = 120.dp,
+            ),
+        ) {
+            if (intro.isNotBlank()) {
+                item {
+                    MarksIntroCard(intro)
+                    Spacer(Modifier.height(16.dp))
+                    SacredDivider()
+                    Spacer(Modifier.height(18.dp))
+                }
+            }
+
+            if (marks.isNotEmpty()) {
+                item {
+                    MarksPillar(
+                        marks = marks,
+                        selected = selected,
+                        contentDescription = strings[current?.titleKey].orEmpty(),
+                        onSelect = { index -> selected = if (selected == index) -1 else index },
+                    )
+                    Spacer(Modifier.height(20.dp))
+                }
+            }
+
+            items(callouts) { (title, body) ->
+                CatechismCalloutCard(
+                    title = title,
+                    body = body,
+                )
+                Spacer(Modifier.height(12.dp))
+            }
+        }
+
+        MarksHeaderPanel(
+            title = current?.let { strings[it.titleKey] }.orEmpty(),
+            subtitle = current?.leadKey?.let(strings::get).orEmpty(),
+            backDescription = s.back,
+            onBack = onBack,
+            modifier = Modifier.onGloballyPositioned {
+                if (headerHeightPx != it.size.height) headerHeightPx = it.size.height
+            },
+        )
+    }
+}
+
+@Composable
+private fun MarksPillar(
+    marks: List<Mark>,
+    selected: Int,
+    contentDescription: String,
+    onSelect: (Int) -> Unit,
+) {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        marks.forEachIndexed { index, mark ->
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(IntrinsicSize.Min),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                MarkIllustrationCard(
+                    illustration = markIllustration(mark.ordinal),
+                    contentDescription = "$contentDescription: ${mark.name}",
+                    selected = index == selected,
+                    onClick = { onSelect(index) },
+                    modifier = Modifier
+                        .width(116.dp)
+                        .fillMaxHeight(),
+                )
+                MarkTierCard(
+                    mark = mark,
+                    selected = index == selected,
+                    onClick = { onSelect(index) },
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxHeight(),
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun MarkIllustrationCard(
+    illustration: DrawableResource,
+    contentDescription: String,
+    selected: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Surface(
+        modifier = modifier.clickable(onClick = onClick),
+        shape = RoundedCornerShape(16.dp),
+        color = MarksSurface.copy(alpha = 0.55f),
+        border = BorderStroke(
+            width = if (selected) 1.5.dp else 1.dp,
+            color = MarksGold.copy(alpha = if (selected) 0.75f else 0.18f),
+        ),
+    ) {
+        Box(
+            modifier = Modifier.padding(6.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            Image(
+                painter = painterResource(illustration),
+                contentDescription = contentDescription,
+                contentScale = ContentScale.Fit,
+                modifier = Modifier.size(104.dp),
+            )
+        }
+    }
+}
+
+private fun markIllustration(ordinal: Int): DrawableResource = when (ordinal) {
+    1 -> Res.drawable.cat_four_marks_one
+    2 -> Res.drawable.cat_four_marks_holy
+    3 -> Res.drawable.cat_four_marks_catholic
+    else -> Res.drawable.cat_four_marks_apostolic
+}
+
+private fun markNumber(ordinal: Int): DrawableResource = when (ordinal) {
+    1 -> Res.drawable._01
+    2 -> Res.drawable._02
+    3 -> Res.drawable._03
+    else -> Res.drawable._04
+}
+
+@Composable
+private fun MarkTierCard(
+    mark: Mark,
+    selected: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Surface(
+        modifier = modifier.clickable(onClick = onClick),
+        shape = RoundedCornerShape(18.dp),
+        color = MarksSurface,
+        contentColor = MarksCream,
+        border = BorderStroke(1.dp, MarksGold.copy(alpha = if (selected) 0.85f else 0.35f)),
+    ) {
+        Box {
+            GoldCardAccent(Modifier.align(Alignment.CenterStart))
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 18.dp, top = 12.dp, end = 14.dp, bottom = 12.dp),
+                verticalArrangement = Arrangement.Center,
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Image(
+                        painter = painterResource(markNumber(mark.ordinal)),
+                        contentDescription = mark.ordinal.toString(),
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier.size(24.dp),
+                    )
+                    Spacer(Modifier.width(8.dp))
+                    Text(
+                        text = mark.name.uppercase(),
+                        color = MarksGold,
+                        fontFamily = FontFamily.Serif,
+                        fontSize = 16.sp,
+                        lineHeight = 19.sp,
+                        letterSpacing = 0.8.sp,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                }
+                if (mark.body.isNotBlank()) {
+                    Spacer(Modifier.height(5.dp))
+                    Text(
+                        text = mark.body,
+                        color = MarksCream.copy(alpha = 0.88f),
+                        fontSize = 12.sp,
+                        lineHeight = 17.sp,
+                    )
+                }
+                if (mark.reference.isNotBlank()) {
+                    Spacer(Modifier.height(5.dp))
+                    Text(
+                        text = mark.reference,
+                        color = MarksMuted,
+                        fontSize = 10.sp,
+                        lineHeight = 13.sp,
+                        fontStyle = FontStyle.Italic,
+                    )
+                }
+            }
+        }
+    }
 }
 
 @Composable
