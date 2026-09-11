@@ -7,25 +7,26 @@ import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.ui.screens.common.IllustratedEntriesArticle
 
 /**
- * "The Nine Choirs of Angels" — Catechism → What We Believe.
+ * "Types of Reverence" — Catechism → What We Believe.
  *
- * Nine choirs in three hierarchies, separated by heading blocks. The closing
- * `warning` callout is the important one and the shared layout sets it apart:
- * the ninefold ranking is a theological tradition, not defined dogma, and the
- * page must not leave a reader thinking otherwise.
+ * Latria, hyperdulia, protodulia and dulia. Unnumbered: these are four kinds of
+ * reverence, not steps in a sequence. The `warning` callout carries the point
+ * the whole page exists for — veneration differs from worship in kind, not
+ * merely in degree.
  */
 @Composable
-fun AngelChoirsScreen(
+fun ReverenceScreen(
     repository: CathopediaRepository,
     language: String,
     onBack: () -> Unit,
     listState: LazyListState = rememberLazyListState(),
 ) {
     IllustratedEntriesArticle(
-        articleId = "art.cat.angels",
+        articleId = "art.cat.reverence",
         repository = repository,
         language = language,
         onBack = onBack,
+        numbered = false,
         listState = listState,
     )
 }

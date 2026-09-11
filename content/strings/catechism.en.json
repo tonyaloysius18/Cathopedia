@@ -435,6 +435,31 @@
     "art.angels.clarify.title": "What the Church actually teaches",
     "art.angels.clarify.body": "The Church teaches that angels exist as spiritual, non-corporeal creatures, and that they serve God as his messengers (CCC 328–336). The nine choirs are a traditional theological classification, not a defined dogma: no Catholic is required to hold that Scripture lists exactly nine.",
     "art.angels.quote": "“Bless the Lord, O you his angels, you mighty ones who do his word, obeying the voice of his word.”",
-    "art.angels.quote.attribution": "Psalm 103:20"
+    "art.angels.quote.attribution": "Psalm 103:20",
+
+    "art.reverence.title": "Types of Reverence",
+    "art.reverence.lead": "Latria, hyperdulia, protodulia and dulia.",
+    "art.reverence.intro": "Catholics do not worship Mary, the saints or the angels. Worship — adoration — belongs to God alone. What is given to the saints is veneration: honour paid to God's grace at work in them. Theology has names for these different degrees of reverence, and the distinction between them matters.",
+    "art.reverence.latria.title": "Latria — worship",
+    "art.reverence.latria.body": "Worship and adoration, given to God alone. It is owed to the Father, the Son and the Holy Spirit, and to Christ present in the Blessed Sacrament. To give latria to any creature, however holy, would be idolatry.",
+    "art.reverence.latria.who": "God alone",
+    "art.reverence.hyperdulia.title": "Hyperdulia — the highest veneration",
+    "art.reverence.hyperdulia.body": "The highest veneration, given to the Blessed Virgin Mary because she is the Mother of God. It surpasses the honour given to any other creature — yet it remains veneration, and never becomes worship.",
+    "art.reverence.hyperdulia.who": "The Blessed Virgin Mary",
+    "art.reverence.protodulia.title": "Protodulia — the foremost veneration",
+    "art.reverence.protodulia.body": "A term used for the first or foremost veneration among the saints, given to St Joseph as head of the Holy Family and patron of the universal Church.",
+    "art.reverence.protodulia.who": "Saint Joseph",
+    "art.reverence.dulia.title": "Dulia — veneration",
+    "art.reverence.dulia.body": "The veneration given to the saints and the angels on account of God's grace at work in them. In honouring them we honour the God who made them holy, and we ask their prayers as we would ask a friend's.",
+    "art.reverence.dulia.who": "The saints and angels",
+    "art.reverence.short.title": "In short",
+    "art.reverence.short.1": "God is worshipped — latria.",
+    "art.reverence.short.2": "Mary is given the highest veneration — hyperdulia.",
+    "art.reverence.short.3": "St Joseph is given the foremost veneration among the saints — protodulia.",
+    "art.reverence.short.4": "The saints and angels are venerated — dulia.",
+    "art.reverence.notworship.title": "Veneration is not worship",
+    "art.reverence.notworship.body": "The difference is one of kind, not merely of degree. However great the honour paid to Our Lady or to the saints, it is never the adoration owed to God — and no amount of veneration adds up to worship. The Second Council of Nicaea and the Council of Trent both taught this explicitly.",
+    "art.reverence.proto.title": "A word about protodulia",
+    "art.reverence.proto.body": "The classical distinction is threefold: latria, dulia and hyperdulia. Protodulia is a later term, used by theologians to express St Joseph's pre-eminence among the saints. It names a rank within dulia rather than a fourth kind of reverence."
 }
 }

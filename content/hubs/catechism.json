@@ -21,7 +21,7 @@
       "titleKey": "cat.creed.title",
       "summaryKey": "cat.creed.summary",
       "icon": "ic_creed",
-      "articleIds": ["art.cat.trinity", "art.cat.creeds", "art.cat.four_marks", "art.cat.last_things", "art.cat.angels"]
+      "articleIds": ["art.cat.trinity", "art.cat.creeds", "art.cat.four_marks", "art.cat.last_things", "art.cat.angels", "art.cat.reverence"]
     },
     {
       "id": "cat.scripture",
@@ -139,6 +139,29 @@
     }
   ],
   "articles": [
+    {
+      "id": "art.cat.reverence",
+      "sectionId": "cat.creed",
+      "sortOrder": 6,
+      "titleKey": "art.reverence.title",
+      "leadKey": "art.reverence.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.reverence.intro" },
+        { "type": "image", "asset": "hub/symbols/symbol_cross.png", "captionKey": "art.reverence.latria.who", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.reverence.latria.title", "textKey": "art.reverence.latria.body" },
+        { "type": "image", "asset": "hub/symbols/symbol_marian_monogram.png", "captionKey": "art.reverence.hyperdulia.who", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.reverence.hyperdulia.title", "textKey": "art.reverence.hyperdulia.body" },
+        { "type": "image", "asset": "hub/symbols/symbol_joseph_lily.png", "captionKey": "art.reverence.protodulia.who", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.reverence.protodulia.title", "textKey": "art.reverence.protodulia.body" },
+        { "type": "image", "asset": "hub/symbols/symbol_halo.png", "captionKey": "art.reverence.dulia.who", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.reverence.dulia.title", "textKey": "art.reverence.dulia.body" },
+        { "type": "heading", "level": 2, "textKey": "art.reverence.short.title" },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.reverence.short.1", "art.reverence.short.2", "art.reverence.short.3", "art.reverence.short.4"] },
+        { "type": "callout", "tone": "warning", "titleKey": "art.reverence.notworship.title", "textKey": "art.reverence.notworship.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.reverence.proto.title", "textKey": "art.reverence.proto.body" }
+      ]
+    },
     {
       "id": "art.cat.angels",
       "sectionId": "cat.creed",

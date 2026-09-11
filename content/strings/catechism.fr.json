@@ -435,6 +435,31 @@
     "art.angels.clarify.title": "Ce que l'Église enseigne réellement",
     "art.angels.clarify.body": "L'Église enseigne que les anges existent comme créatures spirituelles, non corporelles, et qu'ils servent Dieu comme ses messagers (CEC 328-336). Les neuf chœurs sont une classification théologique traditionnelle, non un dogme défini : aucun catholique n'est tenu de croire que l'Écriture en énumère exactement neuf.",
     "art.angels.quote": "« Bénissez le Seigneur, vous ses anges, puissants héros qui accomplissez sa parole, attentifs au son de sa parole. »",
-    "art.angels.quote.attribution": "Psaume 103, 20"
+    "art.angels.quote.attribution": "Psaume 103, 20",
+
+    "art.reverence.title": "Les formes de la vénération",
+    "art.reverence.lead": "Latrie, hyperdulie, protodulie et dulie.",
+    "art.reverence.intro": "Les catholiques n'adorent ni Marie, ni les saints, ni les anges. L'adoration n'appartient qu'à Dieu seul. Ce qui est rendu aux saints est la vénération : l'honneur rendu à la grâce de Dieu à l'œuvre en eux. La théologie a des noms pour ces différents degrés de révérence, et la distinction entre eux importe.",
+    "art.reverence.latria.title": "La latrie — l'adoration",
+    "art.reverence.latria.body": "Le culte et l'adoration, rendus à Dieu seul. Elle est due au Père, au Fils et à l'Esprit Saint, et au Christ présent dans le Saint-Sacrement. Rendre la latrie à une créature, si sainte soit-elle, serait de l'idolâtrie.",
+    "art.reverence.latria.who": "Dieu seul",
+    "art.reverence.hyperdulia.title": "L'hyperdulie — la plus haute vénération",
+    "art.reverence.hyperdulia.body": "La plus haute vénération, rendue à la Bienheureuse Vierge Marie parce qu'elle est la Mère de Dieu. Elle surpasse l'honneur rendu à toute autre créature — et pourtant elle demeure vénération, sans jamais devenir adoration.",
+    "art.reverence.hyperdulia.who": "La Bienheureuse Vierge Marie",
+    "art.reverence.protodulia.title": "La protodulie — la vénération première",
+    "art.reverence.protodulia.body": "Un terme désignant la première vénération parmi les saints, rendue à saint Joseph comme chef de la Sainte Famille et patron de l'Église universelle.",
+    "art.reverence.protodulia.who": "Saint Joseph",
+    "art.reverence.dulia.title": "La dulie — la vénération",
+    "art.reverence.dulia.body": "La vénération rendue aux saints et aux anges en raison de la grâce de Dieu à l'œuvre en eux. En les honorant, nous honorons le Dieu qui les a rendus saints, et nous demandons leurs prières comme on le demanderait à un ami.",
+    "art.reverence.dulia.who": "Les saints et les anges",
+    "art.reverence.short.title": "En bref",
+    "art.reverence.short.1": "Dieu est adoré — la latrie.",
+    "art.reverence.short.2": "Marie reçoit la plus haute vénération — l'hyperdulie.",
+    "art.reverence.short.3": "Saint Joseph reçoit la première vénération parmi les saints — la protodulie.",
+    "art.reverence.short.4": "Les saints et les anges sont vénérés — la dulie.",
+    "art.reverence.notworship.title": "Vénérer n'est pas adorer",
+    "art.reverence.notworship.body": "La différence est de nature, et non seulement de degré. Si grand que soit l'honneur rendu à Notre-Dame ou aux saints, il n'est jamais l'adoration due à Dieu — et aucune somme de vénération ne devient adoration. Le deuxième concile de Nicée et le concile de Trente l'ont enseigné explicitement.",
+    "art.reverence.proto.title": "Un mot sur la protodulie",
+    "art.reverence.proto.body": "La distinction classique est triple : latrie, dulie et hyperdulie. La protodulie est un terme plus tardif, employé par les théologiens pour exprimer la prééminence de saint Joseph parmi les saints. Elle désigne un rang au sein de la dulie plutôt qu'une quatrième forme de révérence."
 }
 }
