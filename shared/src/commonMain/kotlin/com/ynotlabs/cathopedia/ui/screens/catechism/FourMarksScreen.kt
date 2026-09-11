@@ -2,25 +2,20 @@ package com.ynotlabs.cathopedia.ui.screens.catechism
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -32,21 +27,14 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -69,18 +57,18 @@ import com.ynotlabs.cathopedia.resources.cat_four_marks_apostolic
 import com.ynotlabs.cathopedia.resources.cat_four_marks_catholic
 import com.ynotlabs.cathopedia.resources.cat_four_marks_holy
 import com.ynotlabs.cathopedia.resources.cat_four_marks_one
-import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
+import com.ynotlabs.cathopedia.ui.screens.common.ArticleCalloutCard
+import com.ynotlabs.cathopedia.ui.screens.common.ArticleCream
+import com.ynotlabs.cathopedia.ui.screens.common.ArticleGold
+import com.ynotlabs.cathopedia.ui.screens.common.ArticleIntroCard
+import com.ynotlabs.cathopedia.ui.screens.common.ArticleMuted
+import com.ynotlabs.cathopedia.ui.screens.common.ArticleScaffold
+import com.ynotlabs.cathopedia.ui.screens.common.ArticleSurface
 import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
-private val MarksBackground = Color(0xFF061A13)
-private val MarksSurface = Color(0xFF0A241B)
-private val MarksHeader = Color(0xFF081F17)
-private val MarksGold = Color(0xFFD6AE3D)
-private val MarksCream = Color(0xFFF4ECDD)
-private val MarksMuted = Color(0xFFB7B09D)
 
 private const val FOUR_MARKS_ARTICLE_ID = "art.cat.four_marks"
 
@@ -155,63 +143,43 @@ fun FourMarksScreen(
         .orEmpty()
 
     var selected by remember(language) { mutableIntStateOf(-1) }
-    var headerHeightPx by remember(language) { mutableIntStateOf(0) }
-    val headerHeight = with(LocalDensity.current) { headerHeightPx.toDp() }
-
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MarksBackground),
+    ArticleScaffold(
+        title = current?.let { strings[it.titleKey] }.orEmpty(),
+        subtitle = current?.leadKey?.let(strings::get).orEmpty(),
+        backDescription = s.back,
+        onBack = onBack,
+        listState = listState,
+        horizontalPadding = 16.dp,
     ) {
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            state = listState,
-            contentPadding = PaddingValues(
-                start = 16.dp,
-                top = headerHeight + 20.dp,
-                end = 16.dp,
-                bottom = 120.dp,
-            ),
-        ) {
-            if (intro.isNotBlank()) {
-                item {
-                    MarksIntroCard(intro)
-                    Spacer(Modifier.height(16.dp))
-                    SacredDivider()
-                    Spacer(Modifier.height(18.dp))
-                }
-            }
-
-            if (marks.isNotEmpty()) {
-                item {
-                    MarksPillar(
-                        marks = marks,
-                        selected = selected,
-                        contentDescription = strings[current?.titleKey].orEmpty(),
-                        onSelect = { index -> selected = if (selected == index) -1 else index },
-                    )
-                    Spacer(Modifier.height(20.dp))
-                }
-            }
-
-            items(callouts) { (title, body) ->
-                CatechismCalloutCard(
-                    title = title,
-                    body = body,
-                )
-                Spacer(Modifier.height(12.dp))
+        if (intro.isNotBlank()) {
+            item {
+                ArticleIntroCard(intro)
+                Spacer(Modifier.height(16.dp))
+                SacredDivider()
+                Spacer(Modifier.height(18.dp))
             }
         }
 
-        MarksHeaderPanel(
-            title = current?.let { strings[it.titleKey] }.orEmpty(),
-            subtitle = current?.leadKey?.let(strings::get).orEmpty(),
-            backDescription = s.back,
-            onBack = onBack,
-            modifier = Modifier.onGloballyPositioned {
-                if (headerHeightPx != it.size.height) headerHeightPx = it.size.height
-            },
-        )
+        if (marks.isNotEmpty()) {
+            item {
+                MarksPillar(
+                    marks = marks,
+                    selected = selected,
+                    contentDescription = strings[current?.titleKey].orEmpty(),
+                    onSelect = { index -> selected = if (selected == index) -1 else index },
+                )
+                Spacer(Modifier.height(20.dp))
+            }
+        }
+
+        items(callouts) { (title, body) ->
+            ArticleCalloutCard(
+                title = title,
+                body = body,
+            )
+            Spacer(Modifier.height(12.dp))
+        }
+    
     }
 }
 
@@ -267,10 +235,10 @@ private fun MarkIllustrationCard(
     Surface(
         modifier = modifier.clickable(onClick = onClick),
         shape = RoundedCornerShape(16.dp),
-        color = MarksSurface.copy(alpha = 0.55f),
+        color = ArticleSurface.copy(alpha = 0.55f),
         border = BorderStroke(
             width = if (selected) 1.5.dp else 1.dp,
-            color = MarksGold.copy(alpha = if (selected) 0.75f else 0.18f),
+            color = ArticleGold.copy(alpha = if (selected) 0.75f else 0.18f),
         ),
     ) {
         Box(
@@ -311,9 +279,9 @@ private fun MarkTierCard(
     Surface(
         modifier = modifier.clickable(onClick = onClick),
         shape = RoundedCornerShape(18.dp),
-        color = MarksSurface,
-        contentColor = MarksCream,
-        border = BorderStroke(1.dp, MarksGold.copy(alpha = if (selected) 0.85f else 0.35f)),
+        color = ArticleSurface,
+        contentColor = ArticleCream,
+        border = BorderStroke(1.dp, ArticleGold.copy(alpha = if (selected) 0.85f else 0.35f)),
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))
@@ -333,7 +301,7 @@ private fun MarkTierCard(
                     Spacer(Modifier.width(8.dp))
                     Text(
                         text = mark.name.uppercase(),
-                        color = MarksGold,
+                        color = ArticleGold,
                         fontFamily = FontFamily.Serif,
                         fontSize = 16.sp,
                         lineHeight = 19.sp,
@@ -345,7 +313,7 @@ private fun MarkTierCard(
                     Spacer(Modifier.height(5.dp))
                     Text(
                         text = mark.body,
-                        color = MarksCream.copy(alpha = 0.88f),
+                        color = ArticleCream.copy(alpha = 0.88f),
                         fontSize = 12.sp,
                         lineHeight = 17.sp,
                     )
@@ -354,7 +322,7 @@ private fun MarkTierCard(
                     Spacer(Modifier.height(5.dp))
                     Text(
                         text = mark.reference,
-                        color = MarksMuted,
+                        color = ArticleMuted,
                         fontSize = 10.sp,
                         lineHeight = 13.sp,
                         fontStyle = FontStyle.Italic,
@@ -363,22 +331,6 @@ private fun MarkTierCard(
             }
         }
     }
-}
-
-@Composable
-fun FourLastThingsScreen(
-    repository: CathopediaRepository,
-    language: String,
-    onBack: () -> Unit,
-    listState: LazyListState = rememberLazyListState(),
-) {
-    CatechismCardArticleScreen(
-        articleId = "art.cat.last_things",
-        repository = repository,
-        language = language,
-        onBack = onBack,
-        listState = listState,
-    )
 }
 
 @Composable
@@ -458,80 +410,60 @@ private fun CatechismCardArticleScreen(
         ?.filterIsInstance<EntityCardsBlock>()
         .orEmpty()
 
-    var headerHeightPx by remember(articleId, language) { mutableIntStateOf(0) }
-    val headerHeight = with(LocalDensity.current) { headerHeightPx.toDp() }
-
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MarksBackground),
+    ArticleScaffold(
+        title = current?.let { strings[it.titleKey] }.orEmpty(),
+        subtitle = current?.leadKey?.let(strings::get).orEmpty(),
+        backDescription = s.back,
+        onBack = onBack,
+        listState = listState,
+        horizontalPadding = 20.dp,
     ) {
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            state = listState,
-            contentPadding = PaddingValues(
-                start = 20.dp,
-                top = headerHeight + 20.dp,
-                end = 20.dp,
-                bottom = 120.dp,
-            ),
-        ) {
-            if (intro.isNotBlank()) {
-                item {
-                    MarksIntroCard(intro)
-                    Spacer(Modifier.height(16.dp))
-                    SacredDivider()
-                    Spacer(Modifier.height(18.dp))
-                }
-            }
-
-            items(marks) { mark ->
-                MarkCard(mark)
-                Spacer(Modifier.height(12.dp))
-            }
-
-            items(callouts) { (title, body) ->
-                CatechismCalloutCard(
-                    title = title,
-                    body = body,
-                )
-                Spacer(Modifier.height(12.dp))
-            }
-
-
-            entityCards.forEach { block ->
-                block.titleKey?.let(strings::get)?.let { title ->
-                    item {
-                        Text(
-                            text = title.uppercase(),
-                            color = MarksGold,
-                            fontSize = 12.sp,
-                            letterSpacing = 1.sp,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(bottom = 12.dp),
-                        )
-                    }
-                }
-
-                items(block.refs) { ref ->
-                    PrayerReferenceCard(
-                        label = ref.labelKey?.let(strings::get) ?: ref.id,
-                        onClick = { onEntityRefSelected(ref) },
-                    )
-                    Spacer(Modifier.height(12.dp))
-                }
+        if (intro.isNotBlank()) {
+            item {
+                ArticleIntroCard(intro)
+                Spacer(Modifier.height(16.dp))
+                SacredDivider()
+                Spacer(Modifier.height(18.dp))
             }
         }
 
-        MarksHeaderPanel(
-            title = current?.let { strings[it.titleKey] }.orEmpty(),
-            subtitle = current?.leadKey?.let(strings::get).orEmpty(),
-            backDescription = s.back,
-            onBack = onBack,
-            modifier = Modifier.onGloballyPositioned {
-                if (headerHeightPx != it.size.height) headerHeightPx = it.size.height
-            },
-        )
+        items(marks) { mark ->
+            MarkCard(mark)
+            Spacer(Modifier.height(12.dp))
+        }
+
+        items(callouts) { (title, body) ->
+            ArticleCalloutCard(
+                title = title,
+                body = body,
+            )
+            Spacer(Modifier.height(12.dp))
+        }
+
+
+        entityCards.forEach { block ->
+            block.titleKey?.let(strings::get)?.let { title ->
+                item {
+                    Text(
+                        text = title.uppercase(),
+                        color = ArticleGold,
+                        fontSize = 12.sp,
+                        letterSpacing = 1.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(bottom = 12.dp),
+                    )
+                }
+            }
+
+            items(block.refs) { ref ->
+                PrayerReferenceCard(
+                    label = ref.labelKey?.let(strings::get) ?: ref.id,
+                    onClick = { onEntityRefSelected(ref) },
+                )
+                Spacer(Modifier.height(12.dp))
+            }
+        }
+    
     }
 }
 
@@ -546,9 +478,9 @@ private fun PrayerReferenceCard(
             .heightIn(min = 72.dp)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(20.dp),
-        color = MarksSurface,
-        contentColor = MarksCream,
-        border = BorderStroke(1.dp, MarksGold.copy(alpha = 0.35f)),
+        color = ArticleSurface,
+        contentColor = ArticleCream,
+        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.35f)),
     ) {
         Box(contentAlignment = Alignment.CenterStart) {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))
@@ -561,7 +493,7 @@ private fun PrayerReferenceCard(
             ) {
                 Text(
                     text = label,
-                    color = MarksCream,
+                    color = ArticleCream,
                     fontFamily = FontFamily.Serif,
                     fontSize = 17.sp,
                     lineHeight = 22.sp,
@@ -572,71 +504,10 @@ private fun PrayerReferenceCard(
                 Icon(
                     imageVector = Icons.Default.ChevronRight,
                     contentDescription = null,
-                    tint = MarksGold.copy(alpha = 0.7f),
+                    tint = ArticleGold.copy(alpha = 0.7f),
                     modifier = Modifier.size(24.dp)
                 )
             }
-        }
-    }
-}
-
-@Composable
-private fun CatechismCalloutCard(
-    title: String?,
-    body: String,
-) {
-    Surface(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(20.dp),
-        color = MarksSurface,
-        contentColor = MarksCream,
-        border = BorderStroke(1.dp, MarksGold.copy(alpha = 0.45f)),
-    ) {
-        Box {
-            GoldCardAccent(Modifier.align(Alignment.CenterStart))
-            Column(
-                modifier = Modifier.padding(start = 22.dp, top = 18.dp, end = 18.dp, bottom = 18.dp),
-            ) {
-                if (!title.isNullOrBlank()) {
-                    Text(
-                        text = title,
-                        color = MarksGold,
-                        fontFamily = FontFamily.Serif,
-                        fontSize = 19.sp,
-                        lineHeight = 23.sp,
-                        fontWeight = FontWeight.SemiBold,
-                    )
-                    Spacer(Modifier.height(6.dp))
-                }
-                Text(
-                    text = body,
-                    color = MarksCream.copy(alpha = 0.88f),
-                    fontSize = 14.sp,
-                    lineHeight = 21.sp,
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun MarksIntroCard(text: String) {
-    Surface(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(20.dp),
-        color = MarksSurface,
-        contentColor = MarksCream,
-        border = BorderStroke(1.dp, MarksGold.copy(alpha = 0.35f)),
-    ) {
-        Box {
-            GoldCardAccent(Modifier.align(Alignment.CenterStart))
-            Text(
-                text = text,
-                color = MarksCream,
-                fontSize = 15.sp,
-                lineHeight = 23.sp,
-                modifier = Modifier.padding(start = 22.dp, top = 20.dp, end = 20.dp, bottom = 20.dp),
-            )
         }
     }
 }
@@ -650,9 +521,9 @@ private fun MarkCard(text: String) {
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        color = MarksSurface,
-        contentColor = MarksCream,
-        border = BorderStroke(1.dp, MarksGold.copy(alpha = 0.35f)),
+        color = ArticleSurface,
+        contentColor = ArticleCream,
+        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.35f)),
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))
@@ -661,7 +532,7 @@ private fun MarkCard(text: String) {
             ) {
                 Text(
                     text = title,
-                    color = MarksGold,
+                    color = ArticleGold,
                     fontFamily = FontFamily.Serif,
                     fontSize = 19.sp,
                     lineHeight = 23.sp,
@@ -671,7 +542,7 @@ private fun MarkCard(text: String) {
                     Spacer(Modifier.height(6.dp))
                     Text(
                         text = body,
-                        color = MarksCream.copy(alpha = 0.88f),
+                        color = ArticleCream.copy(alpha = 0.88f),
                         fontSize = 14.sp,
                         lineHeight = 21.sp,
                     )
@@ -681,60 +552,3 @@ private fun MarkCard(text: String) {
     }
 }
 
-@Composable
-private fun MarksHeaderPanel(
-    title: String,
-    subtitle: String,
-    backDescription: String,
-    onBack: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    var titleLineCount by remember { mutableIntStateOf(1) }
-
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .shadow(
-                elevation = 14.dp,
-                shape = RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp),
-                clip = false,
-            )
-            .clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp))
-            .background(MarksHeader)
-            .statusBarsPadding()
-            .padding(start = 18.dp, top = 6.dp, end = 18.dp, bottom = 18.dp),
-    ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.Top,
-        ) {
-            CathopediaBackButton(
-                onClick = onBack,
-                contentDescription = backDescription,
-            )
-            Spacer(Modifier.width(10.dp))
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = title,
-                    color = MarksCream,
-                    fontFamily = FontFamily.Serif,
-                    fontSize = 29.sp,
-                    lineHeight = 32.sp,
-                    fontWeight = FontWeight.Medium,
-                    onTextLayout = { titleLineCount = it.lineCount },
-                )
-                if (subtitle.isNotBlank()) {
-                    Spacer(Modifier.height(if (titleLineCount <= 1) 4.dp else 10.dp))
-                    Text(
-                        text = subtitle.uppercase(),
-                        color = MarksGold,
-                        fontSize = 10.sp,
-                        lineHeight = 15.sp,
-                        fontWeight = FontWeight.Medium,
-                        letterSpacing = 1.3.sp,
-                    )
-                }
-            }
-        }
-    }
-}

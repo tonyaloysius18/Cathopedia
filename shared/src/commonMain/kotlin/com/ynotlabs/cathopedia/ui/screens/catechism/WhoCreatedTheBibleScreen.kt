@@ -8,7 +8,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -18,9 +17,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
@@ -34,23 +31,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -79,7 +73,16 @@ import com.ynotlabs.cathopedia.resources._06
 import com.ynotlabs.cathopedia.resources._07
 import com.ynotlabs.cathopedia.resources._08
 import com.ynotlabs.cathopedia.resources._09
-import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
+import com.ynotlabs.cathopedia.ui.screens.common.ArticleCalloutCard
+import com.ynotlabs.cathopedia.ui.screens.common.ArticleCream
+import com.ynotlabs.cathopedia.ui.screens.common.ArticleGold
+import com.ynotlabs.cathopedia.ui.screens.common.ArticleGoldSoft
+import com.ynotlabs.cathopedia.ui.screens.common.ArticleIntroCard
+import com.ynotlabs.cathopedia.ui.screens.common.ArticleMuted
+import com.ynotlabs.cathopedia.ui.screens.common.ArticleQuoteCard
+import com.ynotlabs.cathopedia.ui.screens.common.ArticleScaffold
+import com.ynotlabs.cathopedia.ui.screens.common.ArticleSurface
+import com.ynotlabs.cathopedia.ui.screens.common.ArticleSurfaceRaised
 import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.ui.hubAssetPainter
@@ -89,14 +92,6 @@ import org.jetbrains.compose.resources.painterResource
 private const val BIBLE_ARTICLE_ID = "art.cat.bible_origin"
 private const val BIBLE_HERO_ASSET = "hub/catechism/cat_bible_hero.png"
 
-private val BibleBackground = Color(0xFF061A13)
-private val BibleSurface = Color(0xFF0A241B)
-private val BibleSurfaceRaised = Color(0xFF0F2E22)
-private val BibleHeader = Color(0xFF081F17)
-private val BibleGold = Color(0xFFD6AE3D)
-private val BibleGoldSoft = Color(0xFFB08D57)
-private val BibleCream = Color(0xFFF4ECDD)
-private val BibleMuted = Color(0xFFB7B09D)
 
 private val JourneyCircleSize = 56.dp
 private val JourneyCircleTopPadding = 6.dp
@@ -169,75 +164,55 @@ fun WhoCreatedTheBibleScreen(
     val introBlock = blocks.firstOrNull() as? ParagraphBlock
     val intro = introBlock?.let { strings[it.textKey] }.orEmpty()
 
-    var headerHeightPx by remember(language) { mutableIntStateOf(0) }
-    val headerHeight = with(LocalDensity.current) { headerHeightPx.toDp() }
-
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(BibleBackground),
+    ArticleScaffold(
+        title = current?.let { strings[it.titleKey] }.orEmpty(),
+        subtitle = current?.leadKey?.let(strings::get).orEmpty(),
+        backDescription = s.back,
+        onBack = onBack,
+        listState = listState,
+        horizontalPadding = 20.dp,
     ) {
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            state = listState,
-            contentPadding = PaddingValues(
-                start = 20.dp,
-                top = headerHeight + 20.dp,
-                end = 20.dp,
-                bottom = 120.dp,
-            ),
-        ) {
-            item {
-                BibleHeroIntro(
-                    intro = intro,
-                    contentDescription = strings[current?.titleKey].orEmpty(),
-                )
-            }
-
-            var pointNumber = 0
-            var index = if (introBlock != null) 1 else 0
-            while (index < blocks.size) {
-                val block = blocks[index]
-                val next = blocks.getOrNull(index + 1)
-
-                // An image followed by a callout is one of the six numbered points.
-                if (block is ImageBlock && next is CalloutBlock) {
-                    pointNumber += 1
-                    val number = pointNumber
-                    item(key = "point-$number") {
-                        BiblePointCard(
-                            number = number,
-                            asset = block.asset,
-                            title = next.titleKey?.let(strings::get).orEmpty(),
-                            body = strings[next.textKey].orEmpty(),
-                            reference = block.captionKey?.let(strings::get).orEmpty(),
-                        )
-                        Spacer(Modifier.height(12.dp))
-                    }
-                    index += 2
-                    continue
-                }
-
-                renderStandaloneBlock(
-                    scope = this,
-                    key = "block-$index",
-                    block = block,
-                    strings = strings,
-                    stepper = stepper,
-                )
-                index += 1
-            }
+        item {
+            BibleHeroIntro(
+                intro = intro,
+                contentDescription = strings[current?.titleKey].orEmpty(),
+            )
         }
 
-        BibleHeaderPanel(
-            title = current?.let { strings[it.titleKey] }.orEmpty(),
-            subtitle = current?.leadKey?.let(strings::get).orEmpty(),
-            backDescription = s.back,
-            onBack = onBack,
-            modifier = Modifier.onGloballyPositioned {
-                if (headerHeightPx != it.size.height) headerHeightPx = it.size.height
-            },
-        )
+        var pointNumber = 0
+        var index = if (introBlock != null) 1 else 0
+        while (index < blocks.size) {
+            val block = blocks[index]
+            val next = blocks.getOrNull(index + 1)
+
+            // An image followed by a callout is one of the six numbered points.
+            if (block is ImageBlock && next is CalloutBlock) {
+                pointNumber += 1
+                val number = pointNumber
+                item(key = "point-$number") {
+                    BiblePointCard(
+                        number = number,
+                        asset = block.asset,
+                        title = next.titleKey?.let(strings::get).orEmpty(),
+                        body = strings[next.textKey].orEmpty(),
+                        reference = block.captionKey?.let(strings::get).orEmpty(),
+                    )
+                    Spacer(Modifier.height(12.dp))
+                }
+                index += 2
+                continue
+            }
+
+            renderStandaloneBlock(
+                scope = this,
+                key = "block-$index",
+                block = block,
+                strings = strings,
+                stepper = stepper,
+            )
+            index += 1
+        }
+    
     }
 }
 
@@ -250,7 +225,7 @@ private fun renderStandaloneBlock(
 ) {
     when (block) {
         is ParagraphBlock -> scope.item(key = key) {
-            BibleIntroCard(strings[block.textKey].orEmpty())
+            ArticleIntroCard(strings[block.textKey].orEmpty())
             Spacer(Modifier.height(16.dp))
             SacredDivider()
             Spacer(Modifier.height(18.dp))
@@ -259,7 +234,7 @@ private fun renderStandaloneBlock(
         is HeadingBlock -> scope.item(key = key) {
             Text(
                 text = strings[block.textKey].orEmpty().uppercase(),
-                color = BibleGold,
+                color = ArticleGold,
                 fontSize = 12.sp,
                 letterSpacing = 1.sp,
                 fontWeight = FontWeight.Bold,
@@ -273,16 +248,16 @@ private fun renderStandaloneBlock(
         }
 
         is CalloutBlock -> scope.item(key = key) {
-            BibleCalloutCard(
+            ArticleCalloutCard(
                 title = block.titleKey?.let(strings::get),
                 body = strings[block.textKey].orEmpty(),
-                devotional = block.tone == CalloutTone.devotional,
+                emphasised = block.tone == CalloutTone.devotional,
             )
             Spacer(Modifier.height(12.dp))
         }
 
         is QuoteBlock -> scope.item(key = key) {
-            BibleQuoteCard(
+            ArticleQuoteCard(
                 text = strings[block.textKey].orEmpty(),
                 attribution = block.attributionKey?.let(strings::get).orEmpty(),
             )
@@ -295,7 +270,7 @@ private fun renderStandaloneBlock(
                 Spacer(Modifier.height(6.dp))
                 Text(
                     text = strings[journey.titleKey].orEmpty().uppercase(),
-                    color = BibleGold,
+                    color = ArticleGold,
                     fontSize = 12.sp,
                     letterSpacing = 1.sp,
                     fontWeight = FontWeight.Bold,
@@ -304,7 +279,7 @@ private fun renderStandaloneBlock(
                     Spacer(Modifier.height(6.dp))
                     Text(
                         text = intro,
-                        color = BibleMuted,
+                        color = ArticleMuted,
                         fontSize = 13.sp,
                         lineHeight = 19.sp,
                     )
@@ -339,9 +314,9 @@ private fun BibleHeroIntro(
         Surface(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(20.dp),
-            color = BibleSurface,
-            contentColor = BibleCream,
-            border = BorderStroke(1.dp, BibleGold.copy(alpha = 0.35f)),
+            color = ArticleSurface,
+            contentColor = ArticleCream,
+            border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.35f)),
         ) {
             Box {
                 GoldCardAccent(Modifier.align(Alignment.CenterStart))
@@ -350,7 +325,7 @@ private fun BibleHeroIntro(
                     imageDescription = contentDescription,
                     text = intro,
                     imageSize = 124.dp,
-                    textColor = BibleCream,
+                    textColor = ArticleCream,
                     fontSize = 15.sp,
                     lineHeight = 23.sp,
                     maxSideLines = 5,
@@ -368,7 +343,7 @@ private fun BibleHeroIntro(
                 .height(180.dp),
         )
     } else if (intro.isNotBlank()) {
-        BibleIntroCard(intro)
+        ArticleIntroCard(intro)
     }
     Spacer(Modifier.height(16.dp))
     SacredDivider()
@@ -386,9 +361,9 @@ private fun BiblePointCard(
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        color = BibleSurface,
-        contentColor = BibleCream,
-        border = BorderStroke(1.dp, BibleGold.copy(alpha = 0.35f)),
+        color = ArticleSurface,
+        contentColor = ArticleCream,
+        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.35f)),
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))
@@ -405,7 +380,7 @@ private fun BiblePointCard(
                     Spacer(Modifier.width(10.dp))
                     Text(
                         text = title,
-                        color = BibleGold,
+                        color = ArticleGold,
                         fontFamily = FontFamily.Serif,
                         fontSize = 18.sp,
                         lineHeight = 22.sp,
@@ -423,7 +398,7 @@ private fun BiblePointCard(
                         imageDescription = null,
                         text = body,
                         imageSize = BiblePointImageSize,
-                        textColor = BibleCream.copy(alpha = 0.88f),
+                        textColor = ArticleCream.copy(alpha = 0.88f),
                         fontSize = 14.sp,
                         lineHeight = 21.sp,
                         maxSideLines = 5,
@@ -449,7 +424,7 @@ private fun BiblePointCard(
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
                                 text = body,
-                                color = BibleCream.copy(alpha = 0.88f),
+                                color = ArticleCream.copy(alpha = 0.88f),
                                 fontSize = 14.sp,
                                 lineHeight = 21.sp,
                             )
@@ -468,7 +443,7 @@ private fun BiblePointReference(reference: String) {
     Spacer(Modifier.height(8.dp))
     Text(
         text = reference,
-        color = BibleGoldSoft,
+        color = ArticleGoldSoft,
         fontSize = 11.sp,
         lineHeight = 15.sp,
         fontStyle = FontStyle.Italic,
@@ -516,7 +491,7 @@ private fun FlowingImageText(
                         .size(imageSize)
                         .clip(RoundedCornerShape(16.dp))
                         .then(
-                            if (showImageBackground) Modifier.background(BibleSurfaceRaised)
+                            if (showImageBackground) Modifier.background(ArticleSurfaceRaised)
                             else Modifier,
                         ),
                 )
@@ -579,7 +554,7 @@ private fun BibleJourneyStep(
                 val stroke = 2.dp.toPx()
                 if (!isFirst) {
                     drawLine(
-                        color = BibleGold.copy(alpha = 0.35f),
+                        color = ArticleGold.copy(alpha = 0.35f),
                         start = Offset(x, 0f),
                         end = Offset(x, circleTop),
                         strokeWidth = stroke,
@@ -587,7 +562,7 @@ private fun BibleJourneyStep(
                 }
                 if (!isLast) {
                     drawLine(
-                        color = BibleGold.copy(alpha = 0.35f),
+                        color = ArticleGold.copy(alpha = 0.35f),
                         start = Offset(x, circleBottom),
                         end = Offset(x, size.height),
                         strokeWidth = stroke,
@@ -599,8 +574,8 @@ private fun BibleJourneyStep(
                     .padding(top = JourneyCircleTopPadding)
                     .size(JourneyCircleSize)
                     .clip(CircleShape)
-                    .background(BibleSurfaceRaised)
-                    .border(1.dp, BibleGold.copy(alpha = 0.65f), CircleShape),
+                    .background(ArticleSurfaceRaised)
+                    .border(1.dp, ArticleGold.copy(alpha = 0.65f), CircleShape),
                 contentAlignment = Alignment.Center,
             ) {
                 hubAssetPainter(step.asset)?.let { painter ->
@@ -619,7 +594,7 @@ private fun BibleJourneyStep(
                     )
                 } ?: Text(
                     text = step.order.toString(),
-                    color = BibleGold,
+                    color = ArticleGold,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                 )
@@ -631,7 +606,7 @@ private fun BibleJourneyStep(
         Column(modifier = Modifier.weight(1f).padding(top = 10.dp, bottom = 18.dp)) {
             Text(
                 text = title,
-                color = BibleCream,
+                color = ArticleCream,
                 fontFamily = FontFamily.Serif,
                 fontSize = 16.sp,
                 lineHeight = 20.sp,
@@ -640,7 +615,7 @@ private fun BibleJourneyStep(
             Spacer(Modifier.height(4.dp))
             Text(
                 text = body,
-                color = BibleMuted,
+                color = ArticleMuted,
                 fontSize = 13.sp,
                 lineHeight = 19.sp,
             )
@@ -666,9 +641,9 @@ private fun BibleChecklistCard(items: List<String>) {
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        color = BibleSurface,
-        contentColor = BibleCream,
-        border = BorderStroke(1.dp, BibleGold.copy(alpha = 0.35f)),
+        color = ArticleSurface,
+        contentColor = ArticleCream,
+        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.35f)),
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))
@@ -681,13 +656,13 @@ private fun BibleChecklistCard(items: List<String>) {
                         Icon(
                             imageVector = Icons.Default.Check,
                             contentDescription = null,
-                            tint = BibleGold,
+                            tint = ArticleGold,
                             modifier = Modifier.size(18.dp),
                         )
                         Spacer(Modifier.width(10.dp))
                         Text(
                             text = item,
-                            color = BibleCream,
+                            color = ArticleCream,
                             fontSize = 15.sp,
                             lineHeight = 21.sp,
                         )
@@ -698,157 +673,3 @@ private fun BibleChecklistCard(items: List<String>) {
     }
 }
 
-@Composable
-private fun BibleIntroCard(
-    text: String,
-    modifier: Modifier = Modifier,
-) {
-    Surface(
-        modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(20.dp),
-        color = BibleSurface,
-        contentColor = BibleCream,
-        border = BorderStroke(1.dp, BibleGold.copy(alpha = 0.35f)),
-    ) {
-        Box {
-            GoldCardAccent(Modifier.align(Alignment.CenterStart))
-            Text(
-                text = text,
-                color = BibleCream,
-                fontSize = 15.sp,
-                lineHeight = 23.sp,
-                modifier = Modifier.padding(start = 22.dp, top = 20.dp, end = 20.dp, bottom = 20.dp),
-            )
-        }
-    }
-}
-
-@Composable
-private fun BibleCalloutCard(
-    title: String?,
-    body: String,
-    devotional: Boolean,
-) {
-    Surface(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(20.dp),
-        color = if (devotional) BibleSurfaceRaised else BibleSurface,
-        contentColor = BibleCream,
-        border = BorderStroke(1.dp, BibleGold.copy(alpha = if (devotional) 0.65f else 0.35f)),
-    ) {
-        Box {
-            GoldCardAccent(Modifier.align(Alignment.CenterStart))
-            Column(
-                modifier = Modifier.padding(start = 22.dp, top = 18.dp, end = 18.dp, bottom = 18.dp),
-            ) {
-                if (!title.isNullOrBlank()) {
-                    Text(
-                        text = title,
-                        color = BibleGold,
-                        fontFamily = FontFamily.Serif,
-                        fontSize = 19.sp,
-                        lineHeight = 23.sp,
-                        fontWeight = FontWeight.SemiBold,
-                    )
-                    Spacer(Modifier.height(6.dp))
-                }
-                Text(
-                    text = body,
-                    color = BibleCream.copy(alpha = 0.88f),
-                    fontSize = 14.sp,
-                    lineHeight = 21.sp,
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun BibleQuoteCard(text: String, attribution: String) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 8.dp, bottom = 8.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        SacredDivider()
-        Spacer(Modifier.height(16.dp))
-        Text(
-            text = text,
-            color = BibleCream,
-            fontFamily = FontFamily.Serif,
-            fontSize = 17.sp,
-            lineHeight = 25.sp,
-            fontStyle = FontStyle.Italic,
-            textAlign = TextAlign.Center,
-        )
-        if (attribution.isNotBlank()) {
-            Spacer(Modifier.height(8.dp))
-            Text(
-                text = attribution.uppercase(),
-                color = BibleGold,
-                fontSize = 10.sp,
-                letterSpacing = 1.3.sp,
-                fontWeight = FontWeight.Medium,
-            )
-        }
-    }
-}
-
-@Composable
-private fun BibleHeaderPanel(
-    title: String,
-    subtitle: String,
-    backDescription: String,
-    onBack: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    var titleLineCount by remember { mutableIntStateOf(1) }
-
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .shadow(
-                elevation = 14.dp,
-                shape = RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp),
-                clip = false,
-            )
-            .clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp))
-            .background(BibleHeader)
-            .statusBarsPadding()
-            .padding(start = 18.dp, top = 6.dp, end = 18.dp, bottom = 18.dp),
-    ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.Top,
-        ) {
-            CathopediaBackButton(
-                onClick = onBack,
-                contentDescription = backDescription,
-            )
-            Spacer(Modifier.width(10.dp))
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = title,
-                    color = BibleCream,
-                    fontFamily = FontFamily.Serif,
-                    fontSize = 29.sp,
-                    lineHeight = 32.sp,
-                    fontWeight = FontWeight.Medium,
-                    onTextLayout = { titleLineCount = it.lineCount },
-                )
-                if (subtitle.isNotBlank()) {
-                    Spacer(Modifier.height(if (titleLineCount <= 1) 4.dp else 10.dp))
-                    Text(
-                        text = subtitle.uppercase(),
-                        color = BibleGold,
-                        fontSize = 10.sp,
-                        lineHeight = 15.sp,
-                        fontWeight = FontWeight.Medium,
-                        letterSpacing = 1.3.sp,
-                    )
-                }
-            }
-        }
-    }
-}
