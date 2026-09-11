@@ -460,6 +460,31 @@
     "art.reverence.notworship.title": "Veneration is not worship",
     "art.reverence.notworship.body": "The difference is one of kind, not merely of degree. However great the honour paid to Our Lady or to the saints, it is never the adoration owed to God — and no amount of veneration adds up to worship. The Second Council of Nicaea and the Council of Trent both taught this explicitly.",
     "art.reverence.proto.title": "A word about protodulia",
-    "art.reverence.proto.body": "The classical distinction is threefold: latria, dulia and hyperdulia. Protodulia is a later term, used by theologians to express St Joseph's pre-eminence among the saints. It names a rank within dulia rather than a fourth kind of reverence."
+    "art.reverence.proto.body": "The classical distinction is threefold: latria, dulia and hyperdulia. Protodulia is a later term, used by theologians to express St Joseph's pre-eminence among the saints. It names a rank within dulia rather than a fourth kind of reverence.",
+
+    "art.relics.title": "Types of Relics",
+    "art.relics.lead": "The three classes of relics, and why the Church honours them.",
+    "art.relics.intro": "Relics are the physical remains of the saints, or objects closely connected with them. Christians have honoured them from the earliest centuries: around the year 155 the faithful of Smyrna gathered up the bones of the martyr Polycarp as more precious than jewels, and to this day a saint's relic is traditionally placed in the altar of a consecrated church. The Catechism counts the veneration of relics among the forms of piety that surround the Church's sacramental life (CCC 1674–1675). By custom, relics are sorted into three classes.",
+    "art.relics.first.title": "First-class relics",
+    "art.relics.first.body": "Parts of the saint's own body — bone, hair, blood, or the ashes of the body. These are relics in the fullest sense, and the most precious. A fragment of bone set in a reliquary, a lock of hair or a phial of blood are all first-class relics.",
+    "art.relics.first.what": "Parts of the saint's body",
+    "art.relics.second.title": "Second-class relics",
+    "art.relics.second.body": "Things the saint owned or used in life — clothing, a book, a rosary, a crucifix, a ring or a walking stick. They are not part of the body, but they were part of the saint's daily life and bear witness to it.",
+    "art.relics.second.what": "Articles used by the saint",
+    "art.relics.third.title": "Third-class relics",
+    "art.relics.third.body": "Objects that have been touched to a first- or second-class relic — most often a small square of cloth, a holy card or a medal. They are honoured because of that contact, not because any holiness has passed into them, and shrines usually give them away freely.",
+    "art.relics.third.what": "Objects touched to a first- or second-class relic",
+    "art.relics.scripture.title": "Relics in Scripture",
+    "art.relics.scripture.1": "A dead man is thrown into the grave of Elisha and, touching the prophet's bones, comes back to life (2 Kings 13:21).",
+    "art.relics.scripture.2": "A woman who has suffered for twelve years touches the fringe of Jesus' cloak and is healed (Mark 5:25–29).",
+    "art.relics.scripture.3": "Handkerchiefs and aprons that had touched St Paul are carried to the sick, and they are cured (Acts 19:11–12).",
+    "art.relics.notworship.title": "Honoured, never worshipped",
+    "art.relics.notworship.body": "A relic has no power of its own. Venerating it is dulia — the honour given to the saints — and never the adoration owed to God alone. What is honoured is God's grace at work in the saint, whose body was a living member of Christ and a temple of the Holy Spirit, as the Council of Trent taught. Any favour obtained is God's gift, not the object's.",
+    "art.relics.classes.title": "About the three classes",
+    "art.relics.classes.body": "First, second and third class are a customary way of speaking, not a formal category of Church law. The Church's own norms distinguish instead between significant relics — the body of a saint or a notable part of it — and non-significant ones, such as small fragments or objects the saint used.",
+    "art.relics.sale.title": "Never for sale",
+    "art.relics.sale.body": "Canon law absolutely forbids the sale of sacred relics (CIC can. 1190 §1). Relics may be given, but never bought or sold.",
+    "art.relics.quote": "“We do not worship, we do not adore, for fear that we should bow down to the creature rather than to the Creator, but we venerate the relics of the martyrs in order the better to adore Him whose martyrs they are.”",
+    "art.relics.quote.attribution": "St Jerome, Letter to Riparius"
 }
 }

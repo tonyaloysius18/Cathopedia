@@ -21,7 +21,7 @@
       "titleKey": "cat.creed.title",
       "summaryKey": "cat.creed.summary",
       "icon": "ic_creed",
-      "articleIds": ["art.cat.trinity", "art.cat.creeds", "art.cat.four_marks", "art.cat.last_things", "art.cat.angels", "art.cat.reverence"]
+      "articleIds": ["art.cat.trinity", "art.cat.creeds", "art.cat.four_marks", "art.cat.last_things", "art.cat.angels", "art.cat.reverence", "art.cat.relics"]
     },
     {
       "id": "cat.scripture",
@@ -139,6 +139,29 @@
     }
   ],
   "articles": [
+    {
+      "id": "art.cat.relics",
+      "sectionId": "cat.creed",
+      "sortOrder": 7,
+      "titleKey": "art.relics.title",
+      "leadKey": "art.relics.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.relics.intro" },
+        { "type": "image", "asset": "hub/relics/relic_first_class.png", "captionKey": "art.relics.first.what", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.relics.first.title", "textKey": "art.relics.first.body" },
+        { "type": "image", "asset": "hub/relics/relic_second_class.png", "captionKey": "art.relics.second.what", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.relics.second.title", "textKey": "art.relics.second.body" },
+        { "type": "image", "asset": "hub/relics/relic_third_class.png", "captionKey": "art.relics.third.what", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.relics.third.title", "textKey": "art.relics.third.body" },
+        { "type": "heading", "level": 2, "textKey": "art.relics.scripture.title" },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.relics.scripture.1", "art.relics.scripture.2", "art.relics.scripture.3"] },
+        { "type": "callout", "tone": "warning", "titleKey": "art.relics.notworship.title", "textKey": "art.relics.notworship.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.relics.classes.title", "textKey": "art.relics.classes.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.relics.sale.title", "textKey": "art.relics.sale.body" },
+        { "type": "quote", "textKey": "art.relics.quote", "attributionKey": "art.relics.quote.attribution" }
+      ]
+    },
     {
       "id": "art.cat.reverence",
       "sectionId": "cat.creed",

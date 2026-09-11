@@ -460,6 +460,31 @@
     "art.reverence.notworship.title": "Vénérer n'est pas adorer",
     "art.reverence.notworship.body": "La différence est de nature, et non seulement de degré. Si grand que soit l'honneur rendu à Notre-Dame ou aux saints, il n'est jamais l'adoration due à Dieu — et aucune somme de vénération ne devient adoration. Le deuxième concile de Nicée et le concile de Trente l'ont enseigné explicitement.",
     "art.reverence.proto.title": "Un mot sur la protodulie",
-    "art.reverence.proto.body": "La distinction classique est triple : latrie, dulie et hyperdulie. La protodulie est un terme plus tardif, employé par les théologiens pour exprimer la prééminence de saint Joseph parmi les saints. Elle désigne un rang au sein de la dulie plutôt qu'une quatrième forme de révérence."
+    "art.reverence.proto.body": "La distinction classique est triple : latrie, dulie et hyperdulie. La protodulie est un terme plus tardif, employé par les théologiens pour exprimer la prééminence de saint Joseph parmi les saints. Elle désigne un rang au sein de la dulie plutôt qu'une quatrième forme de révérence.",
+
+    "art.relics.title": "Les types de reliques",
+    "art.relics.lead": "Les trois classes de reliques, et pourquoi l'Église les honore.",
+    "art.relics.intro": "Les reliques sont les restes corporels des saints, ou des objets étroitement liés à eux. Les chrétiens les honorent depuis les premiers siècles : vers l'an 155, les fidèles de Smyrne recueillirent les ossements du martyr Polycarpe comme plus précieux que des pierreries, et aujourd'hui encore une relique de saint est traditionnellement placée dans l'autel d'une église consacrée. Le Catéchisme compte la vénération des reliques parmi les formes de piété qui entourent la vie sacramentelle de l'Église (CEC 1674-1675). Par coutume, on classe les reliques en trois catégories.",
+    "art.relics.first.title": "Les reliques de première classe",
+    "art.relics.first.body": "Des parties du corps même du saint — os, cheveux, sang ou cendres du corps. Ce sont des reliques au sens plein, et les plus précieuses. Un fragment d'os serti dans un reliquaire, une mèche de cheveux ou une ampoule de sang sont des reliques de première classe.",
+    "art.relics.first.what": "Des parties du corps du saint",
+    "art.relics.second.title": "Les reliques de deuxième classe",
+    "art.relics.second.body": "Des objets que le saint a possédés ou utilisés de son vivant — vêtements, livre, chapelet, crucifix, anneau ou bâton de marche. Ils ne font pas partie du corps, mais ils ont fait partie de sa vie quotidienne et en rendent témoignage.",
+    "art.relics.second.what": "Des objets utilisés par le saint",
+    "art.relics.third.title": "Les reliques de troisième classe",
+    "art.relics.third.body": "Des objets mis en contact avec une relique de première ou de deuxième classe — le plus souvent un petit carré de tissu, une image pieuse ou une médaille. On les honore en raison de ce contact, et non parce qu'une sainteté serait passée en eux ; les sanctuaires les offrent d'ordinaire gratuitement.",
+    "art.relics.third.what": "Des objets mis en contact avec une relique de première ou de deuxième classe",
+    "art.relics.scripture.title": "Les reliques dans l'Écriture",
+    "art.relics.scripture.1": "Un mort jeté dans le tombeau d'Élisée touche les ossements du prophète et revient à la vie (2 Rois 13, 21).",
+    "art.relics.scripture.2": "Une femme malade depuis douze ans touche la frange du manteau de Jésus et elle est guérie (Marc 5, 25-29).",
+    "art.relics.scripture.3": "Des mouchoirs et des linges ayant touché saint Paul sont portés aux malades, et ils sont guéris (Actes 19, 11-12).",
+    "art.relics.notworship.title": "Honorées, jamais adorées",
+    "art.relics.notworship.body": "Une relique n'a aucun pouvoir propre. La vénérer relève de la dulie — l'honneur rendu aux saints — et jamais de l'adoration due à Dieu seul. Ce que l'on honore, c'est la grâce de Dieu à l'œuvre dans le saint, dont le corps fut un membre vivant du Christ et un temple de l'Esprit Saint, comme l'a enseigné le concile de Trente. Toute grâce obtenue est un don de Dieu, non de l'objet.",
+    "art.relics.classes.title": "À propos des trois classes",
+    "art.relics.classes.body": "Première, deuxième et troisième classe sont une manière coutumière de parler, non une catégorie formelle du droit de l'Église. Les normes de l'Église distinguent plutôt les reliques insignes — le corps d'un saint ou une partie notable de celui-ci — des reliques non insignes, comme de petits fragments ou des objets dont le saint s'est servi.",
+    "art.relics.sale.title": "Jamais à vendre",
+    "art.relics.sale.body": "Le droit canonique interdit absolument de vendre des reliques sacrées (CIC can. 1190 § 1). Les reliques peuvent être données, mais jamais achetées ni vendues.",
+    "art.relics.quote": "« Nous ne rendons pas de culte, nous n'adorons pas, de peur de nous prosterner devant la créature plutôt que devant le Créateur ; mais nous vénérons les reliques des martyrs afin de mieux adorer Celui dont ils sont les martyrs. »",
+    "art.relics.quote.attribution": "Saint Jérôme, Lettre à Riparius"
 }
 }
