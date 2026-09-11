@@ -49,8 +49,18 @@
       "articleIds": ["art.mass.liturgical_year"]
     },
     {
-      "id": "mass.procession",
+      "id": "mass.readings",
       "sortOrder": 4,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.mass.readings.title",
+      "summaryKey": "sec.mass.readings.summary",
+      "icon": "ic_gospel",
+      "articleIds": ["art.mass.reading_cycles"]
+    },
+    {
+      "id": "mass.procession",
+      "sortOrder": 5,
       "status": "PUBLISHED",
       "layout": "STEPPER",
       "titleKey": "sec.procession.title",
@@ -60,7 +70,7 @@
     },
     {
       "id": "mass.monstrance",
-      "sortOrder": 5,
+      "sortOrder": 6,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.mass.monstrance.title",
@@ -72,7 +82,7 @@
     },
     {
       "id": "mass.thurible",
-      "sortOrder": 6,
+      "sortOrder": 7,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.mass.thurible.title",
@@ -84,7 +94,7 @@
     },
     {
       "id": "mass.vessels",
-      "sortOrder": 7,
+      "sortOrder": 8,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.vessels.title",
@@ -96,7 +106,7 @@
     },
     {
       "id": "mass.postures",
-      "sortOrder": 8,
+      "sortOrder": 9,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.postures.title",
@@ -108,7 +118,7 @@
     },
     {
       "id": "mass.altar",
-      "sortOrder": 9,
+      "sortOrder": 10,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.altar.title",
@@ -120,6 +130,33 @@
     }
   ],
   "articles": [
+    {
+      "id": "art.mass.reading_cycles",
+      "sectionId": "mass.readings",
+      "sortOrder": 1,
+      "titleKey": "art.cycles.title",
+      "leadKey": "art.cycles.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.cycles.intro" },
+        { "type": "image", "asset": "hub/symbols/symbol_evangelist_matthew.png", "captionKey": "art.cycles.a.symbol", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.cycles.a.title", "textKey": "art.cycles.a.body" },
+        { "type": "image", "asset": "hub/symbols/symbol_evangelist_mark.png", "captionKey": "art.cycles.b.symbol", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.cycles.b.title", "textKey": "art.cycles.b.body" },
+        { "type": "image", "asset": "hub/symbols/symbol_evangelist_luke.png", "captionKey": "art.cycles.c.symbol", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.cycles.c.title", "textKey": "art.cycles.c.body" },
+        { "type": "image", "asset": "hub/symbols/symbol_evangelist_john.png", "captionKey": "art.cycles.john.symbol", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.cycles.john.title", "textKey": "art.cycles.john.body" },
+        { "type": "heading", "level": 2, "textKey": "art.cycles.sunday.title" },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.cycles.sunday.1", "art.cycles.sunday.2", "art.cycles.sunday.3", "art.cycles.sunday.4"] },
+        { "type": "heading", "level": 2, "textKey": "art.cycles.why.title" },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.cycles.why.1", "art.cycles.why.2", "art.cycles.why.3", "art.cycles.why.4"] },
+        { "type": "callout", "tone": "note", "titleKey": "art.cycles.weekday.title", "textKey": "art.cycles.weekday.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.cycles.which.title", "textKey": "art.cycles.which.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.cycles.ordo.title", "textKey": "art.cycles.ordo.body" },
+        { "type": "quote", "textKey": "art.cycles.quote", "attributionKey": "art.cycles.quote.attribution" }
+      ]
+    },
     {
       "id": "art.mass.liturgical_year",
       "sectionId": "mass.liturgical_year",

@@ -11,6 +11,7 @@ import com.ynotlabs.cathopedia.ui.screens.catechism.WhoCreatedTheBibleScreen
 import com.ynotlabs.cathopedia.ui.screens.holysee.PatriarchAndPopeScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.MassTypesScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.LiturgicalYearScreen
+import com.ynotlabs.cathopedia.ui.screens.holymass.ReadingCyclesScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.HolyTrinityScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.AltarScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.MonstranceScreen
@@ -259,6 +260,16 @@ fun HubArticleScreen(
 
     if (articleId == "art.cardinals.overview") {
         CardinalsScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            listState = listState,
+        )
+        return
+    }
+
+    if (articleId == "art.mass.reading_cycles") {
+        ReadingCyclesScreen(
             repository = repository,
             language = language,
             onBack = onBack,

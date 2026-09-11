@@ -68,7 +68,9 @@ private data class Entry(
  * `warning` tone as an emphasised card set apart by a divider, for the point a
  * reader must not leave without.
  *
- * Pass `numbered = false` where the entries are a set rather than a sequence.
+ * Pass `numbered = false` where the entries are a set rather than a sequence, and
+ * `afterIntro` for anything computed rather than authored — it sits between the
+ * intro and the first entry.
  */
 @Composable
 fun IllustratedEntriesArticle(
@@ -78,6 +80,7 @@ fun IllustratedEntriesArticle(
     onBack: () -> Unit,
     numbered: Boolean = true,
     listState: LazyListState = rememberLazyListState(),
+    afterIntro: (@Composable () -> Unit)? = null,
 ) {
     val s = LocalStrings.current
     var article by remember(articleId, language) { mutableStateOf<HubArticleDetail?>(null) }
@@ -127,6 +130,13 @@ fun IllustratedEntriesArticle(
                 ArticleIntroCard(intro)
                 Spacer(Modifier.height(16.dp))
                 SacredDivider()
+                Spacer(Modifier.height(18.dp))
+            }
+        }
+
+        if (afterIntro != null && current != null) {
+            item(key = "after-intro") {
+                afterIntro()
                 Spacer(Modifier.height(18.dp))
             }
         }

@@ -116,6 +116,25 @@ object LiturgicalCalendar {
         }
     }
 
+    /**
+     * The Sunday lectionary cycle — 'A', 'B' or 'C' — in force on [date].
+     *
+     * A liturgical year opens on the First Sunday of Advent and is named after the calendar year
+     * it ends in: remainder 1 on division by three is Year A, 2 is Year B, 0 is Year C.
+     */
+    fun sundayCycleFor(date: LocalDate): Char = when (lectionaryYear(date) % 3) {
+        1 -> 'A'
+        2 -> 'B'
+        else -> 'C'
+    }
+
+    /** The Ordinary Time weekday cycle — 1 (odd years) or 2 (even years) — in force on [date]. */
+    fun weekdayCycleFor(date: LocalDate): Int = if (lectionaryYear(date) % 2 == 1) 1 else 2
+
+    /** The calendar year in which the liturgical year containing [date] ends. */
+    private fun lectionaryYear(date: LocalDate): Int =
+        if (date >= adventFirstSunday(date.year)) date.year + 1 else date.year
+
     @OptIn(ExperimentalTime::class)
     fun today(): LocalDate = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date
 
