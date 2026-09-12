@@ -26,6 +26,12 @@ insertChurchText:
 INSERT OR REPLACE INTO ChurchText(churchId, language, name, summary, body, sourceAttribution)
 VALUES (?, ?, ?, ?, ?, ?);
 
+-- Counting rows for the Explore tiles: cheaper than materialising every
+-- summary just to take the size of the list.
+countChurches:
+SELECT COUNT(*) FROM ChurchEntity
+JOIN ChurchText ON ChurchText.churchId = ChurchEntity.id AND ChurchText.language = :language;
+
 selectAllChurches:
 SELECT ChurchEntity.id AS id, ChurchText.name AS name, ChurchText.summary AS summary,
        ChurchEntity.imageUrl AS imageUrl

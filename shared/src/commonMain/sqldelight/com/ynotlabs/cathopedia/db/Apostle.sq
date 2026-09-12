@@ -25,6 +25,12 @@ insertApostleText:
 INSERT OR REPLACE INTO ApostleText(apostleId, language, name, summary, body, sourceAttribution)
 VALUES (?, ?, ?, ?, ?, ?);
 
+-- Counting rows for the Explore tiles: cheaper than materialising every
+-- summary just to take the size of the list.
+countApostles:
+SELECT COUNT(*) FROM ApostleEntity
+JOIN ApostleText ON ApostleText.apostleId = ApostleEntity.id AND ApostleText.language = :language;
+
 selectAllApostles:
 SELECT ApostleEntity.id AS id, ApostleText.name AS name, ApostleText.summary AS summary,
        ApostleEntity.imageUrl AS imageUrl

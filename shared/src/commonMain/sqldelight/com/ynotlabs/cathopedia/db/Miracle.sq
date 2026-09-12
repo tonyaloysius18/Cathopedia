@@ -25,6 +25,12 @@ insertMiracleText:
 INSERT OR REPLACE INTO MiracleText(miracleId, language, name, summary, body, sourceAttribution)
 VALUES (?, ?, ?, ?, ?, ?);
 
+-- Counting rows for the Explore tiles: cheaper than materialising every
+-- summary just to take the size of the list.
+countMiracles:
+SELECT COUNT(*) FROM MiracleEntity
+JOIN MiracleText ON MiracleText.miracleId = MiracleEntity.id AND MiracleText.language = :language;
+
 selectAllMiracles:
 SELECT MiracleEntity.id AS id, MiracleText.name AS name, MiracleText.summary AS summary,
        MiracleEntity.imageUrl AS imageUrl

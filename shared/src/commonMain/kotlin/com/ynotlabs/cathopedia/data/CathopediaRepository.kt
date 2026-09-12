@@ -368,6 +368,24 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
         ContentType.FEAST -> listFeasts(language)
     }
 
+    /**
+     * How many entries each content type holds, for the Explore tiles.
+     *
+     * A COUNT per type rather than [listByType]`.size`: the tiles need seven numbers, not the
+     * seven hundred-odd summaries that counting by loading would pull off disk first.
+     */
+    suspend fun contentCounts(language: String): Map<ContentType, Int> = withContext(Dispatchers.Default) {
+        mapOf(
+            ContentType.SAINT to database.saintQueries.countSaints(language).executeAsOne().toInt(),
+            ContentType.POPE to database.popeQueries.countPopes(language).executeAsOne().toInt(),
+            ContentType.APOSTLE to database.apostleQueries.countApostles(language).executeAsOne().toInt(),
+            ContentType.CHURCH to database.churchQueries.countChurches(language).executeAsOne().toInt(),
+            ContentType.APPARITION to database.apparitionQueries.countApparitions(language).executeAsOne().toInt(),
+            ContentType.MIRACLE to database.miracleQueries.countMiracles(language).executeAsOne().toInt(),
+            ContentType.FEAST to database.feastQueries.countFeasts(language).executeAsOne().toInt(),
+        )
+    }
+
     /** Resolves a related item's display name — used to label Connected chips with a real title, not a raw id. */
     suspend fun summaryOf(type: ContentType, id: String, language: String): ContentSummary? =
         listByType(type, language).firstOrNull { it.id == id }

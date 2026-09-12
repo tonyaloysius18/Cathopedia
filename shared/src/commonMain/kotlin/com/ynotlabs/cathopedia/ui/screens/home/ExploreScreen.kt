@@ -94,6 +94,13 @@ import com.ynotlabs.cathopedia.resources.holy_mass_icon
 import com.ynotlabs.cathopedia.resources.liturgical_vestments_icon
 import com.ynotlabs.cathopedia.resources.religious_order_icon
 
+/** Everything the Explore screen loads once: the hub cards and the per-type tile counts. */
+data class ExploreData(
+    val counts: Map<ContentType, Int>,
+    val hubs: List<HubSummary>,
+    val hubStrings: Map<String, String>,
+)
+
 @Composable
 fun ExploreScreen(
     repository: CathopediaRepository,
@@ -102,19 +109,31 @@ fun ExploreScreen(
     onVestmentsSelected: () -> Unit,
     onHubSelected: (HubSummary) -> Unit,
     listState: LazyListState = rememberLazyListState(),
+    initialData: ExploreData? = null,
+    onDataLoaded: (ExploreData) -> Unit = {},
 ) {
     val s = LocalStrings.current
-    var counts by remember { mutableStateOf<Map<ContentType, Int>>(emptyMap()) }
     var query by remember { mutableStateOf("") }
-    var hubs by remember { mutableStateOf<List<HubSummary>>(emptyList()) }
-    var hubStrings by remember { mutableStateOf<Map<String, String>>(emptyMap()) }
+    // Seeded from the caller's cache so returning to Explore paints the hubs in the first
+    // frame; without it every visit started empty and the tab appeared to load late.
+    var data by remember(language) { mutableStateOf(initialData) }
 
     LaunchedEffect(language) {
-        counts = ContentType.entries.associateWith { repository.listByType(it, language).size }
-        hubs = repository.listHubs()
+        if (data != null) return@LaunchedEffect
+        val hubs = repository.listHubs()
         val keys = hubs.flatMap { listOfNotNull(it.titleKey, it.subtitleKey) }.toSet()
-        hubStrings = repository.resolveHubStrings(keys, language)
+        val loaded = ExploreData(
+            counts = repository.contentCounts(language),
+            hubs = hubs,
+            hubStrings = repository.resolveHubStrings(keys, language),
+        )
+        data = loaded
+        onDataLoaded(loaded)
     }
+
+    val counts = data?.counts.orEmpty()
+    val hubs = data?.hubs.orEmpty()
+    val hubStrings = data?.hubStrings.orEmpty()
 
     LazyColumn(
         modifier = Modifier

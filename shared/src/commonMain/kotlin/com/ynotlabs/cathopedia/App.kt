@@ -74,6 +74,7 @@ import com.ynotlabs.cathopedia.ui.screens.settings.AboutScreen
 import com.ynotlabs.cathopedia.ui.screens.settings.AppearanceScreen
 import com.ynotlabs.cathopedia.ui.screens.common.EntityDetailScreen
 import com.ynotlabs.cathopedia.ui.screens.common.EntityListScreen
+import com.ynotlabs.cathopedia.ui.screens.home.ExploreData
 import com.ynotlabs.cathopedia.ui.screens.home.ExploreScreen
 import com.ynotlabs.cathopedia.ui.screens.settings.FeedbackScreen
 import com.ynotlabs.cathopedia.ui.screens.home.HomeScreen
@@ -190,6 +191,8 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
     // means, otherwise a filtered Popes list briefly rebuilds as the full list.
     val entityListScrollStates = remember { mutableStateMapOf<Pair<ContentType, String>, LazyListState>() }
     val entityListItemCaches = remember { mutableStateMapOf<Pair<ContentType, String>, List<ContentSummary>>() }
+    // Explore's hub cards and tile counts, kept across visits to the tab.
+    var exploreData by remember { mutableStateOf<ExploreData?>(null) }
     val entityListSelectedCenturies = remember { mutableStateMapOf<Pair<ContentType, String>, String>() }
     val entityListHeaderHeights = remember { mutableStateMapOf<Pair<ContentType, String>, Int>() }
 
@@ -331,6 +334,8 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     onVestmentsSelected = { nav.navigate(Destination.Vestments) },
                     onHubSelected = { hub -> nav.navigate(Destination.Hub(hub.id)) },
                     listState = exploreScrollState,
+                    initialData = exploreData,
+                    onDataLoaded = { exploreData = it },
                 )
 
                 is Destination.Vestments -> VestmentsScreen(

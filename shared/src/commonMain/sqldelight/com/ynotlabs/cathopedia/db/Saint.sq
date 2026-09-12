@@ -26,6 +26,12 @@ insertSaintText:
 INSERT OR REPLACE INTO SaintText(saintId, language, name, summary, body, sourceAttribution)
 VALUES (?, ?, ?, ?, ?, ?);
 
+-- Counting rows for the Explore tiles: cheaper than materialising every
+-- summary just to take the size of the list.
+countSaints:
+SELECT COUNT(*) FROM SaintEntity
+JOIN SaintText ON SaintText.saintId = SaintEntity.id AND SaintText.language = :language;
+
 selectAllSaints:
 SELECT SaintEntity.id AS id, SaintText.name AS name, SaintText.summary AS summary,
        SaintEntity.feastDay AS feastDay, SaintEntity.imageUrl AS imageUrl

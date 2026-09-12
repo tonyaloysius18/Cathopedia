@@ -26,6 +26,12 @@ insertApparitionText:
 INSERT OR REPLACE INTO ApparitionText(apparitionId, language, name, summary, body, sourceAttribution)
 VALUES (?, ?, ?, ?, ?, ?);
 
+-- Counting rows for the Explore tiles: cheaper than materialising every
+-- summary just to take the size of the list.
+countApparitions:
+SELECT COUNT(*) FROM ApparitionEntity
+JOIN ApparitionText ON ApparitionText.apparitionId = ApparitionEntity.id AND ApparitionText.language = :language;
+
 selectAllApparitions:
 SELECT ApparitionEntity.id AS id, ApparitionText.name AS name, ApparitionText.summary AS summary,
        ApparitionEntity.imageUrl AS imageUrl

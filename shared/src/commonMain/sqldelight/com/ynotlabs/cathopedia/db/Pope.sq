@@ -30,6 +30,12 @@ insertPopeText:
 INSERT OR REPLACE INTO PopeText(popeId, language, name, summary, body, sourceAttribution)
 VALUES (?, ?, ?, ?, ?, ?);
 
+-- Counting rows for the Explore tiles: cheaper than materialising every
+-- summary just to take the size of the list.
+countPopes:
+SELECT COUNT(*) FROM PopeEntity
+JOIN PopeText ON PopeText.popeId = PopeEntity.id AND PopeText.language = :language;
+
 selectAllPopes:
 SELECT PopeEntity.id AS id, PopeText.name AS name, PopeText.summary AS summary,
        PopeEntity.papacyStart AS papacyStart, PopeEntity.papacyEnd AS papacyEnd, PopeEntity.imageUrl AS imageUrl,

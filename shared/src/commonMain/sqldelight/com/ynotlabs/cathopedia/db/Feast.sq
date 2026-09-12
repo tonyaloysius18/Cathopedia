@@ -25,6 +25,12 @@ insertFeastText:
 INSERT OR REPLACE INTO FeastText(feastId, language, name, summary, body, sourceAttribution)
 VALUES (?, ?, ?, ?, ?, ?);
 
+-- Counting rows for the Explore tiles: cheaper than materialising every
+-- summary just to take the size of the list.
+countFeasts:
+SELECT COUNT(*) FROM FeastEntity
+JOIN FeastText ON FeastText.feastId = FeastEntity.id AND FeastText.language = :language;
+
 selectAllFeasts:
 SELECT FeastEntity.id AS id, FeastText.name AS name, FeastText.summary AS summary,
        FeastEntity.date AS date, FeastEntity.rank AS rank, FeastEntity.imageUrl AS imageUrl
