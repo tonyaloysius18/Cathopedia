@@ -485,6 +485,30 @@
     "art.relics.sale.title": "Jamais à vendre",
     "art.relics.sale.body": "Le droit canonique interdit absolument de vendre des reliques sacrées (CIC can. 1190 § 1). Les reliques peuvent être données, mais jamais achetées ni vendues.",
     "art.relics.quote": "« Nous ne rendons pas de culte, nous n'adorons pas, de peur de nous prosterner devant la créature plutôt que devant le Créateur ; mais nous vénérons les reliques des martyrs afin de mieux adorer Celui dont ils sont les martyrs. »",
-    "art.relics.quote.attribution": "Saint Jérôme, Lettre à Riparius"
+    "art.relics.quote.attribution": "Saint Jérôme, Lettre à Riparius",
+
+    "art.pillars.title": "Les trois piliers de la foi",
+    "art.pillars.lead": "L'Écriture, la Tradition et le Magistère.",
+    "art.pillars.intro": "Dieu s'est révélé, et cette révélation nous parvient de deux manières : la Sainte Écriture, Parole de Dieu consignée par écrit, et la Sainte Tradition, ce même Évangile transmis dans l'Église vivante. Toutes deux ont été confiées aux Apôtres et, par eux, à l'Église, dont la charge d'enseignement — le Magistère — les garde et les interprète. Ôtez l'un des trois, et les deux autres perdent leur appui.",
+    "art.pillars.scripture.title": "La Sainte Écriture — la Parole écrite",
+    "art.pillars.scripture.body": "La Bible est la Parole de Dieu inspirée, écrite par des auteurs humains sous la conduite de l'Esprit Saint : ils furent de véritables auteurs, tandis que Dieu demeurait l'auteur véritable de ce qu'ils écrivaient. Ses soixante-treize livres, dans l'Ancien et le Nouveau Testament, exposent le dessein de salut de Dieu et donnent à l'Église le fondement de sa foi et de son enseignement moral.",
+    "art.pillars.scripture.ref": "2 Timothée 3, 16",
+    "art.pillars.tradition.title": "La Sainte Tradition — la transmission vivante",
+    "art.pillars.tradition.body": "La Tradition est ce même Évangile transmis, et non un second corps de doctrine à côté de la Bible. Le Christ a prêché avant que rien ne fût écrit, et ce que les Apôtres ont reçu, ils l'ont transmis de vive voix autant que par écrit. Elle vit dans la liturgie et les sacrements de l'Église, dans ses symboles de foi et ses prières, et dans le témoignage des saints — et c'est la Tradition qui a reconnu quels livres appartiennent à l'Écriture.",
+    "art.pillars.tradition.ref": "2 Thessaloniciens 2, 15",
+    "art.pillars.magisterium.title": "Le Magistère — la charge d'enseignement",
+    "art.pillars.magisterium.body": "Le Magistère est la charge d'enseignement vivante de l'Église : le pape et les évêques en communion avec lui, successeurs de Pierre et des Apôtres. Sa tâche est d'interpréter authentiquement la Parole de Dieu, de garder l'Église unie dans la vérité et de transmettre ce qu'il a reçu — non d'y ajouter.",
+    "art.pillars.magisterium.ref": "Luc 10, 16",
+    "art.pillars.together.title": "Comment ils tiennent ensemble",
+    "art.pillars.together.1": "L'Écriture est la Parole de Dieu consignée par écrit.",
+    "art.pillars.together.2": "La Tradition transmet cette même Parole, entière et vivante, dans l'Église.",
+    "art.pillars.together.3": "Le Magistère les interprète toutes deux avec l'autorité que le Christ a donnée aux Apôtres.",
+    "art.pillars.together.4": "Les trois sont mus par l'Esprit Saint, qui conduit l'Église vers la vérité tout entière.",
+    "art.pillars.notthree.title": "Non pas trois sources séparées",
+    "art.pillars.notthree.body": "L'Écriture et la Tradition ne sont pas deux dépôts rivaux : elles jaillissent de la même source divine et forment un seul dépôt de la Parole de Dieu. Et le Magistère n'est pas une troisième source qui les surplomberait. Le concile Vatican II l'a dit clairement : la charge d'enseignement n'est pas au-dessus de la Parole de Dieu, mais à son service, n'enseignant que ce qui a été transmis.",
+    "art.pillars.smallt.title": "La Tradition et les traditions",
+    "art.pillars.smallt.body": "La Sainte Tradition, qui vient des Apôtres, ne se confond pas avec les coutumes nées autour d'elle selon les temps et les lieux. Ces traditions secondaires — dévotions, disciplines, manières de faire — peuvent être gardées, modifiées ou abandonnées par l'Église. La Tradition apostolique, elle, ne le peut pas.",
+    "art.pillars.quote": "« La Sainte Tradition, la Sainte Écriture et le Magistère de l'Église sont si étroitement unis et solidaires qu'aucune de ces réalités ne subsiste sans les autres. »",
+    "art.pillars.quote.attribution": "Concile Vatican II, Dei Verbum 10"
 }
 }

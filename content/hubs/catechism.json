@@ -21,7 +21,7 @@
       "titleKey": "cat.creed.title",
       "summaryKey": "cat.creed.summary",
       "icon": "ic_creed",
-      "articleIds": ["art.cat.trinity", "art.cat.creeds", "art.cat.four_marks", "art.cat.last_things", "art.cat.angels", "art.cat.reverence", "art.cat.relics"]
+      "articleIds": ["art.cat.three_pillars", "art.cat.trinity", "art.cat.creeds", "art.cat.four_marks", "art.cat.last_things", "art.cat.angels", "art.cat.reverence", "art.cat.relics"]
     },
     {
       "id": "cat.scripture",
@@ -140,9 +140,31 @@
   ],
   "articles": [
     {
+      "id": "art.cat.three_pillars",
+      "sectionId": "cat.creed",
+      "sortOrder": 1,
+      "titleKey": "art.pillars.title",
+      "leadKey": "art.pillars.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.pillars.intro" },
+        { "type": "image", "asset": "hub/symbols/symbol_gospel_book.png", "captionKey": "art.pillars.scripture.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.pillars.scripture.title", "textKey": "art.pillars.scripture.body" },
+        { "type": "image", "asset": "hub/symbols/symbol_scroll.png", "captionKey": "art.pillars.tradition.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.pillars.tradition.title", "textKey": "art.pillars.tradition.body" },
+        { "type": "image", "asset": "hub/symbols/symbol_keys_of_peter.png", "captionKey": "art.pillars.magisterium.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.pillars.magisterium.title", "textKey": "art.pillars.magisterium.body" },
+        { "type": "heading", "level": 2, "textKey": "art.pillars.together.title" },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.pillars.together.1", "art.pillars.together.2", "art.pillars.together.3", "art.pillars.together.4"] },
+        { "type": "callout", "tone": "warning", "titleKey": "art.pillars.notthree.title", "textKey": "art.pillars.notthree.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.pillars.smallt.title", "textKey": "art.pillars.smallt.body" },
+        { "type": "quote", "textKey": "art.pillars.quote", "attributionKey": "art.pillars.quote.attribution" }
+      ]
+    },
+    {
       "id": "art.cat.relics",
       "sectionId": "cat.creed",
-      "sortOrder": 7,
+      "sortOrder": 8,
       "titleKey": "art.relics.title",
       "leadKey": "art.relics.lead",
       "readingTimeMinutes": 4,
@@ -165,7 +187,7 @@
     {
       "id": "art.cat.reverence",
       "sectionId": "cat.creed",
-      "sortOrder": 6,
+      "sortOrder": 7,
       "titleKey": "art.reverence.title",
       "leadKey": "art.reverence.lead",
       "readingTimeMinutes": 4,
@@ -188,7 +210,7 @@
     {
       "id": "art.cat.angels",
       "sectionId": "cat.creed",
-      "sortOrder": 5,
+      "sortOrder": 6,
       "titleKey": "art.angels.title",
       "leadKey": "art.angels.lead",
       "readingTimeMinutes": 5,
@@ -224,7 +246,7 @@
     {
       "id": "art.cat.trinity",
       "sectionId": "cat.creed",
-      "sortOrder": 1,
+      "sortOrder": 2,
       "titleKey": "art.trinity.title",
       "leadKey": "art.trinity.lead",
       "readingTimeMinutes": 2,
@@ -237,7 +259,7 @@
     {
       "id": "art.cat.creeds",
       "sectionId": "cat.creed",
-      "sortOrder": 2,
+      "sortOrder": 3,
       "titleKey": "art.creeds.title",
       "leadKey": "art.creeds.lead",
       "readingTimeMinutes": 2,
@@ -281,7 +303,7 @@
     {
       "id": "art.cat.four_marks",
       "sectionId": "cat.creed",
-      "sortOrder": 3,
+      "sortOrder": 4,
       "titleKey": "art.marks.title",
       "leadKey": "art.marks.lead",
       "readingTimeMinutes": 2,
@@ -296,7 +318,7 @@
     {
       "id": "art.cat.last_things",
       "sectionId": "cat.creed",
-      "sortOrder": 4,
+      "sortOrder": 5,
       "titleKey": "art.last.title",
       "leadKey": "art.last.lead",
       "readingTimeMinutes": 4,

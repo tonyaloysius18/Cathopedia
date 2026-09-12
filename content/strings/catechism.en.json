@@ -485,6 +485,30 @@
     "art.relics.sale.title": "Never for sale",
     "art.relics.sale.body": "Canon law absolutely forbids the sale of sacred relics (CIC can. 1190 §1). Relics may be given, but never bought or sold.",
     "art.relics.quote": "“We do not worship, we do not adore, for fear that we should bow down to the creature rather than to the Creator, but we venerate the relics of the martyrs in order the better to adore Him whose martyrs they are.”",
-    "art.relics.quote.attribution": "St Jerome, Letter to Riparius"
+    "art.relics.quote.attribution": "St Jerome, Letter to Riparius",
+
+    "art.pillars.title": "The Three Pillars of the Faith",
+    "art.pillars.lead": "Scripture, Tradition and the Magisterium.",
+    "art.pillars.intro": "God has revealed himself, and that revelation reaches us in two ways: Sacred Scripture, the Word of God set down in writing, and Sacred Tradition, the same Gospel handed on in the living Church. Both were entrusted to the Apostles and, through them, to the Church, whose teaching office — the Magisterium — guards and interprets them. Take away any one of the three and the other two lose their footing.",
+    "art.pillars.scripture.title": "Sacred Scripture — the written Word",
+    "art.pillars.scripture.body": "The Bible is the inspired Word of God, written by human authors under the guidance of the Holy Spirit, who wrote as true authors while God remained the true author of what they wrote. Its seventy-three books, in the Old and New Testaments, set out God's plan of salvation and give the Church the foundation of her faith and her moral teaching.",
+    "art.pillars.scripture.ref": "2 Timothy 3:16",
+    "art.pillars.tradition.title": "Sacred Tradition — the living transmission",
+    "art.pillars.tradition.body": "Tradition is the same Gospel handed on, not a second body of doctrine beside the Bible. Christ preached before anything was written, and what the Apostles received they passed on by word as well as in writing. It lives in the Church's worship and sacraments, her creeds and prayers, and the witness of the saints — and it was Tradition that recognised which books belong in Scripture at all.",
+    "art.pillars.tradition.ref": "2 Thessalonians 2:15",
+    "art.pillars.magisterium.title": "The Magisterium — the teaching office",
+    "art.pillars.magisterium.body": "The Magisterium is the living teaching office of the Church: the pope and the bishops in communion with him, the successors of Peter and the Apostles. Its task is to interpret the Word of God authentically, to keep the Church united in the truth, and to hand on what it has received — not to add to it.",
+    "art.pillars.magisterium.ref": "Luke 10:16",
+    "art.pillars.together.title": "How they hold together",
+    "art.pillars.together.1": "Scripture is the Word of God committed to writing.",
+    "art.pillars.together.2": "Tradition hands that same Word on whole and living in the Church.",
+    "art.pillars.together.3": "The Magisterium interprets both with the authority Christ gave the Apostles.",
+    "art.pillars.together.4": "All three are moved by the Holy Spirit, who leads the Church into all truth.",
+    "art.pillars.notthree.title": "Not three separate sources",
+    "art.pillars.notthree.body": "Scripture and Tradition are not two rival deposits: they flow from the same divine wellspring and form one deposit of the Word of God. And the Magisterium is not a third source standing over them. The Second Vatican Council put it plainly: the teaching office is not above the Word of God but serves it, teaching only what has been handed on.",
+    "art.pillars.smallt.title": "Tradition and traditions",
+    "art.pillars.smallt.body": "Sacred Tradition, which comes from the Apostles, is not the same as the customs that grow up around it in different times and places. Those lesser traditions — devotions, disciplines, ways of doing things — can be kept, changed or set aside by the Church. Apostolic Tradition cannot.",
+    "art.pillars.quote": "“Sacred Tradition, Sacred Scripture and the Magisterium of the Church are so connected and associated that one of them cannot stand without the others.”",
+    "art.pillars.quote.attribution": "Second Vatican Council, Dei Verbum 10"
 }
 }

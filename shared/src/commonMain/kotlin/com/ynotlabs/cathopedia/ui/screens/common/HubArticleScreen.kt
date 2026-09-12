@@ -6,6 +6,7 @@ import com.ynotlabs.cathopedia.ui.screens.catechism.FourMarksScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.LastThingsScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.AngelChoirsScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.RelicsScreen
+import com.ynotlabs.cathopedia.ui.screens.catechism.ThreePillarsScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.ReverenceScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.WhoCreatedTheBibleScreen
 import com.ynotlabs.cathopedia.ui.screens.holysee.PatriarchAndPopeScreen
@@ -189,6 +190,16 @@ fun HubArticleScreen(
 
     if (articleId == "art.cat.four_marks") {
         FourMarksScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            listState = listState,
+        )
+        return
+    }
+
+    if (articleId == "art.cat.three_pillars") {
+        ThreePillarsScreen(
             repository = repository,
             language = language,
             onBack = onBack,
