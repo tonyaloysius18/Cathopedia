@@ -76,11 +76,13 @@ import com.ynotlabs.cathopedia.resources.explore_bg
 import com.ynotlabs.cathopedia.resources.explore_holy_see
 import com.ynotlabs.cathopedia.resources.explore_marian
 import com.ynotlabs.cathopedia.resources.explore_popes
+import com.ynotlabs.cathopedia.resources.explore_priesthood
 import com.ynotlabs.cathopedia.resources.explore_saints
 import com.ynotlabs.cathopedia.resources.holy_see_icon
 import com.ynotlabs.cathopedia.resources.catechism_icon
 import com.ynotlabs.cathopedia.resources.saints_icon
 import com.ynotlabs.cathopedia.resources.popes_icon
+import com.ynotlabs.cathopedia.resources.priesthood_icon
 import com.ynotlabs.cathopedia.resources.apostles_icon
 import com.ynotlabs.cathopedia.resources.churches_shrines_icon
 import com.ynotlabs.cathopedia.resources.marian_apparitions_icon
@@ -915,6 +917,7 @@ private fun HubExploreCard(
     val isHolyMass = hub.id == "mass"
     val isBiblical = hub.id == "biblical"
     val isOrders = hub.id == "orders"
+    val isPriesthood = hub.id == "priesthood"
     val accent = hub.accentColor?.let { hex ->
         val cleaned = hex.removePrefix("#")
         cleaned.toLongOrNull(16)?.let { value ->
@@ -929,6 +932,7 @@ private fun HubExploreCard(
         isHolyMass -> Res.drawable.explore_holymass
         isBiblical -> Res.drawable.explore_biblical
         isOrders -> Res.drawable.explore_religious_orders
+        isPriesthood -> Res.drawable.explore_priesthood
         else -> Res.drawable.explore_bg
     }
     val icon = when {
@@ -938,6 +942,7 @@ private fun HubExploreCard(
         isHolyMass -> Res.drawable.holy_mass_icon
         isBiblical -> Res.drawable.biblical_characters_icon
         isOrders -> Res.drawable.religious_order_icon
+        isPriesthood -> Res.drawable.priesthood_icon
         else -> null
     }
 
