@@ -199,6 +199,9 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
     // Warm Explore while the splash is still showing. Loading it on first open cost ~170ms of
     // visible delay before the topic hubs appeared; by the time the tab can be tapped this is done.
     LaunchedEffect(language) {
+        // Wait for the seed: on a version bump the splash is still writing new content, and a
+        // prefetch that raced it would cache the old hub list for the whole session.
+        repository.ensureContentLoaded()
         exploreData = loadExploreData(repository, language)
     }
     val entityListSelectedCenturies = remember { mutableStateMapOf<Pair<ContentType, String>, String>() }

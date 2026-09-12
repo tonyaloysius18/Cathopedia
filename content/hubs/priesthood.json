@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": 1,
+  "hub": {
+    "id": "priesthood",
+    "slug": "priesthood",
+    "titleKey": "hub.priesthood.title",
+    "subtitleKey": "hub.priesthood.subtitle",
+    "introKey": "hub.priesthood.intro",
+    "icon": "ic_priesthood",
+    "accentColor": "#8C6B3F",
+    "sortOrder": 7,
+    "tags": ["priesthood", "vocation", "holy orders", "formation", "seminary"]
+  },
+  "sections": [
+    {
+      "id": "priesthood.two_kinds",
+      "sortOrder": 1,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.priesthood.two_kinds.title",
+      "summaryKey": "sec.priesthood.two_kinds.summary",
+      "icon": "ic_priesthood",
+      "articleIds": ["art.priesthood.two_kinds"]
+    },
+    {
+      "id": "priesthood.formation",
+      "sortOrder": 2,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.priesthood.formation.title",
+      "summaryKey": "sec.priesthood.formation.summary",
+      "icon": "ic_priesthood",
+      "articleIds": ["art.priesthood.formation"]
+    }
+  ],
+  "articles": [
+    {
+      "id": "art.priesthood.two_kinds",
+      "sectionId": "priesthood.two_kinds",
+      "sortOrder": 1,
+      "titleKey": "art.twokinds.title",
+      "leadKey": "art.twokinds.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.twokinds.intro" },
+        { "type": "image", "asset": "hub/priesthood/priest_religious.png", "captionKey": "art.twokinds.religious.caption", "license": "IN_HOUSE" },
+        { "type": "image", "asset": "hub/priesthood/priest_diocesan.png", "captionKey": "art.twokinds.diocesan.caption", "license": "IN_HOUSE" },
+        {
+          "type": "factGrid",
+          "facts": [
+            { "labelKey": "art.twokinds.label.belongs", "valueKey": "art.twokinds.religious.belongs" },
+            { "labelKey": "art.twokinds.label.promises", "valueKey": "art.twokinds.religious.promises" },
+            { "labelKey": "art.twokinds.label.obeys", "valueKey": "art.twokinds.religious.obeys" },
+            { "labelKey": "art.twokinds.label.lives", "valueKey": "art.twokinds.religious.lives" },
+            { "labelKey": "art.twokinds.label.work", "valueKey": "art.twokinds.religious.work" },
+            { "labelKey": "art.twokinds.label.where", "valueKey": "art.twokinds.religious.where" }
+          ]
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            { "labelKey": "art.twokinds.label.belongs", "valueKey": "art.twokinds.diocesan.belongs" },
+            { "labelKey": "art.twokinds.label.promises", "valueKey": "art.twokinds.diocesan.promises" },
+            { "labelKey": "art.twokinds.label.obeys", "valueKey": "art.twokinds.diocesan.obeys" },
+            { "labelKey": "art.twokinds.label.lives", "valueKey": "art.twokinds.diocesan.lives" },
+            { "labelKey": "art.twokinds.label.work", "valueKey": "art.twokinds.diocesan.work" },
+            { "labelKey": "art.twokinds.label.where", "valueKey": "art.twokinds.diocesan.where" }
+          ]
+        },
+        { "type": "heading", "level": 2, "textKey": "art.twokinds.points.title" },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.twokinds.religious.1", "art.twokinds.religious.2", "art.twokinds.religious.3"] },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.twokinds.diocesan.1", "art.twokinds.diocesan.2", "art.twokinds.diocesan.3"] },
+        { "type": "callout", "tone": "info", "titleKey": "art.twokinds.same.title", "textKey": "art.twokinds.same.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.twokinds.societies.title", "textKey": "art.twokinds.societies.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.twokinds.vows.title", "textKey": "art.twokinds.vows.body" }
+      ]
+    },
+    {
+      "id": "art.priesthood.formation",
+      "sectionId": "priesthood.formation",
+      "sortOrder": 1,
+      "titleKey": "art.formation.title",
+      "leadKey": "art.formation.lead",
+      "readingTimeMinutes": 6,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.formation.intro" },
+        { "type": "stepperRef", "stepperId": "step.formation.diocesan" },
+        { "type": "stepperRef", "stepperId": "step.formation.religious" },
+        { "type": "callout", "tone": "note", "titleKey": "art.formation.age.title", "textKey": "art.formation.age.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.formation.celibacy.title", "textKey": "art.formation.celibacy.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.formation.brothers.title", "textKey": "art.formation.brothers.body" },
+        { "type": "quote", "textKey": "art.formation.quote", "attributionKey": "art.formation.quote.attribution" }
+      ]
+    }
+  ],
+  "steppers": [
+    {
+      "id": "step.formation.diocesan",
+      "titleKey": "step.dio.title",
+      "introKey": "step.dio.intro",
+      "steps": [
+        { "id": "step.dio.1", "order": 1, "titleKey": "step.dio.1.title", "bodyKey": "step.dio.1.body", "asset": "hub/symbols/symbol_dove.png" },
+        { "id": "step.dio.2", "order": 2, "titleKey": "step.dio.2.title", "bodyKey": "step.dio.2.body", "asset": "hub/symbols/symbol_cathedra.png" },
+        { "id": "step.dio.3", "order": 3, "titleKey": "step.dio.3.title", "bodyKey": "step.dio.3.body", "asset": "hub/symbols/symbol_candle.png" },
+        { "id": "step.dio.4", "order": 4, "titleKey": "step.dio.4.title", "bodyKey": "step.dio.4.body", "asset": "hub/symbols/symbol_scroll.png" },
+        { "id": "step.dio.5", "order": 5, "titleKey": "step.dio.5.title", "bodyKey": "step.dio.5.body", "asset": "hub/symbols/symbol_gospel_book.png" },
+        { "id": "step.dio.6", "order": 6, "titleKey": "step.dio.6.title", "bodyKey": "step.dio.6.body", "asset": "hub/symbols/symbol_chalice_host.png" },
+        { "id": "step.dio.7", "order": 7, "titleKey": "step.dio.7.title", "bodyKey": "step.dio.7.body", "asset": "hub/priesthood/hierarchy_deacon.png" },
+        { "id": "step.dio.8", "order": 8, "titleKey": "step.dio.8.title", "bodyKey": "step.dio.8.body", "asset": "hub/symbols/symbol_laying_on_hands.png" },
+        { "id": "step.dio.9", "order": 9, "titleKey": "step.dio.9.title", "bodyKey": "step.dio.9.body", "asset": "hub/symbols/symbol_good_shepherd.png" }
+      ]
+    },
+    {
+      "id": "step.formation.religious",
+      "titleKey": "step.rel.title",
+      "introKey": "step.rel.intro",
+      "steps": [
+        { "id": "step.rel.1", "order": 1, "titleKey": "step.rel.1.title", "bodyKey": "step.rel.1.body", "asset": "hub/symbols/symbol_dove.png" },
+        { "id": "step.rel.2", "order": 2, "titleKey": "step.rel.2.title", "bodyKey": "step.rel.2.body", "asset": "hub/symbols/symbol_franciscan_arms.png" },
+        { "id": "step.rel.3", "order": 3, "titleKey": "step.rel.3.title", "bodyKey": "step.rel.3.body", "asset": "hub/symbols/symbol_benedictine_medal.png" },
+        { "id": "step.rel.4", "order": 4, "titleKey": "step.rel.4.title", "bodyKey": "step.rel.4.body", "asset": "hub/symbols/symbol_scroll.png" },
+        { "id": "step.rel.5", "order": 5, "titleKey": "step.rel.5.title", "bodyKey": "step.rel.5.body", "asset": "hub/symbols/symbol_gospel_book.png" },
+        { "id": "step.rel.6", "order": 6, "titleKey": "step.rel.6.title", "bodyKey": "step.rel.6.body", "asset": "hub/symbols/symbol_vine_branches.png" },
+        { "id": "step.rel.7", "order": 7, "titleKey": "step.rel.7.title", "bodyKey": "step.rel.7.body", "asset": "hub/symbols/symbol_cross.png" },
+        { "id": "step.rel.8", "order": 8, "titleKey": "step.rel.8.title", "bodyKey": "step.rel.8.body", "asset": "hub/priesthood/hierarchy_deacon.png" },
+        { "id": "step.rel.9", "order": 9, "titleKey": "step.rel.9.title", "bodyKey": "step.rel.9.body", "asset": "hub/symbols/symbol_laying_on_hands.png" }
+      ]
+    }
+  ]
+}

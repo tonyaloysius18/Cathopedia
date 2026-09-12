@@ -20,6 +20,8 @@ import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.model.PRAYER_SEARCH_ENTITY_TYPE
 import com.ynotlabs.cathopedia.resources.Res
 import kotlinx.serialization.encodeToString
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
 /**
  * Loads the compiled content bundle (`/content` → `:shared:compileContent` →
@@ -37,7 +39,7 @@ object ContentLoader {
      * this just controls whether it re-runs on an existing install rather
      * than only ever loading once on a database with zero rows.
      */
-    private const val CONTENT_VERSION = "77"
+    private const val CONTENT_VERSION = "78"
     private const val CONTENT_VERSION_KEY = "content_version"
 
     // classDiscriminator/explicitNulls (from com.ynotlabs.cathopedia.content.hubContentJson) are
@@ -46,9 +48,14 @@ object ContentLoader {
     // decoded through this same instance.
     private val json = hubContentJson
 
-    suspend fun loadIfEmpty(database: CathopediaDatabase) {
+    // Callers can arrive at once — the splash seeds while the Explore prefetch wants to read —
+    // so the seed is serialised. Without this a reader could see a half-seeded database, or an
+    // old one whose new rows have not landed yet.
+    private val seedMutex = Mutex()
+
+    suspend fun loadIfEmpty(database: CathopediaDatabase) = seedMutex.withLock {
         val loadedVersion = database.preferenceQueries.getPreference(CONTENT_VERSION_KEY).executeAsOneOrNull()
-        if (loadedVersion == CONTENT_VERSION) return
+        if (loadedVersion == CONTENT_VERSION) return@withLock
 
         val bytes = Res.readBytes(CATALOG_PATH)
         val catalog = json.decodeFromString<ContentCatalog>(bytes.decodeToString())

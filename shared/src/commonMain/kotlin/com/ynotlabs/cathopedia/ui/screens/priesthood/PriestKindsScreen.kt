@@ -1,4 +1,4 @@
-package com.ynotlabs.cathopedia.ui.screens.holysee
+package com.ynotlabs.cathopedia.ui.screens.priesthood
 
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -7,20 +7,19 @@ import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.ui.screens.common.ComparisonArticle
 
 /**
- * "Patriarch and Pope" — Holy See → Patriarchs & the Pope.
+ * "Religious and Diocesan Priests" — The Priesthood → the two kinds.
  *
- * A thin wrapper over [ComparisonArticle]; the layout it used to own now serves every
- * side-by-side comparison in the app.
+ * The same side-by-side layout as Patriarch and Pope, with the religious priest on the left.
  */
 @Composable
-fun PatriarchAndPopeScreen(
+fun PriestKindsScreen(
     repository: CathopediaRepository,
     language: String,
     onBack: () -> Unit,
     listState: LazyListState = rememberLazyListState(),
 ) {
     ComparisonArticle(
-        articleId = "art.holy_see.patriarch_vs_pope",
+        articleId = "art.priesthood.two_kinds",
         repository = repository,
         language = language,
         onBack = onBack,
