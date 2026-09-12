@@ -145,6 +145,7 @@ fun IllustratedEntriesArticle(
             }
         }
 
+        val firstBlockAfterIntro = blocks.indexOfFirst { it !is ParagraphBlock }
         var number = 0
         var index = 0
         while (index < blocks.size) {
@@ -180,7 +181,9 @@ fun IllustratedEntriesArticle(
                 }
 
                 is CalloutBlock -> item(key = "callout-$index") {
-                    if (block.tone == CalloutTone.warning) {
+                    // The intro already closes with a divider, so a warning that follows it
+                    // straight away must not draw a second one.
+                    if (block.tone == CalloutTone.warning && index != firstBlockAfterIntro) {
                         Spacer(Modifier.height(8.dp))
                         SacredDivider()
                         Spacer(Modifier.height(18.dp))

@@ -170,8 +170,11 @@ fun ExploreScreen(
 
             val holySee = hubs.find { it.id == "holy_see" }
             val firstGrid = hubs.filter { it.id == "symbols" || it.id == "mass" }
-            val secondGrid = hubs.filter { it.id == "catechism" || it.id == "biblical" }
-            val remainingHubs = hubs.filterNot { it.id in setOf("holy_see", "catechism", "symbols", "mass", "biblical") }
+            val secondGrid = hubs.filter { it.id == "priesthood" || it.id == "biblical" }
+            val catechism = hubs.find { it.id == "catechism" }
+            val remainingHubs = hubs.filterNot {
+                it.id in setOf("holy_see", "catechism", "symbols", "mass", "biblical", "priesthood")
+            }
 
             holySee?.let { hub ->
                 item(key = hub.id) {
@@ -210,7 +213,7 @@ fun ExploreScreen(
                         modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
-                        secondGrid.sortedBy { it.id != "catechism" }.forEach { hub ->
+                        secondGrid.sortedBy { it.id != "priesthood" }.forEach { hub ->
                             PortraitHubExploreCard(
                                 hub = hub,
                                 title = hubStrings[hub.titleKey].orEmpty(),
@@ -221,6 +224,17 @@ fun ExploreScreen(
                         }
                         if (secondGrid.size == 1) Spacer(Modifier.weight(1f).fillMaxHeight())
                     }
+                }
+            }
+
+            catechism?.let { hub ->
+                item(key = hub.id) {
+                    HubExploreCard(
+                        hub = hub,
+                        title = hubStrings[hub.titleKey].orEmpty(),
+                        subtitle = hub.subtitleKey?.let { hubStrings[it] },
+                        onClick = { onHubSelected(hub) },
+                    )
                 }
             }
 
@@ -828,12 +842,14 @@ private fun PortraitHubExploreCard(
     val isCatechism = hub.id == "catechism"
     val isBiblical = hub.id == "biblical"
     val isOrders = hub.id == "orders"
+    val isPriesthood = hub.id == "priesthood"
 
     val artwork = when {
         isSymbols -> Res.drawable.explore_sacred_symbols
         isHolyMass -> Res.drawable.explore_holymass
         isCatechism -> Res.drawable.explore_catechism
         isBiblical -> Res.drawable.explore_biblical
+        isPriesthood -> Res.drawable.explore_priesthood
         else -> Res.drawable.explore_bg
     }
     val icon = when {
@@ -841,6 +857,7 @@ private fun PortraitHubExploreCard(
         isHolyMass -> Res.drawable.holy_mass_icon
         isCatechism -> Res.drawable.catechism_icon
         isBiblical -> Res.drawable.biblical_characters_icon
+        isPriesthood -> Res.drawable.priesthood_icon
         else -> null
     }
 

@@ -32,9 +32,47 @@
       "summaryKey": "sec.priesthood.formation.summary",
       "icon": "ic_priesthood",
       "articleIds": ["art.priesthood.formation"]
+    },
+    {
+      "id": "priesthood.leaving",
+      "sortOrder": 3,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.priesthood.leaving.title",
+      "summaryKey": "sec.priesthood.leaving.summary",
+      "icon": "ic_priesthood",
+      "articleIds": ["art.priesthood.leaving"]
     }
   ],
   "articles": [
+    {
+      "id": "art.priesthood.leaving",
+      "sectionId": "priesthood.leaving",
+      "sortOrder": 1,
+      "titleKey": "art.leaving.title",
+      "leadKey": "art.leaving.lead",
+      "readingTimeMinutes": 5,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.leaving.intro" },
+        { "type": "callout", "tone": "warning", "titleKey": "art.leaving.forever.title", "textKey": "art.leaving.forever.body" },
+        { "type": "heading", "level": 2, "textKey": "art.leaving.first.title" },
+        { "type": "callout", "tone": "info", "titleKey": "art.leaving.help.title", "textKey": "art.leaving.help.body" },
+        { "type": "callout", "tone": "info", "titleKey": "art.leaving.leave.title", "textKey": "art.leaving.leave.body" },
+        { "type": "heading", "level": 2, "textKey": "art.leaving.ways.title" },
+        { "type": "image", "asset": "hub/symbols/symbol_scroll.png", "captionKey": "art.leaving.invalid.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.leaving.invalid.title", "textKey": "art.leaving.invalid.body" },
+        { "type": "image", "asset": "hub/symbols/symbol_cathedra.png", "captionKey": "art.leaving.dismissal.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.leaving.dismissal.title", "textKey": "art.leaving.dismissal.body" },
+        { "type": "image", "asset": "hub/symbols/symbol_papal_cross.png", "captionKey": "art.leaving.rescript.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.leaving.rescript.title", "textKey": "art.leaving.rescript.body" },
+        { "type": "heading", "level": 2, "textKey": "art.leaving.effect.title" },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.leaving.effect.1", "art.leaving.effect.2", "art.leaving.effect.3", "art.leaving.effect.4", "art.leaving.effect.5"] },
+        { "type": "callout", "tone": "note", "titleKey": "art.leaving.religious.title", "textKey": "art.leaving.religious.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.leaving.death.title", "textKey": "art.leaving.death.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.leaving.stay.title", "textKey": "art.leaving.stay.body" },
+        { "type": "quote", "textKey": "art.leaving.quote", "attributionKey": "art.leaving.quote.attribution" }
+      ]
+    },
     {
       "id": "art.priesthood.two_kinds",
       "sectionId": "priesthood.two_kinds",

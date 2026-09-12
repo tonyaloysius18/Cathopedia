@@ -14,6 +14,7 @@ import com.ynotlabs.cathopedia.ui.screens.holysee.PatriarchAndPopeScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.MassTypesScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.LiturgicalYearScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.MassBooksScreen
+import com.ynotlabs.cathopedia.ui.screens.priesthood.LeavingPriesthoodScreen
 import com.ynotlabs.cathopedia.ui.screens.priesthood.PriestFormationScreen
 import com.ynotlabs.cathopedia.ui.screens.priesthood.PriestKindsScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.ReadingCyclesScreen
@@ -285,6 +286,16 @@ fun HubArticleScreen(
 
     if (articleId == "art.cardinals.overview") {
         CardinalsScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            listState = listState,
+        )
+        return
+    }
+
+    if (articleId == "art.priesthood.leaving") {
+        LeavingPriesthoodScreen(
             repository = repository,
             language = language,
             onBack = onBack,
