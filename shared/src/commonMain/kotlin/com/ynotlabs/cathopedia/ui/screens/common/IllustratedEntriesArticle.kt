@@ -2,7 +2,6 @@ package com.ynotlabs.cathopedia.ui.screens.common
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,7 +20,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
@@ -30,7 +28,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -81,8 +78,6 @@ fun IllustratedEntriesArticle(
     language: String,
     onBack: () -> Unit,
     numbered: Boolean = true,
-    wrapEntryTextBelowImage: Boolean = false,
-    showEntryImageBackground: Boolean = true,
     listState: LazyListState = rememberLazyListState(),
     afterIntro: (@Composable () -> Unit)? = null,
 ) {
@@ -165,8 +160,6 @@ fun IllustratedEntriesArticle(
                     EntryCard(
                         entry = entry,
                         numbered = numbered,
-                        wrapTextBelowImage = wrapEntryTextBelowImage,
-                        showImageBackground = showEntryImageBackground,
                     )
                     Spacer(Modifier.height(12.dp))
                 }
@@ -227,8 +220,6 @@ fun IllustratedEntriesArticle(
 private fun EntryCard(
     entry: Entry,
     numbered: Boolean,
-    wrapTextBelowImage: Boolean,
-    showImageBackground: Boolean,
 ) {
     Surface(
         modifier = Modifier.fillMaxWidth(),
@@ -239,122 +230,48 @@ private fun EntryCard(
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))
-            val painter = hubAssetPainter(entry.asset)
-            if (wrapTextBelowImage && painter != null) {
-                FlowingEntryContent(
-                    entry = entry,
-                    numbered = numbered,
-                    showImageBackground = showImageBackground,
-                    modifier = Modifier.padding(start = 20.dp, top = 16.dp, end = 16.dp, bottom = 16.dp),
-                )
-            } else {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 20.dp, top = 16.dp, end = 16.dp, bottom = 16.dp),
+            ) {
                 Row(
-                    modifier = Modifier.padding(start = 20.dp, top = 16.dp, end = 16.dp, bottom = 16.dp),
-                    verticalAlignment = Alignment.Top,
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    EntryImage(
-                        entry = entry,
-                        showBackground = showImageBackground,
-                    )
-
+                    EntryImage(entry)
                     Spacer(Modifier.width(14.dp))
-
                     Column(modifier = Modifier.weight(1f)) {
                         EntryTitle(entry, numbered)
-                        Spacer(Modifier.height(6.dp))
-                        Text(
-                            text = entry.body,
-                            color = ArticleCream.copy(alpha = 0.88f),
-                            fontSize = 13.sp,
-                            lineHeight = 20.sp,
-                        )
-                        EntryReference(entry.reference)
                     }
                 }
-            }
-        }
-    }
-}
-
-/**
- * Keeps the opening copy beside the artwork and lets the overflow continue across
- * the full card width. This avoids a tall empty column beneath a compact image.
- */
-@Composable
-private fun FlowingEntryContent(
-    entry: Entry,
-    numbered: Boolean,
-    showImageBackground: Boolean,
-    modifier: Modifier = Modifier,
-) {
-    var width by remember { mutableIntStateOf(0) }
-    var splitIndex by remember(entry.body, width) { mutableIntStateOf(entry.body.length) }
-    val sideText = entry.body.substring(0, splitIndex).trimEnd()
-    val remainingText = entry.body.substring(splitIndex).trimStart()
-
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .onGloballyPositioned { width = it.size.width },
-    ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.Top,
-        ) {
-            EntryImage(
-                entry = entry,
-                showBackground = showImageBackground,
-            )
-            Spacer(Modifier.width(14.dp))
-            Column(modifier = Modifier.weight(1f)) {
-                EntryTitle(entry, numbered)
-                Spacer(Modifier.height(6.dp))
+                Spacer(Modifier.height(10.dp))
                 Text(
-                    text = sideText,
+                    text = entry.body,
                     color = ArticleCream.copy(alpha = 0.88f),
                     fontSize = 13.sp,
                     lineHeight = 20.sp,
-                    maxLines = 2,
-                    onTextLayout = { result ->
-                        if (splitIndex == entry.body.length && result.didOverflowHeight && result.lineCount > 0) {
-                            val visibleEnd = result.getLineEnd(result.lineCount - 1, visibleEnd = true)
-                            if (visibleEnd in 1 until entry.body.length) splitIndex = visibleEnd
-                        }
-                    },
+                    modifier = Modifier.fillMaxWidth(),
                 )
+                EntryReference(entry.reference)
             }
         }
-        if (remainingText.isNotBlank()) {
-            Spacer(Modifier.height(8.dp))
-            Text(
-                text = remainingText,
-                color = ArticleCream.copy(alpha = 0.88f),
-                fontSize = 13.sp,
-                lineHeight = 20.sp,
-                modifier = Modifier.fillMaxWidth(),
-            )
-        }
-        EntryReference(entry.reference)
     }
 }
 
 @Composable
-private fun EntryImage(
-    entry: Entry,
-    showBackground: Boolean,
-) {
+private fun EntryImage(entry: Entry) {
     Box(
         modifier = Modifier
             .size(72.dp)
-            .clip(RoundedCornerShape(14.dp))
-            .then(if (showBackground) Modifier.background(ArticleSurfaceRaised) else Modifier),
+            .clip(RoundedCornerShape(14.dp)),
         contentAlignment = Alignment.Center,
     ) {
         hubAssetPainter(entry.asset)?.let { painter ->
             Image(
                 painter = painter,
                 contentDescription = null,
-                contentScale = if (showBackground) ContentScale.Crop else ContentScale.Fit,
+                contentScale = ContentScale.Fit,
                 modifier = Modifier.fillMaxSize(),
             )
         } ?: Text(

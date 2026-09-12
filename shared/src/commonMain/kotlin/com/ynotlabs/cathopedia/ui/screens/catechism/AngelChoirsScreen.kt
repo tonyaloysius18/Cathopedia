@@ -26,8 +26,6 @@ fun AngelChoirsScreen(
         repository = repository,
         language = language,
         onBack = onBack,
-        wrapEntryTextBelowImage = true,
-        showEntryImageBackground = false,
         listState = listState,
     )
 }

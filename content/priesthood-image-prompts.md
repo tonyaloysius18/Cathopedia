@@ -113,3 +113,41 @@ val isPriesthood = hub.id == "priesthood"
 
 Until then the card falls back to the generic `explore_bg` artwork with no icon,
 which is what it shows today.
+
+---
+
+# The Diaconate — one further image
+
+Added 2026-09-12 with the hub's third section. Everything else on that page
+reuses existing art: `hierarchy_deacon` for the transitional deacon,
+`symbol_wedding_rings` for the permanent deacon, `symbol_bread_fish` for the
+seven of Acts 6, and `stole_deacon` for how to spot a deacon at Mass.
+
+| Slot | Asset |
+| --- | --- |
+| Page hero | `deacon_proclaims_gospel.png` |
+
+- **Landscape 3:2 at 1200×800**, and — unlike the cut-outs elsewhere in this hub
+  — **fully painted, not transparent**. It renders full-width with rounded
+  corners, marked `"hero": true` in the article.
+
+Classical academic sacred oil painting, warm candlelight and a shaft of daylight,
+full painted scene. **A deacon proclaiming the Gospel at the ambo**: a man in a
+white alb with a **stole worn across the body, over the left shoulder and
+fastened at the right hip**, under a **dalmatic** — the wide-sleeved vestment
+with two vertical bands. He stands at a stone ambo with the **Book of the Gospels
+open before him**, one hand raised in the small sign of the cross made before the
+reading, head slightly lowered towards the page. Two **candles** flank the ambo
+and a thread of **incense smoke** drifts across the light. Behind him the church
+falls away softly out of focus. 3:2.
+
+*Notes:* the vesting is the whole point of the picture, so it must be right —
+**the stole must run diagonally across the chest, never straight down from both
+shoulders**, which would make him a priest. He is at the ambo, **not at the
+altar**, and no chalice is in frame. His face may be partly lowered; do not make
+him look at the viewer.
+
+**Negative prompt:** `text, letters, words, labels, watermark, signature, frame,
+border, cartoon, flat vector, low detail, distorted hands, extra fingers, stole
+hanging straight down, chasuble, mitre, crozier, chalice, altar, bishop, pope,
+woman, congregation, crowd`

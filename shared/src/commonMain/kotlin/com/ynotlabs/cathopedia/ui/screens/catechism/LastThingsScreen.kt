@@ -22,17 +22,16 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -232,69 +231,34 @@ private fun LastThingCard(thing: LastThing) {
             ) {
                 val painter = hubAssetPainter(thing.asset)
                 if (painter != null) {
-                    var width by remember { mutableIntStateOf(0) }
-                    var splitIndex by remember(thing.body, width) { mutableIntStateOf(thing.body.length) }
-                    val sideText = thing.body.substring(0, splitIndex).trimEnd()
-                    val remainingText = thing.body.substring(splitIndex).trimStart()
-
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .onGloballyPositioned { width = it.size.width },
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Row(verticalAlignment = Alignment.Top) {
-                            Image(
-                                painter = painter,
-                                contentDescription = null,
-                                contentScale = ContentScale.Fit,
-                                modifier = Modifier.size(72.dp),
-                            )
-                            Spacer(Modifier.width(14.dp))
-                            Column(modifier = Modifier.weight(1f)) {
-                                LastThingTitle(thing)
-                                Spacer(Modifier.height(7.dp))
-                                Text(
-                                    text = sideText,
-                                    color = ArticleCream.copy(alpha = 0.88f),
-                                    fontSize = 13.sp,
-                                    lineHeight = 20.sp,
-                                    maxLines = 2,
-                                    onTextLayout = { result ->
-                                        if (
-                                            splitIndex == thing.body.length &&
-                                            result.didOverflowHeight &&
-                                            result.lineCount > 0
-                                        ) {
-                                            val visibleEnd = result.getLineEnd(result.lineCount - 1, visibleEnd = true)
-                                            if (visibleEnd in 1 until thing.body.length) splitIndex = visibleEnd
-                                        }
-                                    },
-                                )
-                            }
-                        }
-                        if (remainingText.isNotBlank()) {
-                            Spacer(Modifier.height(8.dp))
-                            Text(
-                                text = remainingText,
-                                color = ArticleCream.copy(alpha = 0.88f),
-                                fontSize = 13.sp,
-                                lineHeight = 20.sp,
-                                modifier = Modifier.fillMaxWidth(),
-                            )
+                        Image(
+                            painter = painter,
+                            contentDescription = null,
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .size(72.dp)
+                                .clip(RoundedCornerShape(12.dp)),
+                        )
+                        Spacer(Modifier.width(14.dp))
+                        Column(modifier = Modifier.weight(1f)) {
+                            LastThingTitle(thing)
                         }
                     }
                 } else {
-                    Column(modifier = Modifier.fillMaxWidth()) {
-                        LastThingTitle(thing)
-                        Spacer(Modifier.height(7.dp))
-                        Text(
-                            text = thing.body,
-                            color = ArticleCream.copy(alpha = 0.88f),
-                            fontSize = 13.sp,
-                            lineHeight = 20.sp,
-                        )
-                    }
+                    LastThingTitle(thing)
                 }
+                Spacer(Modifier.height(7.dp))
+                Text(
+                    text = thing.body,
+                    color = ArticleCream.copy(alpha = 0.88f),
+                    fontSize = 13.sp,
+                    lineHeight = 20.sp,
+                    modifier = Modifier.fillMaxWidth(),
+                )
 
                 if (thing.reference.isNotBlank()) {
                     Spacer(Modifier.height(10.dp))

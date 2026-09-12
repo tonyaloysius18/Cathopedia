@@ -34,8 +34,18 @@
       "articleIds": ["art.priesthood.formation"]
     },
     {
-      "id": "priesthood.leaving",
+      "id": "priesthood.diaconate",
       "sortOrder": 3,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.priesthood.diaconate.title",
+      "summaryKey": "sec.priesthood.diaconate.summary",
+      "icon": "ic_priesthood",
+      "articleIds": ["art.priesthood.diaconate"]
+    },
+    {
+      "id": "priesthood.leaving",
+      "sortOrder": 4,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.priesthood.leaving.title",
@@ -45,6 +55,35 @@
     }
   ],
   "articles": [
+    {
+      "id": "art.priesthood.diaconate",
+      "sectionId": "priesthood.diaconate",
+      "sortOrder": 1,
+      "titleKey": "art.diaconate.title",
+      "leadKey": "art.diaconate.lead",
+      "readingTimeMinutes": 5,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.diaconate.intro" },
+        { "type": "image", "asset": "hub/priesthood/deacon_proclaims_gospel.png", "captionKey": "art.diaconate.hero.caption", "license": "IN_HOUSE", "hero": true },
+        { "type": "callout", "tone": "warning", "titleKey": "art.diaconate.service.title", "textKey": "art.diaconate.service.body" },
+        { "type": "heading", "level": 2, "textKey": "art.diaconate.kinds.title" },
+        { "type": "image", "asset": "hub/priesthood/hierarchy_deacon.png", "captionKey": "art.diaconate.transitional.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.diaconate.transitional.title", "textKey": "art.diaconate.transitional.body" },
+        { "type": "image", "asset": "hub/symbols/symbol_wedding_rings.png", "captionKey": "art.diaconate.permanent.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.diaconate.permanent.title", "textKey": "art.diaconate.permanent.body" },
+        { "type": "heading", "level": 2, "textKey": "art.diaconate.does.title" },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.diaconate.does.1", "art.diaconate.does.2", "art.diaconate.does.3", "art.diaconate.does.4", "art.diaconate.does.5"] },
+        { "type": "heading", "level": 2, "textKey": "art.diaconate.not.title" },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.diaconate.not.1", "art.diaconate.not.2", "art.diaconate.not.3", "art.diaconate.not.4"] },
+        { "type": "image", "asset": "hub/symbols/symbol_bread_fish.png", "captionKey": "art.diaconate.origin.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "note", "titleKey": "art.diaconate.origin.title", "textKey": "art.diaconate.origin.body" },
+        { "type": "image", "asset": "hub/priesthood/stole_deacon.png", "captionKey": "art.diaconate.stole.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "note", "titleKey": "art.diaconate.stole.title", "textKey": "art.diaconate.stole.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.diaconate.marriage.title", "textKey": "art.diaconate.marriage.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.diaconate.women.title", "textKey": "art.diaconate.women.body" },
+        { "type": "quote", "textKey": "art.diaconate.quote", "attributionKey": "art.diaconate.quote.attribution" }
+      ]
+    },
     {
       "id": "art.priesthood.leaving",
       "sectionId": "priesthood.leaving",

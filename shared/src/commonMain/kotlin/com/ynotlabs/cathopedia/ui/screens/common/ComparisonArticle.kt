@@ -24,7 +24,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
@@ -33,7 +32,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -375,60 +373,27 @@ private fun ComparisonCell(
     }
 }
 
-/** Places a comparison symbol at top-right and continues overflow copy below it. */
+/** Places a comparison symbol first and gives all copy the full cell width below it. */
 @Composable
 private fun RightWrappedSymbolText(
     text: String,
     symbolPainter: Painter,
 ) {
-    var width by remember { mutableIntStateOf(0) }
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .onGloballyPositioned { width = it.size.width }
-    ) {
-        var splitIndex by remember(text, width) { mutableIntStateOf(text.length) }
-        val sideText = text.substring(0, splitIndex).trimEnd()
-        val remainingText = text.substring(splitIndex).trimStart()
-
-        Column(modifier = Modifier.fillMaxWidth()) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.Top,
-            ) {
-                Text(
-                    text = sideText,
-                    color = ArticleCream.copy(alpha = 0.9f),
-                    fontSize = 13.sp,
-                    lineHeight = 19.sp,
-                    maxLines = 3,
-                    onTextLayout = { result ->
-                        if (splitIndex == text.length && result.didOverflowHeight && result.lineCount > 0) {
-                            val visibleEnd = result.getLineEnd(result.lineCount - 1, visibleEnd = true)
-                            if (visibleEnd in 1 until text.length) splitIndex = visibleEnd
-                        }
-                    },
-                    modifier = Modifier.weight(1f),
-                )
-                Spacer(Modifier.width(8.dp))
-                Image(
-                    painter = symbolPainter,
-                    contentDescription = null,
-                    contentScale = ContentScale.Fit,
-                    modifier = Modifier.size(56.dp),
-                )
-            }
-            if (remainingText.isNotBlank()) {
-                Spacer(Modifier.height(6.dp))
-                Text(
-                    text = remainingText,
-                    color = ArticleCream.copy(alpha = 0.9f),
-                    fontSize = 13.sp,
-                    lineHeight = 19.sp,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-            }
-        }
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Image(
+            painter = symbolPainter,
+            contentDescription = null,
+            contentScale = ContentScale.Fit,
+            modifier = Modifier.size(56.dp),
+        )
+        Spacer(Modifier.height(10.dp))
+        Text(
+            text = text,
+            color = ArticleCream.copy(alpha = 0.9f),
+            fontSize = 13.sp,
+            lineHeight = 19.sp,
+            modifier = Modifier.fillMaxWidth(),
+        )
     }
 }
 
@@ -477,4 +442,3 @@ private fun KeyPointsCard(side: String, points: List<String>) {
         }
     }
 }
-

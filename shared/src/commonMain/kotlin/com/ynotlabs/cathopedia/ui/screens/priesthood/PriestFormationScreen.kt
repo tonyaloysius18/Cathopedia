@@ -22,7 +22,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -50,6 +49,16 @@ import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.model.HubArticleDetail
 import com.ynotlabs.cathopedia.model.HubStepperDetail
+import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.resources._01
+import com.ynotlabs.cathopedia.resources._02
+import com.ynotlabs.cathopedia.resources._03
+import com.ynotlabs.cathopedia.resources._04
+import com.ynotlabs.cathopedia.resources._05
+import com.ynotlabs.cathopedia.resources._06
+import com.ynotlabs.cathopedia.resources._07
+import com.ynotlabs.cathopedia.resources._08
+import com.ynotlabs.cathopedia.resources._09
 import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.ui.hubAssetPainter
@@ -62,7 +71,8 @@ import com.ynotlabs.cathopedia.ui.screens.common.ArticleMuted
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleQuoteCard
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleScaffold
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleSurface
-import com.ynotlabs.cathopedia.ui.screens.common.ArticleSurfaceRaised
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
 
 private const val FORMATION_ARTICLE_ID = "art.priesthood.formation"
 
@@ -286,17 +296,14 @@ private fun StepRow(
         ) {
             Box(
                 modifier = Modifier
-                    .size(38.dp)
-                    .clip(CircleShape)
-                    .background(ArticleSurfaceRaised),
+                    .size(42.dp),
                 contentAlignment = Alignment.Center,
             ) {
-                Text(
-                    text = number.toString().padStart(2, '0'),
-                    color = ArticleGold,
-                    fontFamily = FontFamily.Serif,
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.Bold,
+                Image(
+                    painter = painterResource(formationNumberDrawable(number)),
+                    contentDescription = number.toString(),
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.fillMaxSize(),
                 )
             }
             if (!isLast) {
@@ -329,7 +336,7 @@ private fun StepRow(
                                 painter = painter,
                                 contentDescription = null,
                                 contentScale = ContentScale.Fit,
-                                modifier = Modifier.size(30.dp),
+                                modifier = Modifier.size(38.dp),
                             )
                             Spacer(Modifier.width(10.dp))
                         }
@@ -354,4 +361,16 @@ private fun StepRow(
             }
         }
     }
+}
+
+private fun formationNumberDrawable(number: Int): DrawableResource = when (number) {
+    1 -> Res.drawable._01
+    2 -> Res.drawable._02
+    3 -> Res.drawable._03
+    4 -> Res.drawable._04
+    5 -> Res.drawable._05
+    6 -> Res.drawable._06
+    7 -> Res.drawable._07
+    8 -> Res.drawable._08
+    else -> Res.drawable._09
 }

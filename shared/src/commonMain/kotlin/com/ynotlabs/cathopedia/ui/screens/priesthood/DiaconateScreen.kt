@@ -1,4 +1,4 @@
-package com.ynotlabs.cathopedia.ui.screens.catechism
+package com.ynotlabs.cathopedia.ui.screens.priesthood
 
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -7,21 +7,19 @@ import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.ui.screens.common.IllustratedEntriesArticle
 
 /**
- * "Idols and Sacred Images" — Catechism → What We Believe, beside Types of Reverence.
+ * "The Diaconate" — The Priesthood → the third section.
  *
- * Two entries set against each other rather than a sequence, so unnumbered. The
- * `warning` callout carries the point: the honour shown to an image passes to the
- * person represented and never stops at the object.
+ * Unnumbered: transitional and permanent are two kinds of deacon, not two steps.
  */
 @Composable
-fun SacredImagesScreen(
+fun DiaconateScreen(
     repository: CathopediaRepository,
     language: String,
     onBack: () -> Unit,
     listState: LazyListState = rememberLazyListState(),
 ) {
     IllustratedEntriesArticle(
-        articleId = "art.cat.images",
+        articleId = "art.priesthood.diaconate",
         repository = repository,
         language = language,
         onBack = onBack,

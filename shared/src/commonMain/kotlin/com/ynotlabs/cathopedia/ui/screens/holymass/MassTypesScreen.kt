@@ -49,7 +49,6 @@ import com.ynotlabs.cathopedia.ui.screens.common.ArticleIntroCard
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleScaffold
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleSectionLabel
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleSurface
-import com.ynotlabs.cathopedia.ui.screens.common.ArticleSurfaceRaised
 import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.ui.hubAssetPainter
@@ -222,40 +221,39 @@ private fun MassTypeCard(type: MassType) {
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))
-            Row(
+            Column(
                 modifier = Modifier.padding(start = 20.dp, top = 16.dp, end = 16.dp, bottom = 16.dp),
-                verticalAlignment = Alignment.Top,
             ) {
-                Box(
-                    modifier = Modifier
-                        .size(58.dp)
-                        .clip(RoundedCornerShape(14.dp))
-                        .background(ArticleSurfaceRaised),
-                    contentAlignment = Alignment.Center,
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    hubAssetPainter(type.asset)?.let { painter ->
-                        Image(
-                            painter = painter,
-                            contentDescription = null,
-                            contentScale = ContentScale.Fit,
-                            modifier = Modifier.size(42.dp),
+                    Box(
+                        modifier = Modifier.size(58.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        hubAssetPainter(type.asset)?.let { painter ->
+                            Image(
+                                painter = painter,
+                                contentDescription = null,
+                                contentScale = ContentScale.Fit,
+                                modifier = Modifier.fillMaxSize(),
+                            )
+                        } ?: Text(
+                            text = type.number.toString(),
+                            color = ArticleGold,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold,
                         )
-                    } ?: Text(
-                        text = type.number.toString(),
-                        color = ArticleGold,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                    )
-                }
-
-                Spacer(Modifier.width(14.dp))
-
-                Column(modifier = Modifier.weight(1f)) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
+                    }
+                    Spacer(Modifier.width(14.dp))
+                    Row(
+                        modifier = Modifier.weight(1f),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
                         Text(
                             text = type.number.toString().padStart(2, '0'),
                             color = ArticleGoldSoft,
-                            fontFamily = FontFamily.Serif,
                             fontSize = 13.sp,
                             fontWeight = FontWeight.Bold,
                             letterSpacing = 0.5.sp,
@@ -271,26 +269,25 @@ private fun MassTypeCard(type: MassType) {
                             modifier = Modifier.weight(1f),
                         )
                     }
-                    Spacer(Modifier.height(6.dp))
+                }
+                Spacer(Modifier.height(10.dp))
+                Text(
+                    text = type.body,
+                    color = ArticleCream.copy(alpha = 0.88f),
+                    fontSize = 13.sp,
+                    lineHeight = 20.sp,
+                )
+                if (type.reference.isNotBlank()) {
+                    Spacer(Modifier.height(7.dp))
                     Text(
-                        text = type.body,
-                        color = ArticleCream.copy(alpha = 0.88f),
-                        fontSize = 13.sp,
-                        lineHeight = 20.sp,
+                        text = type.reference,
+                        color = ArticleGoldSoft,
+                        fontSize = 11.sp,
+                        lineHeight = 15.sp,
+                        fontStyle = FontStyle.Italic,
                     )
-                    if (type.reference.isNotBlank()) {
-                        Spacer(Modifier.height(7.dp))
-                        Text(
-                            text = type.reference,
-                            color = ArticleGoldSoft,
-                            fontSize = 11.sp,
-                            lineHeight = 15.sp,
-                            fontStyle = FontStyle.Italic,
-                        )
-                    }
                 }
             }
         }
     }
 }
-

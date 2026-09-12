@@ -56,7 +56,6 @@ import com.ynotlabs.cathopedia.ui.screens.common.ArticleMuted
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleScaffold
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleSectionLabel
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleSurface
-import com.ynotlabs.cathopedia.ui.screens.common.ArticleSurfaceRaised
 import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.ui.hubAssetPainter
@@ -229,12 +228,12 @@ private fun SeasonCard(season: Season) {
             Column(
                 modifier = Modifier.padding(start = 20.dp, top = 16.dp, end = 16.dp, bottom = 16.dp),
             ) {
-                Row(verticalAlignment = Alignment.Top) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
                     Box(
-                        modifier = Modifier
-                            .size(58.dp)
-                            .clip(RoundedCornerShape(14.dp))
-                            .background(ArticleSurfaceRaised),
+                        modifier = Modifier.size(58.dp),
                         contentAlignment = Alignment.Center,
                     ) {
                         hubAssetPainter(season.asset)?.let { painter ->
@@ -242,7 +241,7 @@ private fun SeasonCard(season: Season) {
                                 painter = painter,
                                 contentDescription = null,
                                 contentScale = ContentScale.Fit,
-                                modifier = Modifier.size(42.dp),
+                                modifier = Modifier.fillMaxSize(),
                             )
                         } ?: Text(
                             text = season.number.toString(),
@@ -251,38 +250,37 @@ private fun SeasonCard(season: Season) {
                             fontWeight = FontWeight.Bold,
                         )
                     }
-
                     Spacer(Modifier.width(14.dp))
-
-                    Column(modifier = Modifier.weight(1f)) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(
-                                text = season.number.toString().padStart(2, '0'),
-                                color = ArticleGoldSoft,
-                                fontFamily = FontFamily.Serif,
-                                fontSize = 13.sp,
-                                fontWeight = FontWeight.Bold,
-                            )
-                            Spacer(Modifier.width(8.dp))
-                            Text(
-                                text = season.title,
-                                color = ArticleGold,
-                                fontFamily = FontFamily.Serif,
-                                fontSize = 17.sp,
-                                lineHeight = 21.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                modifier = Modifier.weight(1f),
-                            )
-                        }
-                        Spacer(Modifier.height(6.dp))
+                    Row(
+                        modifier = Modifier.weight(1f),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
                         Text(
-                            text = season.body,
-                            color = ArticleCream.copy(alpha = 0.88f),
+                            text = season.number.toString().padStart(2, '0'),
+                            color = ArticleGoldSoft,
+                            fontFamily = FontFamily.Serif,
                             fontSize = 13.sp,
-                            lineHeight = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                        )
+                        Spacer(Modifier.width(8.dp))
+                        Text(
+                            text = season.title,
+                            color = ArticleGold,
+                            fontFamily = FontFamily.Serif,
+                            fontSize = 17.sp,
+                            lineHeight = 21.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            modifier = Modifier.weight(1f),
                         )
                     }
                 }
+                Spacer(Modifier.height(10.dp))
+                Text(
+                    text = season.body,
+                    color = ArticleCream.copy(alpha = 0.88f),
+                    fontSize = 13.sp,
+                    lineHeight = 20.sp,
+                )
 
                 if (season.colourLabel.isNotBlank()) {
                     Spacer(Modifier.height(12.dp))
@@ -392,4 +390,3 @@ private fun YearCycleCard(steps: List<String>) {
         }
     }
 }
-

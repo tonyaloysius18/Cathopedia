@@ -29,7 +29,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
@@ -41,7 +40,6 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -328,7 +326,6 @@ private fun BibleHeroIntro(
                     textColor = ArticleCream,
                     fontSize = 15.sp,
                     lineHeight = 23.sp,
-                    maxSideLines = 5,
                     modifier = Modifier.padding(start = 22.dp, top = 20.dp, end = 20.dp, bottom = 20.dp),
                 )
             }
@@ -370,68 +367,53 @@ private fun BiblePointCard(
             Column(
                 modifier = Modifier.padding(start = 22.dp, top = 18.dp, end = 16.dp, bottom = 18.dp),
             ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Image(
-                        painter = painterResource(numberDrawable(number) ?: Res.drawable._01),
-                        contentDescription = number.toString(),
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(28.dp),
-                    )
-                    Spacer(Modifier.width(10.dp))
-                    Text(
-                        text = title,
-                        color = ArticleGold,
-                        fontFamily = FontFamily.Serif,
-                        fontSize = 18.sp,
-                        lineHeight = 22.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.weight(1f),
-                    )
-                }
-
-                Spacer(Modifier.height(12.dp))
-
                 val pointPainter = hubAssetPainter(asset)
-                if (pointPainter != null && number in setOf(2, 5)) {
-                    FlowingImageText(
-                        painter = pointPainter,
-                        imageDescription = null,
-                        text = body,
-                        imageSize = BiblePointImageSize,
-                        textColor = ArticleCream.copy(alpha = 0.88f),
-                        fontSize = 14.sp,
-                        lineHeight = 21.sp,
-                        maxSideLines = 5,
-                        showImageBackground = false,
-                    )
-                    BiblePointReference(reference)
-                } else {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    pointPainter?.let { painter ->
+                        Image(
+                            painter = painter,
+                            contentDescription = null,
+                            contentScale = ContentScale.Fit,
+                            modifier = Modifier
+                                .size(BiblePointImageSize)
+                                .clip(RoundedCornerShape(16.dp)),
+                        )
+                        Spacer(Modifier.width(14.dp))
+                    }
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.weight(1f),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        pointPainter?.let { painter ->
-                            Image(
-                                painter = painter,
-                                contentDescription = null,
-                                contentScale = ContentScale.Fit,
-                                modifier = Modifier
-                                    .size(BiblePointImageSize)
-                                    .clip(RoundedCornerShape(16.dp)),
-                            )
-                            Spacer(Modifier.width(14.dp))
-                        }
-                        Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = body,
-                                color = ArticleCream.copy(alpha = 0.88f),
-                                fontSize = 14.sp,
-                                lineHeight = 21.sp,
-                            )
-                            BiblePointReference(reference)
-                        }
+                        Image(
+                            painter = painterResource(numberDrawable(number) ?: Res.drawable._01),
+                            contentDescription = number.toString(),
+                            contentScale = ContentScale.Fit,
+                            modifier = Modifier.size(28.dp),
+                        )
+                        Spacer(Modifier.width(10.dp))
+                        Text(
+                            text = title,
+                            color = ArticleGold,
+                            fontFamily = FontFamily.Serif,
+                            fontSize = 18.sp,
+                            lineHeight = 22.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            modifier = Modifier.weight(1f),
+                        )
                     }
                 }
+                Spacer(Modifier.height(12.dp))
+                Text(
+                    text = body,
+                    color = ArticleCream.copy(alpha = 0.88f),
+                    fontSize = 14.sp,
+                    lineHeight = 21.sp,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                BiblePointReference(reference)
             }
         }
     }
@@ -450,11 +432,7 @@ private fun BiblePointReference(reference: String) {
     )
 }
 
-/**
- * Places the opening lines beside the artwork, then lets the remaining copy use the
- * card's full width. This keeps longer translated strings readable without fixing a
- * card height or clipping content.
- */
+/** Places artwork first and gives all copy the full card width below it. */
 @Composable
 private fun FlowingImageText(
     painter: Painter,
@@ -464,64 +442,25 @@ private fun FlowingImageText(
     textColor: Color,
     fontSize: TextUnit,
     lineHeight: TextUnit,
-    maxSideLines: Int,
-    showImageBackground: Boolean = true,
     modifier: Modifier = Modifier,
 ) {
-    var width by remember { mutableIntStateOf(0) }
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .onGloballyPositioned { width = it.size.width }
-    ) {
-        var splitIndex by remember(text, width) { mutableIntStateOf(text.length) }
-        val sideText = text.substring(0, splitIndex).trimEnd()
-        val remainingText = text.substring(splitIndex).trimStart()
-
-        Column(modifier = Modifier.fillMaxWidth()) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.Top,
-            ) {
-                Image(
-                    painter = painter,
-                    contentDescription = imageDescription,
-                    contentScale = ContentScale.Fit,
-                    modifier = Modifier
-                        .size(imageSize)
-                        .clip(RoundedCornerShape(16.dp))
-                        .then(
-                            if (showImageBackground) Modifier.background(ArticleSurfaceRaised)
-                            else Modifier,
-                        ),
-                )
-                Spacer(Modifier.width(14.dp))
-                Text(
-                    text = sideText,
-                    color = textColor,
-                    fontSize = fontSize,
-                    lineHeight = lineHeight,
-                    maxLines = maxSideLines,
-                    onTextLayout = { result ->
-                        if (splitIndex == text.length && result.didOverflowHeight && result.lineCount > 0) {
-                            val visibleEnd = result.getLineEnd(result.lineCount - 1, visibleEnd = true)
-                            if (visibleEnd in 1 until text.length) splitIndex = visibleEnd
-                        }
-                    },
-                    modifier = Modifier.weight(1f),
-                )
-            }
-            if (remainingText.isNotBlank()) {
-                Spacer(Modifier.height(8.dp))
-                Text(
-                    text = remainingText,
-                    color = textColor,
-                    fontSize = fontSize,
-                    lineHeight = lineHeight,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-            }
-        }
+    Column(modifier = modifier.fillMaxWidth()) {
+        Image(
+            painter = painter,
+            contentDescription = imageDescription,
+            contentScale = ContentScale.Fit,
+            modifier = Modifier
+                .size(imageSize)
+                .clip(RoundedCornerShape(16.dp)),
+        )
+        Spacer(Modifier.height(12.dp))
+        Text(
+            text = text,
+            color = textColor,
+            fontSize = fontSize,
+            lineHeight = lineHeight,
+            modifier = Modifier.fillMaxWidth(),
+        )
     }
 }
 
@@ -672,4 +611,3 @@ private fun BibleChecklistCard(items: List<String>) {
         }
     }
 }
-
