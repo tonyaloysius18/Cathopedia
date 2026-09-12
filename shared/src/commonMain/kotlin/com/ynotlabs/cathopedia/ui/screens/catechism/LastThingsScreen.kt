@@ -3,7 +3,6 @@ package com.ynotlabs.cathopedia.ui.screens.catechism
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -23,16 +22,17 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -55,7 +55,6 @@ import com.ynotlabs.cathopedia.ui.screens.common.ArticleIntroCard
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleScaffold
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleSectionLabel
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleSurface
-import com.ynotlabs.cathopedia.ui.screens.common.ArticleSurfaceRaised
 import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.ui.hubAssetPainter
@@ -231,28 +230,62 @@ private fun LastThingCard(thing: LastThing) {
             Column(
                 modifier = Modifier.padding(start = 22.dp, top = 16.dp, end = 16.dp, bottom = 16.dp),
             ) {
-                Row(verticalAlignment = Alignment.Top) {
-                    hubAssetPainter(thing.asset)?.let { painter ->
-                        Image(
-                            painter = painter,
-                            contentDescription = null,
-                            contentScale = ContentScale.Crop,
-                            modifier = Modifier
-                                .size(72.dp)
-                                .clip(RoundedCornerShape(14.dp))
-                                .background(ArticleSurfaceRaised),
-                        )
-                        Spacer(Modifier.width(14.dp))
+                val painter = hubAssetPainter(thing.asset)
+                if (painter != null) {
+                    var width by remember { mutableIntStateOf(0) }
+                    var splitIndex by remember(thing.body, width) { mutableIntStateOf(thing.body.length) }
+                    val sideText = thing.body.substring(0, splitIndex).trimEnd()
+                    val remainingText = thing.body.substring(splitIndex).trimStart()
+
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .onGloballyPositioned { width = it.size.width },
+                    ) {
+                        Row(verticalAlignment = Alignment.Top) {
+                            Image(
+                                painter = painter,
+                                contentDescription = null,
+                                contentScale = ContentScale.Fit,
+                                modifier = Modifier.size(72.dp),
+                            )
+                            Spacer(Modifier.width(14.dp))
+                            Column(modifier = Modifier.weight(1f)) {
+                                LastThingTitle(thing)
+                                Spacer(Modifier.height(7.dp))
+                                Text(
+                                    text = sideText,
+                                    color = ArticleCream.copy(alpha = 0.88f),
+                                    fontSize = 13.sp,
+                                    lineHeight = 20.sp,
+                                    maxLines = 2,
+                                    onTextLayout = { result ->
+                                        if (
+                                            splitIndex == thing.body.length &&
+                                            result.didOverflowHeight &&
+                                            result.lineCount > 0
+                                        ) {
+                                            val visibleEnd = result.getLineEnd(result.lineCount - 1, visibleEnd = true)
+                                            if (visibleEnd in 1 until thing.body.length) splitIndex = visibleEnd
+                                        }
+                                    },
+                                )
+                            }
+                        }
+                        if (remainingText.isNotBlank()) {
+                            Spacer(Modifier.height(8.dp))
+                            Text(
+                                text = remainingText,
+                                color = ArticleCream.copy(alpha = 0.88f),
+                                fontSize = 13.sp,
+                                lineHeight = 20.sp,
+                                modifier = Modifier.fillMaxWidth(),
+                            )
+                        }
                     }
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = thing.title,
-                            color = thing.accent,
-                            fontFamily = FontFamily.Serif,
-                            fontSize = 18.sp,
-                            lineHeight = 22.sp,
-                            fontWeight = FontWeight.SemiBold,
-                        )
+                } else {
+                    Column(modifier = Modifier.fillMaxWidth()) {
+                        LastThingTitle(thing)
                         Spacer(Modifier.height(7.dp))
                         Text(
                             text = thing.body,
@@ -276,6 +309,18 @@ private fun LastThingCard(thing: LastThing) {
             }
         }
     }
+}
+
+@Composable
+private fun LastThingTitle(thing: LastThing) {
+    Text(
+        text = thing.title,
+        color = thing.accent,
+        fontFamily = FontFamily.Serif,
+        fontSize = 18.sp,
+        lineHeight = 22.sp,
+        fontWeight = FontWeight.SemiBold,
+    )
 }
 
 /** Earth, death, judgement and what follows — as one thread running down the page. */
@@ -349,4 +394,3 @@ private fun SequenceCard(steps: List<String>) {
         }
     }
 }
-

@@ -27,6 +27,8 @@ fun ReverenceScreen(
         language = language,
         onBack = onBack,
         numbered = false,
+        wrapEntryTextBelowImage = true,
+        showEntryImageBackground = false,
         listState = listState,
     )
 }
