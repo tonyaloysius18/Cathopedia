@@ -152,7 +152,7 @@ fun IllustratedEntriesArticle(
             val block = blocks[index]
             val next = blocks.getOrNull(index + 1)
 
-            if (block is ImageBlock && next is CalloutBlock) {
+            if (block is ImageBlock && !block.hero && next is CalloutBlock) {
                 number += 1
                 val entry = Entry(
                     number = number,
@@ -175,6 +175,13 @@ fun IllustratedEntriesArticle(
             }
 
             when (block) {
+                is ImageBlock -> if (block.hero) {
+                    item(key = "hero-$index") {
+                        HeroImage(asset = block.asset, caption = block.captionKey?.let(strings::get))
+                        Spacer(Modifier.height(16.dp))
+                    }
+                }
+
                 is HeadingBlock -> item(key = "heading-$index") {
                     Spacer(Modifier.height(8.dp))
                     ArticleSectionLabel(strings[block.textKey].orEmpty())
@@ -395,6 +402,33 @@ private fun EntryReference(reference: String) {
         lineHeight = 16.sp,
         fontStyle = FontStyle.Italic,
     )
+}
+
+/** A full-width illustration: the page's own art rather than an entry's emblem. */
+@Composable
+private fun HeroImage(asset: String, caption: String?) {
+    val painter = hubAssetPainter(asset) ?: return
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Image(
+            painter = painter,
+            contentDescription = null,
+            contentScale = ContentScale.FillWidth,
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(20.dp)),
+        )
+        if (!caption.isNullOrBlank()) {
+            Spacer(Modifier.height(8.dp))
+            Text(
+                text = caption,
+                color = ArticleGoldSoft,
+                fontSize = 12.sp,
+                lineHeight = 17.sp,
+                fontStyle = FontStyle.Italic,
+                modifier = Modifier.fillMaxWidth(),
+            )
+        }
+    }
 }
 
 @Composable

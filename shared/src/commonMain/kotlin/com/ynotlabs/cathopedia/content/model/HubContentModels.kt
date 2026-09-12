@@ -154,6 +154,8 @@ data class ImageBlock(
     val captionKey: String? = null,
     val credit: String? = null,
     val license: String,
+    /** Draw full-width instead of as an entry's thumbnail, and never pair with the callout after it. */
+    val hero: Boolean = false,
 ) : Block
 
 @Serializable

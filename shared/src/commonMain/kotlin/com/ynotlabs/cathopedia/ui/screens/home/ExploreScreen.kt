@@ -207,6 +207,17 @@ fun ExploreScreen(
                 }
             }
 
+            catechism?.let { hub ->
+                item(key = hub.id) {
+                    HubExploreCard(
+                        hub = hub,
+                        title = hubStrings[hub.titleKey].orEmpty(),
+                        subtitle = hub.subtitleKey?.let { hubStrings[it] },
+                        onClick = { onHubSelected(hub) },
+                    )
+                }
+            }
+
             if (secondGrid.isNotEmpty()) {
                 item {
                     Row(
@@ -224,17 +235,6 @@ fun ExploreScreen(
                         }
                         if (secondGrid.size == 1) Spacer(Modifier.weight(1f).fillMaxHeight())
                     }
-                }
-            }
-
-            catechism?.let { hub ->
-                item(key = hub.id) {
-                    HubExploreCard(
-                        hub = hub,
-                        title = hubStrings[hub.titleKey].orEmpty(),
-                        subtitle = hub.subtitleKey?.let { hubStrings[it] },
-                        onClick = { onHubSelected(hub) },
-                    )
                 }
             }
 

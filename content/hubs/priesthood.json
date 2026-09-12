@@ -54,9 +54,12 @@
       "readingTimeMinutes": 5,
       "blocks": [
         { "type": "paragraph", "textKey": "art.leaving.intro" },
+        { "type": "image", "asset": "hub/priesthood/priest_hard_season.png", "captionKey": "art.leaving.hero.caption", "license": "IN_HOUSE", "hero": true },
         { "type": "callout", "tone": "warning", "titleKey": "art.leaving.forever.title", "textKey": "art.leaving.forever.body" },
         { "type": "heading", "level": 2, "textKey": "art.leaving.first.title" },
+        { "type": "image", "asset": "hub/priesthood/priest_brother_support.png", "captionKey": "art.leaving.support.caption", "license": "IN_HOUSE", "hero": true },
         { "type": "callout", "tone": "info", "titleKey": "art.leaving.help.title", "textKey": "art.leaving.help.body" },
+        { "type": "image", "asset": "hub/symbols/symbol_anchor.png", "captionKey": "art.leaving.leave.ref", "license": "IN_HOUSE" },
         { "type": "callout", "tone": "info", "titleKey": "art.leaving.leave.title", "textKey": "art.leaving.leave.body" },
         { "type": "heading", "level": 2, "textKey": "art.leaving.ways.title" },
         { "type": "image", "asset": "hub/symbols/symbol_scroll.png", "captionKey": "art.leaving.invalid.ref", "license": "IN_HOUSE" },
@@ -67,8 +70,11 @@
         { "type": "callout", "tone": "info", "titleKey": "art.leaving.rescript.title", "textKey": "art.leaving.rescript.body" },
         { "type": "heading", "level": 2, "textKey": "art.leaving.effect.title" },
         { "type": "list", "style": "bullet", "itemKeys": ["art.leaving.effect.1", "art.leaving.effect.2", "art.leaving.effect.3", "art.leaving.effect.4", "art.leaving.effect.5"] },
+        { "type": "image", "asset": "hub/symbols/symbol_benedictine_medal.png", "captionKey": "art.leaving.religious.ref", "license": "IN_HOUSE" },
         { "type": "callout", "tone": "note", "titleKey": "art.leaving.religious.title", "textKey": "art.leaving.religious.body" },
+        { "type": "image", "asset": "hub/symbols/symbol_crucifix.png", "captionKey": "art.leaving.death.ref", "license": "IN_HOUSE" },
         { "type": "callout", "tone": "note", "titleKey": "art.leaving.death.title", "textKey": "art.leaving.death.body" },
+        { "type": "image", "asset": "hub/symbols/symbol_sacred_heart.png", "captionKey": "art.leaving.stay.ref", "license": "IN_HOUSE" },
         { "type": "callout", "tone": "note", "titleKey": "art.leaving.stay.title", "textKey": "art.leaving.stay.body" },
         { "type": "quote", "textKey": "art.leaving.quote", "attributionKey": "art.leaving.quote.attribution" }
       ]
