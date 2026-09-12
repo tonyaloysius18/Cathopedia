@@ -43,6 +43,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
@@ -66,6 +67,7 @@ import com.ynotlabs.cathopedia.notifications.UpcomingFeastNotification
 import com.ynotlabs.cathopedia.content.model.EntityRef
 import com.ynotlabs.cathopedia.content.model.EntityType
 import com.ynotlabs.cathopedia.ui.navigation.AppNavController
+import com.ynotlabs.cathopedia.ui.navigation.NavDirection
 import com.ynotlabs.cathopedia.ui.navigation.BottomNavBar
 import com.ynotlabs.cathopedia.ui.navigation.Destination
 import com.ynotlabs.cathopedia.ui.navigation.FloatingSearchButton
@@ -241,6 +243,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
     CathopediaTheme(themeMode = themeMode, liturgicalAccent = liturgicalAccent) {
     CompositionLocalProvider(LocalStrings provides stringsFor(language)) {
         val destination = nav.current
+        val navDirection = nav.lastDirection
         val showBottomBar = destination in TAB_DESTINATIONS
 
         Box(modifier = Modifier.fillMaxSize().nestedScroll(navBarScrollConnection)) {
@@ -248,55 +251,34 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                 targetState = destination,
                 modifier = Modifier.fillMaxSize(),
                 transitionSpec = {
-                    val from = initialState
-                    val to = targetState
+                    // One rule for the whole app rather than a list of screen pairs: any push
+                    // (a card with a chevron, a list row, a hub section) brings the new page in
+                    // from the right over the old one, which drifts a quarter-width left; a back
+                    // reverses it. Tab changes and the splash handoff have no direction and so
+                    // no slide.
+                    val push = tween<IntOffset>(durationMillis = 260, easing = LinearOutSlowInEasing)
+                    val pop = tween<IntOffset>(durationMillis = 240, easing = FastOutSlowInEasing)
                     when {
-                        from is Destination.Splash -> {
-                            fadeIn(tween(durationMillis = 350)).togetherWith(
-                                fadeOut(tween(durationMillis = 350)),
-                            ) using null
-                        }
+                        initialState is Destination.Splash ->
+                            fadeIn(tween(durationMillis = 350))
+                                .togetherWith(fadeOut(tween(durationMillis = 350))) using null
 
-                        from is Destination.EntityList &&
-                                to is Destination.EntityDetail &&
-                                from.type == to.type -> {
-                            slideInHorizontally(
-                                animationSpec = tween(
-                                    durationMillis = 220,
-                                    easing = LinearOutSlowInEasing,
-                                ),
-                                initialOffsetX = { fullWidth -> fullWidth },
-                            ).togetherWith(ExitTransition.KeepUntilTransitionsFinished).also {
-                                it.targetContentZIndex = 1f
-                            } using null
-                        }
+                        navDirection == NavDirection.PUSH ->
+                            slideInHorizontally(push) { fullWidth -> fullWidth }
+                                .togetherWith(
+                                    slideOutHorizontally(push) { fullWidth -> -fullWidth / 4 },
+                                )
+                                .also { it.targetContentZIndex = 1f } using null
 
-                        from is Destination.EntityDetail &&
-                                to is Destination.EntityList &&
-                                from.type == to.type -> {
-                            slideInHorizontally(
-                                animationSpec = tween(
-                                    durationMillis = 260,
-                                    easing = FastOutSlowInEasing,
-                                ),
-                                initialOffsetX = { fullWidth -> -fullWidth / 10 },
-                            ).togetherWith(
-                                slideOutHorizontally(
-                                    animationSpec = tween(
-                                        durationMillis = 260,
-                                        easing = FastOutSlowInEasing,
-                                    ),
-                                    targetOffsetX = { fullWidth -> fullWidth },
-                                ),
-                            ).also {
-                                // Keep the restored list underneath while the detail
-                                // screen slides away to the right.
-                                it.targetContentZIndex = -1f
-                            } using null
-                        }
+                        navDirection == NavDirection.POP ->
+                            slideInHorizontally(pop) { fullWidth -> -fullWidth / 4 }
+                                .togetherWith(
+                                    slideOutHorizontally(pop) { fullWidth -> fullWidth },
+                                )
+                                // Keep the page being uncovered underneath the one sliding away.
+                                .also { it.targetContentZIndex = -1f } using null
 
-                        else ->
-                            (EnterTransition.None togetherWith ExitTransition.None) using null
+                        else -> (EnterTransition.None togetherWith ExitTransition.None) using null
                     }
                 },
                 label = "screenNavigation",
