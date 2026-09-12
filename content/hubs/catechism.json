@@ -21,7 +21,7 @@
       "titleKey": "cat.creed.title",
       "summaryKey": "cat.creed.summary",
       "icon": "ic_creed",
-      "articleIds": ["art.cat.three_pillars", "art.cat.trinity", "art.cat.creeds", "art.cat.four_marks", "art.cat.last_things", "art.cat.angels", "art.cat.reverence", "art.cat.relics"]
+      "articleIds": ["art.cat.three_pillars", "art.cat.trinity", "art.cat.creeds", "art.cat.four_marks", "art.cat.last_things", "art.cat.angels", "art.cat.reverence", "art.cat.relics", "art.cat.images"]
     },
     {
       "id": "cat.scripture",
@@ -139,6 +139,29 @@
     }
   ],
   "articles": [
+    {
+      "id": "art.cat.images",
+      "sectionId": "cat.creed",
+      "sortOrder": 9,
+      "titleKey": "art.images.title",
+      "leadKey": "art.images.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.images.intro" },
+        { "type": "image", "asset": "hub/catechism/idol_golden_calf.png", "captionKey": "art.images.idol.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.images.idol.title", "textKey": "art.images.idol.body" },
+        { "type": "image", "asset": "hub/symbols/symbol_crucifix.png", "captionKey": "art.images.sacred.ref", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.images.sacred.title", "textKey": "art.images.sacred.body" },
+        { "type": "heading", "level": 2, "textKey": "art.images.diff.title" },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.images.diff.1", "art.images.diff.2", "art.images.diff.3", "art.images.diff.4"] },
+        { "type": "heading", "level": 2, "textKey": "art.images.bible.title" },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.images.bible.1", "art.images.bible.2", "art.images.bible.3"] },
+        { "type": "callout", "tone": "warning", "titleKey": "art.images.honour.title", "textKey": "art.images.honour.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.images.nicaea.title", "textKey": "art.images.nicaea.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.images.short.title", "textKey": "art.images.short.body" },
+        { "type": "quote", "textKey": "art.images.quote", "attributionKey": "art.images.quote.attribution" }
+      ]
+    },
     {
       "id": "art.cat.three_pillars",
       "sectionId": "cat.creed",
