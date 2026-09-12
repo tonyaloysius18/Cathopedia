@@ -101,6 +101,21 @@ data class ExploreData(
     val hubStrings: Map<String, String>,
 )
 
+/**
+ * Loads what Explore needs. Called from App.kt at startup, while the splash is still up, so the
+ * tab has its hubs before it is ever opened; the screen itself only calls this if that has not
+ * happened yet.
+ */
+suspend fun loadExploreData(repository: CathopediaRepository, language: String): ExploreData {
+    val hubs = repository.listHubs()
+    val keys = hubs.flatMap { listOfNotNull(it.titleKey, it.subtitleKey) }.toSet()
+    return ExploreData(
+        counts = repository.contentCounts(language),
+        hubs = hubs,
+        hubStrings = repository.resolveHubStrings(keys, language),
+    )
+}
+
 @Composable
 fun ExploreScreen(
     repository: CathopediaRepository,
@@ -120,13 +135,7 @@ fun ExploreScreen(
 
     LaunchedEffect(language) {
         if (data != null) return@LaunchedEffect
-        val hubs = repository.listHubs()
-        val keys = hubs.flatMap { listOfNotNull(it.titleKey, it.subtitleKey) }.toSet()
-        val loaded = ExploreData(
-            counts = repository.contentCounts(language),
-            hubs = hubs,
-            hubStrings = repository.resolveHubStrings(keys, language),
-        )
+        val loaded = loadExploreData(repository, language)
         data = loaded
         onDataLoaded(loaded)
     }

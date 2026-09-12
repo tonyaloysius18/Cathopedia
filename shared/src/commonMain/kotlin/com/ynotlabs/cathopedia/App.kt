@@ -76,6 +76,7 @@ import com.ynotlabs.cathopedia.ui.screens.common.EntityDetailScreen
 import com.ynotlabs.cathopedia.ui.screens.common.EntityListScreen
 import com.ynotlabs.cathopedia.ui.screens.home.ExploreData
 import com.ynotlabs.cathopedia.ui.screens.home.ExploreScreen
+import com.ynotlabs.cathopedia.ui.screens.home.loadExploreData
 import com.ynotlabs.cathopedia.ui.screens.settings.FeedbackScreen
 import com.ynotlabs.cathopedia.ui.screens.home.HomeScreen
 import com.ynotlabs.cathopedia.ui.screens.common.HubArticleScreen
@@ -193,6 +194,11 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
     val entityListItemCaches = remember { mutableStateMapOf<Pair<ContentType, String>, List<ContentSummary>>() }
     // Explore's hub cards and tile counts, kept across visits to the tab.
     var exploreData by remember { mutableStateOf<ExploreData?>(null) }
+    // Warm Explore while the splash is still showing. Loading it on first open cost ~170ms of
+    // visible delay before the topic hubs appeared; by the time the tab can be tapped this is done.
+    LaunchedEffect(language) {
+        exploreData = loadExploreData(repository, language)
+    }
     val entityListSelectedCenturies = remember { mutableStateMapOf<Pair<ContentType, String>, String>() }
     val entityListHeaderHeights = remember { mutableStateMapOf<Pair<ContentType, String>, Int>() }
 
