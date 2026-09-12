@@ -21,6 +21,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
@@ -29,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -79,6 +81,8 @@ fun IllustratedEntriesArticle(
     language: String,
     onBack: () -> Unit,
     numbered: Boolean = true,
+    wrapEntryTextBelowImage: Boolean = false,
+    showEntryImageBackground: Boolean = true,
     listState: LazyListState = rememberLazyListState(),
     afterIntro: (@Composable () -> Unit)? = null,
 ) {
@@ -157,7 +161,12 @@ fun IllustratedEntriesArticle(
                     reference = block.captionKey?.let(strings::get).orEmpty(),
                 )
                 item(key = "entry-$number") {
-                    EntryCard(entry, numbered)
+                    EntryCard(
+                        entry = entry,
+                        numbered = numbered,
+                        wrapTextBelowImage = wrapEntryTextBelowImage,
+                        showImageBackground = showEntryImageBackground,
+                    )
                     Spacer(Modifier.height(12.dp))
                 }
                 index += 2
@@ -205,7 +214,12 @@ fun IllustratedEntriesArticle(
 }
 
 @Composable
-private fun EntryCard(entry: Entry, numbered: Boolean) {
+private fun EntryCard(
+    entry: Entry,
+    numbered: Boolean,
+    wrapTextBelowImage: Boolean,
+    showImageBackground: Boolean,
+) {
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
@@ -215,77 +229,169 @@ private fun EntryCard(entry: Entry, numbered: Boolean) {
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))
-            Row(
-                modifier = Modifier.padding(start = 20.dp, top = 16.dp, end = 16.dp, bottom = 16.dp),
-                verticalAlignment = Alignment.Top,
-            ) {
-                Box(
-                    modifier = Modifier
-                        .size(72.dp)
-                        .clip(RoundedCornerShape(14.dp))
-                        .background(ArticleSurfaceRaised),
-                    contentAlignment = Alignment.Center,
+            val painter = hubAssetPainter(entry.asset)
+            if (wrapTextBelowImage && painter != null) {
+                FlowingEntryContent(
+                    entry = entry,
+                    numbered = numbered,
+                    showImageBackground = showImageBackground,
+                    modifier = Modifier.padding(start = 20.dp, top = 16.dp, end = 16.dp, bottom = 16.dp),
+                )
+            } else {
+                Row(
+                    modifier = Modifier.padding(start = 20.dp, top = 16.dp, end = 16.dp, bottom = 16.dp),
+                    verticalAlignment = Alignment.Top,
                 ) {
-                    hubAssetPainter(entry.asset)?.let { painter ->
-                        Image(
-                            painter = painter,
-                            contentDescription = null,
-                            contentScale = ContentScale.Crop,
-                            modifier = Modifier.fillMaxSize(),
-                        )
-                    } ?: Text(
-                        text = entry.number.toString(),
-                        color = ArticleGold,
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold,
+                    EntryImage(
+                        entry = entry,
+                        showBackground = showImageBackground,
                     )
-                }
 
-                Spacer(Modifier.width(14.dp))
+                    Spacer(Modifier.width(14.dp))
 
-                Column(modifier = Modifier.weight(1f)) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        if (numbered) {
-                            Text(
-                                text = entry.number.toString().padStart(2, '0'),
-                                color = ArticleGoldSoft,
-                                fontFamily = FontFamily.Serif,
-                                fontSize = 13.sp,
-                                fontWeight = FontWeight.Bold,
-                            )
-                            Spacer(Modifier.width(8.dp))
-                        }
+                    Column(modifier = Modifier.weight(1f)) {
+                        EntryTitle(entry, numbered)
+                        Spacer(Modifier.height(6.dp))
                         Text(
-                            text = entry.title,
-                            color = ArticleGold,
-                            fontFamily = FontFamily.Serif,
-                            fontSize = 17.sp,
-                            lineHeight = 21.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            modifier = Modifier.weight(1f),
+                            text = entry.body,
+                            color = ArticleCream.copy(alpha = 0.88f),
+                            fontSize = 13.sp,
+                            lineHeight = 20.sp,
                         )
-                    }
-                    Spacer(Modifier.height(6.dp))
-                    Text(
-                        text = entry.body,
-                        color = ArticleCream.copy(alpha = 0.88f),
-                        fontSize = 13.sp,
-                        lineHeight = 20.sp,
-                    )
-                    if (entry.reference.isNotBlank()) {
-                        Spacer(Modifier.height(7.dp))
-                        Text(
-                            text = entry.reference,
-                            color = ArticleGoldSoft,
-                            fontSize = 11.sp,
-                            lineHeight = 16.sp,
-                            fontStyle = FontStyle.Italic,
-                        )
+                        EntryReference(entry.reference)
                     }
                 }
             }
         }
     }
+}
+
+/**
+ * Keeps the opening copy beside the artwork and lets the overflow continue across
+ * the full card width. This avoids a tall empty column beneath a compact image.
+ */
+@Composable
+private fun FlowingEntryContent(
+    entry: Entry,
+    numbered: Boolean,
+    showImageBackground: Boolean,
+    modifier: Modifier = Modifier,
+) {
+    var width by remember { mutableIntStateOf(0) }
+    var splitIndex by remember(entry.body, width) { mutableIntStateOf(entry.body.length) }
+    val sideText = entry.body.substring(0, splitIndex).trimEnd()
+    val remainingText = entry.body.substring(splitIndex).trimStart()
+
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .onGloballyPositioned { width = it.size.width },
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.Top,
+        ) {
+            EntryImage(
+                entry = entry,
+                showBackground = showImageBackground,
+            )
+            Spacer(Modifier.width(14.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                EntryTitle(entry, numbered)
+                Spacer(Modifier.height(6.dp))
+                Text(
+                    text = sideText,
+                    color = ArticleCream.copy(alpha = 0.88f),
+                    fontSize = 13.sp,
+                    lineHeight = 20.sp,
+                    maxLines = 2,
+                    onTextLayout = { result ->
+                        if (splitIndex == entry.body.length && result.didOverflowHeight && result.lineCount > 0) {
+                            val visibleEnd = result.getLineEnd(result.lineCount - 1, visibleEnd = true)
+                            if (visibleEnd in 1 until entry.body.length) splitIndex = visibleEnd
+                        }
+                    },
+                )
+            }
+        }
+        if (remainingText.isNotBlank()) {
+            Spacer(Modifier.height(8.dp))
+            Text(
+                text = remainingText,
+                color = ArticleCream.copy(alpha = 0.88f),
+                fontSize = 13.sp,
+                lineHeight = 20.sp,
+                modifier = Modifier.fillMaxWidth(),
+            )
+        }
+        EntryReference(entry.reference)
+    }
+}
+
+@Composable
+private fun EntryImage(
+    entry: Entry,
+    showBackground: Boolean,
+) {
+    Box(
+        modifier = Modifier
+            .size(72.dp)
+            .clip(RoundedCornerShape(14.dp))
+            .then(if (showBackground) Modifier.background(ArticleSurfaceRaised) else Modifier),
+        contentAlignment = Alignment.Center,
+    ) {
+        hubAssetPainter(entry.asset)?.let { painter ->
+            Image(
+                painter = painter,
+                contentDescription = null,
+                contentScale = if (showBackground) ContentScale.Crop else ContentScale.Fit,
+                modifier = Modifier.fillMaxSize(),
+            )
+        } ?: Text(
+            text = entry.number.toString(),
+            color = ArticleGold,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold,
+        )
+    }
+}
+
+@Composable
+private fun EntryTitle(entry: Entry, numbered: Boolean) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        if (numbered) {
+            Text(
+                text = entry.number.toString().padStart(2, '0'),
+                color = ArticleGoldSoft,
+                fontFamily = FontFamily.Serif,
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Bold,
+            )
+            Spacer(Modifier.width(8.dp))
+        }
+        Text(
+            text = entry.title,
+            color = ArticleGold,
+            fontFamily = FontFamily.Serif,
+            fontSize = 17.sp,
+            lineHeight = 21.sp,
+            fontWeight = FontWeight.SemiBold,
+            modifier = Modifier.weight(1f),
+        )
+    }
+}
+
+@Composable
+private fun EntryReference(reference: String) {
+    if (reference.isBlank()) return
+    Spacer(Modifier.height(7.dp))
+    Text(
+        text = reference,
+        color = ArticleGoldSoft,
+        fontSize = 11.sp,
+        lineHeight = 16.sp,
+        fontStyle = FontStyle.Italic,
+    )
 }
 
 @Composable
@@ -324,4 +430,3 @@ private fun EntryListCard(items: List<String>) {
         }
     }
 }
-
