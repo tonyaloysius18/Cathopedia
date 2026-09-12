@@ -59,8 +59,18 @@
       "articleIds": ["art.mass.reading_cycles"]
     },
     {
-      "id": "mass.procession",
+      "id": "mass.books",
       "sortOrder": 5,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.mass.books.title",
+      "summaryKey": "sec.mass.books.summary",
+      "icon": "ic_book",
+      "articleIds": ["art.mass.books"]
+    },
+    {
+      "id": "mass.procession",
+      "sortOrder": 6,
       "status": "PUBLISHED",
       "layout": "STEPPER",
       "titleKey": "sec.procession.title",
@@ -70,7 +80,7 @@
     },
     {
       "id": "mass.monstrance",
-      "sortOrder": 6,
+      "sortOrder": 7,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.mass.monstrance.title",
@@ -82,7 +92,7 @@
     },
     {
       "id": "mass.thurible",
-      "sortOrder": 7,
+      "sortOrder": 8,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.mass.thurible.title",
@@ -94,7 +104,7 @@
     },
     {
       "id": "mass.vessels",
-      "sortOrder": 8,
+      "sortOrder": 9,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.vessels.title",
@@ -106,7 +116,7 @@
     },
     {
       "id": "mass.postures",
-      "sortOrder": 9,
+      "sortOrder": 10,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.postures.title",
@@ -118,7 +128,7 @@
     },
     {
       "id": "mass.altar",
-      "sortOrder": 10,
+      "sortOrder": 11,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.altar.title",
@@ -130,6 +140,28 @@
     }
   ],
   "articles": [
+    {
+      "id": "art.mass.books",
+      "sectionId": "mass.books",
+      "sortOrder": 1,
+      "titleKey": "art.books.title",
+      "leadKey": "art.books.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.books.intro" },
+        { "type": "image", "asset": "hub/mass/mass_lectionary.png", "captionKey": "art.books.lectionary.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.books.lectionary.title", "textKey": "art.books.lectionary.body" },
+        { "type": "image", "asset": "hub/mass/mass_book_of_gospels.png", "captionKey": "art.books.gospels.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.books.gospels.title", "textKey": "art.books.gospels.body" },
+        { "type": "image", "asset": "hub/mass/mass_roman_missal.png", "captionKey": "art.books.missal.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.books.missal.title", "textKey": "art.books.missal.body" },
+        { "type": "heading", "level": 2, "textKey": "art.books.reverence.title" },
+        { "type": "list", "style": "bullet", "itemKeys": ["art.books.reverence.1", "art.books.reverence.2", "art.books.reverence.3", "art.books.reverence.4", "art.books.reverence.5"] },
+        { "type": "callout", "tone": "note", "titleKey": "art.books.optional.title", "textKey": "art.books.optional.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.books.others.title", "textKey": "art.books.others.body" },
+        { "type": "quote", "textKey": "art.books.quote", "attributionKey": "art.books.quote.attribution" }
+      ]
+    },
     {
       "id": "art.mass.reading_cycles",
       "sectionId": "mass.readings",
