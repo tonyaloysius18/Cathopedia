@@ -147,6 +147,12 @@ data class CalloutBlock(
 @Serializable
 enum class CalloutTone { info, note, warning, devotional }
 
+/**
+ * Adding a field here means adding it to the image block in
+ * content/schema/hub-content.schema.json too — the schema sets
+ * additionalProperties: false, so an unknown key fails CI.
+ * tools/check_schema_model_sync.py enforces the pairing.
+ */
 @Serializable
 @SerialName("image")
 data class ImageBlock(

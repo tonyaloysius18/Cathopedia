@@ -7,12 +7,16 @@ on:
       - "content/strings/**"
       - "content/schema/**"
       - "tools/validate_content.py"
+      - "tools/check_schema_model_sync.py"
+      - "shared/src/commonMain/kotlin/com/ynotlabs/cathopedia/content/model/HubContentModels.kt"
   pull_request:
     paths:
       - "content/hubs/**"
       - "content/strings/**"
       - "content/schema/**"
       - "tools/validate_content.py"
+      - "tools/check_schema_model_sync.py"
+      - "shared/src/commonMain/kotlin/com/ynotlabs/cathopedia/content/model/HubContentModels.kt"
 
 jobs:
   validate:
@@ -26,6 +30,12 @@ jobs:
 
       - name: Install jsonschema
         run: pip install jsonschema
+
+      # Runs before the content check so drift is reported as drift, rather than
+      # surfacing later as an unexplained failure on whichever article first uses
+      # the new field.
+      - name: Check the schema matches the Kotlin content model
+        run: python tools/check_schema_model_sync.py
 
       - name: Validate /content/hubs (strict)
         run: python tools/validate_content.py --root content --schemas content/schema --strict
