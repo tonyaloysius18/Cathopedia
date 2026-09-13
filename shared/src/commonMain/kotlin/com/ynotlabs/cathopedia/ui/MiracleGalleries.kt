@@ -1,0 +1,6833 @@
+package com.ynotlabs.cathopedia.ui
+
+import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.resources.miracle_alatri_g0
+import com.ynotlabs.cathopedia.resources.miracle_alatri_g1
+import com.ynotlabs.cathopedia.resources.miracle_alatri_g2
+import com.ynotlabs.cathopedia.resources.miracle_alatri_g3
+import com.ynotlabs.cathopedia.resources.miracle_alatri_g4
+import com.ynotlabs.cathopedia.resources.miracle_alboraya_almacera_g0
+import com.ynotlabs.cathopedia.resources.miracle_alcala_de_henares_g0
+import com.ynotlabs.cathopedia.resources.miracle_alcoy_g0
+import com.ynotlabs.cathopedia.resources.miracle_alcoy_g1
+import com.ynotlabs.cathopedia.resources.miracle_alcoy_g10
+import com.ynotlabs.cathopedia.resources.miracle_alcoy_g11
+import com.ynotlabs.cathopedia.resources.miracle_alcoy_g2
+import com.ynotlabs.cathopedia.resources.miracle_alcoy_g3
+import com.ynotlabs.cathopedia.resources.miracle_alcoy_g4
+import com.ynotlabs.cathopedia.resources.miracle_alcoy_g5
+import com.ynotlabs.cathopedia.resources.miracle_alcoy_g6
+import com.ynotlabs.cathopedia.resources.miracle_alcoy_g7
+import com.ynotlabs.cathopedia.resources.miracle_alcoy_g8
+import com.ynotlabs.cathopedia.resources.miracle_alcoy_g9
+import com.ynotlabs.cathopedia.resources.miracle_alkmaar_g0
+import com.ynotlabs.cathopedia.resources.miracle_alkmaar_g1
+import com.ynotlabs.cathopedia.resources.miracle_alkmaar_g2
+import com.ynotlabs.cathopedia.resources.miracle_alkmaar_g3
+import com.ynotlabs.cathopedia.resources.miracle_alkmaar_g4
+import com.ynotlabs.cathopedia.resources.miracle_alkmaar_g5
+import com.ynotlabs.cathopedia.resources.miracle_alkmaar_g6
+import com.ynotlabs.cathopedia.resources.miracle_alkmaar_g7
+import com.ynotlabs.cathopedia.resources.miracle_alkmaar_g8
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g0
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g1
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g10
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g11
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g12
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g13
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g14
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g15
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g16
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g17
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g18
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g19
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g2
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g20
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g21
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g22
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g23
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g3
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g4
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g5
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g6
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g7
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g8
+import com.ynotlabs.cathopedia.resources.miracle_amsterdam_g9
+import com.ynotlabs.cathopedia.resources.miracle_assisi_clare_g0
+import com.ynotlabs.cathopedia.resources.miracle_assisi_clare_g1
+import com.ynotlabs.cathopedia.resources.miracle_assisi_clare_g2
+import com.ynotlabs.cathopedia.resources.miracle_assisi_clare_g3
+import com.ynotlabs.cathopedia.resources.miracle_assisi_clare_g4
+import com.ynotlabs.cathopedia.resources.miracle_assisi_clare_g5
+import com.ynotlabs.cathopedia.resources.miracle_assisi_clare_g6
+import com.ynotlabs.cathopedia.resources.miracle_asti_g0
+import com.ynotlabs.cathopedia.resources.miracle_asti_g1
+import com.ynotlabs.cathopedia.resources.miracle_asti_g2
+import com.ynotlabs.cathopedia.resources.miracle_asti_g3
+import com.ynotlabs.cathopedia.resources.miracle_asti_g4
+import com.ynotlabs.cathopedia.resources.miracle_asti_g5
+import com.ynotlabs.cathopedia.resources.miracle_asti_g6
+import com.ynotlabs.cathopedia.resources.miracle_asti_g7
+import com.ynotlabs.cathopedia.resources.miracle_asti_g8
+import com.ynotlabs.cathopedia.resources.miracle_augsburg_g0
+import com.ynotlabs.cathopedia.resources.miracle_augsburg_g1
+import com.ynotlabs.cathopedia.resources.miracle_augsburg_g2
+import com.ynotlabs.cathopedia.resources.miracle_augsburg_g3
+import com.ynotlabs.cathopedia.resources.miracle_augsburg_g4
+import com.ynotlabs.cathopedia.resources.miracle_augsburg_g5
+import com.ynotlabs.cathopedia.resources.miracle_augsburg_g6
+import com.ynotlabs.cathopedia.resources.miracle_augsburg_g7
+import com.ynotlabs.cathopedia.resources.miracle_augsburg_g8
+import com.ynotlabs.cathopedia.resources.miracle_augsburg_g9
+import com.ynotlabs.cathopedia.resources.miracle_avignon_g0
+import com.ynotlabs.cathopedia.resources.miracle_avignon_g1
+import com.ynotlabs.cathopedia.resources.miracle_avignon_g10
+import com.ynotlabs.cathopedia.resources.miracle_avignon_g11
+import com.ynotlabs.cathopedia.resources.miracle_avignon_g12
+import com.ynotlabs.cathopedia.resources.miracle_avignon_g13
+import com.ynotlabs.cathopedia.resources.miracle_avignon_g14
+import com.ynotlabs.cathopedia.resources.miracle_avignon_g15
+import com.ynotlabs.cathopedia.resources.miracle_avignon_g16
+import com.ynotlabs.cathopedia.resources.miracle_avignon_g2
+import com.ynotlabs.cathopedia.resources.miracle_avignon_g3
+import com.ynotlabs.cathopedia.resources.miracle_avignon_g4
+import com.ynotlabs.cathopedia.resources.miracle_avignon_g5
+import com.ynotlabs.cathopedia.resources.miracle_avignon_g6
+import com.ynotlabs.cathopedia.resources.miracle_avignon_g7
+import com.ynotlabs.cathopedia.resources.miracle_avignon_g8
+import com.ynotlabs.cathopedia.resources.miracle_avignon_g9
+import com.ynotlabs.cathopedia.resources.miracle_bagno_di_romagna_g0
+import com.ynotlabs.cathopedia.resources.miracle_bagno_di_romagna_g1
+import com.ynotlabs.cathopedia.resources.miracle_bagno_di_romagna_g2
+import com.ynotlabs.cathopedia.resources.miracle_bagno_di_romagna_g3
+import com.ynotlabs.cathopedia.resources.miracle_bagno_di_romagna_g4
+import com.ynotlabs.cathopedia.resources.miracle_bagno_di_romagna_g5
+import com.ynotlabs.cathopedia.resources.miracle_bagno_di_romagna_g6
+import com.ynotlabs.cathopedia.resources.miracle_balasar_g0
+import com.ynotlabs.cathopedia.resources.miracle_benningen_g0
+import com.ynotlabs.cathopedia.resources.miracle_benningen_g1
+import com.ynotlabs.cathopedia.resources.miracle_benningen_g2
+import com.ynotlabs.cathopedia.resources.miracle_benningen_g3
+import com.ynotlabs.cathopedia.resources.miracle_benningen_g4
+import com.ynotlabs.cathopedia.resources.miracle_benningen_g5
+import com.ynotlabs.cathopedia.resources.miracle_benningen_g6
+import com.ynotlabs.cathopedia.resources.miracle_bergen_op_zoom_g0
+import com.ynotlabs.cathopedia.resources.miracle_bergen_op_zoom_g1
+import com.ynotlabs.cathopedia.resources.miracle_bergen_op_zoom_g2
+import com.ynotlabs.cathopedia.resources.miracle_bergen_op_zoom_g3
+import com.ynotlabs.cathopedia.resources.miracle_bergen_op_zoom_g4
+import com.ynotlabs.cathopedia.resources.miracle_bergen_op_zoom_g5
+import com.ynotlabs.cathopedia.resources.miracle_bergen_op_zoom_g6
+import com.ynotlabs.cathopedia.resources.miracle_bergen_op_zoom_g7
+import com.ynotlabs.cathopedia.resources.miracle_bergen_op_zoom_g8
+import com.ynotlabs.cathopedia.resources.miracle_betania_g0
+import com.ynotlabs.cathopedia.resources.miracle_betania_g1
+import com.ynotlabs.cathopedia.resources.miracle_betania_g2
+import com.ynotlabs.cathopedia.resources.miracle_betania_g3
+import com.ynotlabs.cathopedia.resources.miracle_bettbrunn_g0
+import com.ynotlabs.cathopedia.resources.miracle_bettbrunn_g1
+import com.ynotlabs.cathopedia.resources.miracle_bettbrunn_g10
+import com.ynotlabs.cathopedia.resources.miracle_bettbrunn_g11
+import com.ynotlabs.cathopedia.resources.miracle_bettbrunn_g2
+import com.ynotlabs.cathopedia.resources.miracle_bettbrunn_g3
+import com.ynotlabs.cathopedia.resources.miracle_bettbrunn_g4
+import com.ynotlabs.cathopedia.resources.miracle_bettbrunn_g5
+import com.ynotlabs.cathopedia.resources.miracle_bettbrunn_g6
+import com.ynotlabs.cathopedia.resources.miracle_bettbrunn_g7
+import com.ynotlabs.cathopedia.resources.miracle_bettbrunn_g8
+import com.ynotlabs.cathopedia.resources.miracle_bettbrunn_g9
+import com.ynotlabs.cathopedia.resources.miracle_blanot_g0
+import com.ynotlabs.cathopedia.resources.miracle_blanot_g1
+import com.ynotlabs.cathopedia.resources.miracle_blanot_g2
+import com.ynotlabs.cathopedia.resources.miracle_blanot_g3
+import com.ynotlabs.cathopedia.resources.miracle_blanot_g4
+import com.ynotlabs.cathopedia.resources.miracle_blanot_g5
+import com.ynotlabs.cathopedia.resources.miracle_blanot_g6
+import com.ynotlabs.cathopedia.resources.miracle_blanot_g7
+import com.ynotlabs.cathopedia.resources.miracle_bois_dhaine_g0
+import com.ynotlabs.cathopedia.resources.miracle_bois_seigneur_isaac_g0
+import com.ynotlabs.cathopedia.resources.miracle_bois_seigneur_isaac_g1
+import com.ynotlabs.cathopedia.resources.miracle_bois_seigneur_isaac_g2
+import com.ynotlabs.cathopedia.resources.miracle_bois_seigneur_isaac_g3
+import com.ynotlabs.cathopedia.resources.miracle_bois_seigneur_isaac_g4
+import com.ynotlabs.cathopedia.resources.miracle_bois_seigneur_isaac_g5
+import com.ynotlabs.cathopedia.resources.miracle_bois_seigneur_isaac_g6
+import com.ynotlabs.cathopedia.resources.miracle_bologna_imelda_g0
+import com.ynotlabs.cathopedia.resources.miracle_bordeaux_g0
+import com.ynotlabs.cathopedia.resources.miracle_bordeaux_g1
+import com.ynotlabs.cathopedia.resources.miracle_bordeaux_g2
+import com.ynotlabs.cathopedia.resources.miracle_bordeaux_g3
+import com.ynotlabs.cathopedia.resources.miracle_bordeaux_g4
+import com.ynotlabs.cathopedia.resources.miracle_bordeaux_g5
+import com.ynotlabs.cathopedia.resources.miracle_bordeaux_g6
+import com.ynotlabs.cathopedia.resources.miracle_boxmeer_g0
+import com.ynotlabs.cathopedia.resources.miracle_boxmeer_g1
+import com.ynotlabs.cathopedia.resources.miracle_boxmeer_g10
+import com.ynotlabs.cathopedia.resources.miracle_boxmeer_g11
+import com.ynotlabs.cathopedia.resources.miracle_boxmeer_g2
+import com.ynotlabs.cathopedia.resources.miracle_boxmeer_g3
+import com.ynotlabs.cathopedia.resources.miracle_boxmeer_g4
+import com.ynotlabs.cathopedia.resources.miracle_boxmeer_g5
+import com.ynotlabs.cathopedia.resources.miracle_boxmeer_g6
+import com.ynotlabs.cathopedia.resources.miracle_boxmeer_g7
+import com.ynotlabs.cathopedia.resources.miracle_boxmeer_g8
+import com.ynotlabs.cathopedia.resources.miracle_boxmeer_g9
+import com.ynotlabs.cathopedia.resources.miracle_boxtel_hoogstraten_g0
+import com.ynotlabs.cathopedia.resources.miracle_boxtel_hoogstraten_g1
+import com.ynotlabs.cathopedia.resources.miracle_boxtel_hoogstraten_g2
+import com.ynotlabs.cathopedia.resources.miracle_boxtel_hoogstraten_g3
+import com.ynotlabs.cathopedia.resources.miracle_boxtel_hoogstraten_g4
+import com.ynotlabs.cathopedia.resources.miracle_boxtel_hoogstraten_g5
+import com.ynotlabs.cathopedia.resources.miracle_boxtel_hoogstraten_g6
+import com.ynotlabs.cathopedia.resources.miracle_boxtel_hoogstraten_g7
+import com.ynotlabs.cathopedia.resources.miracle_boxtel_hoogstraten_g8
+import com.ynotlabs.cathopedia.resources.miracle_boxtel_hoogstraten_g9
+import com.ynotlabs.cathopedia.resources.miracle_breda_niervaart_g0
+import com.ynotlabs.cathopedia.resources.miracle_breda_niervaart_g1
+import com.ynotlabs.cathopedia.resources.miracle_breda_niervaart_g10
+import com.ynotlabs.cathopedia.resources.miracle_breda_niervaart_g11
+import com.ynotlabs.cathopedia.resources.miracle_breda_niervaart_g2
+import com.ynotlabs.cathopedia.resources.miracle_breda_niervaart_g3
+import com.ynotlabs.cathopedia.resources.miracle_breda_niervaart_g4
+import com.ynotlabs.cathopedia.resources.miracle_breda_niervaart_g5
+import com.ynotlabs.cathopedia.resources.miracle_breda_niervaart_g6
+import com.ynotlabs.cathopedia.resources.miracle_breda_niervaart_g7
+import com.ynotlabs.cathopedia.resources.miracle_breda_niervaart_g8
+import com.ynotlabs.cathopedia.resources.miracle_breda_niervaart_g9
+import com.ynotlabs.cathopedia.resources.miracle_bruges_g0
+import com.ynotlabs.cathopedia.resources.miracle_bruges_g1
+import com.ynotlabs.cathopedia.resources.miracle_bruges_g10
+import com.ynotlabs.cathopedia.resources.miracle_bruges_g11
+import com.ynotlabs.cathopedia.resources.miracle_bruges_g12
+import com.ynotlabs.cathopedia.resources.miracle_bruges_g13
+import com.ynotlabs.cathopedia.resources.miracle_bruges_g2
+import com.ynotlabs.cathopedia.resources.miracle_bruges_g3
+import com.ynotlabs.cathopedia.resources.miracle_bruges_g4
+import com.ynotlabs.cathopedia.resources.miracle_bruges_g5
+import com.ynotlabs.cathopedia.resources.miracle_bruges_g6
+import com.ynotlabs.cathopedia.resources.miracle_bruges_g7
+import com.ynotlabs.cathopedia.resources.miracle_bruges_g8
+import com.ynotlabs.cathopedia.resources.miracle_bruges_g9
+import com.ynotlabs.cathopedia.resources.miracle_calanda_g0
+import com.ynotlabs.cathopedia.resources.miracle_calanda_g1
+import com.ynotlabs.cathopedia.resources.miracle_calanda_g2
+import com.ynotlabs.cathopedia.resources.miracle_calanda_g3
+import com.ynotlabs.cathopedia.resources.miracle_calanda_g4
+import com.ynotlabs.cathopedia.resources.miracle_canosio_g0
+import com.ynotlabs.cathopedia.resources.miracle_canosio_g1
+import com.ynotlabs.cathopedia.resources.miracle_canosio_g2
+import com.ynotlabs.cathopedia.resources.miracle_canosio_g3
+import com.ynotlabs.cathopedia.resources.miracle_canosio_g4
+import com.ynotlabs.cathopedia.resources.miracle_canosio_g5
+import com.ynotlabs.cathopedia.resources.miracle_caravaca_de_la_cruz_g0
+import com.ynotlabs.cathopedia.resources.miracle_caravaca_de_la_cruz_g1
+import com.ynotlabs.cathopedia.resources.miracle_caravaca_de_la_cruz_g2
+import com.ynotlabs.cathopedia.resources.miracle_caravaca_de_la_cruz_g3
+import com.ynotlabs.cathopedia.resources.miracle_caravaca_de_la_cruz_g4
+import com.ynotlabs.cathopedia.resources.miracle_caravaca_de_la_cruz_g5
+import com.ynotlabs.cathopedia.resources.miracle_carmelite_siena_g0
+import com.ynotlabs.cathopedia.resources.miracle_cascia_g0
+import com.ynotlabs.cathopedia.resources.miracle_cascia_g1
+import com.ynotlabs.cathopedia.resources.miracle_cascia_g2
+import com.ynotlabs.cathopedia.resources.miracle_cascia_g3
+import com.ynotlabs.cathopedia.resources.miracle_cascia_g4
+import com.ynotlabs.cathopedia.resources.miracle_cascia_g5
+import com.ynotlabs.cathopedia.resources.miracle_cascia_g6
+import com.ynotlabs.cathopedia.resources.miracle_cascia_g7
+import com.ynotlabs.cathopedia.resources.miracle_cava_dei_tirreni_g0
+import com.ynotlabs.cathopedia.resources.miracle_cava_dei_tirreni_g1
+import com.ynotlabs.cathopedia.resources.miracle_cava_dei_tirreni_g2
+import com.ynotlabs.cathopedia.resources.miracle_cava_dei_tirreni_g3
+import com.ynotlabs.cathopedia.resources.miracle_cava_dei_tirreni_g4
+import com.ynotlabs.cathopedia.resources.miracle_cava_dei_tirreni_g5
+import com.ynotlabs.cathopedia.resources.miracle_cava_dei_tirreni_g6
+import com.ynotlabs.cathopedia.resources.miracle_cava_dei_tirreni_g7
+import com.ynotlabs.cathopedia.resources.miracle_cava_dei_tirreni_g8
+import com.ynotlabs.cathopedia.resources.miracle_champion_wisconsin_g0
+import com.ynotlabs.cathopedia.resources.miracle_chateauneuf_de_galaure_g0
+import com.ynotlabs.cathopedia.resources.miracle_chiaravalle_bernard_g0
+import com.ynotlabs.cathopedia.resources.miracle_chiaravalle_bernard_g1
+import com.ynotlabs.cathopedia.resources.miracle_chiaravalle_bernard_g2
+import com.ynotlabs.cathopedia.resources.miracle_chiaravalle_bernard_g3
+import com.ynotlabs.cathopedia.resources.miracle_chiaravalle_bernard_g4
+import com.ynotlabs.cathopedia.resources.miracle_chiaravalle_bernard_g5
+import com.ynotlabs.cathopedia.resources.miracle_chiaravalle_bernard_g6
+import com.ynotlabs.cathopedia.resources.miracle_chirattakonam_g0
+import com.ynotlabs.cathopedia.resources.miracle_chirattakonam_g1
+import com.ynotlabs.cathopedia.resources.miracle_chirattakonam_g2
+import com.ynotlabs.cathopedia.resources.miracle_cimballa_g0
+import com.ynotlabs.cathopedia.resources.miracle_cimballa_g1
+import com.ynotlabs.cathopedia.resources.miracle_cimballa_g2
+import com.ynotlabs.cathopedia.resources.miracle_cimballa_g3
+import com.ynotlabs.cathopedia.resources.miracle_cimballa_g4
+import com.ynotlabs.cathopedia.resources.miracle_cimballa_g5
+import com.ynotlabs.cathopedia.resources.miracle_cimballa_g6
+import com.ynotlabs.cathopedia.resources.miracle_cimballa_g7
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g0
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g1
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g10
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g11
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g12
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g13
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g14
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g15
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g16
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g17
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g18
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g19
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g2
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g20
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g21
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g22
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g23
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g24
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g3
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g4
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g5
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g6
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g7
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g8
+import com.ynotlabs.cathopedia.resources.miracle_daroca_g9
+import com.ynotlabs.cathopedia.resources.miracle_dijon_g0
+import com.ynotlabs.cathopedia.resources.miracle_dijon_g1
+import com.ynotlabs.cathopedia.resources.miracle_dijon_g2
+import com.ynotlabs.cathopedia.resources.miracle_dijon_g3
+import com.ynotlabs.cathopedia.resources.miracle_dijon_g4
+import com.ynotlabs.cathopedia.resources.miracle_dijon_g5
+import com.ynotlabs.cathopedia.resources.miracle_douai_g0
+import com.ynotlabs.cathopedia.resources.miracle_douai_g1
+import com.ynotlabs.cathopedia.resources.miracle_douai_g2
+import com.ynotlabs.cathopedia.resources.miracle_douai_g3
+import com.ynotlabs.cathopedia.resources.miracle_douai_g4
+import com.ynotlabs.cathopedia.resources.miracle_douai_g5
+import com.ynotlabs.cathopedia.resources.miracle_douai_g6
+import com.ynotlabs.cathopedia.resources.miracle_douai_g7
+import com.ynotlabs.cathopedia.resources.miracle_dronero_g0
+import com.ynotlabs.cathopedia.resources.miracle_dronero_g1
+import com.ynotlabs.cathopedia.resources.miracle_dronero_g2
+import com.ynotlabs.cathopedia.resources.miracle_dronero_g3
+import com.ynotlabs.cathopedia.resources.miracle_dronero_g4
+import com.ynotlabs.cathopedia.resources.miracle_dulmen_g0
+import com.ynotlabs.cathopedia.resources.miracle_erding_g0
+import com.ynotlabs.cathopedia.resources.miracle_erding_g1
+import com.ynotlabs.cathopedia.resources.miracle_erding_g2
+import com.ynotlabs.cathopedia.resources.miracle_erding_g3
+import com.ynotlabs.cathopedia.resources.miracle_erding_g4
+import com.ynotlabs.cathopedia.resources.miracle_erding_g5
+import com.ynotlabs.cathopedia.resources.miracle_erding_g6
+import com.ynotlabs.cathopedia.resources.miracle_erding_g7
+import com.ynotlabs.cathopedia.resources.miracle_erding_g8
+import com.ynotlabs.cathopedia.resources.miracle_eten_g0
+import com.ynotlabs.cathopedia.resources.miracle_eten_g1
+import com.ynotlabs.cathopedia.resources.miracle_eten_g2
+import com.ynotlabs.cathopedia.resources.miracle_eten_g3
+import com.ynotlabs.cathopedia.resources.miracle_eten_g4
+import com.ynotlabs.cathopedia.resources.miracle_eten_g5
+import com.ynotlabs.cathopedia.resources.miracle_eten_g6
+import com.ynotlabs.cathopedia.resources.miracle_eten_g7
+import com.ynotlabs.cathopedia.resources.miracle_eten_g8
+import com.ynotlabs.cathopedia.resources.miracle_eten_g9
+import com.ynotlabs.cathopedia.resources.miracle_ettiswil_g0
+import com.ynotlabs.cathopedia.resources.miracle_ettiswil_g1
+import com.ynotlabs.cathopedia.resources.miracle_ettiswil_g2
+import com.ynotlabs.cathopedia.resources.miracle_ettiswil_g3
+import com.ynotlabs.cathopedia.resources.miracle_ettiswil_g4
+import com.ynotlabs.cathopedia.resources.miracle_ettiswil_g5
+import com.ynotlabs.cathopedia.resources.miracle_ettiswil_g6
+import com.ynotlabs.cathopedia.resources.miracle_ettiswil_g7
+import com.ynotlabs.cathopedia.resources.miracle_ettiswil_g8
+import com.ynotlabs.cathopedia.resources.miracle_ettiswil_g9
+import com.ynotlabs.cathopedia.resources.miracle_eucharistic_miracle_buenos_aires_g0
+import com.ynotlabs.cathopedia.resources.miracle_eucharistic_miracle_buenos_aires_g1
+import com.ynotlabs.cathopedia.resources.miracle_eucharistic_miracle_buenos_aires_g10
+import com.ynotlabs.cathopedia.resources.miracle_eucharistic_miracle_buenos_aires_g11
+import com.ynotlabs.cathopedia.resources.miracle_eucharistic_miracle_buenos_aires_g12
+import com.ynotlabs.cathopedia.resources.miracle_eucharistic_miracle_buenos_aires_g13
+import com.ynotlabs.cathopedia.resources.miracle_eucharistic_miracle_buenos_aires_g14
+import com.ynotlabs.cathopedia.resources.miracle_eucharistic_miracle_buenos_aires_g15
+import com.ynotlabs.cathopedia.resources.miracle_eucharistic_miracle_buenos_aires_g16
+import com.ynotlabs.cathopedia.resources.miracle_eucharistic_miracle_buenos_aires_g2
+import com.ynotlabs.cathopedia.resources.miracle_eucharistic_miracle_buenos_aires_g3
+import com.ynotlabs.cathopedia.resources.miracle_eucharistic_miracle_buenos_aires_g4
+import com.ynotlabs.cathopedia.resources.miracle_eucharistic_miracle_buenos_aires_g5
+import com.ynotlabs.cathopedia.resources.miracle_eucharistic_miracle_buenos_aires_g6
+import com.ynotlabs.cathopedia.resources.miracle_eucharistic_miracle_buenos_aires_g7
+import com.ynotlabs.cathopedia.resources.miracle_eucharistic_miracle_buenos_aires_g8
+import com.ynotlabs.cathopedia.resources.miracle_eucharistic_miracle_buenos_aires_g9
+import com.ynotlabs.cathopedia.resources.miracle_fatima_angel_g0
+import com.ynotlabs.cathopedia.resources.miracle_faverney_g0
+import com.ynotlabs.cathopedia.resources.miracle_faverney_g1
+import com.ynotlabs.cathopedia.resources.miracle_faverney_g2
+import com.ynotlabs.cathopedia.resources.miracle_faverney_g3
+import com.ynotlabs.cathopedia.resources.miracle_faverney_g4
+import com.ynotlabs.cathopedia.resources.miracle_faverney_g5
+import com.ynotlabs.cathopedia.resources.miracle_faverney_g6
+import com.ynotlabs.cathopedia.resources.miracle_faverney_g7
+import com.ynotlabs.cathopedia.resources.miracle_ferrara_g0
+import com.ynotlabs.cathopedia.resources.miracle_ferrara_g1
+import com.ynotlabs.cathopedia.resources.miracle_ferrara_g2
+import com.ynotlabs.cathopedia.resources.miracle_ferrara_g3
+import com.ynotlabs.cathopedia.resources.miracle_ferrara_g4
+import com.ynotlabs.cathopedia.resources.miracle_ferrara_g5
+import com.ynotlabs.cathopedia.resources.miracle_fiecht_g0
+import com.ynotlabs.cathopedia.resources.miracle_fiecht_g1
+import com.ynotlabs.cathopedia.resources.miracle_fiecht_g2
+import com.ynotlabs.cathopedia.resources.miracle_fiecht_g3
+import com.ynotlabs.cathopedia.resources.miracle_fiecht_g4
+import com.ynotlabs.cathopedia.resources.miracle_fiecht_g5
+import com.ynotlabs.cathopedia.resources.miracle_fiecht_g6
+import com.ynotlabs.cathopedia.resources.miracle_fiecht_g7
+import com.ynotlabs.cathopedia.resources.miracle_fiecht_g8
+import com.ynotlabs.cathopedia.resources.miracle_florence_g0
+import com.ynotlabs.cathopedia.resources.miracle_florence_g1
+import com.ynotlabs.cathopedia.resources.miracle_florence_g2
+import com.ynotlabs.cathopedia.resources.miracle_florence_g3
+import com.ynotlabs.cathopedia.resources.miracle_florence_g4
+import com.ynotlabs.cathopedia.resources.miracle_florence_g5
+import com.ynotlabs.cathopedia.resources.miracle_florence_g6
+import com.ynotlabs.cathopedia.resources.miracle_florence_g7
+import com.ynotlabs.cathopedia.resources.miracle_florence_g8
+import com.ynotlabs.cathopedia.resources.miracle_florence_g9
+import com.ynotlabs.cathopedia.resources.miracle_foligno_angela_g0
+import com.ynotlabs.cathopedia.resources.miracle_gerona_g0
+import com.ynotlabs.cathopedia.resources.miracle_glotowo_g0
+import com.ynotlabs.cathopedia.resources.miracle_glotowo_g1
+import com.ynotlabs.cathopedia.resources.miracle_glotowo_g2
+import com.ynotlabs.cathopedia.resources.miracle_glotowo_g3
+import com.ynotlabs.cathopedia.resources.miracle_glotowo_g4
+import com.ynotlabs.cathopedia.resources.miracle_glotowo_g5
+import com.ynotlabs.cathopedia.resources.miracle_glotowo_g6
+import com.ynotlabs.cathopedia.resources.miracle_gorkum_escorial_g0
+import com.ynotlabs.cathopedia.resources.miracle_gruaro_g0
+import com.ynotlabs.cathopedia.resources.miracle_gruaro_g1
+import com.ynotlabs.cathopedia.resources.miracle_gruaro_g2
+import com.ynotlabs.cathopedia.resources.miracle_gruaro_g3
+import com.ynotlabs.cathopedia.resources.miracle_gruaro_g4
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_mexico_g0
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_spain_g0
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_spain_g1
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_spain_g10
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_spain_g11
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_spain_g12
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_spain_g13
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_spain_g14
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_spain_g15
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_spain_g16
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_spain_g2
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_spain_g3
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_spain_g4
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_spain_g5
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_spain_g6
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_spain_g7
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_spain_g8
+import com.ynotlabs.cathopedia.resources.miracle_guadalupe_spain_g9
+import com.ynotlabs.cathopedia.resources.miracle_herentals_g0
+import com.ynotlabs.cathopedia.resources.miracle_herentals_g1
+import com.ynotlabs.cathopedia.resources.miracle_herentals_g2
+import com.ynotlabs.cathopedia.resources.miracle_herentals_g3
+import com.ynotlabs.cathopedia.resources.miracle_herentals_g4
+import com.ynotlabs.cathopedia.resources.miracle_herentals_g5
+import com.ynotlabs.cathopedia.resources.miracle_herentals_g6
+import com.ynotlabs.cathopedia.resources.miracle_herkenrode_hasselt_g0
+import com.ynotlabs.cathopedia.resources.miracle_herkenrode_hasselt_g1
+import com.ynotlabs.cathopedia.resources.miracle_herkenrode_hasselt_g10
+import com.ynotlabs.cathopedia.resources.miracle_herkenrode_hasselt_g11
+import com.ynotlabs.cathopedia.resources.miracle_herkenrode_hasselt_g12
+import com.ynotlabs.cathopedia.resources.miracle_herkenrode_hasselt_g2
+import com.ynotlabs.cathopedia.resources.miracle_herkenrode_hasselt_g3
+import com.ynotlabs.cathopedia.resources.miracle_herkenrode_hasselt_g4
+import com.ynotlabs.cathopedia.resources.miracle_herkenrode_hasselt_g5
+import com.ynotlabs.cathopedia.resources.miracle_herkenrode_hasselt_g6
+import com.ynotlabs.cathopedia.resources.miracle_herkenrode_hasselt_g7
+import com.ynotlabs.cathopedia.resources.miracle_herkenrode_hasselt_g8
+import com.ynotlabs.cathopedia.resources.miracle_herkenrode_hasselt_g9
+import com.ynotlabs.cathopedia.resources.miracle_ivorra_g0
+import com.ynotlabs.cathopedia.resources.miracle_ivorra_g1
+import com.ynotlabs.cathopedia.resources.miracle_ivorra_g10
+import com.ynotlabs.cathopedia.resources.miracle_ivorra_g11
+import com.ynotlabs.cathopedia.resources.miracle_ivorra_g12
+import com.ynotlabs.cathopedia.resources.miracle_ivorra_g13
+import com.ynotlabs.cathopedia.resources.miracle_ivorra_g14
+import com.ynotlabs.cathopedia.resources.miracle_ivorra_g15
+import com.ynotlabs.cathopedia.resources.miracle_ivorra_g16
+import com.ynotlabs.cathopedia.resources.miracle_ivorra_g17
+import com.ynotlabs.cathopedia.resources.miracle_ivorra_g2
+import com.ynotlabs.cathopedia.resources.miracle_ivorra_g3
+import com.ynotlabs.cathopedia.resources.miracle_ivorra_g4
+import com.ynotlabs.cathopedia.resources.miracle_ivorra_g5
+import com.ynotlabs.cathopedia.resources.miracle_ivorra_g6
+import com.ynotlabs.cathopedia.resources.miracle_ivorra_g7
+import com.ynotlabs.cathopedia.resources.miracle_ivorra_g8
+import com.ynotlabs.cathopedia.resources.miracle_ivorra_g9
+import com.ynotlabs.cathopedia.resources.miracle_konnersreuth_g0
+import com.ynotlabs.cathopedia.resources.miracle_krakow_divine_mercy_g0
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g0
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g1
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g10
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g11
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g12
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g13
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g14
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g15
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g16
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g17
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g18
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g19
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g2
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g20
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g21
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g22
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g23
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g24
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g25
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g26
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g27
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g3
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g4
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g5
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g6
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g7
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g8
+import com.ynotlabs.cathopedia.resources.miracle_kranenburg_g9
+import com.ynotlabs.cathopedia.resources.miracle_la_rochelle_g0
+import com.ynotlabs.cathopedia.resources.miracle_la_rochelle_g1
+import com.ynotlabs.cathopedia.resources.miracle_la_rochelle_g2
+import com.ynotlabs.cathopedia.resources.miracle_la_rochelle_g3
+import com.ynotlabs.cathopedia.resources.miracle_la_rochelle_g4
+import com.ynotlabs.cathopedia.resources.miracle_la_rochelle_g5
+import com.ynotlabs.cathopedia.resources.miracle_la_rochelle_g6
+import com.ynotlabs.cathopedia.resources.miracle_la_rochelle_g7
+import com.ynotlabs.cathopedia.resources.miracle_lanciano_g0
+import com.ynotlabs.cathopedia.resources.miracle_lanciano_g1
+import com.ynotlabs.cathopedia.resources.miracle_lanciano_g10
+import com.ynotlabs.cathopedia.resources.miracle_lanciano_g11
+import com.ynotlabs.cathopedia.resources.miracle_lanciano_g12
+import com.ynotlabs.cathopedia.resources.miracle_lanciano_g13
+import com.ynotlabs.cathopedia.resources.miracle_lanciano_g14
+import com.ynotlabs.cathopedia.resources.miracle_lanciano_g15
+import com.ynotlabs.cathopedia.resources.miracle_lanciano_g16
+import com.ynotlabs.cathopedia.resources.miracle_lanciano_g17
+import com.ynotlabs.cathopedia.resources.miracle_lanciano_g2
+import com.ynotlabs.cathopedia.resources.miracle_lanciano_g3
+import com.ynotlabs.cathopedia.resources.miracle_lanciano_g4
+import com.ynotlabs.cathopedia.resources.miracle_lanciano_g5
+import com.ynotlabs.cathopedia.resources.miracle_lanciano_g6
+import com.ynotlabs.cathopedia.resources.miracle_lanciano_g7
+import com.ynotlabs.cathopedia.resources.miracle_lanciano_g8
+import com.ynotlabs.cathopedia.resources.miracle_lanciano_g9
+import com.ynotlabs.cathopedia.resources.miracle_lateran_council_g0
+import com.ynotlabs.cathopedia.resources.miracle_lateran_council_g1
+import com.ynotlabs.cathopedia.resources.miracle_lateran_council_g2
+import com.ynotlabs.cathopedia.resources.miracle_lateran_council_g3
+import com.ynotlabs.cathopedia.resources.miracle_lateran_council_g4
+import com.ynotlabs.cathopedia.resources.miracle_legnica_g0
+import com.ynotlabs.cathopedia.resources.miracle_legnica_g1
+import com.ynotlabs.cathopedia.resources.miracle_legnica_g10
+import com.ynotlabs.cathopedia.resources.miracle_legnica_g11
+import com.ynotlabs.cathopedia.resources.miracle_legnica_g12
+import com.ynotlabs.cathopedia.resources.miracle_legnica_g13
+import com.ynotlabs.cathopedia.resources.miracle_legnica_g14
+import com.ynotlabs.cathopedia.resources.miracle_legnica_g15
+import com.ynotlabs.cathopedia.resources.miracle_legnica_g2
+import com.ynotlabs.cathopedia.resources.miracle_legnica_g3
+import com.ynotlabs.cathopedia.resources.miracle_legnica_g4
+import com.ynotlabs.cathopedia.resources.miracle_legnica_g5
+import com.ynotlabs.cathopedia.resources.miracle_legnica_g6
+import com.ynotlabs.cathopedia.resources.miracle_legnica_g7
+import com.ynotlabs.cathopedia.resources.miracle_legnica_g8
+import com.ynotlabs.cathopedia.resources.miracle_legnica_g9
+import com.ynotlabs.cathopedia.resources.miracle_les_ulmes_g0
+import com.ynotlabs.cathopedia.resources.miracle_les_ulmes_g1
+import com.ynotlabs.cathopedia.resources.miracle_les_ulmes_g2
+import com.ynotlabs.cathopedia.resources.miracle_les_ulmes_g3
+import com.ynotlabs.cathopedia.resources.miracle_liege_g0
+import com.ynotlabs.cathopedia.resources.miracle_liege_g1
+import com.ynotlabs.cathopedia.resources.miracle_liege_g2
+import com.ynotlabs.cathopedia.resources.miracle_liege_g3
+import com.ynotlabs.cathopedia.resources.miracle_liege_g4
+import com.ynotlabs.cathopedia.resources.miracle_liege_g5
+import com.ynotlabs.cathopedia.resources.miracle_liege_g6
+import com.ynotlabs.cathopedia.resources.miracle_lourdes_healings_g0
+import com.ynotlabs.cathopedia.resources.miracle_lourdes_healings_g1
+import com.ynotlabs.cathopedia.resources.miracle_lourdes_healings_g2
+import com.ynotlabs.cathopedia.resources.miracle_lourdes_healings_g3
+import com.ynotlabs.cathopedia.resources.miracle_lourdes_healings_g4
+import com.ynotlabs.cathopedia.resources.miracle_lourdes_healings_g5
+import com.ynotlabs.cathopedia.resources.miracle_lourdes_healings_g6
+import com.ynotlabs.cathopedia.resources.miracle_lourdes_healings_g7
+import com.ynotlabs.cathopedia.resources.miracle_lourdes_healings_g8
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g0
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g1
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g10
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g11
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g12
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g13
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g14
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g15
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g16
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g17
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g18
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g2
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g3
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g4
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g5
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g6
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g7
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g8
+import com.ynotlabs.cathopedia.resources.miracle_ludbreg_g9
+import com.ynotlabs.cathopedia.resources.miracle_macerata_g0
+import com.ynotlabs.cathopedia.resources.miracle_macerata_g1
+import com.ynotlabs.cathopedia.resources.miracle_macerata_g2
+import com.ynotlabs.cathopedia.resources.miracle_macerata_g3
+import com.ynotlabs.cathopedia.resources.miracle_macerata_g4
+import com.ynotlabs.cathopedia.resources.miracle_macerata_g5
+import com.ynotlabs.cathopedia.resources.miracle_marseille_en_beauvais_g0
+import com.ynotlabs.cathopedia.resources.miracle_marseille_en_beauvais_g1
+import com.ynotlabs.cathopedia.resources.miracle_marseille_en_beauvais_g2
+import com.ynotlabs.cathopedia.resources.miracle_marseille_en_beauvais_g3
+import com.ynotlabs.cathopedia.resources.miracle_mary_of_egypt_g0
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_fire_1465_g0
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_fire_1465_g1
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_fire_1465_g10
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_fire_1465_g2
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_fire_1465_g3
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_fire_1465_g4
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_fire_1465_g5
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_fire_1465_g6
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_fire_1465_g7
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_fire_1465_g8
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_fire_1465_g9
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g0
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g1
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g10
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g11
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g12
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g13
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g14
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g15
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g16
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g17
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g18
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g19
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g2
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g20
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g21
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g3
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g4
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g5
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g6
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g7
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g8
+import com.ynotlabs.cathopedia.resources.miracle_meerssen_g9
+import com.ynotlabs.cathopedia.resources.miracle_middleburg_g0
+import com.ynotlabs.cathopedia.resources.miracle_middleburg_g1
+import com.ynotlabs.cathopedia.resources.miracle_middleburg_g2
+import com.ynotlabs.cathopedia.resources.miracle_middleburg_g3
+import com.ynotlabs.cathopedia.resources.miracle_middleburg_g4
+import com.ynotlabs.cathopedia.resources.miracle_middleburg_g5
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g0
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g1
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g10
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g11
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g12
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g13
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g14
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g15
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g16
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g17
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g18
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g19
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g2
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g20
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g21
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g22
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g23
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g3
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g4
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g5
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g6
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g7
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g8
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_bolsena_g9
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_santarem_g0
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_siena_g0
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_siena_g1
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_siena_g2
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_siena_g3
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_siena_g4
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_siena_g5
+import com.ynotlabs.cathopedia.resources.miracle_miracle_of_siena_g6
+import com.ynotlabs.cathopedia.resources.miracle_mogoro_g0
+import com.ynotlabs.cathopedia.resources.miracle_mogoro_g1
+import com.ynotlabs.cathopedia.resources.miracle_mogoro_g2
+import com.ynotlabs.cathopedia.resources.miracle_mogoro_g3
+import com.ynotlabs.cathopedia.resources.miracle_mogoro_g4
+import com.ynotlabs.cathopedia.resources.miracle_moncada_g0
+import com.ynotlabs.cathopedia.resources.miracle_moncada_g1
+import com.ynotlabs.cathopedia.resources.miracle_moncada_g2
+import com.ynotlabs.cathopedia.resources.miracle_moncada_g3
+import com.ynotlabs.cathopedia.resources.miracle_moncada_g4
+import com.ynotlabs.cathopedia.resources.miracle_moncada_g5
+import com.ynotlabs.cathopedia.resources.miracle_moncada_g6
+import com.ynotlabs.cathopedia.resources.miracle_moncada_g7
+import com.ynotlabs.cathopedia.resources.miracle_montefalco_clare_g0
+import com.ynotlabs.cathopedia.resources.miracle_montieri_g0
+import com.ynotlabs.cathopedia.resources.miracle_montserrat_g0
+import com.ynotlabs.cathopedia.resources.miracle_montserrat_g1
+import com.ynotlabs.cathopedia.resources.miracle_montserrat_g2
+import com.ynotlabs.cathopedia.resources.miracle_montserrat_g3
+import com.ynotlabs.cathopedia.resources.miracle_montserrat_g4
+import com.ynotlabs.cathopedia.resources.miracle_montserrat_g5
+import com.ynotlabs.cathopedia.resources.miracle_morne_rouge_g0
+import com.ynotlabs.cathopedia.resources.miracle_morne_rouge_g1
+import com.ynotlabs.cathopedia.resources.miracle_morne_rouge_g2
+import com.ynotlabs.cathopedia.resources.miracle_morne_rouge_g3
+import com.ynotlabs.cathopedia.resources.miracle_morne_rouge_g4
+import com.ynotlabs.cathopedia.resources.miracle_morne_rouge_g5
+import com.ynotlabs.cathopedia.resources.miracle_morne_rouge_g6
+import com.ynotlabs.cathopedia.resources.miracle_morne_rouge_g7
+import com.ynotlabs.cathopedia.resources.miracle_morrovalle_g0
+import com.ynotlabs.cathopedia.resources.miracle_morrovalle_g1
+import com.ynotlabs.cathopedia.resources.miracle_morrovalle_g2
+import com.ynotlabs.cathopedia.resources.miracle_morrovalle_g3
+import com.ynotlabs.cathopedia.resources.miracle_morrovalle_g4
+import com.ynotlabs.cathopedia.resources.miracle_morrovalle_g5
+import com.ynotlabs.cathopedia.resources.miracle_muro_lucano_g0
+import com.ynotlabs.cathopedia.resources.miracle_naples_five_wounds_g0
+import com.ynotlabs.cathopedia.resources.miracle_neuvy_saint_sepulcre_g0
+import com.ynotlabs.cathopedia.resources.miracle_neuvy_saint_sepulcre_g1
+import com.ynotlabs.cathopedia.resources.miracle_neuvy_saint_sepulcre_g2
+import com.ynotlabs.cathopedia.resources.miracle_neuvy_saint_sepulcre_g3
+import com.ynotlabs.cathopedia.resources.miracle_neuvy_saint_sepulcre_g4
+import com.ynotlabs.cathopedia.resources.miracle_neuvy_saint_sepulcre_g5
+import com.ynotlabs.cathopedia.resources.miracle_neuvy_saint_sepulcre_g6
+import com.ynotlabs.cathopedia.resources.miracle_o_cebreiro_g0
+import com.ynotlabs.cathopedia.resources.miracle_o_cebreiro_g1
+import com.ynotlabs.cathopedia.resources.miracle_o_cebreiro_g2
+import com.ynotlabs.cathopedia.resources.miracle_o_cebreiro_g3
+import com.ynotlabs.cathopedia.resources.miracle_o_cebreiro_g4
+import com.ynotlabs.cathopedia.resources.miracle_o_cebreiro_g5
+import com.ynotlabs.cathopedia.resources.miracle_o_cebreiro_g6
+import com.ynotlabs.cathopedia.resources.miracle_o_cebreiro_g7
+import com.ynotlabs.cathopedia.resources.miracle_o_cebreiro_g8
+import com.ynotlabs.cathopedia.resources.miracle_o_cebreiro_g9
+import com.ynotlabs.cathopedia.resources.miracle_offida_g0
+import com.ynotlabs.cathopedia.resources.miracle_offida_g1
+import com.ynotlabs.cathopedia.resources.miracle_offida_g2
+import com.ynotlabs.cathopedia.resources.miracle_offida_g3
+import com.ynotlabs.cathopedia.resources.miracle_offida_g4
+import com.ynotlabs.cathopedia.resources.miracle_offida_g5
+import com.ynotlabs.cathopedia.resources.miracle_offida_g6
+import com.ynotlabs.cathopedia.resources.miracle_onil_g0
+import com.ynotlabs.cathopedia.resources.miracle_onil_g1
+import com.ynotlabs.cathopedia.resources.miracle_onil_g10
+import com.ynotlabs.cathopedia.resources.miracle_onil_g11
+import com.ynotlabs.cathopedia.resources.miracle_onil_g12
+import com.ynotlabs.cathopedia.resources.miracle_onil_g13
+import com.ynotlabs.cathopedia.resources.miracle_onil_g14
+import com.ynotlabs.cathopedia.resources.miracle_onil_g15
+import com.ynotlabs.cathopedia.resources.miracle_onil_g16
+import com.ynotlabs.cathopedia.resources.miracle_onil_g2
+import com.ynotlabs.cathopedia.resources.miracle_onil_g3
+import com.ynotlabs.cathopedia.resources.miracle_onil_g4
+import com.ynotlabs.cathopedia.resources.miracle_onil_g5
+import com.ynotlabs.cathopedia.resources.miracle_onil_g6
+import com.ynotlabs.cathopedia.resources.miracle_onil_g7
+import com.ynotlabs.cathopedia.resources.miracle_onil_g8
+import com.ynotlabs.cathopedia.resources.miracle_onil_g9
+import com.ynotlabs.cathopedia.resources.miracle_orvieto_thomas_of_cori_g0
+import com.ynotlabs.cathopedia.resources.miracle_patierno_g0
+import com.ynotlabs.cathopedia.resources.miracle_patierno_g1
+import com.ynotlabs.cathopedia.resources.miracle_patierno_g2
+import com.ynotlabs.cathopedia.resources.miracle_patierno_g3
+import com.ynotlabs.cathopedia.resources.miracle_patierno_g4
+import com.ynotlabs.cathopedia.resources.miracle_patierno_g5
+import com.ynotlabs.cathopedia.resources.miracle_patierno_g6
+import com.ynotlabs.cathopedia.resources.miracle_patierno_g7
+import com.ynotlabs.cathopedia.resources.miracle_peshtigo_g0
+import com.ynotlabs.cathopedia.resources.miracle_peter_damian_g0
+import com.ynotlabs.cathopedia.resources.miracle_pibrac_g0
+import com.ynotlabs.cathopedia.resources.miracle_pibrac_g1
+import com.ynotlabs.cathopedia.resources.miracle_pibrac_g2
+import com.ynotlabs.cathopedia.resources.miracle_pibrac_g3
+import com.ynotlabs.cathopedia.resources.miracle_pibrac_g4
+import com.ynotlabs.cathopedia.resources.miracle_pibrac_g5
+import com.ynotlabs.cathopedia.resources.miracle_pibrac_g6
+import com.ynotlabs.cathopedia.resources.miracle_pibrac_g7
+import com.ynotlabs.cathopedia.resources.miracle_pitigliano_g0
+import com.ynotlabs.cathopedia.resources.miracle_ponferrada_g0
+import com.ynotlabs.cathopedia.resources.miracle_ponferrada_g1
+import com.ynotlabs.cathopedia.resources.miracle_ponferrada_g2
+import com.ynotlabs.cathopedia.resources.miracle_ponferrada_g3
+import com.ynotlabs.cathopedia.resources.miracle_ponferrada_g4
+import com.ynotlabs.cathopedia.resources.miracle_ponferrada_g5
+import com.ynotlabs.cathopedia.resources.miracle_ponferrada_g6
+import com.ynotlabs.cathopedia.resources.miracle_poznan_g0
+import com.ynotlabs.cathopedia.resources.miracle_poznan_g1
+import com.ynotlabs.cathopedia.resources.miracle_poznan_g10
+import com.ynotlabs.cathopedia.resources.miracle_poznan_g11
+import com.ynotlabs.cathopedia.resources.miracle_poznan_g12
+import com.ynotlabs.cathopedia.resources.miracle_poznan_g13
+import com.ynotlabs.cathopedia.resources.miracle_poznan_g14
+import com.ynotlabs.cathopedia.resources.miracle_poznan_g2
+import com.ynotlabs.cathopedia.resources.miracle_poznan_g3
+import com.ynotlabs.cathopedia.resources.miracle_poznan_g4
+import com.ynotlabs.cathopedia.resources.miracle_poznan_g5
+import com.ynotlabs.cathopedia.resources.miracle_poznan_g6
+import com.ynotlabs.cathopedia.resources.miracle_poznan_g7
+import com.ynotlabs.cathopedia.resources.miracle_poznan_g8
+import com.ynotlabs.cathopedia.resources.miracle_poznan_g9
+import com.ynotlabs.cathopedia.resources.miracle_pressac_g0
+import com.ynotlabs.cathopedia.resources.miracle_pressac_g1
+import com.ynotlabs.cathopedia.resources.miracle_pressac_g2
+import com.ynotlabs.cathopedia.resources.miracle_pressac_g3
+import com.ynotlabs.cathopedia.resources.miracle_proceno_agnes_g0
+import com.ynotlabs.cathopedia.resources.miracle_regensburg_g0
+import com.ynotlabs.cathopedia.resources.miracle_regensburg_g1
+import com.ynotlabs.cathopedia.resources.miracle_regensburg_g2
+import com.ynotlabs.cathopedia.resources.miracle_regensburg_g3
+import com.ynotlabs.cathopedia.resources.miracle_regensburg_g4
+import com.ynotlabs.cathopedia.resources.miracle_regensburg_g5
+import com.ynotlabs.cathopedia.resources.miracle_regensburg_g6
+import com.ynotlabs.cathopedia.resources.miracle_regensburg_g7
+import com.ynotlabs.cathopedia.resources.miracle_rimini_g0
+import com.ynotlabs.cathopedia.resources.miracle_rimini_g1
+import com.ynotlabs.cathopedia.resources.miracle_rimini_g2
+import com.ynotlabs.cathopedia.resources.miracle_rimini_g3
+import com.ynotlabs.cathopedia.resources.miracle_rimini_g4
+import com.ynotlabs.cathopedia.resources.miracle_rimini_g5
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g0
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g1
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g10
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g11
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g12
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g13
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g14
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g15
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g16
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g17
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g18
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g2
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g3
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g4
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g5
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g6
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g7
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g8
+import com.ynotlabs.cathopedia.resources.miracle_rome_devoted_lambs_g9
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g0
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g1
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g10
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g11
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g12
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g13
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g14
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g15
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g16
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g17
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g18
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g2
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g3
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g4
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g5
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g6
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g7
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g8
+import com.ynotlabs.cathopedia.resources.miracle_rome_gregory_great_g9
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g0
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g1
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g10
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g11
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g12
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g13
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g14
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g15
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g16
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g17
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g18
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g2
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g3
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g4
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g5
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g6
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g7
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g8
+import com.ynotlabs.cathopedia.resources.miracle_rome_santa_pudenziana_g9
+import com.ynotlabs.cathopedia.resources.miracle_rosano_g0
+import com.ynotlabs.cathopedia.resources.miracle_rosano_g1
+import com.ynotlabs.cathopedia.resources.miracle_rosano_g2
+import com.ynotlabs.cathopedia.resources.miracle_rosano_g3
+import com.ynotlabs.cathopedia.resources.miracle_rosano_g4
+import com.ynotlabs.cathopedia.resources.miracle_rosano_g5
+import com.ynotlabs.cathopedia.resources.miracle_rosano_g6
+import com.ynotlabs.cathopedia.resources.miracle_sachseln_g0
+import com.ynotlabs.cathopedia.resources.miracle_saint_andre_de_la_reunion_g0
+import com.ynotlabs.cathopedia.resources.miracle_saint_gilles_g0
+import com.ynotlabs.cathopedia.resources.miracle_saint_satyrus_g0
+import com.ynotlabs.cathopedia.resources.miracle_salzano_g0
+import com.ynotlabs.cathopedia.resources.miracle_salzano_g1
+import com.ynotlabs.cathopedia.resources.miracle_salzano_g2
+import com.ynotlabs.cathopedia.resources.miracle_san_giorgio_a_cremano_g0
+import com.ynotlabs.cathopedia.resources.miracle_san_juan_de_las_abadesas_g0
+import com.ynotlabs.cathopedia.resources.miracle_san_juan_honduras_g0
+import com.ynotlabs.cathopedia.resources.miracle_san_juan_honduras_g1
+import com.ynotlabs.cathopedia.resources.miracle_san_juan_honduras_g2
+import com.ynotlabs.cathopedia.resources.miracle_san_juan_honduras_g3
+import com.ynotlabs.cathopedia.resources.miracle_san_juan_honduras_g4
+import com.ynotlabs.cathopedia.resources.miracle_san_mauro_la_bruca_g0
+import com.ynotlabs.cathopedia.resources.miracle_san_mauro_la_bruca_g1
+import com.ynotlabs.cathopedia.resources.miracle_san_mauro_la_bruca_g2
+import com.ynotlabs.cathopedia.resources.miracle_san_mauro_la_bruca_g3
+import com.ynotlabs.cathopedia.resources.miracle_san_mauro_la_bruca_g4
+import com.ynotlabs.cathopedia.resources.miracle_san_mauro_la_bruca_g5
+import com.ynotlabs.cathopedia.resources.miracle_scala_g0
+import com.ynotlabs.cathopedia.resources.miracle_scala_g1
+import com.ynotlabs.cathopedia.resources.miracle_scala_g2
+import com.ynotlabs.cathopedia.resources.miracle_scala_g3
+import com.ynotlabs.cathopedia.resources.miracle_scala_g4
+import com.ynotlabs.cathopedia.resources.miracle_scala_g5
+import com.ynotlabs.cathopedia.resources.miracle_scala_g6
+import com.ynotlabs.cathopedia.resources.miracle_scala_g7
+import com.ynotlabs.cathopedia.resources.miracle_scete_g0
+import com.ynotlabs.cathopedia.resources.miracle_scete_g1
+import com.ynotlabs.cathopedia.resources.miracle_scete_g2
+import com.ynotlabs.cathopedia.resources.miracle_scete_g3
+import com.ynotlabs.cathopedia.resources.miracle_scete_g4
+import com.ynotlabs.cathopedia.resources.miracle_scete_g5
+import com.ynotlabs.cathopedia.resources.miracle_scete_g6
+import com.ynotlabs.cathopedia.resources.miracle_scete_g7
+import com.ynotlabs.cathopedia.resources.miracle_scete_g8
+import com.ynotlabs.cathopedia.resources.miracle_seefeld_g0
+import com.ynotlabs.cathopedia.resources.miracle_seefeld_g1
+import com.ynotlabs.cathopedia.resources.miracle_seefeld_g10
+import com.ynotlabs.cathopedia.resources.miracle_seefeld_g2
+import com.ynotlabs.cathopedia.resources.miracle_seefeld_g3
+import com.ynotlabs.cathopedia.resources.miracle_seefeld_g4
+import com.ynotlabs.cathopedia.resources.miracle_seefeld_g5
+import com.ynotlabs.cathopedia.resources.miracle_seefeld_g6
+import com.ynotlabs.cathopedia.resources.miracle_seefeld_g7
+import com.ynotlabs.cathopedia.resources.miracle_seefeld_g8
+import com.ynotlabs.cathopedia.resources.miracle_seefeld_g9
+import com.ynotlabs.cathopedia.resources.miracle_silla_g0
+import com.ynotlabs.cathopedia.resources.miracle_silla_g1
+import com.ynotlabs.cathopedia.resources.miracle_silla_g2
+import com.ynotlabs.cathopedia.resources.miracle_silla_g3
+import com.ynotlabs.cathopedia.resources.miracle_silla_g4
+import com.ynotlabs.cathopedia.resources.miracle_silla_g5
+import com.ynotlabs.cathopedia.resources.miracle_sokolka_g0
+import com.ynotlabs.cathopedia.resources.miracle_sokolka_g1
+import com.ynotlabs.cathopedia.resources.miracle_sokolka_g10
+import com.ynotlabs.cathopedia.resources.miracle_sokolka_g11
+import com.ynotlabs.cathopedia.resources.miracle_sokolka_g12
+import com.ynotlabs.cathopedia.resources.miracle_sokolka_g2
+import com.ynotlabs.cathopedia.resources.miracle_sokolka_g3
+import com.ynotlabs.cathopedia.resources.miracle_sokolka_g4
+import com.ynotlabs.cathopedia.resources.miracle_sokolka_g5
+import com.ynotlabs.cathopedia.resources.miracle_sokolka_g6
+import com.ynotlabs.cathopedia.resources.miracle_sokolka_g7
+import com.ynotlabs.cathopedia.resources.miracle_sokolka_g8
+import com.ynotlabs.cathopedia.resources.miracle_sokolka_g9
+import com.ynotlabs.cathopedia.resources.miracle_stiphout_g0
+import com.ynotlabs.cathopedia.resources.miracle_stiphout_g1
+import com.ynotlabs.cathopedia.resources.miracle_stiphout_g2
+import com.ynotlabs.cathopedia.resources.miracle_stiphout_g3
+import com.ynotlabs.cathopedia.resources.miracle_stiphout_g4
+import com.ynotlabs.cathopedia.resources.miracle_tixtla_g0
+import com.ynotlabs.cathopedia.resources.miracle_tixtla_g1
+import com.ynotlabs.cathopedia.resources.miracle_tixtla_g2
+import com.ynotlabs.cathopedia.resources.miracle_tixtla_g3
+import com.ynotlabs.cathopedia.resources.miracle_tixtla_g4
+import com.ynotlabs.cathopedia.resources.miracle_tixtla_g5
+import com.ynotlabs.cathopedia.resources.miracle_tixtla_g6
+import com.ynotlabs.cathopedia.resources.miracle_tixtla_g7
+import com.ynotlabs.cathopedia.resources.miracle_trani_g0
+import com.ynotlabs.cathopedia.resources.miracle_trani_g1
+import com.ynotlabs.cathopedia.resources.miracle_trani_g2
+import com.ynotlabs.cathopedia.resources.miracle_trani_g3
+import com.ynotlabs.cathopedia.resources.miracle_trani_g4
+import com.ynotlabs.cathopedia.resources.miracle_trani_g5
+import com.ynotlabs.cathopedia.resources.miracle_tumaco_g0
+import com.ynotlabs.cathopedia.resources.miracle_tumaco_g1
+import com.ynotlabs.cathopedia.resources.miracle_tumaco_g2
+import com.ynotlabs.cathopedia.resources.miracle_tumaco_g3
+import com.ynotlabs.cathopedia.resources.miracle_tumaco_g4
+import com.ynotlabs.cathopedia.resources.miracle_tumaco_g5
+import com.ynotlabs.cathopedia.resources.miracle_tumaco_g6
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g0
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g1
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g10
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g11
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g12
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g13
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g14
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g15
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g16
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g17
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g18
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g19
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g2
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g20
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g21
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g22
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g23
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g24
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g25
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g26
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g3
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g4
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g5
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g6
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g7
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g8
+import com.ynotlabs.cathopedia.resources.miracle_turin_1640_g9
+import com.ynotlabs.cathopedia.resources.miracle_turin_g0
+import com.ynotlabs.cathopedia.resources.miracle_turin_g1
+import com.ynotlabs.cathopedia.resources.miracle_turin_g10
+import com.ynotlabs.cathopedia.resources.miracle_turin_g11
+import com.ynotlabs.cathopedia.resources.miracle_turin_g12
+import com.ynotlabs.cathopedia.resources.miracle_turin_g13
+import com.ynotlabs.cathopedia.resources.miracle_turin_g14
+import com.ynotlabs.cathopedia.resources.miracle_turin_g15
+import com.ynotlabs.cathopedia.resources.miracle_turin_g16
+import com.ynotlabs.cathopedia.resources.miracle_turin_g17
+import com.ynotlabs.cathopedia.resources.miracle_turin_g18
+import com.ynotlabs.cathopedia.resources.miracle_turin_g19
+import com.ynotlabs.cathopedia.resources.miracle_turin_g2
+import com.ynotlabs.cathopedia.resources.miracle_turin_g20
+import com.ynotlabs.cathopedia.resources.miracle_turin_g21
+import com.ynotlabs.cathopedia.resources.miracle_turin_g22
+import com.ynotlabs.cathopedia.resources.miracle_turin_g23
+import com.ynotlabs.cathopedia.resources.miracle_turin_g24
+import com.ynotlabs.cathopedia.resources.miracle_turin_g25
+import com.ynotlabs.cathopedia.resources.miracle_turin_g26
+import com.ynotlabs.cathopedia.resources.miracle_turin_g3
+import com.ynotlabs.cathopedia.resources.miracle_turin_g4
+import com.ynotlabs.cathopedia.resources.miracle_turin_g5
+import com.ynotlabs.cathopedia.resources.miracle_turin_g6
+import com.ynotlabs.cathopedia.resources.miracle_turin_g7
+import com.ynotlabs.cathopedia.resources.miracle_turin_g8
+import com.ynotlabs.cathopedia.resources.miracle_turin_g9
+import com.ynotlabs.cathopedia.resources.miracle_valencia_santo_caliz_g0
+import com.ynotlabs.cathopedia.resources.miracle_valencia_santo_caliz_g1
+import com.ynotlabs.cathopedia.resources.miracle_valencia_santo_caliz_g10
+import com.ynotlabs.cathopedia.resources.miracle_valencia_santo_caliz_g11
+import com.ynotlabs.cathopedia.resources.miracle_valencia_santo_caliz_g2
+import com.ynotlabs.cathopedia.resources.miracle_valencia_santo_caliz_g3
+import com.ynotlabs.cathopedia.resources.miracle_valencia_santo_caliz_g4
+import com.ynotlabs.cathopedia.resources.miracle_valencia_santo_caliz_g5
+import com.ynotlabs.cathopedia.resources.miracle_valencia_santo_caliz_g6
+import com.ynotlabs.cathopedia.resources.miracle_valencia_santo_caliz_g7
+import com.ynotlabs.cathopedia.resources.miracle_valencia_santo_caliz_g8
+import com.ynotlabs.cathopedia.resources.miracle_valencia_santo_caliz_g9
+import com.ynotlabs.cathopedia.resources.miracle_vercelli_bicchieri_g0
+import com.ynotlabs.cathopedia.resources.miracle_veroli_g0
+import com.ynotlabs.cathopedia.resources.miracle_veroli_g1
+import com.ynotlabs.cathopedia.resources.miracle_veroli_g2
+import com.ynotlabs.cathopedia.resources.miracle_veroli_g3
+import com.ynotlabs.cathopedia.resources.miracle_veroli_g4
+import com.ynotlabs.cathopedia.resources.miracle_veroli_g5
+import com.ynotlabs.cathopedia.resources.miracle_vienna_stanislaus_kostka_g0
+import com.ynotlabs.cathopedia.resources.miracle_vilakkannur_g0
+import com.ynotlabs.cathopedia.resources.miracle_vilakkannur_g1
+import com.ynotlabs.cathopedia.resources.miracle_vilakkannur_g2
+import com.ynotlabs.cathopedia.resources.miracle_vilakkannur_g3
+import com.ynotlabs.cathopedia.resources.miracle_volterra_g0
+import com.ynotlabs.cathopedia.resources.miracle_volterra_g1
+import com.ynotlabs.cathopedia.resources.miracle_volterra_g2
+import com.ynotlabs.cathopedia.resources.miracle_volterra_g3
+import com.ynotlabs.cathopedia.resources.miracle_volterra_g4
+import com.ynotlabs.cathopedia.resources.miracle_walldurn_g0
+import com.ynotlabs.cathopedia.resources.miracle_walldurn_g1
+import com.ynotlabs.cathopedia.resources.miracle_walldurn_g2
+import com.ynotlabs.cathopedia.resources.miracle_walldurn_g3
+import com.ynotlabs.cathopedia.resources.miracle_walldurn_g4
+import com.ynotlabs.cathopedia.resources.miracle_walldurn_g5
+import com.ynotlabs.cathopedia.resources.miracle_walldurn_g6
+import com.ynotlabs.cathopedia.resources.miracle_walldurn_g7
+import com.ynotlabs.cathopedia.resources.miracle_walldurn_g8
+import com.ynotlabs.cathopedia.resources.miracle_walldurn_g9
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g0
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g1
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g10
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g11
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g12
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g13
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g14
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g15
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g16
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g17
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g18
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g19
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g2
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g20
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g3
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g4
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g5
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g6
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g7
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g8
+import com.ynotlabs.cathopedia.resources.miracle_weingarten_g9
+import com.ynotlabs.cathopedia.resources.miracle_weiten_raxendorf_g0
+import com.ynotlabs.cathopedia.resources.miracle_weiten_raxendorf_g1
+import com.ynotlabs.cathopedia.resources.miracle_weiten_raxendorf_g2
+import com.ynotlabs.cathopedia.resources.miracle_weiten_raxendorf_g3
+import com.ynotlabs.cathopedia.resources.miracle_weiten_raxendorf_g4
+import com.ynotlabs.cathopedia.resources.miracle_weiten_raxendorf_g5
+import com.ynotlabs.cathopedia.resources.miracle_wilsnack_g0
+import com.ynotlabs.cathopedia.resources.miracle_wilsnack_g1
+import com.ynotlabs.cathopedia.resources.miracle_wilsnack_g2
+import com.ynotlabs.cathopedia.resources.miracle_wilsnack_g3
+import com.ynotlabs.cathopedia.resources.miracle_wilsnack_g4
+import com.ynotlabs.cathopedia.resources.miracle_wilsnack_g5
+import com.ynotlabs.cathopedia.resources.miracle_wilsnack_g6
+import com.ynotlabs.cathopedia.resources.miracle_wilsnack_g7
+import com.ynotlabs.cathopedia.resources.miracle_zaragoza_g0
+import com.ynotlabs.cathopedia.resources.miracle_zaragoza_g1
+import com.ynotlabs.cathopedia.resources.miracle_zaragoza_g2
+import com.ynotlabs.cathopedia.resources.miracle_zaragoza_g3
+import com.ynotlabs.cathopedia.resources.miracle_zaragoza_g4
+import com.ynotlabs.cathopedia.resources.miracle_zaragoza_g5
+import com.ynotlabs.cathopedia.resources.miracle_zaragoza_g6
+import org.jetbrains.compose.resources.DrawableResource
+
+/**
+ * Photographs of the miracles themselves — the relics, reliquaries, churches and
+ * documents — as distinct from the devotional hero art in [Portraits].
+ *
+ * GENERATED FILE. Rebuild with tools/miracle_galleries/gen_kt.py rather than editing by hand;
+ * the per-image WebP assets are produced by the same pipeline.
+ *
+ * Captions are English at the source. [GalleryImage.captionFor] falls back to the
+ * English caption until a French pass fills [GalleryImage.captionFr] in.
+ */
+data class GalleryImage(
+    val image: DrawableResource,
+    val caption: String,
+    val captionFr: String? = null,
+    val sourceUrl: String,
+) {
+    fun captionFor(language: String): String =
+        if (language == "fr") captionFr ?: caption else caption
+}
+
+object MiracleGalleries {
+    fun forMiracle(id: String): List<GalleryImage> = galleries[id].orEmpty()
+
+    private val galleries: Map<String, List<GalleryImage>> = mapOf(
+        "alatri" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_alatri_g0,
+                caption = "Painting in the Cathedral of Alatri which illustrate the various phases of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-alatri",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alatri_g1,
+                caption = "Medallion with the image of Pope Gregory IX with the Bull, the façade of the cathedral with the Host above",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-alatri",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alatri_g2,
+                caption = "Painting in the Cathedral of Alatri which illustrate the various phases of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-alatri",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alatri_g3,
+                caption = "Painting in the Cathedral of Alatri which illustrate the various phases of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-alatri",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alatri_g4,
+                caption = "Painting in the Cathedral of Alatri which illustrate the various phases of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-alatri",
+            ),
+        ),
+        "alboraya-almacera" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_alboraya_almacera_g0,
+                caption = "Painting depicting the Miracle of the Fish (Miracle dels Peixets)",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/alboraya-almacera-1348",
+            ),
+        ),
+        "alcala-de-henares" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_alcala_de_henares_g0,
+                caption = "Church at Alcalá de Henares where the incorrupt Hosts were preserved",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/alcala-1597",
+            ),
+        ),
+        "alcoy" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_alcoy_g0,
+                caption = "Relic of the Eucharistic miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-alcoy",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alcoy_g1,
+                caption = "View of Alcoy",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-alcoy",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alcoy_g2,
+                caption = "Facade of the Monastery of the Holy Sepulcher where the relics of the miracle are kept",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-alcoy",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alcoy_g3,
+                caption = "Church built over the place where the miracle took place",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-alcoy",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alcoy_g4,
+                caption = "A man kneeling in a barn, holding a box with consecrated Hosts, with a city in the background.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-alcoy",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alcoy_g5,
+                caption = "Statue of the Child Jesus that points to the place where the sacred Hosts, stolen by Juan Prats, were found",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-alcoy",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alcoy_g6,
+                caption = "Interior view of a church with ornate decorations and a central altar.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-alcoy",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alcoy_g7,
+                caption = "Relic of the Eucharistic miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-alcoy",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alcoy_g8,
+                caption = "Procession in honor of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-alcoy",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alcoy_g9,
+                caption = "A drawing of the miraculous statue of the Child Jesus, adorned with a crown and religious symbols.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-alcoy",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alcoy_g10,
+                caption = "A group of nuns in black habits posing in a courtyard with plants.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-alcoy",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alcoy_g11,
+                caption = "Dance of the Paloteig that takes place during the procession of the feast of the Miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-alcoy",
+            ),
+        ),
+        "alkmaar" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_alkmaar_g0,
+                caption = "Three priests in ornate robes performing a religious ceremony at an altar.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/alkmaar-1429",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alkmaar_g1,
+                caption = "Relic that contains the Blood of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/alkmaar-1429",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alkmaar_g2,
+                caption = "Church of Saint Lawrence",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/alkmaar-1429",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alkmaar_g3,
+                caption = "Relic that contains the Blood of the chasuble",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/alkmaar-1429",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alkmaar_g4,
+                caption = "Church interior",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/alkmaar-1429",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alkmaar_g5,
+                caption = "Church of Saint Lawrence",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/alkmaar-1429",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alkmaar_g6,
+                caption = "Church interior",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/alkmaar-1429",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alkmaar_g7,
+                caption = "Procession in honor of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/alkmaar-1429",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_alkmaar_g8,
+                caption = "A priest holding a chalice with wine spilling onto a plate, depicting a Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/alkmaar-1429",
+            ),
+        ),
+        "amsterdam" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g0,
+                caption = "Case that contained the miraculous Host",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g1,
+                caption = "Column remaining after the church burned down",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g2,
+                caption = "Ancient painting which depicts a solemn procession in honor of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g3,
+                caption = "Ysbrand Dommer receiving Communion",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g4,
+                caption = "The nine panels in which the painter C. Schotel depicted the scenes of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g5,
+                caption = "Lamp in which the Blessed Sacrament is depicted in honor of the first \"Stille Omgang\" procession",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g6,
+                caption = "An inscription detailing historical information related to the Eucharistic Miracle of Amsterdam.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g7,
+                caption = "A historical scene depicting people gathered around a fireplace in a domestic setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g8,
+                caption = "Two angels beside a fire, depicting a religious scene with flames and a heart.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g9,
+                caption = "Interior of the church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g10,
+                caption = "Modern representation of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g11,
+                caption = "A historical scene depicting people around a fire, possibly in a domestic setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g12,
+                caption = "Painting depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g13,
+                caption = "A woman in a white robe kneels by a fireplace, with angels above, depicting the miraculous Host of Amsterdam, 1345.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g14,
+                caption = "The chapel of the church was destroyed again in 1908",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g15,
+                caption = "A woman in historical attire tends a fire where a glowing Host miraculously remains intact, symbolizing the 1345 Amsterdam miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g16,
+                caption = "Chapel of the Blessed Sacrament",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g17,
+                caption = "Facade of the current church of Eglish, Amsterdam",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g18,
+                caption = "Archduke Maximilian of Austria participating in adoration before the reliquary of the miraculous Host (1484)",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g19,
+                caption = "Nun of the Order of Beguine",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g20,
+                caption = "The 'Stille Omgang' procession held annually in memory of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g21,
+                caption = "Modern representation of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g22,
+                caption = "Sculpture of the ancient monument which contained the miraculous Host",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_amsterdam_g23,
+                caption = "A flyer for the 'Stille Omgang' event, detailing its significance and schedule.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/amsterdam-1345",
+            ),
+        ),
+        "assisi-clare" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_assisi_clare_g0,
+                caption = "A pathway leading to a building with cypress trees lining the side.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-saint-clare-assisi",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_assisi_clare_g1,
+                caption = "Saint Clare and the Saracens, Painting by Pietro Giordano, Holy Cross Monastery, Egnazio Magliocca.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-saint-clare-assisi",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_assisi_clare_g2,
+                caption = "Saint Clare and the Saracens. Painting by Piero Ghetti. Holy Cross Monastery, Egnazio Maggiore.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-saint-clare-assisi",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_assisi_clare_g3,
+                caption = "Saint Clare and the Saracens. Painting by Piero Ghetti. Holy Cross Monastery, Egnano Maggiore.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-saint-clare-assisi",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_assisi_clare_g4,
+                caption = "Saint Clare and the Saracens. Painting by Piero Ghetti. Holy Cross Monastery, Egnano Maggiore.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-saint-clare-assisi",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_assisi_clare_g5,
+                caption = "Saint Clare and the Saracens. Painting by Piero Giannetti, Holy Cross Monastery, Egnazio Magliocca.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-saint-clare-assisi",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_assisi_clare_g6,
+                caption = "Saint Clare and the Saracens. Painting by Piero Ghetti. Holy Bay Monastery, Egitniano Maggiore.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-saint-clare-assisi",
+            ),
+        ),
+        "asti" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_asti_g0,
+                caption = "Interior view of the collegiate church of San Secondo, showcasing its architectural features and altar.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-asti",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_asti_g1,
+                caption = "Oil Painting on canvas of an unknown 17th century painter depicting the Eucharistic miracle that took place in the collegiate church of San Secondo in 1535. The painting is kept in the chapel of the miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-asti",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_asti_g2,
+                caption = "Ornate altar with a cross and figures, linked to the 1535 Eucharistic miracle at San Secondo, Asti.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-asti",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_asti_g3,
+                caption = "Collegiate church of San Secondo in Asti",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-asti",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_asti_g4,
+                caption = "Cathedral of Asti",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-asti",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_asti_g5,
+                caption = "Opere Pia Milliavacca, Chalice of the miracle. Notice the correspondence of the drops of Blood on the cup and the base of the chalice",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-asti",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_asti_g6,
+                caption = "A golden chalice used during the Eucharistic miracle in Asti, Italy, 1718.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-asti",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_asti_g7,
+                caption = "The base of a chalice showing stains, possibly related to a Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-asti",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_asti_g8,
+                caption = "Exterior view of the Cathedral of Asti, showcasing its architectural features and surrounding area.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-asti",
+            ),
+        ),
+        "augsburg" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_augsburg_g0,
+                caption = "A historical painting depicting a church and a figure of Jesus in a luminous aura.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-augsburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_augsburg_g1,
+                caption = "Convent of the Heilig Kreuz (Holy Cross) Augsburg",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-augsburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_augsburg_g2,
+                caption = "Reliquary containing the Host of the miracle known as Wunderbaren Gutes",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-augsburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_augsburg_g3,
+                caption = "Convent of the Heilig Kreuz (Holy Cross) Augsburg",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-augsburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_augsburg_g4,
+                caption = "Relicary containing the Host of the miracle known as Wunderbaren Gutes",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-augsburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_augsburg_g5,
+                caption = "A man in a white robe holding a golden monstrance with a religious relic inside.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-augsburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_augsburg_g6,
+                caption = "A fresco depicting angels and figures, with one holding a scroll and another a scepter.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-augsburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_augsburg_g7,
+                caption = "A street view in Augsburg showing buildings and church towers under a blue sky.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-augsburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_augsburg_g8,
+                caption = "A golden monstrance on an altar, symbolizing the Augsburg miracle where a woman preserved the Eucharist at home.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-augsburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_augsburg_g9,
+                caption = "A golden monstrance adorned with intricate designs and a central relic.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-augsburg",
+            ),
+        ),
+        "avignon" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_avignon_g0,
+                caption = "Stained-glass window inside the church, depicting the Miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-avignon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_avignon_g1,
+                caption = "The image shows the ornate facade of a church with two figures and a central monstrance.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-avignon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_avignon_g2,
+                caption = "Stained-glass window inside the church, depicting the Miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-avignon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_avignon_g3,
+                caption = "The Altar where the Miracle took place",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-avignon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_avignon_g4,
+                caption = "Stained-glass window inside the church, depicting the Miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-avignon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_avignon_g5,
+                caption = "Ancient engraving of the Miracle of Avignon, illustrating the church's architectural features during the 1433 Eucharistic event.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-avignon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_avignon_g6,
+                caption = "A plaque detailing the history of the Chapel of the Gray Penitents.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-avignon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_avignon_g7,
+                caption = "An illustration showing two figures praying before a monstrance with angels above.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-avignon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_avignon_g8,
+                caption = "Cassock of the Gray Penitents",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-avignon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_avignon_g9,
+                caption = "Gabriel de Vilanova Lantou, the first leader of the Gray Penitents",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-avignon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_avignon_g10,
+                caption = "A statue of Jesus Christ on the cross, depicting his crucifixion.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-avignon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_avignon_g11,
+                caption = "Fresco in the Chapel",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-avignon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_avignon_g12,
+                caption = "Fresco in the Chapel",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-avignon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_avignon_g13,
+                caption = "Palace of the Popes, Avignon",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-avignon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_avignon_g14,
+                caption = "Fresco in the Chapel",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-avignon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_avignon_g15,
+                caption = "Facade of the Chapel of the Gray Penitents",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-avignon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_avignon_g16,
+                caption = "Canal that runs near the Chapel",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-avignon",
+            ),
+        ),
+        "bagno-di-romagna" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_bagno_di_romagna_g0,
+                caption = "Basilica of Santa Maria di Bagno di Romagna",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bagno-di-romagna",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bagno_di_romagna_g1,
+                caption = "Picture that depicts the miracle present in the basilica",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bagno-di-romagna",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bagno_di_romagna_g2,
+                caption = "Chapel with the urn of Blessed Giovanna",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bagno-di-romagna",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bagno_di_romagna_g3,
+                caption = "A sepia-toned image of an old stone church with a simple facade and arched entrance.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bagno-di-romagna",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bagno_di_romagna_g4,
+                caption = "Relic of the Blood-stained corporal",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bagno-di-romagna",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bagno_di_romagna_g5,
+                caption = "Relic of the Blood-stained corporal",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bagno-di-romagna",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bagno_di_romagna_g6,
+                caption = "Interior of the basilica",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bagno-di-romagna",
+            ),
+        ),
+        "balasar" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_balasar_g0,
+                caption = "Blessed Alexandrina Maria da Costa, portrait photograph",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/alexandrina-maria-da-costa-eucharistic-sustenance",
+            ),
+        ),
+        "benningen" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_benningen_g0,
+                caption = "Inside the Riedkapelle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-benningen",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_benningen_g1,
+                caption = "The external façade of the Riedkapelle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-benningen",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_benningen_g2,
+                caption = "Johann Friedrich Stielbienen (1640). Procession of the miraculous Host",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-benningen",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_benningen_g3,
+                caption = "Inside the Riedkapelle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-benningen",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_benningen_g4,
+                caption = "A windmill in a rural landscape with rocks and a small body of water nearby.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-benningen",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_benningen_g5,
+                caption = "Interior view of a church featuring an altar with ornate decorations and wooden pews.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-benningen",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_benningen_g6,
+                caption = "The Church of Benningen, Germany, site of the 1216 Eucharistic miracle revealing hidden malice, features a red roof and bell tower.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-benningen",
+            ),
+        ),
+        "bergen-op-zoom" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_bergen_op_zoom_g0,
+                caption = "View of the Schelda River",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bergen-netherlands-1421",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bergen_op_zoom_g1,
+                caption = "View of the Schelda River",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bergen-netherlands-1421",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bergen_op_zoom_g2,
+                caption = "A model of the city of Bergen at the time of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bergen-netherlands-1421",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bergen_op_zoom_g3,
+                caption = "The church of Saints Peter and Paul and the River Schelda",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bergen-netherlands-1421",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bergen_op_zoom_g4,
+                caption = "The church of Saints Peter and Paul and the River Schelda",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bergen-netherlands-1421",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bergen_op_zoom_g5,
+                caption = "Jules Breton, Procession of the Blessed Sacrament, 1857",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bergen-netherlands-1421",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bergen_op_zoom_g6,
+                caption = "Painting depicting the procession in honor of the miracle, Meertens Institute",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bergen-netherlands-1421",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bergen_op_zoom_g7,
+                caption = "Painting depicting the procession in honor of the miracle, Meertens Institute",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bergen-netherlands-1421",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bergen_op_zoom_g8,
+                caption = "The church of Saints Peter and Paul and the River Schelda",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bergen-netherlands-1421",
+            ),
+        ),
+        "betania" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_betania_g0,
+                caption = "Exhibition illustration of the Betania Eucharistic miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ven-betania",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_betania_g1,
+                caption = "Reliquary of the Betania Host in a glass display case",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ven-betania",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_betania_g2,
+                caption = "Close-up of the Betania reliquary with the Host",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ven-betania",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_betania_g3,
+                caption = "Students kneeling in prayer at the Augustinian convent chapel",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ven-betania",
+            ),
+        ),
+        "bettbrunn" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_bettbrunn_g0,
+                caption = "An illustration of a church surrounded by trees and hills, depicting the Eucharistic miracle site.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-bettbrunn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bettbrunn_g1,
+                caption = "The faithful on a pilgrimage to Bettbrunn",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-bettbrunn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bettbrunn_g2,
+                caption = "Church of San Salvator, Bettbrunn",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-bettbrunn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bettbrunn_g3,
+                caption = "Inside the Church of San Salvator",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-bettbrunn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bettbrunn_g4,
+                caption = "A priest kneeling in prayer, holding a sacred Host, with a serene landscape in the background.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-bettbrunn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bettbrunn_g5,
+                caption = "The church at Bettbrunn, with its tall spire and clock, marks the site of the 1125 Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-bettbrunn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bettbrunn_g6,
+                caption = "A painting depicting a boy praying near a glowing light with cows nearby.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-bettbrunn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bettbrunn_g7,
+                caption = "Gott und seine Diener",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-bettbrunn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bettbrunn_g8,
+                caption = "The image shows a decorated organ with a mural above depicting biblical scenes.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-bettbrunn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bettbrunn_g9,
+                caption = "An ornate altar with statues and stained glass windows in a church interior.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-bettbrunn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bettbrunn_g10,
+                caption = "A painting depicting a kneeling boy praying in a landscape with cows and a glowing light.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-bettbrunn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bettbrunn_g11,
+                caption = "Bettbrunn village with its iconic church tower, site of the 1125 Eucharistic miracle, under a dramatic cloudy sky.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-bettbrunn",
+            ),
+        ),
+        "blanot" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_blanot_g0,
+                caption = "A 17th century display case containing the cloth stained with blood, preserved in a crystal tube. Blanot",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-blanot",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_blanot_g1,
+                caption = "LE JOUR DE PÂQUES MCCCXXXI HUGUES DE BAUME VICAIRE DE BLANOT CÉLÉBRANT LA MESSE UNE PARCELLE D'HOSTIE TOMBA ET SE TRANSFORMA EN GOUTTE DE SANG SUR LA NAPPE DE COMMUNION.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-blanot",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_blanot_g2,
+                caption = "The Parish of Blanot, with its slate roof and spire, is where the 1331 Eucharistic Miracle occurred.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-blanot",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_blanot_g3,
+                caption = "Two figures handling a cloth, possibly related to a Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-blanot",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_blanot_g4,
+                caption = "A detailed depiction of a religious scene with figures around an altar.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-blanot",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_blanot_g5,
+                caption = "A historical procession with clergy and people in a village setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-blanot",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_blanot_g6,
+                caption = "A 17th century display case containing the cloth stained with blood, preserved in a crystal tube. Blanot",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-blanot",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_blanot_g7,
+                caption = "A priest and altar servers at a table with a blood-stained cloth during a religious ceremony.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-blanot",
+            ),
+        ),
+        "bois-dhaine" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_bois_dhaine_g0,
+                caption = "Double portrait of Louise Lateau (1875)",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/anne-louise-lateau-eucharistic-fasting",
+            ),
+        ),
+        "bois-seigneur-isaac" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_bois_seigneur_isaac_g0,
+                caption = "Choir of the Chapel of the Holy Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bois-seigneur-isaac",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bois_seigneur_isaac_g1,
+                caption = "A priest standing at an altar with a crucifix behind, flanked by candles, and a cloth with a red stain.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bois-seigneur-isaac",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bois_seigneur_isaac_g2,
+                caption = "Main Altar, Laurent Delvaux (18th century)",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bois-seigneur-isaac",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bois_seigneur_isaac_g3,
+                caption = "Premonstration Abbey, Chapel of the Holy Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bois-seigneur-isaac",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bois_seigneur_isaac_g4,
+                caption = "Reliquary of the eucharistic miracle, corporal stained with Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bois-seigneur-isaac",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bois_seigneur_isaac_g5,
+                caption = "Reliquary of the eucharistic miracle, corporal stained with Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bois-seigneur-isaac",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bois_seigneur_isaac_g6,
+                caption = "Interior of the Chapel of the Holy Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bois-seigneur-isaac",
+            ),
+        ),
+        "bologna-imelda" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_bologna_imelda_g0,
+                caption = "Blessed Imelda Lambertini receiving light from heaven, devotional card",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/blessed-imelda-lambertini-bologna",
+            ),
+        ),
+        "bordeaux" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_bordeaux_g0,
+                caption = "Monstrance of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-bordeaux",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bordeaux_g1,
+                caption = "Picture of Pierre-Benoît Noailles, founder of the religious community of the Holy Family - Lady of Lorette",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-bordeaux",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bordeaux_g2,
+                caption = "Church of St. Eulalia in Bordeaux",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-bordeaux",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bordeaux_g3,
+                caption = "Mother Riza Bonnat, first Mother General of the Community with two little orphans",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-bordeaux",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bordeaux_g4,
+                caption = "La Solitude, Martillac (France), Monastery of the Holy Family",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-bordeaux",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bordeaux_g5,
+                caption = "Statues of the Holy Family with Jesus in the center, depicting a religious scene.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-bordeaux",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bordeaux_g6,
+                caption = "Interior of the church \"La Solitude\"",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-bordeaux",
+            ),
+        ),
+        "boxmeer" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_boxmeer_g0,
+                caption = "Stained glass made for the church that depicts the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxmeer-1400",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxmeer_g1,
+                caption = "Procession in honor of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxmeer-1400",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxmeer_g2,
+                caption = "Two children dressed in traditional attire, one holding a bouquet of flowers.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxmeer-1400",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxmeer_g3,
+                caption = "Procession in honor of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxmeer-1400",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxmeer_g4,
+                caption = "Procession in honor of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxmeer-1400",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxmeer_g5,
+                caption = "A tall brick church tower next to a building, showcasing a historical architectural style.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxmeer-1400",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxmeer_g6,
+                caption = "Reliquary of the Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxmeer-1400",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxmeer_g7,
+                caption = "Reliquary of the Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxmeer-1400",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxmeer_g8,
+                caption = "An illustration of a chalice with blood and flowers, commemorating the miracle in Boxmeer.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxmeer-1400",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxmeer_g9,
+                caption = "An illustration depicting a procession with figures around a chalice, symbolizing the Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxmeer-1400",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxmeer_g10,
+                caption = "A priest performing a Mass with a chalice, surrounded by children in religious attire.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxmeer-1400",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxmeer_g11,
+                caption = "Stained glass made the church that depicts the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxmeer-1400",
+            ),
+        ),
+        "boxtel-hoogstraten" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_boxtel_hoogstraten_g0,
+                caption = "An illustration depicting the relic of the Blood-stained corporal and scenes from the Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxtel-hoogstraten-1380",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxtel_hoogstraten_g1,
+                caption = "An ancient painting in the church depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxtel-hoogstraten-1380",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxtel_hoogstraten_g2,
+                caption = "Relic of the miraculous Blood, St. Catherine's Church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxtel-hoogstraten-1380",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxtel_hoogstraten_g3,
+                caption = "H. BLOEDPROCESSIE",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxtel-hoogstraten-1380",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxtel_hoogstraten_g4,
+                caption = "The relic being carried in procession",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxtel-hoogstraten-1380",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxtel_hoogstraten_g5,
+                caption = "Relic of the blood-stained corporal",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxtel-hoogstraten-1380",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxtel_hoogstraten_g6,
+                caption = "With the kind permission of the Mertens Institute",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxtel-hoogstraten-1380",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxtel_hoogstraten_g7,
+                caption = "The relic being carried in procession",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxtel-hoogstraten-1380",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxtel_hoogstraten_g8,
+                caption = "Relic of the miraculous Blood, St. Catherine's Church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxtel-hoogstraten-1380",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_boxtel_hoogstraten_g9,
+                caption = "Ancient depictions of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/boxtel-hoogstraten-1380",
+            ),
+        ),
+        "breda-niervaart" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_breda_niervaart_g0,
+                caption = "The relic of the miraculous Host is carried in procession (1555), Sacred Museum of Breda",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/breda-niervaart-1300",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_breda_niervaart_g1,
+                caption = "A serene canal scene with a boat surrounded by lush greenery and trees.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/breda-niervaart-1300",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_breda_niervaart_g2,
+                caption = "Interior view of a church with high arches and pews.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/breda-niervaart-1300",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_breda_niervaart_g3,
+                caption = "Collegiate Church of Our Lady, Breda",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/breda-niervaart-1300",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_breda_niervaart_g4,
+                caption = "A farmer digging in a field discovers a glowing Host among the crops.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/breda-niervaart-1300",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_breda_niervaart_g5,
+                caption = "Banner depicting the finding of the miraculous Host",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/breda-niervaart-1300",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_breda_niervaart_g6,
+                caption = "Programma der vieringen",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/breda-niervaart-1300",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_breda_niervaart_g7,
+                caption = "Banner depicting the finding of the miraculous Host",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/breda-niervaart-1300",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_breda_niervaart_g8,
+                caption = "Artistic monstrance in which the miraculous Host is carried, Breda.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/breda-niervaart-1300",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_breda_niervaart_g9,
+                caption = "Collegiate Church of Our Lady, Breda",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/breda-niervaart-1300",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_breda_niervaart_g10,
+                caption = "Artistic monstrance in which the miraculous Host is carried, Breda.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/breda-niervaart-1300",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_breda_niervaart_g11,
+                caption = "Collegiate Church of Our Lady, Breda",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/breda-niervaart-1300",
+            ),
+        ),
+        "bruges" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_bruges_g0,
+                caption = "A colorful stamp depicting a procession with knights and a flag in Bruges.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bruges",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bruges_g1,
+                caption = "Church of the Most Precious Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bruges",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bruges_g2,
+                caption = "Stained glass window depicting a historical scene with figures in religious attire.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bruges",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bruges_g3,
+                caption = "An ornate depiction of angels holding a relic associated with Jesus Christ.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bruges",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bruges_g4,
+                caption = "A knight pretending to be the Count of Flanders bringing back the Most Precious Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bruges",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bruges_g5,
+                caption = "Relic of the Most Precious Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bruges",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bruges_g6,
+                caption = "Detail of Relics",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bruges",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bruges_g7,
+                caption = "Procession in honor of the Most Precious Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bruges",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bruges_g8,
+                caption = "People in traditional costumes carrying large banners during a procession.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bruges",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bruges_g9,
+                caption = "Procession in honor of the Most Precious Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bruges",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bruges_g10,
+                caption = "Relic of the Most Precious Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bruges",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bruges_g11,
+                caption = "Interior of the Church of the Most Precious Blood, Bruges",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bruges",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bruges_g12,
+                caption = "Church of the Most Precious Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bruges",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_bruges_g13,
+                caption = "An artistic depiction of angels surrounding a central figure, likely representing a religious scene.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-bruges",
+            ),
+        ),
+        "calanda" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_calanda_g0,
+                caption = "John Paul II praying in front of the statue of the Virgin of Pilar, Zaragoza",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/calanda-miracle-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_calanda_g1,
+                caption = "Interior view of a church with an altar and seating area.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/calanda-miracle-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_calanda_g2,
+                caption = "A statue of the Virgin of Pilar adorned with a golden sunburst and a red cape.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/calanda-miracle-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_calanda_g3,
+                caption = "Pope Paul VI praying in front of a crucifix and altar.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/calanda-miracle-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_calanda_g4,
+                caption = "Original document notarized by Miguel Juan, April 2, 1640, certifying the miracle of Calanda",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/calanda-miracle-1640",
+            ),
+        ),
+        "canosio" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_canosio_g0,
+                caption = "Parish Church of Canosio",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-canosio",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_canosio_g1,
+                caption = "Ornate altar with monstrance, symbolizing Father Reinardi's Eucharistic blessing that saved Canosio from the 1630 Maira River flood.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-canosio",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_canosio_g2,
+                caption = "Interior view of a church showing the altar and seating arrangement.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-canosio",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_canosio_g3,
+                caption = "The Maira River, central to the 1630 miracle, flows calmly past a sandy bank and lush greenery in Canosio.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-canosio",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_canosio_g4,
+                caption = "Panoramic view of Canosio's rocky cliffs and waterfall, illustrating the natural setting of the 1630 Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-canosio",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_canosio_g5,
+                caption = "A priest holds the Eucharist while a village is threatened by rushing floodwaters.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-canosio",
+            ),
+        ),
+        "caravaca-de-la-cruz" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_caravaca_de_la_cruz_g0,
+                caption = "Cross of Caravaca",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-caravaca-de-la-cruz",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_caravaca_de_la_cruz_g1,
+                caption = "Fresco of the church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-caravaca-de-la-cruz",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_caravaca_de_la_cruz_g2,
+                caption = "Interior of the Church of Santa Cruz",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-caravaca-de-la-cruz",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_caravaca_de_la_cruz_g3,
+                caption = "Church of Santa Cruz built where the Miracle took place",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-caravaca-de-la-cruz",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_caravaca_de_la_cruz_g4,
+                caption = "Ancient painting in the interior of the Church depicting the Miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-caravaca-de-la-cruz",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_caravaca_de_la_cruz_g5,
+                caption = "Ancient painting in the interior of the Church depicting the Miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-caravaca-de-la-cruz",
+            ),
+        ),
+        "carmelite-siena" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_carmelite_siena_g0,
+                caption = "The Blessed Humble's Communion, attributed to Sassetta (c. 1423)",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/siena-carmelite-monk-miracle",
+            ),
+        ),
+        "cascia" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_cascia_g0,
+                caption = "Detail of a painting depicting the Hosts of the miracle in Santa Maria in Provenzano",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-cascia",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cascia_g1,
+                caption = "Basilica of St. Francis, Siena",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-cascia",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cascia_g2,
+                caption = "The sacred Hosts in the reliquary",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-cascia",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cascia_g3,
+                caption = "The sacred Hosts in the dust",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-cascia",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cascia_g4,
+                caption = "A scene depicting a group of figures in religious attire, possibly witnessing a miracle or event.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-cascia",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cascia_g5,
+                caption = "St. Catherine of Siena sees a baby Jesus out of the host in the hand of the priest who is offering the Eucharist.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-cascia",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cascia_g6,
+                caption = "A priest officiating a ceremony with a woman kneeling before him, surrounded by others.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-cascia",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cascia_g7,
+                caption = "A priest performing a Eucharistic ceremony with two individuals observing reverently.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-cascia",
+            ),
+        ),
+        "cava-dei-tirreni" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_cava_dei_tirreni_g0,
+                caption = "The Eucharistic miracle is recalled each year during the “Sagra di Montecastello”",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-cava-dei-tirreni",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cava_dei_tirreni_g1,
+                caption = "A priest holding a monstrance with a procession of people in a scenic landscape.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-cava-dei-tirreni",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cava_dei_tirreni_g2,
+                caption = "The Eucharistic miracle is recalled each year during the “Sagra di Montecastello”",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-cava-dei-tirreni",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cava_dei_tirreni_g3,
+                caption = "The Eucharistic miracle is recalled each year during the “Sagra di Montecastello”",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-cava-dei-tirreni",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cava_dei_tirreni_g4,
+                caption = "Panoramic view of Cava dei Tirreni",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-cava-dei-tirreni",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cava_dei_tirreni_g5,
+                caption = "A scenic landscape with a bridge, trees, mountains, and a person with goats in the foreground.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-cava-dei-tirreni",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cava_dei_tirreni_g6,
+                caption = "A group of people sitting around a table in a room with a pot hanging over a fire.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-cava-dei-tirreni",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cava_dei_tirreni_g7,
+                caption = "The view from the mountain from which the priest blessed the city",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-cava-dei-tirreni",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cava_dei_tirreni_g8,
+                caption = "An antique print (ca. 18th Century) depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-cava-dei-tirreni",
+            ),
+        ),
+        "champion-wisconsin" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_champion_wisconsin_g0,
+                caption = "Apparition Chapel, National Shrine of Our Lady of Champion",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/usa-champion",
+            ),
+        ),
+        "chateauneuf-de-galaure" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_chateauneuf_de_galaure_g0,
+                caption = "Marthe Robin bedridden with a visitor, painted portrait",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/marthe-robin-eucharistic-sustenance",
+            ),
+        ),
+        "chiaravalle-bernard" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_chiaravalle_bernard_g0,
+                caption = "Antique image which shows the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/saint-bernard-chiaravalle-duke-conversion",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_chiaravalle_bernard_g1,
+                caption = "Antique image which shows the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/saint-bernard-chiaravalle-duke-conversion",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_chiaravalle_bernard_g2,
+                caption = "A scene depicting Saint John Bosco praying as a ship battles against stormy seas.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/saint-bernard-chiaravalle-duke-conversion",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_chiaravalle_bernard_g3,
+                caption = "A priest holds a chalice and hosts while children eagerly await communion.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/saint-bernard-chiaravalle-duke-conversion",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_chiaravalle_bernard_g4,
+                caption = "A priest in a golden vestment distributes communion to a young boy surrounded by other children.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/saint-bernard-chiaravalle-duke-conversion",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_chiaravalle_bernard_g5,
+                caption = "Antique image which shows the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/saint-bernard-chiaravalle-duke-conversion",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_chiaravalle_bernard_g6,
+                caption = "Portrait of the true face of Saint Bernard",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/saint-bernard-chiaravalle-duke-conversion",
+            ),
+        ),
+        "chirattakonam" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_chirattakonam_g0,
+                caption = "Archbishop Cyril Mar Baselios with clergy at St. Mary's Church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/chirattakonam-2001",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_chirattakonam_g1,
+                caption = "Monstrance displaying the Host with the face-like image, Chirattakonam",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/chirattakonam-2001",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_chirattakonam_g2,
+                caption = "Malayalam publication cover featuring the Chirattakonam miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/chirattakonam-2001",
+            ),
+        ),
+        "cimballa" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_cimballa_g0,
+                caption = "Church of Santa Maria in Cimballa",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-cimballa",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cimballa_g1,
+                caption = "Interior of the church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-cimballa",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cimballa_g2,
+                caption = "Portion of the relic of the Blood-stained corporal",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-cimballa",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cimballa_g3,
+                caption = "Panorama of Cimballa",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-cimballa",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cimballa_g4,
+                caption = "Church of Santa Maria in Cimballa",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-cimballa",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cimballa_g5,
+                caption = "Large relic of the Blood-soaked corporal",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-cimballa",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cimballa_g6,
+                caption = "An ornate altar with religious paintings and a central crucifix.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-cimballa",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_cimballa_g7,
+                caption = "A priest holds up the Eucharist during Mass, surrounded by worshippers in a church setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-cimballa",
+            ),
+        ),
+        "daroca" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g0,
+                caption = "An ancient reproduction of the miraculous relic from the church of Daroca.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g1,
+                caption = "An image of the corporal stained with blood from the Eucharistic miracle of Daroca.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g2,
+                caption = "An ornate illustration depicting the Virgin Mary with angels and saints, surrounded by various scenes.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g3,
+                caption = "Carta de Chiva document describing the miracle, preserved at the collegiate church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g4,
+                caption = "Relief of one of the blood-stained corporal preserved inside the church of Daroca",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g5,
+                caption = "A priest celebrating Mass with a congregation, surrounded by ornate decorations and religious symbols.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g6,
+                caption = "Illustration depicting a priest celebrating Mass with soldiers kneeling in prayer and preparing for battle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g7,
+                caption = "Procession held every year in honor of the miracle of Daroca",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g8,
+                caption = "Daroca",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g9,
+                caption = "Panoramic view of Daroca, where Don Mateo hid the Hosts, pivotal in the 1239 Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g10,
+                caption = "Wall painting in the Chapel of Los Corporales describing the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g11,
+                caption = "A figure holding a cloth with red dots, representing a religious scene.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g12,
+                caption = "Chapel of Los Corporales",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g13,
+                caption = "An ornate altar with a golden frame and flowers, likely in a church setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g14,
+                caption = "Main altar of the church of Daroca",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g15,
+                caption = "Ancient pictures depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g16,
+                caption = "Ancient pictures depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g17,
+                caption = "Ancient pictures depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g18,
+                caption = "Ancient pictures depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g19,
+                caption = "Ancient pictures depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g20,
+                caption = "Ancient pictures depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g21,
+                caption = "Ancient pictures depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g22,
+                caption = "Ancient pictures depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g23,
+                caption = "Chapel of Los Corporales",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_daroca_g24,
+                caption = "Panoramic view of the church in Daroca",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-daroca",
+            ),
+        ),
+        "dijon" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_dijon_g0,
+                caption = "Stained glass window of the Holy Chapel in the Cathedral of Dijon. In the first frame a priest presents the miraculous Host which was kept until the French revolution.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-dijon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_dijon_g1,
+                caption = "Reliquary containing the Sacred Host, gift of Duchesne Isabella in 1544",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-dijon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_dijon_g2,
+                caption = "Basilica of St. Michael, Dijon",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-dijon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_dijon_g3,
+                caption = "Representation exacte de la Sainte et Miraculeuse Hostie de Dijon.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-dijon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_dijon_g4,
+                caption = "Image of the Lord seated on a semicircular throne with instruments of the Passion.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-dijon",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_dijon_g5,
+                caption = "Relic containing the Sacred Host, gift of Duchess Isabella in 1454",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-dijon",
+            ),
+        ),
+        "douai" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_douai_g0,
+                caption = "A priest holding a cross with a circular center, dressed in ceremonial robes.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-douai",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_douai_g1,
+                caption = "Our Lady of Douai",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-douai",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_douai_g2,
+                caption = "Tabernacle where the Host of the miracle is kept",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-douai",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_douai_g3,
+                caption = "External façade of the Church of St. Peter in Douai",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-douai",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_douai_g4,
+                caption = "Monstrance containing the relic of the miraculous Host",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-douai",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_douai_g5,
+                caption = "Year 1975. The Pastor of the Church of St. Peter shows the Host of 1254.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-douai",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_douai_g6,
+                caption = "Monstrance containing the relic of the miraculous Host",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-douai",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_douai_g7,
+                caption = "Tabernacle where the Host of the miracle is kept",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-douai",
+            ),
+        ),
+        "dronero" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_dronero_g0,
+                caption = "A young girl is picking up consecrated Hosts from the ground in a narrow street.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-dronero",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_dronero_g1,
+                caption = "A Capuchin friar holds the monstrance in front of a crowd as flames subside.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-dronero",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_dronero_g2,
+                caption = "The church from which the Blessed Sacrament was taken. The stone tablet describes the miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-dronero",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_dronero_g3,
+                caption = "The countryside around Dronero",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-dronero",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_dronero_g4,
+                caption = "The church from which the Blessed Sacrament was taken. The stone tablet describes the miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-dronero",
+            ),
+        ),
+        "dulmen" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_dulmen_g0,
+                caption = "Blessed Anne Catherine Emmerich bearing the stigmata, 19th-century painting",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/anne-catherine-emmerich-eucharistic-sustenance",
+            ),
+        ),
+        "erding" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_erding_g0,
+                caption = "Sanctuary of the Most Precious Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-erding",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_erding_g1,
+                caption = "A religious relic featuring a red and blue design with ornate decorations.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-erding",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_erding_g2,
+                caption = "Interior of the Sanctuary",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-erding",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_erding_g3,
+                caption = "The ornate altar in Erding's chapel, built to honor the 1417 Eucharistic miracle, features intricate carvings and a central statue.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-erding",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_erding_g4,
+                caption = "Relic of the Holy Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-erding",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_erding_g5,
+                caption = "The altar in Erding features a 'Salvator Mundi' statue, symbolizing divine intervention in the 1417 Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-erding",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_erding_g6,
+                caption = "Interior view of a church altar with ornate decorations and a person kneeling in prayer.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-erding",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_erding_g7,
+                caption = "An ornate altar in Erding, Germany, featuring a crucifix and angelic figures, symbolizing the 1417 Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-erding",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_erding_g8,
+                caption = "A richly decorated altar featuring a large painting of the crucifixion, surrounded by ornate details.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-erding",
+            ),
+        ),
+        "eten" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_eten_g0,
+                caption = "A group of people in traditional clothing dancing in a festive outdoor setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/eten-peru-1649",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eten_g1,
+                caption = "Panoramic view of Machu Picchu, symbolizing Peru's rich history, connected to the Eucharistic Miracle of Eten, 1649.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/eten-peru-1649",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eten_g2,
+                caption = "Calca Valley",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/eten-peru-1649",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eten_g3,
+                caption = "Lake Titicaca's terraced fields, symbolizing the rich cultural landscape of Peru, echo the historical miracle of Eten.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/eten-peru-1649",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eten_g4,
+                caption = "A man and a child sitting on the ground, holding and playing with small animals.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/eten-peru-1649",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eten_g5,
+                caption = "A colorful depiction of a traditional design with intricate patterns and symbols.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/eten-peru-1649",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eten_g6,
+                caption = "Aerial view of ancient terraces in Peru, showcasing agricultural patterns and lush greenery.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/eten-peru-1649",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eten_g7,
+                caption = "A priest holds the Eucharist while a group of people, dressed in traditional attire, look on in reverence.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/eten-peru-1649",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eten_g8,
+                caption = "Image of the Divine Child of Eten",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/eten-peru-1649",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eten_g9,
+                caption = "Image of the Divine Child of Eten",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/eten-peru-1649",
+            ),
+        ),
+        "ettiswil" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_ettiswil_g0,
+                caption = "Painting portraying the Miracle of Ettiswil, Museum Hietron, Pany-S-Meridi",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ettiswill-1447",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ettiswil_g1,
+                caption = "Interior of the Shrine",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ettiswill-1447",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ettiswil_g2,
+                caption = "Painting portraying the Miracle of Ettiswil, Museum Herten, Pary's-Ménil",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ettiswill-1447",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ettiswil_g3,
+                caption = "Altar-piece on which the scenes of the miracle are portrayed",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ettiswill-1447",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ettiswil_g4,
+                caption = "A golden monstrance displaying the Eucharistic host, set against a decorative background.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ettiswill-1447",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ettiswil_g5,
+                caption = "Golden monstrance in Ettiswil church niche, commemorating the 1447 Eucharistic miracle involving Ann Vögtli's attempted theft.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ettiswill-1447",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ettiswil_g6,
+                caption = "Golden monstrance in Ettiswil church, Switzerland, commemorating the 1447 Eucharistic miracle involving the stolen Blessed Sacrament.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ettiswill-1447",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ettiswil_g7,
+                caption = "Golden sunburst with Christ figure, symbolizing Ettiswil's 1447 Eucharistic miracle, adorned with blue gems.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ettiswill-1447",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ettiswil_g8,
+                caption = "An altar with a crucifix and two statues of saints, surrounded by stained glass windows.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ettiswill-1447",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ettiswil_g9,
+                caption = "Two angels holding a monstrance with a cross and a sacred host.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ettiswill-1447",
+            ),
+        ),
+        "eucharistic-miracle-buenos-aires" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_eucharistic_miracle_buenos_aires_g0,
+                caption = "Sample of the Host which transformed into blood in 1996",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/arg-buenos-aires",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eucharistic_miracle_buenos_aires_g1,
+                caption = "Photo of the parish of Saint Mary",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/arg-buenos-aires",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eucharistic_miracle_buenos_aires_g2,
+                caption = "Illustration depicting a Eucharistic ceremony with priests and altar elements from 1992.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/arg-buenos-aires",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eucharistic_miracle_buenos_aires_g3,
+                caption = "A man speaking into a microphone with a scientific image in the background.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/arg-buenos-aires",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eucharistic_miracle_buenos_aires_g4,
+                caption = "Illustration depicting a priest holding a chalice and scientists examining samples related to a Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/arg-buenos-aires",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eucharistic_miracle_buenos_aires_g5,
+                caption = "A glass vial containing a blood-like substance, held by a person.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/arg-buenos-aires",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eucharistic_miracle_buenos_aires_g6,
+                caption = "A person using tools to examine a substance in a small dish, with gloved hands.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/arg-buenos-aires",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eucharistic_miracle_buenos_aires_g7,
+                caption = "A person observing a circular stained glass piece on a brick wall.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/arg-buenos-aires",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eucharistic_miracle_buenos_aires_g8,
+                caption = "A priest holding a large Communion host during a religious ceremony.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/arg-buenos-aires",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eucharistic_miracle_buenos_aires_g9,
+                caption = "An anatomical diagram of the human heart showing its major components and blood flow direction.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/arg-buenos-aires",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eucharistic_miracle_buenos_aires_g10,
+                caption = "A scientist examining a sample under a microscope, focused on the details of the specimen.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/arg-buenos-aires",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eucharistic_miracle_buenos_aires_g11,
+                caption = "Microscopic image showing heart tissue with white blood cells, indicating trauma.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/arg-buenos-aires",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eucharistic_miracle_buenos_aires_g12,
+                caption = "A man pointing at an image in a book, likely discussing scientific findings.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/arg-buenos-aires",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eucharistic_miracle_buenos_aires_g13,
+                caption = "An image of a human heart with markings indicating areas of interest or injury.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/arg-buenos-aires",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eucharistic_miracle_buenos_aires_g14,
+                caption = "Dr. Zugibe's report on 17 March 2006.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/arg-buenos-aires",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eucharistic_miracle_buenos_aires_g15,
+                caption = "Microscopic image showing human heart tissue with white blood cells present.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/arg-buenos-aires",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_eucharistic_miracle_buenos_aires_g16,
+                caption = "Dr. Zugibe's report on 17 March 2006.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/arg-buenos-aires",
+            ),
+        ),
+        "fatima-angel" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_fatima_angel_g0,
+                caption = "The three shepherd children of Fátima",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fatima-angel-of-peace-1916",
+            ),
+        ),
+        "faverney" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_faverney_g0,
+                caption = "17th-century engraving of the Pentecost miracle at Faverney",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-faverney",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_faverney_g1,
+                caption = "Stained glass window depicting the miracle at Faverney Abbey",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-faverney",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_faverney_g2,
+                caption = "Interior of the chapel housing the Faverney relic",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-faverney",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_faverney_g3,
+                caption = "Historical print of the monstrance suspended above the fire",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-faverney",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_faverney_g4,
+                caption = "Priest elevating the Faverney reliquary during a liturgy",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-faverney",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_faverney_g5,
+                caption = "Reliquary monstrance containing the miraculous Host of Faverney",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-faverney",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_faverney_g6,
+                caption = "Painting of Benedictine monks witnessing the suspended monstrance",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-faverney",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_faverney_g7,
+                caption = "Exterior of the former Benedictine Abbey church at Faverney",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-faverney",
+            ),
+        ),
+        "ferrara" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_ferrara_g0,
+                caption = "Interior view of the Basilica of Saint Mary in Vado, showcasing its architectural design and altar.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-ferrara",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ferrara_g1,
+                caption = "Bodini, The Miracle of the Blood. Painting on the ceiling near the shrine",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-ferrara",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ferrara_g2,
+                caption = "A courtyard view featuring a bell tower and arched columns in a historical building.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-ferrara",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ferrara_g3,
+                caption = "Church of Saint Mary in Vado, Ferrara",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-ferrara",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ferrara_g4,
+                caption = "Detail of the ceiling vault stained with Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-ferrara",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ferrara_g5,
+                caption = "Shrine enclosing the Holy Ceiling Vault, adorned with paintings, commemorating the 1171 Eucharistic miracle in Ferrara's Basilica of Santa Maria in Vado.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-ferrara",
+            ),
+        ),
+        "fiecht" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_fiecht_g0,
+                caption = "Interior of the church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fiecht-austria-1310",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_fiecht_g1,
+                caption = "The ancient monastery of St. Georgenberg, depicted in two complexes, one on the mountains and the other in the valley",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fiecht-austria-1310",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_fiecht_g2,
+                caption = "A painting depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fiecht-austria-1310",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_fiecht_g3,
+                caption = "Silver and gold monstrance from 1717 in which the Precious Blood of the miracle is presented",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fiecht-austria-1310",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_fiecht_g4,
+                caption = "A painting depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fiecht-austria-1310",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_fiecht_g5,
+                caption = "The ancient monastery of St. Georgenberg, developed in two complexes, one on the mountain and the other in the valley",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fiecht-austria-1310",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_fiecht_g6,
+                caption = "A painting depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fiecht-austria-1310",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_fiecht_g7,
+                caption = "The ancient monastery of St. Georgenberg, developed in two complexes, one on the mountain and the other in the valley",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fiecht-austria-1310",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_fiecht_g8,
+                caption = "The ancient monastery of St. Georgenberg, depicted in two complexes, one on the mountain and the other in the valley",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fiecht-austria-1310",
+            ),
+        ),
+        "florence" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_florence_g0,
+                caption = "Basilica of Saint Ambrose",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-florence",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_florence_g1,
+                caption = "Precious tabernacle, done by Mino da Fiesole, where the reliquaries of the two miracles are kept",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-florence",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_florence_g2,
+                caption = "Basilica of Saint Ambrose",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-florence",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_florence_g3,
+                caption = "A marble statue of a child holding a gesture, possibly representing a religious figure.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-florence",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_florence_g4,
+                caption = "A priest holds a chalice while several people observe during a religious ceremony.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-florence",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_florence_g5,
+                caption = "Reliquary of the Hosts that survived the fire",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-florence",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_florence_g6,
+                caption = "A historical scene depicting a group of people in traditional attire, possibly in a religious or ceremonial context.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-florence",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_florence_g7,
+                caption = "A silver reliquary containing the consecrated Hosts, adorned with angels.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-florence",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_florence_g8,
+                caption = "Altar in Florence's Church of Saint Ambrose, linked to the 1230 Eucharistic miracle of coagulated Blood in a chalice.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-florence",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_florence_g9,
+                caption = "A depiction of people trying to save the Blessed Sacrament from a church fire.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-florence",
+            ),
+        ),
+        "foligno-angela" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_foligno_angela_g0,
+                caption = "Blessed Angela of Foligno",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/foligno-blessed-angela-vision",
+            ),
+        ),
+        "gerona" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_gerona_g0,
+                caption = "Girona Cathedral, site of the 1297 Eucharistic miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-gerona",
+            ),
+        ),
+        "glotowo" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_glotowo_g0,
+                caption = "Painting representing the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-glotowo",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_glotowo_g1,
+                caption = "The ciborium containing the miraculous Host: To the sides the oxen kneeling in adoration",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-glotowo",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_glotowo_g2,
+                caption = "A rural landscape with a church tower rising above trees and fields under a blue sky.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-glotowo",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_glotowo_g3,
+                caption = "Interior of the Sanctuary",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-glotowo",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_glotowo_g4,
+                caption = "The Eucharistic Sanctuary of Glotowo",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-glotowo",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_glotowo_g5,
+                caption = "A painting of the Virgin Mary holding baby Jesus, surrounded by an ornate golden frame.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-glotowo",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_glotowo_g6,
+                caption = "An ornate church altar with religious statues and paintings, featuring a central tabernacle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-glotowo",
+            ),
+        ),
+        "gorkum-escorial" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_gorkum_escorial_g0,
+                caption = "Royal Library of El Escorial, repository of the Gorkum Host relic",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/gorkum-escorial-1572",
+            ),
+        ),
+        "gruaro" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_gruaro_g0,
+                caption = "A colorful mosaic depicting a woman with outstretched arms in a natural setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/gruaro-valvasone-1294",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_gruaro_g1,
+                caption = "Church of St. Giusto in Gruaro",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/gruaro-valvasone-1294",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_gruaro_g2,
+                caption = "Religious built by a reconciliation between Gruaro and Valvasone",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/gruaro-valvasone-1294",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_gruaro_g3,
+                caption = "A stained glass depiction of a woman with outstretched arms in front of a church.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/gruaro-valvasone-1294",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_gruaro_g4,
+                caption = "Religiously built by a reconciliation between Gruaro and Valvasone",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/gruaro-valvasone-1294",
+            ),
+        ),
+        "guadalupe-mexico" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_guadalupe_mexico_g0,
+                caption = "Miraculous image of Our Lady of Guadalupe on Juan Diego's tilma",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/our-lady-of-guadalupe-1531",
+            ),
+        ),
+        "guadalupe-spain" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_guadalupe_spain_g0,
+                caption = "A stone church with towers and gothic architectural elements.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-guadalupe",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_guadalupe_spain_g1,
+                caption = "View of Guadalupe",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-guadalupe",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_guadalupe_spain_g2,
+                caption = "View of Guadalupe",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-guadalupe",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_guadalupe_spain_g3,
+                caption = "Francisco de Zurbarán, re-creation of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-guadalupe",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_guadalupe_spain_g4,
+                caption = "Decorative tile mural depicting 'Guadalupe' and religious imagery, linked to the 1420 Eucharistic miracle in Spain.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-guadalupe",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_guadalupe_spain_g5,
+                caption = "Interior view of a church with wooden benches and ornate architecture.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-guadalupe",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_guadalupe_spain_g6,
+                caption = "Interior view of a church with ornate decorations and religious paintings on the walls.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-guadalupe",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_guadalupe_spain_g7,
+                caption = "Relic of the Blood-stained corporal",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-guadalupe",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_guadalupe_spain_g8,
+                caption = "A depiction of Juan Diego presenting the Virgin of Guadalupe to a group of people.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-guadalupe",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_guadalupe_spain_g9,
+                caption = "Image of the Virgin appeared on Juan Diego's cloak",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-guadalupe",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_guadalupe_spain_g10,
+                caption = "A procession of people carrying banners and flags, likely in a religious context.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-guadalupe",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_guadalupe_spain_g11,
+                caption = "Interior view of a church with pews, chandeliers, and people attending a service.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-guadalupe",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_guadalupe_spain_g12,
+                caption = "Juan Diego receiving a vision of the Virgin of Guadalupe.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-guadalupe",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_guadalupe_spain_g13,
+                caption = "An image of the Virgin of Guadalupe, depicted in a blue and white style, with hands clasped in prayer.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-guadalupe",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_guadalupe_spain_g14,
+                caption = "Image of the Virgin of Guadalupe, resembling the Shroud of Turin, with inexplicable scientific analysis results.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-guadalupe",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_guadalupe_spain_g15,
+                caption = "A man restoring or examining a framed image of the Virgin of Guadalupe.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-guadalupe",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_guadalupe_spain_g16,
+                caption = "A person kneeling before the image of the Virgin of Guadalupe in a religious setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-guadalupe",
+            ),
+        ),
+        "herentals" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_herentals_g0,
+                caption = "Interior of the Church of San-Waldetrudis",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herentals",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_herentals_g1,
+                caption = "A. Van Yendyk (1810-1875). A series of paintings by \"Het wonder van De Hege\" - The Holy Miracle of the Hosts.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herentals",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_herentals_g2,
+                caption = "A small chapel in a wooded area with two people sitting on a bench nearby.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herentals",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_herentals_g3,
+                caption = "An illustration showing two figures in black robes near a church and trees.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herentals",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_herentals_g4,
+                caption = "A. Van Ysyndyk (1810-1875). A series of paintings by \"Het wonder van De Hege\" - The Holy Miracle of the Hosts, Church of San Waldenis",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herentals",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_herentals_g5,
+                caption = "A. Van Yendyk (1810-1875). A series of paintings by \"Het wonder van De Hege\" - The Holy Miracle of the Hosts.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herentals",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_herentals_g6,
+                caption = "Church of San-Waldetrudis, Herentals",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herentals",
+            ),
+        ),
+        "herkenrode-hasselt" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_herkenrode_hasselt_g0,
+                caption = "The main altar in the Church of St. Quintinus, Hasselt",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herkenrode-hasselt",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_herkenrode_hasselt_g1,
+                caption = "Old prints depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herkenrode-hasselt",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_herkenrode_hasselt_g2,
+                caption = "Relic of the miraculous Host",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herkenrode-hasselt",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_herkenrode_hasselt_g3,
+                caption = "Detail of the miraculous Host",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herkenrode-hasselt",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_herkenrode_hasselt_g4,
+                caption = "Monstrance used to carry the relic of the miraculous Host in procession",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herkenrode-hasselt",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_herkenrode_hasselt_g5,
+                caption = "Old prints depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herkenrode-hasselt",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_herkenrode_hasselt_g6,
+                caption = "Old prints depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herkenrode-hasselt",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_herkenrode_hasselt_g7,
+                caption = "Old prints depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herkenrode-hasselt",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_herkenrode_hasselt_g8,
+                caption = "Painting by Jan van Boeckhorst depicting the scenes of the miracle, Cathedral of Hasselt",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herkenrode-hasselt",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_herkenrode_hasselt_g9,
+                caption = "Church of St. Quintinus in Hasselt",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herkenrode-hasselt",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_herkenrode_hasselt_g10,
+                caption = "In 1855 the Palmers Family built this small chapel in the place called Sacramentsberg in memory of the Eucharistic miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herkenrode-hasselt",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_herkenrode_hasselt_g11,
+                caption = "Procession in honor of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herkenrode-hasselt",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_herkenrode_hasselt_g12,
+                caption = "Painting kept in the Cathedral of Hasselt where the flock can be seen respectfully following the passing of the priest carrying the Sacred Relic after the place called Sacramentsberg",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-herkenrode-hasselt",
+            ),
+        ),
+        "ivorra" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_ivorra_g0,
+                caption = "Detail of one of the paintings present inside the sanctuary that recounts the scene of the changing of the wine which was transformed into Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ivorra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ivorra_g1,
+                caption = "Detail of one of the paintings present inside the sanctuary that recounts the scene of the changing of the wine which was transformed into Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ivorra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ivorra_g2,
+                caption = "Sanctuary where the miracle occurred",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ivorra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ivorra_g3,
+                caption = "Monstrance containing the relics of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ivorra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ivorra_g4,
+                caption = "Monstrance containing the relics of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ivorra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ivorra_g5,
+                caption = "Inside the sanctuary",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ivorra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ivorra_g6,
+                caption = "Detail of one of the paintings present inside the sanctuary that recounts the scene of the changing of the wine which was transformed into Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ivorra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ivorra_g7,
+                caption = "Church of San Cugat, where the relics of the miracle are kept",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ivorra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ivorra_g8,
+                caption = "GLORIA AL MIRACLE DEL SANT DUBTE IBORRA",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ivorra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ivorra_g9,
+                caption = "Relic of the Blood-stained corporal",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ivorra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ivorra_g10,
+                caption = "Relic of the Blood-stained corporal",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ivorra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ivorra_g11,
+                caption = "Inside the Church of San Cugat",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ivorra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ivorra_g12,
+                caption = "la fanch de l'hu crit",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ivorra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ivorra_g13,
+                caption = "Golden reliquary from Ivorra, Spain, 1010, displaying a sacred cloth linked to Eucharistic miracle doubts.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ivorra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ivorra_g14,
+                caption = "la fanch de l'hu crit",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ivorra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ivorra_g15,
+                caption = "Close-up of the ornate edge of a golden relic frame.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ivorra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ivorra_g16,
+                caption = "la sanch de l'hu crit",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ivorra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ivorra_g17,
+                caption = "la sanch de l'hu crit",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ivorra",
+            ),
+        ),
+        "konnersreuth" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_konnersreuth_g0,
+                caption = "Therese Neumann (1926)",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/teresa-neumann-eucharistic-sustenance",
+            ),
+        ),
+        "krakow-divine-mercy" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_krakow_divine_mercy_g0,
+                caption = "Divine Mercy image inscribed 'Jesús, en Ti confío'",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/divine-mercy-apparitions-cracow",
+            ),
+        ),
+        "kranenburg" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g0,
+                caption = "An ancient document describing the miracle presented at the church from the 15th century.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-kranenburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g1,
+                caption = "Church of St. Peter and Paul where the precious holy relic is kept",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-kranenburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g2,
+                caption = "Relic of the miraculous crucifix",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-kranenburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g3,
+                caption = "Procession held every year on September 14th in honor of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-kranenburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g4,
+                caption = "Detail of the relic",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-kranenburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g5,
+                caption = "A reliquary with a golden Eucharistic monstrance, symbolizing the 1280 Kranenburg miracle, displayed behind a red patterned screen.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-kranenburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g6,
+                caption = "The 'Miraculous Crucifix' of Kranenburg, enclosed in a metal grate, commemorates the 1280 Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-kranenburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g7,
+                caption = "Interior view of a church featuring tall red columns and a prominent altar.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-kranenburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g8,
+                caption = "The image shows the exterior of a brick church with a clock tower and gothic windows.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-kranenburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g9,
+                caption = "Congregants witness Mass at Kranenburg's altar, linked to the 1280 Eucharistic miracle of the 'Miraculous Crucifix.'",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-kranenburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g10,
+                caption = "An ornate altar with multiple panels depicting religious scenes and figures.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-kranenburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g11,
+                caption = "The altar of Kranenburg church, adorned with a detailed altarpiece, commemorates the 1280 Eucharistic miracle of the 'Miraculous Crucifix.'",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-kranenburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g12,
+                caption = "Two angels holding a cross, with ornate details and vibrant colors.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-kranenburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g13,
+                caption = "Icon of the Virgin Mary with candles, related to the 1280 Kranenburg Eucharistic miracle, symbolizing divine presence.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-kranenburg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g14,
+                caption = "An ancient document describing the miracle presented at the church from the 15th century.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/kranenburg-bei-kleve-1280",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g15,
+                caption = "Church of St. Peter and Paul where the precious holy relic is kept",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/kranenburg-bei-kleve-1280",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g16,
+                caption = "Relic of the miraculous crucifix",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/kranenburg-bei-kleve-1280",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g17,
+                caption = "Procession held every year on September 14th in honor of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/kranenburg-bei-kleve-1280",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g18,
+                caption = "Detail of the relic",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/kranenburg-bei-kleve-1280",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g19,
+                caption = "A decorative altar with a golden monstrance, linked to the 1280 Kranenburg Eucharistic miracle, behind a red patterned screen.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/kranenburg-bei-kleve-1280",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g20,
+                caption = "Decorative cross behind black metal grate, symbolizing the 1280 Kranenburg Eucharistic miracle, displayed in a church setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/kranenburg-bei-kleve-1280",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g21,
+                caption = "The church's interior features striking red columns and a detailed altar, reminiscent of the 1280 Kranenburg Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/kranenburg-bei-kleve-1280",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g22,
+                caption = "The image shows the exterior of a brick church with a clock tower and gothic windows.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/kranenburg-bei-kleve-1280",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g23,
+                caption = "Interior of Kranenburg church, where the 1280 Eucharistic miracle allegedly occurred, featuring priests at the ornate altar.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/kranenburg-bei-kleve-1280",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g24,
+                caption = "An ornate altar with multiple panels depicting religious scenes and figures.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/kranenburg-bei-kleve-1280",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g25,
+                caption = "The altar at Kranenburg bei Kleve features a detailed triptych, echoing the 1280 Eucharistic miracle tradition.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/kranenburg-bei-kleve-1280",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g26,
+                caption = "Wooden cross with Host, held by angels in red robes, symbolizing Kranenburg's 1280 Eucharistic miracle tradition.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/kranenburg-bei-kleve-1280",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_kranenburg_g27,
+                caption = "Icon of the Virgin Mary with candles, reflecting the 1280 Kranenburg Eucharistic miracle tradition in Germany.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/kranenburg-bei-kleve-1280",
+            ),
+        ),
+        "la-rochelle" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_la_rochelle_g0,
+                caption = "Black and white copy of one of the pages of the manuscript telling the story of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-la-rochelle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_la_rochelle_g1,
+                caption = "La Rochelle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-la-rochelle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_la_rochelle_g2,
+                caption = "The interior of the church where the miraculous cure occurred",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-la-rochelle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_la_rochelle_g3,
+                caption = "La Rochelle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-la-rochelle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_la_rochelle_g4,
+                caption = "Interior of the Basilica",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-la-rochelle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_la_rochelle_g5,
+                caption = "Reliquary of the Precious Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-la-rochelle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_la_rochelle_g6,
+                caption = "Interior of the Basilica",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-la-rochelle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_la_rochelle_g7,
+                caption = "A boy joyfully reaching out to a priest holding a chalice, with a woman standing nearby in a church.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-la-rochelle",
+            ),
+        ),
+        "lanciano" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_lanciano_g0,
+                caption = "Stone tablet from 1631 which describes the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-lanciano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lanciano_g1,
+                caption = "Monstrance containing the Holy Relics",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-lanciano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lanciano_g2,
+                caption = "Monstrance containing the Holy Relics",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-lanciano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lanciano_g3,
+                caption = "A priest holds a cross while surrounded by people in a church setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-lanciano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lanciano_g4,
+                caption = "Interior view of the chapel housing the Holy Relics, showing worshippers and architectural details.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-lanciano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lanciano_g5,
+                caption = "Monstrance containing the Holy Relics",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-lanciano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lanciano_g6,
+                caption = "A decorative reliquary containing the Host and coagulated Blood from the miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-lanciano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lanciano_g7,
+                caption = "Graph of the electrophoresis of the proteins of the Blood of the Miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-lanciano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lanciano_g8,
+                caption = "The 5 vials of Blood as seen with a magnifying glass.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-lanciano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lanciano_g9,
+                caption = "The flesh consists of part of the miraculous, most probably of the left ventricle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-lanciano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lanciano_g10,
+                caption = "The image shows a circular relic encased in an ornate frame, likely related to the Eucharistic Miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-lanciano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lanciano_g11,
+                caption = "The Church of St. Francis was constructed about 500 years later, in 1258, above the chapel where the miracle took place.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-lanciano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lanciano_g12,
+                caption = "An antique painting depicting the Miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-lanciano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lanciano_g13,
+                caption = "The reliquary from the 18th century containing the Host and the coagulated Blood, gift of the generous citizen Domenico Celi",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-lanciano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lanciano_g14,
+                caption = "A black and white photo of a priest descending stairs, possibly in a church setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-lanciano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lanciano_g15,
+                caption = "An antique painting depicting the Miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-lanciano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lanciano_g16,
+                caption = "A stained glass depiction of the Eucharist with angels and a chalice.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-lanciano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lanciano_g17,
+                caption = "Interior view of a church with ornate architecture and a staircase.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-lanciano",
+            ),
+        ),
+        "lateran-council" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_lateran_council_g0,
+                caption = "Fourth Lateran Council in Matthew Paris's chronicle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1215",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lateran_council_g1,
+                caption = "Pope Innocent III, fresco at Subiaco monastery",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1215",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lateran_council_g2,
+                caption = "Interior of Old St. Peter's Basilica, Rome",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1215",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lateran_council_g3,
+                caption = "Nave of the Lateran Basilica, site of the Council",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1215",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lateran_council_g4,
+                caption = "Old St. Peter's Basilica, reconstruction drawing (1891)",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1215",
+            ),
+        ),
+        "legnica" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_legnica_g0,
+                caption = "Bishops in liturgical vestments at St. Hyacinth's Church, Legnica",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-legnica",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_legnica_g1,
+                caption = "Bishop Kiernikowski's communiqué on the Eucharistic event, April 10, 2016",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-legnica",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_legnica_g2,
+                caption = "Dr. Barbara Engel at the April 2016 diocesan press conference",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-legnica",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_legnica_g3,
+                caption = "Sample collection from the Host for forensic analysis",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-legnica",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_legnica_g4,
+                caption = "Exhibition panel for the Eucharistic event at St. Hyacinth's, Legnica",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-legnica",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_legnica_g5,
+                caption = "Illustration of the Christmas 2013 Mass and the Host's red stain",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-legnica",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_legnica_g6,
+                caption = "Exterior of St. Hyacinth's Church, Legnica",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-legnica",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_legnica_g7,
+                caption = "Painting of St. Hyacinth, patron of the parish church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-legnica",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_legnica_g8,
+                caption = "Illustration of the forensic analysis of the Host sample",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-legnica",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_legnica_g9,
+                caption = "Interior of St. Hyacinth's Church, Legnica",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-legnica",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_legnica_g10,
+                caption = "The Host with red stain immersed in water",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-legnica",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_legnica_g11,
+                caption = "Tissue fragment removed from the Host, on a JHS-embroidered pall",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-legnica",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_legnica_g12,
+                caption = "Magnified view of the tissue fragment from the Host",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-legnica",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_legnica_g13,
+                caption = "The Host and red stain in a golden ciborium with measuring scale",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-legnica",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_legnica_g14,
+                caption = "Red stain visible in the golden ciborium",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-legnica",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_legnica_g15,
+                caption = "Engraving of the Sacred Heart of Jesus",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-legnica",
+            ),
+        ),
+        "les-ulmes" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_les_ulmes_g0,
+                caption = "Old print which represents the miracle, Paris",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-les-ulmes",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_les_ulmes_g1,
+                caption = "Parish church of Les Ulmes",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-les-ulmes",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_les_ulmes_g2,
+                caption = "Old print which represents the miracle, Paris",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-les-ulmes",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_les_ulmes_g3,
+                caption = "Parish church of Les Ulmes",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-les-ulmes",
+            ),
+        ),
+        "liege" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_liege_g0,
+                caption = "St. Juliana kneels in prayer, witnessing a vision of an angel above, symbolizing her Eucharistic revelation in Liège, 1208.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-liege",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_liege_g1,
+                caption = "Monstrance that is kept in the Sanctuary of Saint Juliana, Liège",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-liege",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_liege_g2,
+                caption = "A religious scene with two figures, one seated and one standing, in a church setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-liege",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_liege_g3,
+                caption = "St. Juliana of Cornillon shares her vision of the darkened moon with a priest and nuns in Liège, 1208.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-liege",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_liege_g4,
+                caption = "Saint Juliana",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-liege",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_liege_g5,
+                caption = "Stained-glass window depicting the vision of Saint Juliana",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-liege",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_liege_g6,
+                caption = "Stained-glass window depicting the vision of Saint Juliana",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/bel-liege",
+            ),
+        ),
+        "lourdes-healings" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_lourdes_healings_g0,
+                caption = "Sanctuary of Lourdes",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/lourdes-eucharistic-procession-1888",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lourdes_healings_g1,
+                caption = "Statue of Our Lady in the grotto where she appeared to Bernadette",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/lourdes-eucharistic-procession-1888",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lourdes_healings_g2,
+                caption = "Sister Maria Minghetti, cured of an incurable kidney disease during the procession of the Blessed Sacrament",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/lourdes-eucharistic-procession-1888",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lourdes_healings_g3,
+                caption = "A woman standing on a balcony, smiling, wearing a white dress and shoes.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/lourdes-eucharistic-procession-1888",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lourdes_healings_g4,
+                caption = "Louise Jamain, cured of pulmonary and intestinal tuberculosis during the procession of the Blessed Sacrament",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/lourdes-eucharistic-procession-1888",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lourdes_healings_g5,
+                caption = "Sister Maria Minghetti, cured of an incurable kidney disease during the procession of the Blessed Sacrament",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/lourdes-eucharistic-procession-1888",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lourdes_healings_g6,
+                caption = "Stained glass depiction of a religious scene with figures in prayer and a divine figure above.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/lourdes-eucharistic-procession-1888",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lourdes_healings_g7,
+                caption = "A stained glass depiction of people at a religious site, possibly Lourdes, with a prominent light above.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/lourdes-eucharistic-procession-1888",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_lourdes_healings_g8,
+                caption = "Alice Couteau, cured of multiple sclerosis during the Eucharistic procession, stands with Lourdes Basilica in the background.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/lourdes-eucharistic-procession-1888",
+            ),
+        ),
+        "ludbreg" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g0,
+                caption = "Since 1721, the relic of the Precious Blood has been kept in a precious monstrance of the Augsburg goldsmith school commissioned by Countess Eleonora Batthyany-Strattmann, who gave it as a gift to the church in Ludbreg.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g1,
+                caption = "A fresco depicting the procession led by Pope Leo X with various figures in historical attire.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g2,
+                caption = "A fresco depicting the priest performing the Eucharistic miracle during Mass.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g3,
+                caption = "A fresco depicting a priest and altar boy during a Eucharistic ceremony with a crucifix in the background.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g4,
+                caption = "A priest and a boy in red robes holding a chalice at an altar.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g5,
+                caption = "A religious altar with a statue of Mary surrounded by angels and floral arrangements.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g6,
+                caption = "Procession held every year in September, during the week when the miracle called Sveta Nedelja is celebrated",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g7,
+                caption = "Shrine of the Miracle of the Precious Blood, Ludbreg",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g8,
+                caption = "An artistic depiction of angels and a church, surrounded by ornate designs.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g9,
+                caption = "A depiction of Jesus holding the Eucharist above a crowd in front of a church.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g10,
+                caption = "Interior of the chapel of the Batthyany family castle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g11,
+                caption = "A stained glass window depicting a saint in vibrant colors and intricate designs.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g12,
+                caption = "A fresco depicting a scene with figures around a central figure, possibly a religious theme.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g13,
+                caption = "A mural depicting the Virgin Mary with angels and saints in a church setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g14,
+                caption = "Fresco in Ludbreg depicting 'Majka Božja Škapularska' related to the 1411 Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g15,
+                caption = "Interior of the chapel of the Batthyany family castle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g16,
+                caption = "Interior of the chapel of the Batthyany family castle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g17,
+                caption = "Interior view of a church with a mural depicting the Last Supper and floral decorations.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ludbreg_g18,
+                caption = "Marijan Jakubin, The Last Supper. Shrine of the Miracle of the Precious Blood, Ludbreg",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/cro-ludbreg",
+            ),
+        ),
+        "macerata" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_macerata_g0,
+                caption = "Small parchment from 1356 on which is written: \"Here came the flow of Blood of Our Lord Jesus Christ from the chalice on April 25 in the Year of Our Lord 1356\"",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-macerata",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_macerata_g1,
+                caption = "Macerata Cathedral",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-macerata",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_macerata_g2,
+                caption = "View of Macerata",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-macerata",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_macerata_g3,
+                caption = "The Chapel of the Most Blessed Sacrament, where the relic of the Macerata miracle is preserved, features an ornate altar.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-macerata",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_macerata_g4,
+                caption = "A relic cloth stained with blood, displayed in a decorative frame.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-macerata",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_macerata_g5,
+                caption = "A priest elevates the Eucharist while several people kneel in prayer, inside a church setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-macerata",
+            ),
+        ),
+        "marseille-en-beauvais" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_marseille_en_beauvais_g0,
+                caption = "Window depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-marseille-en-beauvais",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_marseille_en_beauvais_g1,
+                caption = "A snow-covered church with a tall steeple and gothic architecture.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-marseille-en-beauvais",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_marseille_en_beauvais_g2,
+                caption = "A stained glass window depicting religious figures and scenes in vibrant colors.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-marseille-en-beauvais",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_marseille_en_beauvais_g3,
+                caption = "A person in a purple robe finding consecrated Hosts in a snowy village landscape.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-marseille-en-beauvais",
+            ),
+        ),
+        "mary-of-egypt" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_mary_of_egypt_g0,
+                caption = "St. Mary of Egypt, oil painting attributed to Jusepe de Ribera",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/egy-st-mary-egypt",
+            ),
+        ),
+        "meerssen" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g0,
+                caption = "Altar of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/hol-meerssen",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g1,
+                caption = "A decorative image of a monstrance used for the Eucharist.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/hol-meerssen",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g2,
+                caption = "Altar of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/hol-meerssen",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g3,
+                caption = "A priest holding a Eucharistic host with blood dripping from it.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/hol-meerssen",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g4,
+                caption = "Basilica of the Blessed Sacrament, Meerssen",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/hol-meerssen",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g5,
+                caption = "Ancient painting in the basilica depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/hol-meerssen",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g6,
+                caption = "An illustration depicting a church with angels and a large host in the foreground.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/hol-meerssen",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g7,
+                caption = "Medals commemorating the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/hol-meerssen",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g8,
+                caption = "Heilig Sacrament Meerssen",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/hol-meerssen",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g9,
+                caption = "Interior view of a church featuring stained glass windows and architectural details.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/hol-meerssen",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g10,
+                caption = "Basilica of the Blessed Sacrament, Meerssen",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/hol-meerssen",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g11,
+                caption = "Altar of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1222",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g12,
+                caption = "A decorative image of a monstrance used for the Eucharist.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1222",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g13,
+                caption = "Altar of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1222",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g14,
+                caption = "A priest holding a Eucharistic host with blood dripping from it.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1222",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g15,
+                caption = "Basilica of the Blessed Sacrament, Meerssen",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1222",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g16,
+                caption = "Ancient painting in the basilica depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1222",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g17,
+                caption = "An artistic depiction of a church with hands and angels surrounding a Eucharistic host.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1222",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g18,
+                caption = "Medals commemorating the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1222",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g19,
+                caption = "Heilig Sacrament Meerssen",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1222",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g20,
+                caption = "Interior view of a church featuring stained glass windows and ornate architecture.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1222",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_g21,
+                caption = "Basilica of the Blessed Sacrament, Meerssen",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1222",
+            ),
+        ),
+        "meerssen-fire-1465" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_fire_1465_g0,
+                caption = "Altar of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1465-fire",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_fire_1465_g1,
+                caption = "A decorative image of a monstrance used in Eucharistic celebrations.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1465-fire",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_fire_1465_g2,
+                caption = "Altar of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1465-fire",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_fire_1465_g3,
+                caption = "A priest holding a Eucharistic host with drops of blood, symbolizing a miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1465-fire",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_fire_1465_g4,
+                caption = "Basilica of the Blessed Sacrament, Meerssen",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1465-fire",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_fire_1465_g5,
+                caption = "Ancient painting in the basilica depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1465-fire",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_fire_1465_g6,
+                caption = "An artistic depiction of a church with angels and a large Host being held by hands.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1465-fire",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_fire_1465_g7,
+                caption = "Medals commemorating the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1465-fire",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_fire_1465_g8,
+                caption = "Heilig Sacrament Meerssen",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1465-fire",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_fire_1465_g9,
+                caption = "Interior view of a church featuring stained glass windows and ornate architecture.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1465-fire",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_meerssen_fire_1465_g10,
+                caption = "Basilica of the Blessed Sacrament, Meerssen",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/meerssen-1465-fire",
+            ),
+        ),
+        "middleburg" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_middleburg_g0,
+                caption = "Church of St. James in Louvain",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/middleburg-lovanio-1374",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_middleburg_g1,
+                caption = "Painting depicting the miracle, Church of St. James, Louvain",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/middleburg-lovanio-1374",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_middleburg_g2,
+                caption = "Altar where the miracle took place",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/middleburg-lovanio-1374",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_middleburg_g3,
+                caption = "A golden monstrance held by two figures, symbolizing the Eucharist.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/middleburg-lovanio-1374",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_middleburg_g4,
+                caption = "Church of St. James in Louvain",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/middleburg-lovanio-1374",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_middleburg_g5,
+                caption = "A priest and a monk at an altar, with a consecrated Host turning into bleeding Flesh.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/middleburg-lovanio-1374",
+            ),
+        ),
+        "miracle-of-bolsena" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g0,
+                caption = "Marble altar stone from the Church of Santa Cristina, Bolsena",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g1,
+                caption = "Mass at Bolsena by Raphael, 1512, Vatican Stanze",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g2,
+                caption = "Basilica of Santa Cristina, Bolsena",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g3,
+                caption = "Cappella del Corporale, Orvieto Cathedral",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g4,
+                caption = "Gothic facade of Orvieto Cathedral",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g5,
+                caption = "Central nave of Orvieto Cathedral",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g6,
+                caption = "Reliquary of the Corporal by Ugolino di Vieri, 1338",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g7,
+                caption = "Altar stone relic in its shrine, Church of Santa Cristina",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g8,
+                caption = "Corpus Christi procession, Spinola Hours, c. 1510",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g9,
+                caption = "Procession of the corporal, fresco in Orvieto Cathedral",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g10,
+                caption = "Bishop presenting the bloodstained corporal to Pope Urban IV",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g11,
+                caption = "Pope Urban IV enthroned, Orvieto Cathedral fresco",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g12,
+                caption = "Corpus Christi procession with the corporal relic, Orvieto",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g13,
+                caption = "Mosaic of Christ with chalice and Host",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g14,
+                caption = "Illumination of a priest celebrating Mass",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g15,
+                caption = "Corpus Christi celebration in Orvieto Cathedral",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g16,
+                caption = "Priest's hands clasping a chalice, painting detail",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g17,
+                caption = "Bloodstains on the altar stone from Bolsena",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g18,
+                caption = "Fragments of the miraculous Host from Bolsena",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g19,
+                caption = "Latin inscription recording the miracle, Church of Santa Cristina",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g20,
+                caption = "Reverse of the Reliquary of the Corporal, Orvieto Cathedral",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g21,
+                caption = "Painting of Father Peter confessing the miracle to the Pope",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g22,
+                caption = "Father Peter witnessing the bleeding Host during Mass",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_bolsena_g23,
+                caption = "John Paul II during his 1990 pastoral visit to Orvieto",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-bolsena",
+            ),
+        ),
+        "miracle-of-santarem" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_santarem_g0,
+                caption = "Santarém Eucharistic Miracle: Preserved Host in a golden reliquary.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/por-santarem",
+            ),
+        ),
+        "miracle-of-siena" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_siena_g0,
+                caption = "Detail of a painting depicting the Hosts of the miracle in Santa Maria in Provenzano",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-siena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_siena_g1,
+                caption = "Basilica of St. Francis, Siena",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-siena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_siena_g2,
+                caption = "The sacred Hosts in the monstrance",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-siena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_siena_g3,
+                caption = "The sacred Hosts in the dust",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-siena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_siena_g4,
+                caption = "St. Catherine of Siena sees a baby Jesus out of the host in the hands of the priest who is giving her the Eucharist.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-siena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_siena_g5,
+                caption = "A priest in red vestments administers communion to a kneeling woman, surrounded by onlookers.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-siena",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_miracle_of_siena_g6,
+                caption = "A priest celebrating the Eucharist with two figures in prayer, surrounded by angels.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-siena",
+            ),
+        ),
+        "mogoro" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_mogoro_g0,
+                caption = "Imprint of the first Host",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-mogoro",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_mogoro_g1,
+                caption = "Eucharistic Miracle of Mogoro, Francesco Fina (1604 - 1607)",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-mogoro",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_mogoro_g2,
+                caption = "Panoramic view of Mogoro",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-mogoro",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_mogoro_g3,
+                caption = "Imprint of the second Host",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-mogoro",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_mogoro_g4,
+                caption = "Eucharistic Miracle of Mogoro, Francesco Finna (1604 - 1607)",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-mogoro",
+            ),
+        ),
+        "moncada" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_moncada_g0,
+                caption = "An illustration depicting a woman praying in a cave with a child above her.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-moncada",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_moncada_g1,
+                caption = "An illustration of a saint holding a cross, depicted in a religious context.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-moncada",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_moncada_g2,
+                caption = "The church where the miracle took place",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-moncada",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_moncada_g3,
+                caption = "The church where the miracle took place",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-moncada",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_moncada_g4,
+                caption = "A priest holds the Sacred Host with a child present during a religious ceremony.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-moncada",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_moncada_g5,
+                caption = "La V. Virgen Inés de Moncada.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-moncada",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_moncada_g6,
+                caption = "The church where the miracle took place",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-moncada",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_moncada_g7,
+                caption = "A priest elevating the Eucharist during Mass with children and adults observing.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-moncada",
+            ),
+        ),
+        "montefalco-clare" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_montefalco_clare_g0,
+                caption = "Statue of St. Clare of Montefalco by Giuseppe Silini (1755)",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/montefalco-saint-clare-communion",
+            ),
+        ),
+        "montieri" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_montieri_g0,
+                caption = "Church of San Giacomo Apostolo, Montieri",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/blessed-james-montieri-jesus-communion",
+            ),
+        ),
+        "montserrat" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_montserrat_g0,
+                caption = "Sanctuary of the Madonna of Montserrat",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-montserrat",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_montserrat_g1,
+                caption = "The miraculous Madonna of Montserrat",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-montserrat",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_montserrat_g2,
+                caption = "The miraculous Madonna of Montserrat",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-montserrat",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_montserrat_g3,
+                caption = "Interior of the church where the miracle took place",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-montserrat",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_montserrat_g4,
+                caption = "Sanctuary of the Madonna of Montserrat",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-montserrat",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_montserrat_g5,
+                caption = "A girl in a pink dress stands before a priest and a deacon during a Mass.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-montserrat",
+            ),
+        ),
+        "morne-rouge" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_morne_rouge_g0,
+                caption = "A statue of Jesus with arms outstretched, surrounded by lit candles and floral arrangements.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/morne-rouge-1902",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_morne_rouge_g1,
+                caption = "A tropical beach scene with palm trees, a boat, and a distant island.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/morne-rouge-1902",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_morne_rouge_g2,
+                caption = "Close-up of red flowers and green foliage in a lush garden setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/morne-rouge-1902",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_morne_rouge_g3,
+                caption = "A small waterfall surrounded by lush greenery and rocks, with a pool of water at the base.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/morne-rouge-1902",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_morne_rouge_g4,
+                caption = "A volcanic eruption with people praying inside a church, featuring a monstrance and candle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/morne-rouge-1902",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_morne_rouge_g5,
+                caption = "A cluster of red and green tropical plants in a lush forest setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/morne-rouge-1902",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_morne_rouge_g6,
+                caption = "Parish church of Morne-Rouge",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/morne-rouge-1902",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_morne_rouge_g7,
+                caption = "View of Morne-Rouge",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/morne-rouge-1902",
+            ),
+        ),
+        "morrovalle" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_morrovalle_g0,
+                caption = "Church of Saint Bartholomew",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-morrovalle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_morrovalle_g1,
+                caption = "A silver cross and a reliquary containing the miraculous Host from the Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-morrovalle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_morrovalle_g2,
+                caption = "Scenic view of Morrovalle's landscape, symbolizing the enduring faith after the 1560 Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-morrovalle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_morrovalle_g3,
+                caption = "A monk discovering a large Host in a pyx amidst ruins after a fire.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-morrovalle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_morrovalle_g4,
+                caption = "Morrovalle procession in honor of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-morrovalle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_morrovalle_g5,
+                caption = "An image showing a golden thread-like object, possibly a relic associated with the Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-morrovalle",
+            ),
+        ),
+        "muro-lucano" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_muro_lucano_g0,
+                caption = "Devotional shrine of St. Gerard Majella, Naples",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/saint-gerard-majella-childhood",
+            ),
+        ),
+        "naples-five-wounds" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_naples_five_wounds_g0,
+                caption = "St. Maria Francesca of the Five Wounds, devotional illustration",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/saint-maria-francesca-five-wounds",
+            ),
+        ),
+        "neuvy-saint-sepulcre" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_neuvy_saint_sepulcre_g0,
+                caption = "Black and white copy of one of the pages of the manuscript telling the story of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/neuvy-saint-sepulcre-precious-blood",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_neuvy_saint_sepulcre_g1,
+                caption = "The exterior of the church where the miraculous cure occurred",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/neuvy-saint-sepulcre-precious-blood",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_neuvy_saint_sepulcre_g2,
+                caption = "The interior of the church where the miraculous cure occurred",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/neuvy-saint-sepulcre-precious-blood",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_neuvy_saint_sepulcre_g3,
+                caption = "La Rochelle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/neuvy-saint-sepulcre-precious-blood",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_neuvy_saint_sepulcre_g4,
+                caption = "Interior of the Basilica",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/neuvy-saint-sepulcre-precious-blood",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_neuvy_saint_sepulcre_g5,
+                caption = "Reliquary of the Precious Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/neuvy-saint-sepulcre-precious-blood",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_neuvy_saint_sepulcre_g6,
+                caption = "A boy joyfully reaching out to a priest holding a chalice, with a woman nearby in a church setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/neuvy-saint-sepulcre-precious-blood",
+            ),
+        ),
+        "o-cebreiro" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_o_cebreiro_g0,
+                caption = "Sanctuary of O’Cebreiro",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ocebreiro",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_o_cebreiro_g1,
+                caption = "A priest and a kneeling man at a table with a chalice and bread, in a dimly lit church.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ocebreiro",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_o_cebreiro_g2,
+                caption = "The Madonna of the Prodigy",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ocebreiro",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_o_cebreiro_g3,
+                caption = "Mountain where Juan Santin used to retreat and pray",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ocebreiro",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_o_cebreiro_g4,
+                caption = "Panoramic view of O’Cebreiro",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ocebreiro",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_o_cebreiro_g5,
+                caption = "Shrine of the chalice, paten and Holy Blood of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ocebreiro",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_o_cebreiro_g6,
+                caption = "Panoramic view of O’Cebreiro",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ocebreiro",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_o_cebreiro_g7,
+                caption = "Altar where the miracle took place",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ocebreiro",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_o_cebreiro_g8,
+                caption = "The interior of Santa Maria",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ocebreiro",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_o_cebreiro_g9,
+                caption = "Altar where the miracle took place",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ocebreiro",
+            ),
+        ),
+        "offida" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_offida_g0,
+                caption = "Detail of the blood-stained linen",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-offida",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_offida_g1,
+                caption = "Fugue of the Church of St. Augustine, Offida",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-offida",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_offida_g2,
+                caption = "Image of the altar with a crucifix and ornate decorations.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-offida",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_offida_g3,
+                caption = "Frescoes in the church that illustrate the miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-offida",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_offida_g4,
+                caption = "Relic of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-offida",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_offida_g5,
+                caption = "Relic of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-offida",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_offida_g6,
+                caption = "Enlarged image of the relics contained in a precious Cross, made by a Venetian craftsman of 13th century",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-offida",
+            ),
+        ),
+        "onil" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_onil_g0,
+                caption = "Feast in honor of the Prodigy called \"la Pedrera\" in memory of the place where the Host was recovered",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-onil",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_onil_g1,
+                caption = "Shrine of the miraculous Host",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-onil",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_onil_g2,
+                caption = "Shrine of the Host which remains intact",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-onil",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_onil_g3,
+                caption = "A large altarpiece with multiple religious scenes and figures depicted in vibrant colors.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-onil",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_onil_g4,
+                caption = "A young woman kneels in a field, holding a monstrance with the Host, surrounded by crops.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-onil",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_onil_g5,
+                caption = "Illustration of the Host surrounded by foliage, symbolizing its miraculous discovery in Onil, Spain, 1824.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-onil",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_onil_g6,
+                caption = "Image of a document related to the miraculous Host in Onil, Spain.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-onil",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_onil_g7,
+                caption = "Scenes from the miracle in the stained glass windows of St. James Church.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-onil",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_onil_g8,
+                caption = "Scenes from the miracle in the stained glass windows of St. James Church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-onil",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_onil_g9,
+                caption = "Scenes from the miracle in the stained glass windows of St. James Church.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-onil",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_onil_g10,
+                caption = "Scenes from the miracle in the stained glass windows of St. James Church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-onil",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_onil_g11,
+                caption = "Church of St. James the Apostle in Onil where the miraculous Host is housed",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-onil",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_onil_g12,
+                caption = "A golden monstrance surrounded by angels, radiating light in a church setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-onil",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_onil_g13,
+                caption = "A formal document with a seal, likely related to the Eucharistic Miracle of Onil.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-onil",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_onil_g14,
+                caption = "Illustration of Teresa Carbonell kneeling in prayer upon discovering the monstrance in a field, part of the Onil miracle story.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-onil",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_onil_g15,
+                caption = "Interior of St. James Church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-onil",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_onil_g16,
+                caption = "A golden monstrance with rays, used to display the Eucharistic host.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-onil",
+            ),
+        ),
+        "orvieto-thomas-of-cori" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_orvieto_thomas_of_cori_g0,
+                caption = "The Levitation of Thomas of Cori (1786) by Antonio Cavallucci",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/blessed-thomas-cori-apparitions",
+            ),
+        ),
+        "patierno" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_patierno_g0,
+                caption = "Painting of the discovery of the intact Hosts at Patierno",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-patierno-naples",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_patierno_g1,
+                caption = "Commemorative shrine at the site where the Hosts were found",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-patierno-naples",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_patierno_g2,
+                caption = "Church of St. Peter in Patierno, diocesan Eucharistic Sanctuary",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-patierno-naples",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_patierno_g3,
+                caption = "Reliquary that held the miraculous Hosts before the 1978 theft",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-patierno-naples",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_patierno_g4,
+                caption = "Ancient depiction of the Patierno miracle and its veneration",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-patierno-naples",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_patierno_g5,
+                caption = "St. Alphonsus Liguori, who documented the 1772 Patierno miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-patierno-naples",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_patierno_g6,
+                caption = "Dr. Domenico Cotugno, anatomist who examined the Hosts",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-patierno-naples",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_patierno_g7,
+                caption = "Cardinal Corrado Ursi, who elevated the Patierno church to Eucharistic Sanctuary",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-patierno-naples",
+            ),
+        ),
+        "peshtigo" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_peshtigo_g0,
+                caption = "The Great Peshtigo Fire (1871)",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/usa-peshtigo",
+            ),
+        ),
+        "peter-damian" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_peter_damian_g0,
+                caption = "St. Peter Damian writing the eremitic rule, Baroque ceiling fresco",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-s-peter-damian",
+            ),
+        ),
+        "pibrac" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_pibrac_g0,
+                caption = "Antique painting in which the miracle is depicted",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pibrac-eucharistic-miracle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_pibrac_g1,
+                caption = "An illustration depicting Saint Germaine Cousin surrounded by sheep, highlighting her connection with animals.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pibrac-eucharistic-miracle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_pibrac_g2,
+                caption = "Germaine made to live in a basement under the steps by her step-mother",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pibrac-eucharistic-miracle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_pibrac_g3,
+                caption = "A young girl in traditional attire sits with a lamb in a pastoral setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pibrac-eucharistic-miracle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_pibrac_g4,
+                caption = "Tomb of St. Germaine",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pibrac-eucharistic-miracle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_pibrac_g5,
+                caption = "Stained glass depiction of Saint Germaine Cousin with a shepherd's staff and a sheep.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pibrac-eucharistic-miracle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_pibrac_g6,
+                caption = "Germaine made to live in a basement under the steps by her stepmother",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pibrac-eucharistic-miracle",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_pibrac_g7,
+                caption = "Saint Germaine Cousin, in a red dress, walks through a miraculously parted stream towards a church, symbolizing her faith and holiness.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pibrac-eucharistic-miracle",
+            ),
+        ),
+        "pitigliano" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_pitigliano_g0,
+                caption = "Statue of St. Lucia Filippini with a young student",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/saint-lucia-filippini-pitigliano",
+            ),
+        ),
+        "ponferrada" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_ponferrada_g0,
+                caption = "Painting that depicts the miracle, currently housed in the new church of St. Peter",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ponferrada",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ponferrada_g1,
+                caption = "A street sign reading 'Avenida Huertas del Sacramento'.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ponferrada",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ponferrada_g2,
+                caption = "New Church of St. Peter, Ponferrada",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ponferrada",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ponferrada_g3,
+                caption = "A stone relic depicting two birds and a nest, possibly related to the miracle's narrative.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ponferrada",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ponferrada_g4,
+                caption = "View of the Sil River near Arenal Field, where Juan attempted to discard the stolen tabernacle and Hosts.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ponferrada",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ponferrada_g5,
+                caption = "Statue of the Virgin Mary with a radiant halo and ornate details.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ponferrada",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_ponferrada_g6,
+                caption = "New Church of St. Peter, Ponferrada",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-ponferrada",
+            ),
+        ),
+        "poznan" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_poznan_g0,
+                caption = "The Eucharistic Shrine",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-poznan",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_poznan_g1,
+                caption = "A fresco found on the ceiling of the Sacristy of the Eucharistic shrine",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-poznan",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_poznan_g2,
+                caption = "Every Thursday a procession with the Blessed Sacrament takes place at Corpus Domini church to recall the miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-poznan",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_poznan_g3,
+                caption = "The sanctuary of the Eucharistic shrine constructed around the middle of the 18th century",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-poznan",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_poznan_g4,
+                caption = "In the central nave, under the altar where the relics of Saint Onufra are preserved, three 18th century sculptures are preserved which depict the desecrators who tried to get rid of the Hosts",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-poznan",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_poznan_g5,
+                caption = "Every Thursday a procession with the Blessed Sacrament takes place at Corpus Domini church to recall the miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-poznan",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_poznan_g6,
+                caption = "The interior of the shrine",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-poznan",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_poznan_g7,
+                caption = "The interior of the shrine",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-poznan",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_poznan_g8,
+                caption = "The stained glass window in the sacristy of the Eucharistic shrine which depicts the miracle it represents",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-poznan",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_poznan_g9,
+                caption = "A fresco found on the ceiling of the Sacristy of the Eucharistic shrine",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-poznan",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_poznan_g10,
+                caption = "At the Eucharistic Shrine, the precious monstrances donated by the King (Wladyslaw) Jagiello are preserved and are still used for the exposition of the Blessed Sacrament.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-poznan",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_poznan_g11,
+                caption = "At the Eucharistic Shrine, the precious monstrances donated by the King (Wladyslaw) Jagiello are preserved and are still used for the exposition of the Blessed Sacrament.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-poznan",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_poznan_g12,
+                caption = "A solemn procession is formed to recall the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-poznan",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_poznan_g13,
+                caption = "Every Thursday a procession with the Blessed Sacrament takes place at Corpus Domini church to recall the miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-poznan",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_poznan_g14,
+                caption = "The Eucharistic Shrine",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-poznan",
+            ),
+        ),
+        "pressac" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_pressac_g0,
+                caption = "Depiction of the chalice as it appeared after the Miracle of Pressac next to the account written by François du Theil, curate of Availles-Limouzine in the year 1643.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-pressac",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_pressac_g1,
+                caption = "Portrait du Miracle arrivé à Pressac: le Jeudy Absolu Second Jour d'Avril 1645",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-pressac",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_pressac_g2,
+                caption = "Foot of the Miraculous Chalice",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-pressac",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_pressac_g3,
+                caption = "Depiction of the chalice as it appeared after the Miracle of Pressac next to the account written by François du Theil, curate of Availles-Limouzine in the year 1643.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/fra-pressac",
+            ),
+        ),
+        "proceno-agnes" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_proceno_agnes_g0,
+                caption = "St. Agnes of Montepulciano receiving communion from an angel (1704)",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/proceno-saint-agnes-segni-communion",
+            ),
+        ),
+        "regensburg" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_regensburg_g0,
+                caption = "Antique print depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/regensburg-dropped-hosts-1255",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_regensburg_g1,
+                caption = "A medieval illustration showing a priest and others kneeling in prayer before an altar.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/regensburg-dropped-hosts-1255",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_regensburg_g2,
+                caption = "A close-up of a crucifix showing Jesus with visible wounds and a crown of thorns.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/regensburg-dropped-hosts-1255",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_regensburg_g3,
+                caption = "Altar with a crucifix that extended its arms during the Regensburg miracle, flanked by candles and flowers.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/regensburg-dropped-hosts-1255",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_regensburg_g4,
+                caption = "Interior of a church with an altar, stained glass windows, and religious artwork on the walls.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/regensburg-dropped-hosts-1255",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_regensburg_g5,
+                caption = "A brick church with arched windows and a clock tower, surrounded by trees.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/regensburg-dropped-hosts-1255",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_regensburg_g6,
+                caption = "A golden reliquary with ornate decorations and embedded jewels, containing several glass containers.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/regensburg-dropped-hosts-1255",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_regensburg_g7,
+                caption = "Interior of a richly decorated church with ornate gold and white details and religious artwork.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/regensburg-dropped-hosts-1255",
+            ),
+        ),
+        "rimini" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_rimini_g0,
+                caption = "Altar constructed on the trunk of the column from which Saint Anthony performed the miracle, adorned with flowers and a statue.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rimini",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rimini_g1,
+                caption = "A relief depicting Saint Anthony with a crowd, illustrating the Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rimini",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rimini_g2,
+                caption = "A scene depicting Saint Anthony and a mule, illustrating a miracle involving the Eucharist.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rimini",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rimini_g3,
+                caption = "Domencio Boccafumi, Saint Anthony and the Miracle of the Mule (1537) Louvre, Paris",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rimini",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rimini_g4,
+                caption = "A scene depicting a mule and a man, illustrating a historical event related to Saint Anthony.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rimini",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rimini_g5,
+                caption = "Saint Anthony holding the Eucharist before a group of people and a kneeling animal.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rimini",
+            ),
+        ),
+        "rome-devoted-lambs" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g0,
+                caption = "The chapel in Andechs that houses the shrine",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g1,
+                caption = "The chapel in Andechs that houses the shrine",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g2,
+                caption = "The shrine that contains the Host of the miracle which is preserved to this day in Andechs",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g3,
+                caption = "The miraculous Mass at which St. Gregory freed numerous souls from purgatory",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g4,
+                caption = "A dramatic depiction of a religious scene with figures in turmoil and divine elements above.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g5,
+                caption = "The miraculous Mass at which St. Gregory freed numerous souls from purgatory",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g6,
+                caption = "Ancient missal in which St. Gregory celebrating the Mass is depicted",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g7,
+                caption = "Ancient missal in which St. Gregory celebrating the Mass is depicted",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g8,
+                caption = "Nicola Circignani called the Pomarancio, The Eucharistic Miracle of St. Gregory the Great.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g9,
+                caption = "Church of St. Gregory the Great in Heaven, Rome",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g10,
+                caption = "Angels holding a monstrance adorned with flowers and a blue canopy.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g11,
+                caption = "Gothic tabernacle symbolizing Saint Francis's devotion, reflecting the miracle of the devoted lambs in Eucharistic reverence.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g12,
+                caption = "Icon of St. Gregory",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g13,
+                caption = "A priest presents a sacred host to a woman in a church setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g14,
+                caption = "Interior view of a richly decorated church with ornate architecture and detailed flooring.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g15,
+                caption = "St. Pudenziana Church, Rome",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g16,
+                caption = "Detail of the impression left by the Host that had fallen on the marble floor",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g17,
+                caption = "Steps in the chapel that clearly show the imprint of the fallen Host and the stain of Blood left by the same",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_devoted_lambs_g18,
+                caption = "Detail of the stain of Blood left by the fallen Host",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/devoted-lambs-eucharist",
+            ),
+        ),
+        "rome-gregory-great" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g0,
+                caption = "The chapel in Andechs that houses the shrine",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g1,
+                caption = "The chapel in Andechs that houses the shrine",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g2,
+                caption = "The shrine that contains the Host of the miracle which is preserved to this day in Andechs",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g3,
+                caption = "A religious scene depicting a group of people in ceremonial attire around an altar.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g4,
+                caption = "A dramatic depiction of a religious scene with figures and celestial elements.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g5,
+                caption = "The miraculous Mass at which St. Gregory freed numerous souls from purgatory",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g6,
+                caption = "Ancient missal in which St. Gregory celebrating the Mass is depicted",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g7,
+                caption = "Ancient missal in which St. Gregory celebrating the Mass is depicted",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g8,
+                caption = "Nicola Circignani called the Pomarancio, The Eucharistic Miracle of St. Gregory the Great.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g9,
+                caption = "Church of St. Gregory the Great in Heaven, Rome",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g10,
+                caption = "Angels holding a monstrance adorned with flowers, depicting a religious scene.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g11,
+                caption = "Intricate tabernacle design from St. Gregory's Church, symbolizing the Eucharistic miracle witnessed by Pope Gregory in 595.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g12,
+                caption = "Icon of St. Gregory holding a scroll, symbolizing his role in the Eucharistic miracle of Rome, 595.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g13,
+                caption = "Pope St. Gregory the Great presents the Eucharist, symbolizing the miracle of bread becoming Flesh and Blood in 595 Rome.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g14,
+                caption = "The ornate interior of St. Pudenziana Church, Rome, where a Eucharistic miracle involving Pope St. Gregory occurred in 595.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g15,
+                caption = "St. Pudenziana Church, Rome, where the miraculous imprint from the fallen Host during Mass is preserved.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g16,
+                caption = "Detail of the impression left by the Host that had fallen on the marble floor in Santa Pudenziana Church.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g17,
+                caption = "Steps in the Caetani Chapel showing the imprint and stain of Blood left by the fallen Host.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_gregory_great_g18,
+                caption = "Detail of the stain of Blood left by the Host on the marble floor, linked to the 595 miracle in Rome.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-6th-7th",
+            ),
+        ),
+        "rome-santa-pudenziana" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g0,
+                caption = "The chapel in Andechs housing the shrine, linked to the Eucharistic miracle of Rome, 1610.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g1,
+                caption = "The chapel in Andechs housing the shrine, linked to the 1610 Eucharistic miracle at Santa Pudenziana, Rome.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g2,
+                caption = "The ornate shrine in Andechs houses the Host from the 1610 Eucharistic miracle at Santa Pudenziana, Rome.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g3,
+                caption = "Image 4",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g4,
+                caption = "The miraculous Mass at which St. Gregory freed numerous souls from purgatory, depicted in a dramatic celestial scene.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g5,
+                caption = "The miraculous Mass of St. Gregory, depicting the Eucharistic miracle where a doubting woman witnessed the Host's transformation.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g6,
+                caption = "A depiction of the 16th-century apparition of Jesus during Mass, illustrating the Eucharistic miracle of Rome in 1610.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g7,
+                caption = "An ancient missal illustration depicting St. Gregory celebrating Mass, connecting to the 1610 Eucharistic miracle in Rome.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g8,
+                caption = "Fresco depicting St. Gregory the Great distributing Communion, symbolizing the Eucharistic miracle at Santa Pudenziana, Rome, 1610.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g9,
+                caption = "The Church of St. Gregory the Great in Rome, linked to the 1610 Eucharistic miracle at Santa Pudenziana.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g10,
+                caption = "Angels depicted in a fresco holding a monstrance, symbolizing the Eucharistic miracle at Santa Pudenziana, Rome, 1610.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g11,
+                caption = "A detailed depiction of a Eucharistic monstrance, symbolizing the Real Presence in the 1610 Rome miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g12,
+                caption = "Icon of St. Gregory, depicted with a scroll and staff, symbolizing wisdom and guidance in Eucharistic faith.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g13,
+                caption = "A priest presents the Eucharist, symbolizing the Real Presence, to a kneeling woman in reverence, under a crucifix.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g14,
+                caption = "Interior of the Caetani Chapel, Santa Pudenziana Church, where the Eucharistic miracle's imprint is visible on the marble floor.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g15,
+                caption = "Facade of St. Pudenziana Church, Rome, where a 1610 Eucharistic miracle occurred, leaving an imprint on the altar steps.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g16,
+                caption = "Detail of the impression left by the Host that fell on the marble floor in Santa Pudenziana Church, Rome.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g17,
+                caption = "Steps in the Caetani Chapel showing the miraculous imprint and blood stain from the fallen Host during Mass.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rome_santa_pudenziana_g18,
+                caption = "Close-up of the stain of Blood left by the fallen Host on the marble floor in Caetani Chapel, Rome.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rome-1610",
+            ),
+        ),
+        "rosano" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_rosano_g0,
+                caption = "The Abbey of S. Maria of Rosano, founded in 780, witnessed the miraculous bleeding and weeping statue of the Sacred Heart.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rosano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rosano_g1,
+                caption = "The cloister of the Abbey of S. Maria of Rosano, where the miraculous statue of the Sacred Heart resides.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rosano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rosano_g2,
+                caption = "The refectory of the Abbey of Rosano, where the Sacred Heart statue wept and bled, is depicted here.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rosano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rosano_g3,
+                caption = "Statue of the Sacred Heart in Rosano, known for bleeding and weeping, surrounded by flowers, symbolizing post-war gratitude.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rosano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rosano_g4,
+                caption = "The crypt of Rosano monastery, where the Sacred Heart statue reportedly bled and wept, features ancient stone arches.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rosano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rosano_g5,
+                caption = "Entrance to the Abbey of S. Maria of Rosano, where the Sacred Heart statue wept and bled, fulfilling a wartime vow.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rosano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_rosano_g6,
+                caption = "Statue of the Sacred Heart that bled and wept, donated in 1948 as a WWII promise fulfillment.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rosano",
+            ),
+        ),
+        "sachseln" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_sachseln_g0,
+                caption = "St. Nicholas of Flüe, painted portrait",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/st-nicholas-of-flue-eucharistic-fasting",
+            ),
+        ),
+        "saint-andre-de-la-reunion" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_saint_andre_de_la_reunion_g0,
+                caption = "Église Saint-André, La Réunion",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/saint-andre-de-la-reunion-1902",
+            ),
+        ),
+        "saint-gilles" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_saint_gilles_g0,
+                caption = "The Mass of Saint Giles (c. 1500)",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/saint-egidio-charles-martel-absolution",
+            ),
+        ),
+        "saint-satyrus" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_saint_satyrus_g0,
+                caption = "The Shipwreck of Saint Satyrus by Giambattista Tiepolo (1737)",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/saint-satyrus-shipwreck",
+            ),
+        ),
+        "salzano" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_salzano_g0,
+                caption = "Fresco depicting donkeys kneeling before a priest with the Eucharist, illustrating the Salzano miracle of 1517.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-salzano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_salzano_g1,
+                caption = "Church of Saint Bartholomew, Salzano, where the fresco of the 1517 Eucharistic miracle is preserved.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-salzano",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_salzano_g2,
+                caption = "Entrance to Museo di S. Pio X in Salzano, preserving relics related to the 1517 Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-salzano",
+            ),
+        ),
+        "san-giorgio-a-cremano" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_san_giorgio_a_cremano_g0,
+                caption = "Blessed Mary of the Passion, profile photograph",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/blessed-mary-passion-eucharistic-life",
+            ),
+        ),
+        "san-juan-de-las-abadesas" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_san_juan_de_las_abadesas_g0,
+                caption = "Romanesque apse, Monastery of Sant Joan de les Abadesses",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/saint-john-of-the-abbesses-1251",
+            ),
+        ),
+        "san-juan-honduras" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_san_juan_honduras_g0,
+                caption = "Blood-stained corporal from the 2022 San Juan Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/hon-san-juan-2022",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_san_juan_honduras_g1,
+                caption = "The Ermita de Santiago Apóstol (Chapel of the Apostle James) in El Espinal, San Juan, Honduras. Credit: EWTN Noticias.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/hon-san-juan-2022",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_san_juan_honduras_g2,
+                caption = "The rural community near San Juan, Intibucá, Honduras. Credit: EWTN Noticias.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/hon-san-juan-2022",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_san_juan_honduras_g3,
+                caption = "The blood-stained corporal displayed in a gold frame. Credit: EWTN Noticias.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/hon-san-juan-2022",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_san_juan_honduras_g4,
+                caption = "Bishop Walter Guillén Soto in front of the El Espinal chapel. Credit: EWTN Noticias.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/hon-san-juan-2022",
+            ),
+        ),
+        "san-mauro-la-bruca" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_san_mauro_la_bruca_g0,
+                caption = "Gerardina Amato gathering the discarded Hosts, 1969",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-san-mauro-la-bruca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_san_mauro_la_bruca_g1,
+                caption = "The 63 preserved Hosts in the reliquary monstrance",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-san-mauro-la-bruca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_san_mauro_la_bruca_g2,
+                caption = "Facade of the Parish Church of Sant'Eufemia",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-san-mauro-la-bruca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_san_mauro_la_bruca_g3,
+                caption = "Village of San Mauro La Bruca in the Cilento hills",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-san-mauro-la-bruca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_san_mauro_la_bruca_g4,
+                caption = "Nave of the Parish Church of Sant'Eufemia",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-san-mauro-la-bruca",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_san_mauro_la_bruca_g5,
+                caption = "Main altar with the Eucharistic reliquary enthroned above",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-san-mauro-la-bruca",
+            ),
+        ),
+        "scala" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_scala_g0,
+                caption = "The monstrance of the miracle at Scala, 1732, displaying signs of Christ's Passion during Eucharistic adoration.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-scala",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_scala_g1,
+                caption = "Portrait of Venerable Maria Celeste Crostarosa, founder of the Monastery of the Most Holy Redeemer, linked to Scala miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-scala",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_scala_g2,
+                caption = "Interior of the monastery church where miraculous signs of the Passion appeared in the Host, Scala, 1732.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-scala",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_scala_g3,
+                caption = "Monastery of the Most Holy Redeemer in Scala, where the 1732 Eucharistic miracle occurred, witnessed by St. Alphonsus.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-scala",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_scala_g4,
+                caption = "Monastery of the Most Holy Redeemer in Scala, where the 1732 Eucharistic miracle occurred, showing its serene exterior at dusk.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-scala",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_scala_g5,
+                caption = "Monastery of the Most Holy Redeemer in Scala, site of the 1732 Eucharistic miracle witnessed by St. Alphonsus Maria Liguori.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-scala",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_scala_g6,
+                caption = "Portrait of St. Alphonsus Maria Liguori, witness to the 1732 Eucharistic miracle at Scala, Italy.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-scala",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_scala_g7,
+                caption = "Illustration of St. Alphonsus witnessing the Eucharistic miracle at the Monastery of the Most Holy Redeemer, Scala, 1732.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-scala",
+            ),
+        ),
+        "scete" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_scete_g0,
+                caption = "Section of the Monastery of St. Anthony Abbot at the foot of Mt. Qusqam",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/egy-scete",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_scete_g1,
+                caption = "A monk holds the Infant Jesus with an angel beside him, at an altar with a chalice.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/egy-scete",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_scete_g2,
+                caption = "Image of ancient rock formations and temples near water, likely in Egypt.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/egy-scete",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_scete_g3,
+                caption = "Image of the pyramids in Egypt, showcasing their iconic triangular shapes against a blue sky.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/egy-scete",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_scete_g4,
+                caption = "A religious figure in a dark robe gestures towards a mountain, surrounded by trees.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/egy-scete",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_scete_g5,
+                caption = "Christ embracing the Virgin and surrounded by Saints in the Monastery of Apollo at Beni",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/egy-scete",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_scete_g6,
+                caption = "A religious fresco depicting Christ in glory surrounded by saints and the Virgin Mary.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/egy-scete",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_scete_g7,
+                caption = "An icon depicting St. Anthony the Great with a young woman in a desert setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/egy-scete",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_scete_g8,
+                caption = "Section of the Monastery of St. Anthony Abbot at the foot of Mt. Qusqam.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/egy-scete",
+            ),
+        ),
+        "seefeld" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_seefeld_g0,
+                caption = "A priest administering Communion to a child, with onlookers in a church setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/aut-seefeld",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_seefeld_g1,
+                caption = "Miracle of Seefeld. Detail of the ceiling",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/aut-seefeld",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_seefeld_g2,
+                caption = "Main altar of the Church of St. Oswald, Seefeld",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/aut-seefeld",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_seefeld_g3,
+                caption = "Altar of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/aut-seefeld",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_seefeld_g4,
+                caption = "Representation of the Miracle of Seefeld. Detail of the Gothic gable, Church of St. Oswald (1470)",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/aut-seefeld",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_seefeld_g5,
+                caption = "Church of St. Oswald",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/aut-seefeld",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_seefeld_g6,
+                caption = "Ancient painting",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/aut-seefeld",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_seefeld_g7,
+                caption = "Panoramic view of Seefeld, Austria, where the 1384 Eucharistic miracle involving Oswald Milser took place.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/aut-seefeld",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_seefeld_g8,
+                caption = "Banner in the Church of St. Oswald depicting the scene of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/aut-seefeld",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_seefeld_g9,
+                caption = "Ancient painting",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/aut-seefeld",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_seefeld_g10,
+                caption = "Miracle of Seefeld. Detail of the ceiling",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/aut-seefeld",
+            ),
+        ),
+        "silla" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_silla_g0,
+                caption = "Hosts of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-silla",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_silla_g1,
+                caption = "Our Lady of the Angels, Silla",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-silla",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_silla_g2,
+                caption = "Our Lady of the Angels, Silla",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-silla",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_silla_g3,
+                caption = "Hosts of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-silla",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_silla_g4,
+                caption = "I CENTENARIO DE LAS SAGRADAS FORMAS INCORRUPTAS SILLA, 1907 - 2007",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-silla",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_silla_g5,
+                caption = "A farmer kneeling in a garden, discovering Hosts hidden under a stone among the vegetables.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-silla",
+            ),
+        ),
+        "sokolka" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_sokolka_g0,
+                caption = "Illustration of the 2008 discovery, examination, and scientific analysis",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-sokolka",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_sokolka_g1,
+                caption = "Sister Julia Dubowska in the sacristy of St. Anthony's Church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-sokolka",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_sokolka_g2,
+                caption = "Chapel of the Blessed Sacrament at St. Anthony's Church, Sokółka",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-sokolka",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_sokolka_g3,
+                caption = "Tabernacle at St. Anthony's Church where the Host was stored",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-sokolka",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_sokolka_g4,
+                caption = "Sister Julia Dubowska, parish sacristan who discovered the stained Host",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-sokolka",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_sokolka_g5,
+                caption = "Chapel where the Eucharistic relic is venerated, Sokółka",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-sokolka",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_sokolka_g6,
+                caption = "Cardiac muscle tissue under microscopy with anatomical reference",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-sokolka",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_sokolka_g7,
+                caption = "Eucharistic procession on a flower-strewn path at Sokółka",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-sokolka",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_sokolka_g8,
+                caption = "Monstrance displaying the Eucharistic relic of Sokółka",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-sokolka",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_sokolka_g9,
+                caption = "Close-up of the tissue formation on the corporal",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-sokolka",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_sokolka_g10,
+                caption = "Members of a Eucharistic confraternity at the Sokółka celebration",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-sokolka",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_sokolka_g11,
+                caption = "Pilgrims gathered at St. Anthony of Padua Church, Sokółka",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-sokolka",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_sokolka_g12,
+                caption = "Bishops carrying a monstrance during the Eucharistic procession",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/pol-sokolka",
+            ),
+        ),
+        "stiphout" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_stiphout_g0,
+                caption = "Picture showing the miracle. At the bottom Jan Baloys is seen rescuing the Blessed Sacrament.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/stiphout-1342",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_stiphout_g1,
+                caption = "A historical image of Saint Trudo's Church in Stiphout, showing its tall spire and surrounding trees.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/stiphout-1342",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_stiphout_g2,
+                caption = "Saint Trudo's Church, Stiphout",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/stiphout-1342",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_stiphout_g3,
+                caption = "Interior of Saint Trudo's Church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/stiphout-1342",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_stiphout_g4,
+                caption = "Saint Trudo's Church, Stiphout",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/stiphout-1342",
+            ),
+        ),
+        "tixtla" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_tixtla_g0,
+                caption = "Illustration of the October 2006 event and subsequent investigation",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/mex-tixtla",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_tixtla_g1,
+                caption = "The Host with reddish substance among consecrated Hosts in a ciborium",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/mex-tixtla",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_tixtla_g2,
+                caption = "Clergy with the monstrance at St. Martin of Tours, Tixtla",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/mex-tixtla",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_tixtla_g3,
+                caption = "Exhibition display comparing samples from 2006 and 2010",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/mex-tixtla",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_tixtla_g4,
+                caption = "Histological section from the Host sample showing tissue fibers",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/mex-tixtla",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_tixtla_g5,
+                caption = "Diagram of blood flow from the interior of the Host outward",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/mex-tixtla",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_tixtla_g6,
+                caption = "Facade of St. Martin of Tours Church, Tixtla de Guerrero",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/mex-tixtla",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_tixtla_g7,
+                caption = "Interior and main altar of St. Martin of Tours Church, Tixtla",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/mex-tixtla",
+            ),
+        ),
+        "trani" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_trani_g0,
+                caption = "Ancient representation of the prodigy",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-trani",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_trani_g1,
+                caption = "Interior of Trani's cathedral",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-trani",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_trani_g2,
+                caption = "Cathedral Holy Mary of the Assumption in Trani.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-trani",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_trani_g3,
+                caption = "A fresco depicting a religious scene with a figure in a red robe and a ladder.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-trani",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_trani_g4,
+                caption = "PADRE PIO DISSE: \"TRANI E' FORTUNATA PERCHE' PER BEN DUE VOLTE IL SANGUE DI CRISTO HA BAGNATO LA SUA TERRA.\"",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-trani",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_trani_g5,
+                caption = "A historical scene depicting a group of people at a door, possibly related to a significant event.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-trani",
+            ),
+        ),
+        "tumaco" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_tumaco_g0,
+                caption = "Beach at Tumaco",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/col-tumaco",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_tumaco_g1,
+                caption = "A large wave crashing against a coastal city, depicting the force of nature during a tsunami.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/col-tumaco",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_tumaco_g2,
+                caption = "A lighthouse standing amidst towering waves, symbolizing the power of nature during the tsunami.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/col-tumaco",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_tumaco_g3,
+                caption = "A procession of people holding a monstrance, facing a turbulent sea with waves crashing.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/col-tumaco",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_tumaco_g4,
+                caption = "A beach scene showing a group of people near a damaged structure by the water.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/col-tumaco",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_tumaco_g5,
+                caption = "A powerful wave crashing, showcasing the force of nature during the tsunami event.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/col-tumaco",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_tumaco_g6,
+                caption = "A historical street view of Tumaco with people and buildings, depicting the area during the early 1900s.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/col-tumaco",
+            ),
+        ),
+        "turin" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g0,
+                caption = "An illustration of a church on a hill surrounded by trees and mountains.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g1,
+                caption = "The Capuchin Church of the Monte",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g2,
+                caption = "Detail of the tabernacle of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g3,
+                caption = "Detail of the tabernacle of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g4,
+                caption = "Interior of the Church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g5,
+                caption = "Antique painting on the tabernacle door, adorned with agate and lapis lazuli, showing the soldier's scorched hand imprint.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g6,
+                caption = "A historical illustration depicting a scene related to the Eucharistic Miracle in Turin.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g7,
+                caption = "Representations of Miracle of Turin",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g8,
+                caption = "A priest performing a religious ceremony with attendees in a church setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g9,
+                caption = "Interior of the Corpus Domini Basilica",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g10,
+                caption = "An inscription detailing the Eucharistic Miracle of Turin, with historical significance.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g11,
+                caption = "Imprints of the Host of the Miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g12,
+                caption = "In entering the Basilica of Corpus Domini in Turin, you can soon notice one clear detail: a painting of Bartolomeo Caracciolo, a priest and follower of the Gesuati, portraying the great Eucharistic Miracle of 1453.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g13,
+                caption = "Image of the facade of a church with ornate decorations and statues.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g14,
+                caption = "A ceremonial object with a document and seals, likely related to the Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g15,
+                caption = "Reproduction of the miraculous Host taken from the witness of Tyro Bianche and the account for this miracle...",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g16,
+                caption = "A painting depicting a religious scene with people gathered around a central figure, celebrating a miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g17,
+                caption = "A group of people gathered around a scene, possibly depicting a historical or religious event.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g18,
+                caption = "A historical scene depicting a group of people in a chaotic moment, possibly related to a miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g19,
+                caption = "Box of cypress made by the town of Turin in 1672 to keep the documents about the miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g20,
+                caption = "Text discussing the eternal miracle of maintaining the Eucharistic species uncorrupted.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g21,
+                caption = "Interior view of a church with ornate architecture and altar.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g22,
+                caption = "A decorative ironwork enclosure with a stone plaque inside, likely related to the Eucharistic Miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g23,
+                caption = "A fresco depicting a religious scene with figures surrounding a central chalice and a radiant light.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g24,
+                caption = "A scene depicting figures in historical attire, possibly related to a religious or miraculous event.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g25,
+                caption = "Chalice of the Miracle of Turin",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_g26,
+                caption = "A religious procession with clergy and people, showcasing the Eucharistic miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1453",
+            ),
+        ),
+        "turin-1640" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g0,
+                caption = "An illustration of the Capuchin Monastery of the Monte, surrounded by hills and trees.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g1,
+                caption = "The Capuchin Church of the Monte",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g2,
+                caption = "Detail of the tabernacle of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g3,
+                caption = "Detail of the tabernacle of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g4,
+                caption = "Interior of the Church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g5,
+                caption = "Detail of the tabernacle adorned with agate and lapis lazuli, showing the soldier's scorched hand imprint from the 1640 Turin miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g6,
+                caption = "A historical illustration depicting a scene related to the Eucharistic Miracle of Turin.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g7,
+                caption = "Representations of Miracle of Turin",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g8,
+                caption = "A priest performing a religious ceremony with attendees in a church setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g9,
+                caption = "Interior of the Corpus Domini Basilica",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g10,
+                caption = "An inscription detailing the Eucharistic Miracle of Turin, with faded text on a stone background.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g11,
+                caption = "Imprints of the Miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g12,
+                caption = "In entering the Basilica of Corpus Domini in Turin, you can soon notice one clear detail: a painting of Bartolomeo Caracciolo, a priest and follower of the Gesuati, portraying the great Eucharistic Miracle of 1453.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g13,
+                caption = "Commemorative plaque of the Miracle, Turin",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g14,
+                caption = "An iron object with seals and a document, likely related to the Eucharistic Miracle of Turin.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g15,
+                caption = "Reproduction of the miraculous Host taken from the volume of T. F. B. and the miracles of the Holy Eucharist.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g16,
+                caption = "A painting depicting a religious scene with people gathered around a central figure in a church setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g17,
+                caption = "A group of people gathered around a scene depicting a miraculous event in a landscape.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g18,
+                caption = "A historical scene depicting a miraculous event involving the Eucharist and people in a town setting.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g19,
+                caption = "Box of cypress made by the town of Turin in 1672 to keep the documents about the miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g20,
+                caption = "Text discussing the eternal miracle of maintaining the Eucharistic species uncorrupted.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g21,
+                caption = "Interior view of a church with ornate architecture and altar.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g22,
+                caption = "Plague where the mule fell down, enclosed in ornate ironwork, commemorating the Eucharistic miracle during Turin's 1640 invasion.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g23,
+                caption = "A fresco depicting a religious scene with figures gathered around a central chalice and a radiant light.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g24,
+                caption = "A fresco depicting a historical scene with figures in period clothing inside a church.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g25,
+                caption = "Chalice of the Miracle of Turin",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_turin_1640_g26,
+                caption = "A fresco depicting a religious procession with a consecrated Host under a canopy.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
+            ),
+        ),
+        "valencia-santo-caliz" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_valencia_santo_caliz_g0,
+                caption = "Pope John Paul II with the Holy Chalice, Valencia, 1982",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-valencia",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_valencia_santo_caliz_g1,
+                caption = "Watercolour study of the Santo Caliz and its jewelled base",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-valencia",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_valencia_santo_caliz_g2,
+                caption = "Map of the chalice's traditional route from Jerusalem to Spain",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-valencia",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_valencia_santo_caliz_g3,
+                caption = "The Last Supper by Valencian painter Juan de Juanes, about 1562",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-valencia",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_valencia_santo_caliz_g4,
+                caption = "The Santo Caliz displayed in the Chapel of the Holy Chalice",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-valencia",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_valencia_santo_caliz_g5,
+                caption = "Measured drawing of the Holy Chalice with its dimensions",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-valencia",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_valencia_santo_caliz_g6,
+                caption = "Gold processional monstrance kept at Valencia Cathedral",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-valencia",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_valencia_santo_caliz_g7,
+                caption = "Stained-glass roundel of the Holy Chalice, Valencia Cathedral",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-valencia",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_valencia_santo_caliz_g8,
+                caption = "Alabaster retable of the Capilla del Santo Caliz, Valencia Cathedral",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-valencia",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_valencia_santo_caliz_g9,
+                caption = "Mass at the altar of the Chapel of the Holy Chalice",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-valencia",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_valencia_santo_caliz_g10,
+                caption = "Elevation of the chalice during Mass beneath the relic's niche",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-valencia",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_valencia_santo_caliz_g11,
+                caption = "Valencia Cathedral, home of the Santo Caliz since 1437",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-valencia",
+            ),
+        ),
+        "vercelli-bicchieri" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_vercelli_bicchieri_g0,
+                caption = "Portrait of Blessed Emilia Bicchieri",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/blessed-emilia-bicchieri-communion",
+            ),
+        ),
+        "veroli" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_veroli_g0,
+                caption = "The Church of St. Erasmus, Veroli",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-veroli",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_veroli_g1,
+                caption = "Old print depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-veroli",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_veroli_g2,
+                caption = "The document which records the sworn and written testimony of those witnesses who were present at the apparition",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-veroli",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_veroli_g3,
+                caption = "The commemorative table which recalls the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-veroli",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_veroli_g4,
+                caption = "The chalice and the paten of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-veroli",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_veroli_g5,
+                caption = "The chapel where the apparition occurred",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-veroli",
+            ),
+        ),
+        "vienna-stanislaus-kostka" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_vienna_stanislaus_kostka_g0,
+                caption = "St. Stanislaus Kostka receiving communion from angels",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/saint-stanislaus-kostka-communion",
+            ),
+        ),
+        "vilakkannur" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_vilakkannur_g0,
+                caption = "Monstrance displaying the Vilakkannur Host for public veneration",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ind-vilakkannur-2013",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_vilakkannur_g1,
+                caption = "Host with the face of Christ in a gold pyx",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ind-vilakkannur-2013",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_vilakkannur_g2,
+                caption = "Archbishop Leopoldo Girelli at the recognition ceremony, May 2025",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ind-vilakkannur-2013",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_vilakkannur_g3,
+                caption = "Concelebrated Syro-Malabar Mass for the recognition declaration, May 2025",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ind-vilakkannur-2013",
+            ),
+        ),
+        "volterra" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_volterra_g0,
+                caption = "Church of Saint Francis",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-volterra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_volterra_g1,
+                caption = "Interior of the Cathedral",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-volterra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_volterra_g2,
+                caption = "View of Volterra",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-volterra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_volterra_g3,
+                caption = "View of Volterra",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-volterra",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_volterra_g4,
+                caption = "A soldier in armor reaching for floating consecrated Hosts near a church entrance.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-volterra",
+            ),
+        ),
+        "walldurn" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_walldurn_g0,
+                caption = "Procession in honor of the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-walldurn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_walldurn_g1,
+                caption = "The relic of the miraculous corporal, framed and displayed, commemorates the 1330 Walldürn Eucharistic miracle of Christ's image.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-walldurn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_walldurn_g2,
+                caption = "Church of Saint George",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-walldurn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_walldurn_g3,
+                caption = "Church of Saint George",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-walldurn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_walldurn_g4,
+                caption = "The Crucified Christ is clearly distinguished under ultra violet lighting",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-walldurn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_walldurn_g5,
+                caption = "A priest holding a chalice with spilled wine forming a pattern on his robe.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-walldurn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_walldurn_g6,
+                caption = "Father Otto holds the miraculous corporal. This painting is in the church of Saint George and was painted in 1732.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-walldurn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_walldurn_g7,
+                caption = "Church of Saint George",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-walldurn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_walldurn_g8,
+                caption = "A wooden crucifix depicting Jesus on the cross, mounted on a wall with an arched ceiling.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-walldurn",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_walldurn_g9,
+                caption = "Banner in the Church of Saint George on which the miracle is presented",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-walldurn",
+            ),
+        ),
+        "weingarten" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g0,
+                caption = "The relic of the Most Precious Blood is preserved in the church of Saint Martin in Weingarten",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g1,
+                caption = "Relic of the Most Precious Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g2,
+                caption = "Pope Pius II venerates the precious relic",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g3,
+                caption = "Antique painting depicting The Ride (or Procession) of the Most Precious Blood held in Weingarten.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g4,
+                caption = "Urn containing the sacred relic",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g5,
+                caption = "Procession in honor of the precious relic",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g6,
+                caption = "Altar scene with clergy in red and white vestments during a religious ceremony.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g7,
+                caption = "Clerics in ceremonial robes carrying a relic during a procession.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g8,
+                caption = "Relic of the Most Precious Blood",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g9,
+                caption = "Golden cross on altar at Weingarten, preserving the Holy Blood relic, a significant Eucharistic artifact from 1094.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g10,
+                caption = "Children dressed in historical costumes, holding a basket, likely during a procession or festival.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g11,
+                caption = "The relic of Precious Blood (17th century). City Hall at Weingarten",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g12,
+                caption = "A letter from 1278, dated March 1, in which Albert, abbot of the Benedictine Monastery of San Andrea in Mantua, confirms the Mantua origin of the relic of Precious Blood of Jesus, preserved in the monastery at Weingarten",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g13,
+                caption = "Facade of the Basilica of Sant'Andrea in Mantua, where the relic of the Most Precious Blood is preserved.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g14,
+                caption = "Procession in honor of the Holy Blood at Mantua",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g15,
+                caption = "Reliquary containing the soil on which the Most Precious Blood of Christ fell from the Cross, Czestochowa, Poland",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g16,
+                caption = "Relics of the Holy Blood, Mantua",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g17,
+                caption = "Relic of the Sacred Lance with which the Roman soldier struck the side of Jesus.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g18,
+                caption = "An artistic depiction of the crucifixion with figures surrounding the cross.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g19,
+                caption = "Reliquary containing the soil on which the Most Precious Blood of Christ fell from the Cross, Czestochowa, Poland",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weingarten_g20,
+                caption = "A large historical building with a dome and surrounding gardens.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-weingarten",
+            ),
+        ),
+        "weiten-raxendorf" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_weiten_raxendorf_g0,
+                caption = "Weiten parish church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/aut-weiten-raxendorf",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weiten_raxendorf_g1,
+                caption = "Chapel built on the exact spot where the Host was found",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/aut-weiten-raxendorf",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weiten_raxendorf_g2,
+                caption = "Ancient painting in the parish of Weiten depicting the miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/aut-weiten-raxendorf",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weiten_raxendorf_g3,
+                caption = "A panoramic view of Weiten, showing the lush valley where the Eucharistic miracle of 1411 occurred.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/aut-weiten-raxendorf",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weiten_raxendorf_g4,
+                caption = "Weiten parish church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/aut-weiten-raxendorf",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_weiten_raxendorf_g5,
+                caption = "Panoramic view of Weiten",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/aut-weiten-raxendorf",
+            ),
+        ),
+        "wilsnack" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_wilsnack_g0,
+                caption = "Church of San Nikolai (St. Nicholas) in Wilsnack",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-wilsnack",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_wilsnack_g1,
+                caption = "A stone cross monument with a circular design, likely commemorating the Eucharistic Miracle.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-wilsnack",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_wilsnack_g2,
+                caption = "A poster for the Wundermesse festival in Bad Wilsnack featuring a figure holding a chalice.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-wilsnack",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_wilsnack_g3,
+                caption = "Interior of the Church",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-wilsnack",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_wilsnack_g4,
+                caption = "Antique prints depicting the phases of the Miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-wilsnack",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_wilsnack_g5,
+                caption = "Church of San Nikolai (St. Nicholas) in Wilsnack",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-wilsnack",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_wilsnack_g6,
+                caption = "Antique prints depicting the phases of the Miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-wilsnack",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_wilsnack_g7,
+                caption = "Antique prints depicting the phases of the Miracle",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/ger-wilsnack",
+            ),
+        ),
+        "zaragoza" to listOf(
+            GalleryImage(
+                image = Res.drawable.miracle_zaragoza_g0,
+                caption = "Interior view of the Cathedral of the Seo with ornate altar and architectural details.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-zaragoza",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_zaragoza_g1,
+                caption = "Ancient painting in the Cathedral of the Sev. representing the miracle in the Chapel of Luli San Domingo del Val.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-zaragoza",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_zaragoza_g2,
+                caption = "Cathedral of the Sev. Zaragoza",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-zaragoza",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_zaragoza_g3,
+                caption = "Interior view of a church with ornate architecture and an altar.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-zaragoza",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_zaragoza_g4,
+                caption = "The image depicts a scene with two figures gazing at a baby in a coffer, surrounded by light.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-zaragoza",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_zaragoza_g5,
+                caption = "Intricate Mudejar-style wall of Zaragoza's cathedral, symbolizing the 1427 Eucharistic miracle involving divine intervention and renewed faith.",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-zaragoza",
+            ),
+            GalleryImage(
+                image = Res.drawable.miracle_zaragoza_g6,
+                caption = "Main Altar",
+                sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-zaragoza",
+            ),
+        ),
+    )
+}

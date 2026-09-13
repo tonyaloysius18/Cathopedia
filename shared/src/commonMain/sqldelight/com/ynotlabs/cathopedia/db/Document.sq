@@ -1,0 +1,71 @@
+-- Papal documents — encyclicals first. The letters themselves belong to
+-- Libreria Editrice Vaticana, so a row carries our own summary plus the
+-- vatican.va URL; sourceUrl is where the reader goes for the full text.
+CREATE TABLE DocumentEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    kind TEXT NOT NULL,
+    popeId TEXT,
+    promulgated TEXT,
+    documentYear INTEGER,
+    imageUrl TEXT,
+    sourceUrl TEXT
+);
+
+CREATE TABLE DocumentText (
+    documentId TEXT NOT NULL,
+    language TEXT NOT NULL,
+    name TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    body TEXT NOT NULL,
+    sourceAttribution TEXT,
+    PRIMARY KEY (documentId, language),
+    FOREIGN KEY (documentId) REFERENCES DocumentEntity(id) ON DELETE CASCADE
+);
+
+insertDocument:
+INSERT OR REPLACE INTO DocumentEntity(id, kind, popeId, promulgated, documentYear, imageUrl, sourceUrl)
+VALUES (?, ?, ?, ?, ?, ?, ?);
+
+insertDocumentText:
+INSERT OR REPLACE INTO DocumentText(documentId, language, name, summary, body, sourceAttribution)
+VALUES (?, ?, ?, ?, ?, ?);
+
+countDocuments:
+SELECT COUNT(*) FROM DocumentEntity
+JOIN DocumentText ON DocumentText.documentId = DocumentEntity.id AND DocumentText.language = :language;
+
+countDocumentsOfKind:
+SELECT COUNT(*) FROM DocumentEntity
+JOIN DocumentText ON DocumentText.documentId = DocumentEntity.id AND DocumentText.language = :language
+WHERE DocumentEntity.kind = :kind;
+
+selectAllDocuments:
+SELECT DocumentEntity.id AS id, DocumentText.name AS name, DocumentText.summary AS summary,
+       DocumentEntity.imageUrl AS imageUrl
+FROM DocumentEntity
+JOIN DocumentText ON DocumentText.documentId = DocumentEntity.id AND DocumentText.language = :language
+ORDER BY DocumentEntity.promulgated DESC, DocumentText.name ASC;
+
+-- The index the "Encyclical" row on Kinds of Papal Documents opens. Carries
+-- popeId so the screen can group by pope; the grouping decides the final order,
+-- this just needs each pope's documents adjacent and newest first within them.
+selectDocumentsOfKind:
+SELECT DocumentEntity.id AS id, DocumentText.name AS name, DocumentText.summary AS summary,
+       DocumentEntity.imageUrl AS imageUrl, DocumentEntity.popeId AS popeId,
+       DocumentEntity.documentYear AS documentYear
+FROM DocumentEntity
+JOIN DocumentText ON DocumentText.documentId = DocumentEntity.id AND DocumentText.language = :language
+WHERE DocumentEntity.kind = :kind
+-- promulgated is an ISO date, so it sorts correctly as text; ordering by year
+-- alone left documents from the same year in alphabetical order.
+ORDER BY DocumentEntity.promulgated DESC, DocumentText.name ASC;
+
+selectDocumentDetail:
+SELECT DocumentEntity.id AS id, DocumentText.name AS name, DocumentText.summary AS summary,
+       DocumentText.body AS body, DocumentEntity.kind AS kind, DocumentEntity.popeId AS popeId,
+       DocumentEntity.promulgated AS promulgated, DocumentEntity.documentYear AS documentYear,
+       DocumentEntity.imageUrl AS imageUrl, DocumentEntity.sourceUrl AS sourceUrl,
+       DocumentText.sourceAttribution AS sourceAttribution
+FROM DocumentEntity
+JOIN DocumentText ON DocumentText.documentId = DocumentEntity.id AND DocumentText.language = :language
+WHERE DocumentEntity.id = :id;

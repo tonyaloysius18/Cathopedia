@@ -77,6 +77,24 @@ data class MiracleContent(
     val text: Map<String, LocalizedText>,
 )
 
+/**
+ * A papal document. [kind] is the document's own form — "encyclical",
+ * "apostolic_constitution", "apostolic_exhortation", "motu_proprio" — and drives
+ * the per-kind index. [sourceUrl] points at vatican.va: the letters are
+ * Libreria Editrice Vaticana's, so `body` is our summary, never the text.
+ */
+@Serializable
+data class DocumentContent(
+    val id: String,
+    val kind: String,
+    val popeId: String? = null,
+    val promulgated: String? = null,
+    val documentYear: Long? = null,
+    val imageUrl: String? = null,
+    val sourceUrl: String? = null,
+    val text: Map<String, LocalizedText>,
+)
+
 @Serializable
 data class FeastContent(
     val id: String,
@@ -157,6 +175,7 @@ data class ContentCatalog(
     val apparitions: List<ApparitionContent> = emptyList(),
     val miracles: List<MiracleContent> = emptyList(),
     val feasts: List<FeastContent> = emptyList(),
+    val documents: List<DocumentContent> = emptyList(),
     val prayers: List<PrayerContent> = emptyList(),
     val mysteries: List<MysteryContent> = emptyList(),
     val relations: List<RelationContent> = emptyList(),

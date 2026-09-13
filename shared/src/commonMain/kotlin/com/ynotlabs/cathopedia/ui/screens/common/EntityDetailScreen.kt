@@ -5,11 +5,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -28,6 +31,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.Link
 import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.filled.Share
@@ -51,9 +55,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInParent
 import androidx.compose.ui.text.font.FontFamily
@@ -68,7 +74,10 @@ import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.model.ContentCategory
 import com.ynotlabs.cathopedia.model.ContentType
+import com.ynotlabs.cathopedia.model.DocumentKinds
 import com.ynotlabs.cathopedia.model.RelatedItem
+import com.ynotlabs.cathopedia.ui.GalleryImage
+import com.ynotlabs.cathopedia.ui.MiracleGalleries
 import com.ynotlabs.cathopedia.ui.Portraits
 import com.ynotlabs.cathopedia.ui.PopeCoatsOfArms
 import com.ynotlabs.cathopedia.ui.accentColor
@@ -164,6 +173,8 @@ private data class DetailViewData(
     val facts: List<Pair<String, String>>,
     val sourceAttribution: String?,
     val related: List<RelatedItem>,
+    /** Where the full text lives when we deliberately do not carry it — see [DocumentDetail]. */
+    val externalUrl: String? = null,
 )
 
 private data class ResolvedRelated(
@@ -298,6 +309,22 @@ fun EntityDetailScreen(
                 )
             }
 
+            ContentType.DOCUMENT -> repository.documentDetail(id, language)?.let {
+                DetailViewData(
+                    name = it.name,
+                    summary = it.summary,
+                    body = it.body,
+                    facts = listOfNotNull(
+                        "Document kind" to documentKindLabel(it.kind, s),
+                        it.promulgated?.let { v -> "Promulgated" to v },
+                        it.documentYear?.let { v -> "Year" to v.toString() },
+                    ),
+                    sourceAttribution = it.sourceAttribution,
+                    related = it.related,
+                    externalUrl = it.sourceUrl,
+                )
+            }
+
             ContentType.FEAST -> repository.feastDetail(id, language)?.let {
                 DetailViewData(
                     name = it.name,
@@ -412,6 +439,7 @@ fun EntityDetailScreen(
                 DetailContent(
                     type = type,
                     id = id,
+                    language = language,
                     data = current,
                     resolvedRelated = resolvedRelated,
                     hasHero = portrait != null,
@@ -746,6 +774,7 @@ private fun ActionDivider() {
 private fun DetailContent(
     type: ContentType,
     id: String,
+    language: String,
     data: DetailViewData,
     resolvedRelated: List<ResolvedRelated>,
     hasHero: Boolean,
@@ -815,6 +844,23 @@ private fun DetailContent(
             }
         }
 
+        data.externalUrl?.let { url ->
+            ExternalTextCard(url = url)
+        }
+
+        val gallery = if (type == ContentType.MIRACLE) {
+            MiracleGalleries.forMiracle(id)
+        } else {
+            emptyList()
+        }
+        if (gallery.isNotEmpty()) {
+            ImageGalleryCard(
+                images = gallery,
+                language = language,
+                title = data.name,
+            )
+        }
+
         SourceCard(
             sourceAttribution = data.sourceAttribution,
             generatedPortrait = Portraits.forEntity(type, id) != null &&
@@ -823,6 +869,167 @@ private fun DetailContent(
                 onSourcePositioned(it.positionInParent().y.toInt())
             },
         )
+    }
+}
+
+/**
+ * Collapsed-by-default grid of the miracle's own photographs — relics, reliquaries,
+ * the churches that hold them. Distinct from the devotional hero art above, which is
+ * an illustration; these are documentary images, so they get their own attribution.
+ */
+@Composable
+private fun ImageGalleryCard(
+    images: List<GalleryImage>,
+    language: String,
+    title: String,
+) {
+    val s = LocalStrings.current
+    var expanded by remember { mutableStateOf(false) }
+    var lightboxIndex by remember { mutableStateOf<Int?>(null) }
+    val chevronRotation by animateFloatAsState(if (expanded) 180f else 0f)
+
+    PremiumSectionCard {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { expanded = !expanded },
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                SectionTitle(s.detailImageGalleryTitle)
+                Text(
+                    text = if (images.size == 1) {
+                        s.detailImageGalleryCountOne
+                    } else {
+                        s.detailImageGalleryCount.replace("{count}", images.size.toString())
+                    },
+                    color = DetailMuted,
+                    fontSize = 13.sp,
+                )
+            }
+            Icon(
+                imageVector = Icons.Default.KeyboardArrowDown,
+                contentDescription = if (expanded) {
+                    s.detailImageGalleryCollapse
+                } else {
+                    s.detailImageGalleryExpand
+                },
+                tint = DetailGold,
+                modifier = Modifier.rotate(chevronRotation),
+            )
+        }
+
+        AnimatedVisibility(visible = expanded) {
+            Column(
+                modifier = Modifier.padding(top = 14.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                images.chunked(3).forEachIndexed { rowIndex, row ->
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        row.forEachIndexed { column, image ->
+                            val index = rowIndex * 3 + column
+                            Box(
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .aspectRatio(1f)
+                                    .clip(RoundedCornerShape(10.dp))
+                                    .background(DetailSurfaceElevated)
+                                    .clickable { lightboxIndex = index },
+                            ) {
+                                Image(
+                                    painter = painterResource(image.image),
+                                    contentDescription = image.captionFor(language),
+                                    contentScale = ContentScale.Crop,
+                                    modifier = Modifier.fillMaxSize(),
+                                )
+                            }
+                        }
+                        // Keep the last row's tiles the same width as every other row's.
+                        repeat(3 - row.size) { Spacer(Modifier.weight(1f)) }
+                    }
+                }
+
+                Text(
+                    text = s.detailImageGallerySource,
+                    color = DetailMuted.copy(alpha = 0.75f),
+                    fontSize = 9.sp,
+                    letterSpacing = 0.45.sp,
+                    modifier = Modifier.padding(top = 6.dp),
+                )
+            }
+        }
+    }
+
+    lightboxIndex?.let { start ->
+        GalleryLightbox(
+            images = images,
+            startIndex = start,
+            language = language,
+            title = title,
+            onDismiss = { lightboxIndex = null },
+        )
+    }
+}
+
+@Composable
+private fun GalleryLightbox(
+    images: List<GalleryImage>,
+    startIndex: Int,
+    language: String,
+    title: String,
+    onDismiss: () -> Unit,
+) {
+    FullscreenImageViewer(
+        pageCount = images.size,
+        startIndex = startIndex,
+        title = title,
+        captionForPage = { page -> images[page].captionFor(language) },
+        painterForPage = { page -> painterResource(images[page].image) },
+        onDismiss = onDismiss,
+    )
+}
+
+/**
+ * The way out to a text Cathopedia deliberately does not reproduce. Papal
+ * documents are Libreria Editrice Vaticana's, so the app carries a summary and
+ * sends the reader to the Holy See for the letter itself.
+ */
+@Composable
+private fun ExternalTextCard(url: String) {
+    val s = LocalStrings.current
+    val uriHandler = LocalUriHandler.current
+    PremiumSectionCard {
+        SectionTitle(s.detailFullTextTitle)
+        Text(
+            text = s.detailFullTextNote,
+            color = DetailCream.copy(alpha = 0.85f),
+            fontSize = 14.sp,
+            lineHeight = 21.sp,
+        )
+        Spacer(Modifier.height(14.dp))
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(14.dp))
+                .background(DetailSurfaceElevated)
+                .clickable { uriHandler.openUri(url) }
+                .padding(horizontal = 16.dp, vertical = 14.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Icon(
+                imageVector = Icons.Default.Link,
+                contentDescription = null,
+                tint = DetailGold,
+                modifier = Modifier.size(18.dp),
+            )
+            Spacer(Modifier.width(10.dp))
+            Text(
+                text = s.detailReadFullText,
+                color = DetailGold,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Medium,
+            )
+        }
     }
 }
 
@@ -1055,6 +1262,13 @@ private fun ConnectedChips(
     items
         .groupBy { ContentCategory.of(it.item.type) }
         .forEach { (category, group) ->
+            // Leo XIII promulgated 86 encyclicals. Showing every chip turns his
+            // page into a wall of them and buries the categories underneath, so a
+            // long group collapses to the first few until the reader asks for more.
+            var expanded by remember(category, group.size) { mutableStateOf(false) }
+            val shown = if (expanded) group else group.take(COLLAPSED_CHIP_LIMIT)
+            val hidden = group.size - shown.size
+
             Text(
                 text = category.label(s).uppercase(),
                 color = DetailMuted,
@@ -1067,7 +1281,7 @@ private fun ConnectedChips(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalArrangement = Arrangement.spacedBy(6.dp),
             ) {
-                group.forEach { resolved ->
+                shown.forEach { resolved ->
                     AssistChip(
                         onClick = { onRelatedSelected(resolved.item) },
                         label = {
@@ -1095,11 +1309,35 @@ private fun ConnectedChips(
                         ),
                     )
                 }
+
+                if (hidden > 0) {
+                    AssistChip(
+                        onClick = { expanded = true },
+                        label = {
+                            Text(
+                                text = s.detailShowMoreConnected.replace("{count}", hidden.toString()),
+                                fontSize = 11.sp,
+                                maxLines = 1,
+                            )
+                        },
+                        colors = AssistChipDefaults.assistChipColors(
+                            containerColor = DetailSurfaceElevated,
+                            labelColor = DetailGold,
+                        ),
+                        border = AssistChipDefaults.assistChipBorder(
+                            enabled = true,
+                            borderColor = DetailGold.copy(alpha = 0.5f),
+                        ),
+                    )
+                }
             }
 
             Spacer(Modifier.height(8.dp))
         }
 }
+
+/** How many related chips one category shows before collapsing the rest. */
+private const val COLLAPSED_CHIP_LIMIT = 8
 
 @Composable
 private fun SourceCard(
@@ -1191,14 +1429,42 @@ private fun CompactNoPortraitHeader(
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
+            verticalAlignment = Alignment.Top,
         ) {
             CathopediaBackButton(
                 onClick = onBack,
                 contentDescription = s.back,
             )
 
-            Spacer(Modifier.weight(1f))
+            var resizedFontSize by remember(name) { mutableStateOf(29.sp) }
+
+            Column(modifier = Modifier.weight(1f).padding(top = 4.dp)) {
+                Text(
+                    text = name,
+                    color = DetailCream,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = resizedFontSize,
+                    lineHeight = resizedFontSize.value.sp * 1.1f,
+                    fontWeight = FontWeight.Medium,
+                    maxLines = 1,
+                    softWrap = false,
+                    onTextLayout = { 
+                        if (it.hasVisualOverflow && resizedFontSize.value > 16f) {
+                            resizedFontSize = (resizedFontSize.value * 0.92f).sp
+                        }
+                    }
+                )
+                
+                Spacer(Modifier.height(4.dp))
+                
+                Text(
+                    text = type.singularLabel(s).uppercase(),
+                    color = DetailGold,
+                    fontSize = 10.sp,
+                    letterSpacing = 1.1.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+            }
 
             IconButton(onClick = onBookmark, modifier = Modifier.size(48.dp)) {
                 Image(
@@ -1209,24 +1475,6 @@ private fun CompactNoPortraitHeader(
                 )
             }
         }
-
-        Spacer(Modifier.height(22.dp))
-
-        Text(
-            text = type.singularLabel(s).uppercase(),
-            color = DetailGold,
-            fontSize = 10.sp,
-            letterSpacing = 1.1.sp,
-            fontWeight = FontWeight.Bold,
-        )
-        Spacer(Modifier.height(6.dp))
-        Text(
-            text = name,
-            color = DetailCream,
-            fontFamily = FontFamily.Serif,
-            fontSize = 32.sp,
-            fontWeight = FontWeight.SemiBold,
-        )
     }
 }
 
@@ -1290,6 +1538,15 @@ private fun PortraitLightbox(
     }
 }
 
+/** Translates a [DocumentContent] kind tag for display. */
+private fun documentKindLabel(kind: String, s: Strings): String = when (kind) {
+    DocumentKinds.ENCYCLICAL -> s.docKindEncyclical
+    DocumentKinds.APOSTOLIC_CONSTITUTION -> s.docKindApostolicConstitution
+    DocumentKinds.APOSTOLIC_EXHORTATION -> s.docKindApostolicExhortation
+    DocumentKinds.MOTU_PROPRIO -> s.docKindMotuProprio
+    else -> kind
+}
+
 /** [label] is the internal English key the fact was stored under — translates it for display. */
 private fun factLabel(label: String, s: Strings): String = when (label.lowercase()) {
     "feast day" -> s.detailFactFeastDay
@@ -1306,6 +1563,8 @@ private fun factLabel(label: String, s: Strings): String = when (label.lowercase
     "year" -> s.detailFactYear
     "status" -> s.detailFactStatus
     "date" -> s.detailFactDate
+    "document kind" -> s.detailFactDocumentKind
+    "promulgated" -> s.detailFactPromulgated
     else -> label
 }
 
@@ -1357,7 +1616,8 @@ private fun connectedIcon(type: ContentType): DrawableResource =
         ContentType.SAINT,
         ContentType.APOSTLE -> Res.drawable.connected_person
         ContentType.APPARITION,
-        ContentType.MIRACLE -> Res.drawable.papal_keys
+        ContentType.MIRACLE,
+        ContentType.DOCUMENT -> Res.drawable.papal_keys
     }
 
 private fun DetailViewData.fact(label: String): String? =

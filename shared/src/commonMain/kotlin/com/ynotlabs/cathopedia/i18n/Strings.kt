@@ -145,6 +145,7 @@ class Strings {
     var typeApparitionsPlural: String = "Marian Apparitions"
     var typeMiraclesPlural: String = "Eucharistic Miracles"
     var typeFeastsPlural: String = "Liturgical Feasts"
+    var typeDocumentsPlural: String = "Papal Documents"
     var typeSaintSingular: String = "Saint"
     var typePopeSingular: String = "Pope"
     var typeApostleSingular: String = "Apostle"
@@ -152,12 +153,14 @@ class Strings {
     var typeApparitionSingular: String = "Apparition"
     var typeMiracleSingular: String = "Eucharistic Miracle"
     var typeFeastSingular: String = "Liturgical Feast"
+    var typeDocumentSingular: String = "Papal Document"
 
     // Category groupings (Explore / Search filter chips)
     var categoryPeople: String = "People"
     var categoryPlaces: String = "Places"
     var categoryEvents: String = "Events"
     var categoryFeasts: String = "Feasts"
+    var categoryDocuments: String = "Documents"
 
     // Theme mode
     var themeSystem: String = "System"
@@ -201,6 +204,7 @@ class Strings {
     var countSacredPlaces: String = "{count} sacred places"
     var countApparitions: String = "{count} apparitions"
     var countMiracles: String = "{count} documented miracles"
+    var countDocuments: String = "{count} papal documents"
     var countFeastCelebrations: String = "{count} celebrations in the Church year"
     var countFeastFallback: String = "Journey through the Church year"
     var countEntriesGeneric: String = "{count} entries"
@@ -456,7 +460,27 @@ class Strings {
     var detailAiGeneratedCaption: String = "AI-GENERATED DEVOTIONAL PORTRAIT · STYLED AFTER TRADITIONAL ICONOGRAPHY"
     var detailHistoricalImageCaption: String = "HISTORICAL IMAGE · SEE SOURCES FOR ATTRIBUTION"
     var detailSourceFallback: String = "Cathopedia source material"
+    var docKindEncyclical: String = "Encyclical"
+    var docKindApostolicConstitution: String = "Apostolic constitution"
+    var docKindApostolicExhortation: String = "Apostolic exhortation"
+    var docKindMotuProprio: String = "Motu proprio"
+    var detailFactDocumentKind: String = "Kind"
+    var detailFactPromulgated: String = "Promulgated"
+    /** The letters belong to Libreria Editrice Vaticana, so we send readers to the source. */
+    var diagramFitLabel: String = "Fit"
+    var diagramGestureHint: String = "Pinch to zoom · tap a panel"
+    var detailShowMoreConnected: String = "+{count} more"
+    var detailFullTextTitle: String = "Full text"
+    var detailReadFullText: String = "Read the full text on vatican.va"
+    var detailFullTextNote: String = "Cathopedia summarises this document. The text itself is published by the Holy See."
+    var encyclicalsIndexTitle: String = "Encyclicals"
     var detailPortraitIllustrationNote: String = "Portrait is a devotional illustration; see source attribution for the historical content."
+    var detailImageGalleryTitle: String = "Image Gallery"
+    var detailImageGalleryCount: String = "{count} images"
+    var detailImageGalleryCountOne: String = "1 image"
+    var detailImageGalleryExpand: String = "Show the image gallery"
+    var detailImageGalleryCollapse: String = "Hide the image gallery"
+    var detailImageGallerySource: String = "PHOTOGRAPHS COURTESY OF EUCHARISTICMIRACLES.FAITH"
 }
 
 /** English is the base table — every default above is already English. */

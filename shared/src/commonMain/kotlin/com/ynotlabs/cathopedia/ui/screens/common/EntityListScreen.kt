@@ -221,6 +221,8 @@ fun EntityListScreen(
     onItemSelected: (ContentSummary) -> Unit,
     listState: LazyListState = rememberLazyListState(),
     chipScrollState: ScrollState = rememberScrollState(),
+    /** Narrows a DOCUMENT list to one kind, e.g. only encyclicals. Ignored for other types. */
+    documentKind: String? = null,
     initialItems: List<ContentSummary>? = null,
     initialSelectedCentury: String? = null,
     initialHeaderHeightPx: Int = 0,
@@ -238,9 +240,13 @@ fun EntityListScreen(
     var showFilterSheet by remember(type) { mutableStateOf(false) }
     var hasObservedCenturySelection by remember(type) { mutableStateOf(false) }
 
-    LaunchedEffect(type, language) {
+    LaunchedEffect(type, language, documentKind) {
         if (items == null) {
-            val loadedItems = repository.listByType(type, language)
+            val loadedItems = if (documentKind != null) {
+                repository.listDocumentsOfKind(documentKind, language)
+            } else {
+                repository.listByType(type, language)
+            }
             items = loadedItems
             onItemsLoaded(loadedItems)
         }

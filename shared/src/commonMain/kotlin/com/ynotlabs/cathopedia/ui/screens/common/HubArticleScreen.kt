@@ -6,11 +6,14 @@ import com.ynotlabs.cathopedia.ui.screens.catechism.FourMarksScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.LastThingsScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.AngelChoirsScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.RelicsScreen
+import com.ynotlabs.cathopedia.ui.screens.holysee.PapalDocumentsScreen
+import com.ynotlabs.cathopedia.ui.screens.symbols.MedalCardsArticle
 import com.ynotlabs.cathopedia.ui.screens.catechism.SacredImagesScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.ThreePillarsScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.ReverenceScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.WhoCreatedTheBibleScreen
 import com.ynotlabs.cathopedia.ui.screens.holysee.PatriarchAndPopeScreen
+import com.ynotlabs.cathopedia.ui.screens.holysee.PapalTombsScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.MassTypesScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.LiturgicalYearScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.MassBooksScreen
@@ -155,6 +158,8 @@ fun HubArticleScreen(
     language: String,
     onBack: () -> Unit,
     onEntityRefSelected: (EntityRef) -> Unit,
+    /** Opens the index for one kind of papal document — see PapalDocumentsScreen. */
+    onDocumentKindSelected: (String) -> Unit = {},
     listState: LazyListState = rememberLazyListState(),
     initialArticle: HubArticleDetail? = null,
     initialStrings: Map<String, String>? = null,
@@ -163,6 +168,16 @@ fun HubArticleScreen(
     onStringsLoaded: (Map<String, String>) -> Unit = {},
     onHeaderHeightChanged: (Int) -> Unit = {},
 ) {
+    if (articleId == "art.papal_tombs.overview") {
+        PapalTombsScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            listState = listState,
+        )
+        return
+    }
+
     if (articleId == "art.cat.trinity") {
         HolyTrinityScreen(
             repository = repository,
@@ -186,6 +201,29 @@ fun HubArticleScreen(
 
     if (articleId == "art.cat.bible_origin") {
         WhoCreatedTheBibleScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            listState = listState,
+        )
+        return
+    }
+
+    if (articleId == "art.papal_documents.overview") {
+        PapalDocumentsScreen(
+            articleId = articleId,
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            onKindSelected = onDocumentKindSelected,
+            listState = listState,
+        )
+        return
+    }
+
+    if (articleId == "art.symbols.medals") {
+        MedalCardsArticle(
+            articleId = articleId,
             repository = repository,
             language = language,
             onBack = onBack,
@@ -472,7 +510,7 @@ fun HubArticleScreen(
             state = listState,
             contentPadding = PaddingValues(
                 start = 20.dp,
-                top = headerHeightDp + 20.dp,
+                top = headerHeightDp + 6.dp,
                 end = 20.dp,
                 bottom = 120.dp
             ),
@@ -1225,7 +1263,7 @@ private fun SymbolMarkupText(
     )
 }
 
-private fun blockKeys(block: Block): Set<String> = when (block) {
+internal fun blockKeys(block: Block): Set<String> = when (block) {
     is HeadingBlock -> setOf(block.textKey)
     is ParagraphBlock -> setOf(block.textKey)
     is ListBlock -> block.itemKeys.toSet()
@@ -1240,7 +1278,7 @@ private fun blockKeys(block: Block): Set<String> = when (block) {
 }
 
 @Composable
-private fun BlockView(
+internal fun BlockView(
     block: Block,
     strings: Map<String, String>,
     onEntityRefSelected: (EntityRef) -> Unit,

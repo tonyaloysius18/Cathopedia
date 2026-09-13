@@ -68,12 +68,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.content.model.CircleShape
+import com.ynotlabs.cathopedia.content.model.HeadingBlock
+import com.ynotlabs.cathopedia.content.model.ParagraphBlock
 import com.ynotlabs.cathopedia.content.model.EntityRef
 import com.ynotlabs.cathopedia.content.model.PolygonShape
 import com.ynotlabs.cathopedia.content.model.RectShape
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.model.HubArticleSummary
+import com.ynotlabs.cathopedia.model.HubArticleDetail
 import com.ynotlabs.cathopedia.model.HubDiagramDetail
 import com.ynotlabs.cathopedia.model.HubFactSheetDetail
 import com.ynotlabs.cathopedia.model.HubHotspotDetail
@@ -97,7 +100,6 @@ private val HubSectionCard = Color(0xFF0C271E)
 private val HubSectionGold = Color(0xFFD6AE3D)
 private val HubSectionCream = Color(0xFFF4ECDD)
 private val HubSectionMuted = Color(0xFFB7B09D)
-
 /**
  * Section shell: resolves the section's own header, then dispatches to one renderer per
  * [HubSectionSummary.layout] (docs/briefs/topic-hubs.md, T5). ARTICLES and DIAGRAM are the two
@@ -254,7 +256,7 @@ fun HubSectionScreen(
             state = listState,
             contentPadding = PaddingValues(
                 start = 20.dp,
-                top = headerHeightDp + 18.dp,
+                top = headerHeightDp + 6.dp,
                 end = 20.dp,
                 bottom = 120.dp,
             ),
@@ -270,7 +272,10 @@ fun HubSectionScreen(
 
                 section!!.heroAsset?.let { asset ->
                     item {
-                        HubSectionEditorialImage(asset)
+                        HubSectionEditorialImage(
+                            asset = asset,
+                            title = strings[section!!.titleKey].orEmpty(),
+                        )
                     }
                 }
 
@@ -279,7 +284,18 @@ fun HubSectionScreen(
                 }
 
                 when (section!!.layout) {
-                    "ARTICLES" -> articlesSectionBody(sectionId, repository, language, onArticleSelected, initialArticles, onArticlesLoaded)
+                    "ARTICLES" -> if (section!!.articleIds.size == 1) {
+                        inlineSingleArticleSectionBody(
+                            sectionId = sectionId,
+                            repository = repository,
+                            language = language,
+                            onEntityRefSelected = onEntityRefSelected,
+                            initialArticles = initialArticles,
+                            onArticlesLoaded = onArticlesLoaded,
+                        )
+                    } else {
+                        articlesSectionBody(sectionId, repository, language, onArticleSelected, initialArticles, onArticlesLoaded)
+                    }
                     "DIAGRAM" -> diagramSectionBody(section!!.diagramId, repository, language, onEntityRefSelected)
                     "FACT_SHEET" -> factSheetSectionBody(section!!.factSheetId, repository, language)
                     "STEPPER" -> stepperSectionBody(section!!.stepperId, repository, language)
@@ -312,29 +328,51 @@ fun HubSectionScreen(
 }
 
 @Composable
-private fun HubSectionEditorialImage(asset: String) {
+private fun HubSectionEditorialImage(asset: String, title: String) {
+    var showFullscreen by remember(asset) { mutableStateOf(false) }
     hubAssetPainter(asset)?.let { painter ->
+        val isDetailedVaticanMap = asset.substringAfterLast('/').substringBeforeLast('.') ==
+            "vatican_city_map_real"
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .aspectRatio(1.5f)
-                .clip(RoundedCornerShape(22.dp)),
+                .aspectRatio(if (isDetailedVaticanMap) 1.295f else 1.5f)
+                .clip(RoundedCornerShape(22.dp))
+                .then(
+                    if (isDetailedVaticanMap) {
+                        Modifier.clickable { showFullscreen = true }
+                    } else {
+                        Modifier
+                    }
+                ),
         ) {
             Image(
                 painter = painter,
                 contentDescription = null,
-                contentScale = ContentScale.Crop,
+                contentScale = if (isDetailedVaticanMap) ContentScale.Fit else ContentScale.Crop,
                 modifier = Modifier.fillMaxSize(),
             )
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(
-                        Brush.verticalGradient(
-                            0.52f to Color.Transparent,
-                            1f to HubSectionHeader.copy(alpha = 0.76f),
-                        )
-                    ),
+            if (!isDetailedVaticanMap) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(
+                            Brush.verticalGradient(
+                                0.52f to Color.Transparent,
+                                1f to HubSectionHeader.copy(alpha = 0.76f),
+                            )
+                        ),
+                )
+            }
+        }
+
+        if (showFullscreen) {
+            FullscreenImageViewer(
+                pageCount = 1,
+                title = title,
+                captionForPage = { title },
+                painterForPage = { hubAssetPainter(asset) },
+                onDismiss = { showFullscreen = false },
             )
         }
     }
@@ -410,6 +448,8 @@ private fun HubSectionHeaderPanel(
 
 @Composable
 private fun HubSectionItemCard(
+    year: String? = null,
+    title: String? = null,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     Surface(
@@ -424,8 +464,46 @@ private fun HubSectionItemCard(
 
             Column(
                 modifier = Modifier.padding(start = 18.dp, top = 14.dp, end = 16.dp, bottom = 14.dp),
-                content = content,
-            )
+            ) {
+                if (year != null || title != null) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        year?.let {
+                            Surface(
+                                color = HubSectionHeader.copy(alpha = 0.85f),
+                                shape = RoundedCornerShape(50),
+                                border = BorderStroke(1.dp, HubSectionGold.copy(alpha = 0.75f)),
+                            ) {
+                                Text(
+                                    text = it,
+                                    color = HubSectionGold,
+                                    fontSize = 11.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    fontFamily = FontFamily.Serif,
+                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
+                                )
+                            }
+                            Spacer(Modifier.width(12.dp))
+                        }
+
+                        title?.let {
+                            Text(
+                                text = it,
+                                color = HubSectionCream,
+                                fontFamily = FontFamily.Serif,
+                                fontSize = if (year != null) 18.sp else 20.sp,
+                                lineHeight = if (year != null) 22.sp else 24.sp,
+                                fontWeight = FontWeight.Medium,
+                                modifier = Modifier.weight(1f)
+                            )
+                        }
+                    }
+                    Spacer(Modifier.height(8.dp))
+                }
+                content()
+            }
         }
     }
 }
@@ -480,6 +558,68 @@ private fun androidx.compose.foundation.lazy.LazyListScope.articlesSectionBody(
                     readingTimeMinutes = article.readingTimeMinutes,
                     onClick = { onArticleSelected(article) },
                 )
+            }
+        }
+    }
+}
+
+/**
+ * A section with one article does not need an intermediate one-row index.
+ * The article is rendered directly below the section hero while its original
+ * route remains available for existing deep links and saved navigation.
+ */
+private fun androidx.compose.foundation.lazy.LazyListScope.inlineSingleArticleSectionBody(
+    sectionId: String,
+    repository: CathopediaRepository,
+    language: String,
+    onEntityRefSelected: (EntityRef) -> Unit,
+    initialArticles: List<HubArticleSummary>? = null,
+    onArticlesLoaded: (List<HubArticleSummary>) -> Unit = {},
+) {
+    item(key = "inline-article-$sectionId") {
+        var article by remember(sectionId, language) { mutableStateOf<HubArticleDetail?>(null) }
+        var articleStrings by remember(sectionId, language) { mutableStateOf<Map<String, String>>(emptyMap()) }
+
+        LaunchedEffect(sectionId, language) {
+            val summaries = initialArticles
+                ?.takeIf { it.isNotEmpty() }
+                ?: repository.hubArticlesForSection(sectionId).sortedBy { it.sortOrder }
+            onArticlesLoaded(summaries)
+            val loaded = summaries.firstOrNull()?.let { repository.hubArticle(it.id) }
+                ?: return@LaunchedEffect
+            article = loaded
+            val keys = buildSet {
+                add(loaded.titleKey)
+                loaded.leadKey?.let(::add)
+                loaded.blocks.forEach { addAll(blockKeys(it)) }
+            }
+            articleStrings = repository.resolveHubStrings(keys, language)
+        }
+
+        val current = article
+        if (current != null) {
+            Column(verticalArrangement = Arrangement.spacedBy(14.dp)) {
+                current.leadKey
+                    ?.let(articleStrings::get)
+                    ?.takeIf(String::isNotBlank)
+                    ?.let { lead ->
+                        Text(
+                            text = lead,
+                            color = HubSectionMuted,
+                            fontSize = 15.sp,
+                            lineHeight = 22.sp,
+                        )
+                    }
+                current.blocks.forEachIndexed { index, block ->
+                    val isIntroParagraph = block is ParagraphBlock &&
+                        (index == 0 || current.blocks.getOrNull(index - 1) is HeadingBlock)
+                    BlockView(
+                        block = block,
+                        strings = articleStrings,
+                        onEntityRefSelected = onEntityRefSelected,
+                        emphasizeParagraph = isIntroParagraph,
+                    )
+                }
             }
         }
     }
@@ -584,8 +724,16 @@ private fun androidx.compose.foundation.lazy.LazyListScope.diagramSectionBody(
                 aspectRatio = d.aspectRatio,
                 minZoom = d.minZoom,
                 maxZoom = d.maxZoom,
+                // Artwork far from square — the Sistine ceiling is three times taller than wide —
+                // would otherwise lay out as a column several screens long. Cap it at a viewport
+                // the reader can see whole, and let zoom do the exploring.
+                viewportHeight = if (d.aspectRatio < 0.75f || d.aspectRatio > 2.2f) DIAGRAM_VIEWPORT else null,
                 hotspots = d.hotspots.map { it.toDiagramHotspot(strings) },
+                showTourRail = d.hotspots.any { it.order != null },
                 readMoreLabel = s.continueLabel,
+                resetLabel = s.diagramFitLabel,
+                hintText = s.diagramGestureHint,
+                accessibilityLabel = d.titleKey?.let { strings[it] }.orEmpty(),
                 onReadMore = { uiHotspot ->
                     hotspotById[uiHotspot.id]?.target?.let(onEntityRefSelected)
                 },
@@ -600,6 +748,9 @@ private fun androidx.compose.foundation.lazy.LazyListScope.diagramSectionBody(
         }
     }
 }
+
+/** How much vertical room a diagram gets before zoom takes over from scrolling. */
+private val DIAGRAM_VIEWPORT = 420.dp
 
 private fun HubHotspotDetail.toDiagramHotspot(strings: Map<String, String>) = DiagramHotspot(
     id = id,
@@ -806,24 +957,15 @@ private fun androidx.compose.foundation.lazy.LazyListScope.stepperSectionBody(
         stepper?.let { st ->
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             st.steps.sortedBy { it.order }.forEach { step ->
-                HubSectionItemCard {
-                    Column(modifier = Modifier.fillMaxWidth()) {
-                        Text(
-                            text = strings[step.titleKey].orEmpty(),
-                            color = HubSectionCream,
-                            fontFamily = FontFamily.Serif,
-                            fontSize = 20.sp,
-                            lineHeight = 24.sp,
-                            fontWeight = FontWeight.Medium,
-                        )
-                        Spacer(Modifier.height(8.dp))
-                        Text(
-                            text = strings[step.bodyKey].orEmpty(),
-                            color = HubSectionMuted,
-                            fontSize = 15.sp,
-                            lineHeight = 21.sp,
-                        )
-                    }
+                HubSectionItemCard(
+                    title = strings[step.titleKey].orEmpty()
+                ) {
+                    Text(
+                        text = strings[step.bodyKey].orEmpty(),
+                        color = HubSectionMuted,
+                        fontSize = 15.sp,
+                        lineHeight = 21.sp,
+                    )
                 }
             }
         }
@@ -851,35 +993,18 @@ private fun androidx.compose.foundation.lazy.LazyListScope.timelineSectionBody(
         timeline?.let { tl ->
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             tl.events.sortedBy { it.year }.forEach { event ->
-                HubSectionItemCard {
-                    Row(modifier = Modifier.fillMaxWidth()) {
-                        Text(
-                            text = (if (event.approximate) "c. " else "") + event.year.toString(),
-                            color = HubSectionGold,
-                            fontWeight = FontWeight.SemiBold,
-                            fontSize = 14.sp,
-                            modifier = Modifier.width(64.dp),
-                        )
-                        Column(modifier = Modifier.weight(1f)) {
+                HubSectionItemCard(
+                    year = (if (event.approximate) "c. " else "") + event.year.toString(),
+                    title = strings[event.titleKey].orEmpty()
+                ) {
+                    event.bodyKey?.let { key ->
+                        strings[key]?.let { body ->
                             Text(
-                                text = strings[event.titleKey].orEmpty(),
-                                color = HubSectionCream,
-                                fontFamily = FontFamily.Serif,
-                                fontSize = 18.sp,
-                                lineHeight = 22.sp,
-                                fontWeight = FontWeight.Medium,
+                                text = body,
+                                color = HubSectionMuted,
+                                fontSize = 14.sp,
+                                lineHeight = 19.sp
                             )
-                            event.bodyKey?.let { key ->
-                                strings[key]?.let { body ->
-                                    Spacer(Modifier.height(6.dp))
-                                    Text(
-                                        text = body,
-                                        color = HubSectionMuted,
-                                        fontSize = 14.sp,
-                                        lineHeight = 19.sp
-                                    )
-                                }
-                            }
                         }
                     }
                 }

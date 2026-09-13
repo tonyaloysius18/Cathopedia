@@ -1,0 +1,23 @@
+-- Papal documents (encyclicals and the other kinds listed on
+-- "Kinds of Papal Documents"). See Document.sq for why the full text is not
+-- stored here.
+CREATE TABLE DocumentEntity (
+    id TEXT NOT NULL PRIMARY KEY,
+    kind TEXT NOT NULL,
+    popeId TEXT,
+    promulgated TEXT,
+    documentYear INTEGER,
+    imageUrl TEXT,
+    sourceUrl TEXT
+);
+
+CREATE TABLE DocumentText (
+    documentId TEXT NOT NULL,
+    language TEXT NOT NULL,
+    name TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    body TEXT NOT NULL,
+    sourceAttribution TEXT,
+    PRIMARY KEY (documentId, language),
+    FOREIGN KEY (documentId) REFERENCES DocumentEntity(id) ON DELETE CASCADE
+);

@@ -22,6 +22,8 @@ import com.ynotlabs.cathopedia.model.HubSectionSummary
 import com.ynotlabs.cathopedia.model.HubStepperDetail
 import com.ynotlabs.cathopedia.model.HubSummary
 import com.ynotlabs.cathopedia.model.HubTimelineDetail
+import com.ynotlabs.cathopedia.model.DocumentDetail
+import com.ynotlabs.cathopedia.model.DocumentPopeGroup
 import com.ynotlabs.cathopedia.model.MiracleDetail
 import com.ynotlabs.cathopedia.model.MysteryDetail
 import com.ynotlabs.cathopedia.model.MysterySet
@@ -222,6 +224,70 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
         }
     }
 
+    suspend fun listDocuments(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
+        database.documentQueries.selectAllDocuments(language)
+            .executeAsList()
+            .map { ContentSummary(ContentType.DOCUMENT, it.id, it.name, it.summary, it.imageUrl) }
+    }
+
+    /** One kind of papal document — what the Encyclical row on Kinds of Papal Documents opens. */
+    suspend fun listDocumentsOfKind(kind: String, language: String): List<ContentSummary> =
+        withContext(Dispatchers.Default) {
+            database.documentQueries.selectDocumentsOfKind(language = language, kind = kind)
+                .executeAsList()
+                .map { ContentSummary(ContentType.DOCUMENT, it.id, it.name, it.summary, it.imageUrl) }
+        }
+
+    /**
+     * The same list grouped by promulgating pope, most recent pope first and each
+     * pope's documents newest first. Pope display names come from the pope entities
+     * we already carry; a document whose pope we do not have falls back to its id.
+     */
+    suspend fun documentsOfKindByPope(kind: String, language: String): List<DocumentPopeGroup> =
+        withContext(Dispatchers.Default) {
+            val rows = database.documentQueries.selectDocumentsOfKind(language = language, kind = kind)
+                .executeAsList()
+            rows.groupBy { it.popeId ?: "" }
+                .map { (popeId, docs) ->
+                    DocumentPopeGroup(
+                        popeId = popeId.ifBlank { null },
+                        popeName = popeId.takeIf { it.isNotBlank() }
+                            ?.let { summaryOf(ContentType.POPE, it, language)?.name } ?: popeId,
+                        documents = docs.map {
+                            ContentSummary(ContentType.DOCUMENT, it.id, it.name, it.summary, it.imageUrl)
+                        },
+                        // Sort groups by the pope's latest document rather than by name:
+                        // regnal numerals do not sort chronologically as text.
+                        latestYear = docs.maxOfOrNull { it.documentYear ?: 0L } ?: 0L,
+                    )
+                }
+                .sortedByDescending { it.latestYear }
+        }
+
+    suspend fun countDocumentsOfKind(kind: String, language: String): Int = withContext(Dispatchers.Default) {
+        database.documentQueries.countDocumentsOfKind(language = language, kind = kind)
+            .executeAsOne().toInt()
+    }
+
+    suspend fun documentDetail(id: String, language: String): DocumentDetail? = withContext(Dispatchers.Default) {
+        database.documentQueries.selectDocumentDetail(language = language, id = id).executeAsOneOrNull()?.let {
+            DocumentDetail(
+                id = it.id,
+                name = it.name,
+                summary = it.summary,
+                body = it.body,
+                kind = it.kind,
+                popeId = it.popeId,
+                promulgated = it.promulgated,
+                documentYear = it.documentYear,
+                imageUrl = it.imageUrl,
+                sourceUrl = it.sourceUrl,
+                sourceAttribution = it.sourceAttribution,
+                related = relatedItems(ContentType.DOCUMENT, id),
+            )
+        }
+    }
+
     suspend fun listFeasts(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
         database.feastQueries.selectAllFeasts(language)
             .executeAsList()
@@ -366,6 +432,7 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
         ContentType.APPARITION -> listApparitions(language)
         ContentType.MIRACLE -> listMiracles(language)
         ContentType.FEAST -> listFeasts(language)
+        ContentType.DOCUMENT -> listDocuments(language)
     }
 
     /**

@@ -17,6 +17,7 @@ fun ContentType.displayName(s: Strings): String = when (this) {
     ContentType.APPARITION -> s.typeApparitionsPlural
     ContentType.MIRACLE -> s.typeMiraclesPlural
     ContentType.FEAST -> s.typeFeastsPlural
+    ContentType.DOCUMENT -> s.typeDocumentsPlural
 }
 
 fun ContentType.singularLabel(s: Strings): String = when (this) {
@@ -27,6 +28,7 @@ fun ContentType.singularLabel(s: Strings): String = when (this) {
     ContentType.APPARITION -> s.typeApparitionSingular
     ContentType.MIRACLE -> s.typeMiracleSingular
     ContentType.FEAST -> s.typeFeastSingular
+    ContentType.DOCUMENT -> s.typeDocumentSingular
 }
 
 fun ContentCategory.label(s: Strings): String = when (this) {
@@ -34,6 +36,7 @@ fun ContentCategory.label(s: Strings): String = when (this) {
     ContentCategory.PLACES -> s.categoryPlaces
     ContentCategory.EVENTS -> s.categoryEvents
     ContentCategory.FEASTS -> s.categoryFeasts
+    ContentCategory.DOCUMENTS -> s.categoryDocuments
 }
 
 /** The colour-coding that makes the relation graph's shape readable at a glance. */
@@ -42,6 +45,7 @@ fun ContentCategory.accentColor(): Color = when (this) {
     ContentCategory.PLACES -> CategoryPlacesGold
     ContentCategory.EVENTS -> CategoryEventsViolet
     ContentCategory.FEASTS -> CategoryFeastMustard
+    ContentCategory.DOCUMENTS -> CategoryPlacesGold
 }
 
 fun ContentType.accentColor(): Color = ContentCategory.of(this).accentColor()

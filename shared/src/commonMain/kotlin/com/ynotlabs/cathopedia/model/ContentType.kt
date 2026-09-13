@@ -1,9 +1,13 @@
 package com.ynotlabs.cathopedia.model
 
 /**
- * The seven entity kinds from the Phase 0 content model. [tag] is the exact
- * string stored in EntityRelation.fromType/toType and ContentSearch.entityType,
- * so it must stay in sync with the SQLDelight schema.
+ * The entity kinds in the content model. [tag] is the exact string stored in
+ * EntityRelation.fromType/toType and ContentSearch.entityType, so it must stay
+ * in sync with the SQLDelight schema.
+ *
+ * DOCUMENT covers the papal texts — encyclicals first. Their full text belongs
+ * to Libreria Editrice Vaticana, so a document entity carries our own summary
+ * and links out to vatican.va rather than reproducing the letter.
  */
 enum class ContentType(val tag: String) {
     SAINT("saint"),
@@ -12,7 +16,8 @@ enum class ContentType(val tag: String) {
     CHURCH("church"),
     APPARITION("apparition"),
     MIRACLE("miracle"),
-    FEAST("feast");
+    FEAST("feast"),
+    DOCUMENT("document");
 
     companion object {
         fun fromTag(tag: String): ContentType = entries.first { it.tag == tag }

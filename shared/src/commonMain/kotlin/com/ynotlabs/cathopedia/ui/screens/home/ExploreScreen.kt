@@ -248,7 +248,7 @@ fun ExploreScreen(
             }
         }
 
-        ContentCategory.entries.forEach { category ->
+        ContentCategory.browsable.forEach { category ->
             val visibleTypes = category.types.filter { type ->
                 query.isBlank() || type.displayName(s).contains(query, ignoreCase = true)
             }
@@ -307,7 +307,7 @@ fun ExploreScreen(
         }
 
         if (query.isNotBlank()) {
-            val hasAnyResult = ContentCategory.entries.any { category ->
+            val hasAnyResult = ContentCategory.browsable.any { category ->
                 category.types.any { it.displayName(s).contains(query, ignoreCase = true) }
             }
 
@@ -1097,6 +1097,9 @@ private fun CategoryArtwork(
         ContentType.APPARITION -> painterResource(Res.drawable.explore_marian)
         ContentType.MIRACLE -> painterResource(Res.drawable.explore_eucharistic)
         ContentType.FEAST -> painterResource(Res.drawable.explore_feasts)
+        // Papal documents are reached through the Holy See hub, never an Explore
+        // tile, so this branch exists only to keep the when exhaustive.
+        ContentType.DOCUMENT -> painterResource(Res.drawable.explore_holy_see)
     }
 
     Image(
@@ -1124,6 +1127,7 @@ private fun CategoryGlyph(
         ContentType.APPARITION -> painterResource(Res.drawable.marian_apparitions_icon)
         ContentType.MIRACLE -> painterResource(Res.drawable.eucharistic_miracles_icon)
         ContentType.FEAST -> painterResource(Res.drawable.liturgical_feasts_icon)
+        ContentType.DOCUMENT -> painterResource(Res.drawable.holy_see_icon)
     }
 
     Image(
@@ -1142,6 +1146,7 @@ private fun humanCountLabel(type: ContentType, count: Int, s: Strings): String {
         ContentType.CHURCH -> s.countSacredPlaces
         ContentType.APPARITION -> s.countApparitions
         ContentType.MIRACLE -> s.countMiracles
+        ContentType.DOCUMENT -> s.countDocuments
         ContentType.FEAST -> return if (count > 0) {
             s.countFeastCelebrations.replace("{count}", count.toString())
         } else {

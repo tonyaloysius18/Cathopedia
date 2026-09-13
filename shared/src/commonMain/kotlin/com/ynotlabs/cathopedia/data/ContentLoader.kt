@@ -39,7 +39,7 @@ object ContentLoader {
      * this just controls whether it re-runs on an existing install rather
      * than only ever loading once on a database with zero rows.
      */
-    private const val CONTENT_VERSION = "81"
+    private const val CONTENT_VERSION = "96"
     private const val CONTENT_VERSION_KEY = "content_version"
 
     // classDiscriminator/explicitNulls (from com.ynotlabs.cathopedia.content.hubContentJson) are
@@ -107,6 +107,15 @@ object ContentLoader {
             m.text.forEach { (lang, t) ->
                 database.miracleQueries.insertMiracleText(m.id, lang, t.name, t.summary, t.body, t.sourceAttribution)
                 index(database, ContentType.MIRACLE, m.id, lang, t)
+            }
+        }
+        catalog.documents.forEach { d ->
+            database.documentQueries.insertDocument(
+                d.id, d.kind, d.popeId, d.promulgated, d.documentYear, d.imageUrl, d.sourceUrl,
+            )
+            d.text.forEach { (lang, t) ->
+                database.documentQueries.insertDocumentText(d.id, lang, t.name, t.summary, t.body, t.sourceAttribution)
+                index(database, ContentType.DOCUMENT, d.id, lang, t)
             }
         }
         catalog.feasts.forEach { f ->

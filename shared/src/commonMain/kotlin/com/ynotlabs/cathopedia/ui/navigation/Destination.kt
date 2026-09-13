@@ -13,6 +13,8 @@ sealed interface Destination {
     data class HubSection(val hubId: String, val sectionId: String) : Destination
     data class HubArticle(val hubId: String, val articleId: String) : Destination
     data class EntityList(val type: ContentType) : Destination
+    /** One kind of papal document, e.g. every encyclical. */
+    data class DocumentIndex(val kind: String) : Destination
     data class EntityDetail(val type: ContentType, val id: String) : Destination
     data object PrayersHome : Destination
     data class PrayerDetail(val slug: String) : Destination

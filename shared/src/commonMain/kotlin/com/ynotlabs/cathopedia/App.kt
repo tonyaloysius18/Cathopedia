@@ -76,6 +76,7 @@ import com.ynotlabs.cathopedia.ui.screens.settings.AboutScreen
 import com.ynotlabs.cathopedia.ui.screens.settings.AppearanceScreen
 import com.ynotlabs.cathopedia.ui.screens.common.EntityDetailScreen
 import com.ynotlabs.cathopedia.ui.screens.common.EntityListScreen
+import com.ynotlabs.cathopedia.ui.screens.holysee.DocumentIndexScreen
 import com.ynotlabs.cathopedia.ui.screens.home.ExploreData
 import com.ynotlabs.cathopedia.ui.screens.home.ExploreScreen
 import com.ynotlabs.cathopedia.ui.screens.home.loadExploreData
@@ -193,6 +194,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
     // Retain both its position and the data that determines what that position
     // means, otherwise a filtered Popes list briefly rebuilds as the full list.
     val entityListScrollStates = remember { mutableStateMapOf<Pair<ContentType, String>, LazyListState>() }
+    val documentIndexScrollStates = remember { mutableStateMapOf<String, LazyListState>() }
     val entityListItemCaches = remember { mutableStateMapOf<Pair<ContentType, String>, List<ContentSummary>>() }
     // Explore's hub cards and tile counts, kept across visits to the tab.
     var exploreData by remember { mutableStateOf<ExploreData?>(null) }
@@ -384,6 +386,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                         language = language,
                         onBack = nav::back,
                         onEntityRefSelected = { ref -> navigateToHubEntityRef(nav, current.hubId, ref) },
+                        onDocumentKindSelected = { kind -> nav.navigate(Destination.DocumentIndex(kind)) },
                         listState = hubArticleScrollStates.getOrPut(current.articleId) { LazyListState() },
                         initialArticle = hubArticleDetails[current.articleId],
                         initialStrings = hubArticleStringsCache[current.articleId],
@@ -391,6 +394,19 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                         onArticleLoaded = { hubArticleDetails[current.articleId] = it },
                         onStringsLoaded = { hubArticleStringsCache[current.articleId] = it },
                         onHeaderHeightChanged = { hubArticleHeaderHeights[current.articleId] = it },
+                    )
+                }
+
+                is Destination.DocumentIndex -> {
+                    DocumentIndexScreen(
+                        kind = current.kind,
+                        repository = repository,
+                        language = language,
+                        onBack = nav::back,
+                        onDocumentSelected = { item: ContentSummary ->
+                            nav.navigate(Destination.EntityDetail(item.type, item.id))
+                        },
+                        listState = documentIndexScrollStates.getOrPut(current.kind) { LazyListState() },
                     )
                 }
 
@@ -585,6 +601,7 @@ private fun navigateToHubEntityRef(nav: AppNavController, hubId: String, ref: En
         EntityType.SAINT -> nav.navigate(Destination.EntityDetail(ContentType.SAINT, ref.id))
         EntityType.CHURCH -> nav.navigate(Destination.EntityDetail(ContentType.CHURCH, ref.id))
         EntityType.PRAYER -> nav.navigate(Destination.PrayerDetail(ref.id))
-        EntityType.DOCUMENT, EntityType.COUNCIL, EntityType.ARTWORK, EntityType.PLACE -> Unit
+        EntityType.DOCUMENT -> nav.navigate(Destination.EntityDetail(ContentType.DOCUMENT, ref.id))
+        EntityType.COUNCIL, EntityType.ARTWORK, EntityType.PLACE -> Unit
     }
 }
