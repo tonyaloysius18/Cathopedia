@@ -49,6 +49,7 @@ import com.ynotlabs.cathopedia.ui.screens.common.ArticleIntroCard
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleScaffold
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleSectionLabel
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleSurface
+import com.ynotlabs.cathopedia.ui.screens.common.WrappedImageTitleBody
 import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.ui.hubAssetPainter
@@ -224,10 +225,13 @@ private fun MassTypeCard(type: MassType) {
             Column(
                 modifier = Modifier.padding(start = 20.dp, top = 16.dp, end = 16.dp, bottom = 16.dp),
             ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
+                WrappedImageTitleBody(
+                    imageSize = 58.dp,
+                    body = type.body,
+                    bodyColor = ArticleCream.copy(alpha = 0.88f),
+                    bodyFontSize = 13.sp,
+                    bodyLineHeight = 20.sp,
+                    image = {
                     Box(
                         modifier = Modifier.size(58.dp),
                         contentAlignment = Alignment.Center,
@@ -246,9 +250,10 @@ private fun MassTypeCard(type: MassType) {
                             fontWeight = FontWeight.Bold,
                         )
                     }
-                    Spacer(Modifier.width(14.dp))
+                    },
+                    title = {
                     Row(
-                        modifier = Modifier.weight(1f),
+                        modifier = Modifier.fillMaxWidth(),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Text(
@@ -269,13 +274,7 @@ private fun MassTypeCard(type: MassType) {
                             modifier = Modifier.weight(1f),
                         )
                     }
-                }
-                Spacer(Modifier.height(10.dp))
-                Text(
-                    text = type.body,
-                    color = ArticleCream.copy(alpha = 0.88f),
-                    fontSize = 13.sp,
-                    lineHeight = 20.sp,
+                    },
                 )
                 if (type.reference.isNotBlank()) {
                     Spacer(Modifier.height(7.dp))

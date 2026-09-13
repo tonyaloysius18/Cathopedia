@@ -718,17 +718,18 @@ private fun MinisterCarouselCard(
     onCardClick: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val shape = RoundedCornerShape(32.dp)
     Surface(
         modifier = modifier
             .fillMaxWidth()
             .padding(top = 14.dp)
             .shadow(
                 elevation = 16.dp,
-                shape = RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp),
+                shape = shape,
                 clip = false
             ),
         color = VestSurface,
-        shape = RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp),
+        shape = shape,
         border = BorderStroke(1.dp, VestGold.copy(alpha = 0.2f)),
     ) {
         Column(

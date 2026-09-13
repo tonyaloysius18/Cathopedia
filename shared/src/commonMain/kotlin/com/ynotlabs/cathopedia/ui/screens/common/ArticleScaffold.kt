@@ -91,7 +91,7 @@ fun ArticleScaffold(
             state = listState,
             contentPadding = PaddingValues(
                 start = horizontalPadding,
-                top = headerHeight + 20.dp,
+                top = headerHeight + 6.dp,
                 end = horizontalPadding,
                 bottom = 120.dp,
             ),

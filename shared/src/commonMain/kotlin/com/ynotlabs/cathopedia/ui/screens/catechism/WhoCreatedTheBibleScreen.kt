@@ -81,6 +81,7 @@ import com.ynotlabs.cathopedia.ui.screens.common.ArticleQuoteCard
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleScaffold
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleSurface
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleSurfaceRaised
+import com.ynotlabs.cathopedia.ui.screens.common.WrappedImageTitleBody
 import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.ui.hubAssetPainter
@@ -368,23 +369,26 @@ private fun BiblePointCard(
                 modifier = Modifier.padding(start = 22.dp, top = 18.dp, end = 16.dp, bottom = 18.dp),
             ) {
                 val pointPainter = hubAssetPainter(asset)
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    pointPainter?.let { painter ->
+                if (pointPainter != null) {
+                    WrappedImageTitleBody(
+                        imageSize = BiblePointImageSize,
+                        body = body,
+                        bodyColor = ArticleCream.copy(alpha = 0.88f),
+                        bodyFontSize = 14.sp,
+                        bodyLineHeight = 21.sp,
+                        image = {
                         Image(
-                            painter = painter,
+                            painter = pointPainter,
                             contentDescription = null,
                             contentScale = ContentScale.Fit,
                             modifier = Modifier
                                 .size(BiblePointImageSize)
                                 .clip(RoundedCornerShape(16.dp)),
                         )
-                        Spacer(Modifier.width(14.dp))
-                    }
+                        },
+                        title = {
                     Row(
-                        modifier = Modifier.weight(1f),
+                        modifier = Modifier.fillMaxWidth(),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Image(
@@ -404,15 +408,36 @@ private fun BiblePointCard(
                             modifier = Modifier.weight(1f),
                         )
                     }
+                        },
+                    )
+                } else {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Image(
+                            painter = painterResource(numberDrawable(number) ?: Res.drawable._01),
+                            contentDescription = number.toString(),
+                            contentScale = ContentScale.Fit,
+                            modifier = Modifier.size(28.dp),
+                        )
+                        Spacer(Modifier.width(10.dp))
+                        Text(
+                            text = title,
+                            color = ArticleGold,
+                            fontFamily = FontFamily.Serif,
+                            fontSize = 18.sp,
+                            lineHeight = 22.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            modifier = Modifier.weight(1f),
+                        )
+                    }
+                    Spacer(Modifier.height(5.dp))
+                    Text(
+                        text = body,
+                        color = ArticleCream.copy(alpha = 0.88f),
+                        fontSize = 14.sp,
+                        lineHeight = 21.sp,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
                 }
-                Spacer(Modifier.height(12.dp))
-                Text(
-                    text = body,
-                    color = ArticleCream.copy(alpha = 0.88f),
-                    fontSize = 14.sp,
-                    lineHeight = 21.sp,
-                    modifier = Modifier.fillMaxWidth(),
-                )
                 BiblePointReference(reference)
             }
         }
@@ -432,7 +457,7 @@ private fun BiblePointReference(reference: String) {
     )
 }
 
-/** Places artwork first and gives all copy the full card width below it. */
+/** Keeps the hero artwork centred on the left with all introductory copy beside it. */
 @Composable
 private fun FlowingImageText(
     painter: Painter,
@@ -444,7 +469,10 @@ private fun FlowingImageText(
     lineHeight: TextUnit,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier = modifier.fillMaxWidth()) {
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
         Image(
             painter = painter,
             contentDescription = imageDescription,
@@ -453,13 +481,13 @@ private fun FlowingImageText(
                 .size(imageSize)
                 .clip(RoundedCornerShape(16.dp)),
         )
-        Spacer(Modifier.height(12.dp))
+        Spacer(Modifier.width(16.dp))
         Text(
             text = text,
             color = textColor,
             fontSize = fontSize,
             lineHeight = lineHeight,
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.weight(1f),
         )
     }
 }

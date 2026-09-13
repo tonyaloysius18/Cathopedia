@@ -71,6 +71,7 @@ import com.ynotlabs.cathopedia.ui.screens.common.ArticleMuted
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleQuoteCard
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleScaffold
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleSurface
+import com.ynotlabs.cathopedia.ui.screens.common.WrappedImageTitleBody
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
@@ -330,16 +331,36 @@ private fun StepRow(
             Box {
                 GoldCardAccent(Modifier.align(Alignment.CenterStart))
                 Column(modifier = Modifier.padding(start = 18.dp, top = 14.dp, end = 14.dp, bottom = 14.dp)) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        hubAssetPainter(step.asset)?.let { painter ->
+                    val painter = hubAssetPainter(step.asset)
+                    if (painter != null) {
+                        WrappedImageTitleBody(
+                            imageSize = 38.dp,
+                            body = body,
+                            bodyColor = ArticleCream.copy(alpha = 0.88f),
+                            bodyFontSize = 13.sp,
+                            bodyLineHeight = 20.sp,
+                            image = {
                             Image(
                                 painter = painter,
                                 contentDescription = null,
                                 contentScale = ContentScale.Fit,
                                 modifier = Modifier.size(38.dp),
                             )
-                            Spacer(Modifier.width(10.dp))
-                        }
+                            },
+                            title = {
+                                Text(
+                                    text = title,
+                                    color = ArticleGold,
+                                    fontFamily = FontFamily.Serif,
+                                    fontSize = 16.sp,
+                                    lineHeight = 20.sp,
+                                    fontWeight = FontWeight.SemiBold,
+                                    modifier = Modifier.fillMaxWidth(),
+                                )
+                            },
+                            imageTextGap = 10.dp,
+                        )
+                    } else {
                         Text(
                             text = title,
                             color = ArticleGold,
@@ -347,16 +368,15 @@ private fun StepRow(
                             fontSize = 16.sp,
                             lineHeight = 20.sp,
                             fontWeight = FontWeight.SemiBold,
-                            modifier = Modifier.weight(1f),
+                        )
+                        Spacer(Modifier.height(5.dp))
+                        Text(
+                            text = body,
+                            color = ArticleCream.copy(alpha = 0.88f),
+                            fontSize = 13.sp,
+                            lineHeight = 20.sp,
                         )
                     }
-                    Spacer(Modifier.height(7.dp))
-                    Text(
-                        text = body,
-                        color = ArticleCream.copy(alpha = 0.88f),
-                        fontSize = 13.sp,
-                        lineHeight = 20.sp,
-                    )
                 }
             }
         }

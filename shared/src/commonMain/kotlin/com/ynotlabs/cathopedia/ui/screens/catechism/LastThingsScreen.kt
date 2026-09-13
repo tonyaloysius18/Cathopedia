@@ -54,6 +54,7 @@ import com.ynotlabs.cathopedia.ui.screens.common.ArticleIntroCard
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleScaffold
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleSectionLabel
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleSurface
+import com.ynotlabs.cathopedia.ui.screens.common.WrappedImageTitleBody
 import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.ui.hubAssetPainter
@@ -231,10 +232,13 @@ private fun LastThingCard(thing: LastThing) {
             ) {
                 val painter = hubAssetPainter(thing.asset)
                 if (painter != null) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
+                    WrappedImageTitleBody(
+                        imageSize = 72.dp,
+                        body = thing.body,
+                        bodyColor = ArticleCream.copy(alpha = 0.88f),
+                        bodyFontSize = 13.sp,
+                        bodyLineHeight = 20.sp,
+                        image = {
                         Image(
                             painter = painter,
                             contentDescription = null,
@@ -243,22 +247,20 @@ private fun LastThingCard(thing: LastThing) {
                                 .size(72.dp)
                                 .clip(RoundedCornerShape(12.dp)),
                         )
-                        Spacer(Modifier.width(14.dp))
-                        Column(modifier = Modifier.weight(1f)) {
-                            LastThingTitle(thing)
-                        }
-                    }
+                        },
+                        title = { LastThingTitle(thing) },
+                    )
                 } else {
                     LastThingTitle(thing)
+                    Spacer(Modifier.height(7.dp))
+                    Text(
+                        text = thing.body,
+                        color = ArticleCream.copy(alpha = 0.88f),
+                        fontSize = 13.sp,
+                        lineHeight = 20.sp,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
                 }
-                Spacer(Modifier.height(7.dp))
-                Text(
-                    text = thing.body,
-                    color = ArticleCream.copy(alpha = 0.88f),
-                    fontSize = 13.sp,
-                    lineHeight = 20.sp,
-                    modifier = Modifier.fillMaxWidth(),
-                )
 
                 if (thing.reference.isNotBlank()) {
                     Spacer(Modifier.height(10.dp))

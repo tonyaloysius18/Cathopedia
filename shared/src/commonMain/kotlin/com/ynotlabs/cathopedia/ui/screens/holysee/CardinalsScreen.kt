@@ -1,13 +1,11 @@
 package com.ynotlabs.cathopedia.ui.screens.holysee
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -28,9 +26,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontFamily
@@ -45,7 +40,6 @@ private val CardinalStringKeys = setOf(
     "art.cardinals.title",
     "art.cardinals.lead",
     "art.cardinals.p1",
-    "art.cardinals.h_orders",
     "art.cardinals.grid.bishop.label",
     "art.cardinals.grid.bishop.value",
     "art.cardinals.grid.priest.label",
@@ -88,7 +82,7 @@ fun CardinalsScreen(
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             state = listState,
-            contentPadding = PaddingValues(top = headerHeight + 20.dp, bottom = 56.dp),
+            contentPadding = PaddingValues(top = headerHeight + 6.dp, bottom = 56.dp),
         ) {
 
         if (strings.isEmpty()) {
@@ -104,55 +98,9 @@ fun CardinalsScreen(
             }
         } else {
             item {
-                Surface(
-                    color = HolySeeSurface,
-                    shape = RoundedCornerShape(24.dp),
-                    border = BorderStroke(1.dp, CardinalScarlet.copy(alpha = 0.52f)),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 20.dp, vertical = 12.dp),
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .aspectRatio(1.45f)
-                            .clip(RoundedCornerShape(24.dp)),
-                        contentAlignment = Alignment.BottomStart,
-                    ) {
-                        hubAssetPainter("hub/holy_see/cardinals_hero.png")?.let { painter ->
-                            Image(
-                                painter = painter,
-                                contentDescription = null,
-                                contentScale = ContentScale.Fit,
-                                modifier = Modifier.fillMaxSize(),
-                            )
-                        }
-                        Box(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .background(
-                                    Brush.verticalGradient(
-                                        0.45f to androidx.compose.ui.graphics.Color.Transparent,
-                                        1f to HolySeeBackground.copy(alpha = 0.97f),
-                                    )
-                                )
-                        )
-                        Column(modifier = Modifier.padding(20.dp)) {
-                            Text(
-                                text = strings["art.cardinals.h_orders"].orEmpty(),
-                                color = HolySeeCream,
-                                fontFamily = FontFamily.Serif,
-                                fontSize = 20.sp,
-                                lineHeight = 25.sp,
-                                fontWeight = FontWeight.SemiBold,
-                            )
-                        }
-                    }
-                }
-
                 HolySeeIntroCard(
                     text = strings["art.cardinals.p1"].orEmpty(),
-                    modifier = Modifier.padding(horizontal = 20.dp, vertical = 14.dp),
+                    modifier = Modifier.padding(start = 20.dp, top = 8.dp, end = 20.dp, bottom = 14.dp),
                 )
 
                 HolySeePortraitCarousel(

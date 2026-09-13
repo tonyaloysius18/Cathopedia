@@ -67,7 +67,7 @@ fun HierarchyCarouselScreen(
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             state = listState,
-            contentPadding = PaddingValues(top = headerHeight + 20.dp, bottom = 48.dp),
+            contentPadding = PaddingValues(top = headerHeight + 6.dp, bottom = 48.dp),
         ) {
 
         val current = stepper
@@ -87,7 +87,7 @@ fun HierarchyCarouselScreen(
                 current.introKey?.let { introKey ->
                     HolySeeIntroCard(
                         text = strings[introKey].orEmpty(),
-                        modifier = Modifier.padding(horizontal = 20.dp, vertical = 18.dp),
+                        modifier = Modifier.padding(start = 20.dp, top = 8.dp, end = 20.dp, bottom = 18.dp),
                     )
                 }
 

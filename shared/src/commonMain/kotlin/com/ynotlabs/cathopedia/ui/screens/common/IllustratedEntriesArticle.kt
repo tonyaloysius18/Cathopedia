@@ -235,23 +235,14 @@ private fun EntryCard(
                     .fillMaxWidth()
                     .padding(start = 20.dp, top = 16.dp, end = 16.dp, bottom = 16.dp),
             ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    EntryImage(entry)
-                    Spacer(Modifier.width(14.dp))
-                    Column(modifier = Modifier.weight(1f)) {
-                        EntryTitle(entry, numbered)
-                    }
-                }
-                Spacer(Modifier.height(10.dp))
-                Text(
-                    text = entry.body,
-                    color = ArticleCream.copy(alpha = 0.88f),
-                    fontSize = 13.sp,
-                    lineHeight = 20.sp,
-                    modifier = Modifier.fillMaxWidth(),
+                WrappedImageTitleBody(
+                    imageSize = 72.dp,
+                    body = entry.body,
+                    bodyColor = ArticleCream.copy(alpha = 0.88f),
+                    bodyFontSize = 13.sp,
+                    bodyLineHeight = 20.sp,
+                    image = { EntryImage(entry) },
+                    title = { EntryTitle(entry, numbered) },
                 )
                 EntryReference(entry.reference)
             }
