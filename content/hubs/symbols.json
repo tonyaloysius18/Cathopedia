@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": 1,
+  "contentVersion": 3,
   "hub": {
     "id": "symbols",
     "slug": "symbols",
@@ -160,6 +160,18 @@
       "icon": "ic_habit",
       "articleIds": [
         "art.symbols.orders"
+      ]
+    },
+    {
+      "id": "symbols.medals",
+      "sortOrder": 13,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.symbols.medals.title",
+      "summaryKey": "sec.symbols.medals.summary",
+      "icon": "ic_medal",
+      "articleIds": [
+        "art.symbols.medals"
       ]
     }
   ],
@@ -1263,20 +1275,6 @@
         {
           "type": "heading",
           "level": 3,
-          "textKey": "sym.miraculous_medal.name"
-        },
-        {
-          "type": "image",
-          "asset": "hub/symbols/symbol_miraculous_medal.png",
-          "license": "IN_HOUSE"
-        },
-        {
-          "type": "paragraph",
-          "textKey": "sym.miraculous_medal.desc"
-        },
-        {
-          "type": "heading",
-          "level": 3,
           "textKey": "sym.rosary.name"
         },
         {
@@ -1555,6 +1553,256 @@
         {
           "type": "paragraph",
           "textKey": "sym.augustinian_heart.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.symbols.medals",
+      "sectionId": "symbols.medals",
+      "sortOrder": 1,
+      "titleKey": "art.symbols.medals.title",
+      "leadKey": "art.symbols.medals.lead",
+      "readingTimeMinutes": 5,
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "info",
+          "titleKey": "medal.intro.title",
+          "textKey": "medal.intro.text"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "medal.miraculous.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_miraculous_medal.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_miraculous_medal_back.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "medal.miraculous.desc"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "medal.miraculous.front_label",
+              "valueKey": "medal.miraculous.front"
+            },
+            {
+              "labelKey": "medal.miraculous.back_label",
+              "valueKey": "medal.miraculous.back"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "textKey": "medal.miraculous.words",
+          "attributionKey": "medal.miraculous.words_source"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "medal.benedict.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_benedict_medal_front.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_benedictine_medal.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "medal.benedict.desc"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "medal.benedict.front_label",
+              "valueKey": "medal.benedict.front"
+            },
+            {
+              "labelKey": "medal.benedict.back_label",
+              "valueKey": "medal.benedict.back"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "textKey": "medal.benedict.words",
+          "attributionKey": "medal.benedict.words_source"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "medal.christopher.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_christopher_medal.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_christopher_medal_back.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "medal.christopher.desc"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "medal.christopher.front_label",
+              "valueKey": "medal.christopher.front"
+            },
+            {
+              "labelKey": "medal.christopher.back_label",
+              "valueKey": "medal.christopher.back"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "textKey": "medal.christopher.words",
+          "attributionKey": "medal.christopher.words_source"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "medal.christopher.note_title",
+          "textKey": "medal.christopher.note"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "medal.sacred_heart.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_sacred_heart_medal.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_sacred_heart_medal_back.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "medal.sacred_heart.desc"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "medal.sacred_heart.front_label",
+              "valueKey": "medal.sacred_heart.front"
+            },
+            {
+              "labelKey": "medal.sacred_heart.back_label",
+              "valueKey": "medal.sacred_heart.back"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "textKey": "medal.sacred_heart.words",
+          "attributionKey": "medal.sacred_heart.words_source"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "medal.joseph.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_joseph_medal.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_joseph_medal_back.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "medal.joseph.desc"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "medal.joseph.front_label",
+              "valueKey": "medal.joseph.front"
+            },
+            {
+              "labelKey": "medal.joseph.back_label",
+              "valueKey": "medal.joseph.back"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "textKey": "medal.joseph.words",
+          "attributionKey": "medal.joseph.words_source"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "medal.holy_family.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_holy_family_medal.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_holy_family_medal_back.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "medal.holy_family.desc"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "medal.holy_family.front_label",
+              "valueKey": "medal.holy_family.front"
+            },
+            {
+              "labelKey": "medal.holy_family.back_label",
+              "valueKey": "medal.holy_family.back"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "textKey": "medal.holy_family.words",
+          "attributionKey": "medal.holy_family.words_source"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "titleKey": "medal.remember.title",
+          "textKey": "medal.remember.text"
         }
       ]
     }
