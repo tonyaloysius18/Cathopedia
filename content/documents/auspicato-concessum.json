@@ -1,0 +1,23 @@
+{
+  "id": "auspicato-concessum",
+  "kind": "encyclical",
+  "popeId": "leo-xiii",
+  "promulgated": "1882-09-17",
+  "documentYear": 1882,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_17091882_auspicato-concessum.html",
+  "text": {
+    "en": {
+      "name": "Auspicato Concessum",
+      "summary": "On St. Francis of Assisi.",
+      "body": "For the seventh centenary of the birth of Francis of Assisi. Leo XIII presents him as the man who renewed a whole society from within, and takes the occasion to reform and commend the Third Order as a rule of life for lay people facing the social question.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Auspicato Concessum",
+      "summary": "Sur saint François d'Assise.",
+      "body": "Pour le septième centenaire de la naissance de François d'Assise. Léon XIII le présente comme celui qui renouvela toute une société de l'intérieur, et saisit l'occasion de réformer et de recommander le Tiers-Ordre comme règle de vie pour les laïcs face à la question sociale.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

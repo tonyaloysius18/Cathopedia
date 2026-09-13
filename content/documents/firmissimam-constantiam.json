@@ -1,0 +1,23 @@
+{
+  "id": "firmissimam-constantiam",
+  "kind": "encyclical",
+  "popeId": "pius-xi",
+  "promulgated": "1937-03-28",
+  "documentYear": 1937,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/pius-xi/en/encyclicals/documents/hf_p-xi_enc_19370328_firmissimam-constantiam.html",
+  "text": {
+    "en": {
+      "name": "Firmissimam Constantiam",
+      "summary": "On the Religious Situation in Mexico.",
+      "body": "Pius XI's third and last encyclical on Mexico, published a fortnight after those on Nazism and communism. He praises the constancy of Mexican Catholics under persecution, presses Catholic Action as the means of rebuilding, and discusses the limits within which resistance to an unjust government may be legitimate.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Firmissimam Constantiam",
+      "summary": "Sur la situation religieuse au Mexique.",
+      "body": "La troisième et dernière encyclique de Pie XI sur le Mexique, publiée quinze jours après celles sur le nazisme et le communisme. Il loue la constance des catholiques mexicains dans la persécution, propose l'Action catholique comme moyen de reconstruction, et expose les limites dans lesquelles la résistance à un gouvernement injuste peut être légitime.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

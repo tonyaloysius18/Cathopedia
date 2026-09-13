@@ -1,0 +1,23 @@
+{
+  "id": "providentissimus-deus",
+  "kind": "encyclical",
+  "popeId": "leo-xiii",
+  "promulgated": "1893-11-18",
+  "documentYear": 1893,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_18111893_providentissimus-deus.html",
+  "text": {
+    "en": {
+      "name": "Providentissimus Deus",
+      "summary": "On the Study of Holy Scripture.",
+      "body": "The first modern papal encyclical on Scripture, and the charter of Catholic biblical study for half a century. Leo XIII answers rationalist criticism by defending inspiration and inerrancy, while encouraging Catholic scholars to learn the ancient languages and engage the critics on their own ground.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Providentissimus Deus",
+      "summary": "Sur l'étude de l'Écriture sainte.",
+      "body": "La première encyclique pontificale moderne sur l'Écriture, et la charte des études bibliques catholiques pour un demi-siècle. Léon XIII répond à la critique rationaliste en défendant l'inspiration et l'inerrance, tout en encourageant les savants catholiques à apprendre les langues anciennes et à affronter les critiques sur leur propre terrain.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "pacem-in-terris",
+  "kind": "encyclical",
+  "popeId": "john-xxiii",
+  "promulgated": "1963-04-11",
+  "documentYear": 1963,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/john-xxiii/en/encyclicals/documents/hf_j-xxiii_enc_11041963_pacem.html",
+  "text": {
+    "en": {
+      "name": "Pacem in Terris",
+      "summary": "John XXIII on peace, human rights and the international order — the first encyclical addressed to all people of good will.",
+      "body": "Published months after the Cuban missile crisis and weeks before his death, Pacem in Terris grounds peace in truth, justice, charity and freedom. It sets out a full charter of human rights and corresponding duties, argues for a public authority with genuine international reach, and questions the logic of the arms race. It was the first encyclical addressed not only to Catholics but to all people of good will.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Pacem in Terris",
+      "summary": "Jean XXIII sur la paix, les droits humains et l'ordre international — la première encyclique adressée à tous les hommes de bonne volonté.",
+      "body": "Publiée quelques mois après la crise des missiles de Cuba et quelques semaines avant sa mort, Pacem in Terris fonde la paix sur la vérité, la justice, la charité et la liberté. Elle énonce une charte complète des droits humains et des devoirs correspondants, plaide pour une autorité publique de portée réellement internationale et met en question la logique de la course aux armements. C'est la première encyclique adressée non seulement aux catholiques mais à tous les hommes de bonne volonté.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

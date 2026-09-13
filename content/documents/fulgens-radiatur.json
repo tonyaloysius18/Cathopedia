@@ -1,0 +1,23 @@
+{
+  "id": "fulgens-radiatur",
+  "kind": "encyclical",
+  "popeId": "pius-xii",
+  "promulgated": "1947-03-21",
+  "documentYear": 1947,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/pius-xii/en/encyclicals/documents/hf_p-xii_enc_21031947_fulgens-radiatur.html",
+  "text": {
+    "en": {
+      "name": "Fulgens Radiatur",
+      "summary": "On St. Benedict.",
+      "body": "For the fourteenth centenary of the death of Benedict of Nursia. Writing as Europe lay in ruins, Pius XII presents Benedict — a star in the darkness of night — as the man whose rule and monasteries rebuilt a continent after an earlier collapse, and proposes him for the reconstruction then beginning.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Fulgens Radiatur",
+      "summary": "Sur saint Benoît.",
+      "body": "Pour le quatorzième centenaire de la mort de Benoît de Nursie. Écrivant alors que l'Europe gisait en ruines, Pie XII présente Benoît — une étoile dans la nuit — comme celui dont la règle et les monastères relevèrent un continent après un effondrement antérieur, et le propose pour la reconstruction qui commençait.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

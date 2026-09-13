@@ -1,0 +1,23 @@
+{
+  "id": "princeps-pastorum",
+  "kind": "encyclical",
+  "popeId": "john-xxiii",
+  "promulgated": "1959-11-28",
+  "documentYear": 1959,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/john-xxiii/en/encyclicals/documents/hf_j-xxiii_enc_28111959_princeps.html",
+  "text": {
+    "en": {
+      "name": "Princeps Pastorum",
+      "summary": "On the Missions, Native Clergy, and Lay Participation.",
+      "body": "Marking forty years since Benedict XV's Maximum Illud, John XXIII writes on the missions with two emphases: the formation of clergy drawn from the peoples being evangelised, so that local churches stand on their own, and the part belonging to lay people in carrying the Gospel into their own societies.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Princeps Pastorum",
+      "summary": "Sur les missions, le clergé autochtone et la participation des laïcs.",
+      "body": "Marquant les quarante ans de Maximum Illud de Benoît XV, Jean XXIII écrit sur les missions avec deux accents : la formation d'un clergé issu des peuples évangélisés, afin que les Églises locales tiennent d'elles-mêmes, et la part qui revient aux laïcs pour porter l'Évangile dans leur propre société.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

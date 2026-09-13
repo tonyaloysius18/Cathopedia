@@ -1,0 +1,23 @@
+{
+  "id": "non-abbiamo-bisogno",
+  "kind": "encyclical",
+  "popeId": "pius-xi",
+  "promulgated": "1931-06-29",
+  "documentYear": 1931,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/pius-xi/en/encyclicals/documents/hf_p-xi_enc_29061931_non-abbiamo-bisogno.html",
+  "text": {
+    "en": {
+      "name": "Non Abbiamo Bisogno",
+      "summary": "On Catholic Action in Italy.",
+      "body": "Written in Italian and smuggled out of Italy for publication abroad, after Mussolini's regime moved to suppress Catholic Action's youth organisations. Pius XI defends the Church's right to form the young and condemns a statolatry that would claim the whole person for the state.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Non Abbiamo Bisogno",
+      "summary": "Sur l'Action catholique en Italie.",
+      "body": "Écrite en italien et sortie clandestinement d'Italie pour être publiée à l'étranger, après que le régime de Mussolini eut entrepris de supprimer les organisations de jeunesse de l'Action catholique. Pie XI défend le droit de l'Église à former les jeunes et condamne une statolâtrie qui revendiquerait l'homme tout entier pour l'État.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

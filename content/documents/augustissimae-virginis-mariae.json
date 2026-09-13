@@ -1,0 +1,23 @@
+{
+  "id": "augustissimae-virginis-mariae",
+  "kind": "encyclical",
+  "popeId": "leo-xiii",
+  "promulgated": "1897-09-12",
+  "documentYear": 1897,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_12091897_augustissimae-virginis-mariae.html",
+  "text": {
+    "en": {
+      "name": "Augustissimae Virginis Mariae",
+      "summary": "On the Confraternity of the Holy Rosary.",
+      "body": "On the Confraternity of the Holy Rosary, the association through which the prayer was spread and indulgenced. Leo XIII sets out its dignity and privileges and encourages enrolment in it, continuing the Rosary campaign that runs through his pontificate.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Augustissimae Virginis Mariae",
+      "summary": "Sur la confrérie du Saint-Rosaire.",
+      "body": "Sur la confrérie du Saint-Rosaire, l'association par laquelle cette prière fut répandue et enrichie d'indulgences. Léon XIII en expose la dignité et les privilèges et en encourage l'inscription, poursuivant la campagne du Rosaire qui traverse son pontificat.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

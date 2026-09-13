@@ -1,0 +1,23 @@
+{
+  "id": "redemptoris-mater",
+  "kind": "encyclical",
+  "popeId": "john-paul-ii",
+  "promulgated": "1987-03-25",
+  "documentYear": 1987,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/john-paul-ii/en/encyclicals/documents/hf_jp-ii_enc_25031987_redemptoris-mater.html",
+  "text": {
+    "en": {
+      "name": "Redemptoris Mater",
+      "summary": "On the Blessed Virgin Mary in the Life of the Pilgrim Church.",
+      "body": "Published for the Marian Year that John Paul II called ahead of the year 2000, the encyclical presents Mary as one who walked a pilgrimage of faith, going before the Church on the road each believer travels. It treats her place in the mystery of Christ, her motherhood in the life of the Church, and her significance for relations between divided Christians.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Redemptoris Mater",
+      "summary": "Sur la Bienheureuse Vierge Marie dans la vie de l'Église en pèlerinage.",
+      "body": "Publiée pour l'Année mariale que Jean-Paul II convoqua en vue de l'an 2000, l'encyclique présente Marie comme celle qui a marché dans un pèlerinage de la foi, précédant l'Église sur la route que parcourt chaque croyant. Elle traite de sa place dans le mystère du Christ, de sa maternité dans la vie de l'Église et de sa portée pour les rapports entre chrétiens divisés.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

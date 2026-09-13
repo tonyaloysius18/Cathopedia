@@ -1,0 +1,23 @@
+{
+  "id": "paterno-iam-diu",
+  "kind": "encyclical",
+  "popeId": "benedict-xv",
+  "promulgated": "1919-11-24",
+  "documentYear": 1919,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/benedict-xv/en/encyclicals/documents/hf_ben-xv_enc_24111919_paterno-iam-diu.html",
+  "text": {
+    "en": {
+      "name": "Paterno Iam Diu",
+      "summary": "On the Children of Central Europe.",
+      "body": "Benedict XV appeals for the children of central Europe, starving in the aftermath of the war and the blockade. He asks that a collection be taken in every parish in the world, without distinction between the children of victorious and defeated nations.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Paterno Iam Diu",
+      "summary": "Sur les enfants d'Europe centrale.",
+      "body": "Benoît XV lance un appel pour les enfants d'Europe centrale, affamés au lendemain de la guerre et du blocus. Il demande qu'une collecte soit faite dans chaque paroisse du monde, sans distinction entre les enfants des nations victorieuses et vaincues.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

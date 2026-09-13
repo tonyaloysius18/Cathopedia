@@ -1,0 +1,23 @@
+{
+  "id": "insignes",
+  "kind": "encyclical",
+  "popeId": "leo-xiii",
+  "promulgated": "1896-05-01",
+  "documentYear": 1896,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_01051896_insignes.html",
+  "text": {
+    "en": {
+      "name": "Insignes",
+      "summary": "On the Hungarian Millennium.",
+      "body": "For the thousandth anniversary of the Magyar settlement in Pannonia. Leo XIII writes to the Hungarian bishops on the debt their nation owes to the faith it received from Stephen, and joins the national thanksgiving they had decreed.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Insignes",
+      "summary": "Sur le millénaire hongrois.",
+      "body": "Pour le millième anniversaire de l'installation des Magyars en Pannonie. Léon XIII écrit aux évêques hongrois sur la dette de leur nation envers la foi reçue d'Étienne, et s'associe à l'action de grâce nationale qu'ils avaient décrétée.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

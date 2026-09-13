@@ -1,0 +1,23 @@
+{
+  "id": "quadragesimo-anno",
+  "kind": "encyclical",
+  "popeId": "pius-xi",
+  "promulgated": "1931-05-15",
+  "documentYear": 1931,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/pius-xi/en/encyclicals/documents/hf_p-xi_enc_19310515_quadragesimo-anno.html",
+  "text": {
+    "en": {
+      "name": "Quadragesimo Anno",
+      "summary": "Pius XI marks forty years since Rerum Novarum and sets out the principle of subsidiarity.",
+      "body": "Written in the Depression, Quadragesimo Anno restates Leo XIII's teaching for an age of concentrated economic power. Its lasting contribution is the principle of subsidiarity: what a smaller and lower community can do, a larger and higher one should not take over. It also develops the idea of social justice as a distinct virtue governing the structures of economic life.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Quadragesimo Anno",
+      "summary": "Pie XI marque les quarante ans de Rerum Novarum et formule le principe de subsidiarité.",
+      "body": "Écrite pendant la Grande Dépression, Quadragesimo Anno reprend l'enseignement de Léon XIII pour une époque de concentration du pouvoir économique. Son apport durable est le principe de subsidiarité : ce qu'une communauté plus petite peut faire, une plus grande ne doit pas s'en charger. Elle développe aussi la justice sociale comme vertu propre régissant les structures de la vie économique.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

@@ -1527,5 +1527,2370 @@
       "id": "cascia"
     },
     "kind": "commemorated_at"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "dum-multa"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "fin-dal-principio"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "quae-ad-nos"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "mirae-caritatis"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "quod-votis"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "in-amplissimo"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "urbanitatis-veteris"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "reputantibus"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "gravissimas"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "graves-de-communi-re"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "tametsi-futura-prospicientibus"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "omnibus-compertum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "paternae"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "depuis-le-jour"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "annum-sacrum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "quum-diuturnum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "diuturni-temporis"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "quam-religiosa"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "spesse-volte"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "caritatis-studium"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "affari-vos"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "augustissimae-virginis-mariae"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "militantis-ecclesiae"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "divinum-illud-munus"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "fidentem-piumque-animum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "satis-cognitum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "insignes"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "adiutricem"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "permoti-nos"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "longinqua"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "christi-nomen"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "iucunda-semper-expectatione"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "litteras-a-vobis"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "inter-graves"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "caritatis"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "providentissimus-deus"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "non-mediocri"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "laetitiae-sanctae"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "constanti-hungarorum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "ad-extremas"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "custodi-di-quella-fede"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "inimica-vis"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "magnae-dei-matris"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "quarto-abeunte-saeculo"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "au-milieu-des-sollicitudes"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "octobri-mense"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "pastoralis-officii"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "pastoralis-vigilantiae"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "rerum-novarum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "in-ipso"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "catholicae-ecclesiae"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "dall-alto-dell-apostolico-seggio"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "sapientiae-christianae"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "quamquam-pluries"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "magni-nobis"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "exeunte-iam-anno"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "etsi-cunctas"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "quam-aerumnosa"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "paterna-caritas"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "saepe-nos"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "libertas"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "in-plurimis"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "quod-anniversarius"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "officio-sanctissimo"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "vi-e-ben-noto"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "pergrata"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "quod-multum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "iampridem"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "quod-auctoritate"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "spectata-fides"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "immortale-dei"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "superiore-anno"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "humanum-genus"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "nobilissima-gallorum-gens"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "supremi-apostolatus-officio"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "cum-multa"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "auspicato-concessum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "etsi-nos"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "licet-multa"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "diuturnum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "sancta-dei-civitas"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "grande-munus"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "arcanum-divinae"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "aeterni-patris"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "quod-apostolici-muneris"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "inscrutabili-dei-consilio"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-x"
+    },
+    "to": {
+      "type": "document",
+      "id": "singulari-quadam"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-x"
+    },
+    "to": {
+      "type": "document",
+      "id": "lacrimabili-statu"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-x"
+    },
+    "to": {
+      "type": "document",
+      "id": "iamdudum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-x"
+    },
+    "to": {
+      "type": "document",
+      "id": "editae-saepe"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-x"
+    },
+    "to": {
+      "type": "document",
+      "id": "communium-rerum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-x"
+    },
+    "to": {
+      "type": "document",
+      "id": "pascendi-dominici-gregis"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-x"
+    },
+    "to": {
+      "type": "document",
+      "id": "une-fois-encore"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-x"
+    },
+    "to": {
+      "type": "document",
+      "id": "gravissimo-officii-munere"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-x"
+    },
+    "to": {
+      "type": "document",
+      "id": "pieni-l-animo"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-x"
+    },
+    "to": {
+      "type": "document",
+      "id": "tribus-circiter"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-x"
+    },
+    "to": {
+      "type": "document",
+      "id": "vehementer-nos"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-x"
+    },
+    "to": {
+      "type": "document",
+      "id": "il-fermo-proposito"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-x"
+    },
+    "to": {
+      "type": "document",
+      "id": "acerbo-nimis"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-x"
+    },
+    "to": {
+      "type": "document",
+      "id": "iucunda-sane"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-x"
+    },
+    "to": {
+      "type": "document",
+      "id": "ad-diem-illum-laetissimum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-x"
+    },
+    "to": {
+      "type": "document",
+      "id": "e-supremi"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "benedict-xv"
+    },
+    "to": {
+      "type": "document",
+      "id": "fausto-appetente-die"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "benedict-xv"
+    },
+    "to": {
+      "type": "document",
+      "id": "in-praeclara-summorum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "benedict-xv"
+    },
+    "to": {
+      "type": "document",
+      "id": "sacra-propediem"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "benedict-xv"
+    },
+    "to": {
+      "type": "document",
+      "id": "annus-iam-plenus"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "benedict-xv"
+    },
+    "to": {
+      "type": "document",
+      "id": "principi-apostolorum-petro"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "benedict-xv"
+    },
+    "to": {
+      "type": "document",
+      "id": "spiritus-paraclitus"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "benedict-xv"
+    },
+    "to": {
+      "type": "document",
+      "id": "pacem-dei-munus-pulcherrimum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "benedict-xv"
+    },
+    "to": {
+      "type": "document",
+      "id": "paterno-iam-diu"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "benedict-xv"
+    },
+    "to": {
+      "type": "document",
+      "id": "in-hac-tanta"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "benedict-xv"
+    },
+    "to": {
+      "type": "document",
+      "id": "quod-iam-diu"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "benedict-xv"
+    },
+    "to": {
+      "type": "document",
+      "id": "humani-generis-redemptionem"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "benedict-xv"
+    },
+    "to": {
+      "type": "document",
+      "id": "ad-beatissimi-apostolorum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "ingravescentibus-malis"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "firmissimam-constantiam"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "divini-redemptoris"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "mit-brennender-sorge"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "vigilanti-cura"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "ad-catholici-sacerdotii"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "dilectissima-nobis"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "acerba-animi"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "caritate-christi-compulsi"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "nova-impendet"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "non-abbiamo-bisogno"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "quadragesimo-anno"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "casti-connubii"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "divini-illius-magistri"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "mens-nostra"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "miserentissimus-redemptor"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "mortalium-animos"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "iniquis-afflictisque"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "rite-expiatis"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "rerum-ecclesiae"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "quas-primas"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "maximam-gravissimamque"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "rerum-omnium-perturbationem"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xi"
+    },
+    "to": {
+      "type": "document",
+      "id": "ubi-arcano-dei-consilio"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "meminisse-iuvat"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "ad-apostolorum-principis"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "miranda-prorsus"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "le-pelerinage-de-lourdes"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "invicti-athletae"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "fidei-donum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "datis-nuperrime"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "laetamur-admodum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "luctuosissimi-eventus"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "haurietis-aquas"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "musicae-sacrae"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "ad-caeli-reginam"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "ad-sinarum-gentem"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "ecclesiae-fastos"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "sacra-virginitas"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "fulgens-corona"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "doctor-mellifluus"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "ingruentium-malorum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "sempiternus-rex-christus"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "evangelii-praecones"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "mirabile-illud"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "humani-generis"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "summi-maeroris"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "anni-sacri"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "redemptoris-nostri-cruciatus"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "in-multiplicibus-curis"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "auspicia-quaedam"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "optatissima-pax"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "mediator-dei"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "fulgens-radiatur"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "deiparae-virginis-mariae"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "quemadmodum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "orientales-omnes-ecclesias"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "communium-interpretes-dolorum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "orientalis-ecclesiae"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "divino-afflante-spiritu"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "mystici-corporis-christi"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "saeculo-exeunte-octavo"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "sertum-laetitiae"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "pius-xii"
+    },
+    "to": {
+      "type": "document",
+      "id": "summi-pontificatus"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-xxiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "pacem-in-terris"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-xxiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "paenitentiam-agere"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-xxiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "aeterna-dei-sapientia"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-xxiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "mater-et-magistra"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-xxiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "princeps-pastorum"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-xxiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "grata-recordatio"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-xxiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "sacerdotii-nostri-primordia"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-xxiii"
+    },
+    "to": {
+      "type": "document",
+      "id": "ad-petri-cathedram"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "paul-vi"
+    },
+    "to": {
+      "type": "document",
+      "id": "humanae-vitae"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "paul-vi"
+    },
+    "to": {
+      "type": "document",
+      "id": "sacerdotalis-caelibatus"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "paul-vi"
+    },
+    "to": {
+      "type": "document",
+      "id": "populorum-progressio"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "paul-vi"
+    },
+    "to": {
+      "type": "document",
+      "id": "christi-matri"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "paul-vi"
+    },
+    "to": {
+      "type": "document",
+      "id": "mysterium-fidei"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "paul-vi"
+    },
+    "to": {
+      "type": "document",
+      "id": "mense-maio"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "paul-vi"
+    },
+    "to": {
+      "type": "document",
+      "id": "ecclesiam-suam"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-paul-ii"
+    },
+    "to": {
+      "type": "document",
+      "id": "ecclesia-de-eucharistia"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-paul-ii"
+    },
+    "to": {
+      "type": "document",
+      "id": "fides-et-ratio"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-paul-ii"
+    },
+    "to": {
+      "type": "document",
+      "id": "ut-unum-sint"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-paul-ii"
+    },
+    "to": {
+      "type": "document",
+      "id": "evangelium-vitae"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-paul-ii"
+    },
+    "to": {
+      "type": "document",
+      "id": "veritatis-splendor"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-paul-ii"
+    },
+    "to": {
+      "type": "document",
+      "id": "centesimus-annus"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-paul-ii"
+    },
+    "to": {
+      "type": "document",
+      "id": "redemptoris-missio"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-paul-ii"
+    },
+    "to": {
+      "type": "document",
+      "id": "sollicitudo-rei-socialis"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-paul-ii"
+    },
+    "to": {
+      "type": "document",
+      "id": "redemptoris-mater"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-paul-ii"
+    },
+    "to": {
+      "type": "document",
+      "id": "dominum-et-vivificantem"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-paul-ii"
+    },
+    "to": {
+      "type": "document",
+      "id": "slavorum-apostoli"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-paul-ii"
+    },
+    "to": {
+      "type": "document",
+      "id": "laborem-exercens"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-paul-ii"
+    },
+    "to": {
+      "type": "document",
+      "id": "dives-in-misericordia"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "john-paul-ii"
+    },
+    "to": {
+      "type": "document",
+      "id": "redemptor-hominis"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "benedict-xvi"
+    },
+    "to": {
+      "type": "document",
+      "id": "caritas-in-veritate"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "benedict-xvi"
+    },
+    "to": {
+      "type": "document",
+      "id": "spe-salvi"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "benedict-xvi"
+    },
+    "to": {
+      "type": "document",
+      "id": "deus-caritas-est"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "francis"
+    },
+    "to": {
+      "type": "document",
+      "id": "dilexit-nos"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "francis"
+    },
+    "to": {
+      "type": "document",
+      "id": "fratelli-tutti"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "francis"
+    },
+    "to": {
+      "type": "document",
+      "id": "laudato-si"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "francis"
+    },
+    "to": {
+      "type": "document",
+      "id": "lumen-fidei"
+    },
+    "kind": "promulgated"
+  },
+  {
+    "from": {
+      "type": "pope",
+      "id": "leo-xiv"
+    },
+    "to": {
+      "type": "document",
+      "id": "magnifica-humanitas"
+    },
+    "kind": "promulgated"
   }
 ]

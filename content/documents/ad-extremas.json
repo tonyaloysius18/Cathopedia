@@ -1,0 +1,23 @@
+{
+  "id": "ad-extremas",
+  "kind": "encyclical",
+  "popeId": "leo-xiii",
+  "promulgated": "1893-06-24",
+  "documentYear": 1893,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_24061893_ad-extremas.html",
+  "text": {
+    "en": {
+      "name": "Ad Extremas",
+      "summary": "On Seminaries for Native Clergy.",
+      "body": "On seminaries in the missions of the East Indies. Leo XIII asks that clergy be raised up from among the peoples evangelised rather than sent from Europe indefinitely — an argument his successors would press for the next half century.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Ad Extremas",
+      "summary": "Sur les séminaires pour le clergé autochtone.",
+      "body": "Sur les séminaires dans les missions des Indes orientales. Léon XIII demande qu'un clergé soit suscité parmi les peuples évangélisés plutôt qu'envoyé indéfiniment d'Europe — argument que ses successeurs reprendront pendant le demi-siècle suivant.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

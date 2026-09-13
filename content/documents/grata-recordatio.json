@@ -1,0 +1,23 @@
+{
+  "id": "grata-recordatio",
+  "kind": "encyclical",
+  "popeId": "john-xxiii",
+  "promulgated": "1959-09-26",
+  "documentYear": 1959,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/john-xxiii/en/encyclicals/documents/hf_j-xxiii_enc_26091959_grata-recordatio.html",
+  "text": {
+    "en": {
+      "name": "Grata Recordatio",
+      "summary": "On the Rosary: Prayer for the Church, Missions, International and Social Problems.",
+      "body": "John XXIII recalls the October letters on the Rosary that Leo XIII sent to the whole Church in his own youth, and renews the practice. He asks that the prayer be offered for the Church, for the missions, and for the international and social problems then pressing, as the Council he had announced was being prepared.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Grata Recordatio",
+      "summary": "Sur le Rosaire : prière pour l'Église, les missions et les problèmes internationaux et sociaux.",
+      "body": "Jean XXIII se souvient des lettres d'octobre sur le Rosaire que Léon XIII adressait à toute l'Église durant sa jeunesse, et renoue avec cette pratique. Il demande que cette prière soit offerte pour l'Église, pour les missions et pour les problèmes internationaux et sociaux d'alors, tandis que se préparait le Concile qu'il avait annoncé.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "pieni-l-animo",
+  "kind": "encyclical",
+  "popeId": "pius-x",
+  "promulgated": "1906-07-28",
+  "documentYear": 1906,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/pius-x/en/encyclicals/documents/hf_p-x_enc_28071906_pieni-l-animo.html",
+  "text": {
+    "en": {
+      "name": "Pieni L'Animo",
+      "summary": "On the Clergy in Italy.",
+      "body": "Written in Italian to the bishops of Italy about the formation and discipline of their clergy. Pius X is concerned with seminaries, with priests drawn into political agitation, and with the currents of thought he would name modernism the following year.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Pieni L'Animo",
+      "summary": "Sur le clergé en Italie.",
+      "body": "Écrite en italien aux évêques d'Italie sur la formation et la discipline de leur clergé. Pie X s'y préoccupe des séminaires, des prêtres entraînés dans l'agitation politique, et des courants de pensée qu'il nommera modernisme l'année suivante.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

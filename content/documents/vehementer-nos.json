@@ -1,0 +1,23 @@
+{
+  "id": "vehementer-nos",
+  "kind": "encyclical",
+  "popeId": "pius-x",
+  "promulgated": "1906-02-11",
+  "documentYear": 1906,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/pius-x/en/encyclicals/documents/hf_p-x_enc_11021906_vehementer-nos.html",
+  "text": {
+    "en": {
+      "name": "Vehementer Nos",
+      "summary": "On the French Law of Separation.",
+      "body": "Pius X's condemnation of the French law of 1905 separating Church and state. He rejects the principle of separation itself as a denial of the state's duty to God, and protests the law's unilateral seizure of churches and endowments.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Vehementer Nos",
+      "summary": "Sur la loi française de séparation.",
+      "body": "La condamnation par Pie X de la loi française de 1905 séparant l'Église et l'État. Il rejette le principe même de la séparation comme un déni du devoir de l'État envers Dieu, et proteste contre la mainmise unilatérale de la loi sur les églises et les biens ecclésiastiques.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

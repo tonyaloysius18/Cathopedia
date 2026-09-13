@@ -1,0 +1,23 @@
+{
+  "id": "acerbo-nimis",
+  "kind": "encyclical",
+  "popeId": "pius-x",
+  "promulgated": "1905-04-15",
+  "documentYear": 1905,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/pius-x/en/encyclicals/documents/hf_p-x_enc_15041905_acerbo-nimis.html",
+  "text": {
+    "en": {
+      "name": "Acerbo Nimis",
+      "summary": "On Teaching Christian Doctrine.",
+      "body": "Pius X finds ignorance of Christian doctrine the root of much else, and legislates against it: every parish is to give catechism instruction on Sundays and holy days, with a fuller course for adults, and pastors are held personally accountable for it.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Acerbo Nimis",
+      "summary": "Sur l'enseignement de la doctrine chrétienne.",
+      "body": "Pie X voit dans l'ignorance de la doctrine chrétienne la racine de bien d'autres maux, et légifère contre elle : chaque paroisse doit assurer le catéchisme les dimanches et fêtes, avec un enseignement plus complet pour les adultes, les curés en étant personnellement responsables.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

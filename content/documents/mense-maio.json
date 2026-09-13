@@ -1,0 +1,23 @@
+{
+  "id": "mense-maio",
+  "kind": "encyclical",
+  "popeId": "paul-vi",
+  "promulgated": "1965-04-29",
+  "documentYear": 1965,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/paul-vi/en/encyclicals/documents/hf_p-vi_enc_29041965_mense-maio.html",
+  "text": {
+    "en": {
+      "name": "Mense Maio",
+      "summary": "On Prayers During May for Preservation of Peace.",
+      "body": "A short appeal for the month of May, long dedicated by popular piety to the Mother of God. Paul VI asks that the devotions of the month be directed to the preservation of peace at a moment when he judged it gravely threatened, and to the Council then approaching its final session.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Mense Maio",
+      "summary": "Sur les prières du mois de mai pour la sauvegarde de la paix.",
+      "body": "Un bref appel pour le mois de mai, depuis longtemps consacré par la piété populaire à la Mère de Dieu. Paul VI demande que les dévotions du mois soient orientées vers la sauvegarde de la paix, à un moment où il la jugeait gravement menacée, et vers le Concile qui approchait alors de sa dernière session.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

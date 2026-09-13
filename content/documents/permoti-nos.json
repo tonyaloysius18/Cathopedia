@@ -1,0 +1,23 @@
+{
+  "id": "permoti-nos",
+  "kind": "encyclical",
+  "popeId": "leo-xiii",
+  "promulgated": "1895-07-10",
+  "documentYear": 1895,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_10071895_permoti-nos.html",
+  "text": {
+    "en": {
+      "name": "Permoti Nos",
+      "summary": "On Social Conditions in Belgium.",
+      "body": "Written to the Belgian bishops, who had divided over how Catholics should organise among workers. Leo XIII settles the dispute by applying Rerum Novarum to it, and asks that charity govern the disagreement itself.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Permoti Nos",
+      "summary": "Sur la situation sociale en Belgique.",
+      "body": "Écrite aux évêques belges, divisés sur la manière dont les catholiques devaient s'organiser auprès des ouvriers. Léon XIII tranche le différend en lui appliquant Rerum Novarum, et demande que la charité gouverne le désaccord lui-même.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "evangelium-vitae",
+  "kind": "encyclical",
+  "popeId": "john-paul-ii",
+  "promulgated": "1995-03-25",
+  "documentYear": 1995,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/john-paul-ii/en/encyclicals/documents/hf_jp-ii_enc_25031995_evangelium-vitae.html",
+  "text": {
+    "en": {
+      "name": "Evangelium Vitae",
+      "summary": "On the Value and Inviolability of Human Life.",
+      "body": "Against what he names a culture of death, John Paul II sets out the value and inviolability of every human life from conception to natural death. The encyclical carries three of the most solemn statements of his pontificate, declaring the direct killing of the innocent, procured abortion and euthanasia gravely contrary to the moral law, and calls for a culture of life in law and in daily practice.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Evangelium Vitae",
+      "summary": "Sur la valeur et l'inviolabilité de la vie humaine.",
+      "body": "Face à ce qu'il nomme une culture de mort, Jean-Paul II expose la valeur et l'inviolabilité de toute vie humaine, de la conception à la mort naturelle. L'encyclique contient trois des déclarations les plus solennelles de son pontificat, affirmant que le meurtre direct de l'innocent, l'avortement provoqué et l'euthanasie sont gravement contraires à la loi morale, et appelle à une culture de la vie dans le droit comme dans la pratique quotidienne.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

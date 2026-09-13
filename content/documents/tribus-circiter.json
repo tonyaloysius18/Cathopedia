@@ -1,0 +1,23 @@
+{
+  "id": "tribus-circiter",
+  "kind": "encyclical",
+  "popeId": "pius-x",
+  "promulgated": "1906-04-05",
+  "documentYear": 1906,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/pius-x/en/encyclicals/documents/hf_p-x_enc_05041906_tribus-circiter.html",
+  "text": {
+    "en": {
+      "name": "Tribus Circiter",
+      "summary": "On the Mariavites or Mystic Priests of Poland.",
+      "body": "On the Mariavites, a movement among Polish clergy gathered around the visions of Feliksa Kozłowska. Pius X rejects the claimed revelations and orders the priests involved to submit to their bishops; the group afterwards separated from the Catholic Church.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Tribus Circiter",
+      "summary": "Sur les mariavites ou prêtres mystiques de Pologne.",
+      "body": "Sur les mariavites, un mouvement de prêtres polonais rassemblés autour des visions de Feliksa Kozłowska. Pie X rejette les révélations alléguées et ordonne aux prêtres concernés de se soumettre à leurs évêques ; le groupe se sépara ensuite de l'Église catholique.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

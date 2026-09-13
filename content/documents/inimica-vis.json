@@ -1,0 +1,23 @@
+{
+  "id": "inimica-vis",
+  "kind": "encyclical",
+  "popeId": "leo-xiii",
+  "promulgated": "1892-12-08",
+  "documentYear": 1892,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_08121892_inimica-vis.html",
+  "text": {
+    "en": {
+      "name": "Inimica Vis",
+      "summary": "On Freemasonry.",
+      "body": "Issued the same day as Custodi di quella Fede, this one to the Italian bishops. Leo XIII asks them to instruct their people about Freemasonry and to counter it through Catholic associations and sound teaching rather than by denunciation alone.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Inimica Vis",
+      "summary": "Sur la franc-maçonnerie.",
+      "body": "Publiée le même jour que Custodi di quella Fede, celle-ci à l'adresse des évêques italiens. Léon XIII leur demande d'instruire leur peuple au sujet de la franc-maçonnerie et de la contrer par les associations catholiques et un enseignement solide plutôt que par la seule dénonciation.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "spe-salvi",
+  "kind": "encyclical",
+  "popeId": "benedict-xvi",
+  "promulgated": "2007-11-30",
+  "documentYear": 2007,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/benedict-xvi/en/encyclicals/documents/hf_ben-xvi_enc_20071130_spe-salvi.html",
+  "text": {
+    "en": {
+      "name": "Spe salvi",
+      "summary": "On Christian Hope.",
+      "body": "Taking its title from St Paul — in hope we were saved — Benedict XVI asks what hope Christians actually have, and distinguishes it from the modern faith in progress, which promised a redemption that science and politics cannot give. He treats prayer, action and suffering as places where hope is learned, and ends on the last judgement as a ground for hope rather than only for fear.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Spe salvi",
+      "summary": "Sur l'espérance chrétienne.",
+      "body": "Empruntant son titre à saint Paul — dans l'espérance nous avons été sauvés —, Benoît XVI demande quelle espérance les chrétiens ont réellement, et la distingue de la foi moderne dans le progrès, qui promettait une rédemption que la science et la politique ne peuvent donner. Il présente la prière, l'action et la souffrance comme les lieux où s'apprend l'espérance, et achève sur le jugement dernier comme fondement d'espérance et non seulement de crainte.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

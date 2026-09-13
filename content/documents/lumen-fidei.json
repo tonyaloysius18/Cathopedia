@@ -1,0 +1,23 @@
+{
+  "id": "lumen-fidei",
+  "kind": "encyclical",
+  "popeId": "francis",
+  "promulgated": "2013-06-29",
+  "documentYear": 2013,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/francesco/en/encyclicals/documents/papa-francesco_20130629_enciclica-lumen-fidei.html",
+  "text": {
+    "en": {
+      "name": "Lumen fidei",
+      "summary": "On Faith.",
+      "body": "The first encyclical of Francis's pontificate was substantially drafted by Benedict XVI, who completed encyclicals on charity and hope but not the one on faith; Francis took over the text and published it as his own. It answers the modern suspicion that faith is a leap in the dark by presenting it as light — the light Christ brings, which does not dim reason but lets the believer see.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Lumen fidei",
+      "summary": "Sur la foi.",
+      "body": "La première encyclique du pontificat de François avait été largement rédigée par Benoît XVI, qui avait achevé ses encycliques sur la charité et l'espérance mais non celle sur la foi ; François en reprit le texte et le publia comme sien. Elle répond au soupçon moderne selon lequel la foi serait un saut dans le noir en la présentant comme une lumière — celle qu'apporte le Christ, qui n'obscurcit pas la raison mais permet au croyant de voir.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "centesimus-annus",
+  "kind": "encyclical",
+  "popeId": "john-paul-ii",
+  "promulgated": "1991-05-01",
+  "documentYear": 1991,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/john-paul-ii/en/encyclicals/documents/hf_jp-ii_enc_01051991_centesimus-annus.html",
+  "text": {
+    "en": {
+      "name": "Centesimus Annus",
+      "summary": "On the Hundredth Anniversary of Rerum Novarum.",
+      "body": "Written on the centenary of Rerum Novarum and two years after the fall of the Berlin Wall, the encyclical reads the collapse of European communism as a verdict on a system that mistook the human person. It gives a carefully qualified account of the free economy, which it judges good where law, the state and a moral culture hold it within bounds.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Centesimus Annus",
+      "summary": "Pour le centenaire de Rerum Novarum.",
+      "body": "Écrite pour le centenaire de Rerum Novarum, deux ans après la chute du mur de Berlin, l'encyclique lit l'effondrement du communisme européen comme le verdict porté sur un système qui s'était trompé sur la personne humaine. Elle propose une appréciation soigneusement nuancée de l'économie libre, jugée bonne là où le droit, l'État et une culture morale la maintiennent dans ses limites.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

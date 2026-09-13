@@ -1,0 +1,23 @@
+{
+  "id": "communium-interpretes-dolorum",
+  "kind": "encyclical",
+  "popeId": "pius-xii",
+  "promulgated": "1945-04-15",
+  "documentYear": 1945,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/pius-xii/en/encyclicals/documents/hf_p-xii_enc_15041945_communium-interpretes-dolorum.html",
+  "text": {
+    "en": {
+      "name": "Communium Interpretes Dolorum",
+      "summary": "Appealing for Prayers for Peace During May.",
+      "body": "Written in the last weeks of the Second World War in Europe. Speaking as the interpreter of a grief shared by almost every nation, Pius XII asks that the month of May be given to prayer for a peace that would be just and lasting rather than merely an end to fighting.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Communium Interpretes Dolorum",
+      "summary": "Appel à la prière pour la paix durant le mois de mai.",
+      "body": "Écrite dans les dernières semaines de la Seconde Guerre mondiale en Europe. Se faisant l'interprète d'une douleur commune à presque toutes les nations, Pie XII demande que le mois de mai soit consacré à la prière pour une paix juste et durable, et non pour un simple arrêt des combats.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

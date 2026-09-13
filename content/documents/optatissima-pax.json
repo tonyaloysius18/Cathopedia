@@ -1,0 +1,23 @@
+{
+  "id": "optatissima-pax",
+  "kind": "encyclical",
+  "popeId": "pius-xii",
+  "promulgated": "1947-12-18",
+  "documentYear": 1947,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/pius-xii/en/encyclicals/documents/hf_p-xii_enc_18121947_optatissima-pax.html",
+  "text": {
+    "en": {
+      "name": "Optatissima Pax",
+      "summary": "On Prescribing Public Prayers for Social and World Peace.",
+      "body": "Two years after the war, Pius XII finds the peace still unsettled — materially and socially — and prescribes public prayers for it. The encyclical looks as much at discord within nations, which he judged capable of undoing the peace between them, as at relations between states.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Optatissima Pax",
+      "summary": "Prescrivant des prières publiques pour la paix sociale et mondiale.",
+      "body": "Deux ans après la guerre, Pie XII constate que la paix demeure mal assurée — matériellement et socialement — et prescrit des prières publiques à cette intention. L'encyclique regarde autant les discordes internes aux nations, qu'il jugeait capables de défaire la paix entre elles, que les rapports entre États.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "magnae-dei-matris",
+  "kind": "encyclical",
+  "popeId": "leo-xiii",
+  "promulgated": "1892-09-08",
+  "documentYear": 1892,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_08091892_magnae-dei-matris.html",
+  "text": {
+    "en": {
+      "name": "Magnae Dei Matris",
+      "summary": "On the Rosary.",
+      "body": "Another October letter on the Rosary, in which Leo XIII treats the prayer as a school of Christian doctrine — a way for the unlettered to hold the whole mystery of Christ in mind through his Mother.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Magnae Dei Matris",
+      "summary": "Sur le Rosaire.",
+      "body": "Une autre lettre d'octobre sur le Rosaire, où Léon XIII présente cette prière comme une école de doctrine chrétienne — un moyen pour les gens sans lettres de garder à l'esprit, par sa Mère, le mystère entier du Christ.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sapientiae-christianae",
+  "kind": "encyclical",
+  "popeId": "leo-xiii",
+  "promulgated": "1890-01-10",
+  "documentYear": 1890,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_10011890_sapientiae-christianae.html",
+  "text": {
+    "en": {
+      "name": "Sapientiae Christianae",
+      "summary": "On Christians as Citizens.",
+      "body": "On the duties of Catholics as citizens. Leo XIII holds that a Christian owes real obedience to lawful authority but owes God more, and that the faith cannot be confined to private life when public law touches it; he asks Catholics to take part in public affairs rather than withdraw.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Sapientiae Christianae",
+      "summary": "Sur les chrétiens comme citoyens.",
+      "body": "Sur les devoirs des catholiques comme citoyens. Léon XIII tient qu'un chrétien doit une obéissance véritable à l'autorité légitime mais qu'il doit davantage à Dieu, et que la foi ne peut être confinée à la vie privée quand la loi publique la touche ; il demande aux catholiques de prendre part aux affaires publiques plutôt que de s'en retirer.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

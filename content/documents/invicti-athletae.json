@@ -1,0 +1,23 @@
+{
+  "id": "invicti-athletae",
+  "kind": "encyclical",
+  "popeId": "pius-xii",
+  "promulgated": "1957-05-16",
+  "documentYear": 1957,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/pius-xii/en/encyclicals/documents/hf_p-xii_enc_16051957_invicti-athletae.html",
+  "text": {
+    "en": {
+      "name": "Invicti Athletae",
+      "summary": "On St. Andrew Bobola.",
+      "body": "For the third centenary of the death of Andrew Bobola, the Jesuit tortured and killed in 1657 during the wars in the Polish–Lithuanian Commonwealth. Pius XII calls him Christ's unconquered athlete and holds up his constancy for the Church in eastern Europe of his own day.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Invicti Athletae",
+      "summary": "Sur saint André Bobola.",
+      "body": "Pour le troisième centenaire de la mort d'André Bobola, le jésuite torturé et tué en 1657 pendant les guerres de la République des Deux Nations. Pie XII l'appelle l'athlète invaincu du Christ et propose sa constance en exemple à l'Église d'Europe orientale de son temps.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "in-amplissimo",
+  "kind": "encyclical",
+  "popeId": "leo-xiii",
+  "promulgated": "1902-04-15",
+  "documentYear": 1902,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_15041902_in-amplissimo.html",
+  "text": {
+    "en": {
+      "name": "In Amplissimo",
+      "summary": "On the Church in the United States.",
+      "body": "To Cardinal Gibbons and the American bishops, marking the growth of the Church in the United States. Leo XIII expresses his satisfaction at its vigour while repeating the cautions about national particularity he had set out in Testem Benevolentiae.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "In Amplissimo",
+      "summary": "Sur l'Église aux États-Unis.",
+      "body": "Au cardinal Gibbons et aux évêques américains, à propos de la croissance de l'Église aux États-Unis. Léon XIII exprime sa satisfaction devant sa vigueur, tout en répétant les mises en garde sur le particularisme national qu'il avait formulées dans Testem Benevolentiae.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

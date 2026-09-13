@@ -1,0 +1,23 @@
+{
+  "id": "au-milieu-des-sollicitudes",
+  "kind": "encyclical",
+  "popeId": "leo-xiii",
+  "promulgated": "1892-02-16",
+  "documentYear": 1892,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_16021892_au-milieu-des-sollicitudes.html",
+  "text": {
+    "en": {
+      "name": "Au Milieu Des Sollicitudes",
+      "summary": "On the Church and State in France.",
+      "body": "Written in French, and the encyclical of the Ralliement. Leo XIII asks French Catholics to accept the Republic as the established form of government and to work within it for just laws, distinguishing the form of a regime, which may be accepted, from its legislation, which may be opposed.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Au Milieu Des Sollicitudes",
+      "summary": "Sur l'Église et l'État en France.",
+      "body": "Écrite en français, c'est l'encyclique du Ralliement. Léon XIII demande aux catholiques français d'accepter la République comme forme de gouvernement établie et d'y travailler à des lois justes, distinguant la forme du régime, que l'on peut accepter, de sa législation, que l'on peut combattre.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

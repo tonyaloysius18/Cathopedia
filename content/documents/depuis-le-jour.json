@@ -1,0 +1,23 @@
+{
+  "id": "depuis-le-jour",
+  "kind": "encyclical",
+  "popeId": "leo-xiii",
+  "promulgated": "1899-09-08",
+  "documentYear": 1899,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_08091899_depuis-le-jour.html",
+  "text": {
+    "en": {
+      "name": "Depuis le Jour",
+      "summary": "On the Education of the Clergy.",
+      "body": "Written in French to the bishops and clergy of France, and the fullest of Leo XIII's letters on priestly formation. He sets out what a seminary should teach — Scripture, Thomistic philosophy, history — and what it should form: priests able to meet an educated and sceptical age.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Depuis le Jour",
+      "summary": "Sur la formation du clergé.",
+      "body": "Écrite en français aux évêques et au clergé de France, et la plus complète des lettres de Léon XIII sur la formation sacerdotale. Il expose ce qu'un séminaire doit enseigner — l'Écriture, la philosophie thomiste, l'histoire — et ce qu'il doit former : des prêtres capables d'affronter un siècle instruit et sceptique.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

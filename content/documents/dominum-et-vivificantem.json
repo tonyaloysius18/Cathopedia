@@ -1,0 +1,23 @@
+{
+  "id": "dominum-et-vivificantem",
+  "kind": "encyclical",
+  "popeId": "john-paul-ii",
+  "promulgated": "1986-05-18",
+  "documentYear": 1986,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/john-paul-ii/en/encyclicals/documents/hf_jp-ii_enc_18051986_dominum-et-vivificantem.html",
+  "text": {
+    "en": {
+      "name": "Dominum et vivificantem",
+      "summary": "On the Holy Spirit in the Life of the Church and the World.",
+      "body": "The third panel of a trinitarian triptych, after Redemptor Hominis on the Son and Dives in Misericordia on the Father. Building on Pius XII's teaching that the Holy Spirit is the vital principle of the Church and on the Council's call for a renewed pneumatology, it treats the Spirit's work in the Church, in the conscience convicted of sin, and in the world.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Dominum et vivificantem",
+      "summary": "Sur le Saint-Esprit dans la vie de l'Église et du monde.",
+      "body": "Le troisième volet d'un triptyque trinitaire, après Redemptor Hominis sur le Fils et Dives in Misericordia sur le Père. S'appuyant sur l'enseignement de Pie XII selon lequel l'Esprit Saint est le principe vital de l'Église, et sur l'appel du Concile à une pneumatologie renouvelée, elle traite de l'action de l'Esprit dans l'Église, dans la conscience convaincue de péché, et dans le monde.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

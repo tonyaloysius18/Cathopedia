@@ -1,0 +1,23 @@
+{
+  "id": "laudato-si",
+  "kind": "encyclical",
+  "popeId": "francis",
+  "promulgated": "2015-05-24",
+  "documentYear": 2015,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/francesco/en/encyclicals/documents/papa-francesco_20150524_enciclica-laudato-si.html",
+  "text": {
+    "en": {
+      "name": "Laudato Si'",
+      "summary": "Francis on care for our common home — an integral ecology binding the cry of the earth to the cry of the poor.",
+      "body": "Taking its title from Francis of Assisi's canticle, the encyclical argues that environmental and social crises are one crisis, not two. It criticises the technocratic paradigm and a throwaway culture, insists that the poor suffer ecological damage first and worst, and calls for an integral ecology in which creation, economy and human life are considered together. It was addressed to every person living on the planet.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Laudato Si'",
+      "summary": "François sur la sauvegarde de la maison commune — une écologie intégrale liant le cri de la terre au cri des pauvres.",
+      "body": "Empruntant son titre au cantique de François d'Assise, l'encyclique montre que les crises environnementale et sociale n'en font qu'une. Elle critique le paradigme technocratique et la culture du déchet, rappelle que les pauvres subissent les premiers et le plus durement les dégâts écologiques, et appelle à une écologie intégrale où création, économie et vie humaine sont pensées ensemble. Elle s'adresse à toute personne habitant cette planète.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

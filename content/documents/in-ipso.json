@@ -1,0 +1,23 @@
+{
+  "id": "in-ipso",
+  "kind": "encyclical",
+  "popeId": "leo-xiii",
+  "promulgated": "1891-03-03",
+  "documentYear": 1891,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_03031891_in-ipso.html",
+  "text": {
+    "en": {
+      "name": "In Ipso",
+      "summary": "On Episcopal Reunions in Austria.",
+      "body": "Leo XIII encourages the Austrian bishops to meet regularly as a body. The practice of episcopal conferences, now universal, was then being established, and he commends it as a means of common action.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "In Ipso",
+      "summary": "Sur les réunions épiscopales en Autriche.",
+      "body": "Léon XIII encourage les évêques autrichiens à se réunir régulièrement en corps. La pratique des conférences épiscopales, aujourd'hui universelle, s'établissait alors, et il la recommande comme moyen d'action commune.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

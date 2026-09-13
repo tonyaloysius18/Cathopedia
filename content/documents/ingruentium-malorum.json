@@ -1,0 +1,23 @@
+{
+  "id": "ingruentium-malorum",
+  "kind": "encyclical",
+  "popeId": "pius-xii",
+  "promulgated": "1951-09-15",
+  "documentYear": 1951,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/pius-xii/en/encyclicals/documents/hf_p-xii_enc_15091951_ingruentium-malorum.html",
+  "text": {
+    "en": {
+      "name": "Ingruentium Malorum",
+      "summary": "On Reciting the Rosary.",
+      "body": "Facing what he calls the evils pressing upon the world, Pius XII asks for the family Rosary. The encyclical is remembered for pressing the practice of praying it together at home, and for placing that domestic prayer at the centre of his appeal for peace and for the persecuted Church.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Ingruentium Malorum",
+      "summary": "Sur la récitation du Rosaire.",
+      "body": "Face à ce qu'il nomme les maux qui pressent le monde, Pie XII demande le Rosaire en famille. On retient de cette encyclique l'insistance sur la récitation commune à la maison, et le fait qu'elle place cette prière domestique au cœur de son appel pour la paix et pour l'Église persécutée.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

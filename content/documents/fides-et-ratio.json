@@ -1,0 +1,23 @@
+{
+  "id": "fides-et-ratio",
+  "kind": "encyclical",
+  "popeId": "john-paul-ii",
+  "promulgated": "1998-09-14",
+  "documentYear": 1998,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/john-paul-ii/en/encyclicals/documents/hf_jp-ii_enc_14091998_fides-et-ratio.html",
+  "text": {
+    "en": {
+      "name": "Fides et Ratio",
+      "summary": "On the Relationship Between Faith and Reason.",
+      "body": "Faith and reason, John Paul II writes, are two wings on which the human spirit rises to the contemplation of truth. Against a scepticism that had narrowed philosophy to technique or opinion, the encyclical defends reason's real capacity for truth, argues that faith needs philosophy to think itself, and holds that philosophy is healed rather than constrained by revelation.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Fides et Ratio",
+      "summary": "Sur les rapports entre la foi et la raison.",
+      "body": "La foi et la raison, écrit Jean-Paul II, sont les deux ailes qui permettent à l'esprit humain de s'élever vers la contemplation de la vérité. Contre un scepticisme qui avait réduit la philosophie à une technique ou à une opinion, l'encyclique défend la capacité réelle de la raison à atteindre la vérité, montre que la foi a besoin de la philosophie pour se penser, et soutient que la révélation guérit la philosophie au lieu de l'entraver.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

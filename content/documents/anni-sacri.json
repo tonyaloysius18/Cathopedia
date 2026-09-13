@@ -1,0 +1,23 @@
+{
+  "id": "anni-sacri",
+  "kind": "encyclical",
+  "popeId": "pius-xii",
+  "promulgated": "1950-03-12",
+  "documentYear": 1950,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/pius-xii/en/encyclicals/documents/hf_p-xii_enc_12031950_anni-sacri.html",
+  "text": {
+    "en": {
+      "name": "Anni Sacri",
+      "summary": "On a Program for Combatting Atheistic Propaganda Throughout the World.",
+      "body": "Written during the Holy Year of 1950, when atheistic communism was consolidating across eastern Europe. Pius XII sets out a programme against atheistic propaganda built on catechesis, the press and the formation of lay Catholics rather than on denunciation alone.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Anni Sacri",
+      "summary": "Sur un programme de lutte contre la propagande athée dans le monde entier.",
+      "body": "Écrite pendant l'Année sainte de 1950, alors que le communisme athée se consolidait dans toute l'Europe de l'Est. Pie XII expose un programme contre la propagande athée fondé sur la catéchèse, la presse et la formation des laïcs, plutôt que sur la seule dénonciation.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

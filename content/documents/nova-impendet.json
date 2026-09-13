@@ -1,0 +1,23 @@
+{
+  "id": "nova-impendet",
+  "kind": "encyclical",
+  "popeId": "pius-xi",
+  "promulgated": "1931-10-02",
+  "documentYear": 1931,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/pius-xi/en/encyclicals/documents/hf_p-xi_enc_02101931_nova-impendet.html",
+  "text": {
+    "en": {
+      "name": "Nova Impendet",
+      "summary": "On the Economic Crisis.",
+      "body": "A short appeal in the depths of the Depression. Pius XI asks for relief for the unemployed and for the children suffering most from it, and links the crisis to the arms spending that continued while people went without work.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Nova Impendet",
+      "summary": "Sur la crise économique.",
+      "body": "Un bref appel au plus fort de la Grande Dépression. Pie XI demande du secours pour les chômeurs et pour les enfants qui en souffrent le plus, et rattache la crise aux dépenses d'armement qui se poursuivaient tandis que les gens manquaient de travail.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "arcanum-divinae",
+  "kind": "encyclical",
+  "popeId": "leo-xiii",
+  "promulgated": "1880-02-10",
+  "documentYear": 1880,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_10021880_arcanum.html",
+  "text": {
+    "en": {
+      "name": "Arcanum Divinae",
+      "summary": "On Christian Marriage.",
+      "body": "The first modern papal encyclical on marriage. Against the spread of civil marriage and divorce laws, Leo XIII sets out marriage as instituted by God and raised by Christ to a sacrament, from which he draws its unity and indissolubility and the limits of the state's competence over it.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Arcanum Divinae",
+      "summary": "Sur le mariage chrétien.",
+      "body": "La première encyclique pontificale moderne sur le mariage. Contre la diffusion du mariage civil et des lois de divorce, Léon XIII expose le mariage comme institué par Dieu et élevé par le Christ à la dignité de sacrement, d'où il tire son unité, son indissolubilité et les limites de la compétence de l'État à son égard.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

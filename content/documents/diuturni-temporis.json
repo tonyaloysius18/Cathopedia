@@ -1,0 +1,23 @@
+{
+  "id": "diuturni-temporis",
+  "kind": "encyclical",
+  "popeId": "leo-xiii",
+  "promulgated": "1898-09-05",
+  "documentYear": 1898,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_05091898_diuturni-temporis.html",
+  "text": {
+    "en": {
+      "name": "Diuturni Temporis",
+      "summary": "On the Rosary.",
+      "body": "The last of the many letters Leo XIII devoted to the Rosary across his pontificate. Looking back over that long series, he confirms the October devotions he had established and commends the prayer once more to the whole Church.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Diuturni Temporis",
+      "summary": "Sur le Rosaire.",
+      "body": "La dernière des nombreuses lettres que Léon XIII consacra au Rosaire tout au long de son pontificat. Revenant sur cette longue série, il confirme les dévotions d'octobre qu'il avait instituées et recommande une fois de plus cette prière à toute l'Église.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "quemadmodum",
+  "kind": "encyclical",
+  "popeId": "pius-xii",
+  "promulgated": "1946-01-06",
+  "documentYear": 1946,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/pius-xii/en/encyclicals/documents/hf_p-xii_enc_06011946_quemadmodum.html",
+  "text": {
+    "en": {
+      "name": "Quemadmodum",
+      "summary": "Pleading for the Care of the World's Destitute Children.",
+      "body": "Written on the Epiphany after the war ended, for the children left destitute across Europe and beyond. Pius XII recalls his efforts to shorten the conflict and now pleads for its smallest victims, asking the whole Church for relief on their behalf.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Quemadmodum",
+      "summary": "Plaidant pour le soin des enfants démunis du monde entier.",
+      "body": "Écrite à l'Épiphanie qui suivit la fin de la guerre, pour les enfants laissés dans le dénuement à travers l'Europe et au-delà. Pie XII rappelle ses efforts pour abréger le conflit et plaide maintenant pour ses plus petites victimes, demandant à toute l'Église de leur venir en aide.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "sollicitudo-rei-socialis",
+  "kind": "encyclical",
+  "popeId": "john-paul-ii",
+  "promulgated": "1987-12-30",
+  "documentYear": 1987,
+  "imageUrl": null,
+  "sourceUrl": "https://www.vatican.va/content/john-paul-ii/en/encyclicals/documents/hf_jp-ii_enc_30121987_sollicitudo-rei-socialis.html",
+  "text": {
+    "en": {
+      "name": "Sollicitudo Rei Socialis",
+      "summary": "On the Twentieth Anniversary of Populorum Progressio.",
+      "body": "Marking twenty years since Populorum Progressio, John Paul II finds the gap between rich and poor nations wider rather than narrower. He introduces the language of structures of sin for the arrangements that entrench that gap, proposes solidarity as a virtue rather than a sentiment, and declines to endorse either of the two blocs then dividing the world.",
+      "sourceAttribution": "Summary by Cathopedia. Full text © Libreria Editrice Vaticana, published at vatican.va."
+    },
+    "fr": {
+      "name": "Sollicitudo Rei Socialis",
+      "summary": "Pour le vingtième anniversaire de Populorum Progressio.",
+      "body": "Marquant les vingt ans de Populorum Progressio, Jean-Paul II constate que l'écart entre nations riches et pauvres s'est creusé plutôt que réduit. Il introduit le langage des structures de péché pour désigner les dispositifs qui enracinent cet écart, propose la solidarité comme vertu et non comme sentiment, et refuse d'entériner l'un ou l'autre des deux blocs qui divisaient alors le monde.",
+      "sourceAttribution": "Résumé par Cathopedia. Texte intégral © Libreria Editrice Vaticana, publié sur vatican.va."
+    }
+  }
+}
