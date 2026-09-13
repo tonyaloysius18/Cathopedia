@@ -1,0 +1,424 @@
+{
+  "alatri": [
+    "ita-alatri"
+  ],
+  "alboraya-almacera": [
+    "alboraya-almacera-1348"
+  ],
+  "alcala-de-henares": [
+    "alcala-1597"
+  ],
+  "alcoy": [
+    "spa-alcoy"
+  ],
+  "alkmaar": [
+    "alkmaar-1429"
+  ],
+  "amsterdam": [
+    "amsterdam-1345"
+  ],
+  "assisi-clare": [
+    "ita-saint-clare-assisi"
+  ],
+  "asti": [
+    "ita-asti"
+  ],
+  "augsburg": [
+    "ger-augsburg"
+  ],
+  "avignon": [
+    "fra-avignon"
+  ],
+  "bagno-di-romagna": [
+    "ita-bagno-di-romagna"
+  ],
+  "balasar": [
+    "alexandrina-maria-da-costa-eucharistic-sustenance"
+  ],
+  "benningen": [
+    "ger-benningen"
+  ],
+  "bergen-op-zoom": [
+    "bergen-netherlands-1421"
+  ],
+  "betania": [
+    "ven-betania"
+  ],
+  "bettbrunn": [
+    "ger-bettbrunn"
+  ],
+  "blanot": [
+    "fra-blanot"
+  ],
+  "bois-dhaine": [
+    "anne-louise-lateau-eucharistic-fasting"
+  ],
+  "bois-seigneur-isaac": [
+    "bel-bois-seigneur-isaac"
+  ],
+  "bologna-imelda": [
+    "blessed-imelda-lambertini-bologna"
+  ],
+  "bordeaux": [
+    "fra-bordeaux"
+  ],
+  "boxmeer": [
+    "boxmeer-1400"
+  ],
+  "boxtel-hoogstraten": [
+    "boxtel-hoogstraten-1380"
+  ],
+  "breda-niervaart": [
+    "breda-niervaart-1300"
+  ],
+  "bruges": [
+    "bel-bruges"
+  ],
+  "calanda": [
+    "calanda-miracle-1640"
+  ],
+  "canosio": [
+    "ita-canosio"
+  ],
+  "caravaca-de-la-cruz": [
+    "spa-caravaca-de-la-cruz"
+  ],
+  "carmelite-siena": [
+    "siena-carmelite-monk-miracle"
+  ],
+  "cascia": [
+    "ita-cascia"
+  ],
+  "cava-dei-tirreni": [
+    "ita-cava-dei-tirreni"
+  ],
+  "champion-wisconsin": [
+    "usa-champion"
+  ],
+  "chateauneuf-de-galaure": [
+    "marthe-robin-eucharistic-sustenance"
+  ],
+  "chiaravalle-bernard": [
+    "saint-bernard-chiaravalle-duke-conversion"
+  ],
+  "chirattakonam": [
+    "chirattakonam-2001"
+  ],
+  "cimballa": [
+    "spa-cimballa"
+  ],
+  "daroca": [
+    "spa-daroca"
+  ],
+  "dijon": [
+    "fra-dijon"
+  ],
+  "douai": [
+    "fra-douai"
+  ],
+  "dronero": [
+    "ita-dronero"
+  ],
+  "dulmen": [
+    "anne-catherine-emmerich-eucharistic-sustenance"
+  ],
+  "erding": [
+    "ger-erding"
+  ],
+  "eten": [
+    "eten-peru-1649"
+  ],
+  "ettiswil": [
+    "ettiswill-1447"
+  ],
+  "eucharistic-miracle-buenos-aires": [
+    "arg-buenos-aires"
+  ],
+  "fatima-angel": [
+    "fatima-angel-of-peace-1916"
+  ],
+  "faverney": [
+    "fra-faverney"
+  ],
+  "ferrara": [
+    "ita-ferrara"
+  ],
+  "fiecht": [
+    "fiecht-austria-1310"
+  ],
+  "florence": [
+    "ita-florence"
+  ],
+  "foligno-angela": [
+    "foligno-blessed-angela-vision"
+  ],
+  "gerona": [
+    "spa-gerona"
+  ],
+  "glotowo": [
+    "pol-glotowo"
+  ],
+  "gorkum-escorial": [
+    "gorkum-escorial-1572"
+  ],
+  "gruaro": [
+    "gruaro-valvasone-1294"
+  ],
+  "guadalupe-mexico": [
+    "our-lady-of-guadalupe-1531"
+  ],
+  "guadalupe-spain": [
+    "spa-guadalupe"
+  ],
+  "herentals": [
+    "bel-herentals"
+  ],
+  "herkenrode-hasselt": [
+    "bel-herkenrode-hasselt"
+  ],
+  "ivorra": [
+    "spa-ivorra"
+  ],
+  "konnersreuth": [
+    "teresa-neumann-eucharistic-sustenance"
+  ],
+  "krakow-divine-mercy": [
+    "divine-mercy-apparitions-cracow"
+  ],
+  "kranenburg": [
+    "ger-kranenburg",
+    "kranenburg-bei-kleve-1280"
+  ],
+  "la-rochelle": [
+    "fra-la-rochelle"
+  ],
+  "lanciano": [
+    "ita-lanciano"
+  ],
+  "lateran-council": [
+    "ita-rome-1215"
+  ],
+  "legnica": [
+    "pol-legnica"
+  ],
+  "les-ulmes": [
+    "fra-les-ulmes"
+  ],
+  "liege": [
+    "bel-liege"
+  ],
+  "lourdes-healings": [
+    "lourdes-eucharistic-procession-1888"
+  ],
+  "ludbreg": [
+    "cro-ludbreg"
+  ],
+  "macerata": [
+    "ita-macerata"
+  ],
+  "marseille-en-beauvais": [
+    "fra-marseille-en-beauvais"
+  ],
+  "mary-of-egypt": [
+    "egy-st-mary-egypt"
+  ],
+  "meerssen": [
+    "hol-meerssen",
+    "meerssen-1222"
+  ],
+  "meerssen-fire-1465": [
+    "meerssen-1465-fire"
+  ],
+  "middleburg": [
+    "middleburg-lovanio-1374"
+  ],
+  "miracle-of-bolsena": [
+    "ita-bolsena"
+  ],
+  "miracle-of-santarem": [
+    "por-santarem"
+  ],
+  "miracle-of-siena": [
+    "ita-siena"
+  ],
+  "mogoro": [
+    "ita-mogoro"
+  ],
+  "moncada": [
+    "spa-moncada"
+  ],
+  "montefalco-clare": [
+    "montefalco-saint-clare-communion"
+  ],
+  "montieri": [
+    "blessed-james-montieri-jesus-communion"
+  ],
+  "montserrat": [
+    "spa-montserrat"
+  ],
+  "morne-rouge": [
+    "morne-rouge-1902"
+  ],
+  "morrovalle": [
+    "ita-morrovalle"
+  ],
+  "muro-lucano": [
+    "saint-gerard-majella-childhood"
+  ],
+  "naples-five-wounds": [
+    "saint-maria-francesca-five-wounds"
+  ],
+  "neuvy-saint-sepulcre": [
+    "neuvy-saint-sepulcre-precious-blood"
+  ],
+  "o-cebreiro": [
+    "spa-ocebreiro"
+  ],
+  "offida": [
+    "ita-offida"
+  ],
+  "onil": [
+    "spa-onil"
+  ],
+  "orvieto-thomas-of-cori": [
+    "blessed-thomas-cori-apparitions"
+  ],
+  "patierno": [
+    "ita-patierno-naples"
+  ],
+  "peshtigo": [
+    "usa-peshtigo"
+  ],
+  "peter-damian": [
+    "ita-s-peter-damian"
+  ],
+  "pibrac": [
+    "pibrac-eucharistic-miracle"
+  ],
+  "pitigliano": [
+    "saint-lucia-filippini-pitigliano"
+  ],
+  "ponferrada": [
+    "spa-ponferrada"
+  ],
+  "poznan": [
+    "pol-poznan"
+  ],
+  "pressac": [
+    "fra-pressac"
+  ],
+  "proceno-agnes": [
+    "proceno-saint-agnes-segni-communion"
+  ],
+  "regensburg": [
+    "regensburg-dropped-hosts-1255"
+  ],
+  "rimini": [
+    "ita-rimini"
+  ],
+  "rome-devoted-lambs": [
+    "devoted-lambs-eucharist"
+  ],
+  "rome-gregory-great": [
+    "ita-rome-6th-7th"
+  ],
+  "rome-santa-pudenziana": [
+    "ita-rome-1610"
+  ],
+  "rosano": [
+    "ita-rosano"
+  ],
+  "sachseln": [
+    "st-nicholas-of-flue-eucharistic-fasting"
+  ],
+  "saint-andre-de-la-reunion": [
+    "saint-andre-de-la-reunion-1902"
+  ],
+  "saint-gilles": [
+    "saint-egidio-charles-martel-absolution"
+  ],
+  "saint-satyrus": [
+    "saint-satyrus-shipwreck"
+  ],
+  "salzano": [
+    "ita-salzano"
+  ],
+  "san-giorgio-a-cremano": [
+    "blessed-mary-passion-eucharistic-life"
+  ],
+  "san-juan-de-las-abadesas": [
+    "saint-john-of-the-abbesses-1251"
+  ],
+  "san-juan-honduras": [
+    "hon-san-juan-2022"
+  ],
+  "san-mauro-la-bruca": [
+    "ita-san-mauro-la-bruca"
+  ],
+  "scala": [
+    "ita-scala"
+  ],
+  "scete": [
+    "egy-scete"
+  ],
+  "seefeld": [
+    "aut-seefeld"
+  ],
+  "silla": [
+    "spa-silla"
+  ],
+  "sokolka": [
+    "pol-sokolka"
+  ],
+  "stiphout": [
+    "stiphout-1342"
+  ],
+  "tixtla": [
+    "mex-tixtla"
+  ],
+  "trani": [
+    "ita-trani"
+  ],
+  "tumaco": [
+    "col-tumaco"
+  ],
+  "turin": [
+    "ita-turin-1453"
+  ],
+  "turin-1640": [
+    "ita-turin-1640"
+  ],
+  "valencia-santo-caliz": [
+    "spa-valencia"
+  ],
+  "vercelli-bicchieri": [
+    "blessed-emilia-bicchieri-communion"
+  ],
+  "veroli": [
+    "ita-veroli"
+  ],
+  "vienna-stanislaus-kostka": [
+    "saint-stanislaus-kostka-communion"
+  ],
+  "vilakkannur": [
+    "ind-vilakkannur-2013"
+  ],
+  "volterra": [
+    "ita-volterra"
+  ],
+  "walldurn": [
+    "ger-walldurn"
+  ],
+  "weingarten": [
+    "ger-weingarten"
+  ],
+  "weiten-raxendorf": [
+    "aut-weiten-raxendorf"
+  ],
+  "wilsnack": [
+    "ger-wilsnack"
+  ],
+  "zaragoza": [
+    "spa-zaragoza"
+  ]
+}

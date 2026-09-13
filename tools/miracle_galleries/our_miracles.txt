@@ -1,0 +1,141 @@
+alatri | Alatri, Italy | 1228
+alboraya-almacera | Alboraya-Almácera, Spain | 1348
+alcala-de-henares | Alcalá de Henares, Spain | 1597
+alcoy | Alcoy, Spain | 1568
+alkmaar | Alkmaar, Netherlands | 1429
+amsterdam | Amsterdam, Netherlands | 1345
+assisi-clare | Assisi, Italy | 1240
+asti | Asti, Italy | 1535
+augsburg | Augsburg, Germany | 1194
+avignon | Avignon, France | 1433
+bagno-di-romagna | Bagno di Romagna, Italy | 1412
+balasar | Balasar, Portugal | 1942
+benningen | Benningen, Germany | 1216
+bergen-op-zoom | Bergen op Zoom, Netherlands | 1421
+betania | Cúa, Venezuela | 1991
+bettbrunn | Bettbrunn, Germany | 1125
+blanot | Blanot, France | 1331
+bois-dhaine | Bois-d'Haine, Belgium | 1868
+bois-seigneur-isaac | Bois-Seigneur-Isaac, Belgium | 1405
+bologna-imelda | Bologna, Italy | 1333
+bordeaux | Bordeaux, France | 1822
+boxmeer | Boxmeer, Netherlands | 1400
+boxtel-hoogstraten | Boxtel, Netherlands | 1380
+breda-niervaart | Breda, Netherlands | 1300
+bruges | Bruges, Belgium | 1270
+calanda | Calanda, Spain | 1640
+canosio | Canosio, Italy | 1630
+caravaca-de-la-cruz | Caravaca de la Cruz, Spain | 1231
+carmelite-siena | Siena, Italy | 1423
+cascia | Cascia, Italy | 1330
+cava-dei-tirreni | Cava de' Tirreni, Italy | 1656
+champion-wisconsin | Champion, United States | 1859
+chateauneuf-de-galaure | Châteauneuf-de-Galaure, France | 1930
+chiaravalle-bernard | Chiaravalle, Italy | 1134
+chirattakonam | Chirattakonam, Trivandrum, India | 2001
+cimballa | Cimballa, Spain | 1370
+daroca | Daroca, Spain | 1239
+dijon | Dijon, France | 1430
+douai | Douai, France | 1254
+dronero | Dronero, Italy | 1631
+dulmen | Dülmen, Germany | 1811
+erding | Erding, Germany | 1417
+eten | Eten, Peru | 1649
+ettiswil | Ettiswil, Switzerland | 1447
+eucharistic-miracle-buenos-aires | Buenos Aires, Argentina | 1996
+fatima-angel | Fátima, Portugal | 1916
+faverney | Faverney, France | 1608
+ferrara | Ferrara, Italy | 1171
+fiecht | Fiecht, Austria | 1310
+florence | Florence, Italy | 1230
+foligno-angela | Foligno, Italy | 1296
+gerona | Girona, Spain | 1297
+glotowo | Głotowo, Poland | 1290
+gorkum-escorial | Gorinchem, Netherlands | 1572
+gruaro | Gruaro, Italy | 1294
+guadalupe-mexico | Mexico City, Mexico | 1531
+guadalupe-spain | Guadalupe, Spain | 1420
+herentals | Herentals, Belgium | 1412
+herkenrode-hasselt | Herkenrode, Belgium | 1317
+ivorra | Ivorra, Spain | 1010
+konnersreuth | Konnersreuth, Germany | 1926
+krakow-divine-mercy | Kraków, Poland | 1931
+kranenburg | Kranenburg, Germany | 1280
+la-rochelle | La Rochelle, France | 1461
+lanciano | Lanciano, Italy | 750
+lateran-council | Rome, Italy | 1215
+legnica | Legnica, Poland | 2013
+les-ulmes | Les Ulmes, France | 1668
+liege | Liege, Belgium | 1246
+lourdes-healings | Lourdes, France | 1888
+ludbreg | Ludbreg, Croatia | 1411
+macerata | Macerata, Italy | 1356
+marseille-en-beauvais | Marseille-en-Beauvaisis, France | 1533
+mary-of-egypt | Jordan River Valley, Jordan | 421
+meerssen-fire-1465 | Meerssen, Netherlands | 1465
+meerssen | Meerssen, Netherlands | 1222
+middleburg | Middelburg, Netherlands | 1374
+miracle-of-bolsena | Bolsena / Orvieto, Italy | 1263
+miracle-of-santarem | Santarém, Portugal | 1247
+miracle-of-siena | Siena, Italy | 1730
+mogliano | Mogliano, Italy | 1356
+mogoro | Mogoro, Italy | 1604
+moncada | Moncada, Spain | 1392
+montefalco-clare | Montefalco, Italy | 1268
+montieri | Montieri, Italy | 1289
+montserrat | Montserrat, Spain | 1657
+morne-rouge | Morne-Rouge, France | 1902
+morrovalle | Morrovalle, Italy | 1560
+muro-lucano | Muro Lucano, Italy | 1733
+naples-five-wounds | Naples, Italy | 1715
+neuvy-saint-sepulcre | Neuvy-Saint-Sépulcre, France | 1257
+o-cebreiro | O'Cebreiro, Spain | 1300
+offida | Offida, Italy | 1273
+onil | Onil, Spain | 1824
+orvieto-thomas-of-cori | Orvieto, Italy | 1677
+patierno | Naples, Italy | 1772
+peshtigo | Peshtigo, United States | 1871
+peter-damian | Italy | 1050
+pibrac | Pibrac, France | 1589
+pitigliano | Pitigliano, Italy | 1700
+ponferrada | Ponferrada, Spain | 1533
+poznan | Poznań, Poland | 1399
+pressac | Pressac, France | 1643
+proceno-agnes | Proceno, Italy | 1268
+regensburg | Regensburg, Germany | 1255
+rimini | Rimini, Italy | 1227
+rome-devoted-lambs | Rome, Italy | 1210
+rome-gregory-great | Rome, Italy | 595
+rome-santa-pudenziana | Rome, Italy | 1610
+rosano | Rosano, Italy | 1948
+sachseln | Sachseln, Switzerland | 1467
+saint-andre-de-la-reunion | Saint-André, Réunion, France | 1902
+saint-gilles | Saint-Gilles-du-Gard, France | 720
+saint-satyrus | Mediterranean Sea | 375
+salzano | Salzano, Italy | 1517
+san-giorgio-a-cremano | San Giorgio a Cremano, Italy | 1866
+san-juan-de-las-abadesas | San Juan de las Abadesas, Spain | 1251
+san-juan-honduras | San Juan, Honduras | 2022
+san-mauro-la-bruca | San Mauro La Bruca, Italy | 1969
+scala | Scala, Italy | 1732
+scete | Scete, Egypt | 350
+seefeld | Seefeld, Austria | 1384
+silla | Silla, Spain | 1907
+sokolka | Sokolka, Poland | 2008
+stiphout | Stiphout, Netherlands | 1342
+tixtla | Tixtla, Mexico | 2006
+trani | Trani, Italy | 1000
+tumaco | Tumaco, Colombia | 1906
+turin-1640 | Turin, Italy | 1640
+turin | Turin, Italy | 1453
+valencia-santo-caliz | Valencia, Spain | 1055
+vercelli-bicchieri | Vercelli, Italy | 1300
+veroli | Veroli, Italy | 1570
+vienna-stanislaus-kostka | Vienna, Austria | 1567
+vilakkannur | Vilakkannur, India | 2013
+volterra | Volterra, Italy | 1472
+walldurn | Walldurn, Germany | 1330
+weingarten | Weingarten, Germany | 1094
+weiten-raxendorf | Weiten-Raxendorf, Austria | 1411
+wilsnack | Wilsnack, Germany | 1383
+zaragoza | Zaragoza, Spain | 1427
