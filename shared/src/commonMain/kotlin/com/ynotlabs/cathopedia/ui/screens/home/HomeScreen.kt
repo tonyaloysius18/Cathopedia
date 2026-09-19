@@ -57,6 +57,7 @@ import com.ynotlabs.cathopedia.liturgical.LiturgicalCalendar
 import com.ynotlabs.cathopedia.liturgical.LiturgicalSeason
 import com.ynotlabs.cathopedia.liturgical.ReadingKind
 import com.ynotlabs.cathopedia.liturgical.ScriptureReference
+import com.ynotlabs.cathopedia.liturgical.fullBookNameCitation
 import com.ynotlabs.cathopedia.model.ContentSummary
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.cathopedia_app_logo_transparent
@@ -126,6 +127,7 @@ fun HomeScreen(
             DailyReadingsCard(
                 readings = dailyReadings,
                 loaded = dailyReadingsLoaded,
+                language = language,
                 onReadingSelected = onReadingSelected,
             )
 
@@ -361,6 +363,7 @@ private fun HomeHero(seasonLabel: String) {
 private fun DailyReadingsCard(
     readings: DailyMassReadings?,
     loaded: Boolean,
+    language: String,
     onReadingSelected: ((ScriptureReference) -> Unit)?,
 ) {
     val s = LocalStrings.current
@@ -464,6 +467,7 @@ private fun DailyReadingsCard(
                 else -> readings.readings.forEachIndexed { index, reference ->
                     ReadingReferenceRow(
                         reference = reference,
+                        language = language,
                         onClick = onReadingSelected?.let { callback -> { callback(reference) } },
                     )
                     if (index != readings.readings.lastIndex) {
@@ -490,7 +494,7 @@ private fun DailyReadingsCard(
                 Spacer(Modifier.height(8.dp))
 
                 Text(
-                    text = "${s.homeVerseOfTheDay.uppercase()}  •  ${verse.citation.replace("-", "–")}",
+                    text = "${s.homeVerseOfTheDay.uppercase()}  •  ${fullBookNameCitation(verse.citation, language)}",
                     color = HomeGold,
                     fontSize = 9.sp,
                     letterSpacing = 0.7.sp,
@@ -516,6 +520,7 @@ private fun DailyReadingsCard(
 @Composable
 private fun ReadingReferenceRow(
     reference: ScriptureReference,
+    language: String,
     onClick: (() -> Unit)?,
 ) {
     val s = LocalStrings.current
@@ -542,13 +547,14 @@ private fun ReadingReferenceRow(
         )
 
         Text(
-            text = reference.citation.replace("-", "–"),
+            text = fullBookNameCitation(reference.citation, language),
+            modifier = Modifier.weight(1f),
             color = HomeCream,
             fontFamily = FontFamily.Serif,
             fontSize = 15.sp,
             lineHeight = 18.sp,
             fontWeight = FontWeight.Medium,
-            maxLines = 1,
+            maxLines = 2,
             overflow = TextOverflow.Ellipsis,
         )
     }

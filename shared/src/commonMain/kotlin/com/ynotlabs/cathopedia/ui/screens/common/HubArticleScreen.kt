@@ -29,6 +29,7 @@ import com.ynotlabs.cathopedia.ui.screens.holymass.PosturesScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.ThuribleScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.VesselsScreen
 import com.ynotlabs.cathopedia.ui.screens.holysee.CardinalsScreen
+import com.ynotlabs.cathopedia.ui.screens.orders.FranciscanFamilyScreen
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
@@ -168,6 +169,17 @@ fun HubArticleScreen(
     onStringsLoaded: (Map<String, String>) -> Unit = {},
     onHeaderHeightChanged: (Int) -> Unit = {},
 ) {
+    if (articleId == "art.franciscan.family") {
+        FranciscanFamilyScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            onEntityRefSelected = onEntityRefSelected,
+            listState = listState,
+        )
+        return
+    }
+
     if (articleId == "art.papal_tombs.overview") {
         PapalTombsScreen(
             repository = repository,

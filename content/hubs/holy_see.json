@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": 11,
+  "contentVersion": 12,
   "hub": {
     "id": "holy_see",
     "slug": "holy-see",
@@ -1465,7 +1465,6 @@
       "sortOrder": 1,
       "titleKey": "art.insignia.title",
       "leadKey": "art.insignia.lead",
-      "heroAsset": "hub/holy_see/holy_see_insignia.png",
       "readingTimeMinutes": 4,
       "blocks": [
         {
