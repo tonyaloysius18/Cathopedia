@@ -11,6 +11,7 @@ import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.data.RosarySessionRepository
 import com.ynotlabs.cathopedia.liturgical.LiturgicalCalendar
 import com.ynotlabs.cathopedia.model.MysterySet
+import com.ynotlabs.cathopedia.model.MysterySummary
 import com.ynotlabs.cathopedia.model.RosaryMeter
 import com.ynotlabs.cathopedia.model.RosarySessionState
 import com.ynotlabs.cathopedia.rosary.mysterySetForDate
@@ -43,6 +44,9 @@ fun RosaryScreen(
         )
     }
     var localized by remember(language) { mutableStateOf<Map<String, String>>(emptyMap()) }
+    var mysteriesBySet by remember(language) {
+        mutableStateOf<Map<MysterySet, List<MysterySummary>>>(emptyMap())
+    }
 
     LaunchedEffect(showLanding, language) {
         if (showLanding) {
@@ -54,12 +58,16 @@ fun RosaryScreen(
                     MysterySet.entries.map { "rosary.mystery.${it.tag}" },
                 language,
             )
+            mysteriesBySet = MysterySet.entries.associateWith { set ->
+                repository.listMysteries(set, language)
+            }
         }
     }
 
     if (showLanding) {
         RosaryLandingScreen(
             strings = localized,
+            mysteriesBySet = mysteriesBySet,
             resumeSession = resumeSession,
             meter = meter,
             onStart = {

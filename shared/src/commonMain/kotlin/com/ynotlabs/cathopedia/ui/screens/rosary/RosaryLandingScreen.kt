@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.rosary
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -33,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -40,6 +42,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ynotlabs.cathopedia.model.MysterySet
+import com.ynotlabs.cathopedia.model.MysterySummary
 import com.ynotlabs.cathopedia.model.RosaryMeter
 import com.ynotlabs.cathopedia.model.RosarySessionState
 import com.ynotlabs.cathopedia.rosary.BeadKind
@@ -52,12 +55,19 @@ import com.ynotlabs.cathopedia.ui.components.beadSprite
 import com.ynotlabs.cathopedia.ui.theme.CathopediaTheme
 import com.ynotlabs.cathopedia.ui.theme.ThemeMode
 import com.ynotlabs.cathopedia.ui.theme.rosaryColors
+import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.resources.rosary_mysteries_glorious
+import com.ynotlabs.cathopedia.resources.rosary_mysteries_joyful
+import com.ynotlabs.cathopedia.resources.rosary_mysteries_luminous
+import com.ynotlabs.cathopedia.resources.rosary_mysteries_sorrowful
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
 
 internal object RosaryStringKeys {
     const val Title = "rosary.title"
@@ -74,6 +84,9 @@ internal object RosaryStringKeys {
     const val MeterRecent = "rosary.meter.recent"
     const val MeterBreakdown = "rosary.meter.breakdown"
     const val MeterDayDescription = "rosary.meter.day_description"
+    const val MysteriesTitle = "rosary.mysteries.title"
+    const val MysteriesIntro = "rosary.mysteries.intro"
+    const val MysteriesFruit = "rosary.mysteries.fruit"
 
     val landing = setOf(
         Title,
@@ -90,6 +103,11 @@ internal object RosaryStringKeys {
         MeterRecent,
         MeterBreakdown,
         MeterDayDescription,
+        MysteriesTitle,
+        MysteriesIntro,
+        MysteriesFruit,
+        *MysterySet.entries.map { "rosary.mysteries.set.${it.tag}" }.toTypedArray(),
+        *MysterySet.entries.map { "rosary.mysteries.days.${it.tag}" }.toTypedArray(),
         RosaryPrayingStringKeys.BeadCross,
         RosaryPrayingStringKeys.BeadOurFather,
         RosaryPrayingStringKeys.BeadHailMary,
@@ -102,6 +120,7 @@ internal val RosaryWideLayoutBreakpoint = 720.dp
 @Composable
 internal fun RosaryLandingScreen(
     strings: Map<String, String>,
+    mysteriesBySet: Map<MysterySet, List<MysterySummary>>,
     resumeSession: RosarySessionState?,
     meter: RosaryMeter,
     onStart: () -> Unit,
@@ -132,6 +151,7 @@ internal fun RosaryLandingScreen(
             if (maxWidth >= RosaryWideLayoutBreakpoint) {
                 WideRosaryLanding(
                     strings = strings,
+                    mysteriesBySet = mysteriesBySet,
                     resumeSession = resumeSession,
                     meter = meter,
                     onStart = onStart,
@@ -140,6 +160,7 @@ internal fun RosaryLandingScreen(
             } else {
                 CompactRosaryLanding(
                     strings = strings,
+                    mysteriesBySet = mysteriesBySet,
                     resumeSession = resumeSession,
                     meter = meter,
                     onStart = onStart,
@@ -164,6 +185,7 @@ private fun LandingSubtitle(strings: Map<String, String>, modifier: Modifier = M
 @Composable
 private fun WideRosaryLanding(
     strings: Map<String, String>,
+    mysteriesBySet: Map<MysterySet, List<MysterySummary>>,
     resumeSession: RosarySessionState?,
     meter: RosaryMeter,
     onStart: () -> Unit,
@@ -219,6 +241,11 @@ private fun WideRosaryLanding(
                         modifier = Modifier.weight(0.62f),
                     )
                 }
+                RosaryMysteriesGallery(
+                    strings = strings,
+                    mysteriesBySet = mysteriesBySet,
+                    wide = true,
+                )
             }
         }
     }
@@ -227,6 +254,7 @@ private fun WideRosaryLanding(
 @Composable
 private fun CompactRosaryLanding(
     strings: Map<String, String>,
+    mysteriesBySet: Map<MysterySet, List<MysterySummary>>,
     resumeSession: RosarySessionState?,
     meter: RosaryMeter,
     onStart: () -> Unit,
@@ -266,8 +294,143 @@ private fun CompactRosaryLanding(
                 )
             }
         }
+        item {
+            RosaryMysteriesGallery(
+                strings = strings,
+                mysteriesBySet = mysteriesBySet,
+                wide = false,
+            )
+        }
         item { RosaryMeterSummary(meter = meter, strings = strings) }
     }
+}
+
+private val mysteryDisplayOrder = listOf(
+    MysterySet.JOYFUL,
+    MysterySet.SORROWFUL,
+    MysterySet.LUMINOUS,
+    MysterySet.GLORIOUS,
+)
+
+@Composable
+private fun RosaryMysteriesGallery(
+    strings: Map<String, String>,
+    mysteriesBySet: Map<MysterySet, List<MysterySummary>>,
+    wide: Boolean,
+    modifier: Modifier = Modifier,
+) {
+    if (mysteriesBySet.values.all { it.isEmpty() }) return
+
+    Column(
+        modifier = modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        Text(
+            text = strings[RosaryStringKeys.MysteriesTitle].orEmpty(),
+            style = MaterialTheme.typography.headlineSmall,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth(),
+        )
+        Text(
+            text = strings[RosaryStringKeys.MysteriesIntro].orEmpty(),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth(),
+        )
+
+        if (wide) {
+            mysteryDisplayOrder.chunked(2).forEach { rowSets ->
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    verticalAlignment = Alignment.Top,
+                ) {
+                    rowSets.forEach { set ->
+                        MysterySetCard(
+                            set = set,
+                            mysteries = mysteriesBySet[set].orEmpty(),
+                            strings = strings,
+                            modifier = Modifier.weight(1f),
+                        )
+                    }
+                }
+            }
+        } else {
+            mysteryDisplayOrder.forEach { set ->
+                MysterySetCard(
+                    set = set,
+                    mysteries = mysteriesBySet[set].orEmpty(),
+                    strings = strings,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun MysterySetCard(
+    set: MysterySet,
+    mysteries: List<MysterySummary>,
+    strings: Map<String, String>,
+    modifier: Modifier = Modifier,
+) {
+    val title = strings["rosary.mysteries.set.${set.tag}"].orEmpty()
+    val days = strings["rosary.mysteries.days.${set.tag}"].orEmpty()
+
+    Card(
+        modifier = modifier,
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
+    ) {
+        Image(
+            painter = painterResource(mysterySetArtwork(set)),
+            contentDescription = title,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxWidth().aspectRatio(16f / 9f),
+        )
+        Column(
+            modifier = Modifier.fillMaxWidth().padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                Text(text = title, style = MaterialTheme.typography.titleLarge)
+                Text(
+                    text = days,
+                    style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.primary,
+                )
+            }
+            mysteries.sortedBy { it.sortOrder }.forEachIndexed { index, mystery ->
+                Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                    Text(
+                        text = "${index + 1}. ${mystery.title}",
+                        style = MaterialTheme.typography.titleSmall,
+                    )
+                    mystery.scriptureRef?.let { reference ->
+                        Text(
+                            text = reference,
+                            style = MaterialTheme.typography.labelMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                    Text(
+                        text = strings[RosaryStringKeys.MysteriesFruit].orEmpty()
+                            .replace("{fruit}", mystery.fruit),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
+        }
+    }
+}
+
+private fun mysterySetArtwork(set: MysterySet): DrawableResource = when (set) {
+    MysterySet.JOYFUL -> Res.drawable.rosary_mysteries_joyful
+    MysterySet.SORROWFUL -> Res.drawable.rosary_mysteries_sorrowful
+    MysterySet.LUMINOUS -> Res.drawable.rosary_mysteries_luminous
+    MysterySet.GLORIOUS -> Res.drawable.rosary_mysteries_glorious
 }
 
 @Composable
@@ -530,6 +693,7 @@ private fun RosaryLandingPhonePreview() {
     CathopediaTheme(themeMode = ThemeMode.LIGHT) {
         RosaryLandingScreen(
             strings = rosaryLandingPreviewStrings,
+            mysteriesBySet = emptyMap(),
             resumeSession = null,
             meter = rosaryLandingPreviewMeter,
             onStart = {},
@@ -545,6 +709,7 @@ private fun RosaryLandingTabletPreview() {
     CathopediaTheme(themeMode = ThemeMode.DARK) {
         RosaryLandingScreen(
             strings = rosaryLandingPreviewStrings,
+            mysteriesBySet = emptyMap(),
             resumeSession = null,
             meter = rosaryLandingPreviewMeter,
             onStart = {},
