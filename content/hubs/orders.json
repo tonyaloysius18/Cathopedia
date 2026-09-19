@@ -80,6 +80,18 @@
       "articleIds": [
         "art.orders.women"
       ]
+    },
+    {
+      "id": "orders.franciscan_family",
+      "sortOrder": 6,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.orders.franciscan_family.title",
+      "summaryKey": "sec.orders.franciscan_family.summary",
+      "icon": "ic_tau",
+      "articleIds": [
+        "art.franciscan.family"
+      ]
     }
   ],
   "articles": [
@@ -1034,6 +1046,164 @@
         {
           "type": "paragraph",
           "textKey": "ord.sisters_st_joseph.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.franciscan.family",
+      "sectionId": "orders.franciscan_family",
+      "sortOrder": 1,
+      "titleKey": "art.franciscan.family.title",
+      "leadKey": "art.franciscan.family.lead",
+      "readingTimeMinutes": 6,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.franciscan.family.p1"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/symbol_franciscan_arms.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "quote",
+          "textKey": "art.franciscan.family.quote",
+          "attributionKey": "art.franciscan.family.quote_src"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.franciscan.family.note_friars.title",
+          "textKey": "art.franciscan.family.note_friars.body"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.franciscan.family.h_first"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.franciscan.family.p_first"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.franciscan.family.ofm.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/franciscan_ofm.png",
+          "captionKey": "art.franciscan.family.ofm.img",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.franciscan.family.ofm.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.franciscan.family.conv.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/franciscan_conventual.png",
+          "captionKey": "art.franciscan.family.conv.img",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.franciscan.family.conv.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.franciscan.family.cap.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/franciscan_capuchin.png",
+          "captionKey": "art.franciscan.family.cap.img",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.franciscan.family.cap.desc"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.franciscan.family.h_others"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.franciscan.family.clares.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/order_poor_clares_founder.png",
+          "captionKey": "art.franciscan.family.clares.img",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.franciscan.family.clares.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.franciscan.family.tor.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/franciscan_tor.png",
+          "captionKey": "art.franciscan.family.tor.img",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.franciscan.family.tor.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.franciscan.family.ofs.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/orders/franciscan_secular.png",
+          "captionKey": "art.franciscan.family.ofs.img",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.franciscan.family.ofs.desc"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "titleKey": "art.franciscan.family.remember.title",
+          "textKey": "art.franciscan.family.remember.body"
+        }
+      ],
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.orders.mendicant"
+        },
+        {
+          "type": "ARTICLE",
+          "id": "art.orders.women"
+        }
+      ],
+      "sources": [
+        {
+          "label": "The Franciscan Family, Order of Friars Minor (ofm.org)"
+        },
+        {
+          "label": "Rule of St Francis (1223); Rule of St Clare (1253); OFS Rule (1978); TOR Rule (1982)"
         }
       ]
     }
