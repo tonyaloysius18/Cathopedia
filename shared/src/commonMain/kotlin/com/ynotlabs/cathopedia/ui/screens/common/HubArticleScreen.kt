@@ -675,12 +675,14 @@ fun HubArticleScreen(
 
 @Composable
 private fun HubArticleEditorialImage(asset: String) {
+    val shape = RoundedCornerShape(22.dp)
     hubAssetPainter(asset)?.let { painter ->
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .aspectRatio(1.5f)
-                .clip(RoundedCornerShape(22.dp)),
+                .clip(shape)
+                .border(1.dp, SymbolCardGold.copy(alpha = 0.42f), shape),
         ) {
             Image(
                 painter = painter,
@@ -1414,15 +1416,21 @@ internal fun BlockView(
         }
 
         is ImageBlock -> hubAssetPainter(block.asset)?.let { painter ->
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            // Full width, so a short caption cannot shrink the column and pull the image off-centre.
+            Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+                val shape = RoundedCornerShape(16.dp)
                 Image(
                     painter = painter,
                     contentDescription = block.captionKey?.let { strings[it] },
                     contentScale = ContentScale.Fit,
                     modifier = Modifier
-                        .fillMaxWidth(0.55f)
-                        .aspectRatio(1f)
-                        .clip(RoundedCornerShape(16.dp)),
+                        .fillMaxWidth(if (block.asset.contains("mass_tabernacle")) 0.94f else 0.55f)
+                        .then(
+                            if (block.asset.contains("mass_tabernacle")) Modifier
+                            else Modifier.aspectRatio(1f)
+                        )
+                        .clip(shape)
+                        .border(1.dp, SymbolCardGold.copy(alpha = 0.42f), shape),
                 )
                 block.captionKey?.let { key ->
                     strings[key]?.let { caption ->

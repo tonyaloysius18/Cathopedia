@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": 1,
+  "contentVersion": 2,
   "hub": {
     "id": "mass",
     "slug": "holy-mass",
@@ -136,6 +136,18 @@
       "icon": "ic_altar",
       "articleIds": [
         "art.altar.overview"
+      ]
+    },
+    {
+      "id": "mass.tabernacle",
+      "sortOrder": 12,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.tabernacle.title",
+      "summaryKey": "sec.tabernacle.summary",
+      "icon": "ic_chalice",
+      "articleIds": [
+        "art.tabernacle.overview"
       ]
     }
   ],
@@ -495,6 +507,97 @@
           "tone": "note",
           "titleKey": "art.altar.callout.title",
           "textKey": "art.altar.callout.body"
+        }
+      ]
+    },
+    {
+      "id": "art.tabernacle.overview",
+      "sectionId": "mass.tabernacle",
+      "sortOrder": 1,
+      "titleKey": "art.tabernacle.title",
+      "leadKey": "art.tabernacle.lead",
+      "readingTimeMinutes": 3,
+      "blocks": [
+        {
+          "type": "image",
+          "asset": "hub/mass/mass_tabernacle.png",
+          "captionKey": "art.tabernacle.image.caption",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.tabernacle.p1"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.tabernacle.h_purpose"
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": [
+            "art.tabernacle.li_viaticum",
+            "art.tabernacle.li_communion",
+            "art.tabernacle.li_adoration"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.tabernacle.h_signs"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.tabernacle.p_lamp"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.tabernacle.h_place"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.tabernacle.p_place"
+        },
+        {
+          "type": "callout",
+          "tone": "devotional",
+          "titleKey": "art.tabernacle.reverence.title",
+          "textKey": "art.tabernacle.reverence.body"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.tabernacle.distinction.title",
+          "textKey": "art.tabernacle.distinction.body"
+        }
+      ],
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.altar.overview"
+        },
+        {
+          "type": "ARTICLE",
+          "id": "art.monstrance.overview"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Catechism of the Catholic Church, 1378–1379",
+          "url": "https://www.vatican.va/archive/ENG0015/__P41.HTM",
+          "accessed": "2026-09-16"
+        },
+        {
+          "label": "Code of Canon Law, canons 938–940",
+          "url": "https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib4-cann879-958_en.html",
+          "accessed": "2026-09-16"
+        },
+        {
+          "label": "General Instruction of the Roman Missal, 314–316",
+          "url": "https://www.vatican.va/content/dam/wss/roman_curia/congregations/ccdds/documents/rc_con_ccdds_doc_20030317_ordinamento-messale_en.html",
+          "accessed": "2026-09-16"
         }
       ]
     }
