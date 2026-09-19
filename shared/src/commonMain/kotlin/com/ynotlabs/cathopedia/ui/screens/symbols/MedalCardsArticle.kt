@@ -70,6 +70,8 @@ private data class Medal(
 
 /**
  * "Catholic Medals and Their Meanings" — Sacred Symbols → Catholic Medals.
+ * Also renders "Catholic Scapulars" (Sacred Symbols → Scapulars), whose two
+ * panels map onto a medal's two faces with no change to the block convention.
  *
  * A medal is a two-sided object, so each one gets a single card carrying both
  * faces side by side with what is struck on each written underneath, then the

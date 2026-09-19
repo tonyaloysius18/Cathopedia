@@ -173,6 +173,18 @@
       "articleIds": [
         "art.symbols.medals"
       ]
+    },
+    {
+      "id": "symbols.scapulars",
+      "sortOrder": 14,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.symbols.scapulars.title",
+      "summaryKey": "sec.symbols.scapulars.summary",
+      "icon": "ic_scapular",
+      "articleIds": [
+        "art.symbols.scapulars"
+      ]
     }
   ],
   "articles": [
@@ -1803,6 +1815,305 @@
           "tone": "warning",
           "titleKey": "medal.remember.title",
           "textKey": "medal.remember.text"
+        }
+      ]
+    },
+    {
+      "id": "art.symbols.scapulars",
+      "sectionId": "symbols.scapulars",
+      "sortOrder": 1,
+      "titleKey": "art.symbols.scapulars.title",
+      "leadKey": "art.symbols.scapulars.lead",
+      "readingTimeMinutes": 6,
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "info",
+          "titleKey": "scapular.intro.title",
+          "textKey": "scapular.intro.text"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "scapular.brown.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/scapular_brown_front.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/scapular_brown_back.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "scapular.brown.desc"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "scapular.brown.front_label",
+              "valueKey": "scapular.brown.front"
+            },
+            {
+              "labelKey": "scapular.brown.back_label",
+              "valueKey": "scapular.brown.back"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "textKey": "scapular.brown.words",
+          "attributionKey": "scapular.brown.words_source"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "scapular.brown.note_title",
+          "textKey": "scapular.brown.note"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "scapular.white.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/scapular_white_front.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/scapular_white_back.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "scapular.white.desc"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "scapular.white.front_label",
+              "valueKey": "scapular.white.front"
+            },
+            {
+              "labelKey": "scapular.white.back_label",
+              "valueKey": "scapular.white.back"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "textKey": "scapular.white.words",
+          "attributionKey": "scapular.white.words_source"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "scapular.red.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/scapular_red_front.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/scapular_red_back.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "scapular.red.desc"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "scapular.red.front_label",
+              "valueKey": "scapular.red.front"
+            },
+            {
+              "labelKey": "scapular.red.back_label",
+              "valueKey": "scapular.red.back"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "textKey": "scapular.red.words",
+          "attributionKey": "scapular.red.words_source"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "scapular.blue.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/scapular_blue_front.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/scapular_blue_back.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "scapular.blue.desc"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "scapular.blue.front_label",
+              "valueKey": "scapular.blue.front"
+            },
+            {
+              "labelKey": "scapular.blue.back_label",
+              "valueKey": "scapular.blue.back"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "textKey": "scapular.blue.words",
+          "attributionKey": "scapular.blue.words_source"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "scapular.black.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/scapular_black_front.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/scapular_black_back.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "scapular.black.desc"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "scapular.black.front_label",
+              "valueKey": "scapular.black.front"
+            },
+            {
+              "labelKey": "scapular.black.back_label",
+              "valueKey": "scapular.black.back"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "textKey": "scapular.black.words",
+          "attributionKey": "scapular.black.words_source"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "scapular.green.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/scapular_green_front.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/scapular_green_back.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "scapular.green.desc"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "scapular.green.front_label",
+              "valueKey": "scapular.green.front"
+            },
+            {
+              "labelKey": "scapular.green.back_label",
+              "valueKey": "scapular.green.back"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "textKey": "scapular.green.words",
+          "attributionKey": "scapular.green.words_source"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "scapular.green.note_title",
+          "textKey": "scapular.green.note"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "scapular.passionist.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/scapular_passionist_front.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/symbols/scapular_passionist_back.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "scapular.passionist.desc"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "scapular.passionist.front_label",
+              "valueKey": "scapular.passionist.front"
+            },
+            {
+              "labelKey": "scapular.passionist.back_label",
+              "valueKey": "scapular.passionist.back"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "textKey": "scapular.passionist.words",
+          "attributionKey": "scapular.passionist.words_source"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "scapular.enrolment.title",
+          "textKey": "scapular.enrolment.text"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "titleKey": "scapular.remember.title",
+          "textKey": "scapular.remember.text"
         }
       ]
     }

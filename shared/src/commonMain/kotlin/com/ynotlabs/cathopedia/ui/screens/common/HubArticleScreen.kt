@@ -221,7 +221,8 @@ fun HubArticleScreen(
         return
     }
 
-    if (articleId == "art.symbols.medals") {
+    // Scapulars are two-sided like medals, so they share the same card.
+    if (articleId == "art.symbols.medals" || articleId == "art.symbols.scapulars") {
         MedalCardsArticle(
             articleId = articleId,
             repository = repository,
