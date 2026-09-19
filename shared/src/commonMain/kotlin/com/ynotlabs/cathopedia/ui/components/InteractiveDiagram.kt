@@ -28,6 +28,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -56,7 +57,9 @@ import androidx.compose.ui.graphics.painter.ColorPainter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.boundsInWindow
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontFamily
@@ -66,10 +69,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ynotlabs.cathopedia.resources.Res
-import com.ynotlabs.cathopedia.resources.back_arrow
 import kotlinx.coroutines.launch
-import org.jetbrains.compose.resources.painterResource
 
 /**
  * UI-layer hotspot for [InteractiveDiagram] — deliberately not the content-layer `Hotspot` type
@@ -154,6 +154,12 @@ fun InteractiveDiagram(
     val scale = remember { Animatable(1f) }
     val pan = remember { Animatable(Offset.Zero, Offset.VectorConverter) }
     var viewportSize by remember { mutableStateOf(Size.Zero) }
+    // Window-space top edges of the viewport and of the open detail sheet, so a selected hotspot
+    // can be framed in the part of the viewport the sheet leaves visible rather than behind it.
+    var viewportTop by remember { mutableStateOf(0f) }
+    var sheetTop by remember { mutableStateOf<Float?>(null) }
+    // sheetTop is measured on the sheet's content, which starts below the drag handle.
+    val sheetHandlePx = with(LocalDensity.current) { SHEET_HANDLE_HEIGHT.toPx() }
     var selected by remember { mutableStateOf<DiagramHotspot?>(null) }
     var hintDismissed by remember { mutableStateOf(false) }
 
@@ -167,18 +173,37 @@ fun InteractiveDiagram(
         Offset((viewportSize.width - content.width) / 2f, (viewportSize.height - content.height) / 2f)
     }
 
-    fun clampPan(target: Offset, atScale: Float): Offset {
-        val maxX = maxOf(0f, (atScale - 1f) * content.width) / 2f
-        val maxY = maxOf(0f, (atScale - 1f) * content.height) / 2f
-        return Offset(target.x.coerceIn(-maxX, maxX), target.y.coerceIn(-maxY, maxY))
+    /** How many pixels at the bottom of the viewport the open detail sheet covers. */
+    fun coveredBottom(): Float {
+        val top = (sheetTop ?: return 0f) - sheetHandlePx
+        if (selected == null || viewportSize.height <= 0f) return 0f
+        return (viewportTop + viewportSize.height - top).coerceIn(0f, viewportSize.height)
     }
 
-    /** Moves [normalized] (artwork space) to the centre of the viewport at [targetScale]. */
+    /**
+     * Keeps the artwork from being dragged past its own edge. Limits come from the viewport, not the
+     * artwork: on an axis where the scaled artwork still fits inside the viewport (a letterboxed
+     * ceiling), it stays centred instead of sliding off and opening a blank strip beside it.
+     * [extraBottom] lets it travel that much further upward, so a hotspot near the bottom can still
+     * rise clear of a sheet covering it.
+     */
+    fun clampPan(target: Offset, atScale: Float, extraBottom: Float = 0f): Offset {
+        val maxX = maxOf(0f, atScale * content.width - viewportSize.width) / 2f
+        val maxY = maxOf(0f, atScale * content.height - viewportSize.height) / 2f
+        return Offset(target.x.coerceIn(-maxX, maxX), target.y.coerceIn(-maxY - extraBottom, maxY))
+    }
+
+    /**
+     * Moves [normalized] (artwork space) to the centre of the viewport at [targetScale] — or, while
+     * the detail sheet covers the bottom of the viewport, to the centre of what is left above it.
+     */
     fun focusOn(normalized: Offset, targetScale: Float) {
         if (content.width <= 0f || content.height <= 0f) return
         val pivot = Offset(content.width / 2f, content.height / 2f)
         val point = Offset(normalized.x * content.width, normalized.y * content.height)
-        val wanted = clampPan(-(point - pivot) * targetScale, targetScale)
+        val covered = coveredBottom()
+        val lift = Offset(0f, covered / 2f)
+        val wanted = clampPan(-(point - pivot) * targetScale - lift, targetScale, extraBottom = covered)
         scope.launch { scale.animateTo(targetScale, tween(420)) }
         scope.launch { pan.animateTo(wanted, tween(420)) }
     }
@@ -210,7 +235,10 @@ fun InteractiveDiagram(
                 .then(if (viewportHeight != null) Modifier.height(viewportHeight) else Modifier.aspectRatio(aspectRatio))
                 .clip(RoundedCornerShape(18.dp))
                 .semantics { if (accessibilityLabel.isNotEmpty()) contentDescription = accessibilityLabel }
-                .onGloballyPositioned { viewportSize = Size(it.size.width.toFloat(), it.size.height.toFloat()) }
+                .onGloballyPositioned {
+                    viewportSize = Size(it.size.width.toFloat(), it.size.height.toFloat())
+                    viewportTop = it.boundsInWindow().top
+                }
                 .pointerInput(minZoom, maxZoom, content) {
                     detectTransformGestures { _, panChange, zoomChange, _ ->
                         val next = (scale.value * zoomChange).coerceIn(minZoom, maxZoom)
@@ -333,6 +361,19 @@ fun InteractiveDiagram(
         if (index >= 0) railState.animateScrollToItem(index)
     }
 
+    // The sheet's height is only known once it has laid out, and it changes with each blurb, so
+    // re-frame the selection whenever it moves. When the sheet closes, settle back inside the edges.
+    LaunchedEffect(selected?.id, sheetTop) {
+        val current = selected
+        if (current == null) {
+            sheetTop = null
+            val settled = clampPan(pan.value, scale.value)
+            if (settled != pan.value) pan.animateTo(settled, tween(320))
+        } else if (sheetTop != null) {
+            focusOn(current.shape.center, FOCUS_ZOOM.coerceIn(minZoom, maxZoom))
+        }
+    }
+
     selected?.let { hotspot ->
         val tourIndex = tour.indexOfFirst { it.id == hotspot.id }
         val hasPrev = tourIndex > 0
@@ -343,7 +384,12 @@ fun InteractiveDiagram(
             containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
             contentColor = MaterialTheme.colorScheme.onSurface,
         ) {
-            Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 22.dp, vertical = 18.dp)) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .onGloballyPositioned { sheetTop = it.boundsInWindow().top }
+                    .padding(horizontal = 22.dp, vertical = 18.dp),
+            ) {
                 if (tourIndex >= 0) {
                     Text(
                         text = "${tourIndex + 1} / ${tour.size}",
@@ -385,9 +431,8 @@ fun InteractiveDiagram(
                             enabled = hasPrev,
                         ) {
                             Icon(
-                                painter = painterResource(Res.drawable.back_arrow),
+                                Icons.AutoMirrored.Filled.ArrowBack,
                                 contentDescription = if (hasPrev) tour[tourIndex - 1].label else null,
-                                modifier = Modifier.size(20.dp),
                             )
                         }
                         // Naming the next stop turns a bare arrow into a reason to press it.
@@ -418,6 +463,9 @@ fun InteractiveDiagram(
 /** Zoom applied when a hotspot is selected, and by a double tap on empty artwork. */
 private const val FOCUS_ZOOM = 2.6f
 private const val DOUBLE_TAP_ZOOM = 2.2f
+
+/** Height of the bottom sheet's drag handle area, above the content whose top is measured. */
+private val SHEET_HANDLE_HEIGHT = 56.dp
 
 /** The largest box of [aspectRatio] (w/h) that fits inside [outer], centred. */
 private fun fitInside(outer: Size, aspectRatio: Float): Size {
