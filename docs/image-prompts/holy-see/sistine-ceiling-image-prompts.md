@@ -1,14 +1,18 @@
 # The Sistine ceiling — image generation brief
 
-One image, replacing the placeholder now in the app.
+**Status: done (2026-09-14).** The art is in the app: the master is
+`content/hub/holy_see/sistine_ceiling.png`, shipped as `sistine_ceiling.webp`.
 
-| Slot | Asset |
-| --- | --- |
-| The ceiling, panel by panel | `sistine_ceiling.png` |
+The generated panels did not land exactly on the geometry below. From panel 5
+down, the scenes came out wider and taller. So the **hotspots were moved to fit
+the art**, not the other way round. `content/hubs/holy_see.json` now holds
+coordinates measured from the painted frames, and the table below is the
+*original* request, no longer what ships. The first render had the Cumaean
+Sibyl as a man and Erythraean/Isaiah swapped; those three figures were
+regenerated and pasted into their existing frames.
 
-The current `sistine_ceiling.webp` is a wireframe — plain tan rectangles standing
-in for the panel layout. Every hotspot therefore sits on a blank box, and zooming
-in reveals a bigger blank box. This brief replaces it.
+Still open (optional): panel 9 shows Noah under a rainbow, not the Drunkenness
+of Noah.
 
 ## The hard constraint
 
