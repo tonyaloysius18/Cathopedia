@@ -216,7 +216,8 @@
       "icon": "ic_tiara",
       "heroAsset": "hub/holy_see/holy_see_insignia.png",
       "articleIds": [
-        "art.insignia.overview"
+        "art.insignia.overview",
+        "art.insignia.ring"
       ]
     },
     {
@@ -1531,6 +1532,117 @@
       "sources": [
         {
           "label": "Annuario Pontificio; Universi Dominici Gregis"
+        }
+      ]
+    },
+    {
+      "id": "art.insignia.ring",
+      "sectionId": "holy_see.insignia",
+      "sortOrder": 2,
+      "titleKey": "art.insignia.ring.title",
+      "leadKey": "art.insignia.ring.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.insignia.ring.p1"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/fisherman_ring.png",
+          "captionKey": "art.insignia.ring.img_ring",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "art.insignia.ring.grid.name.label",
+              "valueKey": "art.insignia.ring.grid.name.value"
+            },
+            {
+              "labelKey": "art.insignia.ring.grid.image.label",
+              "valueKey": "art.insignia.ring.grid.image.value"
+            },
+            {
+              "labelKey": "art.insignia.ring.grid.given.label",
+              "valueKey": "art.insignia.ring.grid.given.value"
+            },
+            {
+              "labelKey": "art.insignia.ring.grid.end.label",
+              "valueKey": "art.insignia.ring.grid.end.value"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.insignia.ring.h_why"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.insignia.ring.p_why"
+        },
+        {
+          "type": "quote",
+          "textKey": "art.insignia.ring.quote",
+          "attributionKey": "art.insignia.ring.quote_src"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/fisherman_ring_face.png",
+          "captionKey": "art.insignia.ring.img_face",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.insignia.ring.h_seal"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.insignia.ring.p_seal"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.insignia.ring.note.title",
+          "textKey": "art.insignia.ring.note.body"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.insignia.ring.h_end"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.insignia.ring.p_end"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/fisherman_ring_cancelled.png",
+          "captionKey": "art.insignia.ring.img_defaced",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "titleKey": "art.insignia.ring.remember.title",
+          "textKey": "art.insignia.ring.remember.body"
+        }
+      ],
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.insignia.overview"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Universi Dominici Gregis (1996), n. 13"
+        },
+        {
+          "label": "Clement IV, letter to Peter Grossi (1265)"
         }
       ]
     },
