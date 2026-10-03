@@ -588,6 +588,71 @@ def collect_segments(lang: str, only: set[str]) -> list[Segment]:
     return segs
 
 
+# ---------------------------------------------------------------- offline (no API)
+#
+# --export writes the pending segments as chunk files; a person (or a Claude
+# session on a subscription plan) writes a matching <name>.out.json holding
+# {"<id>": "<translation>", ...}; --import validates and applies them exactly as
+# an API run would, records state, and moves the pair into work/done/.
+
+WORK_DIR = HERE / "work"
+
+
+def export_work(jobs: list[LangJob]) -> None:
+    WORK_DIR.mkdir(parents=True, exist_ok=True)
+    for job in jobs:
+        (WORK_DIR / f"{job.lang}-instructions.md").write_text(system_prompt(job.lang) + "\n", encoding="utf-8")
+        existing = {p.name.split(".")[0] for p in WORK_DIR.glob(f"{job.lang}-*.in.json")}
+        exported = {i for p in WORK_DIR.glob(f"{job.lang}-*.in.json") for i in (x["id"] for x in load_json(p))}
+        todo = [s for s in job.segments if s.id not in exported]
+        n = len(existing)
+        for part in chunk(todo):
+            name = f"{job.lang}-{n:04d}"
+            write_json(WORK_DIR / f"{name}.in.json",
+                       [{"id": s.id, "context": s.hint, "text": s.source} for s in part])
+            n += 1
+        print(f"{job.lang}: exported {len(todo)} segments into {n - len(existing)} files under {WORK_DIR}")
+
+
+def import_work(langs: list[str]) -> None:
+    done_dir = WORK_DIR / "done"
+    applied_any = False
+    for lang in langs:
+        outs = sorted(WORK_DIR.glob(f"{lang}-*.out.json"))
+        if not outs:
+            continue
+        segments = {s.id: s for s in collect_segments(lang, {"strings", "entities", "ui"})}
+        accepted: dict[str, str] = {}
+        rejected = 0
+        for out in outs:
+            answers = load_json(out)
+            bad = []
+            for seg_id, text in answers.items():
+                seg = segments.get(seg_id)
+                if seg is None:
+                    continue  # already translated, or the English key is gone
+                errs = problems(seg.source, text)
+                if errs:
+                    bad.append(f"{seg_id}: {', '.join(errs)}")
+                else:
+                    accepted[seg_id] = text
+            rejected += len(bad)
+            for line in bad[:5]:
+                print(f"  [{out.name}] {line}")
+            if not bad:
+                done_dir.mkdir(parents=True, exist_ok=True)
+                stem = out.name.removesuffix(".out.json")
+                out.rename(done_dir / out.name)
+                src = WORK_DIR / f"{stem}.in.json"
+                if src.exists():
+                    src.rename(done_dir / src.name)
+        apply_results(lang, accepted, segments)
+        applied_any = applied_any or bool(accepted)
+        print(f"{lang}: imported {len(accepted)}, rejected {rejected} (files with rejections stay in work/)")
+    if applied_any:
+        bump_content_version()
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--lang", nargs="+", choices=sorted(LANGUAGES), help="target languages")
@@ -598,10 +663,18 @@ def main() -> None:
     ap.add_argument("--sync", action="store_true", help="synchronous requests instead of the Batches API")
     ap.add_argument("--resume", action="store_true", help="collect the batch recorded in state/pending_batch.json")
     ap.add_argument("--stubs", action="store_true", help="(re)generate StringsXX.kt from the UI cache only")
+    ap.add_argument("--export", action="store_true",
+                    help="write pending segments to work/<lang>-NNNN.in.json for offline translation (no API)")
+    ap.add_argument("--import", dest="import_", action="store_true",
+                    help="apply work/<lang>-NNNN.out.json files ({id: text}) with the same validation")
     args = ap.parse_args()
 
     langs = sorted(LANGUAGES) if args.all else (args.lang or [])
     only = set(args.only.split(","))
+
+    if args.import_:
+        import_work(langs)
+        return
 
     if args.stubs:
         for lang in langs:
@@ -642,6 +715,9 @@ def main() -> None:
     cost = total_in / 1e6 * BATCH_PRICE_IN + total_out / 1e6 * BATCH_PRICE_OUT
     print(f"Estimated batch cost: ~${cost:,.0f} (sync is 2x). Rough: thinking length varies.")
     if args.dry_run:
+        return
+    if args.export:
+        export_work(jobs)
         return
 
     c = client()
