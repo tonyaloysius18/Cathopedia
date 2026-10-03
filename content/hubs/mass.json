@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": 2,
+  "contentVersion": 10,
   "hub": {
     "id": "mass",
     "slug": "holy-mass",
@@ -148,6 +148,91 @@
       "icon": "ic_chalice",
       "articleIds": [
         "art.tabernacle.overview"
+      ]
+    },
+    {
+      "id": "mass.church",
+      "sortOrder": 13,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.church.title",
+      "summaryKey": "sec.church.summary",
+      "icon": "ic_basilica",
+      "articleIds": [
+        "art.churchmap.overview",
+        "art.sanctuary.overview"
+      ]
+    },
+    {
+      "id": "mass.bells",
+      "sortOrder": 14,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.mass.bells.title",
+      "summaryKey": "sec.mass.bells.summary",
+      "icon": "ic_bell",
+      "articleIds": [
+        "art.bells.overview"
+      ]
+    },
+    {
+      "id": "mass.holy_oils",
+      "sortOrder": 15,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.mass.oils.title",
+      "summaryKey": "sec.mass.oils.summary",
+      "icon": "ic_oil",
+      "articleIds": [
+        "art.oils.overview"
+      ]
+    },
+    {
+      "id": "mass.altar_sacristy",
+      "sortOrder": 16,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.mass.altar_sacristy.title",
+      "summaryKey": "sec.mass.altar_sacristy.summary",
+      "icon": "ic_sacristy",
+      "articleIds": [
+        "art.mass.altar_sacristy"
+      ]
+    },
+    {
+      "id": "mass.cathedra_chair",
+      "sortOrder": 17,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.mass.cathedra_chair.title",
+      "summaryKey": "sec.mass.cathedra_chair.summary",
+      "icon": "ic_mitre",
+      "articleIds": [
+        "art.mass.cathedra_chair"
+      ]
+    },
+    {
+      "id": "mass.altar_parts",
+      "sortOrder": 18,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.mass.altar_parts.title",
+      "summaryKey": "sec.mass.altar_parts.summary",
+      "icon": "ic_altar",
+      "articleIds": [
+        "art.mass.altar_parts"
+      ]
+    },
+    {
+      "id": "mass.basilica_cathedral",
+      "sortOrder": 19,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.mass.basilica_cathedral.title",
+      "summaryKey": "sec.mass.basilica_cathedral.summary",
+      "icon": "ic_basilica",
+      "articleIds": [
+        "art.mass.basilica_cathedral"
       ]
     }
   ],
@@ -599,6 +684,453 @@
           "url": "https://www.vatican.va/content/dam/wss/roman_curia/congregations/ccdds/documents/rc_con_ccdds_doc_20030317_ordinamento-messale_en.html",
           "accessed": "2026-09-16"
         }
+      ]
+    },
+    {
+      "id": "art.churchmap.overview",
+      "sectionId": "mass.church",
+      "sortOrder": 1,
+      "titleKey": "art.churchmap.title",
+      "leadKey": "art.churchmap.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        {
+          "type": "image",
+          "asset": "hub/mass/mass_church_map.png",
+          "captionKey": "art.churchmap.image.caption",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.churchmap.p1"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.churchmap.h_gather"
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": [
+            "art.churchmap.li_narthex",
+            "art.churchmap.li_nave",
+            "art.churchmap.li_pews",
+            "art.churchmap.li_font",
+            "art.churchmap.li_confessional",
+            "art.churchmap.li_stations"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.churchmap.h_sanctuary"
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": [
+            "art.churchmap.li_ambo",
+            "art.churchmap.li_sanctuary",
+            "art.churchmap.li_altar",
+            "art.churchmap.li_tabernacle",
+            "art.churchmap.li_lamp",
+            "art.churchmap.li_crucifix",
+            "art.churchmap.li_chair",
+            "art.churchmap.li_credence",
+            "art.churchmap.li_sacristy"
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "devotional",
+          "titleKey": "art.churchmap.callout.title",
+          "textKey": "art.churchmap.callout.body"
+        }
+      ],
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.sanctuary.overview"
+        },
+        {
+          "type": "ARTICLE",
+          "id": "art.tabernacle.overview"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Catechism of the Catholic Church, 1179–1186",
+          "url": "https://www.vatican.va/archive/ENG0015/_INDEX.HTM",
+          "accessed": "2026-09-26"
+        },
+        {
+          "label": "General Instruction of the Roman Missal, 288–310",
+          "url": "https://www.vatican.va/content/dam/wss/roman_curia/congregations/ccdds/documents/rc_con_ccdds_doc_20030317_ordinamento-messale_en.html",
+          "accessed": "2026-09-26"
+        }
+      ]
+    },
+    {
+      "id": "art.sanctuary.overview",
+      "sectionId": "mass.church",
+      "sortOrder": 2,
+      "titleKey": "art.sanctuary.title",
+      "leadKey": "art.sanctuary.lead",
+      "readingTimeMinutes": 3,
+      "blocks": [
+        {
+          "type": "image",
+          "asset": "hub/mass/mass_sanctuary_furnishings.png",
+          "captionKey": "art.sanctuary.image.caption",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.sanctuary.p1"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.sanctuary.h_furn"
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": [
+            "art.sanctuary.li_altar",
+            "art.sanctuary.li_ambo",
+            "art.sanctuary.li_tabernacle",
+            "art.sanctuary.li_lamp",
+            "art.sanctuary.li_retablo",
+            "art.sanctuary.li_credence",
+            "art.sanctuary.li_relic",
+            "art.sanctuary.li_rail"
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.sanctuary.relic.title",
+          "textKey": "art.sanctuary.relic.body"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.sanctuary.rail.title",
+          "textKey": "art.sanctuary.rail.body"
+        }
+      ],
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.altar.overview"
+        },
+        {
+          "type": "ARTICLE",
+          "id": "art.tabernacle.overview"
+        },
+        {
+          "type": "ARTICLE",
+          "id": "art.churchmap.overview"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Catechism of the Catholic Church, 1179–1186",
+          "url": "https://www.vatican.va/archive/ENG0015/_INDEX.HTM",
+          "accessed": "2026-09-26"
+        },
+        {
+          "label": "General Instruction of the Roman Missal, 288–310",
+          "url": "https://www.vatican.va/content/dam/wss/roman_curia/congregations/ccdds/documents/rc_con_ccdds_doc_20030317_ordinamento-messale_en.html",
+          "accessed": "2026-09-26"
+        }
+      ]
+    },
+    {
+      "id": "art.bells.overview",
+      "sectionId": "mass.bells",
+      "sortOrder": 1,
+      "titleKey": "art.bells.title",
+      "leadKey": "art.bells.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.bells.intro" },
+        { "type": "image", "asset": "hub/mass/mass_bell_sanctus.png", "captionKey": "art.bells.sanctus.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.bells.sanctus.title", "textKey": "art.bells.sanctus.body" },
+        { "type": "image", "asset": "hub/mass/mass_bell_chime.png", "captionKey": "art.bells.chime.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.bells.chime.title", "textKey": "art.bells.chime.body" },
+        { "type": "image", "asset": "hub/mass/mass_bell_tower.png", "captionKey": "art.bells.tower.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.bells.tower.title", "textKey": "art.bells.tower.body" },
+        { "type": "image", "asset": "hub/mass/mass_bell_carillon.png", "captionKey": "art.bells.carillon.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.bells.carillon.title", "textKey": "art.bells.carillon.body" },
+        { "type": "image", "asset": "hub/mass/mass_bell_altar.png", "captionKey": "art.bells.altar.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.bells.altar.title", "textKey": "art.bells.altar.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.bells.note.title", "textKey": "art.bells.note.body" }
+      ],
+      "sources": [
+        {
+          "label": "General Instruction of the Roman Missal, 150",
+          "url": "https://www.vatican.va/content/dam/wss/roman_curia/congregations/ccdds/documents/rc_con_ccdds_doc_20030317_ordinamento-messale_en.html",
+          "accessed": "2026-09-28"
+        }
+      ]
+    },
+    {
+      "id": "art.oils.overview",
+      "sectionId": "mass.holy_oils",
+      "sortOrder": 1,
+      "titleKey": "art.oils.title",
+      "leadKey": "art.oils.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.oils.intro" },
+        { "type": "image", "asset": "hub/mass/mass_oil_catechumens.png", "captionKey": "art.oils.oc.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.oils.oc.title", "textKey": "art.oils.oc.body" },
+        { "type": "image", "asset": "hub/mass/mass_oil_chrism.png", "captionKey": "art.oils.sc.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.oils.sc.title", "textKey": "art.oils.sc.body" },
+        { "type": "image", "asset": "hub/mass/mass_oil_sick.png", "captionKey": "art.oils.oi.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.oils.oi.title", "textKey": "art.oils.oi.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.oils.note.title", "textKey": "art.oils.note.body" }
+      ],
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.mass.types"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Catechism of the Catholic Church, 1293–1301",
+          "url": "https://www.vatican.va/archive/ENG0015/__P3Y.HTM",
+          "accessed": "2026-09-29"
+        },
+        {
+          "label": "Code of Canon Law, canon 847",
+          "url": "https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib4-cann840-878_en.html",
+          "accessed": "2026-09-29"
+        }
+      ]
+    },
+    {
+      "id": "art.mass.altar_sacristy",
+      "sectionId": "mass.altar_sacristy",
+      "sortOrder": 1,
+      "titleKey": "art.altarsac.title",
+      "leadKey": "art.altarsac.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.altarsac.intro" },
+        { "type": "image", "asset": "hub/mass/mass_altar_scene.png", "captionKey": "art.altarsac.altar.caption", "license": "IN_HOUSE" },
+        { "type": "image", "asset": "hub/mass/mass_sacristy_scene.png", "captionKey": "art.altarsac.sacristy.caption", "license": "IN_HOUSE" },
+        {
+          "type": "factGrid",
+          "facts": [
+            { "labelKey": "art.altarsac.label.what", "valueKey": "art.altarsac.altar.what" },
+            { "labelKey": "art.altarsac.label.simple", "valueKey": "art.altarsac.altar.simple" }
+          ]
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            { "labelKey": "art.altarsac.label.what", "valueKey": "art.altarsac.sacristy.what" },
+            { "labelKey": "art.altarsac.label.simple", "valueKey": "art.altarsac.sacristy.simple" }
+          ]
+        },
+        { "type": "heading", "level": 2, "textKey": "art.altarsac.points.title" },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": ["art.altarsac.altar.k1", "art.altarsac.altar.k2", "art.altarsac.altar.k3", "art.altarsac.altar.k4"]
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": ["art.altarsac.sacristy.k1", "art.altarsac.sacristy.k2", "art.altarsac.sacristy.k3", "art.altarsac.sacristy.k4"]
+        },
+        { "type": "callout", "tone": "info", "titleKey": "art.altarsac.keydiff.title", "textKey": "art.altarsac.keydiff.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.altarsac.ccc.title", "textKey": "art.altarsac.ccc.body" }
+      ],
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.altar.overview"
+        },
+        {
+          "type": "ARTICLE",
+          "id": "art.churchmap.overview"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Catechism of the Catholic Church, 1383",
+          "url": "https://www.vatican.va/archive/ENG0015/__P3Y.HTM",
+          "accessed": "2026-09-29"
+        },
+        {
+          "label": "General Instruction of the Roman Missal, 296, 310, 335",
+          "url": "https://www.vatican.va/content/dam/wss/roman_curia/congregations/ccdds/documents/rc_con_ccdds_doc_20030317_ordinamento-messale_en.html",
+          "accessed": "2026-09-29"
+        }
+      ]
+    },
+    {
+      "id": "art.mass.cathedra_chair",
+      "sectionId": "mass.cathedra_chair",
+      "sortOrder": 1,
+      "titleKey": "art.cathedra.title",
+      "leadKey": "art.cathedra.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.cathedra.intro" },
+        { "type": "image", "asset": "hub/mass/mass_cathedra.png", "captionKey": "art.cathedra.cathedra.caption", "license": "IN_HOUSE" },
+        { "type": "image", "asset": "hub/mass/mass_presiders_chair.png", "captionKey": "art.cathedra.chair.caption", "license": "IN_HOUSE" },
+        {
+          "type": "factGrid",
+          "facts": [
+            { "labelKey": "art.cathedra.label.usedby", "valueKey": "art.cathedra.cathedra.usedby" },
+            { "labelKey": "art.cathedra.label.where", "valueKey": "art.cathedra.cathedra.where" },
+            { "labelKey": "art.cathedra.label.meaning", "valueKey": "art.cathedra.cathedra.meaning" },
+            { "labelKey": "art.cathedra.label.usedduring", "valueKey": "art.cathedra.cathedra.usedduring" },
+            { "labelKey": "art.cathedra.label.canuse", "valueKey": "art.cathedra.cathedra.canuse" }
+          ]
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            { "labelKey": "art.cathedra.label.usedby", "valueKey": "art.cathedra.chair.usedby" },
+            { "labelKey": "art.cathedra.label.where", "valueKey": "art.cathedra.chair.where" },
+            { "labelKey": "art.cathedra.label.meaning", "valueKey": "art.cathedra.chair.meaning" },
+            { "labelKey": "art.cathedra.label.usedduring", "valueKey": "art.cathedra.chair.usedduring" },
+            { "labelKey": "art.cathedra.label.canuse", "valueKey": "art.cathedra.chair.canuse" }
+          ]
+        },
+        { "type": "heading", "level": 2, "textKey": "art.cathedra.points.title" },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": ["art.cathedra.cathedra.k1", "art.cathedra.cathedra.k2", "art.cathedra.cathedra.k3"]
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": ["art.cathedra.chair.k1", "art.cathedra.chair.k2", "art.cathedra.chair.k3"]
+        },
+        { "type": "callout", "tone": "info", "titleKey": "art.cathedra.name.title", "textKey": "art.cathedra.name.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.cathedra.remember.title", "textKey": "art.cathedra.remember.body" }
+      ],
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.churchmap.overview"
+        },
+        {
+          "type": "ARTICLE",
+          "id": "art.sanctuary.overview"
+        }
+      ],
+      "sources": [
+        {
+          "label": "General Instruction of the Roman Missal, 310",
+          "url": "https://www.vatican.va/content/dam/wss/roman_curia/congregations/ccdds/documents/rc_con_ccdds_doc_20030317_ordinamento-messale_en.html",
+          "accessed": "2026-10-01"
+        },
+        {
+          "label": "Code of Canon Law, canon 1224",
+          "url": "https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib4-cann1176-1253_en.html",
+          "accessed": "2026-10-01"
+        }
+      ]
+    },
+    {
+      "id": "art.mass.altar_parts",
+      "sectionId": "mass.altar_parts",
+      "sortOrder": 1,
+      "titleKey": "art.altarparts.title",
+      "leadKey": "art.altarparts.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.altarparts.intro" },
+        { "type": "image", "asset": "hub/mass/mass_altar_scene.png", "captionKey": "art.altarparts.table.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.altarparts.table.title", "textKey": "art.altarparts.table.body" },
+        { "type": "image", "asset": "hub/mass/mass_altar_frontal.png", "captionKey": "art.altarparts.frontal.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.altarparts.frontal.title", "textKey": "art.altarparts.frontal.body" },
+        { "type": "image", "asset": "hub/mass/mass_retablo.png", "captionKey": "art.altarparts.retablo.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.altarparts.retablo.title", "textKey": "art.altarparts.retablo.body" },
+        { "type": "heading", "level": 2, "textKey": "art.altarparts.remember.title" },
+        { "type": "callout", "tone": "note", "titleKey": "art.altarparts.remember.calloutTitle", "textKey": "art.altarparts.remember.body" }
+      ],
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.altar.overview"
+        },
+        {
+          "type": "ARTICLE",
+          "id": "art.sanctuary.overview"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Catechism of the Catholic Church, 1182",
+          "url": "https://www.vatican.va/archive/ENG0015/__P3X.HTM",
+          "accessed": "2026-10-01"
+        }
+      ]
+    },
+    {
+      "id": "art.mass.basilica_cathedral",
+      "sectionId": "mass.basilica_cathedral",
+      "sortOrder": 1,
+      "titleKey": "art.basicath.title",
+      "leadKey": "art.basicath.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.basicath.intro" },
+        { "type": "image", "asset": "hub/mass/mass_basilica.png", "captionKey": "art.basicath.basilica.caption", "license": "IN_HOUSE" },
+        { "type": "image", "asset": "hub/mass/mass_cathedral.png", "captionKey": "art.basicath.cathedral.caption", "license": "IN_HOUSE" },
+        {
+          "type": "factGrid",
+          "facts": [
+            { "labelKey": "art.basicath.label.what", "valueKey": "art.basicath.basilica.what" },
+            { "labelKey": "art.basicath.label.who", "valueKey": "art.basicath.basilica.who" },
+            { "labelKey": "art.basicath.label.mark", "valueKey": "art.basicath.basilica.mark" },
+            { "labelKey": "art.basicath.label.howmany", "valueKey": "art.basicath.basilica.howmany" },
+            { "labelKey": "art.basicath.label.example", "valueKey": "art.basicath.basilica.example" }
+          ]
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            { "labelKey": "art.basicath.label.what", "valueKey": "art.basicath.cathedral.what" },
+            { "labelKey": "art.basicath.label.who", "valueKey": "art.basicath.cathedral.who" },
+            { "labelKey": "art.basicath.label.mark", "valueKey": "art.basicath.cathedral.mark" },
+            { "labelKey": "art.basicath.label.howmany", "valueKey": "art.basicath.cathedral.howmany" },
+            { "labelKey": "art.basicath.label.example", "valueKey": "art.basicath.cathedral.example" }
+          ]
+        },
+        { "type": "heading", "level": 2, "textKey": "art.basicath.points.title" },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": ["art.basicath.basilica.k1", "art.basicath.basilica.k2", "art.basicath.basilica.k3", "art.basicath.basilica.k4"]
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": ["art.basicath.cathedral.k1", "art.basicath.cathedral.k2", "art.basicath.cathedral.k3", "art.basicath.cathedral.k4"]
+        },
+        { "type": "callout", "tone": "info", "titleKey": "art.basicath.both.title", "textKey": "art.basicath.both.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.basicath.short.title", "textKey": "art.basicath.short.body" }
+      ],
+      "related": [
+        { "type": "ARTICLE", "id": "art.mass.cathedra_chair" },
+        { "type": "ARTICLE", "id": "art.churchmap.overview" }
+      ],
+      "sources": [
+        { "label": "Congregation for Divine Worship, Domus Ecclesiae (1989), on the title of minor basilica" },
+        { "label": "Code of Canon Law, canons 368–369 and 389–390 (the diocese and its bishop)" }
       ]
     }
   ],

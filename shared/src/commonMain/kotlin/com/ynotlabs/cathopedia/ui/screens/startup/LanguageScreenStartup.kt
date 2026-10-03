@@ -44,6 +44,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ynotlabs.cathopedia.i18n.AppLanguages
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.resources.Res
@@ -58,12 +59,9 @@ private data class StartupLanguageOption(
     val available: Boolean,
 )
 
-private fun startupLanguageOptions(s: Strings) = listOf(
-    StartupLanguageOption("en", "English", s.languageNameEnglish, available = true),
-    StartupLanguageOption("fr", "Français", s.languageNameFrench, available = true),
-    StartupLanguageOption("es", "Español", s.languageNameSpanish, available = false),
-    StartupLanguageOption("it", "Italiano", s.languageNameItalian, available = false),
-)
+private fun startupLanguageOptions(s: Strings) = AppLanguages.all.map {
+    StartupLanguageOption(it.code, it.nativeName, it.localizedName(s), available = it.available)
+}
 
 @Composable
 fun LanguageScreenStartup(

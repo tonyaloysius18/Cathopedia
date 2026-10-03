@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": 1,
+  "contentVersion": 2,
   "hub": {
     "id": "orders",
     "slug": "religious-orders",
@@ -82,8 +82,20 @@
       ]
     },
     {
-      "id": "orders.franciscan_family",
+      "id": "orders.nun_vs_sister",
       "sortOrder": 6,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.orders.nun_vs_sister.title",
+      "summaryKey": "sec.orders.nun_vs_sister.summary",
+      "icon": "ic_sister",
+      "articleIds": [
+        "art.orders.nun_vs_sister"
+      ]
+    },
+    {
+      "id": "orders.franciscan_family",
+      "sortOrder": 7,
       "status": "PUBLISHED",
       "layout": "ARTICLES",
       "titleKey": "sec.orders.franciscan_family.title",
@@ -1046,6 +1058,57 @@
         {
           "type": "paragraph",
           "textKey": "ord.sisters_st_joseph.desc"
+        }
+      ]
+    },
+    {
+      "id": "art.orders.nun_vs_sister",
+      "sectionId": "orders.nun_vs_sister",
+      "sortOrder": 1,
+      "titleKey": "art.nunsister.title",
+      "leadKey": "art.nunsister.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.nunsister.intro" },
+        { "type": "image", "asset": "hub/orders/nun_portrait.png", "captionKey": "art.nunsister.nun.caption", "license": "IN_HOUSE" },
+        { "type": "image", "asset": "hub/orders/sister_portrait.png", "captionKey": "art.nunsister.sister.caption", "license": "IN_HOUSE" },
+        {
+          "type": "factGrid",
+          "facts": [
+            { "labelKey": "art.nunsister.label.usually", "valueKey": "art.nunsister.nun.usually" },
+            { "labelKey": "art.nunsister.label.vows", "valueKey": "art.nunsister.nun.vows" },
+            { "labelKey": "art.nunsister.label.focus", "valueKey": "art.nunsister.nun.focus" },
+            { "labelKey": "art.nunsister.label.setting", "valueKey": "art.nunsister.nun.setting" }
+          ]
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            { "labelKey": "art.nunsister.label.usually", "valueKey": "art.nunsister.sister.usually" },
+            { "labelKey": "art.nunsister.label.vows", "valueKey": "art.nunsister.sister.vows" },
+            { "labelKey": "art.nunsister.label.focus", "valueKey": "art.nunsister.sister.focus" },
+            { "labelKey": "art.nunsister.label.setting", "valueKey": "art.nunsister.sister.setting" }
+          ]
+        },
+        { "type": "heading", "level": 2, "textKey": "art.nunsister.points.title" },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": ["art.nunsister.nun.k1", "art.nunsister.nun.k2", "art.nunsister.nun.k3"]
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": ["art.nunsister.sister.k1", "art.nunsister.sister.k2", "art.nunsister.sister.k3"]
+        },
+        { "type": "callout", "tone": "info", "titleKey": "art.nunsister.keydiff.title", "textKey": "art.nunsister.keydiff.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.nunsister.broader.title", "textKey": "art.nunsister.broader.body" }
+      ],
+      "sources": [
+        {
+          "label": "Catechism of the Catholic Church, 925–927",
+          "url": "https://www.vatican.va/archive/ENG0015/__P3F.HTM",
+          "accessed": "2026-09-29"
         }
       ]
     },

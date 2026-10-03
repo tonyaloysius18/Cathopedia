@@ -32,23 +32,34 @@ VALUES (?, ?, ?, ?, ?, ?);
 
 -- Counting rows for the Explore tiles: cheaper than materialising every
 -- summary just to take the size of the list.
+--
+-- Reads via two LEFT JOINs (the requested language, then :fallbackLang) with
+-- COALESCE over the two, rather than a single INNER JOIN — so a pope with no
+-- row yet in a newly added language still shows English text instead of
+-- vanishing from lists and detail lookups.
 countPopes:
 SELECT COUNT(*) FROM PopeEntity
-JOIN PopeText ON PopeText.popeId = PopeEntity.id AND PopeText.language = :language;
+LEFT JOIN PopeText t ON t.popeId = PopeEntity.id AND t.language = :language
+LEFT JOIN PopeText f ON f.popeId = PopeEntity.id AND f.language = :fallbackLang
+WHERE t.popeId IS NOT NULL OR f.popeId IS NOT NULL;
 
 selectAllPopes:
-SELECT PopeEntity.id AS id, PopeText.name AS name, PopeText.summary AS summary,
+SELECT PopeEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
        PopeEntity.papacyStart AS papacyStart, PopeEntity.papacyEnd AS papacyEnd, PopeEntity.imageUrl AS imageUrl,
        PopeEntity.papacyStartYear AS papacyStartYear
 FROM PopeEntity
-JOIN PopeText ON PopeText.popeId = PopeEntity.id AND PopeText.language = :language
+LEFT JOIN PopeText t ON t.popeId = PopeEntity.id AND t.language = :language
+LEFT JOIN PopeText f ON f.popeId = PopeEntity.id AND f.language = :fallbackLang
+WHERE t.popeId IS NOT NULL OR f.popeId IS NOT NULL
 ORDER BY PopeEntity.papacyStartYear ASC;
 
 selectPopeDetail:
-SELECT PopeEntity.id AS id, PopeText.name AS name, PopeText.summary AS summary, PopeText.body AS body,
+SELECT PopeEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
+       COALESCE(t.body, f.body) AS body,
        PopeEntity.regnalNumber AS regnalNumber, PopeEntity.papacyStart AS papacyStart,
        PopeEntity.papacyEnd AS papacyEnd, PopeEntity.imageUrl AS imageUrl, PopeEntity.sourceUrl AS sourceUrl,
-       PopeText.sourceAttribution AS sourceAttribution
+       COALESCE(t.sourceAttribution, f.sourceAttribution) AS sourceAttribution
 FROM PopeEntity
-JOIN PopeText ON PopeText.popeId = PopeEntity.id AND PopeText.language = :language
-WHERE PopeEntity.id = :id;
+LEFT JOIN PopeText t ON t.popeId = PopeEntity.id AND t.language = :language
+LEFT JOIN PopeText f ON f.popeId = PopeEntity.id AND f.language = :fallbackLang
+WHERE PopeEntity.id = :id AND (t.popeId IS NOT NULL OR f.popeId IS NOT NULL);

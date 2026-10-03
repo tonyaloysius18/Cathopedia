@@ -15,6 +15,7 @@ names = sorted({i["res"] for v in g.values() for i in v})
 L = []
 L.append("package com.ynotlabs.cathopedia.ui")
 L.append("")
+L.append("import com.ynotlabs.cathopedia.i18n.ScreenText")
 L.append("import com.ynotlabs.cathopedia.resources.Res")
 for n in names:
     L.append(f"import com.ynotlabs.cathopedia.resources.{n}")
@@ -27,17 +28,18 @@ L.append('''/**
  * GENERATED FILE. Rebuild with tools/miracle_galleries/gen_kt.py rather than editing by hand;
  * the per-image WebP assets are produced by the same pipeline.
  *
- * Captions are English at the source. [GalleryImage.captionFor] falls back to the
- * English caption until a French pass fills [GalleryImage.captionFr] in.
+ * Captions are English at the source. Translations live in
+ * content/strings/galleries.<lang>.json under `screen.gallery.<English caption>`
+ * (tools/translate mirrors these captions into galleries.en.json); a caption with
+ * no translation shows in English.
  */''')
 L.append("data class GalleryImage(")
 L.append("    val image: DrawableResource,")
 L.append("    val caption: String,")
-L.append("    val captionFr: String? = null,")
 L.append("    val sourceUrl: String,")
 L.append(") {")
-L.append("    fun captionFor(language: String): String =")
-L.append('        if (language == "fr") captionFr ?: caption else caption')
+L.append("    fun captionFor(text: ScreenText): String =")
+L.append('        text["screen.gallery.$caption"].ifEmpty { caption }')
 L.append("}")
 L.append("")
 L.append("object MiracleGalleries {")

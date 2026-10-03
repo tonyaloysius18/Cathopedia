@@ -55,6 +55,8 @@ import com.ynotlabs.cathopedia.data.PreferenceKeys
 import com.ynotlabs.cathopedia.di.AppContainer
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.i18n.stringsFor
+import com.ynotlabs.cathopedia.i18n.LocalScreenText
+import com.ynotlabs.cathopedia.i18n.ScreenText
 import com.ynotlabs.cathopedia.liturgical.LiturgicalCalendar
 import com.ynotlabs.cathopedia.model.BookmarkItem
 import com.ynotlabs.cathopedia.model.ContentSummary
@@ -198,6 +200,8 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
     val entityListItemCaches = remember { mutableStateMapOf<Pair<ContentType, String>, List<ContentSummary>>() }
     // Explore's hub cards and tile counts, kept across visits to the tab.
     var exploreData by remember { mutableStateOf<ExploreData?>(null) }
+    // Text for the self-contained Kotlin screens (Altar, Sacraments, Stations…), per language.
+    var screenText by remember { mutableStateOf(ScreenText.Empty) }
     // Warm Explore while the splash is still showing. Loading it on first open cost ~170ms of
     // visible delay before the topic hubs appeared; by the time the tab can be tapped this is done.
     LaunchedEffect(language) {
@@ -205,6 +209,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
         // prefetch that raced it would cache the old hub list for the whole session.
         repository.ensureContentLoaded()
         exploreData = loadExploreData(repository, language)
+        screenText = ScreenText(repository.resolveHubStringsWithPrefix(ScreenText.PREFIX, language))
     }
     val entityListSelectedCenturies = remember { mutableStateMapOf<Pair<ContentType, String>, String>() }
     val entityListHeaderHeights = remember { mutableStateMapOf<Pair<ContentType, String>, Int>() }
@@ -246,7 +251,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
     val liturgicalAccent = remember { LiturgicalCalendar.liturgicalDayFor(LiturgicalCalendar.today()).color.toAccentColor() }
 
     CathopediaTheme(themeMode = themeMode, liturgicalAccent = liturgicalAccent) {
-    CompositionLocalProvider(LocalStrings provides stringsFor(language)) {
+    CompositionLocalProvider(LocalStrings provides stringsFor(language), LocalScreenText provides screenText) {
         val destination = nav.current
         val navDirection = nav.lastDirection
         val showBottomBar = destination in TAB_DESTINATIONS

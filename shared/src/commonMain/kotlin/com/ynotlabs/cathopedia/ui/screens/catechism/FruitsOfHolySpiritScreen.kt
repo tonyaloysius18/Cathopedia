@@ -162,7 +162,7 @@ fun FruitsOfHolySpiritScreen(
             if (articles.isNotEmpty()) {
                 item {
                     Spacer(Modifier.height(8.dp))
-                    FruitsArticleLabel("${articles.size} ${if (language == "fr") "Articles" else "Articles"}")
+                    FruitsArticleLabel("${articles.size} ${LocalStrings.current.hubArticlesLabel}")
                 }
                 itemsIndexed(articles, key = { _, article -> article.id }) { _, article ->
                     FruitsArticleCard(

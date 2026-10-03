@@ -28,29 +28,42 @@ VALUES (?, ?, ?, ?, ?, ?);
 
 -- Counting rows for the Explore tiles: cheaper than materialising every
 -- summary just to take the size of the list.
+--
+-- Every text-joining query below reads via two LEFT JOINs (the requested
+-- language, then :fallbackLang) with COALESCE over the two, rather than a
+-- single INNER JOIN — so a saint with no row yet in a newly added language
+-- (e.g. Italian before its translations exist) still shows its English text
+-- instead of silently vanishing from lists and detail lookups.
 countSaints:
 SELECT COUNT(*) FROM SaintEntity
-JOIN SaintText ON SaintText.saintId = SaintEntity.id AND SaintText.language = :language;
+LEFT JOIN SaintText t ON t.saintId = SaintEntity.id AND t.language = :language
+LEFT JOIN SaintText f ON f.saintId = SaintEntity.id AND f.language = :fallbackLang
+WHERE t.saintId IS NOT NULL OR f.saintId IS NOT NULL;
 
 selectAllSaints:
-SELECT SaintEntity.id AS id, SaintText.name AS name, SaintText.summary AS summary,
+SELECT SaintEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
        SaintEntity.feastDay AS feastDay, SaintEntity.imageUrl AS imageUrl
 FROM SaintEntity
-JOIN SaintText ON SaintText.saintId = SaintEntity.id AND SaintText.language = :language
-ORDER BY SaintText.name ASC;
+LEFT JOIN SaintText t ON t.saintId = SaintEntity.id AND t.language = :language
+LEFT JOIN SaintText f ON f.saintId = SaintEntity.id AND f.language = :fallbackLang
+WHERE t.saintId IS NOT NULL OR f.saintId IS NOT NULL
+ORDER BY COALESCE(t.name, f.name) ASC;
 
 selectSaintDetail:
-SELECT SaintEntity.id AS id, SaintText.name AS name, SaintText.summary AS summary, SaintText.body AS body,
+SELECT SaintEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
+       COALESCE(t.body, f.body) AS body,
        SaintEntity.feastDay AS feastDay, SaintEntity.canonizationYear AS canonizationYear,
        SaintEntity.patronage AS patronage, SaintEntity.imageUrl AS imageUrl, SaintEntity.sourceUrl AS sourceUrl,
-       SaintText.sourceAttribution AS sourceAttribution
+       COALESCE(t.sourceAttribution, f.sourceAttribution) AS sourceAttribution
 FROM SaintEntity
-JOIN SaintText ON SaintText.saintId = SaintEntity.id AND SaintText.language = :language
-WHERE SaintEntity.id = :id;
+LEFT JOIN SaintText t ON t.saintId = SaintEntity.id AND t.language = :language
+LEFT JOIN SaintText f ON f.saintId = SaintEntity.id AND f.language = :fallbackLang
+WHERE SaintEntity.id = :id AND (t.saintId IS NOT NULL OR f.saintId IS NOT NULL);
 
 selectSaintsByFeastDay:
-SELECT SaintEntity.id AS id, SaintText.name AS name, SaintText.summary AS summary,
+SELECT SaintEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
        SaintEntity.feastDay AS feastDay, SaintEntity.imageUrl AS imageUrl
 FROM SaintEntity
-JOIN SaintText ON SaintText.saintId = SaintEntity.id AND SaintText.language = :language
-WHERE SaintEntity.feastDay = :feastDay;
+LEFT JOIN SaintText t ON t.saintId = SaintEntity.id AND t.language = :language
+LEFT JOIN SaintText f ON f.saintId = SaintEntity.id AND f.language = :fallbackLang
+WHERE SaintEntity.feastDay = :feastDay AND (t.saintId IS NOT NULL OR f.saintId IS NOT NULL);

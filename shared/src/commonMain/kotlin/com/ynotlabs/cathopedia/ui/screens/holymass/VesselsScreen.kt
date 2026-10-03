@@ -1,5 +1,7 @@
 package com.ynotlabs.cathopedia.ui.screens.holymass
 
+import com.ynotlabs.cathopedia.i18n.LocalScreenText
+import com.ynotlabs.cathopedia.i18n.ScreenText
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -69,9 +71,9 @@ fun VesselsScreen(
     listState: LazyListState = rememberLazyListState(),
 ) {
     val s = LocalStrings.current
-    val isFrench = language == "fr"
+    val t = LocalScreenText.current
     val vessels = VesselsData.vessels
-    val intro = if (isFrench) VesselsData.INTRO_FR else VesselsData.INTRO_EN
+    val intro = t[VesselsData.INTRO]
 
     var headerHeightPx by remember(language) { mutableIntStateOf(0) }
     val headerHeight = with(LocalDensity.current) { headerHeightPx.toDp() }
@@ -125,7 +127,7 @@ fun VesselsScreen(
                     rowVessels.forEach { vessel ->
                         VesselCard(
                             vessel = vessel,
-                            isFrench = isFrench,
+                            t = t,
                             modifier = Modifier
                                 .weight(1f)
                                 .fillMaxHeight()
@@ -234,7 +236,7 @@ private fun VesselsHeaderPanel(
 @Composable
 private fun VesselCard(
     vessel: Vessel,
-    isFrench: Boolean,
+    t: ScreenText,
     modifier: Modifier = Modifier,
 ) {
     val painter = VesselImages.forVessel(vessel.id)?.let { painterResource(it) }
@@ -273,7 +275,7 @@ private fun VesselCard(
                 Spacer(Modifier.height(10.dp))
 
                 Text(
-                    text = if (isFrench) vessel.nameFr else vessel.nameEn,
+                    text = t["${vessel.keyPrefix}.name"],
                     color = VesselsCream,
                     fontFamily = FontFamily.Serif,
                     fontSize = 17.sp,
@@ -282,7 +284,7 @@ private fun VesselCard(
                 )
                 Spacer(Modifier.height(6.dp))
                 Text(
-                    text = if (isFrench) vessel.descFr else vessel.descEn,
+                    text = t["${vessel.keyPrefix}.desc"],
                     color = VesselsCream.copy(alpha = 0.82f),
                     fontSize = 13.sp,
                     lineHeight = 18.sp,

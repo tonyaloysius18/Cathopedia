@@ -39,6 +39,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ynotlabs.cathopedia.i18n.AppLanguages
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
@@ -56,12 +57,9 @@ private data class SettingsLanguageOption(
     val available: Boolean,
 )
 
-private fun settingsLanguageOptions(s: Strings) = listOf(
-    SettingsLanguageOption("en", "English", s.languageNameEnglish, available = true),
-    SettingsLanguageOption("fr", "Français", s.languageNameFrench, available = true),
-    SettingsLanguageOption("es", "Español", s.languageNameSpanish, available = false),
-    SettingsLanguageOption("it", "Italiano", s.languageNameItalian, available = false),
-)
+private fun settingsLanguageOptions(s: Strings) = AppLanguages.all.map {
+    SettingsLanguageOption(it.code, it.nativeName, it.localizedName(s), available = it.available)
+}
 
 @Composable
 fun LanguageScreen(

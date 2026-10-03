@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui
 
+import com.ynotlabs.cathopedia.i18n.ScreenText
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.miracle_alatri_g0
 import com.ynotlabs.cathopedia.resources.miracle_alatri_g1
@@ -1097,17 +1098,18 @@ import org.jetbrains.compose.resources.DrawableResource
  * GENERATED FILE. Rebuild with tools/miracle_galleries/gen_kt.py rather than editing by hand;
  * the per-image WebP assets are produced by the same pipeline.
  *
- * Captions are English at the source. [GalleryImage.captionFor] falls back to the
- * English caption until a French pass fills [GalleryImage.captionFr] in.
+ * Captions are English at the source. Translations live in
+ * content/strings/galleries.<lang>.json under `screen.gallery.<English caption>`
+ * (tools/translate mirrors these captions into galleries.en.json); a caption with
+ * no translation shows in English.
  */
 data class GalleryImage(
     val image: DrawableResource,
     val caption: String,
-    val captionFr: String? = null,
     val sourceUrl: String,
 ) {
-    fun captionFor(language: String): String =
-        if (language == "fr") captionFr ?: caption else caption
+    fun captionFor(text: ScreenText): String =
+        text["screen.gallery.$caption"].ifEmpty { caption }
 }
 
 object MiracleGalleries {

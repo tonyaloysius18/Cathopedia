@@ -2,6 +2,7 @@ package com.ynotlabs.cathopedia.ui.screens.common
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,6 +31,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontFamily
@@ -77,6 +79,7 @@ fun ComparisonArticle(
     language: String,
     onBack: () -> Unit,
     listState: LazyListState = rememberLazyListState(),
+    unifiedFactCards: Boolean = false,
 ) {
     val s = LocalStrings.current
     var article by remember(articleId, language) { mutableStateOf<HubArticleDetail?>(null) }
@@ -161,7 +164,10 @@ fun ComparisonArticle(
         }
 
         items(rows.size) { index ->
-            ComparisonRowBlock(rows[index])
+            ComparisonRowBlock(
+                row = rows[index],
+                unifiedCard = unifiedFactCards,
+            )
             Spacer(Modifier.height(16.dp))
         }
 
@@ -283,7 +289,8 @@ private fun PortraitCard(
                     contentScale = ContentScale.Fit,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(140.dp),
+                        .height(140.dp)
+                        .clip(RoundedCornerShape(20.dp)),
                 )
                 Spacer(Modifier.height(8.dp))
             }
@@ -312,28 +319,78 @@ private fun PortraitCard(
 }
 
 @Composable
-private fun ComparisonRowBlock(row: ComparisonRow) {
+private fun ComparisonRowBlock(
+    row: ComparisonRow,
+    unifiedCard: Boolean,
+) {
     Column(modifier = Modifier.fillMaxWidth()) {
         ArticleSectionLabel(row.label)
+        if (unifiedCard) {
+            UnifiedComparisonCard(row)
+        } else {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(IntrinsicSize.Min),
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+            ) {
+                ComparisonCell(
+                    text = row.left,
+                    icon = row.leftIcon,
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxHeight(),
+                )
+                ComparisonCell(
+                    text = row.right,
+                    icon = row.rightIcon,
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxHeight(),
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun UnifiedComparisonCard(row: ComparisonRow) {
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(16.dp),
+        color = ArticleSurface,
+        contentColor = ArticleCream,
+        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.28f)),
+    ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(IntrinsicSize.Min),
-            horizontalArrangement = Arrangement.spacedBy(10.dp),
         ) {
-            ComparisonCell(
+            ComparisonCellContent(
                 text = row.left,
                 icon = row.leftIcon,
                 modifier = Modifier
                     .weight(1f)
-                    .fillMaxHeight(),
+                    .fillMaxHeight()
+                    .padding(14.dp),
             )
-            ComparisonCell(
+
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .padding(vertical = 12.dp)
+                    .width(1.dp)
+                    .background(ArticleGold.copy(alpha = 0.38f)),
+            )
+
+            ComparisonCellContent(
                 text = row.right,
                 icon = row.rightIcon,
                 modifier = Modifier
                     .weight(1f)
-                    .fillMaxHeight(),
+                    .fillMaxHeight()
+                    .padding(14.dp),
             )
         }
     }
@@ -352,23 +409,34 @@ private fun ComparisonCell(
         contentColor = ArticleCream,
         border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.28f)),
     ) {
-        Column(
+        ComparisonCellContent(
+            text = text,
+            icon = icon,
             modifier = Modifier.padding(14.dp),
-        ) {
-            val symbolPainter = hubAssetPainter(icon)
-            if (symbolPainter != null) {
-                RightWrappedSymbolText(
-                    text = text,
-                    symbolPainter = symbolPainter,
-                )
-            } else {
-                Text(
-                    text = text,
-                    color = ArticleCream.copy(alpha = 0.9f),
-                    fontSize = 13.sp,
-                    lineHeight = 19.sp,
-                )
-            }
+        )
+    }
+}
+
+@Composable
+private fun ComparisonCellContent(
+    text: String,
+    icon: String?,
+    modifier: Modifier = Modifier,
+) {
+    Column(modifier = modifier) {
+        val symbolPainter = hubAssetPainter(icon)
+        if (symbolPainter != null) {
+            RightWrappedSymbolText(
+                text = text,
+                symbolPainter = symbolPainter,
+            )
+        } else {
+            Text(
+                text = text,
+                color = ArticleCream.copy(alpha = 0.9f),
+                fontSize = 13.sp,
+                lineHeight = 19.sp,
+            )
         }
     }
 }

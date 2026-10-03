@@ -30,42 +30,54 @@ insertDocumentText:
 INSERT OR REPLACE INTO DocumentText(documentId, language, name, summary, body, sourceAttribution)
 VALUES (?, ?, ?, ?, ?, ?);
 
+-- Every text-joining query below reads via two LEFT JOINs (the requested
+-- language, then :fallbackLang) with COALESCE over the two, rather than a
+-- single INNER JOIN — so a document with no row yet in a newly added
+-- language still shows English text instead of vanishing from lists and
+-- detail lookups.
 countDocuments:
 SELECT COUNT(*) FROM DocumentEntity
-JOIN DocumentText ON DocumentText.documentId = DocumentEntity.id AND DocumentText.language = :language;
+LEFT JOIN DocumentText t ON t.documentId = DocumentEntity.id AND t.language = :language
+LEFT JOIN DocumentText f ON f.documentId = DocumentEntity.id AND f.language = :fallbackLang
+WHERE t.documentId IS NOT NULL OR f.documentId IS NOT NULL;
 
 countDocumentsOfKind:
 SELECT COUNT(*) FROM DocumentEntity
-JOIN DocumentText ON DocumentText.documentId = DocumentEntity.id AND DocumentText.language = :language
-WHERE DocumentEntity.kind = :kind;
+LEFT JOIN DocumentText t ON t.documentId = DocumentEntity.id AND t.language = :language
+LEFT JOIN DocumentText f ON f.documentId = DocumentEntity.id AND f.language = :fallbackLang
+WHERE DocumentEntity.kind = :kind AND (t.documentId IS NOT NULL OR f.documentId IS NOT NULL);
 
 selectAllDocuments:
-SELECT DocumentEntity.id AS id, DocumentText.name AS name, DocumentText.summary AS summary,
+SELECT DocumentEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
        DocumentEntity.imageUrl AS imageUrl
 FROM DocumentEntity
-JOIN DocumentText ON DocumentText.documentId = DocumentEntity.id AND DocumentText.language = :language
-ORDER BY DocumentEntity.promulgated DESC, DocumentText.name ASC;
+LEFT JOIN DocumentText t ON t.documentId = DocumentEntity.id AND t.language = :language
+LEFT JOIN DocumentText f ON f.documentId = DocumentEntity.id AND f.language = :fallbackLang
+WHERE t.documentId IS NOT NULL OR f.documentId IS NOT NULL
+ORDER BY DocumentEntity.promulgated DESC, COALESCE(t.name, f.name) ASC;
 
 -- The index the "Encyclical" row on Kinds of Papal Documents opens. Carries
 -- popeId so the screen can group by pope; the grouping decides the final order,
 -- this just needs each pope's documents adjacent and newest first within them.
 selectDocumentsOfKind:
-SELECT DocumentEntity.id AS id, DocumentText.name AS name, DocumentText.summary AS summary,
+SELECT DocumentEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
        DocumentEntity.imageUrl AS imageUrl, DocumentEntity.popeId AS popeId,
        DocumentEntity.documentYear AS documentYear
 FROM DocumentEntity
-JOIN DocumentText ON DocumentText.documentId = DocumentEntity.id AND DocumentText.language = :language
-WHERE DocumentEntity.kind = :kind
+LEFT JOIN DocumentText t ON t.documentId = DocumentEntity.id AND t.language = :language
+LEFT JOIN DocumentText f ON f.documentId = DocumentEntity.id AND f.language = :fallbackLang
+WHERE DocumentEntity.kind = :kind AND (t.documentId IS NOT NULL OR f.documentId IS NOT NULL)
 -- promulgated is an ISO date, so it sorts correctly as text; ordering by year
 -- alone left documents from the same year in alphabetical order.
-ORDER BY DocumentEntity.promulgated DESC, DocumentText.name ASC;
+ORDER BY DocumentEntity.promulgated DESC, COALESCE(t.name, f.name) ASC;
 
 selectDocumentDetail:
-SELECT DocumentEntity.id AS id, DocumentText.name AS name, DocumentText.summary AS summary,
-       DocumentText.body AS body, DocumentEntity.kind AS kind, DocumentEntity.popeId AS popeId,
+SELECT DocumentEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
+       COALESCE(t.body, f.body) AS body, DocumentEntity.kind AS kind, DocumentEntity.popeId AS popeId,
        DocumentEntity.promulgated AS promulgated, DocumentEntity.documentYear AS documentYear,
        DocumentEntity.imageUrl AS imageUrl, DocumentEntity.sourceUrl AS sourceUrl,
-       DocumentText.sourceAttribution AS sourceAttribution
+       COALESCE(t.sourceAttribution, f.sourceAttribution) AS sourceAttribution
 FROM DocumentEntity
-JOIN DocumentText ON DocumentText.documentId = DocumentEntity.id AND DocumentText.language = :language
-WHERE DocumentEntity.id = :id;
+LEFT JOIN DocumentText t ON t.documentId = DocumentEntity.id AND t.language = :language
+LEFT JOIN DocumentText f ON f.documentId = DocumentEntity.id AND f.language = :fallbackLang
+WHERE DocumentEntity.id = :id AND (t.documentId IS NOT NULL OR f.documentId IS NOT NULL);

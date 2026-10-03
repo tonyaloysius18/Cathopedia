@@ -28,23 +28,33 @@ VALUES (?, ?, ?, ?, ?, ?);
 
 -- Counting rows for the Explore tiles: cheaper than materialising every
 -- summary just to take the size of the list.
+--
+-- Reads via two LEFT JOINs (the requested language, then :fallbackLang) with
+-- COALESCE over the two, rather than a single INNER JOIN — so an apparition
+-- with no row yet in a newly added language still shows English text instead
+-- of vanishing from lists and detail lookups.
 countApparitions:
 SELECT COUNT(*) FROM ApparitionEntity
-JOIN ApparitionText ON ApparitionText.apparitionId = ApparitionEntity.id AND ApparitionText.language = :language;
+LEFT JOIN ApparitionText t ON t.apparitionId = ApparitionEntity.id AND t.language = :language
+LEFT JOIN ApparitionText f ON f.apparitionId = ApparitionEntity.id AND f.language = :fallbackLang
+WHERE t.apparitionId IS NOT NULL OR f.apparitionId IS NOT NULL;
 
 selectAllApparitions:
-SELECT ApparitionEntity.id AS id, ApparitionText.name AS name, ApparitionText.summary AS summary,
+SELECT ApparitionEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
        ApparitionEntity.imageUrl AS imageUrl
 FROM ApparitionEntity
-JOIN ApparitionText ON ApparitionText.apparitionId = ApparitionEntity.id AND ApparitionText.language = :language
+LEFT JOIN ApparitionText t ON t.apparitionId = ApparitionEntity.id AND t.language = :language
+LEFT JOIN ApparitionText f ON f.apparitionId = ApparitionEntity.id AND f.language = :fallbackLang
+WHERE t.apparitionId IS NOT NULL OR f.apparitionId IS NOT NULL
 ORDER BY ApparitionEntity.apparitionYear ASC;
 
 selectApparitionDetail:
-SELECT ApparitionEntity.id AS id, ApparitionText.name AS name, ApparitionText.summary AS summary,
-       ApparitionText.body AS body, ApparitionEntity.location AS location,
+SELECT ApparitionEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
+       COALESCE(t.body, f.body) AS body, ApparitionEntity.location AS location,
        ApparitionEntity.apparitionYear AS apparitionYear, ApparitionEntity.approvalStatus AS approvalStatus,
        ApparitionEntity.imageUrl AS imageUrl, ApparitionEntity.sourceUrl AS sourceUrl,
-       ApparitionText.sourceAttribution AS sourceAttribution
+       COALESCE(t.sourceAttribution, f.sourceAttribution) AS sourceAttribution
 FROM ApparitionEntity
-JOIN ApparitionText ON ApparitionText.apparitionId = ApparitionEntity.id AND ApparitionText.language = :language
-WHERE ApparitionEntity.id = :id;
+LEFT JOIN ApparitionText t ON t.apparitionId = ApparitionEntity.id AND t.language = :language
+LEFT JOIN ApparitionText f ON f.apparitionId = ApparitionEntity.id AND f.language = :fallbackLang
+WHERE ApparitionEntity.id = :id AND (t.apparitionId IS NOT NULL OR f.apparitionId IS NOT NULL);

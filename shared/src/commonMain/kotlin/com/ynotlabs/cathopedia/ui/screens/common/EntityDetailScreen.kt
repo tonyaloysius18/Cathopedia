@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.common
 
+import com.ynotlabs.cathopedia.i18n.LocalScreenText
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -938,7 +939,7 @@ private fun ImageGalleryCard(
                             ) {
                                 Image(
                                     painter = painterResource(image.image),
-                                    contentDescription = image.captionFor(language),
+                                    contentDescription = image.captionFor(LocalScreenText.current),
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier.fillMaxSize(),
                                 )
@@ -979,11 +980,12 @@ private fun GalleryLightbox(
     title: String,
     onDismiss: () -> Unit,
 ) {
+    val screenText = LocalScreenText.current
     FullscreenImageViewer(
         pageCount = images.size,
         startIndex = startIndex,
         title = title,
-        captionForPage = { page -> images[page].captionFor(language) },
+        captionForPage = { page -> images[page].captionFor(screenText) },
         painterForPage = { page -> painterResource(images[page].image) },
         onDismiss = onDismiss,
     )

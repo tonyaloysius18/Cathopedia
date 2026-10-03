@@ -11,7 +11,7 @@ import java.io.File
  */
 class PrayerCoverageReport(private val contentDir: File) {
     private val json = Json { ignoreUnknownKeys = true }
-    private val languages = listOf("en", "fr", "la")
+    private val languages = listOf("en", "fr", "it", "es", "pt", "de", "nl", "pl", "ta", "la")
 
     fun print(out: (String) -> Unit) {
         val files = contentDir

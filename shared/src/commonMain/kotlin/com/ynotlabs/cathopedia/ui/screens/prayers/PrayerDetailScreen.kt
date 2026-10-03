@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -19,7 +20,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -57,6 +58,7 @@ import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.data.PreferenceKeys
 import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.AppLanguages
 import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.model.PrayerCategory
 import com.ynotlabs.cathopedia.model.PrayerDetail
@@ -65,11 +67,19 @@ import com.ynotlabs.cathopedia.ui.CategoryIcon
 import com.ynotlabs.cathopedia.ui.PrayerPortraits
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.prayer_category_favorites
+import com.ynotlabs.cathopedia.resources.seven_sorrows_01_prophecy
+import com.ynotlabs.cathopedia.resources.seven_sorrows_02_flight
+import com.ynotlabs.cathopedia.resources.seven_sorrows_03_temple
+import com.ynotlabs.cathopedia.resources.seven_sorrows_04_cross
+import com.ynotlabs.cathopedia.resources.seven_sorrows_05_calvary
+import com.ynotlabs.cathopedia.resources.seven_sorrows_06_pieta
+import com.ynotlabs.cathopedia.resources.seven_sorrows_07_burial
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.ui.components.KeepScreenOn
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.ui.components.PrayerBodyText
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
 private val FONT_SCALE_STEPS = listOf(0.85f, 1.0f, 1.15f, 1.3f, 1.45f)
@@ -80,6 +90,16 @@ private val PrayerGold = Color(0xFFD6AE3D)
 private val PrayerGoldSoft = Color(0xFFAA9158)
 private val PrayerCream = Color(0xFFF4ECDD)
 private val PrayerMuted = Color(0xFFB7B09D)
+
+private val SevenSorrowsImages = listOf(
+    Res.drawable.seven_sorrows_01_prophecy,
+    Res.drawable.seven_sorrows_02_flight,
+    Res.drawable.seven_sorrows_03_temple,
+    Res.drawable.seven_sorrows_04_cross,
+    Res.drawable.seven_sorrows_05_calvary,
+    Res.drawable.seven_sorrows_06_pieta,
+    Res.drawable.seven_sorrows_07_burial,
+)
 
 @Composable
 fun PrayerDetailScreen(
@@ -263,13 +283,32 @@ private fun PrayerReadingContent(
             horizontalAlignment = Alignment.CenterHorizontally,
             contentPadding = PaddingValues(bottom = 28.dp)
         ) {
-            items(sections) { section ->
-                Box(modifier = Modifier.padding(horizontal = 20.dp)) {
+            itemsIndexed(sections) { index, section ->
+                val sectionImage = sevenSorrowsImage(detail.id, index)
+                Column(modifier = Modifier.padding(horizontal = 20.dp)) {
+                    sectionImage?.let { image ->
+                        Image(
+                            painter = painterResource(image),
+                            contentDescription = section.title,
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .aspectRatio(1.18f)
+                                .clip(RoundedCornerShape(28.dp))
+                                .border(
+                                    width = 2.dp,
+                                    color = PrayerGold.copy(alpha = 0.8f),
+                                    shape = RoundedCornerShape(28.dp),
+                                ),
+                        )
+                        Spacer(Modifier.height(12.dp))
+                    }
+
                     PrayerSectionCard(
                         title = section.title,
                         bodyMd = section.body,
                         fontScale = fontScale,
-                        isFirst = section == sections.first(),
+                        isFirst = index == 0,
                     )
                 }
                 Spacer(Modifier.height(18.dp))
@@ -588,17 +627,17 @@ private fun AboutPrayerCard(
     }
 }
 
-private fun languageLabel(lang: String, s: Strings): String = when (lang) {
-    "en" -> s.prayerLanguageEn
-    "fr" -> s.prayerLanguageFr
-    "la" -> s.prayerLanguageLa
-    else -> lang
-}
+private fun languageLabel(lang: String, s: Strings): String = AppLanguages.labelFor(lang, s)
 
 private data class PrayerSection(
     val title: String?,
     val body: String
 )
+
+private fun sevenSorrowsImage(prayerId: String, sectionIndex: Int): DrawableResource? {
+    if (prayerId != "seven-sorrows") return null
+    return SevenSorrowsImages.getOrNull(sectionIndex - 1)
+}
 
 private fun splitPrayerSections(bodyMd: String): List<PrayerSection> {
     if (!bodyMd.contains("#")) {

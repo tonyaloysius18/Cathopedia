@@ -1,6 +1,8 @@
 package com.ynotlabs.cathopedia.ui.screens.sacraments
 
 
+import com.ynotlabs.cathopedia.i18n.LocalScreenText
+import com.ynotlabs.cathopedia.i18n.ScreenText
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -235,6 +237,7 @@ private fun SacramentCard(
     listState: LazyListState,
     cardWidthPx: Float,
 ) {
+    val t = LocalScreenText.current
     val s = LocalStrings.current
     Box(
         modifier = Modifier
@@ -295,7 +298,7 @@ private fun SacramentCard(
 
         Column(modifier = Modifier.padding(18.dp)) {
             Text(
-                text = (if (language == "fr") sacrament.groupFr else sacrament.groupEn).uppercase(),
+                text = (t["${sacrament.keyPrefix}.group"]).uppercase(),
                 color = SacramentsGoldSoft,
                 fontSize = 10.5.sp,
                 letterSpacing = 1.1.sp,
@@ -303,7 +306,7 @@ private fun SacramentCard(
             )
             Spacer(Modifier.height(6.dp))
             Text(
-                text = if (language == "fr") sacrament.titleFr else sacrament.titleEn,
+                text = t["${sacrament.keyPrefix}.title"],
                 color = SacramentsCream,
                 fontFamily = FontFamily.Serif,
                 fontSize = 18.sp,
@@ -339,11 +342,11 @@ private fun SacramentTextPanel(
     modifier: Modifier = Modifier,
 ) {
     val s = LocalStrings.current
-    val isFrench = language == "fr"
-    val title = if (isFrench) sacrament.titleFr else sacrament.titleEn
-    val sign = if (isFrench) sacrament.signFr else sacrament.signEn
-    val grace = if (isFrench) sacrament.graceFr else sacrament.graceEn
-    val description = if (isFrench) sacrament.descriptionFr else sacrament.descriptionEn
+    val t = LocalScreenText.current
+    val title = t["${sacrament.keyPrefix}.title"]
+    val sign = t["${sacrament.keyPrefix}.sign"]
+    val grace = t["${sacrament.keyPrefix}.grace"]
+    val description = t["${sacrament.keyPrefix}.description"]
 
     Column(modifier = modifier) {
         Text(

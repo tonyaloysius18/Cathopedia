@@ -34,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
@@ -228,13 +229,15 @@ private fun WideRosaryLanding(
                         }
                     }
 
-                    RosaryComposition(
-                        modifier = Modifier
-                            .weight(0.9f)
-                            .semantics {
-                                contentDescription = strings[RosaryStringKeys.DiagramDescription].orEmpty()
-                            },
-                    )
+                    RosaryHeroFrame(modifier = Modifier.weight(0.9f)) {
+                        RosaryComposition(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .semantics {
+                                    contentDescription = strings[RosaryStringKeys.DiagramDescription].orEmpty()
+                                },
+                        )
+                    }
 
                     RosaryBeadLegend(
                         strings = strings,
@@ -268,14 +271,19 @@ private fun CompactRosaryLanding(
     ) {
         item { LandingSubtitle(strings, modifier = Modifier.fillMaxWidth()) }
         item {
-            RosaryComposition(
+            RosaryHeroFrame(
                 modifier = Modifier
                     .widthIn(max = 420.dp)
-                    .fillMaxWidth()
-                    .semantics {
-                        contentDescription = strings[RosaryStringKeys.DiagramDescription].orEmpty()
-                    },
-            )
+                    .fillMaxWidth(),
+            ) {
+                RosaryComposition(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .semantics {
+                            contentDescription = strings[RosaryStringKeys.DiagramDescription].orEmpty()
+                        },
+                )
+            }
         }
         item {
             Button(
@@ -302,6 +310,41 @@ private fun CompactRosaryLanding(
             )
         }
         item { RosaryMeterSummary(meter = meter, strings = strings) }
+    }
+}
+
+/**
+ * Frames the hero ring in a soft gold vignette on a raised card, so the Rosary reads as a
+ * treasured object rather than sitting bare on the screen background.
+ */
+@Composable
+private fun RosaryHeroFrame(
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit,
+) {
+    val colors = rosaryColors()
+    Card(
+        modifier = modifier,
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .drawBehind {
+                    drawCircle(
+                        brush = Brush.radialGradient(
+                            0f to colors.candle.copy(alpha = 0.18f),
+                            1f to colors.candle.copy(alpha = 0f),
+                        ),
+                        radius = size.maxDimension * 0.62f,
+                        center = Offset(size.width / 2f, size.height * 0.4f),
+                    )
+                }
+                .padding(20.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            content()
+        }
     }
 }
 

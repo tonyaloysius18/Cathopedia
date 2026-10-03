@@ -1,5 +1,7 @@
 package com.ynotlabs.cathopedia.ui.screens.holymass
 
+import com.ynotlabs.cathopedia.i18n.LocalScreenText
+import com.ynotlabs.cathopedia.i18n.ScreenText
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -75,9 +77,9 @@ fun MonstranceScreen(
     listState: LazyListState = rememberLazyListState(),
 ) {
     val s = LocalStrings.current
-    val isFrench = language == "fr"
+    val t = LocalScreenText.current
     val parts = MonstranceData.parts
-    val intro = if (isFrench) MonstranceData.INTRO_FR else MonstranceData.INTRO_EN
+    val intro = t[MonstranceData.INTRO]
 
     var headerHeightPx by remember(language) { mutableIntStateOf(0) }
     val headerHeight = with(LocalDensity.current) { headerHeightPx.toDp() }
@@ -149,7 +151,7 @@ fun MonstranceScreen(
                     rowParts.forEach { part ->
                         PartCard(
                             part = part,
-                            isFrench = isFrench,
+                            t = t,
                             modifier = Modifier
                                 .weight(1f)
                                 .fillMaxHeight()
@@ -258,7 +260,7 @@ private fun MonstranceHeaderPanel(
 @Composable
 private fun PartCard(
     part: MonstrancePart,
-    isFrench: Boolean,
+    t: ScreenText,
     modifier: Modifier = Modifier,
 ) {
     val painter = MonstranceImages.forPart(part.id)?.let { painterResource(it) }
@@ -297,7 +299,7 @@ private fun PartCard(
                 Spacer(Modifier.height(10.dp))
 
                 Text(
-                    text = if (isFrench) part.nameFr else part.nameEn,
+                    text = t["${part.keyPrefix}.name"],
                     color = MonstranceCream,
                     fontFamily = FontFamily.Serif,
                     fontSize = 17.sp,
@@ -306,7 +308,7 @@ private fun PartCard(
                 )
                 Spacer(Modifier.height(6.dp))
                 Text(
-                    text = if (isFrench) part.descFr else part.descEn,
+                    text = t["${part.keyPrefix}.desc"],
                     color = MonstranceCream.copy(alpha = 0.82f),
                     fontSize = 13.sp,
                     lineHeight = 18.sp,

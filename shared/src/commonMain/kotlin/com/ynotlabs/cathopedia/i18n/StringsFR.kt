@@ -212,6 +212,10 @@ val FR: Strings = Strings().apply {
     languageNameSpanish = "Espagnol"
     languageNameItalian = "Italien"
     languageNameGerman = "Allemand"
+    languageNamePortuguese = "Portugais"
+    languageNamePolish = "Polonais"
+    languageNameDutch = "Néerlandais"
+    languageNameTamil = "Tamoul"
 
     appearanceTitle = "Apparence"
     appearanceSubtitle = "Personnalisez l'apparence"
@@ -339,8 +343,6 @@ val FR: Strings = Strings().apply {
     listSearchByNameOrDescription = "Rechercher {type} par nom ou description…"
     listOpenEntity = "Ouvrir {name}"
     listUnknownEra = "Époque inconnue"
-    listCenturyWord = "siècle"
-    listUseFrenchOrdinals = true
 
     detailOverviewTitle = "Aperçu"
     detailCoatOfArmsTitle = "Armoiries"
@@ -388,6 +390,14 @@ val FR: Strings = Strings().apply {
     vestmentsSignificanceLabel = "Signification"
     vestmentsGoodToKnowLabel = "Bon à savoir"
     vestmentsWornForLabel = "Porté pour"
+    hubArticlesLabel = "Articles"
+    hubSymbolsCount = "SYMBOLES · {count}"
+    hubSacredFormsCount = "FORMES SACRÉES · {count}"
+    ordersCount = "ORDRES · {count}"
+    ordersNoneFound = "Aucun ordre trouvé."
+    ordersSearchPlaceholder = "Rechercher un ordre…"
+    biblicalFiguresCount = "FIGURES BIBLIQUES · {count}"
+
     vestmentTranslations = VESTMENT_TRANSLATIONS_FR
     detailConnectedTitle = "Connexions"
     detailSourceTitle = "Source"

@@ -24,12 +24,16 @@ import com.ynotlabs.cathopedia.ui.screens.priesthood.PriestKindsScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.ReadingCyclesScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.HolyTrinityScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.AltarScreen
+import com.ynotlabs.cathopedia.ui.screens.holymass.AltarOrSacristyScreen
+import com.ynotlabs.cathopedia.ui.screens.holymass.CathedraOrPresidersChairScreen
+import com.ynotlabs.cathopedia.ui.screens.holymass.BasilicaOrCathedralScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.MonstranceScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.PosturesScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.ThuribleScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.VesselsScreen
 import com.ynotlabs.cathopedia.ui.screens.holysee.CardinalsScreen
 import com.ynotlabs.cathopedia.ui.screens.orders.FranciscanFamilyScreen
+import com.ynotlabs.cathopedia.ui.screens.orders.NunOrSisterScreen
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
@@ -59,6 +63,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.icons.Icons
@@ -118,8 +123,24 @@ import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.ui.hubAssetPainter
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.DrawableResource
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.nav_search
+import com.ynotlabs.cathopedia.resources._01
+import com.ynotlabs.cathopedia.resources._02
+import com.ynotlabs.cathopedia.resources._03
+import com.ynotlabs.cathopedia.resources._04
+import com.ynotlabs.cathopedia.resources._05
+import com.ynotlabs.cathopedia.resources._06
+import com.ynotlabs.cathopedia.resources._07
+import com.ynotlabs.cathopedia.resources._08
+import com.ynotlabs.cathopedia.resources._09
+import com.ynotlabs.cathopedia.resources._10
+import com.ynotlabs.cathopedia.resources._11
+import com.ynotlabs.cathopedia.resources._12
+import com.ynotlabs.cathopedia.resources._13
+import com.ynotlabs.cathopedia.resources._14
+import com.ynotlabs.cathopedia.resources._15
 
 private val SymbolCardSurface = Color(0xFF0C271E)
 private val SymbolCardGold = Color(0xFFD8B24C)
@@ -143,6 +164,17 @@ private data class OrderCardContent(
     val image: ImageBlock,        // main image (founder portrait, or the sole image)
     val emblem: ImageBlock?,      // emblem badge overlaid top-right, when present
     val paragraph: ParagraphBlock,
+)
+
+private data class SacredObjectCardContent(
+    val image: ImageBlock,
+    val callout: CalloutBlock,
+)
+
+private data class SacredObjectArticleContent(
+    val leadingBlocks: List<Block>,
+    val cards: List<SacredObjectCardContent>,
+    val trailingBlocks: List<Block>,
 )
 
 /**
@@ -175,6 +207,46 @@ fun HubArticleScreen(
             language = language,
             onBack = onBack,
             onEntityRefSelected = onEntityRefSelected,
+            listState = listState,
+        )
+        return
+    }
+
+    if (articleId == "art.orders.nun_vs_sister") {
+        NunOrSisterScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            listState = listState,
+        )
+        return
+    }
+
+    if (articleId == "art.mass.altar_sacristy") {
+        AltarOrSacristyScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            listState = listState,
+        )
+        return
+    }
+
+    if (articleId == "art.mass.cathedra_chair") {
+        CathedraOrPresidersChairScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            listState = listState,
+        )
+        return
+    }
+
+    if (articleId == "art.mass.basilica_cathedral") {
+        BasilicaOrCathedralScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
             listState = listState,
         )
         return
@@ -533,16 +605,24 @@ fun HubArticleScreen(
             val symbolCards = if (isSymbolsArticle) current.blocks.asSymbolCards() else null
             val biblicalCards = if (isBiblicalArticle) current.blocks.asBiblicalCharacterCards() else null
             val orderCards = if (isOrdersArticle) current.blocks.asOrderCards() else null
+            val sacredObjectArticle = if (
+                articleId == "art.bells.overview" ||
+                articleId == "art.oils.overview" ||
+                articleId == "art.cat.stigmata" ||
+                articleId == "art.mass.altar_parts"
+            ) {
+                current.blocks.asSacredObjectArticleContent()
+            } else {
+                null
+            }
             if (symbolCards != null) {
                 item {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
                             text = when {
-                                articleId == "art.symbols.crosses" && language == "fr" -> "FORMES SACRÉES · ${symbolCards.size}"
-                                articleId == "art.symbols.crosses" -> "SACRED FORMS · ${symbolCards.size}"
-                                language == "fr" -> "SYMBOLES · ${symbolCards.size}"
-                                else -> "SYMBOLS · ${symbolCards.size}"
-                            },
+                                articleId == "art.symbols.crosses" -> LocalStrings.current.hubSacredFormsCount
+                                else -> LocalStrings.current.hubSymbolsCount
+                            }.replace("{count}", symbolCards.size.toString()),
                             color = SymbolCardGold,
                             fontSize = 10.sp,
                             fontWeight = FontWeight.Medium,
@@ -627,7 +707,7 @@ fun HubArticleScreen(
                 if (filtered.isEmpty()) {
                     item {
                         Text(
-                            text = if (language == "fr") "Aucun ordre trouvé." else "No orders found.",
+                            text = LocalStrings.current.ordersNoneFound,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontSize = 15.sp,
                         )
@@ -642,6 +722,40 @@ fun HubArticleScreen(
                             onEntityRefSelected = onEntityRefSelected,
                         )
                         Spacer(Modifier.height(16.dp))
+                    }
+                }
+            } else if (sacredObjectArticle != null) {
+                sacredObjectArticle.leadingBlocks.forEachIndexed { index, block ->
+                    item {
+                        BlockView(
+                            block = block,
+                            strings = strings,
+                            onEntityRefSelected = onEntityRefSelected,
+                            emphasizeParagraph = index == 0 && block is ParagraphBlock,
+                        )
+                        Spacer(Modifier.height(16.dp))
+                    }
+                }
+
+                sacredObjectArticle.cards.forEach { card ->
+                    item {
+                        SacredObjectCard(
+                            card = card,
+                            strings = strings,
+                            onEntityRefSelected = onEntityRefSelected,
+                        )
+                        Spacer(Modifier.height(16.dp))
+                    }
+                }
+
+                sacredObjectArticle.trailingBlocks.forEach { block ->
+                    item {
+                        BlockView(
+                            block = block,
+                            strings = strings,
+                            onEntityRefSelected = onEntityRefSelected,
+                        )
+                        Spacer(Modifier.height(14.dp))
                     }
                 }
             } else {
@@ -826,6 +940,115 @@ private fun List<Block>.asOrderCards(): List<OrderCardContent>? {
     return cards
 }
 
+private fun List<Block>.asSacredObjectArticleContent(): SacredObjectArticleContent? {
+    val firstImageIndex = indexOfFirst { it is ImageBlock }
+    if (firstImageIndex <= 0) return null
+
+    val cards = mutableListOf<SacredObjectCardContent>()
+    var index = firstImageIndex
+
+    while (index < size) {
+        val image = getOrNull(index) as? ImageBlock ?: break
+        val callout = getOrNull(index + 1) as? CalloutBlock ?: return null
+        cards += SacredObjectCardContent(image = image, callout = callout)
+        index += 2
+    }
+
+    if (cards.isEmpty()) return null
+    return SacredObjectArticleContent(
+        leadingBlocks = take(firstImageIndex),
+        cards = cards,
+        trailingBlocks = drop(index),
+    )
+}
+
+@Composable
+private fun SacredObjectCard(
+    card: SacredObjectCardContent,
+    strings: Map<String, String>,
+    onEntityRefSelected: (EntityRef) -> Unit,
+) {
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(20.dp),
+        color = MaterialTheme.colorScheme.surfaceContainerHigh,
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        border = BorderStroke(1.dp, SymbolCardGold.copy(alpha = 0.45f)),
+    ) {
+        Box {
+            GoldCardAccent(Modifier.align(Alignment.CenterStart))
+
+            Column(
+                modifier = Modifier.padding(
+                    start = 22.dp,
+                    top = 18.dp,
+                    end = 18.dp,
+                    bottom = 20.dp,
+                ),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                hubAssetPainter(card.image.asset)?.let { painter ->
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(230.dp)
+                            .background(
+                                MaterialTheme.colorScheme.surfaceContainerLow,
+                                RoundedCornerShape(14.dp),
+                            ),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Image(
+                            painter = painter,
+                            contentDescription = card.image.captionKey?.let { strings[it] },
+                            contentScale = ContentScale.Fit,
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(10.dp),
+                        )
+                    }
+                }
+
+                card.image.captionKey?.let { key ->
+                    strings[key]?.let { caption ->
+                        Spacer(Modifier.height(8.dp))
+                        Text(
+                            text = caption,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            fontSize = 12.sp,
+                            lineHeight = 17.sp,
+                            textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                        )
+                    }
+                }
+
+                Spacer(Modifier.height(16.dp))
+
+                card.callout.titleKey?.let { key ->
+                    strings[key]?.let { title ->
+                        Text(
+                            text = title,
+                            color = SymbolCardGold,
+                            fontFamily = FontFamily.Serif,
+                            fontWeight = FontWeight.SemiBold,
+                            fontSize = 18.sp,
+                            lineHeight = 23.sp,
+                            modifier = Modifier.fillMaxWidth(),
+                        )
+                        Spacer(Modifier.height(7.dp))
+                    }
+                }
+
+                MarkupText(
+                    raw = strings[card.callout.textKey].orEmpty(),
+                    onEntityRefSelected = onEntityRefSelected,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+        }
+    }
+}
+
 @Composable
 private fun OrdersHeaderRow(
     count: Int,
@@ -838,7 +1061,7 @@ private fun OrdersHeaderRow(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
-            text = if (language == "fr") "ORDRES · $count" else "ORDERS · $count",
+            text = LocalStrings.current.ordersCount.replace("{count}", count.toString()),
             color = MaterialTheme.colorScheme.primary,
             fontSize = 11.sp,
             fontWeight = FontWeight.SemiBold,
@@ -870,14 +1093,14 @@ private fun OrdersHeaderRow(
             if (searchExpanded) {
                 Icon(
                     imageVector = Icons.Filled.Close,
-                    contentDescription = if (language == "fr") "Fermer la recherche" else "Close search",
+                    contentDescription = LocalStrings.current.closeSearch,
                     tint = tint,
                     modifier = Modifier.size(22.dp),
                 )
             } else {
                 Image(
                     painter = painterResource(Res.drawable.nav_search),
-                    contentDescription = if (language == "fr") "Rechercher" else "Search",
+                    contentDescription = LocalStrings.current.searchDesc,
                     modifier = Modifier.size(22.dp),
                     contentScale = ContentScale.Fit,
                 )
@@ -917,7 +1140,7 @@ private fun OrderSearchField(
                 IconButton(onClick = onClear) {
                     Icon(
                         imageVector = Icons.Filled.Close,
-                        contentDescription = if (language == "fr") "Effacer" else "Clear",
+                        contentDescription = LocalStrings.current.searchClear,
                         tint = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.size(18.dp),
                     )
@@ -926,7 +1149,7 @@ private fun OrderSearchField(
         },
         placeholder = {
             Text(
-                text = if (language == "fr") "Rechercher un ordre…" else "Search orders…",
+                text = LocalStrings.current.ordersSearchPlaceholder,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         },
@@ -1057,7 +1280,7 @@ private fun BiblicalFiguresLabel(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
-            text = if (language == "fr") "FIGURES BIBLIQUES · $count" else "BIBLICAL FIGURES · $count",
+            text = LocalStrings.current.biblicalFiguresCount.replace("{count}", count.toString()),
             color = MaterialTheme.colorScheme.primary,
             fontSize = 11.sp,
             fontWeight = FontWeight.SemiBold,
@@ -1342,32 +1565,48 @@ internal fun BlockView(
                             ),
                             verticalAlignment = Alignment.Top,
                         ) {
-                            Box(
-                                modifier = Modifier
-                                    .size(28.dp)
-                                    .clip(androidx.compose.foundation.shape.CircleShape)
-                                    .background(SymbolCardGold.copy(alpha = 0.12f))
-                                    .border(
-                                        width = 1.dp,
-                                        color = SymbolCardGold.copy(alpha = 0.42f),
-                                        shape = androidx.compose.foundation.shape.CircleShape,
-                                    ),
-                                contentAlignment = Alignment.Center,
-                            ) {
-                                Text(
-                                    text = if (block.style.name == "numbered") {
-                                        (index + 1).toString()
-                                    } else {
-                                        "•"
-                                    },
-                                    color = SymbolCardGold,
-                                    fontSize = 12.sp,
-                                    fontWeight = FontWeight.Bold,
+                            val mappedNum = articleNumberMaps[key]
+                            val numberToUse = mappedNum ?: (index + 1)
+                            val useNumberIcon = mappedNum != null || block.style.name == "numbered"
+
+                            if (useNumberIcon) {
+                                Image(
+                                    painter = painterResource(numberDrawable(numberToUse)),
+                                    contentDescription = numberToUse.toString(),
+                                    contentScale = ContentScale.Fit,
+                                    modifier = Modifier.size(28.dp),
                                 )
+                            } else {
+                                Box(
+                                    modifier = Modifier
+                                        .size(28.dp)
+                                        .clip(CircleShape)
+                                        .background(SymbolCardGold.copy(alpha = 0.12f))
+                                        .border(
+                                            width = 1.dp,
+                                            color = SymbolCardGold.copy(alpha = 0.42f),
+                                            shape = CircleShape,
+                                        ),
+                                    contentAlignment = Alignment.Center,
+                                ) {
+                                    Text(
+                                        text = "•",
+                                        color = SymbolCardGold,
+                                        fontSize = 12.sp,
+                                        fontWeight = FontWeight.Bold,
+                                    )
+                                }
                             }
                             Spacer(Modifier.width(12.dp))
                             Box(modifier = Modifier.weight(1f)) {
-                                MarkupText(strings[key].orEmpty(), onEntityRefSelected)
+                                val rawText = strings[key].orEmpty()
+                                val textToRender = if (useNumberIcon) {
+                                    rawText.replace(Regex("^\\*\\*\\d+\\.\\s*"), "**")
+                                        .replace(Regex("^\\d+\\.\\s*"), "")
+                                } else {
+                                    rawText
+                                }
+                                MarkupText(textToRender, onEntityRefSelected)
                             }
                         }
                     }
@@ -1430,19 +1669,21 @@ internal fun BlockView(
         is ImageBlock -> hubAssetPainter(block.asset)?.let { painter ->
             // Full width, so a short caption cannot shrink the column and pull the image off-centre.
             Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                val shape = RoundedCornerShape(16.dp)
+                val shape = RoundedCornerShape(20.dp)
+                // Infographics keep their own proportions and (nearly) the full width so their labels stay legible.
+                val infographic = listOf("mass_tabernacle", "mass_church_map", "mass_sanctuary_furnishings")
+                    .any { block.asset.contains(it) }
                 Image(
                     painter = painter,
                     contentDescription = block.captionKey?.let { strings[it] },
                     contentScale = ContentScale.Fit,
                     modifier = Modifier
-                        .fillMaxWidth(if (block.asset.contains("mass_tabernacle")) 0.94f else 0.55f)
+                        .fillMaxWidth(if (infographic) 0.94f else 0.55f)
                         .then(
-                            if (block.asset.contains("mass_tabernacle")) Modifier
+                            if (infographic) Modifier
                             else Modifier.aspectRatio(1f)
                         )
-                        .clip(shape)
-                        .border(1.dp, SymbolCardGold.copy(alpha = 0.42f), shape),
+                        .clip(shape),
                 )
                 block.captionKey?.let { key ->
                     strings[key]?.let { caption ->
@@ -1603,10 +1844,15 @@ private fun HubArticleSectionLabel(text: String) {
 }
 
 @Composable
-private fun MarkupText(raw: String, onEntityRefSelected: (EntityRef) -> Unit) {
+private fun MarkupText(
+    raw: String,
+    onEntityRefSelected: (EntityRef) -> Unit,
+    modifier: Modifier = Modifier,
+) {
     val annotated = parseHubMarkup(raw)
     ClickableText(
         text = annotated,
+        modifier = modifier,
         style = TextStyle(
             color = MaterialTheme.colorScheme.onBackground,
             fontSize = 15.sp,
@@ -1623,4 +1869,54 @@ private fun MarkupText(raw: String, onEntityRefSelected: (EntityRef) -> Unit) {
             }
         },
     )
+}
+
+private val churchMapNumberMap = mapOf(
+    "art.churchmap.li_narthex" to 1,
+    "art.churchmap.li_nave" to 2,
+    "art.churchmap.li_pews" to 3,
+    "art.churchmap.li_font" to 4,
+    "art.churchmap.li_confessional" to 5,
+    "art.churchmap.li_stations" to 6,
+    "art.churchmap.li_ambo" to 7,
+    "art.churchmap.li_sanctuary" to 8,
+    "art.churchmap.li_altar" to 9,
+    "art.churchmap.li_tabernacle" to 10,
+    "art.churchmap.li_lamp" to 11,
+    "art.churchmap.li_crucifix" to 12,
+    "art.churchmap.li_chair" to 13,
+    "art.churchmap.li_credence" to 14,
+    "art.churchmap.li_sacristy" to 15,
+)
+
+private val sanctuaryNumberMap = mapOf(
+    "art.sanctuary.li_altar" to 1,
+    "art.sanctuary.li_ambo" to 2,
+    "art.sanctuary.li_tabernacle" to 3,
+    "art.sanctuary.li_lamp" to 4,
+    "art.sanctuary.li_retablo" to 5,
+    "art.sanctuary.li_credence" to 6,
+    "art.sanctuary.li_relic" to 7,
+    "art.sanctuary.li_rail" to 8,
+)
+
+private val articleNumberMaps = churchMapNumberMap + sanctuaryNumberMap
+
+private fun numberDrawable(number: Int): DrawableResource = when (number) {
+    1 -> Res.drawable._01
+    2 -> Res.drawable._02
+    3 -> Res.drawable._03
+    4 -> Res.drawable._04
+    5 -> Res.drawable._05
+    6 -> Res.drawable._06
+    7 -> Res.drawable._07
+    8 -> Res.drawable._08
+    9 -> Res.drawable._09
+    10 -> Res.drawable._10
+    11 -> Res.drawable._11
+    12 -> Res.drawable._12
+    13 -> Res.drawable._13
+    14 -> Res.drawable._14
+    15 -> Res.drawable._15
+    else -> Res.drawable._01
 }

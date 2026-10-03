@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,8 +18,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
@@ -68,7 +67,6 @@ import com.ynotlabs.cathopedia.rosary.rosaryLayout
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.rosary_spacer_gold
 import com.ynotlabs.cathopedia.ui.components.PrayerBodyText
-import com.ynotlabs.cathopedia.ui.components.RosaryComposition
 import com.ynotlabs.cathopedia.ui.components.RosarySpriteRenderer
 import com.ynotlabs.cathopedia.ui.components.RosarySpriteUiModel
 import com.ynotlabs.cathopedia.ui.components.beadSprite
@@ -192,61 +190,22 @@ internal fun RosaryPrayingScreen(
             )
         },
     ) { padding ->
-        BoxWithConstraints(modifier = Modifier.fillMaxSize().padding(padding)) {
-            val showFullRosary = maxWidth >= RosaryWideLayoutBreakpoint
-            Row(modifier = Modifier.fillMaxSize()) {
-                if (carouselOnLeft) {
-                    RosaryCarousel(
-                        state = state,
-                        strings = strings,
-                        carouselOnLeft = true,
-                        onNodeSelected = { state = state.jumpToNode(it) },
-                    )
-                }
-                if (showFullRosary && carouselOnLeft) {
-                    PrayingRosaryDiagram(strings = strings, modifier = Modifier.weight(0.82f))
-                }
-                PrayerPane(
-                    state = state,
-                    strings = strings,
-                    prayer = prayer,
-                    mystery = mystery,
-                    onAdvance = ::advance,
-                    onBack = { state = state.back() },
-                    modifier = Modifier.weight(1.08f),
-                )
-                if (showFullRosary && !carouselOnLeft) {
-                    PrayingRosaryDiagram(strings = strings, modifier = Modifier.weight(0.82f))
-                }
-                if (!carouselOnLeft) {
-                    RosaryCarousel(
-                        state = state,
-                        strings = strings,
-                        carouselOnLeft = false,
-                        onNodeSelected = { state = state.jumpToNode(it) },
-                    )
-                }
-            }
+        Column(modifier = Modifier.fillMaxSize().padding(padding)) {
+            RosaryBeadStrip(
+                state = state,
+                strings = strings,
+                onNodeSelected = { state = state.jumpToNode(it) },
+            )
+            PrayerPane(
+                state = state,
+                strings = strings,
+                prayer = prayer,
+                mystery = mystery,
+                onAdvance = ::advance,
+                onBack = { state = state.back() },
+                modifier = Modifier.weight(1f).fillMaxWidth(),
+            )
         }
-    }
-}
-
-@Composable
-private fun PrayingRosaryDiagram(
-    strings: Map<String, String>,
-    modifier: Modifier = Modifier,
-) {
-    Box(
-        modifier = modifier.fillMaxHeight().padding(horizontal = 20.dp, vertical = 12.dp),
-        contentAlignment = Alignment.Center,
-    ) {
-        RosaryComposition(
-            modifier = Modifier
-                .fillMaxWidth()
-                .semantics {
-                    contentDescription = strings[RosaryStringKeys.DiagramDescription].orEmpty()
-                },
-        )
     }
 }
 
@@ -302,7 +261,7 @@ private fun PrayerPane(
 
     Box(
         modifier = modifier
-            .fillMaxHeight()
+            .fillMaxSize()
             .combinedClickable(
                 onClickLabel = text(RosaryPrayingStringKeys.TapHint),
                 onLongClickLabel = text(RosaryPrayingStringKeys.BackHint),
@@ -370,11 +329,16 @@ private fun PrayerPane(
     }
 }
 
+/**
+ * A single horizontal strip of every bead, current one enlarged and glowing at the centre —
+ * replaces the old sidebar carousel (and the redundant full-ring diagram beside it) with one
+ * layout that works the same way on a phone or a tablet. Drag or snap-scroll to jump to any
+ * bead; the same snap-settle logic the sidebar used just reads the horizontal viewport now.
+ */
 @Composable
-private fun RosaryCarousel(
+private fun RosaryBeadStrip(
     state: RosaryState,
     strings: Map<String, String>,
-    carouselOnLeft: Boolean,
     onNodeSelected: (Int) -> Unit,
 ) {
     val currentNodeIndex = state.currentNode?.index ?: 0
@@ -402,28 +366,27 @@ private fun RosaryCarousel(
 
     BoxWithConstraints(
         modifier = Modifier
-            .width(112.dp)
-            .fillMaxHeight()
+            .fillMaxWidth()
+            .height(104.dp)
             .semantics {
                 contentDescription = strings[RosaryPrayingStringKeys.CarouselDescription].orEmpty()
             },
     ) {
-        val verticalPadding = ((maxHeight - 68.dp) / 2).coerceAtLeast(0.dp)
-        LazyColumn(
+        val horizontalPadding = ((maxWidth - 76.dp) / 2).coerceAtLeast(0.dp)
+        LazyRow(
             state = listState,
-            contentPadding = PaddingValues(vertical = verticalPadding),
+            contentPadding = PaddingValues(horizontal = horizontalPadding),
             flingBehavior = rememberSnapFlingBehavior(listState),
-            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxSize(),
         ) {
             itemsIndexed(rosaryLayout, key = { _, bead -> bead.index }) { index, bead ->
-                CarouselSlot(
+                BeadStripSlot(
                     listState = listState,
                     index = index,
                     bead = bead,
                     current = bead.index == currentNodeIndex,
                     prayed = index < currentNodeIndex,
-                    carouselOnLeft = carouselOnLeft,
                     contentDescription = beadDescription(bead, strings),
                     showSpacer = index < rosaryLayout.lastIndex,
                 )
@@ -433,13 +396,12 @@ private fun RosaryCarousel(
 }
 
 @Composable
-private fun CarouselSlot(
+private fun BeadStripSlot(
     listState: LazyListState,
     index: Int,
     bead: RosaryBead,
     current: Boolean,
     prayed: Boolean,
-    carouselOnLeft: Boolean,
     contentDescription: String,
     showSpacer: Boolean,
 ) {
@@ -452,14 +414,14 @@ private fun CarouselSlot(
         }
     }
     val beadSize = when (bead.kind) {
-        BeadKind.HAIL_MARY -> 44.dp
-        BeadKind.OUR_FATHER -> 52.dp
-        BeadKind.CENTERPIECE -> 60.dp
-        BeadKind.CROSS -> 72.dp
+        BeadKind.HAIL_MARY -> 36.dp
+        BeadKind.OUR_FATHER -> 44.dp
+        BeadKind.CENTERPIECE -> 52.dp
+        BeadKind.CROSS -> 60.dp
     }
 
     Box(
-        modifier = Modifier.height(68.dp).fillMaxWidth(),
+        modifier = Modifier.width(76.dp).fillMaxHeight(),
         contentAlignment = Alignment.Center,
     ) {
         RosarySpriteRenderer(
@@ -471,7 +433,7 @@ private fun CarouselSlot(
                 isPrayed = prayed,
             ),
             distanceFromCenter = distance,
-            carouselOnLeft = carouselOnLeft,
+            carouselOnLeft = false,
             modifier = Modifier.fillMaxSize(),
         )
 
@@ -479,7 +441,7 @@ private fun CarouselSlot(
             Image(
                 painter = painterResource(Res.drawable.rosary_spacer_gold),
                 contentDescription = null,
-                modifier = Modifier.align(Alignment.BottomCenter).size(14.dp),
+                modifier = Modifier.align(Alignment.CenterEnd).size(14.dp),
             )
         }
     }

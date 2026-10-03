@@ -1,5 +1,7 @@
 package com.ynotlabs.cathopedia.ui.screens.holymass
 
+import com.ynotlabs.cathopedia.i18n.LocalScreenText
+import com.ynotlabs.cathopedia.i18n.ScreenText
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -69,10 +71,10 @@ fun PosturesScreen(
     listState: LazyListState = rememberLazyListState(),
 ) {
     val s = LocalStrings.current
-    val isFrench = language == "fr"
+    val t = LocalScreenText.current
     val postures = PosturesData.postures
-    val intro = if (isFrench) PosturesData.INTRO_FR else PosturesData.INTRO_EN
-    val responses = if (isFrench) PosturesData.RESPONSES_FR else PosturesData.RESPONSES_EN
+    val intro = t[PosturesData.INTRO]
+    val responses = t[PosturesData.RESPONSES]
 
     var headerHeightPx by remember(language) { mutableIntStateOf(0) }
     val headerHeight = with(LocalDensity.current) { headerHeightPx.toDp() }
@@ -126,7 +128,7 @@ fun PosturesScreen(
                     rowPostures.forEach { posture ->
                         PostureCard(
                             posture = posture,
-                            isFrench = isFrench,
+                            t = t,
                             modifier = Modifier
                                 .weight(1f)
                                 .fillMaxHeight()
@@ -262,7 +264,7 @@ private fun PosturesHeaderPanel(
 @Composable
 private fun PostureCard(
     posture: Posture,
-    isFrench: Boolean,
+    t: ScreenText,
     modifier: Modifier = Modifier,
 ) {
     val painter = PostureImages.forPosture(posture.id)?.let { painterResource(it) }
@@ -301,7 +303,7 @@ private fun PostureCard(
                 Spacer(Modifier.height(10.dp))
 
                 Text(
-                    text = if (isFrench) posture.nameFr else posture.nameEn,
+                    text = t["${posture.keyPrefix}.name"],
                     color = PosturesCream,
                     fontFamily = FontFamily.Serif,
                     fontSize = 17.sp,
@@ -310,7 +312,7 @@ private fun PostureCard(
                 )
                 Spacer(Modifier.height(6.dp))
                 Text(
-                    text = if (isFrench) posture.descFr else posture.descEn,
+                    text = t["${posture.keyPrefix}.desc"],
                     color = PosturesCream.copy(alpha = 0.82f),
                     fontSize = 13.sp,
                     lineHeight = 18.sp,

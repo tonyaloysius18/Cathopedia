@@ -105,6 +105,7 @@ class Strings {
     var prayerDetailKeepScreenOn: String = "Keep screen on"
     var prayerLanguageEn: String = "English"
     var prayerLanguageFr: String = "Français"
+    var prayerLanguageIt: String = "Italiano"
     var prayerLanguageLa: String = "Latin"
     var prayerTextNotYetAvailable: String = "This prayer's text isn't in the app yet."
     var prayerDetailAboutTitle: String = "About this prayer"
@@ -246,6 +247,10 @@ class Strings {
     var languageNameSpanish: String = "Spanish"
     var languageNameItalian: String = "Italian"
     var languageNameGerman: String = "German"
+    var languageNamePortuguese: String = "Portuguese"
+    var languageNamePolish: String = "Polish"
+    var languageNameDutch: String = "Dutch"
+    var languageNameTamil: String = "Tamil"
 
     // Appearance
     var appearanceTitle: String = "Appearance"
@@ -379,8 +384,6 @@ class Strings {
     var listSearchByNameOrDescription: String = "Search {type} by name or description…"
     var listOpenEntity: String = "Open {name}"
     var listUnknownEra: String = "Unknown era"
-    var listCenturyWord: String = "century"
-    var listUseFrenchOrdinals: Boolean = false
 
     // Entity detail
     var detailOverviewTitle: String = "Overview"
@@ -431,6 +434,15 @@ class Strings {
     var vestmentsSignificanceLabel: String = "Significance"
     var vestmentsGoodToKnowLabel: String = "Good to know"
     var vestmentsWornForLabel: String = "Worn for"
+    // Hub list labels
+    var hubArticlesLabel: String = "Articles"
+    var hubSymbolsCount: String = "SYMBOLS · {count}"
+    var hubSacredFormsCount: String = "SACRED FORMS · {count}"
+    var ordersCount: String = "ORDERS · {count}"
+    var ordersNoneFound: String = "No orders found."
+    var ordersSearchPlaceholder: String = "Search orders…"
+    var biblicalFiguresCount: String = "BIBLICAL FIGURES · {count}"
+
     var vestmentTranslations: Map<String, String> = emptyMap()
     var detailConnectedTitle: String = "Connected"
     var detailSourceTitle: String = "Source"
@@ -487,9 +499,6 @@ class Strings {
 val EN: Strings = Strings()
 
 /** Resolves the active string table for a language code stored in preferences. */
-fun stringsFor(languageCode: String): Strings = when (languageCode.lowercase()) {
-    "fr" -> FR
-    else -> EN
-}
+fun stringsFor(languageCode: String): Strings = AppLanguages.forCode(languageCode).strings()
 
 val LocalStrings = compositionLocalOf { EN }

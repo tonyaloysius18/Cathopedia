@@ -1,5 +1,7 @@
 package com.ynotlabs.cathopedia.ui.screens.holymass
 
+import com.ynotlabs.cathopedia.i18n.LocalScreenText
+import com.ynotlabs.cathopedia.i18n.ScreenText
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -72,11 +74,11 @@ fun AltarScreen(
     listState: LazyListState = rememberLazyListState(),
 ) {
     val s = LocalStrings.current
-    val isFrench = language == "fr"
-    val intro = if (isFrench) AltarData.INTRO_FR else AltarData.INTRO_EN
-    val markings = if (isFrench) AltarData.MARKINGS_FR else AltarData.MARKINGS_EN
-    val kissTitle = if (isFrench) AltarData.KISS_TITLE_FR else AltarData.KISS_TITLE_EN
-    val kissBody = if (isFrench) AltarData.KISS_BODY_FR else AltarData.KISS_BODY_EN
+    val t = LocalScreenText.current
+    val intro = t[AltarData.INTRO]
+    val markings = t[AltarData.MARKINGS]
+    val kissTitle = t[AltarData.KISS_TITLE]
+    val kissBody = t[AltarData.KISS_BODY]
 
     var headerHeightPx by remember(language) { mutableIntStateOf(0) }
     val headerHeight = with(LocalDensity.current) { headerHeightPx.toDp() }
@@ -109,7 +111,7 @@ fun AltarScreen(
             // How the altar is dressed
             item { SectionLabel(s.altarDecorationLabel) }
             items(AltarData.decoration.chunked(2)) { row ->
-                CardRow(row, isFrench)
+                CardRow(row, t)
             }
 
             // The altar cloths
@@ -118,7 +120,7 @@ fun AltarScreen(
                 SectionLabel(s.altarClothsLabel)
             }
             items(AltarData.cloths.chunked(2)) { row ->
-                CardRow(row, isFrench)
+                CardRow(row, t)
             }
 
             // The five crosses (markings)
@@ -200,7 +202,7 @@ private fun SectionLabel(text: String) {
 }
 
 @Composable
-private fun CardRow(row: List<AltarItem>, isFrench: Boolean) {
+private fun CardRow(row: List<AltarItem>, t: ScreenText) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -211,7 +213,7 @@ private fun CardRow(row: List<AltarItem>, isFrench: Boolean) {
         row.forEach { item ->
             ItemCard(
                 item = item,
-                isFrench = isFrench,
+                t = t,
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxHeight()
@@ -307,7 +309,7 @@ private fun AltarHeaderPanel(
 @Composable
 private fun ItemCard(
     item: AltarItem,
-    isFrench: Boolean,
+    t: ScreenText,
     modifier: Modifier = Modifier,
 ) {
     val painter = AltarImages.forItem(item.id)?.let { painterResource(it) }
@@ -346,7 +348,7 @@ private fun ItemCard(
                 Spacer(Modifier.height(10.dp))
 
                 Text(
-                    text = if (isFrench) item.nameFr else item.nameEn,
+                    text = t["${item.keyPrefix}.name"],
                     color = AltarCream,
                     fontFamily = FontFamily.Serif,
                     fontSize = 17.sp,
@@ -355,7 +357,7 @@ private fun ItemCard(
                 )
                 Spacer(Modifier.height(6.dp))
                 Text(
-                    text = if (isFrench) item.descFr else item.descEn,
+                    text = t["${item.keyPrefix}.desc"],
                     color = AltarCream.copy(alpha = 0.82f),
                     fontSize = 13.sp,
                     lineHeight = 18.sp,

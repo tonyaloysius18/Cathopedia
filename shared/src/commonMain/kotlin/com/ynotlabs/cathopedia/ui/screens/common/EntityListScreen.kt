@@ -73,6 +73,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.AppLanguages
 import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.model.ContentSummary
@@ -268,7 +269,7 @@ fun EntityListScreen(
     val allCenturies = remember(currentItems, type) {
         if (type == ContentType.POPE && currentItems != null) {
             currentItems
-                .map { centuryLabel(it.sortYear, s) }
+                .map { centuryLabel(it.sortYear, s, language) }
                 .distinct()
         } else {
             emptyList()
@@ -296,7 +297,7 @@ fun EntityListScreen(
         }
 
         val centuryFiltered = if (type == ContentType.POPE && selectedCentury != null) {
-            searched.filter { centuryLabel(it.sortYear, s) == selectedCentury }
+            searched.filter { centuryLabel(it.sortYear, s, language) == selectedCentury }
         } else {
             searched
         }
@@ -361,7 +362,7 @@ fun EntityListScreen(
                 verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 if (type == ContentType.POPE) {
-                    val grouped = filteredItems.groupBy { centuryLabel(it.sortYear, s) }
+                    val grouped = filteredItems.groupBy { centuryLabel(it.sortYear, s, language) }
                     grouped.forEach { (century, popes) ->
                         stickyHeader(key = "century-$century") {
                             PremiumCenturyHeader(century)
@@ -1197,27 +1198,12 @@ private fun String.titleCaseCentury(): String {
     return replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
 }
 
-/** "1st century", "11th century", "21st century" (or the French equivalent) from the repository's sort key. */
-private fun centuryLabel(sortKey: Long?, s: Strings): String {
+/** "1st century", "1er siècle", "V secolo"… from the repository's sort key, in the UI language. */
+private fun centuryLabel(sortKey: Long?, s: Strings, language: String): String {
     if (sortKey == null) return s.listUnknownEra
     val year = sortKey / 12
     val century = ((year - 1) / 100 + 1).toInt()
-    val ordinal = if (s.listUseFrenchOrdinals) {
-        if (century == 1) "1er" else "${century}e"
-    } else {
-        val suffix = if (century % 100 in 11..13) {
-            "th"
-        } else {
-            when (century % 10) {
-                1 -> "st"
-                2 -> "nd"
-                3 -> "rd"
-                else -> "th"
-            }
-        }
-        "$century$suffix"
-    }
-    return "$ordinal ${s.listCenturyWord}"
+    return AppLanguages.forCode(language).formatCentury(century)
 }
 
 

@@ -159,6 +159,13 @@ SELECT key, COALESCE(
 ) AS value
 FROM (SELECT DISTINCT key FROM localized_text WHERE key IN :keys) AS base;
 
+selectStringsWithPrefix:
+SELECT key, COALESCE(
+    (SELECT value FROM localized_text t WHERE t.key = base.key AND t.lang = :lang),
+    (SELECT value FROM localized_text f WHERE f.key = base.key AND f.lang = :fallbackLang)
+) AS value
+FROM (SELECT DISTINCT key FROM localized_text WHERE key LIKE :prefix || '%') AS base;
+
 contentVersionForHub:
 SELECT content_version FROM topic_hub WHERE id = :id;
 

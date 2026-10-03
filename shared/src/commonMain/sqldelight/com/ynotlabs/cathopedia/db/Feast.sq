@@ -27,24 +27,35 @@ VALUES (?, ?, ?, ?, ?, ?);
 
 -- Counting rows for the Explore tiles: cheaper than materialising every
 -- summary just to take the size of the list.
+--
+-- Reads via two LEFT JOINs (the requested language, then :fallbackLang) with
+-- COALESCE over the two, rather than a single INNER JOIN — so a feast with no
+-- row yet in a newly added language still shows English text instead of
+-- vanishing from lists and detail lookups.
 countFeasts:
 SELECT COUNT(*) FROM FeastEntity
-JOIN FeastText ON FeastText.feastId = FeastEntity.id AND FeastText.language = :language;
+LEFT JOIN FeastText t ON t.feastId = FeastEntity.id AND t.language = :language
+LEFT JOIN FeastText f ON f.feastId = FeastEntity.id AND f.language = :fallbackLang
+WHERE t.feastId IS NOT NULL OR f.feastId IS NOT NULL;
 
 selectAllFeasts:
-SELECT FeastEntity.id AS id, FeastText.name AS name, FeastText.summary AS summary,
+SELECT FeastEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
        FeastEntity.date AS date, FeastEntity.rank AS rank, FeastEntity.imageUrl AS imageUrl
 FROM FeastEntity
-JOIN FeastText ON FeastText.feastId = FeastEntity.id AND FeastText.language = :language
+LEFT JOIN FeastText t ON t.feastId = FeastEntity.id AND t.language = :language
+LEFT JOIN FeastText f ON f.feastId = FeastEntity.id AND f.language = :fallbackLang
+WHERE t.feastId IS NOT NULL OR f.feastId IS NOT NULL
 ORDER BY FeastEntity.date ASC;
 
 selectFeastDetail:
-SELECT FeastEntity.id AS id, FeastText.name AS name, FeastText.summary AS summary, FeastText.body AS body,
+SELECT FeastEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
+       COALESCE(t.body, f.body) AS body,
        FeastEntity.date AS date, FeastEntity.rank AS rank, FeastEntity.imageUrl AS imageUrl,
-       FeastEntity.sourceUrl AS sourceUrl, FeastText.sourceAttribution AS sourceAttribution
+       FeastEntity.sourceUrl AS sourceUrl, COALESCE(t.sourceAttribution, f.sourceAttribution) AS sourceAttribution
 FROM FeastEntity
-JOIN FeastText ON FeastText.feastId = FeastEntity.id AND FeastText.language = :language
-WHERE FeastEntity.id = :id;
+LEFT JOIN FeastText t ON t.feastId = FeastEntity.id AND t.language = :language
+LEFT JOIN FeastText f ON f.feastId = FeastEntity.id AND f.language = :fallbackLang
+WHERE FeastEntity.id = :id AND (t.feastId IS NOT NULL OR f.feastId IS NOT NULL);
 
 -- id + raw date string only, language-independent — used to find today's feast
 -- (see LiturgicalCalendar.resolveDate) without needing a text-table join.

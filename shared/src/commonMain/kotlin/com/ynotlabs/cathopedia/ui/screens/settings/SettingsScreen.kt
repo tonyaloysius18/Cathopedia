@@ -39,6 +39,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.AppLanguages
 import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.ic_about
@@ -535,11 +536,4 @@ private fun InspirationCard() {
 }
 
 private fun languageDisplayName(language: String, s: Strings): String =
-    when (language.lowercase()) {
-        "en", "eng", "english" -> s.languageNameEnglish
-        "fr", "fra", "fre", "french", "français" -> s.languageNameFrench
-        "es", "spa", "spanish", "español" -> s.languageNameSpanish
-        "it", "ita", "italian", "italiano" -> s.languageNameItalian
-        "de", "deu", "ger", "german", "deutsch" -> s.languageNameGerman
-        else -> language.uppercase()
-    }
+    AppLanguages.forCode(language).localizedName(s)

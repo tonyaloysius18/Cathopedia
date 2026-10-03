@@ -27,22 +27,33 @@ VALUES (?, ?, ?, ?, ?, ?);
 
 -- Counting rows for the Explore tiles: cheaper than materialising every
 -- summary just to take the size of the list.
+--
+-- Reads via two LEFT JOINs (the requested language, then :fallbackLang) with
+-- COALESCE over the two, rather than a single INNER JOIN — so a miracle with
+-- no row yet in a newly added language still shows English text instead of
+-- vanishing from lists and detail lookups.
 countMiracles:
 SELECT COUNT(*) FROM MiracleEntity
-JOIN MiracleText ON MiracleText.miracleId = MiracleEntity.id AND MiracleText.language = :language;
+LEFT JOIN MiracleText t ON t.miracleId = MiracleEntity.id AND t.language = :language
+LEFT JOIN MiracleText f ON f.miracleId = MiracleEntity.id AND f.language = :fallbackLang
+WHERE t.miracleId IS NOT NULL OR f.miracleId IS NOT NULL;
 
 selectAllMiracles:
-SELECT MiracleEntity.id AS id, MiracleText.name AS name, MiracleText.summary AS summary,
+SELECT MiracleEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
        MiracleEntity.imageUrl AS imageUrl
 FROM MiracleEntity
-JOIN MiracleText ON MiracleText.miracleId = MiracleEntity.id AND MiracleText.language = :language
+LEFT JOIN MiracleText t ON t.miracleId = MiracleEntity.id AND t.language = :language
+LEFT JOIN MiracleText f ON f.miracleId = MiracleEntity.id AND f.language = :fallbackLang
+WHERE t.miracleId IS NOT NULL OR f.miracleId IS NOT NULL
 ORDER BY MiracleEntity.miracleYear ASC;
 
 selectMiracleDetail:
-SELECT MiracleEntity.id AS id, MiracleText.name AS name, MiracleText.summary AS summary, MiracleText.body AS body,
+SELECT MiracleEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
+       COALESCE(t.body, f.body) AS body,
        MiracleEntity.location AS location, MiracleEntity.miracleYear AS miracleYear,
        MiracleEntity.imageUrl AS imageUrl, MiracleEntity.sourceUrl AS sourceUrl,
-       MiracleText.sourceAttribution AS sourceAttribution
+       COALESCE(t.sourceAttribution, f.sourceAttribution) AS sourceAttribution
 FROM MiracleEntity
-JOIN MiracleText ON MiracleText.miracleId = MiracleEntity.id AND MiracleText.language = :language
-WHERE MiracleEntity.id = :id;
+LEFT JOIN MiracleText t ON t.miracleId = MiracleEntity.id AND t.language = :language
+LEFT JOIN MiracleText f ON f.miracleId = MiracleEntity.id AND f.language = :fallbackLang
+WHERE MiracleEntity.id = :id AND (t.miracleId IS NOT NULL OR f.miracleId IS NOT NULL);

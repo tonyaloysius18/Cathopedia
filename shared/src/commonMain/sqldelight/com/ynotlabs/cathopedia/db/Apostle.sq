@@ -27,22 +27,33 @@ VALUES (?, ?, ?, ?, ?, ?);
 
 -- Counting rows for the Explore tiles: cheaper than materialising every
 -- summary just to take the size of the list.
+--
+-- Reads via two LEFT JOINs (the requested language, then :fallbackLang) with
+-- COALESCE over the two, rather than a single INNER JOIN — so an apostle with
+-- no row yet in a newly added language still shows English text instead of
+-- vanishing from lists and detail lookups.
 countApostles:
 SELECT COUNT(*) FROM ApostleEntity
-JOIN ApostleText ON ApostleText.apostleId = ApostleEntity.id AND ApostleText.language = :language;
+LEFT JOIN ApostleText t ON t.apostleId = ApostleEntity.id AND t.language = :language
+LEFT JOIN ApostleText f ON f.apostleId = ApostleEntity.id AND f.language = :fallbackLang
+WHERE t.apostleId IS NOT NULL OR f.apostleId IS NOT NULL;
 
 selectAllApostles:
-SELECT ApostleEntity.id AS id, ApostleText.name AS name, ApostleText.summary AS summary,
+SELECT ApostleEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
        ApostleEntity.imageUrl AS imageUrl
 FROM ApostleEntity
-JOIN ApostleText ON ApostleText.apostleId = ApostleEntity.id AND ApostleText.language = :language
-ORDER BY ApostleText.name ASC;
+LEFT JOIN ApostleText t ON t.apostleId = ApostleEntity.id AND t.language = :language
+LEFT JOIN ApostleText f ON f.apostleId = ApostleEntity.id AND f.language = :fallbackLang
+WHERE t.apostleId IS NOT NULL OR f.apostleId IS NOT NULL
+ORDER BY COALESCE(t.name, f.name) ASC;
 
 selectApostleDetail:
-SELECT ApostleEntity.id AS id, ApostleText.name AS name, ApostleText.summary AS summary, ApostleText.body AS body,
+SELECT ApostleEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
+       COALESCE(t.body, f.body) AS body,
        ApostleEntity.originalName AS originalName, ApostleEntity.martyrdom AS martyrdom,
        ApostleEntity.imageUrl AS imageUrl, ApostleEntity.sourceUrl AS sourceUrl,
-       ApostleText.sourceAttribution AS sourceAttribution
+       COALESCE(t.sourceAttribution, f.sourceAttribution) AS sourceAttribution
 FROM ApostleEntity
-JOIN ApostleText ON ApostleText.apostleId = ApostleEntity.id AND ApostleText.language = :language
-WHERE ApostleEntity.id = :id;
+LEFT JOIN ApostleText t ON t.apostleId = ApostleEntity.id AND t.language = :language
+LEFT JOIN ApostleText f ON f.apostleId = ApostleEntity.id AND f.language = :fallbackLang
+WHERE ApostleEntity.id = :id AND (t.apostleId IS NOT NULL OR f.apostleId IS NOT NULL);

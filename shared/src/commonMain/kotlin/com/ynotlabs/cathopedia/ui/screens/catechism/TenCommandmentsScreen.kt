@@ -1,5 +1,8 @@
 package com.ynotlabs.cathopedia.ui.screens.catechism
 
+import com.ynotlabs.cathopedia.i18n.LocalScreenText
+import com.ynotlabs.cathopedia.i18n.ScreenText
+import com.ynotlabs.cathopedia.i18n.Strings
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -80,47 +83,14 @@ private data class CommandmentsCopy(
     val titles: List<String>,
 )
 
-private fun commandmentsCopy(language: String) = if (language == "fr") {
-    CommandmentsCopy(
-        subtitle = "La loi de l'amour",
-        heroCaption = "Une alliance gravée dans la pierre",
-        loveOfGod = "Amour de Dieu · 1–3",
-        loveOfNeighbour = "Amour du prochain · 4–10",
-        articleLabel = "Articles",
-        titles = listOf(
-            "Pas d'autres dieux",
-            "Honorer le nom de Dieu",
-            "Sanctifier le jour du Seigneur",
-            "Honorer père et mère",
-            "Respecter la vie humaine",
-            "Fidélité dans le mariage",
-            "Ne pas voler",
-            "Dire la vérité",
-            "Pureté du cœur",
-            "Liberté face à la convoitise",
-        ),
-    )
-} else {
-    CommandmentsCopy(
-        subtitle = "The law of love",
-        heroCaption = "A covenant written in stone",
-        loveOfGod = "Love of God · 1–3",
-        loveOfNeighbour = "Love of neighbour · 4–10",
-        articleLabel = "Articles",
-        titles = listOf(
-            "No other gods",
-            "Honour God's name",
-            "Keep the Lord's Day holy",
-            "Honour father and mother",
-            "Respect human life",
-            "Faithfulness in marriage",
-            "Do not steal",
-            "Speak the truth",
-            "Purity of heart",
-            "Freedom from greed",
-        ),
-    )
-}
+private fun commandmentsCopy(t: ScreenText, s: Strings) = CommandmentsCopy(
+    subtitle = t["screen.catechism.commandments.subtitle"],
+    heroCaption = t["screen.catechism.commandments.hero_caption"],
+    loveOfGod = t["screen.catechism.commandments.love_of_god"],
+    loveOfNeighbour = t["screen.catechism.commandments.love_of_neighbour"],
+    articleLabel = s.hubArticlesLabel,
+    titles = (1..10).map { t["screen.catechism.commandments.title.$it"] },
+)
 
 @Composable
 fun TenCommandmentsScreen(
@@ -132,7 +102,8 @@ fun TenCommandmentsScreen(
     listState: LazyListState = rememberLazyListState(),
 ) {
     val s = LocalStrings.current
-    val copy = remember(language) { commandmentsCopy(language) }
+    val screenText = LocalScreenText.current
+    val copy = remember(screenText, s) { commandmentsCopy(screenText, s) }
     var section by remember(language) { mutableStateOf<HubSectionSummary?>(null) }
     var sheet by remember(language) { mutableStateOf<HubFactSheetDetail?>(null) }
     var articles by remember(language) { mutableStateOf<List<HubArticleSummary>>(emptyList()) }

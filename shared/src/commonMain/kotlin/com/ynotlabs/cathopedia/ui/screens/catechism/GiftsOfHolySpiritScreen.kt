@@ -1,5 +1,8 @@
 package com.ynotlabs.cathopedia.ui.screens.catechism
 
+import com.ynotlabs.cathopedia.i18n.LocalScreenText
+import com.ynotlabs.cathopedia.i18n.ScreenText
+import com.ynotlabs.cathopedia.i18n.Strings
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -75,19 +78,11 @@ private data class GiftsCopy(
     val articles: String,
 )
 
-private fun giftsCopy(language: String) = if (language == "fr") {
-    GiftsCopy(
-        subtitle = "La grâce septuple",
-        heroDescription = "La colombe du Saint-Esprit au-dessus de sept flammes dorées",
-        articles = "Articles",
-    )
-} else {
-    GiftsCopy(
-        subtitle = "Sevenfold grace",
-        heroDescription = "The dove of the Holy Spirit above seven golden flames",
-        articles = "Articles",
-    )
-}
+private fun giftsCopy(t: ScreenText, s: Strings) = GiftsCopy(
+    subtitle = t["screen.catechism.gifts.subtitle"],
+    heroDescription = t["screen.catechism.gifts.hero_description"],
+    articles = s.hubArticlesLabel,
+)
 
 @Composable
 fun GiftsOfHolySpiritScreen(
@@ -99,7 +94,8 @@ fun GiftsOfHolySpiritScreen(
     listState: LazyListState = rememberLazyListState(),
 ) {
     val s = LocalStrings.current
-    val copy = remember(language) { giftsCopy(language) }
+    val screenText = LocalScreenText.current
+    val copy = remember(screenText, s) { giftsCopy(screenText, s) }
     var section by remember(language) { mutableStateOf<HubSectionSummary?>(null) }
     var sheet by remember(language) { mutableStateOf<HubFactSheetDetail?>(null) }
     var articles by remember(language) { mutableStateOf<List<HubArticleSummary>>(emptyList()) }

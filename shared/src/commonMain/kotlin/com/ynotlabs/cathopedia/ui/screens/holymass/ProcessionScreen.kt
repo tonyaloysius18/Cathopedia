@@ -1,6 +1,8 @@
 package com.ynotlabs.cathopedia.ui.screens.holymass
 
 
+import com.ynotlabs.cathopedia.i18n.LocalScreenText
+import com.ynotlabs.cathopedia.i18n.ScreenText
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -240,6 +242,7 @@ private fun ProcessionCard(
     listState: LazyListState,
     cardWidthPx: Float,
 ) {
+    val t = LocalScreenText.current
     Box(
         modifier = Modifier
             .width(CARD_WIDTH_DP.dp)
@@ -299,7 +302,7 @@ private fun ProcessionCard(
 
         Column(modifier = Modifier.padding(18.dp)) {
             Text(
-                text = (if (language == "fr") minister.carriesFr else minister.carriesEn).uppercase(),
+                text = (t["${minister.keyPrefix}.carries"]).uppercase(),
                 color = ProcessionGoldSoft,
                 fontSize = 10.5.sp,
                 letterSpacing = 1.1.sp,
@@ -307,7 +310,7 @@ private fun ProcessionCard(
             )
             Spacer(Modifier.height(6.dp))
             Text(
-                text = if (language == "fr") minister.titleFr else minister.titleEn,
+                text = t["${minister.keyPrefix}.title"],
                 color = ProcessionCream,
                 fontFamily = FontFamily.Serif,
                 fontSize = 18.sp,
@@ -343,9 +346,9 @@ private fun ProcessionTextPanel(
     modifier: Modifier = Modifier,
 ) {
     val s = LocalStrings.current
-    val isFrench = language == "fr"
-    val title = if (isFrench) minister.titleFr else minister.titleEn
-    val description = if (isFrench) minister.descriptionFr else minister.descriptionEn
+    val t = LocalScreenText.current
+    val title = t["${minister.keyPrefix}.title"]
+    val description = t["${minister.keyPrefix}.description"]
 
     Column(modifier = modifier) {
         Text(

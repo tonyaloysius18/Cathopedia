@@ -53,14 +53,17 @@ import kotlin.random.Random
 class CathopediaRepository(private val database: CathopediaDatabase) {
 
     suspend fun listSaints(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
-        database.saintQueries.selectAllSaints(language)
+        database.saintQueries.selectAllSaints(language = language, fallbackLang = "en")
             .executeAsList()
             .map {
                 ContentSummary(
                     type = ContentType.SAINT,
                     id = it.id,
-                    name = it.name,
-                    summary = it.summary,
+                    // Non-null: COALESCE(language, "en") is nullable to SQLDelight's static
+                    // analysis (both sides come from a LEFT JOIN), but every row is guaranteed
+                    // to have at least English text, so this can never actually be null.
+                    name = it.name!!,
+                    summary = it.summary!!,
                     imageUrl = it.imageUrl,
                     feastDay = it.feastDay
                 )
@@ -74,14 +77,14 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
     }
 
     suspend fun saintsByFeastDay(feastDay: String, language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
-        database.saintQueries.selectSaintsByFeastDay(language, feastDay)
+        database.saintQueries.selectSaintsByFeastDay(language = language, fallbackLang = "en", feastDay = feastDay)
             .executeAsList()
             .map {
                 ContentSummary(
                     type = ContentType.SAINT,
                     id = it.id,
-                    name = it.name,
-                    summary = it.summary,
+                    name = it.name!!,
+                    summary = it.summary!!,
                     imageUrl = it.imageUrl,
                     feastDay = it.feastDay
                 )
@@ -89,12 +92,12 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
     }
 
     suspend fun saintDetail(id: String, language: String): SaintDetail? = withContext(Dispatchers.Default) {
-        database.saintQueries.selectSaintDetail(language = language, id = id).executeAsOneOrNull()?.let {
+        database.saintQueries.selectSaintDetail(language = language, fallbackLang = "en", id = id).executeAsOneOrNull()?.let {
             SaintDetail(
                 id = it.id,
-                name = it.name,
-                summary = it.summary,
-                body = it.body,
+                name = it.name!!,
+                summary = it.summary!!,
+                body = it.body!!,
                 feastDay = it.feastDay,
                 canonizationYear = it.canonizationYear,
                 patronage = it.patronage,
@@ -107,18 +110,18 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
     }
 
     suspend fun listPopes(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
-        database.popeQueries.selectAllPopes(language)
+        database.popeQueries.selectAllPopes(language = language, fallbackLang = "en")
             .executeAsList()
-            .map { ContentSummary(ContentType.POPE, it.id, it.name, it.summary, it.imageUrl, it.papacyStartYear, papacyStart = it.papacyStart, papacyEnd = it.papacyEnd) }
+            .map { ContentSummary(ContentType.POPE, it.id, it.name!!, it.summary!!, it.imageUrl, it.papacyStartYear, papacyStart = it.papacyStart, papacyEnd = it.papacyEnd) }
     }
 
     suspend fun popeDetail(id: String, language: String): PopeDetail? = withContext(Dispatchers.Default) {
-        database.popeQueries.selectPopeDetail(language = language, id = id).executeAsOneOrNull()?.let {
+        database.popeQueries.selectPopeDetail(language = language, fallbackLang = "en", id = id).executeAsOneOrNull()?.let {
             PopeDetail(
                 id = it.id,
-                name = it.name,
-                summary = it.summary,
-                body = it.body,
+                name = it.name!!,
+                summary = it.summary!!,
+                body = it.body!!,
                 regnalNumber = it.regnalNumber,
                 papacyStart = it.papacyStart,
                 papacyEnd = it.papacyEnd,
@@ -131,18 +134,18 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
     }
 
     suspend fun listApostles(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
-        database.apostleQueries.selectAllApostles(language)
+        database.apostleQueries.selectAllApostles(language = language, fallbackLang = "en")
             .executeAsList()
-            .map { ContentSummary(ContentType.APOSTLE, it.id, it.name, it.summary, it.imageUrl) }
+            .map { ContentSummary(ContentType.APOSTLE, it.id, it.name!!, it.summary!!, it.imageUrl) }
     }
 
     suspend fun apostleDetail(id: String, language: String): ApostleDetail? = withContext(Dispatchers.Default) {
-        database.apostleQueries.selectApostleDetail(language = language, id = id).executeAsOneOrNull()?.let {
+        database.apostleQueries.selectApostleDetail(language = language, fallbackLang = "en", id = id).executeAsOneOrNull()?.let {
             ApostleDetail(
                 id = it.id,
-                name = it.name,
-                summary = it.summary,
-                body = it.body,
+                name = it.name!!,
+                summary = it.summary!!,
+                body = it.body!!,
                 originalName = it.originalName,
                 martyrdom = it.martyrdom,
                 imageUrl = it.imageUrl,
@@ -154,18 +157,18 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
     }
 
     suspend fun listChurches(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
-        database.churchQueries.selectAllChurches(language)
+        database.churchQueries.selectAllChurches(language = language, fallbackLang = "en")
             .executeAsList()
-            .map { ContentSummary(ContentType.CHURCH, it.id, it.name, it.summary, it.imageUrl) }
+            .map { ContentSummary(ContentType.CHURCH, it.id, it.name!!, it.summary!!, it.imageUrl) }
     }
 
     suspend fun churchDetail(id: String, language: String): ChurchDetail? = withContext(Dispatchers.Default) {
-        database.churchQueries.selectChurchDetail(language = language, id = id).executeAsOneOrNull()?.let {
+        database.churchQueries.selectChurchDetail(language = language, fallbackLang = "en", id = id).executeAsOneOrNull()?.let {
             ChurchDetail(
                 id = it.id,
-                name = it.name,
-                summary = it.summary,
-                body = it.body,
+                name = it.name!!,
+                summary = it.summary!!,
+                body = it.body!!,
                 latitude = it.latitude,
                 longitude = it.longitude,
                 foundedYear = it.foundedYear,
@@ -178,18 +181,18 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
     }
 
     suspend fun listApparitions(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
-        database.apparitionQueries.selectAllApparitions(language)
+        database.apparitionQueries.selectAllApparitions(language = language, fallbackLang = "en")
             .executeAsList()
-            .map { ContentSummary(ContentType.APPARITION, it.id, it.name, it.summary, it.imageUrl) }
+            .map { ContentSummary(ContentType.APPARITION, it.id, it.name!!, it.summary!!, it.imageUrl) }
     }
 
     suspend fun apparitionDetail(id: String, language: String): ApparitionDetail? = withContext(Dispatchers.Default) {
-        database.apparitionQueries.selectApparitionDetail(language = language, id = id).executeAsOneOrNull()?.let {
+        database.apparitionQueries.selectApparitionDetail(language = language, fallbackLang = "en", id = id).executeAsOneOrNull()?.let {
             ApparitionDetail(
                 id = it.id,
-                name = it.name,
-                summary = it.summary,
-                body = it.body,
+                name = it.name!!,
+                summary = it.summary!!,
+                body = it.body!!,
                 location = it.location,
                 apparitionYear = it.apparitionYear,
                 approvalStatus = it.approvalStatus,
@@ -202,18 +205,18 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
     }
 
     suspend fun listMiracles(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
-        database.miracleQueries.selectAllMiracles(language)
+        database.miracleQueries.selectAllMiracles(language = language, fallbackLang = "en")
             .executeAsList()
-            .map { ContentSummary(ContentType.MIRACLE, it.id, it.name, it.summary, it.imageUrl) }
+            .map { ContentSummary(ContentType.MIRACLE, it.id, it.name!!, it.summary!!, it.imageUrl) }
     }
 
     suspend fun miracleDetail(id: String, language: String): MiracleDetail? = withContext(Dispatchers.Default) {
-        database.miracleQueries.selectMiracleDetail(language = language, id = id).executeAsOneOrNull()?.let {
+        database.miracleQueries.selectMiracleDetail(language = language, fallbackLang = "en", id = id).executeAsOneOrNull()?.let {
             MiracleDetail(
                 id = it.id,
-                name = it.name,
-                summary = it.summary,
-                body = it.body,
+                name = it.name!!,
+                summary = it.summary!!,
+                body = it.body!!,
                 location = it.location,
                 miracleYear = it.miracleYear,
                 imageUrl = it.imageUrl,
@@ -225,17 +228,17 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
     }
 
     suspend fun listDocuments(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
-        database.documentQueries.selectAllDocuments(language)
+        database.documentQueries.selectAllDocuments(language = language, fallbackLang = "en")
             .executeAsList()
-            .map { ContentSummary(ContentType.DOCUMENT, it.id, it.name, it.summary, it.imageUrl) }
+            .map { ContentSummary(ContentType.DOCUMENT, it.id, it.name!!, it.summary!!, it.imageUrl) }
     }
 
     /** One kind of papal document — what the Encyclical row on Kinds of Papal Documents opens. */
     suspend fun listDocumentsOfKind(kind: String, language: String): List<ContentSummary> =
         withContext(Dispatchers.Default) {
-            database.documentQueries.selectDocumentsOfKind(language = language, kind = kind)
+            database.documentQueries.selectDocumentsOfKind(language = language, fallbackLang = "en", kind = kind)
                 .executeAsList()
-                .map { ContentSummary(ContentType.DOCUMENT, it.id, it.name, it.summary, it.imageUrl) }
+                .map { ContentSummary(ContentType.DOCUMENT, it.id, it.name!!, it.summary!!, it.imageUrl) }
         }
 
     /**
@@ -245,7 +248,7 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
      */
     suspend fun documentsOfKindByPope(kind: String, language: String): List<DocumentPopeGroup> =
         withContext(Dispatchers.Default) {
-            val rows = database.documentQueries.selectDocumentsOfKind(language = language, kind = kind)
+            val rows = database.documentQueries.selectDocumentsOfKind(language = language, fallbackLang = "en", kind = kind)
                 .executeAsList()
             rows.groupBy { it.popeId ?: "" }
                 .map { (popeId, docs) ->
@@ -254,7 +257,7 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
                         popeName = popeId.takeIf { it.isNotBlank() }
                             ?.let { summaryOf(ContentType.POPE, it, language)?.name } ?: popeId,
                         documents = docs.map {
-                            ContentSummary(ContentType.DOCUMENT, it.id, it.name, it.summary, it.imageUrl)
+                            ContentSummary(ContentType.DOCUMENT, it.id, it.name!!, it.summary!!, it.imageUrl)
                         },
                         // Sort groups by the pope's latest document rather than by name:
                         // regnal numerals do not sort chronologically as text.
@@ -265,17 +268,17 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
         }
 
     suspend fun countDocumentsOfKind(kind: String, language: String): Int = withContext(Dispatchers.Default) {
-        database.documentQueries.countDocumentsOfKind(language = language, kind = kind)
+        database.documentQueries.countDocumentsOfKind(language = language, fallbackLang = "en", kind = kind)
             .executeAsOne().toInt()
     }
 
     suspend fun documentDetail(id: String, language: String): DocumentDetail? = withContext(Dispatchers.Default) {
-        database.documentQueries.selectDocumentDetail(language = language, id = id).executeAsOneOrNull()?.let {
+        database.documentQueries.selectDocumentDetail(language = language, fallbackLang = "en", id = id).executeAsOneOrNull()?.let {
             DocumentDetail(
                 id = it.id,
-                name = it.name,
-                summary = it.summary,
-                body = it.body,
+                name = it.name!!,
+                summary = it.summary!!,
+                body = it.body!!,
                 kind = it.kind,
                 popeId = it.popeId,
                 promulgated = it.promulgated,
@@ -289,9 +292,9 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
     }
 
     suspend fun listFeasts(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
-        database.feastQueries.selectAllFeasts(language)
+        database.feastQueries.selectAllFeasts(language = language, fallbackLang = "en")
             .executeAsList()
-            .map { ContentSummary(ContentType.FEAST, it.id, it.name, it.summary, it.imageUrl, rank = it.rank) }
+            .map { ContentSummary(ContentType.FEAST, it.id, it.name!!, it.summary!!, it.imageUrl, rank = it.rank) }
     }
 
     /**
@@ -346,12 +349,12 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
     }
 
     suspend fun feastDetail(id: String, language: String): FeastDetail? = withContext(Dispatchers.Default) {
-        database.feastQueries.selectFeastDetail(language = language, id = id).executeAsOneOrNull()?.let {
+        database.feastQueries.selectFeastDetail(language = language, fallbackLang = "en", id = id).executeAsOneOrNull()?.let {
             FeastDetail(
                 id = it.id,
-                name = it.name,
-                summary = it.summary,
-                body = it.body,
+                name = it.name!!,
+                summary = it.summary!!,
+                body = it.body!!,
                 date = it.date,
                 rank = it.rank,
                 imageUrl = it.imageUrl,
@@ -443,13 +446,13 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
      */
     suspend fun contentCounts(language: String): Map<ContentType, Int> = withContext(Dispatchers.Default) {
         mapOf(
-            ContentType.SAINT to database.saintQueries.countSaints(language).executeAsOne().toInt(),
-            ContentType.POPE to database.popeQueries.countPopes(language).executeAsOne().toInt(),
-            ContentType.APOSTLE to database.apostleQueries.countApostles(language).executeAsOne().toInt(),
-            ContentType.CHURCH to database.churchQueries.countChurches(language).executeAsOne().toInt(),
-            ContentType.APPARITION to database.apparitionQueries.countApparitions(language).executeAsOne().toInt(),
-            ContentType.MIRACLE to database.miracleQueries.countMiracles(language).executeAsOne().toInt(),
-            ContentType.FEAST to database.feastQueries.countFeasts(language).executeAsOne().toInt(),
+            ContentType.SAINT to database.saintQueries.countSaints(language = language, fallbackLang = "en").executeAsOne().toInt(),
+            ContentType.POPE to database.popeQueries.countPopes(language = language, fallbackLang = "en").executeAsOne().toInt(),
+            ContentType.APOSTLE to database.apostleQueries.countApostles(language = language, fallbackLang = "en").executeAsOne().toInt(),
+            ContentType.CHURCH to database.churchQueries.countChurches(language = language, fallbackLang = "en").executeAsOne().toInt(),
+            ContentType.APPARITION to database.apparitionQueries.countApparitions(language = language, fallbackLang = "en").executeAsOne().toInt(),
+            ContentType.MIRACLE to database.miracleQueries.countMiracles(language = language, fallbackLang = "en").executeAsOne().toInt(),
+            ContentType.FEAST to database.feastQueries.countFeasts(language = language, fallbackLang = "en").executeAsOne().toInt(),
         )
     }
 
@@ -682,6 +685,14 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
             database.hubContentQueries.selectStrings(lang = language, fallbackLang = "en", keys = keys)
                 .executeAsList()
                 .associate { it.key to it.value_ }
+        }
+
+    /** Every string whose key starts with [prefix], for [language] with English fallback per key. */
+    suspend fun resolveHubStringsWithPrefix(prefix: String, language: String): Map<String, String> =
+        withContext(Dispatchers.Default) {
+            database.hubContentQueries.selectStringsWithPrefix(lang = language, fallbackLang = "en", prefix = prefix)
+                .executeAsList()
+                .associate { it.key to it.value_.orEmpty() }
         }
 
     suspend fun listHubs(): List<HubSummary> = withContext(Dispatchers.Default) {

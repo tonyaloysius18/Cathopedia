@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": 1,
+  "contentVersion": 4,
   "hub": {
     "id": "catechism",
     "slug": "catechism",
@@ -21,7 +21,7 @@
       "titleKey": "cat.creed.title",
       "summaryKey": "cat.creed.summary",
       "icon": "ic_creed",
-      "articleIds": ["art.cat.three_pillars", "art.cat.trinity", "art.cat.creeds", "art.cat.four_marks", "art.cat.last_things", "art.cat.angels", "art.cat.reverence", "art.cat.relics", "art.cat.images"]
+      "articleIds": ["art.cat.three_pillars", "art.cat.trinity", "art.cat.creeds", "art.cat.four_marks", "art.cat.last_things", "art.cat.angels", "art.cat.reverence", "art.cat.relics", "art.cat.images", "art.cat.stigmata"]
     },
     {
       "id": "cat.scripture",
@@ -31,7 +31,7 @@
       "titleKey": "cat.scripture.title",
       "summaryKey": "cat.scripture.summary",
       "icon": "ic_scroll",
-      "articleIds": ["art.cat.bible_origin"]
+      "articleIds": ["art.cat.bible_origin", "art.cat.christian_era"]
     },
     {
       "id": "cat.sacraments",
@@ -160,6 +160,38 @@
         { "type": "callout", "tone": "note", "titleKey": "art.images.nicaea.title", "textKey": "art.images.nicaea.body" },
         { "type": "callout", "tone": "note", "titleKey": "art.images.short.title", "textKey": "art.images.short.body" },
         { "type": "quote", "textKey": "art.images.quote", "attributionKey": "art.images.quote.attribution" }
+      ]
+    },
+    {
+      "id": "art.cat.stigmata",
+      "sectionId": "cat.creed",
+      "sortOrder": 10,
+      "titleKey": "art.stigmata.title",
+      "leadKey": "art.stigmata.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.stigmata.intro" },
+        { "type": "heading", "level": 2, "textKey": "art.stigmata.bearers.title" },
+        { "type": "image", "asset": "hub/catechism/stigmata_francis.png", "captionKey": "art.stigmata.francis.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.stigmata.francis.title", "textKey": "art.stigmata.francis.body" },
+        { "type": "image", "asset": "hub/catechism/stigmata_catherine.png", "captionKey": "art.stigmata.catherine.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.stigmata.catherine.title", "textKey": "art.stigmata.catherine.body" },
+        { "type": "image", "asset": "hub/catechism/stigmata_pio.png", "captionKey": "art.stigmata.pio.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.stigmata.pio.title", "textKey": "art.stigmata.pio.body" },
+        { "type": "image", "asset": "hub/catechism/stigmata_gemma.png", "captionKey": "art.stigmata.gemma.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.stigmata.gemma.title", "textKey": "art.stigmata.gemma.body" },
+        { "type": "heading", "level": 2, "textKey": "art.stigmata.forms.title" },
+        { "type": "paragraph", "textKey": "art.stigmata.forms.body" },
+        { "type": "callout", "tone": "warning", "titleKey": "art.stigmata.notdogma.title", "textKey": "art.stigmata.notdogma.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.stigmata.notsanctity.title", "textKey": "art.stigmata.notsanctity.body" },
+        { "type": "quote", "textKey": "art.stigmata.quote", "attributionKey": "art.stigmata.quote.attribution" }
+      ],
+      "sources": [
+        {
+          "label": "Catechism of the Catholic Church, 2003 (charisms)",
+          "url": "https://www.vatican.va/archive/ENG0015/__P6X.HTM",
+          "accessed": "2026-09-29"
+        }
       ]
     },
     {
@@ -321,6 +353,41 @@
         { "type": "list", "style": "bullet", "itemKeys": ["art.bible.remember1", "art.bible.remember2", "art.bible.remember3", "art.bible.remember4"] },
         { "type": "callout", "tone": "devotional", "titleKey": "art.bible.bottom.title", "textKey": "art.bible.bottom.body" },
         { "type": "quote", "textKey": "art.bible.quote", "attributionKey": "art.bible.quote.attribution" }
+      ]
+    },
+    {
+      "id": "art.cat.christian_era",
+      "sectionId": "cat.scripture",
+      "sortOrder": 2,
+      "titleKey": "art.era.title",
+      "leadKey": "art.era.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.era.intro" },
+        { "type": "image", "asset": "hub/catechism/cat_christian_era.png", "captionKey": "art.era.christ.caption", "license": "IN_HOUSE" },
+        { "type": "heading", "level": 2, "textKey": "art.era.labels.title" },
+        { "type": "factGrid", "facts": [
+          { "labelKey": "art.era.bc.label", "valueKey": "art.era.bc.value" },
+          { "labelKey": "art.era.ad.label", "valueKey": "art.era.ad.value" },
+          { "labelKey": "art.era.bce.label", "valueKey": "art.era.bce.value" },
+          { "labelKey": "art.era.ce.label", "valueKey": "art.era.ce.value" }
+        ] },
+        { "type": "callout", "tone": "note", "titleKey": "art.era.same.title", "textKey": "art.era.same.body" },
+        { "type": "callout", "tone": "warning", "titleKey": "art.era.zero.title", "textKey": "art.era.zero.body" },
+        { "type": "heading", "level": 2, "textKey": "art.era.origin.title" },
+        { "type": "image", "asset": "hub/catechism/cat_dionysius_exiguus.png", "captionKey": "art.era.dionysius.caption", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.era.origin.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.era.timing.title", "textKey": "art.era.timing.body" },
+        { "type": "heading", "level": 2, "textKey": "art.era.common.title" },
+        { "type": "image", "asset": "hub/catechism/cat_calendar_eras.png", "captionKey": "art.era.common.caption", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.era.common.body" },
+        { "type": "callout", "tone": "devotional", "titleKey": "art.era.remember.title", "textKey": "art.era.remember.body" },
+        { "type": "quote", "textKey": "art.era.quote", "attributionKey": "art.era.quote.source" }
+      ],
+      "sources": [
+        { "label": "Encyclopaedia Britannica, “Dionysius Exiguus”" },
+        { "label": "Encyclopaedia Britannica, “Chronology: Christian”" },
+        { "label": "Catechism of the Catholic Church, 456–483: The Incarnation" }
       ]
     },
     {

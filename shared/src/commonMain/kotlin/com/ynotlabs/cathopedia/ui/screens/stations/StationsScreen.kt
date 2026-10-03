@@ -1,5 +1,7 @@
 package com.ynotlabs.cathopedia.ui.screens.stations
 
+import com.ynotlabs.cathopedia.i18n.LocalScreenText
+import com.ynotlabs.cathopedia.i18n.ScreenText
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -243,6 +245,7 @@ private fun StationCard(
     listState: LazyListState,
     cardWidthPx: Float,
 ) {
+    val t = LocalScreenText.current
     val s = LocalStrings.current
     Box(
         modifier = Modifier
@@ -330,7 +333,7 @@ private fun StationCard(
             )
             Spacer(Modifier.height(6.dp))
             Text(
-                text = if (language == "fr") station.titleFr else station.titleEn,
+                text = t["${station.keyPrefix}.title"],
                 color = StationsCream,
                 fontFamily = FontFamily.Serif,
                 fontSize = 18.sp,
@@ -366,11 +369,11 @@ private fun StationTextPanel(
     modifier: Modifier = Modifier,
 ) {
     val s = LocalStrings.current
-    val isFrench = language == "fr"
-    val title = if (isFrench) station.titleFr else station.titleEn
-    val meditation = if (isFrench) station.meditationFr else station.meditationEn
-    val versicle = if (isFrench) station.versicleFr else station.versicleEn
-    val response = if (isFrench) station.responseFr else station.responseEn
+    val t = LocalScreenText.current
+    val title = t["${station.keyPrefix}.title"]
+    val meditation = t["${station.keyPrefix}.meditation"]
+    val versicle = t["${station.keyPrefix}.versicle"]
+    val response = t["${station.keyPrefix}.response"]
 
     Column(modifier = modifier) {
         Text(
