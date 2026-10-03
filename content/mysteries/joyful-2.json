@@ -13,6 +13,11 @@
       "title": "La Visitation",
       "fruit": "l'amour du prochain",
       "meditation": null
+    },
+    "it": {
+      "title": "Visitazione",
+      "fruit": "amore del prossimo",
+      "meditation": null
     }
   }
 }

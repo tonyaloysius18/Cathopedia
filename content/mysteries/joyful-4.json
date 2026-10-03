@@ -13,6 +13,11 @@
       "title": "La Présentation au Temple",
       "fruit": "l'obéissance",
       "meditation": null
+    },
+    "it": {
+      "title": "Presentazione al Tempio",
+      "fruit": "obbedienza",
+      "meditation": null
     }
   }
 }
