@@ -235,6 +235,18 @@
         "art.mass.basilica_cathedral",
         "art.mass.basilica_ranks"
       ]
+    },
+    {
+      "id": "mass.roles",
+      "sortOrder": 20,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.mass.roles.title",
+      "summaryKey": "sec.mass.roles.summary",
+      "icon": "ic_procession",
+      "articleIds": [
+        "art.mass.roles"
+      ]
     }
   ],
   "articles": [
@@ -1194,6 +1206,43 @@
         { "label": "Congregation for Divine Worship, Domus Ecclesiae (1989), decree on the title of minor basilica" },
         { "label": "Apostolic Penitentiary, Enchiridion Indulgentiarum, on indulgences attached to basilicas" },
         { "label": "Annuario Pontificio, on the papal basilicas of Rome and Assisi" }
+      ]
+    },
+    {
+      "id": "art.mass.roles",
+      "sectionId": "mass.roles",
+      "sortOrder": 1,
+      "titleKey": "art.roles.title",
+      "leadKey": "art.roles.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.roles.intro" },
+        { "type": "heading", "level": 2, "textKey": "art.roles.roles.title" },
+        { "type": "image", "asset": "hub/mass/mass_crossbearer.png", "captionKey": "art.roles.server.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.roles.server.title", "textKey": "art.roles.server.body" },
+        { "type": "image", "asset": "hub/mass/mass_role_acolyte.png", "captionKey": "art.roles.acolyte.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.roles.acolyte.title", "textKey": "art.roles.acolyte.body" },
+        { "type": "image", "asset": "hub/mass/mass_role_sacristan.png", "captionKey": "art.roles.sacristan.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.roles.sacristan.title", "textKey": "art.roles.sacristan.body" },
+        { "type": "heading", "level": 2, "textKey": "art.roles.glance.title" },
+        {
+          "type": "factGrid",
+          "facts": [
+            { "labelKey": "art.roles.glance.server", "valueKey": "art.roles.glance.server.value" },
+            { "labelKey": "art.roles.glance.acolyte", "valueKey": "art.roles.glance.acolyte.value" },
+            { "labelKey": "art.roles.glance.sacristan", "valueKey": "art.roles.glance.sacristan.value" }
+          ]
+        },
+        { "type": "callout", "tone": "warning", "titleKey": "art.roles.same.title", "textKey": "art.roles.same.body" },
+        { "type": "quote", "textKey": "art.roles.quote", "attributionKey": "art.roles.quote.attribution" }
+      ],
+      "related": [
+        { "type": "ARTICLE", "id": "art.mass.altar_sacristy" }
+      ],
+      "sources": [
+        { "label": "General Instruction of the Roman Missal, 98–107 (the acolyte, lector and other ministries)" },
+        { "label": "Paul VI, Ministeria quaedam (1972); Francis, Spiritus Domini (2021), amending canon 230 §1" },
+        { "label": "Code of Canon Law, canons 230 and 910 §2; Congregation for Divine Worship, letter on female altar servers (1994)" }
       ]
     }
   ],
