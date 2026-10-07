@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.holysee
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -135,7 +136,7 @@ private fun DocumentRow(doc: ContentSummary, onClick: () -> Unit) {
         shape = RoundedCornerShape(18.dp),
         color = ArticleSurface,
         contentColor = ArticleCream,
-        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.3f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart), height = 36.dp)

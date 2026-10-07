@@ -1,5 +1,8 @@
 package com.ynotlabs.cathopedia.ui.screens.holymass
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
+import androidx.compose.material3.MaterialTheme
+
 import com.ynotlabs.cathopedia.i18n.LocalScreenText
 import com.ynotlabs.cathopedia.i18n.ScreenText
 import androidx.compose.foundation.BorderStroke
@@ -55,13 +58,13 @@ import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import org.jetbrains.compose.resources.painterResource
 
 // Green + gold, matching the Cathopedia hub pages.
-private val PosturesBg = Color(0xFF061A13)
-private val PosturesSurface = Color(0xFF0A241B)
-private val PosturesSurfaceRaised = Color(0xFF0F2E22)
-private val PosturesGold = Color(0xFFD6AE3D)
-private val PosturesCream = Color(0xFFF4ECDD)
-private val PosturesMuted = Color(0xFFB7B09D)
-private val PosturesHeader = Color(0xFF081F17)
+private val PosturesBg: Color @Composable get() = MaterialTheme.colorScheme.background
+private val PosturesSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val PosturesSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val PosturesGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val PosturesCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val PosturesMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
+private val PosturesHeader: Color @Composable get() = MaterialTheme.colorScheme.surface
 
 @Composable
 fun PosturesScreen(
@@ -153,7 +156,7 @@ fun PosturesScreen(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(20.dp),
                     color = PosturesSurface,
-                    border = BorderStroke(1.dp, PosturesGold.copy(alpha = 0.35f)),
+                    border = BorderStroke(1.dp, CardBorder),
                 ) {
                     Text(
                         text = responses,
@@ -185,7 +188,7 @@ private fun PosturesIntroCard(text: String) {
         shape = RoundedCornerShape(20.dp),
         color = PosturesSurface,
         contentColor = PosturesCream,
-        border = BorderStroke(1.dp, PosturesGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
@@ -272,7 +275,7 @@ private fun PostureCard(
         modifier = modifier,
         shape = RoundedCornerShape(20.dp),
         color = PosturesSurface,
-        border = BorderStroke(1.dp, PosturesGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))

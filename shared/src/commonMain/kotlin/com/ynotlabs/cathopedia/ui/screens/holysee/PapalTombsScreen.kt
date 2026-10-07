@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.holysee
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
@@ -280,7 +281,7 @@ private fun PapalTombsAccordion(
                     modifier = Modifier.size(48.dp),
                     shape = CircleShape,
                     color = ArticleSurfaceRaised,
-                    border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.48f)),
+                    border = BorderStroke(1.dp, CardBorder),
                 ) {
                     Box(contentAlignment = Alignment.Center) {
                         Icon(
@@ -374,7 +375,7 @@ private fun PapalTombsConclusion(text: String) {
         shape = RoundedCornerShape(20.dp),
         color = ArticleSurface,
         contentColor = ArticleCream,
-        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))

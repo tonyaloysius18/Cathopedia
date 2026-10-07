@@ -1,5 +1,8 @@
 package com.ynotlabs.cathopedia.ui.screens.catechism
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
+import androidx.compose.material3.MaterialTheme
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -63,13 +66,13 @@ import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 
-private val CreedsBackground = Color(0xFF061A13)
-private val CreedsHeader = Color(0xFF081F17)
-private val CreedsSurface = Color(0xFF0C271E)
-private val CreedsSurfaceRaised = Color(0xFF103126)
-private val CreedsGold = Color(0xFFD6AE3D)
-private val CreedsCream = Color(0xFFF4ECDD)
-private val CreedsMuted = Color(0xFFB7B09D)
+private val CreedsBackground: Color @Composable get() = MaterialTheme.colorScheme.background
+private val CreedsHeader: Color @Composable get() = MaterialTheme.colorScheme.surface
+private val CreedsSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val CreedsSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val CreedsGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val CreedsCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val CreedsMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
 private val CreedsStringKeys = setOf(
     "art.creeds.title",
@@ -269,7 +272,7 @@ private fun CreedsIntroductionCard(body: String) {
             .fillMaxWidth()
             .clip(RoundedCornerShape(20.dp))
             .background(CreedsSurface)
-            .border(1.dp, CreedsGold.copy(alpha = 0.16f), RoundedCornerShape(20.dp)),
+            .border(1.dp, CardBorder, RoundedCornerShape(20.dp)),
     ) {
         GoldCardAccent(Modifier.align(Alignment.CenterStart))
         Text(
@@ -296,7 +299,7 @@ private fun CreedPrayerCard(
             .clickable(onClick = onClick),
         shape = shape,
         color = CreedsSurface,
-        border = BorderStroke(1.dp, CreedsGold.copy(alpha = 0.24f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
@@ -344,7 +347,7 @@ private fun CreedsHistoryCard(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
         color = CreedsSurfaceRaised,
-        border = BorderStroke(1.dp, CreedsGold.copy(alpha = 0.18f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Row(
             modifier = Modifier.padding(18.dp),

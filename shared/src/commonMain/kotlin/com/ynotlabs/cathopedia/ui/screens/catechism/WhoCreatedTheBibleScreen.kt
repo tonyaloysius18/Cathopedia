@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.catechism
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
@@ -315,7 +316,7 @@ private fun BibleHeroIntro(
             shape = RoundedCornerShape(20.dp),
             color = ArticleSurface,
             contentColor = ArticleCream,
-            border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.35f)),
+            border = BorderStroke(1.dp, CardBorder),
         ) {
             Box {
                 GoldCardAccent(Modifier.align(Alignment.CenterStart))
@@ -361,7 +362,7 @@ private fun BiblePointCard(
         shape = RoundedCornerShape(20.dp),
         color = ArticleSurface,
         contentColor = ArticleCream,
-        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))
@@ -501,6 +502,7 @@ private fun BibleJourneyStep(
     isFirst: Boolean,
     isLast: Boolean,
 ) {
+    val lineColor = ArticleGold
     // IntrinsicSize.Min lets the icon column stretch to the height the text needs, so the
     // thread between two stops is drawn as one continuous line rather than a stub.
     Row(
@@ -521,7 +523,7 @@ private fun BibleJourneyStep(
                 val stroke = 2.dp.toPx()
                 if (!isFirst) {
                     drawLine(
-                        color = ArticleGold.copy(alpha = 0.35f),
+                        color = lineColor.copy(alpha = 0.35f),
                         start = Offset(x, 0f),
                         end = Offset(x, circleTop),
                         strokeWidth = stroke,
@@ -529,7 +531,7 @@ private fun BibleJourneyStep(
                 }
                 if (!isLast) {
                     drawLine(
-                        color = ArticleGold.copy(alpha = 0.35f),
+                        color = lineColor.copy(alpha = 0.35f),
                         start = Offset(x, circleBottom),
                         end = Offset(x, size.height),
                         strokeWidth = stroke,
@@ -610,7 +612,7 @@ private fun BibleChecklistCard(items: List<String>) {
         shape = RoundedCornerShape(20.dp),
         color = ArticleSurface,
         contentColor = ArticleCream,
-        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))

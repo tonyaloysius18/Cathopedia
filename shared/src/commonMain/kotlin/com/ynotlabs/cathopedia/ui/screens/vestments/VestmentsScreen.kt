@@ -1,5 +1,9 @@
 package com.ynotlabs.cathopedia.ui.screens.vestments
 
+import com.ynotlabs.cathopedia.ui.theme.imageFade
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
+import androidx.compose.material3.MaterialTheme
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -106,13 +110,13 @@ private const val MINISTER_MAX_SCALE_DROP = 0.24f
 private const val MINISTER_MAX_ALPHA_DROP = 0.55f
 private const val MINISTER_MAX_SHADE_ALPHA = 0.6f
 
-private val VestBg = Color(0xFF061A13)
-private val VestSurface = Color(0xFF0C271E)
-private val VestSurfaceRaised = Color(0xFF123127)
-private val VestGold = Color(0xFFD8B24C)
-private val VestGoldSoft = Color(0xFF9D8858)
-private val VestCream = Color(0xFFF4ECDD)
-private val VestMuted = Color(0xFFB4AD98)
+private val VestBg: Color @Composable get() = MaterialTheme.colorScheme.background
+private val VestSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val VestSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val VestGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val VestGoldSoft: Color @Composable get() = MaterialTheme.colorScheme.secondary
+private val VestCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val VestMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
 data class Vestment(
     val name: String,
@@ -674,7 +678,7 @@ private fun VestmentsTitleHeader(
             ),
         color = VestSurface,
         shape = RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp),
-        border = BorderStroke(1.dp, VestGold.copy(alpha = 0.25f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Row(
             modifier = Modifier
@@ -730,7 +734,7 @@ private fun MinisterCarouselCard(
             ),
         color = VestSurface,
         shape = shape,
-        border = BorderStroke(1.dp, VestGold.copy(alpha = 0.2f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Column(
             modifier = Modifier.padding(bottom = 24.dp, top = 12.dp),
@@ -849,7 +853,7 @@ private fun MinisterFigureCard(
                     Brush.verticalGradient(
                         0f to Color.Transparent,
                         0.62f to Color.Transparent,
-                        1f to VestSurface.copy(alpha = 0.96f),
+                        1f to VestSurface.imageFade(0.96f),
                     ),
                 ),
         )
@@ -1016,7 +1020,7 @@ private fun VestmentCard(vestment: Vestment) {
                     listOf(VestSurfaceRaised, VestSurface),
                 ),
             )
-            .border(1.dp, VestGold.copy(alpha = 0.35f), shape)
+            .border(1.dp, CardBorder, shape)
     ) {
         Column(
             modifier = Modifier
@@ -1143,7 +1147,7 @@ private fun LiturgicalColorCard(
                     listOf(VestSurfaceRaised, VestSurface),
                 ),
             )
-            .border(1.dp, VestGold.copy(alpha = 0.35f), shape)
+            .border(1.dp, CardBorder, shape)
     ) {
         Column(
             modifier = Modifier.padding(14.dp),

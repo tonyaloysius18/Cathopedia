@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.holymass
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
@@ -222,7 +223,7 @@ private fun SeasonCard(season: Season) {
         shape = RoundedCornerShape(20.dp),
         color = ArticleSurface,
         contentColor = ArticleCream,
-        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))
@@ -321,12 +322,14 @@ private fun LiturgicalColourRow(label: String, swatches: List<Color>) {
 /** The year as a loop: each season, then the arrow back round to Advent. */
 @Composable
 private fun YearCycleCard(steps: List<String>) {
+    val lineColor = ArticleGold
+    val finalDotColor = ArticleGoldSoft
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
         color = ArticleSurface,
         contentColor = ArticleCream,
-        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))
@@ -351,7 +354,7 @@ private fun YearCycleCard(steps: List<String>) {
                                 val dotY = 9.dp.toPx()
                                 if (index > 0) {
                                     drawLine(
-                                        color = ArticleGold.copy(alpha = 0.35f),
+                                        color = lineColor.copy(alpha = 0.35f),
                                         start = Offset(x, 0f),
                                         end = Offset(x, dotY - 5.dp.toPx()),
                                         strokeWidth = 1.5.dp.toPx(),
@@ -359,14 +362,14 @@ private fun YearCycleCard(steps: List<String>) {
                                 }
                                 if (!isLast) {
                                     drawLine(
-                                        color = ArticleGold.copy(alpha = 0.35f),
+                                        color = lineColor.copy(alpha = 0.35f),
                                         start = Offset(x, dotY + 5.dp.toPx()),
                                         end = Offset(x, size.height),
                                         strokeWidth = 1.5.dp.toPx(),
                                     )
                                 }
                                 drawCircle(
-                                    color = if (isLast) ArticleGoldSoft else ArticleGold,
+                                    color = if (isLast) finalDotColor else lineColor,
                                     radius = 3.5.dp.toPx(),
                                     center = Offset(x, dotY),
                                 )

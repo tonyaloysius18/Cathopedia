@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.catechism
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -62,13 +63,13 @@ import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
-private val VirtuesBackground = Color(0xFF061A13)
-private val VirtuesHeader = Color(0xFF081F17)
-private val VirtuesSurface = Color(0xFF0A241B)
-private val VirtuesSurfaceRaised = Color(0xFF0C271E)
-private val VirtuesGold = Color(0xFFD6AE3D)
-private val VirtuesCream = Color(0xFFF4ECDD)
-private val VirtuesMuted = Color(0xFFB7B09D)
+private val VirtuesBackground: Color @Composable get() = MaterialTheme.colorScheme.background
+private val VirtuesHeader: Color @Composable get() = MaterialTheme.colorScheme.surface
+private val VirtuesSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val VirtuesSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val VirtuesGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val VirtuesCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val VirtuesMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
 @Composable
 fun VirtuesScreen(
@@ -177,7 +178,7 @@ private fun VirtuesHeroCard() {
             .fillMaxWidth()
             .aspectRatio(2f)
             .clip(RoundedCornerShape(22.dp))
-            .border(1.dp, VirtuesGold.copy(alpha = 0.35f), RoundedCornerShape(22.dp)),
+            .border(1.dp, CardBorder, RoundedCornerShape(22.dp)),
     )
 }
 
@@ -188,7 +189,7 @@ private fun VirtuesIntroCard(text: String) {
         shape = RoundedCornerShape(20.dp),
         color = VirtuesSurface,
         contentColor = VirtuesCream,
-        border = BorderStroke(1.dp, VirtuesGold.copy(alpha = 0.42f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
@@ -219,7 +220,7 @@ private fun VirtueCard(
         shape = RoundedCornerShape(20.dp),
         color = VirtuesSurfaceRaised,
         contentColor = VirtuesCream,
-        border = BorderStroke(1.dp, VirtuesGold.copy(alpha = 0.22f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Row(
             modifier = Modifier.padding(12.dp),

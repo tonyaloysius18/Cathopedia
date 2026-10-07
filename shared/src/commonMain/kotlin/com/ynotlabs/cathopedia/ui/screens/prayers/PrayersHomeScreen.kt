@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.prayers
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import com.ynotlabs.cathopedia.ui.theme.DarkGold
 import com.ynotlabs.cathopedia.ui.theme.DarkText
 import com.ynotlabs.cathopedia.ui.theme.DarkTextMuted
@@ -390,7 +391,7 @@ private fun PrayerHomeBody(
                     color = PrayerSurface,
                     border = BorderStroke(
                         width = 2.dp,
-                        color = PrayerBorder.copy(alpha = 0.66f),
+                        color = CardBorder,
                     ),
                 ) {
                     Text(
@@ -726,7 +727,7 @@ private fun QuickPrayerTile(
             )
             .border(
                 width = 2.dp,
-                color = if (selected) PrayerGold else PrayerBorder.copy(alpha = 0.70f),
+                color = if (selected) PrayerGold else CardBorder,
                 shape = shape,
             )
             .clickable(onClick = onClick)
@@ -851,7 +852,7 @@ private fun PremiumPrayerRow(
             )
             .border(
                 width = 2.dp,
-                color = PrayerBorder.copy(alpha = 0.64f),
+                color = CardBorder,
                 shape = shape,
             )
             .clickable(onClick = onClick)
@@ -875,7 +876,7 @@ private fun PremiumPrayerRow(
                     color = PrayerGold.copy(alpha = 0.08f),
                     border = BorderStroke(
                         width = 2.dp,
-                        color = PrayerGold.copy(alpha = 0.28f),
+                        color = CardBorder,
                     ),
                 ) {
                     Box(contentAlignment = Alignment.Center) {
@@ -936,7 +937,7 @@ private fun PrayerSearchResults(
                 color = PrayerGold.copy(alpha = 0.07f),
                 border = BorderStroke(
                     width = 2.dp,
-                    color = PrayerGold.copy(alpha = 0.26f),
+                    color = CardBorder,
                 ),
             ) {
                 Box(contentAlignment = Alignment.Center) {

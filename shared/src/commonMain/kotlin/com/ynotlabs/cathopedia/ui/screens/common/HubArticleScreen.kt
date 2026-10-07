@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.common
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import com.ynotlabs.cathopedia.ui.screens.catechism.ConfessionPrayersScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.CreedsScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.FourMarksScreen
@@ -143,10 +144,10 @@ import com.ynotlabs.cathopedia.resources._13
 import com.ynotlabs.cathopedia.resources._14
 import com.ynotlabs.cathopedia.resources._15
 
-private val SymbolCardSurface = Color(0xFF0C271E)
-private val SymbolCardGold = Color(0xFFD8B24C)
-private val SymbolCardCream = Color(0xFFF4ECDD)
-private val SymbolCardMuted = Color(0xFFB4AD98)
+private val SymbolCardSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val SymbolCardGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val SymbolCardCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val SymbolCardMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
 private data class SymbolCardContent(
     val heading: HeadingBlock,
@@ -597,8 +598,7 @@ fun HubArticleScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(
-                if (isSymbolsArticle) Color(0xFF061A13)
-                else MaterialTheme.colorScheme.background
+                MaterialTheme.colorScheme.background
             ),
     ) {
         LazyColumn(
@@ -820,7 +820,7 @@ private fun HubArticleEditorialImage(asset: String) {
                 .fillMaxWidth()
                 .aspectRatio(1.5f)
                 .clip(shape)
-                .border(1.dp, SymbolCardGold.copy(alpha = 0.42f), shape),
+                .border(1.dp, CardBorder, shape),
         ) {
             Image(
                 painter = painter,
@@ -862,7 +862,7 @@ private fun HubArticleHeaderCard(
                 clip = false,
             )
             .clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp))
-            .background(Color(0xFF081F17)) // HubCardDeep
+            .background(MaterialTheme.colorScheme.surface)
             .statusBarsPadding()
             .padding(start = 18.dp, top = 6.dp, end = 18.dp, bottom = 18.dp),
     ) {
@@ -985,7 +985,7 @@ private fun SacredObjectCard(
         shape = RoundedCornerShape(20.dp),
         color = MaterialTheme.colorScheme.surfaceContainerHigh,
         contentColor = MaterialTheme.colorScheme.onSurface,
-        border = BorderStroke(1.dp, SymbolCardGold.copy(alpha = 0.45f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))
@@ -1189,7 +1189,7 @@ private fun OrderCard(
         shape = shape,
         color = MaterialTheme.colorScheme.surface,
         contentColor = MaterialTheme.colorScheme.onSurface,
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.42f)),
+        border = BorderStroke(1.dp, CardBorder),
         shadowElevation = 3.dp,
     ) {
         Box {
@@ -1236,7 +1236,7 @@ private fun OrderCard(
                                     .clip(RoundedCornerShape(50))
                                     .background(Color(0xFF081F17).copy(alpha = 0.55f))
                                     .border(
-                                        BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)),
+                                        BorderStroke(1.dp, CardBorder),
                                         RoundedCornerShape(50),
                                     )
                                     .padding(6.dp),
@@ -1329,7 +1329,7 @@ private fun BiblicalCharacterCard(
         shape = shape,
         color = MaterialTheme.colorScheme.surface,
         contentColor = MaterialTheme.colorScheme.onSurface,
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.42f)),
+        border = BorderStroke(1.dp, CardBorder),
         shadowElevation = 3.dp,
     ) {
         Box {
@@ -1436,7 +1436,7 @@ private fun SymbolCard(
             .heightIn(min = 132.dp)
             .clip(shape)
             .background(SymbolCardSurface)
-            .border(1.dp, SymbolCardGold.copy(alpha = 0.35f), shape),
+            .border(1.dp, CardBorder, shape),
     ) {
         Box(
             modifier = Modifier
@@ -1564,7 +1564,7 @@ internal fun BlockView(
                     shape = RoundedCornerShape(18.dp),
                     color = MaterialTheme.colorScheme.surfaceContainerLow,
                     contentColor = MaterialTheme.colorScheme.onSurface,
-                    border = BorderStroke(1.dp, SymbolCardGold.copy(alpha = 0.32f)),
+                    border = BorderStroke(1.dp, CardBorder),
                 ) {
                     Box {
                         GoldCardAccent(Modifier.align(Alignment.CenterStart), height = 36.dp)
@@ -1630,7 +1630,7 @@ internal fun BlockView(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(12.dp),
             color = MaterialTheme.colorScheme.surfaceContainerLow,
-            border = BorderStroke(1.dp, SymbolCardGold.copy(alpha = 0.35f)),
+            border = BorderStroke(1.dp, CardBorder),
         ) {
             Box {
                 GoldCardAccent(Modifier.align(Alignment.CenterStart))
@@ -1655,7 +1655,7 @@ internal fun BlockView(
             shape = RoundedCornerShape(20.dp),
             color = MaterialTheme.colorScheme.surfaceContainerHigh,
             contentColor = MaterialTheme.colorScheme.onSurface,
-            border = BorderStroke(1.dp, SymbolCardGold.copy(alpha = 0.45f)),
+            border = BorderStroke(1.dp, CardBorder),
         ) {
             Box {
                 GoldCardAccent(Modifier.align(Alignment.CenterStart))
@@ -1713,7 +1713,7 @@ internal fun BlockView(
                     shape = RoundedCornerShape(20.dp),
                     color = MaterialTheme.colorScheme.surfaceContainerLow,
                     contentColor = MaterialTheme.colorScheme.onSurface,
-                    border = BorderStroke(1.dp, SymbolCardGold.copy(alpha = 0.34f)),
+                    border = BorderStroke(1.dp, CardBorder),
                 ) {
                     Box {
                         GoldCardAccent(Modifier.align(Alignment.CenterStart), height = 42.dp)
@@ -1759,7 +1759,7 @@ internal fun BlockView(
                     shape = RoundedCornerShape(18.dp),
                     color = MaterialTheme.colorScheme.surfaceContainerLow,
                     contentColor = MaterialTheme.colorScheme.onSurface,
-                    border = BorderStroke(1.dp, SymbolCardGold.copy(alpha = 0.38f)),
+                    border = BorderStroke(1.dp, CardBorder),
                 ) {
                     Box {
                         GoldCardAccent(Modifier.align(Alignment.CenterStart), height = 38.dp)
@@ -1814,7 +1814,7 @@ private fun HubArticleIntroCard(
         shape = RoundedCornerShape(20.dp),
         color = MaterialTheme.colorScheme.surfaceContainerLow,
         contentColor = MaterialTheme.colorScheme.onSurface,
-        border = BorderStroke(1.dp, SymbolCardGold.copy(alpha = 0.42f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))

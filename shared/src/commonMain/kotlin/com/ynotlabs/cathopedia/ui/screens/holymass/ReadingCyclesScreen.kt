@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.holymass
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -95,7 +96,7 @@ private fun CurrentCycleCard(label: String, body: String, current: Char) {
         shape = RoundedCornerShape(20.dp),
         color = ArticleSurfaceRaised,
         contentColor = ArticleCream,
-        border = BorderStroke(1.5.dp, ArticleGold.copy(alpha = 0.6f)),
+        border = BorderStroke(1.5.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))

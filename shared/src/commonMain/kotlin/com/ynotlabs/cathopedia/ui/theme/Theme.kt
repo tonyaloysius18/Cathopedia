@@ -5,7 +5,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import kotlin.math.pow
+import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
 // lightColorScheme()/darkColorScheme() silently fill any container/inverse/
@@ -76,6 +79,9 @@ private val LightColors = lightColorScheme(
     error = AlertRed,
 )
 
+/** The resolved app appearance, including an explicit override from Settings. */
+val LocalIsDarkTheme = staticCompositionLocalOf { true }
+
 @Composable
 fun CathopediaTheme(
     themeMode: ThemeMode = ThemeMode.SYSTEM,
@@ -87,7 +93,10 @@ fun CathopediaTheme(
         ThemeMode.LIGHT -> false
         ThemeMode.DARK -> true
     }
-    CompositionLocalProvider(LocalLiturgicalAccent provides liturgicalAccent) {
+    CompositionLocalProvider(
+        LocalLiturgicalAccent provides liturgicalAccent,
+        LocalIsDarkTheme provides useDarkTheme,
+    ) {
         MaterialTheme(
             colorScheme = if (useDarkTheme) DarkColors else LightColors,
             typography = CathopediaTypography,
@@ -95,3 +104,23 @@ fun CathopediaTheme(
         )
     }
 }
+
+/**
+ * The one border colour every card uses: a soft parchment-grey in light mode (the
+ * Explore cards' look) and a clear gold in dark mode.
+ */
+val CardBorder: Color
+    @Composable @ReadOnlyComposable
+    get() = if (LocalIsDarkTheme.current) MetallicGold.copy(alpha = 0.45f)
+    else MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)
+
+/**
+ * Alpha for a page- or card-coloured fade drawn over artwork. Dark mode keeps the
+ * value as written. On parchment the same wash bleaches the picture, so light mode
+ * squares it: the near-solid part behind text barely changes (0.94 → 0.87) while
+ * the soft wash across the image mostly lifts (0.42 → 0.15).
+ */
+@Composable
+@ReadOnlyComposable
+fun Color.imageFade(alpha: Float): Color =
+    copy(alpha = if (LocalIsDarkTheme.current) alpha else alpha.pow(2.2f))

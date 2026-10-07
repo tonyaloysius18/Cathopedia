@@ -1,5 +1,8 @@
 package com.ynotlabs.cathopedia.ui.screens.holymass
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
+import androidx.compose.material3.MaterialTheme
+
 import com.ynotlabs.cathopedia.i18n.LocalScreenText
 import com.ynotlabs.cathopedia.i18n.ScreenText
 import androidx.compose.foundation.BorderStroke
@@ -60,14 +63,14 @@ import com.ynotlabs.cathopedia.ui.hubAssetPainter
 import org.jetbrains.compose.resources.painterResource
 
 // Green + gold, matching the Cathopedia hub pages.
-private val MonstranceBg = Color(0xFF061A13)
-private val MonstranceSurface = Color(0xFF0A241B)
-private val MonstranceSurfaceRaised = Color(0xFF0F2E22)
-private val MonstranceGold = Color(0xFFD6AE3D)
-private val MonstranceGoldSoft = Color(0xFFB08D57)
-private val MonstranceCream = Color(0xFFF4ECDD)
-private val MonstranceMuted = Color(0xFFB7B09D)
-private val MonstranceHeader = Color(0xFF081F17)
+private val MonstranceBg: Color @Composable get() = MaterialTheme.colorScheme.background
+private val MonstranceSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val MonstranceSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val MonstranceGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val MonstranceGoldSoft: Color @Composable get() = MaterialTheme.colorScheme.secondary
+private val MonstranceCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val MonstranceMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
+private val MonstranceHeader: Color @Composable get() = MaterialTheme.colorScheme.surface
 
 @Composable
 fun MonstranceScreen(
@@ -181,7 +184,7 @@ private fun MonstranceIntroCard(text: String) {
         shape = RoundedCornerShape(20.dp),
         color = MonstranceSurface,
         contentColor = MonstranceCream,
-        border = BorderStroke(1.dp, MonstranceGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
@@ -268,7 +271,7 @@ private fun PartCard(
         modifier = modifier,
         shape = RoundedCornerShape(20.dp),
         color = MonstranceSurface,
-        border = BorderStroke(1.dp, MonstranceGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))

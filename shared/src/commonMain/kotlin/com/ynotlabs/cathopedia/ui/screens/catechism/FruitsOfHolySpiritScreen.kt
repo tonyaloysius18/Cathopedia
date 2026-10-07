@@ -1,5 +1,8 @@
 package com.ynotlabs.cathopedia.ui.screens.catechism
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
+import androidx.compose.material3.MaterialTheme
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -61,13 +64,13 @@ import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
-private val FruitsBackground = Color(0xFF061A13)
-private val FruitsHeader = Color(0xFF081F17)
-private val FruitsSurface = Color(0xFF0A241B)
-private val FruitsSurfaceRaised = Color(0xFF0C271E)
-private val FruitsGold = Color(0xFFD6AE3D)
-private val FruitsCream = Color(0xFFF4ECDD)
-private val FruitsMuted = Color(0xFFB7B09D)
+private val FruitsBackground: Color @Composable get() = MaterialTheme.colorScheme.background
+private val FruitsHeader: Color @Composable get() = MaterialTheme.colorScheme.surface
+private val FruitsSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val FruitsSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val FruitsGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val FruitsCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val FruitsMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
 @Composable
 fun FruitsOfHolySpiritScreen(
@@ -196,7 +199,7 @@ private fun FruitsHeroCard() {
             .fillMaxWidth()
             .aspectRatio(2f)
             .clip(RoundedCornerShape(22.dp))
-            .border(1.dp, FruitsGold.copy(alpha = 0.35f), RoundedCornerShape(22.dp)),
+            .border(1.dp, CardBorder, RoundedCornerShape(22.dp)),
     )
 }
 
@@ -207,7 +210,7 @@ private fun FruitsIntroCard(text: String) {
         shape = RoundedCornerShape(20.dp),
         color = FruitsSurface,
         contentColor = FruitsCream,
-        border = BorderStroke(1.dp, FruitsGold.copy(alpha = 0.42f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
@@ -233,7 +236,7 @@ private fun FruitCard(number: Int, title: String, body: String) {
         shape = RoundedCornerShape(20.dp),
         color = FruitsSurfaceRaised,
         contentColor = FruitsCream,
-        border = BorderStroke(1.dp, FruitsGold.copy(alpha = 0.22f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Row(
             modifier = Modifier.padding(12.dp),
@@ -333,7 +336,7 @@ private fun FruitsArticleCard(
         shape = RoundedCornerShape(20.dp),
         color = FruitsSurface,
         contentColor = FruitsCream,
-        border = BorderStroke(1.dp, FruitsGold.copy(alpha = 0.45f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))

@@ -1,5 +1,7 @@
 package com.ynotlabs.cathopedia.ui.screens.settings
 
+import com.ynotlabs.cathopedia.ui.theme.imageFade
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -325,8 +327,8 @@ private fun AboutHero(
                     Brush.horizontalGradient(
                         listOf(
                             MaterialTheme.colorScheme.background,
-                            MaterialTheme.colorScheme.background.copy(alpha = 0.92f),
-                            MaterialTheme.colorScheme.background.copy(alpha = 0.24f),
+                            MaterialTheme.colorScheme.background.imageFade(0.92f),
+                            MaterialTheme.colorScheme.background.imageFade(0.24f),
                             Color.Transparent,
                         ),
                     ),
@@ -340,8 +342,8 @@ private fun AboutHero(
                     Brush.verticalGradient(
                         listOf(
                             Color.Transparent,
-                            MaterialTheme.colorScheme.background.copy(alpha = 0.10f),
-                            MaterialTheme.colorScheme.background.copy(alpha = 0.95f),
+                            MaterialTheme.colorScheme.background.imageFade(0.10f),
+                            MaterialTheme.colorScheme.background.imageFade(0.95f),
                         ),
                     ),
                 ),
@@ -482,7 +484,7 @@ private fun AboutCard(
         color = MaterialTheme.colorScheme.surface.copy(alpha = 0.96f),
         border = BorderStroke(
             width = 2.dp,
-            color = MaterialTheme.colorScheme.outline.copy(alpha = 0.72f),
+            color = CardBorder,
         ),
     ) {
         Column {
@@ -509,7 +511,7 @@ private fun InfoRow(
             color = MaterialTheme.colorScheme.primary.copy(alpha = 0.08f),
             border = BorderStroke(
                 width = 2.dp,
-                color = MaterialTheme.colorScheme.primary.copy(alpha = 0.28f),
+                color = CardBorder,
             ),
         ) {
             Box(contentAlignment = Alignment.Center) {

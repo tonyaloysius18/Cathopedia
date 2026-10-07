@@ -1,5 +1,7 @@
 package com.ynotlabs.cathopedia.ui.screens.prayers
 
+import com.ynotlabs.cathopedia.ui.theme.imageFade
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -85,11 +87,11 @@ import org.jetbrains.compose.resources.painterResource
 private val FONT_SCALE_STEPS = listOf(0.85f, 1.0f, 1.15f, 1.3f, 1.45f)
 private const val DEFAULT_FONT_SCALE_INDEX = 1
 
-private val PrayerBg = Color(0xFF061A13)
-private val PrayerGold = Color(0xFFD6AE3D)
-private val PrayerGoldSoft = Color(0xFFAA9158)
-private val PrayerCream = Color(0xFFF4ECDD)
-private val PrayerMuted = Color(0xFFB7B09D)
+private val PrayerBg: Color @Composable get() = MaterialTheme.colorScheme.background
+private val PrayerGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val PrayerGoldSoft: Color @Composable get() = MaterialTheme.colorScheme.secondary
+private val PrayerCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val PrayerMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
 private val SevenSorrowsImages = listOf(
     Res.drawable.seven_sorrows_01_prophecy,
@@ -158,10 +160,10 @@ fun PrayerDetailScreen(
                     .background(
                         Brush.verticalGradient(
                             colors = listOf(
-                                PrayerBg.copy(alpha = 0.78f),
-                                PrayerBg.copy(alpha = 0.62f),
-                                PrayerBg.copy(alpha = 0.48f),
-                                PrayerBg.copy(alpha = 0.66f),
+                                PrayerBg.imageFade(0.78f),
+                                PrayerBg.imageFade(0.62f),
+                                PrayerBg.imageFade(0.48f),
+                                PrayerBg.imageFade(0.66f),
                             ),
                         ),
                     ),
@@ -297,7 +299,7 @@ private fun PrayerReadingContent(
                                 .clip(RoundedCornerShape(28.dp))
                                 .border(
                                     width = 2.dp,
-                                    color = PrayerGold.copy(alpha = 0.8f),
+                                    color = CardBorder,
                                     shape = RoundedCornerShape(28.dp),
                                 ),
                         )
@@ -400,7 +402,7 @@ private fun LanguageSegmentedControl(
     Surface(
         color = Color.Transparent,
         shape = RoundedCornerShape(26.dp),
-        border = androidx.compose.foundation.BorderStroke(2.dp, PrayerGold.copy(alpha = 0.75f)),
+        border = androidx.compose.foundation.BorderStroke(2.dp, CardBorder),
         modifier = Modifier.fillMaxWidth(),
     ) {
         Row(
@@ -447,7 +449,7 @@ private fun PrayerSectionCard(
     Card(
         shape = RoundedCornerShape(28.dp),
         colors = CardDefaults.cardColors(containerColor = Color.Transparent),
-        border = androidx.compose.foundation.BorderStroke(2.dp, PrayerGold.copy(alpha = 0.75f)),
+        border = androidx.compose.foundation.BorderStroke(2.dp, CardBorder),
         modifier = Modifier.fillMaxWidth(),
     ) {
         Column(modifier = Modifier.padding(22.dp)) {
@@ -499,7 +501,7 @@ private fun ReadingActionCard(
     Card(
         shape = RoundedCornerShape(24.dp),
         colors = CardDefaults.cardColors(containerColor = Color.Transparent),
-        border = androidx.compose.foundation.BorderStroke(2.dp, PrayerGold.copy(alpha = 0.75f)),
+        border = androidx.compose.foundation.BorderStroke(2.dp, CardBorder),
         modifier = Modifier.fillMaxWidth(),
     ) {
         Column(modifier = Modifier.padding(20.dp)) {
@@ -595,7 +597,7 @@ private fun AboutPrayerCard(
         colors = CardDefaults.cardColors(containerColor = Color.Transparent),
         border = androidx.compose.foundation.BorderStroke(
             2.dp,
-            PrayerGold.copy(alpha = 0.75f),
+            CardBorder,
         ),
     ) {
         Column(modifier = Modifier.padding(18.dp)) {

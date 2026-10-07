@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.orders
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -261,7 +262,7 @@ private fun FranciscanHeroCard(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(28.dp),
         color = ArticleSurface,
-        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.45f)),
+        border = BorderStroke(1.dp, CardBorder),
         shadowElevation = 4.dp,
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -364,7 +365,7 @@ private fun SectionIntroduction(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(18.dp),
         color = ArticleSurface.copy(alpha = 0.64f),
-        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.20f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         FranciscanMarkupText(
             raw = text,
@@ -389,7 +390,7 @@ private fun FranciscanBranchCard(
         modifier = Modifier.fillMaxWidth(),
         shape = shape,
         color = ArticleSurface,
-        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.38f)),
+        border = BorderStroke(1.dp, CardBorder),
         shadowElevation = 3.dp,
     ) {
         Column {

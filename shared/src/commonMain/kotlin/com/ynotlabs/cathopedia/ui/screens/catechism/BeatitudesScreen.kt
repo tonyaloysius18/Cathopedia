@@ -1,5 +1,8 @@
 package com.ynotlabs.cathopedia.ui.screens.catechism
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
+import androidx.compose.material3.MaterialTheme
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -57,13 +60,13 @@ import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
-private val BeatitudesBackground = Color(0xFF061A13)
-private val BeatitudesHeader = Color(0xFF081F17)
-private val BeatitudesSurface = Color(0xFF0A241B)
-private val BeatitudesSurfaceRaised = Color(0xFF0C271E)
-private val BeatitudesGold = Color(0xFFD6AE3D)
-private val BeatitudesCream = Color(0xFFF4ECDD)
-private val BeatitudesMuted = Color(0xFFB7B09D)
+private val BeatitudesBackground: Color @Composable get() = MaterialTheme.colorScheme.background
+private val BeatitudesHeader: Color @Composable get() = MaterialTheme.colorScheme.surface
+private val BeatitudesSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val BeatitudesSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val BeatitudesGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val BeatitudesCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val BeatitudesMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
 @Composable
 fun BeatitudesScreen(
@@ -169,7 +172,7 @@ private fun BeatitudesHeroCard() {
             .fillMaxWidth()
             .aspectRatio(2f)
             .clip(RoundedCornerShape(22.dp))
-            .border(1.dp, BeatitudesGold.copy(alpha = 0.35f), RoundedCornerShape(22.dp)),
+            .border(1.dp, CardBorder, RoundedCornerShape(22.dp)),
     )
 }
 
@@ -180,7 +183,7 @@ private fun BeatitudesIntroCard(text: String) {
         shape = RoundedCornerShape(20.dp),
         color = BeatitudesSurface,
         contentColor = BeatitudesCream,
-        border = BorderStroke(1.dp, BeatitudesGold.copy(alpha = 0.42f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
@@ -210,7 +213,7 @@ private fun BeatitudeCard(
         shape = RoundedCornerShape(20.dp),
         color = BeatitudesSurfaceRaised,
         contentColor = BeatitudesCream,
-        border = BorderStroke(1.dp, BeatitudesGold.copy(alpha = 0.22f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Row(
             modifier = Modifier.padding(12.dp),

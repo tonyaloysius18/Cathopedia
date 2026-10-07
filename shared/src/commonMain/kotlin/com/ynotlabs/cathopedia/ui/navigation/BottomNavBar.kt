@@ -38,9 +38,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import com.ynotlabs.cathopedia.i18n.LocalStrings
-import com.ynotlabs.cathopedia.ui.theme.DarkGoldBright
-import com.ynotlabs.cathopedia.ui.theme.DarkPillSurface
-import com.ynotlabs.cathopedia.ui.theme.LightGoldText
+import com.ynotlabs.cathopedia.ui.theme.LocalIsDarkTheme
 import androidx.compose.ui.layout.ContentScale
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.nav_explore
@@ -62,14 +60,19 @@ fun BottomNavBar(
     val count = items.size
     val selectedIndex = if (selected != null) items.indexOf(selected) else -1
 
-    val isLightMode = MaterialTheme.colorScheme.background.red > 0.5f
+    val isLightMode = !LocalIsDarkTheme.current
+    val accentColor = MaterialTheme.colorScheme.primary
     val barBackgroundColor = if (isLightMode) {
-        Color(0x732E5A44) // ~45% opaque green
+        MaterialTheme.colorScheme.surfaceContainerHighest.copy(alpha = 0.97f)
     } else {
-        DarkPillSurface.copy(alpha = 0.45f)
+        MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.88f)
     }
-    val activeCircleColor = barBackgroundColor
-    val rimColor = if (isLightMode) LightGoldText.copy(alpha = 0.45f) else DarkGoldBright.copy(alpha = 0.55f)
+    val activeCircleColor = if (isLightMode) {
+        MaterialTheme.colorScheme.surface
+    } else {
+        MaterialTheme.colorScheme.surfaceContainerHighest
+    }
+    val rimColor = accentColor.copy(alpha = if (isLightMode) 0.42f else 0.55f)
     // When nothing is selected, we bias towards the center or maintain previous?
     // Let's hide the bubble if selectedIndex is -1.
     val hasSelection = selectedIndex != -1
@@ -188,12 +191,12 @@ fun BottomNavBar(
             // Soft outer gold ambience around the complete pill.
             drawPath(
                 path = path,
-                color = DarkGoldBright.copy(alpha = 0.04f),
+                color = accentColor.copy(alpha = 0.04f),
                 style = Stroke(width = 12.dp.toPx()),
             )
             drawPath(
                 path = path,
-                color = DarkGoldBright.copy(alpha = 0.07f),
+                color = accentColor.copy(alpha = 0.07f),
                 style = Stroke(width = 7.dp.toPx()),
             )
 
@@ -206,9 +209,9 @@ fun BottomNavBar(
                 path = path,
                 brush = Brush.horizontalGradient(
                     colors = listOf(
-                        DarkGoldBright.copy(alpha = 0.11f),
-                        DarkGoldBright.copy(alpha = 0.045f),
-                        DarkGoldBright.copy(alpha = 0.08f),
+                        accentColor.copy(alpha = if (isLightMode) 0.05f else 0.11f),
+                        accentColor.copy(alpha = if (isLightMode) 0.02f else 0.045f),
+                        accentColor.copy(alpha = if (isLightMode) 0.04f else 0.08f),
                     ),
                 ),
             )
@@ -218,9 +221,9 @@ fun BottomNavBar(
                 path = path,
                 brush = Brush.verticalGradient(
                     colors = listOf(
-                        DarkGoldBright.copy(alpha = 0.06f),
+                        accentColor.copy(alpha = if (isLightMode) 0.025f else 0.06f),
                         Color.Transparent,
-                        DarkGoldBright.copy(alpha = 0.03f),
+                        accentColor.copy(alpha = if (isLightMode) 0.015f else 0.03f),
                     ),
                 ),
             )
@@ -231,9 +234,9 @@ fun BottomNavBar(
                 drawCircle(
                     brush = Brush.radialGradient(
                         colors = listOf(
-                            DarkGoldBright.copy(alpha = 0.64f * bubbleAlpha),
-                            DarkGoldBright.copy(alpha = 0.34f * bubbleAlpha),
-                            DarkGoldBright.copy(alpha = 0.13f * bubbleAlpha),
+                            accentColor.copy(alpha = 0.64f * bubbleAlpha),
+                            accentColor.copy(alpha = 0.34f * bubbleAlpha),
+                            accentColor.copy(alpha = 0.13f * bubbleAlpha),
                             Color.Transparent,
                         ),
                         center = Offset(centerX, bubbleCenterY),
@@ -247,8 +250,8 @@ fun BottomNavBar(
                 drawCircle(
                     brush = Brush.radialGradient(
                         colors = listOf(
-                            DarkGoldBright.copy(alpha = 0.52f * bubbleAlpha),
-                            DarkGoldBright.copy(alpha = 0.16f * bubbleAlpha),
+                            accentColor.copy(alpha = 0.52f * bubbleAlpha),
+                            accentColor.copy(alpha = 0.16f * bubbleAlpha),
                             Color.Transparent,
                         ),
                         center = Offset(centerX, bubbleCenterY),
@@ -275,7 +278,7 @@ fun BottomNavBar(
 
                 // Bright gold rim around the raised active circle.
                 drawCircle(
-                    color = DarkGoldBright.copy(alpha = 0.82f * bubbleAlpha),
+                    color = accentColor.copy(alpha = 0.82f * bubbleAlpha),
                     radius = bubbleRadius + 1.5.dp.toPx(),
                     center = Offset(centerX, bubbleCenterY),
                     style = Stroke(width = 1.5.dp.toPx()),
@@ -337,13 +340,14 @@ fun FloatingSearchButton(
     modifier: Modifier = Modifier,
 ) {
     val s = LocalStrings.current
-    val isLightMode = MaterialTheme.colorScheme.background.red > 0.5f
+    val isLightMode = !LocalIsDarkTheme.current
+    val accentColor = MaterialTheme.colorScheme.primary
     val barBackgroundColor = if (isLightMode) {
-        Color(0x732E5A44) // ~45% opaque green
+        MaterialTheme.colorScheme.surfaceContainerHighest.copy(alpha = 0.97f)
     } else {
-        DarkPillSurface.copy(alpha = 0.45f)
+        MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.88f)
     }
-    val rimColor = if (isLightMode) LightGoldText.copy(alpha = 0.45f) else DarkGoldBright.copy(alpha = 0.55f)
+    val rimColor = accentColor.copy(alpha = if (isLightMode) 0.42f else 0.55f)
 
     val scale by animateFloatAsState(
         targetValue = 1f,
@@ -359,7 +363,7 @@ fun FloatingSearchButton(
             }
             .clip(CircleShape)
             .background(barBackgroundColor)
-            .border(2.dp, if (isSelected) DarkGoldBright else rimColor, CircleShape)
+            .border(2.dp, if (isSelected) accentColor else rimColor, CircleShape)
             .clickable(onClick = onClick),
         contentAlignment = Alignment.Center
     ) {
@@ -369,8 +373,8 @@ fun FloatingSearchButton(
                 drawCircle(
                     brush = Brush.radialGradient(
                         colors = listOf(
-                            DarkGoldBright.copy(alpha = 0.45f),
-                            DarkGoldBright.copy(alpha = 0.15f),
+                            accentColor.copy(alpha = 0.45f),
+                            accentColor.copy(alpha = 0.15f),
                             Color.Transparent,
                         ),
                         center = center,

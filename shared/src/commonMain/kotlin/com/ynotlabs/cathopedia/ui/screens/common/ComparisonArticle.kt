@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.common
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -274,7 +275,7 @@ private fun PortraitCard(
         shape = RoundedCornerShape(20.dp),
         color = ArticleSurface,
         contentColor = ArticleCream,
-        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Column(
             modifier = Modifier.padding(10.dp),
@@ -360,7 +361,7 @@ private fun UnifiedComparisonCard(row: ComparisonRow) {
         shape = RoundedCornerShape(16.dp),
         color = ArticleSurface,
         contentColor = ArticleCream,
-        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.28f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Row(
             modifier = Modifier
@@ -407,7 +408,7 @@ private fun ComparisonCell(
         shape = RoundedCornerShape(16.dp),
         color = ArticleSurface,
         contentColor = ArticleCream,
-        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.28f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         ComparisonCellContent(
             text = text,
@@ -472,7 +473,7 @@ private fun KeyPointsCard(side: String, points: List<String>) {
         shape = RoundedCornerShape(20.dp),
         color = ArticleSurface,
         contentColor = ArticleCream,
-        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))

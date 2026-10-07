@@ -1,5 +1,8 @@
 package com.ynotlabs.cathopedia.ui.screens.catechism
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
+import androidx.compose.material3.MaterialTheme
+
 import com.ynotlabs.cathopedia.i18n.LocalScreenText
 import com.ynotlabs.cathopedia.i18n.ScreenText
 import com.ynotlabs.cathopedia.i18n.Strings
@@ -64,13 +67,13 @@ import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
-private val GiftsBackground = Color(0xFF061A13)
-private val GiftsHeader = Color(0xFF081F17)
-private val GiftsSurface = Color(0xFF0A241B)
-private val GiftsSurfaceRaised = Color(0xFF0C271E)
-private val GiftsGold = Color(0xFFD6AE3D)
-private val GiftsCream = Color(0xFFF4ECDD)
-private val GiftsMuted = Color(0xFFB7B09D)
+private val GiftsBackground: Color @Composable get() = MaterialTheme.colorScheme.background
+private val GiftsHeader: Color @Composable get() = MaterialTheme.colorScheme.surface
+private val GiftsSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val GiftsSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val GiftsGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val GiftsCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val GiftsMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
 private data class GiftsCopy(
     val subtitle: String,
@@ -210,7 +213,7 @@ private fun GiftsHeroCard(description: String) {
             .fillMaxWidth()
             .aspectRatio(2f)
             .clip(RoundedCornerShape(22.dp))
-            .border(1.dp, GiftsGold.copy(alpha = 0.42f), RoundedCornerShape(22.dp)),
+            .border(1.dp, CardBorder, RoundedCornerShape(22.dp)),
     )
 }
 
@@ -221,7 +224,7 @@ private fun GiftsIntroCard(text: String) {
         shape = RoundedCornerShape(20.dp),
         color = GiftsSurface,
         contentColor = GiftsCream,
-        border = BorderStroke(1.dp, GiftsGold.copy(alpha = 0.42f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
@@ -270,7 +273,7 @@ private fun GiftCard(number: Int, title: String, body: String) {
         shape = RoundedCornerShape(20.dp),
         color = GiftsSurfaceRaised,
         contentColor = GiftsCream,
-        border = BorderStroke(1.dp, GiftsGold.copy(alpha = 0.22f)),
+        border = BorderStroke(1.dp, CardBorder),
         shadowElevation = 2.dp,
     ) {
         Row(
@@ -371,7 +374,7 @@ private fun GiftsArticleCard(
         shape = RoundedCornerShape(20.dp),
         color = GiftsSurface,
         contentColor = GiftsCream,
-        border = BorderStroke(1.dp, GiftsGold.copy(alpha = 0.48f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))

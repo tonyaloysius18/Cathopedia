@@ -1,5 +1,8 @@
 package com.ynotlabs.cathopedia.ui.screens.catechism
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
+import androidx.compose.material3.MaterialTheme
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -57,13 +60,13 @@ import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
-private val MercyBackground = Color(0xFF061A13)
-private val MercyHeader = Color(0xFF081F17)
-private val MercySurface = Color(0xFF0A241B)
-private val MercySurfaceRaised = Color(0xFF0C271E)
-private val MercyGold = Color(0xFFD6AE3D)
-private val MercyCream = Color(0xFFF4ECDD)
-private val MercyMuted = Color(0xFFB7B09D)
+private val MercyBackground: Color @Composable get() = MaterialTheme.colorScheme.background
+private val MercyHeader: Color @Composable get() = MaterialTheme.colorScheme.surface
+private val MercySurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val MercySurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val MercyGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val MercyCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val MercyMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
 @Composable
 fun WorksOfMercyScreen(
@@ -191,7 +194,7 @@ private fun MercyHeroCard() {
             .fillMaxWidth()
             .aspectRatio(2f)
             .clip(RoundedCornerShape(22.dp))
-            .border(1.dp, MercyGold.copy(alpha = 0.35f), RoundedCornerShape(22.dp)),
+            .border(1.dp, CardBorder, RoundedCornerShape(22.dp)),
     )
 }
 
@@ -202,7 +205,7 @@ private fun MercyIntroCard(text: String) {
         shape = RoundedCornerShape(20.dp),
         color = MercySurface,
         contentColor = MercyCream,
-        border = BorderStroke(1.dp, MercyGold.copy(alpha = 0.42f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
@@ -255,7 +258,7 @@ private fun MercyCard(
         shape = RoundedCornerShape(20.dp),
         color = MercySurfaceRaised,
         contentColor = MercyCream,
-        border = BorderStroke(1.dp, MercyGold.copy(alpha = 0.22f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Row(
             modifier = Modifier.padding(12.dp),

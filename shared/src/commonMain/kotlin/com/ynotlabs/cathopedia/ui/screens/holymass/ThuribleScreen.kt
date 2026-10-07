@@ -1,5 +1,8 @@
 package com.ynotlabs.cathopedia.ui.screens.holymass
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
+import androidx.compose.material3.MaterialTheme
+
 import com.ynotlabs.cathopedia.i18n.LocalScreenText
 import com.ynotlabs.cathopedia.i18n.ScreenText
 import androidx.compose.foundation.BorderStroke
@@ -57,14 +60,14 @@ import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import org.jetbrains.compose.resources.painterResource
 
 // Green + gold, matching the Cathopedia hub pages.
-private val ThuribleBg = Color(0xFF061A13)
-private val ThuribleSurface = Color(0xFF0A241B)
-private val ThuribleSurfaceRaised = Color(0xFF0F2E22)
-private val ThuribleGold = Color(0xFFD6AE3D)
-private val ThuribleGoldSoft = Color(0xFFB08D57)
-private val ThuribleCream = Color(0xFFF4ECDD)
-private val ThuribleMuted = Color(0xFFB7B09D)
-private val ThuribleHeader = Color(0xFF081F17)
+private val ThuribleBg: Color @Composable get() = MaterialTheme.colorScheme.background
+private val ThuribleSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val ThuribleSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val ThuribleGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val ThuribleGoldSoft: Color @Composable get() = MaterialTheme.colorScheme.secondary
+private val ThuribleCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val ThuribleMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
+private val ThuribleHeader: Color @Composable get() = MaterialTheme.colorScheme.surface
 
 @Composable
 fun ThuribleScreen(
@@ -177,7 +180,7 @@ private fun ThuribleIntroCard(text: String) {
         shape = RoundedCornerShape(20.dp),
         color = ThuribleSurface,
         contentColor = ThuribleCream,
-        border = BorderStroke(1.dp, ThuribleGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
@@ -264,7 +267,7 @@ private fun PartCard(
         modifier = modifier,
         shape = RoundedCornerShape(20.dp),
         color = ThuribleSurface,
-        border = BorderStroke(1.dp, ThuribleGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))

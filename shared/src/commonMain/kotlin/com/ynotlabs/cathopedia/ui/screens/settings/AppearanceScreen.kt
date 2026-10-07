@@ -1,5 +1,7 @@
 package com.ynotlabs.cathopedia.ui.screens.settings
 
+import com.ynotlabs.cathopedia.ui.theme.imageFade
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
@@ -124,8 +126,8 @@ private fun AppearanceHeader(
                     Brush.horizontalGradient(
                         listOf(
                             MaterialTheme.colorScheme.background,
-                            MaterialTheme.colorScheme.background.copy(alpha = 0.92f),
-                            MaterialTheme.colorScheme.background.copy(alpha = 0.24f),
+                            MaterialTheme.colorScheme.background.imageFade(0.92f),
+                            MaterialTheme.colorScheme.background.imageFade(0.24f),
                             Color.Transparent,
                         ),
                     ),
@@ -139,8 +141,8 @@ private fun AppearanceHeader(
                     Brush.verticalGradient(
                         listOf(
                             Color.Transparent,
-                            MaterialTheme.colorScheme.background.copy(alpha = 0.10f),
-                            MaterialTheme.colorScheme.background.copy(alpha = 0.95f),
+                            MaterialTheme.colorScheme.background.imageFade(0.10f),
+                            MaterialTheme.colorScheme.background.imageFade(0.95f),
                         ),
                     ),
                 ),
@@ -432,7 +434,7 @@ private fun ThemeInfo(
         color = MaterialTheme.colorScheme.surface.copy(alpha = 0.90f),
         border = BorderStroke(
             width = 2.dp,
-            color = MaterialTheme.colorScheme.outline.copy(alpha = 0.64f),
+            color = CardBorder,
         ),
     ) {
         Row(
@@ -445,7 +447,7 @@ private fun ThemeInfo(
                 color = MaterialTheme.colorScheme.primary.copy(alpha = 0.09f),
                 border = BorderStroke(
                     width = 2.dp,
-                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.26f),
+                    color = CardBorder,
                 ),
             ) {
                 Box(contentAlignment = Alignment.Center) {
@@ -517,9 +519,9 @@ private fun ThemePreview(
                     Brush.horizontalGradient(
                         colorStops = arrayOf(
                             0.00f to cardBackground,
-                            0.48f to cardBackground.copy(alpha = 0.98f),
-                            0.68f to cardBackground.copy(alpha = 0.72f),
-                            1.00f to cardBackground.copy(alpha = 0.16f),
+                            0.48f to cardBackground.imageFade(0.98f),
+                            0.68f to cardBackground.imageFade(0.72f),
+                            1.00f to cardBackground.imageFade(0.16f),
                         ),
                     ),
                 ),

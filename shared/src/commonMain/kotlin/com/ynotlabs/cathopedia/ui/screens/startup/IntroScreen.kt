@@ -1,5 +1,7 @@
 package com.ynotlabs.cathopedia.ui.screens.startup
 
+import androidx.compose.material3.MaterialTheme
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -54,14 +56,14 @@ import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.cathopedia_app_logo_transparent
 import org.jetbrains.compose.resources.painterResource
 
-private val IntroBg = Color(0xFF061A13)
-private val IntroSurface = Color(0xFF0C271E)
-private val IntroSurfaceRaised = Color(0xFF123127)
-private val IntroBorder = Color(0xFF315444)
-private val IntroGold = Color(0xFFD8B24C)
-private val IntroGoldSoft = Color(0xFF9D8858)
-private val IntroCream = Color(0xFFF4ECDD)
-private val IntroMuted = Color(0xFFB4AD98)
+private val IntroBg: Color @Composable get() = MaterialTheme.colorScheme.background
+private val IntroSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val IntroSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val IntroBorder: Color @Composable get() = MaterialTheme.colorScheme.outline
+private val IntroGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val IntroGoldSoft: Color @Composable get() = MaterialTheme.colorScheme.secondary
+private val IntroCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val IntroMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
 private data class IntroPage(
     val title: String,
@@ -600,7 +602,5 @@ private fun IntroProgress(
         Spacer(Modifier.weight(1f))
     }
 }
-
-
 
 

@@ -1,5 +1,7 @@
 package com.ynotlabs.cathopedia.ui.screens.common
 
+import com.ynotlabs.cathopedia.ui.theme.imageFade
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -66,12 +68,12 @@ import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.ui.hubAssetPainter
 
-private val HubBackground = Color(0xFF061A13)
-private val HubCard = Color(0xFF0A241B)
-private val HubCardDeep = Color(0xFF081F17)
-private val HubGold = Color(0xFFD6AE3D)
-private val HubCream = Color(0xFFF4ECDD)
-private val HubMuted = Color(0xFFB7B09D)
+private val HubBackground: Color @Composable get() = MaterialTheme.colorScheme.background
+private val HubCard: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val HubCardDeep: Color @Composable get() = MaterialTheme.colorScheme.surface
+private val HubGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val HubCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val HubMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
 /**
  * Premium hub screen used by Cathopedia topic hubs.
@@ -246,7 +248,7 @@ private fun HubEditorialImage(asset: String) {
                     .background(
                         Brush.verticalGradient(
                             0.52f to Color.Transparent,
-                            1f to HubBackground.copy(alpha = 0.72f),
+                            1f to HubBackground.imageFade(0.72f),
                         )
                     ),
             )
@@ -261,7 +263,7 @@ private fun HubIntroCard(text: String) {
         shape = RoundedCornerShape(20.dp),
         color = HubCard,
         contentColor = HubCream,
-        border = BorderStroke(1.dp, HubGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))

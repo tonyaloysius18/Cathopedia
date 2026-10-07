@@ -1,5 +1,9 @@
 package com.ynotlabs.cathopedia.ui.screens.catechism
 
+import com.ynotlabs.cathopedia.ui.theme.imageFade
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
+import androidx.compose.material3.MaterialTheme
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -52,13 +56,13 @@ import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
-private val TrinityBackground = Color(0xFF041710)
-private val TrinitySurface = Color(0xFF09251B)
-private val TrinitySurfaceDeep = Color(0xFF071E16)
-private val TrinityGold = Color(0xFFD6A936)
-private val TrinityCream = Color(0xFFF5EDDC)
-private val TrinityMuted = Color(0xFFC7BEA8)
-private val TrinityCallout = Color(0xFF0E3125)
+private val TrinityBackground: Color @Composable get() = MaterialTheme.colorScheme.background
+private val TrinitySurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val TrinitySurfaceDeep: Color @Composable get() = MaterialTheme.colorScheme.surface
+private val TrinityGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val TrinityCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val TrinityMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
+private val TrinityCallout: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
 
 private val TrinityStringKeys = setOf(
     "art.trinity.title",
@@ -127,7 +131,7 @@ fun HolyTrinityScreen(
                                 colors = listOf(
                                     Color.Black.copy(alpha = 0.08f),
                                     Color.Transparent,
-                                    TrinityBackground.copy(alpha = 0.18f),
+                                    TrinityBackground.imageFade(0.18f),
                                     TrinityBackground,
                                 ),
                             ),
@@ -227,7 +231,7 @@ private fun TrinityPersonCard(rawText: String, image: DrawableResource) {
         shape = shape,
         color = TrinitySurface,
         contentColor = TrinityCream,
-        border = BorderStroke(1.dp, TrinityGold.copy(alpha = 0.48f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             Box(

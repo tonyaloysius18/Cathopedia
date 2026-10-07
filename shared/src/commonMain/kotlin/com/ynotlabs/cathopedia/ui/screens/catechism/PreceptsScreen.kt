@@ -1,5 +1,8 @@
 package com.ynotlabs.cathopedia.ui.screens.catechism
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
+import androidx.compose.material3.MaterialTheme
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -57,13 +60,13 @@ import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
-private val PreceptsBackground = Color(0xFF061A13)
-private val PreceptsHeader = Color(0xFF081F17)
-private val PreceptsSurface = Color(0xFF0A241B)
-private val PreceptsSurfaceRaised = Color(0xFF0C271E)
-private val PreceptsGold = Color(0xFFD6AE3D)
-private val PreceptsCream = Color(0xFFF4ECDD)
-private val PreceptsMuted = Color(0xFFB7B09D)
+private val PreceptsBackground: Color @Composable get() = MaterialTheme.colorScheme.background
+private val PreceptsHeader: Color @Composable get() = MaterialTheme.colorScheme.surface
+private val PreceptsSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val PreceptsSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val PreceptsGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val PreceptsCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val PreceptsMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
 @Composable
 fun PreceptsScreen(
@@ -177,7 +180,7 @@ private fun PreceptsHeroCard() {
             .fillMaxWidth()
             .aspectRatio(2f)
             .clip(RoundedCornerShape(22.dp))
-            .border(1.dp, PreceptsGold.copy(alpha = 0.35f), RoundedCornerShape(22.dp)),
+            .border(1.dp, CardBorder, RoundedCornerShape(22.dp)),
     )
 }
 
@@ -188,7 +191,7 @@ private fun PreceptsIntroCard(text: String) {
         shape = RoundedCornerShape(20.dp),
         color = PreceptsSurface,
         contentColor = PreceptsCream,
-        border = BorderStroke(1.dp, PreceptsGold.copy(alpha = 0.42f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
@@ -241,7 +244,7 @@ private fun PreceptCard(
         shape = RoundedCornerShape(20.dp),
         color = PreceptsSurfaceRaised,
         contentColor = PreceptsCream,
-        border = BorderStroke(1.dp, PreceptsGold.copy(alpha = 0.22f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Row(
             modifier = Modifier.padding(12.dp),

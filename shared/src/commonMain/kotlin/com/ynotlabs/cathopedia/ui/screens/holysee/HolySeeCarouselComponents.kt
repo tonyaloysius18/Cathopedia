@@ -1,5 +1,7 @@
 package com.ynotlabs.cathopedia.ui.screens.holysee
 
+import com.ynotlabs.cathopedia.ui.theme.imageFade
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -27,6 +29,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -53,14 +56,14 @@ import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import kotlin.math.abs
 import kotlin.math.min
 
-internal val HolySeeBackground = Color(0xFF061A13)
-internal val HolySeeHeader = Color(0xFF081F17)
-internal val HolySeeSurface = Color(0xFF0C271E)
-internal val HolySeeSurfaceRaised = Color(0xFF123328)
-internal val HolySeeGold = Color(0xFFD8B24C)
-internal val HolySeeGoldSoft = Color(0xFFB89A58)
-internal val HolySeeCream = Color(0xFFF4ECDD)
-internal val HolySeeMuted = Color(0xFFB7B09D)
+internal val HolySeeBackground: Color @Composable get() = MaterialTheme.colorScheme.background
+internal val HolySeeHeader: Color @Composable get() = MaterialTheme.colorScheme.surface
+internal val HolySeeSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+internal val HolySeeSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+internal val HolySeeGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+internal val HolySeeGoldSoft: Color @Composable get() = MaterialTheme.colorScheme.secondary
+internal val HolySeeCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+internal val HolySeeMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 internal val CardinalScarlet = Color(0xFFE06B68)
 
 @Composable
@@ -128,7 +131,7 @@ internal fun HolySeeIntroCard(
         shape = RoundedCornerShape(20.dp),
         color = HolySeeSurface,
         contentColor = HolySeeCream,
-        border = BorderStroke(1.dp, HolySeeGold.copy(alpha = 0.40f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(
@@ -341,7 +344,7 @@ private fun HolySeePortraitCard(
                     Brush.verticalGradient(
                         0f to Color.Transparent,
                         0.60f to Color.Transparent,
-                        1f to HolySeeBackground.copy(alpha = 0.98f),
+                        1f to HolySeeBackground.imageFade(0.98f),
                     )
                 )
         )

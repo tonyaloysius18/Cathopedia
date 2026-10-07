@@ -1,5 +1,9 @@
 package com.ynotlabs.cathopedia.ui.screens.sacraments
 
+import com.ynotlabs.cathopedia.ui.theme.imageFade
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
+import androidx.compose.material3.MaterialTheme
+
 
 import com.ynotlabs.cathopedia.i18n.LocalScreenText
 import com.ynotlabs.cathopedia.i18n.ScreenText
@@ -65,13 +69,13 @@ import kotlin.math.min
 import org.jetbrains.compose.resources.painterResource
 
 // Green + gold, matching the Cathopedia hub pages (see HubScreen).
-private val SacramentsBg = Color(0xFF061A13)
-private val SacramentsSurface = Color(0xFF0A241B)
-private val SacramentsSurfaceRaised = Color(0xFF0F2E22)
-private val SacramentsGold = Color(0xFFD6AE3D)
-private val SacramentsGoldSoft = Color(0xFFB08D57)
+private val SacramentsBg: Color @Composable get() = MaterialTheme.colorScheme.background
+private val SacramentsSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val SacramentsSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val SacramentsGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val SacramentsGoldSoft: Color @Composable get() = MaterialTheme.colorScheme.secondary
 private val SacramentsProgressActive = Color(0xFF4FA97B)
-private val SacramentsCream = Color(0xFFF4ECDD)
+private val SacramentsCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
 
 private const val CARD_WIDTH_DP = 220
 private const val CARD_HEIGHT_DP = 300
@@ -262,7 +266,7 @@ private fun SacramentCard(
             }
             .border(
                 width = 1.dp,
-                color = SacramentsGold.copy(alpha = 0.45f),
+                color = CardBorder,
                 shape = RoundedCornerShape(26.dp)
             )
             .clip(RoundedCornerShape(26.dp))
@@ -291,7 +295,7 @@ private fun SacramentCard(
                     Brush.verticalGradient(
                         0f to Color.Transparent,
                         0.62f to Color.Transparent,
-                        1f to SacramentsSurface.copy(alpha = 0.96f),
+                        1f to SacramentsSurface.imageFade(0.96f),
                     ),
                 ),
         )
@@ -362,7 +366,7 @@ private fun SacramentTextPanel(
         Surface(
             shape = RoundedCornerShape(16.dp),
             color = SacramentsSurface,
-            border = BorderStroke(1.dp, SacramentsGold.copy(alpha = 0.35f)),
+            border = BorderStroke(1.dp, CardBorder),
             modifier = Modifier.fillMaxWidth(),
         ) {
             Column(modifier = Modifier.padding(16.dp)) {

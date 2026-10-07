@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.startup
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -186,7 +187,7 @@ fun LanguageScreenStartup(
                 color = MaterialTheme.colorScheme.primary.copy(alpha = 0.08f),
                 border = BorderStroke(
                     width = 2.dp,
-                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.26f),
+                    color = CardBorder,
                 ),
             ) {
                 Box(contentAlignment = Alignment.Center) {
@@ -259,7 +260,7 @@ private fun StartupLanguageRow(
             color = MaterialTheme.colorScheme.background.copy(alpha = 0.56f),
             border = BorderStroke(
                 width = 2.dp,
-                color = MaterialTheme.colorScheme.primary.copy(alpha = 0.42f),
+                color = CardBorder,
             ),
         ) {
             Box(contentAlignment = Alignment.Center) {
@@ -306,7 +307,7 @@ private fun StartupLanguageRow(
                     color = MaterialTheme.colorScheme.primary.copy(alpha = 0.07f),
                     border = BorderStroke(
                         width = 2.dp,
-                        color = MaterialTheme.colorScheme.primary.copy(alpha = 0.24f),
+                        color = CardBorder,
                     ),
                 ) {
                     Text(

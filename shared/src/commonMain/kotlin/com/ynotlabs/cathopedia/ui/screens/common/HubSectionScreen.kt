@@ -1,5 +1,7 @@
 package com.ynotlabs.cathopedia.ui.screens.common
 
+import com.ynotlabs.cathopedia.ui.theme.imageFade
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import com.ynotlabs.cathopedia.ui.screens.catechism.BeatitudesScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.CapitalSinsScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.FruitsOfHolySpiritScreen
@@ -95,11 +97,11 @@ import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.model.HubTimelineDetail
 import org.jetbrains.compose.resources.painterResource
 
-private val HubSectionHeader = Color(0xFF081F17)
-private val HubSectionCard = Color(0xFF0C271E)
-private val HubSectionGold = Color(0xFFD6AE3D)
-private val HubSectionCream = Color(0xFFF4ECDD)
-private val HubSectionMuted = Color(0xFFB7B09D)
+private val HubSectionHeader: Color @Composable get() = MaterialTheme.colorScheme.surface
+private val HubSectionCard: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val HubSectionGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val HubSectionCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val HubSectionMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 /**
  * Section shell: resolves the section's own header, then dispatches to one renderer per
  * [HubSectionSummary.layout] (docs/briefs/topic-hubs.md, T5). ARTICLES and DIAGRAM are the two
@@ -359,7 +361,7 @@ private fun HubSectionEditorialImage(asset: String, title: String) {
                         .background(
                             Brush.verticalGradient(
                                 0.52f to Color.Transparent,
-                                1f to HubSectionHeader.copy(alpha = 0.76f),
+                                1f to HubSectionHeader.imageFade(0.76f),
                             )
                         ),
                 )
@@ -385,7 +387,7 @@ private fun HubSectionIntroCard(text: String) {
         shape = RoundedCornerShape(20.dp),
         color = HubSectionCard,
         contentColor = HubSectionCream,
-        border = BorderStroke(1.dp, HubSectionGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
@@ -457,7 +459,7 @@ private fun HubSectionItemCard(
         shape = RoundedCornerShape(20.dp),
         color = HubSectionCard,
         contentColor = HubSectionCream,
-        border = BorderStroke(1.dp, HubSectionGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
@@ -474,7 +476,7 @@ private fun HubSectionItemCard(
                             Surface(
                                 color = HubSectionHeader.copy(alpha = 0.85f),
                                 shape = RoundedCornerShape(50),
-                                border = BorderStroke(1.dp, HubSectionGold.copy(alpha = 0.75f)),
+                                border = BorderStroke(1.dp, CardBorder),
                             ) {
                                 Text(
                                     text = it,
@@ -637,7 +639,7 @@ private fun ArticleRow(
         shape = RoundedCornerShape(20.dp),
         color = HubSectionCard,
         contentColor = HubSectionCream,
-        border = BorderStroke(1.dp, HubSectionGold.copy(alpha = 0.48f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
@@ -843,7 +845,7 @@ private fun SacramentCarousel(
                     modifier = Modifier
                         .width(236.dp)
                         .height(344.dp)
-                        .border(1.dp, HubSectionGold.copy(alpha = 0.42f), RoundedCornerShape(26.dp))
+                        .border(1.dp, CardBorder, RoundedCornerShape(26.dp))
                         .clip(RoundedCornerShape(26.dp))
                         .background(
                             Brush.verticalGradient(
@@ -870,7 +872,7 @@ private fun SacramentCarousel(
                                 Brush.verticalGradient(
                                     0f to Color.Transparent,
                                     0.50f to Color.Transparent,
-                                    0.76f to HubSectionCard.copy(alpha = 0.78f),
+                                    0.76f to HubSectionCard.imageFade(0.78f),
                                     1f to HubSectionCard,
                                 ),
                             ),

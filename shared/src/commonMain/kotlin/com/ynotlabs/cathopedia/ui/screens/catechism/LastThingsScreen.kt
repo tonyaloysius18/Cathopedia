@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.catechism
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
@@ -131,6 +132,7 @@ fun LastThingsScreen(
     val current = article
     val blocks = current?.blocks.orEmpty()
     val intro = blocks.filterIsInstance<ParagraphBlock>().firstOrNull()?.let { strings[it.textKey] }.orEmpty()
+    val fallbackAccent = ArticleGold
 
     ArticleScaffold(
         title = current?.let { strings[it.titleKey] }.orEmpty(),
@@ -159,7 +161,7 @@ fun LastThingsScreen(
                 val position = stateIndex
                 stateIndex += 1
                 val thing = LastThing(
-                    accent = StateAccents.getOrElse(position) { ArticleGold },
+                    accent = StateAccents.getOrElse(position) { fallbackAccent },
                     asset = block.asset,
                     title = next.titleKey?.let(strings::get).orEmpty(),
                     body = strings[next.textKey].orEmpty(),
@@ -292,12 +294,13 @@ private fun LastThingTitle(thing: LastThing) {
 /** Earth, death, judgement and what follows — as one thread running down the page. */
 @Composable
 private fun SequenceCard(steps: List<String>) {
+    val lineColor = ArticleGold
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
         color = ArticleSurface,
         contentColor = ArticleCream,
-        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))
@@ -323,7 +326,7 @@ private fun SequenceCard(steps: List<String>) {
                                 val gap = 5.dp.toPx()
                                 if (index > 0) {
                                     drawLine(
-                                        color = ArticleGold.copy(alpha = 0.3f),
+                                        color = lineColor.copy(alpha = 0.3f),
                                         start = Offset(x, 0f),
                                         end = Offset(x, dotY - gap),
                                         strokeWidth = 1.5.dp.toPx(),
@@ -331,14 +334,14 @@ private fun SequenceCard(steps: List<String>) {
                                 }
                                 if (!isLast) {
                                     drawLine(
-                                        color = ArticleGold.copy(alpha = 0.3f),
+                                        color = lineColor.copy(alpha = 0.3f),
                                         start = Offset(x, dotY + gap),
                                         end = Offset(x, size.height),
                                         strokeWidth = 1.5.dp.toPx(),
                                     )
                                 }
                                 drawCircle(
-                                    color = ArticleGold,
+                                    color = lineColor,
                                     radius = 3.5.dp.toPx(),
                                     center = Offset(x, dotY),
                                 )

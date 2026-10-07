@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.priesthood
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
@@ -234,7 +235,7 @@ private fun PathToggle(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(28.dp),
         color = ArticleSurface,
-        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Row(modifier = Modifier.padding(5.dp)) {
             PathToggleHalf(left, selected = !rightSelected, modifier = Modifier.weight(1f)) { onSelect(false) }
@@ -290,6 +291,7 @@ private fun StepRow(
     body: String,
     isLast: Boolean,
 ) {
+    val lineColor = ArticleGold
     Row(modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min)) {
         Column(
             modifier = Modifier.width(46.dp).fillMaxHeight(),
@@ -310,7 +312,7 @@ private fun StepRow(
             if (!isLast) {
                 Canvas(modifier = Modifier.width(2.dp).fillMaxHeight()) {
                     drawLine(
-                        color = ArticleGold.copy(alpha = 0.35f),
+                        color = lineColor.copy(alpha = 0.35f),
                         start = Offset(size.width / 2f, 0f),
                         end = Offset(size.width / 2f, size.height),
                         strokeWidth = size.width,
@@ -326,7 +328,7 @@ private fun StepRow(
             shape = RoundedCornerShape(18.dp),
             color = ArticleSurface,
             contentColor = ArticleCream,
-            border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.3f)),
+            border = BorderStroke(1.dp, CardBorder),
         ) {
             Box {
                 GoldCardAccent(Modifier.align(Alignment.CenterStart))

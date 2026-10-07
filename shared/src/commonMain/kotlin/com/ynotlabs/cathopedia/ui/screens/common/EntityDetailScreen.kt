@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.common
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import com.ynotlabs.cathopedia.i18n.LocalScreenText
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -671,7 +672,7 @@ private fun DetailActionBar(
         shape = RoundedCornerShape(18.dp),
         border = androidx.compose.foundation.BorderStroke(
             width = 2.dp,
-            color = DetailBorder,
+            color = CardBorder,
         ),
         shadowElevation = 8.dp,
     ) {
@@ -1053,7 +1054,7 @@ private fun PremiumSectionCard(
             .background(DetailSurface)
             .border(
                 width = 1.dp,
-                color = DetailGold.copy(alpha = 0.35f),
+                color = CardBorder,
                 shape = RoundedCornerShape(22.dp),
             )
             .padding(18.dp),
@@ -1217,7 +1218,7 @@ private fun FactCard(
             .background(DetailSurfaceElevated)
             .border(
                 width = 1.dp,
-                color = DetailGold.copy(alpha = 0.35f),
+                color = CardBorder,
                 shape = RoundedCornerShape(14.dp),
             )
             .padding(horizontal = 12.dp, vertical = 12.dp),
@@ -1362,7 +1363,7 @@ private fun SourceCard(
             .background(DetailSurface)
             .border(
                 width = 1.dp,
-                color = DetailGold.copy(alpha = 0.35f),
+                color = CardBorder,
                 shape = RoundedCornerShape(22.dp),
             )
             .padding(18.dp),
@@ -1376,7 +1377,7 @@ private fun SourceCard(
                 .background(DetailSurfaceElevated)
                 .border(
                     width = 1.dp,
-                    color = DetailGold.copy(alpha = 0.35f),
+                    color = CardBorder,
                     shape = RoundedCornerShape(15.dp),
                 )
                 .padding(14.dp),

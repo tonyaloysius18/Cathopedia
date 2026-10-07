@@ -1,6 +1,5 @@
 package com.ynotlabs.cathopedia.ui.theme
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
@@ -43,7 +42,7 @@ private val DarkRosaryColors = RosaryColors(
     prayed = Color(0xFF5A7CA8),
 )
 
-/** Same light/dark heuristic BottomNavBar.kt already uses — accounts for the user's explicit theme override, not just system dark mode. */
+/** Uses the resolved appearance, including an explicit override from Settings. */
 @Composable
 fun rosaryColors(): RosaryColors =
-    if (MaterialTheme.colorScheme.background.red > 0.5f) LightRosaryColors else DarkRosaryColors
+    if (LocalIsDarkTheme.current) DarkRosaryColors else LightRosaryColors

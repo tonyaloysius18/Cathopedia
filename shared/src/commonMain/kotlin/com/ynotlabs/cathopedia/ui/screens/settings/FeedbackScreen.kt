@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.settings
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -516,7 +517,7 @@ private fun FeedbackAttachments(
                 contentColor = MaterialTheme.colorScheme.primary,
                 border = BorderStroke(
                     1.dp,
-                    MaterialTheme.colorScheme.primary.copy(alpha = 0.34f),
+                    CardBorder,
                 ),
             ) {
                 Row(

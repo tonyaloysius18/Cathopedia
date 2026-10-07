@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.holysee
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -137,7 +138,7 @@ fun CardinalsScreen(
                 Surface(
                     color = HolySeeSurfaceRaised,
                     shape = RoundedCornerShape(18.dp),
-                    border = BorderStroke(1.dp, HolySeeGold.copy(alpha = 0.34f)),
+                    border = BorderStroke(1.dp, CardBorder),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 20.dp, vertical = 18.dp),

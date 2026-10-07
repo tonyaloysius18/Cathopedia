@@ -1,5 +1,9 @@
 package com.ynotlabs.cathopedia.ui.screens.home
 
+import com.ynotlabs.cathopedia.ui.theme.imageFade
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
+import androidx.compose.material3.MaterialTheme
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -76,14 +80,14 @@ import com.ynotlabs.cathopedia.ui.singularLabel
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 
-private val SearchBg = Color(0xFF061A13)
-private val SearchSurface = Color(0xFF0C271E)
-private val SearchSurfaceRaised = Color(0xFF123127)
-private val SearchBorder = Color(0xFF315444)
-private val SearchGold = Color(0xFFD8B24C)
-private val SearchGoldSoft = Color(0xFF9D8858)
-private val SearchCream = Color(0xFFF4ECDD)
-private val SearchMuted = Color(0xFFB4AD98)
+private val SearchBg: Color @Composable get() = MaterialTheme.colorScheme.background
+private val SearchSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val SearchSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val SearchBorder: Color @Composable get() = MaterialTheme.colorScheme.outline
+private val SearchGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val SearchGoldSoft: Color @Composable get() = MaterialTheme.colorScheme.secondary
+private val SearchCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val SearchMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
 /**
  * Premium global search screen.
@@ -238,8 +242,8 @@ private fun SearchHeader(
                         Brush.horizontalGradient(
                             colorStops = arrayOf(
                                 0.00f to SearchBg,
-                                0.50f to SearchBg.copy(alpha = 0.96f),
-                                0.76f to SearchBg.copy(alpha = 0.55f),
+                                0.50f to SearchBg.imageFade(0.96f),
+                                0.76f to SearchBg.imageFade(0.55f),
                                 1.00f to Color.Transparent,
                             ),
                         ),
@@ -253,7 +257,7 @@ private fun SearchHeader(
                         Brush.verticalGradient(
                             listOf(
                                 Color.Transparent,
-                                SearchBg.copy(alpha = 0.08f),
+                                SearchBg.imageFade(0.08f),
                                 SearchBg,
                             ),
                         ),
@@ -411,7 +415,7 @@ private fun SearchInitialState() {
             color = SearchGold.copy(alpha = 0.05f),
             border = BorderStroke(
                 width = 2.dp,
-                color = SearchGold.copy(alpha = 0.15f),
+                color = CardBorder,
             ),
         ) {
             Box(contentAlignment = Alignment.Center) {
@@ -509,7 +513,7 @@ private fun RecentSearchCard(
         color = SearchSurface.copy(alpha = 0.92f),
         border = BorderStroke(
             width = 2.dp,
-            color = SearchBorder.copy(alpha = 0.72f),
+            color = CardBorder,
         ),
     ) {
         Column {
@@ -527,7 +531,7 @@ private fun RecentSearchCard(
                         color = SearchGold.copy(alpha = 0.07f),
                         border = BorderStroke(
                             width = 2.dp,
-                            color = SearchGold.copy(alpha = 0.22f),
+                            color = CardBorder,
                         ),
                     ) {
                         Box(contentAlignment = Alignment.Center) {
@@ -593,7 +597,7 @@ private fun SearchTipsCard() {
         color = SearchSurface.copy(alpha = 0.92f),
         border = BorderStroke(
             width = 2.dp,
-            color = SearchGoldSoft.copy(alpha = 0.35f),
+            color = CardBorder,
         ),
     ) {
         Row(
@@ -606,7 +610,7 @@ private fun SearchTipsCard() {
                 color = SearchGold.copy(alpha = 0.08f),
                 border = BorderStroke(
                     width = 2.dp,
-                    color = SearchGold.copy(alpha = 0.26f),
+                    color = CardBorder,
                 ),
             ) {
                 Box(contentAlignment = Alignment.Center) {
@@ -739,7 +743,7 @@ private fun SearchResultCard(
             )
             .border(
                 width = 2.dp,
-                color = SearchBorder.copy(alpha = 0.76f),
+                color = CardBorder,
                 shape = shape,
             )
             .clickable(onClick = onClick)
@@ -756,7 +760,7 @@ private fun SearchResultCard(
                     .clip(RoundedCornerShape(14.dp))
                     .border(
                         width = 2.dp,
-                        color = SearchGoldSoft.copy(alpha = 0.42f),
+                        color = CardBorder,
                         shape = RoundedCornerShape(14.dp),
                     ),
                 contentScale = ContentScale.Crop,
@@ -819,7 +823,7 @@ private fun SearchEmptyState() {
             color = SearchGold.copy(alpha = 0.07f),
             border = BorderStroke(
                 width = 2.dp,
-                color = SearchGold.copy(alpha = 0.25f),
+                color = CardBorder,
             ),
         ) {
             Box(contentAlignment = Alignment.Center) {

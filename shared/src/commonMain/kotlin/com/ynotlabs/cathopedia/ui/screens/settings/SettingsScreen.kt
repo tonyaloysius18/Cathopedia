@@ -1,5 +1,7 @@
 package com.ynotlabs.cathopedia.ui.screens.settings
 
+import com.ynotlabs.cathopedia.ui.theme.imageFade
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -198,9 +200,9 @@ private fun SettingsHero() {
                 .background(
                     Brush.horizontalGradient(
                         listOf(
-                            MaterialTheme.colorScheme.background.copy(alpha = 0.97f),
-                            MaterialTheme.colorScheme.background.copy(alpha = 0.76f),
-                            MaterialTheme.colorScheme.background.copy(alpha = 0.16f),
+                            MaterialTheme.colorScheme.background.imageFade(0.97f),
+                            MaterialTheme.colorScheme.background.imageFade(0.76f),
+                            MaterialTheme.colorScheme.background.imageFade(0.16f),
                         ),
                     ),
                 ),
@@ -214,7 +216,7 @@ private fun SettingsHero() {
                         listOf(
                             Color.Black.copy(alpha = 0.20f),
                             Color.Transparent,
-                            MaterialTheme.colorScheme.background.copy(alpha = 0.95f),
+                            MaterialTheme.colorScheme.background.imageFade(0.95f),
                         ),
                     ),
                 ),
@@ -296,7 +298,7 @@ private fun SettingsGroup(
             .background(MaterialTheme.colorScheme.surface)
             .border(
                 width = 2.dp,
-                color = MaterialTheme.colorScheme.outline.copy(alpha = 0.72f),
+                color = CardBorder,
                 shape = RoundedCornerShape(20.dp),
             ),
     ) {
@@ -490,9 +492,9 @@ private fun InspirationCard() {
                 .background(
                     Brush.horizontalGradient(
                         listOf(
-                            MaterialTheme.colorScheme.background.copy(alpha = 0.86f),
-                            MaterialTheme.colorScheme.background.copy(alpha = 0.62f),
-                            MaterialTheme.colorScheme.background.copy(alpha = 0.30f),
+                            MaterialTheme.colorScheme.background.imageFade(0.86f),
+                            MaterialTheme.colorScheme.background.imageFade(0.62f),
+                            MaterialTheme.colorScheme.background.imageFade(0.30f),
                         ),
                     ),
                 ),

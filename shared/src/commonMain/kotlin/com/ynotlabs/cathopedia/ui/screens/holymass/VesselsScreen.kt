@@ -1,5 +1,8 @@
 package com.ynotlabs.cathopedia.ui.screens.holymass
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
+import androidx.compose.material3.MaterialTheme
+
 import com.ynotlabs.cathopedia.i18n.LocalScreenText
 import com.ynotlabs.cathopedia.i18n.ScreenText
 import androidx.compose.foundation.BorderStroke
@@ -55,13 +58,13 @@ import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import org.jetbrains.compose.resources.painterResource
 
 // Green + gold, matching the Cathopedia hub pages.
-private val VesselsBg = Color(0xFF061A13)
-private val VesselsSurface = Color(0xFF0A241B)
-private val VesselsSurfaceRaised = Color(0xFF0F2E22)
-private val VesselsGold = Color(0xFFD6AE3D)
-private val VesselsCream = Color(0xFFF4ECDD)
-private val VesselsMuted = Color(0xFFB7B09D)
-private val VesselsHeader = Color(0xFF081F17)
+private val VesselsBg: Color @Composable get() = MaterialTheme.colorScheme.background
+private val VesselsSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val VesselsSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val VesselsGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val VesselsCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val VesselsMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
+private val VesselsHeader: Color @Composable get() = MaterialTheme.colorScheme.surface
 
 @Composable
 fun VesselsScreen(
@@ -157,7 +160,7 @@ private fun VesselsIntroCard(text: String) {
         shape = RoundedCornerShape(20.dp),
         color = VesselsSurface,
         contentColor = VesselsCream,
-        border = BorderStroke(1.dp, VesselsGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
@@ -244,7 +247,7 @@ private fun VesselCard(
         modifier = modifier,
         shape = RoundedCornerShape(20.dp),
         color = VesselsSurface,
-        border = BorderStroke(1.dp, VesselsGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))

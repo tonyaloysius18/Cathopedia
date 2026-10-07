@@ -1,5 +1,7 @@
 package com.ynotlabs.cathopedia.ui.screens.home
 
+import com.ynotlabs.cathopedia.ui.theme.imageFade
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -374,9 +376,9 @@ private fun ExploreHero(
                     .background(
                         Brush.horizontalGradient(
                             listOf(
-                                MaterialTheme.colorScheme.background.copy(alpha = 1f),
-                                MaterialTheme.colorScheme.background.copy(alpha = 0.92f),
-                                MaterialTheme.colorScheme.background.copy(alpha = 0.42f),
+                                MaterialTheme.colorScheme.background.imageFade(1f),
+                                MaterialTheme.colorScheme.background.imageFade(0.92f),
+                                MaterialTheme.colorScheme.background.imageFade(0.42f),
                                 Color.Transparent,
                             ),
                         ),
@@ -390,8 +392,8 @@ private fun ExploreHero(
                         Brush.verticalGradient(
                             listOf(
                                 Color.Transparent,
-                                MaterialTheme.colorScheme.background.copy(alpha = 0.18f),
-                                MaterialTheme.colorScheme.background.copy(alpha = 0.94f),
+                                MaterialTheme.colorScheme.background.imageFade(0.18f),
+                                MaterialTheme.colorScheme.background.imageFade(0.94f),
                             ),
                         ),
                     ),
@@ -574,7 +576,7 @@ private fun VestmentsSectionCard(
             .aspectRatio(1.3f)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
-        border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
+        border = BorderStroke(2.dp, CardBorder),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
@@ -643,7 +645,7 @@ private fun PortraitExploreCard(
             .aspectRatio(1.3f)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
-        border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
+        border = BorderStroke(2.dp, CardBorder),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
@@ -708,7 +710,7 @@ private fun EventExploreCard(
             .aspectRatio(1.3f)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
-        border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
+        border = BorderStroke(2.dp, CardBorder),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
@@ -774,7 +776,7 @@ private fun WideExploreCard(
             .fillMaxWidth()
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
-        border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
+        border = BorderStroke(2.dp, CardBorder),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
@@ -866,7 +868,7 @@ private fun PortraitHubExploreCard(
             .aspectRatio(1.3f)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
-        border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
+        border = BorderStroke(2.dp, CardBorder),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
@@ -968,7 +970,7 @@ private fun HubExploreCard(
             .fillMaxWidth()
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(22.dp),
-        border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.22f)),
+        border = BorderStroke(2.dp, CardBorder),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
@@ -1044,17 +1046,17 @@ private fun ArtworkFadeOverlay(
 
     val horizontalFade = if (wideCardFade) {
         Brush.horizontalGradient(
-            0f to bg.copy(alpha = 1f),
-            0.34f to bg.copy(alpha = 0.94f),
-            0.58f to bg.copy(alpha = 0.70f),
-            0.80f to bg.copy(alpha = 0.24f),
+            0f to bg.imageFade(1f),
+            0.34f to bg.imageFade(0.94f),
+            0.58f to bg.imageFade(0.70f),
+            0.80f to bg.imageFade(0.24f),
             1f to Color.Transparent,
         )
     } else {
         Brush.horizontalGradient(
-            0f to bg.copy(alpha = 0.98f),
-            0.38f to bg.copy(alpha = 0.78f),
-            0.68f to bg.copy(alpha = 0.26f),
+            0f to bg.imageFade(0.98f),
+            0.38f to bg.imageFade(0.78f),
+            0.68f to bg.imageFade(0.26f),
             1f to Color.Transparent,
         )
     }
@@ -1073,9 +1075,9 @@ private fun ArtworkFadeOverlay(
                     Brush.verticalGradient(
                         0f to Color.Transparent,
                         0.40f to Color.Transparent,
-                        0.66f to bg.copy(alpha = 0.55f),
-                        0.84f to bg.copy(alpha = 0.90f),
-                        1f to bg.copy(alpha = 0.99f),
+                        0.66f to bg.imageFade(0.55f),
+                        0.84f to bg.imageFade(0.90f),
+                        1f to bg.imageFade(0.99f),
                     )
                 )
         )

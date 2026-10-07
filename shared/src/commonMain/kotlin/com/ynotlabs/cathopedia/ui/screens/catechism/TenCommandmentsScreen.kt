@@ -1,5 +1,9 @@
 package com.ynotlabs.cathopedia.ui.screens.catechism
 
+import com.ynotlabs.cathopedia.ui.theme.imageFade
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
+import androidx.compose.material3.MaterialTheme
+
 import com.ynotlabs.cathopedia.i18n.LocalScreenText
 import com.ynotlabs.cathopedia.i18n.ScreenText
 import com.ynotlabs.cathopedia.i18n.Strings
@@ -66,13 +70,13 @@ import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
-private val CommandmentsBackground = Color(0xFF061A13)
-private val CommandmentsHeader = Color(0xFF081F17)
-private val CommandmentsSurface = Color(0xFF0A241B)
-private val CommandmentsSurfaceRaised = Color(0xFF0C271E)
-private val CommandmentsGold = Color(0xFFD6AE3D)
-private val CommandmentsCream = Color(0xFFF4ECDD)
-private val CommandmentsMuted = Color(0xFFB7B09D)
+private val CommandmentsBackground: Color @Composable get() = MaterialTheme.colorScheme.background
+private val CommandmentsHeader: Color @Composable get() = MaterialTheme.colorScheme.surface
+private val CommandmentsSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val CommandmentsSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val CommandmentsGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val CommandmentsCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val CommandmentsMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
 private data class CommandmentsCopy(
     val subtitle: String,
@@ -231,7 +235,7 @@ private fun CommandmentsHeroCard(caption: String) {
             .fillMaxWidth()
             .aspectRatio(1.72f)
             .clip(RoundedCornerShape(22.dp))
-            .border(1.dp, CommandmentsGold.copy(alpha = 0.38f), RoundedCornerShape(22.dp)),
+            .border(1.dp, CardBorder, RoundedCornerShape(22.dp)),
     ) {
         Image(
             painter = painterResource(Res.drawable.ten_commandments_hero),
@@ -246,7 +250,7 @@ private fun CommandmentsHeroCard(caption: String) {
                     Brush.verticalGradient(
                         0f to Color.Transparent,
                         0.56f to Color.Transparent,
-                        1f to CommandmentsBackground.copy(alpha = 0.94f),
+                        1f to CommandmentsBackground.imageFade(0.94f),
                     ),
                 ),
         )
@@ -271,7 +275,7 @@ private fun CommandmentsIntroCard(text: String) {
         shape = RoundedCornerShape(20.dp),
         color = CommandmentsSurface,
         contentColor = CommandmentsCream,
-        border = BorderStroke(1.dp, CommandmentsGold.copy(alpha = 0.42f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
@@ -314,7 +318,7 @@ private fun CommandmentCard(
         shape = RoundedCornerShape(20.dp),
         color = CommandmentsSurfaceRaised,
         contentColor = CommandmentsCream,
-        border = BorderStroke(1.dp, CommandmentsGold.copy(alpha = 0.22f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Row(
             modifier = Modifier.padding(12.dp),
@@ -412,7 +416,7 @@ private fun CommandmentsArticleCard(
         shape = RoundedCornerShape(20.dp),
         color = CommandmentsSurface,
         contentColor = CommandmentsCream,
-        border = BorderStroke(1.dp, CommandmentsGold.copy(alpha = 0.45f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))

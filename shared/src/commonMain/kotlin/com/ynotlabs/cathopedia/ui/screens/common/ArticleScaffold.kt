@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.common
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -20,6 +21,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -51,14 +53,14 @@ import com.ynotlabs.cathopedia.ui.components.SacredDivider
  * swatches) and takes the rest from here.
  */
 
-val ArticleBackground = Color(0xFF061A13)
-val ArticleSurface = Color(0xFF0A241B)
-val ArticleSurfaceRaised = Color(0xFF0F2E22)
-val ArticleHeader = Color(0xFF081F17)
-val ArticleGold = Color(0xFFD6AE3D)
-val ArticleGoldSoft = Color(0xFFB08D57)
-val ArticleCream = Color(0xFFF4ECDD)
-val ArticleMuted = Color(0xFFB7B09D)
+val ArticleBackground: Color @Composable get() = MaterialTheme.colorScheme.background
+val ArticleSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+val ArticleSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+val ArticleHeader: Color @Composable get() = MaterialTheme.colorScheme.surface
+val ArticleGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+val ArticleGoldSoft: Color @Composable get() = MaterialTheme.colorScheme.secondary
+val ArticleCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+val ArticleMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
 /**
  * A scrolling article page under a floating header.
@@ -118,7 +120,7 @@ fun ArticleIntroCard(text: String, modifier: Modifier = Modifier) {
         shape = RoundedCornerShape(20.dp),
         color = ArticleSurface,
         contentColor = ArticleCream,
-        border = BorderStroke(1.dp, ArticleGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(Modifier.align(Alignment.CenterStart))

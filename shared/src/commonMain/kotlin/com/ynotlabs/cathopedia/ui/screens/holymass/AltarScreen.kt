@@ -1,5 +1,8 @@
 package com.ynotlabs.cathopedia.ui.screens.holymass
 
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
+import androidx.compose.material3.MaterialTheme
+
 import com.ynotlabs.cathopedia.i18n.LocalScreenText
 import com.ynotlabs.cathopedia.i18n.ScreenText
 import androidx.compose.foundation.BorderStroke
@@ -57,14 +60,14 @@ import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import org.jetbrains.compose.resources.painterResource
 
 // Green + gold, matching the Cathopedia hub pages.
-private val AltarBg = Color(0xFF061A13)
-private val AltarSurface = Color(0xFF0A241B)
-private val AltarSurfaceRaised = Color(0xFF0F2E22)
-private val AltarGold = Color(0xFFD6AE3D)
-private val AltarGoldSoft = Color(0xFFB08D57)
-private val AltarCream = Color(0xFFF4ECDD)
-private val AltarMuted = Color(0xFFB7B09D)
-private val AltarHeader = Color(0xFF081F17)
+private val AltarBg: Color @Composable get() = MaterialTheme.colorScheme.background
+private val AltarSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val AltarSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val AltarGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val AltarGoldSoft: Color @Composable get() = MaterialTheme.colorScheme.secondary
+private val AltarCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val AltarMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
+private val AltarHeader: Color @Composable get() = MaterialTheme.colorScheme.surface
 
 @Composable
 fun AltarScreen(
@@ -131,7 +134,7 @@ fun AltarScreen(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(20.dp),
                     color = AltarSurface,
-                    border = BorderStroke(1.dp, AltarGold.copy(alpha = 0.35f)),
+                    border = BorderStroke(1.dp, CardBorder),
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Box(
@@ -230,7 +233,7 @@ private fun AltarIntroCard(text: String) {
         shape = RoundedCornerShape(20.dp),
         color = AltarSurface,
         contentColor = AltarCream,
-        border = BorderStroke(1.dp, AltarGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
@@ -317,7 +320,7 @@ private fun ItemCard(
         modifier = modifier,
         shape = RoundedCornerShape(20.dp),
         color = AltarSurface,
-        border = BorderStroke(1.dp, AltarGold.copy(alpha = 0.35f)),
+        border = BorderStroke(1.dp, CardBorder),
     ) {
         Box {
             GoldCardAccent(modifier = Modifier.align(Alignment.CenterStart))
