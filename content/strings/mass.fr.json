@@ -602,6 +602,8 @@
     "art.chalices.title": "Les types de calices",
     "art.chalices.lead": "Beaucoup de formes et de styles, un seul but : contenir le Précieux Sang à l'Eucharistie.",
     "art.chalices.intro": "Le calice est la coupe dans laquelle le vin est offert et consacré à la messe, devenant le Précieux Sang du Christ. Les calices diffèrent par leur usage, leur fabrication et l'époque dont ils reflètent l'art, mais leur fonction fondamentale ne change jamais. Voici les types et les styles que l'on rencontre le plus souvent.",
+    "art.chalices.byuse": "Selon l'usage",
+    "art.chalices.bystyle": "Selon le style",
     "art.chalices.mass.name": "Calice de la messe",
     "art.chalices.mass.desc": "Le calice principal utilisé par le prêtre ou l'évêque qui célèbre la messe, celui que l'on pose sur le corporal à l'autel et que l'on élève à la consécration. C'est généralement le plus beau calice d'une paroisse, et beaucoup de prêtres reçoivent le leur à l'ordination.",
     "art.chalices.communion.name": "Calice de communion",

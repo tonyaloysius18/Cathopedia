@@ -584,6 +584,8 @@
     "art.chalices.title": "Tipi di calici",
     "art.chalices.lead": "Molte forme e molti stili, un unico scopo: contenere il Preziosissimo Sangue nell'Eucaristia.",
     "art.chalices.intro": "Il calice è la coppa in cui il vino viene offerto e consacrato durante la Messa, diventando il Preziosissimo Sangue di Cristo. I calici differiscono per l'uso, per il modo in cui sono fatti e per l'epoca di cui riflettono l'arte, ma la loro funzione fondamentale non cambia mai. Ecco i tipi e gli stili che si incontrano più spesso.",
+    "art.chalices.byuse": "Per uso",
+    "art.chalices.bystyle": "Per stile",
     "art.chalices.mass.name": "Calice della Messa",
     "art.chalices.mass.desc": "Il calice principale usato dal sacerdote o dal vescovo che celebra la Messa, quello posto sul corporale all'altare ed elevato alla consacrazione. Di solito è il calice più bello che una parrocchia possiede, e molti sacerdoti ricevono il proprio all'ordinazione.",
     "art.chalices.communion.name": "Calice per la Comunione",

@@ -1333,6 +1333,7 @@
       "readingTimeMinutes": 4,
       "blocks": [
         { "type": "paragraph", "textKey": "art.chalices.intro" },
+        { "type": "heading", "level": 2, "textKey": "art.chalices.byuse" },
         { "type": "heading", "level": 3, "textKey": "art.chalices.mass.name" },
         { "type": "image", "asset": "hub/mass/chalice.png", "license": "IN_HOUSE" },
         { "type": "paragraph", "textKey": "art.chalices.mass.desc" },
@@ -1345,6 +1346,7 @@
         { "type": "heading", "level": 3, "textKey": "art.chalices.travel.name" },
         { "type": "image", "asset": "hub/mass/chalice_travel.png", "license": "IN_HOUSE" },
         { "type": "paragraph", "textKey": "art.chalices.travel.desc" },
+        { "type": "heading", "level": 2, "textKey": "art.chalices.bystyle" },
         { "type": "heading", "level": 3, "textKey": "art.chalices.baroque.name" },
         { "type": "image", "asset": "hub/mass/chalice_baroque.png", "license": "IN_HOUSE" },
         { "type": "paragraph", "textKey": "art.chalices.baroque.desc" },

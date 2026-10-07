@@ -29,6 +29,7 @@ import com.ynotlabs.cathopedia.ui.screens.holymass.AltarOrSacristyScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.CathedraOrPresidersChairScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.BasilicaOrCathedralScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.MajorAndMinorBasilicasScreen
+import com.ynotlabs.cathopedia.ui.screens.holymass.ChalicesScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.MonstranceScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.PosturesScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.ThuribleScreen
@@ -47,8 +48,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -63,8 +66,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
@@ -80,6 +86,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -93,6 +100,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
@@ -102,6 +110,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.semantics.Role
 import com.ynotlabs.cathopedia.content.HUB_ENTITY_LINK_TAG
 import com.ynotlabs.cathopedia.content.model.Block
 import com.ynotlabs.cathopedia.content.model.CalloutBlock
@@ -143,17 +152,31 @@ import com.ynotlabs.cathopedia.resources._12
 import com.ynotlabs.cathopedia.resources._13
 import com.ynotlabs.cathopedia.resources._14
 import com.ynotlabs.cathopedia.resources._15
+import kotlin.math.abs
+import kotlin.math.min
 
 private val SymbolCardSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
 private val SymbolCardGold: Color @Composable get() = MaterialTheme.colorScheme.primary
 private val SymbolCardCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
 private val SymbolCardMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
+private const val TOWER_CAROUSEL_CARD_WIDTH_DP = 220
+private const val TOWER_CAROUSEL_CARD_HEIGHT_DP = 300
+private const val TOWER_CAROUSEL_MAX_ROTATION_DEG = 38f
+private const val TOWER_CAROUSEL_MAX_SCALE_DROP = 0.22f
+private const val TOWER_CAROUSEL_MAX_ALPHA_DROP = 0.48f
+
 private data class SymbolCardContent(
     val heading: HeadingBlock,
     val image: ImageBlock,
     val paragraph: ParagraphBlock,
 )
+
+private enum class TowerGroup {
+    FORM,
+    POSITION,
+    STYLE,
+}
 
 private data class BiblicalCharacterContent(
     val heading: HeadingBlock,
@@ -246,6 +269,16 @@ fun HubArticleScreen(
 
     if (articleId == "art.mass.basilica_cathedral") {
         BasilicaOrCathedralScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            listState = listState,
+        )
+        return
+    }
+
+    if (articleId == "art.mass.chalices") {
+        ChalicesScreen(
             repository = repository,
             language = language,
             onBack = onBack,
@@ -561,7 +594,7 @@ fun HubArticleScreen(
     }
 
     val s = LocalStrings.current
-    val isSymbolsArticle = articleId.startsWith("art.symbols.") || articleId == "art.mass.towers" || articleId == "art.mass.chalices"
+    val isSymbolsArticle = articleId.startsWith("art.symbols.") || articleId == "art.mass.towers"
     val isBiblicalArticle = articleId.startsWith("art.biblical.")
     val isOrdersArticle = articleId.startsWith("art.orders.")
     var article by remember(articleId, language) { mutableStateOf<HubArticleDetail?>(initialArticle) }
@@ -593,6 +626,8 @@ fun HubArticleScreen(
     val headerHeightDp = with(LocalDensity.current) { headerHeightPx.toDp() }
     var orderQuery by remember(articleId) { mutableStateOf("") }
     var searchExpanded by remember(articleId) { mutableStateOf(false) }
+    var selectedTowerGroup by remember(articleId) { mutableStateOf(TowerGroup.FORM) }
+    var selectedTowerAsset by remember(articleId) { mutableStateOf<String?>(null) }
 
     Box(
         modifier = Modifier
@@ -641,39 +676,87 @@ fun HubArticleScreen(
                         Spacer(Modifier.height(16.dp))
                     }
                 }
-                item {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(
-                            text = when {
-                                articleId == "art.symbols.crosses" -> LocalStrings.current.hubSacredFormsCount
-                                articleId == "art.mass.towers" -> LocalStrings.current.hubTowersCount
-                                articleId == "art.mass.chalices" -> LocalStrings.current.hubChaliceTypesCount
-                                else -> LocalStrings.current.hubSymbolsCount
-                            }.replace("{count}", symbolCards.size.toString()),
-                            color = SymbolCardGold,
-                            fontSize = 10.sp,
-                            fontWeight = FontWeight.Medium,
-                            letterSpacing = 1.5.sp,
-                        )
-                        Spacer(
-                            Modifier
-                                .padding(start = 10.dp)
-                                .height(1.dp)
-                                .weight(1f)
-                                .background(SymbolCardGold.copy(alpha = 0.35f)),
-                        )
-                    }
-                    Spacer(Modifier.height(14.dp))
-                }
+                if (articleId == "art.mass.towers") {
+                    val groupCards = symbolCards.filter { it.towerGroup() == selectedTowerGroup }
+                    val featuredCard = groupCards.firstOrNull {
+                        it.image.asset == selectedTowerAsset
+                    } ?: groupCards.firstOrNull()
 
-                symbolCards.forEach { card ->
                     item {
-                        SymbolCard(
-                            card = card,
-                            strings = strings,
-                            onEntityRefSelected = onEntityRefSelected,
+                        TowerGroupTabs(
+                            selected = selectedTowerGroup,
+                            onSelected = { group ->
+                                selectedTowerGroup = group
+                                selectedTowerAsset = null
+                            },
                         )
+                        Spacer(Modifier.height(16.dp))
+                    }
+
+                    if (featuredCard != null) {
+                        item {
+                            TowerGroupProgress(
+                                selected = selectedTowerGroup,
+                                itemCount = groupCards.size,
+                            )
+                            Spacer(Modifier.height(12.dp))
+                            TowerFeaturedCard(
+                                card = featuredCard,
+                                strings = strings,
+                                onEntityRefSelected = onEntityRefSelected,
+                                nextGroup = selectedTowerGroup.next(),
+                                onNextGroup = {
+                                    selectedTowerGroup = selectedTowerGroup.next()
+                                    selectedTowerAsset = null
+                                },
+                            )
+                            Spacer(Modifier.height(20.dp))
+                        }
+
+                        if (groupCards.size > 1) {
+                            item {
+                                TowerPreviewShelf(
+                                    cards = groupCards,
+                                    strings = strings,
+                                    onSelected = { selectedTowerAsset = it.image.asset },
+                                )
+                                Spacer(Modifier.height(22.dp))
+                            }
+                        }
+                    }
+                } else {
+                    item {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text(
+                                text = when {
+                                    articleId == "art.symbols.crosses" -> LocalStrings.current.hubSacredFormsCount
+                                        else -> LocalStrings.current.hubSymbolsCount
+                                }.replace("{count}", symbolCards.size.toString()),
+                                color = SymbolCardGold,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Medium,
+                                letterSpacing = 1.5.sp,
+                            )
+                            Spacer(
+                                Modifier
+                                    .padding(start = 10.dp)
+                                    .height(1.dp)
+                                    .weight(1f)
+                                    .background(SymbolCardGold.copy(alpha = 0.35f)),
+                            )
+                        }
                         Spacer(Modifier.height(14.dp))
+                    }
+
+                    symbolCards.forEach { card ->
+                        item {
+                            SymbolCard(
+                                card = card,
+                                strings = strings,
+                                onEntityRefSelected = onEntityRefSelected,
+                            )
+                            Spacer(Modifier.height(14.dp))
+                        }
                     }
                 }
                 symbolArticle.trailingBlocks.forEach { block ->
@@ -1525,20 +1608,457 @@ private fun SymbolCard(
     }
 }
 
+private fun SymbolCardContent.towerGroup(): TowerGroup = when {
+    image.asset.contains("tower_crossing") ||
+        image.asset.contains("tower_west") ||
+        image.asset.contains("tower_twin") ||
+        image.asset.contains("tower_central") ||
+        image.asset.contains("tower_detached") -> TowerGroup.POSITION
+
+    image.asset.contains("tower_onion") ||
+        image.asset.contains("tower_romanesque") ||
+        image.asset.contains("tower_gothic") ||
+        image.asset.contains("tower_baroque") -> TowerGroup.STYLE
+
+    else -> TowerGroup.FORM
+}
+
+private fun TowerGroup.next(): TowerGroup = when (this) {
+    TowerGroup.FORM -> TowerGroup.POSITION
+    TowerGroup.POSITION -> TowerGroup.STYLE
+    TowerGroup.STYLE -> TowerGroup.FORM
+}
+
+@Composable
+private fun TowerGroup.label(): String = when (this) {
+    TowerGroup.FORM -> LocalStrings.current.hubTowersFormLabel
+    TowerGroup.POSITION -> LocalStrings.current.hubTowersPositionLabel
+    TowerGroup.STYLE -> LocalStrings.current.hubTowersStyleLabel
+}
+
+@Composable
+private fun TowerGroupTabs(
+    selected: TowerGroup,
+    onSelected: (TowerGroup) -> Unit,
+) {
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(20.dp),
+        color = MaterialTheme.colorScheme.surfaceContainerLow,
+        border = BorderStroke(1.dp, CardBorder),
+    ) {
+        Row(
+            modifier = Modifier.padding(5.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+        ) {
+            TowerGroup.entries.forEach { group ->
+                val isSelected = selected == group
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(48.dp)
+                        .clip(RoundedCornerShape(15.dp))
+                        .background(
+                            if (isSelected) SymbolCardGold.copy(alpha = 0.16f)
+                            else Color.Transparent
+                        )
+                        .border(
+                            width = 1.dp,
+                            color = if (isSelected) SymbolCardGold.copy(alpha = 0.72f)
+                            else Color.Transparent,
+                            shape = RoundedCornerShape(15.dp),
+                        )
+                        .selectable(
+                            selected = isSelected,
+                            role = Role.Tab,
+                            onClick = { onSelected(group) },
+                        ),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text = group.label(),
+                        color = if (isSelected) SymbolCardCream else SymbolCardMuted,
+                        fontSize = 13.sp,
+                        fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Medium,
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun TowerGroupProgress(
+    selected: TowerGroup,
+    itemCount: Int,
+) {
+    val groupNumber = selected.ordinal + 1
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+    ) {
+        Text(
+            text = LocalStrings.current.hubTowersGroupProgress
+                .replace("{current}", groupNumber.toString())
+                .replace("{group}", selected.label())
+                .replace("{count}", itemCount.toString()),
+            color = MaterialTheme.colorScheme.onBackground,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Medium,
+        )
+
+        Row(horizontalArrangement = Arrangement.spacedBy(7.dp)) {
+            TowerGroup.entries.forEach { group ->
+                Box(
+                    modifier = Modifier
+                        .size(if (group == selected) 8.dp else 6.dp)
+                        .clip(CircleShape)
+                        .background(
+                            if (group == selected) SymbolCardGold
+                            else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.28f)
+                        ),
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun TowerFeaturedCard(
+    card: SymbolCardContent,
+    strings: Map<String, String>,
+    onEntityRefSelected: (EntityRef) -> Unit,
+    nextGroup: TowerGroup,
+    onNextGroup: () -> Unit,
+) {
+    val title = strings[card.heading.textKey].orEmpty()
+    val shape = RoundedCornerShape(24.dp)
+
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = shape,
+        color = MaterialTheme.colorScheme.surfaceContainerLow,
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        border = BorderStroke(1.dp, SymbolCardGold.copy(alpha = 0.52f)),
+        shadowElevation = 3.dp,
+    ) {
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(
+                        Brush.horizontalGradient(
+                            listOf(
+                                MaterialTheme.colorScheme.surfaceContainerHigh,
+                                MaterialTheme.colorScheme.surfaceContainerLow,
+                            )
+                        )
+                    )
+                    .padding(start = 20.dp, top = 18.dp, end = 12.dp, bottom = 14.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = LocalStrings.current.hubTowersFeaturedLabel.uppercase(),
+                        color = SymbolCardGold,
+                        fontSize = 10.sp,
+                        lineHeight = 13.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        letterSpacing = 1.5.sp,
+                    )
+                    Spacer(Modifier.height(10.dp))
+                    Text(
+                        text = title,
+                        color = SymbolCardCream,
+                        fontFamily = FontFamily.Serif,
+                        fontSize = 24.sp,
+                        lineHeight = 28.sp,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                }
+
+                hubAssetPainter(card.image.asset)?.let { painter ->
+                    Spacer(Modifier.width(8.dp))
+                    Image(
+                        painter = painter,
+                        contentDescription = title,
+                        modifier = Modifier.size(142.dp),
+                        contentScale = ContentScale.Fit,
+                    )
+                }
+            }
+
+            SymbolMarkupText(
+                raw = strings[card.paragraph.textKey].orEmpty(),
+                onEntityRefSelected = onEntityRefSelected,
+                modifier = Modifier.padding(start = 20.dp, top = 16.dp, end = 20.dp, bottom = 18.dp),
+                prominent = true,
+            )
+
+            Surface(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
+                    .clip(RoundedCornerShape(15.dp))
+                    .clickable(onClick = onNextGroup),
+                shape = RoundedCornerShape(15.dp),
+                color = SymbolCardGold,
+                contentColor = MaterialTheme.colorScheme.onPrimary,
+            ) {
+                Row(
+                    modifier = Modifier.padding(horizontal = 18.dp, vertical = 13.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Text(
+                        text = LocalStrings.current.hubTowersNextGroup
+                            .replace("{group}", nextGroup.label()),
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                    Text(
+                        text = "›",
+                        fontSize = 24.sp,
+                        lineHeight = 24.sp,
+                        fontWeight = FontWeight.Medium,
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun TowerPreviewShelf(
+    cards: List<SymbolCardContent>,
+    strings: Map<String, String>,
+    onSelected: (SymbolCardContent) -> Unit,
+) {
+    val listState = rememberLazyListState()
+    val density = LocalDensity.current
+    val cardWidthPx = with(density) { TOWER_CAROUSEL_CARD_WIDTH_DP.dp.toPx() }
+    val currentIndex by remember(cards, listState) {
+        derivedStateOf {
+            val layoutInfo = listState.layoutInfo
+            if (layoutInfo.visibleItemsInfo.isEmpty()) {
+                0
+            } else {
+                val viewportCenter =
+                    (layoutInfo.viewportStartOffset + layoutInfo.viewportEndOffset) / 2
+                layoutInfo.visibleItemsInfo.minByOrNull { item ->
+                    abs((item.offset + item.size / 2) - viewportCenter)
+                }?.index ?: 0
+            }
+        }
+    }
+
+    LaunchedEffect(listState.isScrollInProgress, currentIndex, cards) {
+        if (!listState.isScrollInProgress) {
+            cards.getOrNull(currentIndex)?.let(onSelected)
+        }
+    }
+
+    Column {
+        HubArticleSectionLabel(LocalStrings.current.hubTowersOtherTypes)
+        Spacer(Modifier.height(14.dp))
+
+        BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
+            val cardWidth = TOWER_CAROUSEL_CARD_WIDTH_DP.dp
+            val sidePadding = ((maxWidth - cardWidth) / 2).coerceAtLeast(0.dp)
+
+            LazyRow(
+                state = listState,
+                flingBehavior = rememberSnapFlingBehavior(listState),
+                horizontalArrangement = Arrangement.spacedBy(18.dp),
+                contentPadding = PaddingValues(horizontal = sidePadding),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(TOWER_CAROUSEL_CARD_HEIGHT_DP.dp),
+            ) {
+                itemsIndexed(
+                    items = cards,
+                    key = { _, card -> card.image.asset },
+                ) { index, card ->
+                    TowerCarouselCard(
+                        card = card,
+                        title = strings[card.heading.textKey].orEmpty(),
+                        index = index,
+                        listState = listState,
+                        cardWidthPx = cardWidthPx,
+                        onClick = { onSelected(card) },
+                    )
+                }
+            }
+        }
+
+        Spacer(Modifier.height(14.dp))
+        TowerCarouselDots(
+            count = cards.size,
+            currentIndex = currentIndex.coerceIn(cards.indices),
+        )
+    }
+}
+
+@Composable
+private fun TowerCarouselCard(
+    card: SymbolCardContent,
+    title: String,
+    index: Int,
+    listState: LazyListState,
+    cardWidthPx: Float,
+    onClick: () -> Unit,
+) {
+    Box(
+        modifier = Modifier
+            .width(TOWER_CAROUSEL_CARD_WIDTH_DP.dp)
+            .height(TOWER_CAROUSEL_CARD_HEIGHT_DP.dp)
+            .graphicsLayer {
+                cameraDistance = 16f * density
+                val layoutInfo = listState.layoutInfo
+                val itemInfo = layoutInfo.visibleItemsInfo.firstOrNull { it.index == index }
+                if (itemInfo != null) {
+                    val viewportCenter =
+                        (layoutInfo.viewportStartOffset + layoutInfo.viewportEndOffset) / 2f
+                    val itemCenter = itemInfo.offset + itemInfo.size / 2f
+                    val normalized =
+                        ((itemCenter - viewportCenter) / cardWidthPx).coerceIn(-1.6f, 1.6f)
+
+                    rotationY = normalized * TOWER_CAROUSEL_MAX_ROTATION_DEG
+                    val scale = 1f -
+                        min(abs(normalized), 1f) * TOWER_CAROUSEL_MAX_SCALE_DROP
+                    scaleX = scale
+                    scaleY = scale
+                    alpha = 1f -
+                        min(abs(normalized), 1f) * TOWER_CAROUSEL_MAX_ALPHA_DROP
+                    translationX = -normalized * cardWidthPx * 0.16f
+                }
+            }
+            .border(1.dp, CardBorder, RoundedCornerShape(26.dp))
+            .clip(RoundedCornerShape(26.dp))
+            .background(
+                Brush.verticalGradient(
+                    listOf(
+                        MaterialTheme.colorScheme.surfaceContainerHighest,
+                        MaterialTheme.colorScheme.surfaceContainerHigh,
+                    )
+                )
+            )
+            .clickable(onClick = onClick),
+        contentAlignment = Alignment.BottomStart,
+    ) {
+        hubAssetPainter(card.image.asset)?.let { painter ->
+            Image(
+                painter = painter,
+                contentDescription = title,
+                contentScale = ContentScale.Fit,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(start = 12.dp, top = 12.dp, end = 12.dp, bottom = 44.dp),
+            )
+        }
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        0f to Color.Transparent,
+                        0.58f to Color.Transparent,
+                        1f to MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.98f),
+                    )
+                ),
+        )
+
+        Surface(
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(14.dp)
+                .size(36.dp),
+            shape = CircleShape,
+            color = SymbolCardGold.copy(alpha = 0.15f),
+            border = BorderStroke(1.dp, SymbolCardGold.copy(alpha = 0.38f)),
+        ) {
+            Box(contentAlignment = Alignment.Center) {
+                Text(
+                    text = (index + 1).toString(),
+                    color = SymbolCardGold,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.SemiBold,
+                )
+            }
+        }
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(18.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = title,
+                modifier = Modifier.weight(1f),
+                color = SymbolCardCream,
+                fontFamily = FontFamily.Serif,
+                fontSize = 18.sp,
+                lineHeight = 22.sp,
+                fontWeight = FontWeight.SemiBold,
+            )
+            Spacer(Modifier.width(8.dp))
+            Text(
+                text = "›",
+                color = SymbolCardGold,
+                fontSize = 24.sp,
+                lineHeight = 24.sp,
+            )
+        }
+    }
+}
+
+@Composable
+private fun TowerCarouselDots(
+    count: Int,
+    currentIndex: Int,
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center,
+    ) {
+        repeat(count) { index ->
+            Box(
+                modifier = Modifier
+                    .padding(horizontal = 3.dp)
+                    .size(if (index == currentIndex) 8.dp else 6.dp)
+                    .clip(CircleShape)
+                    .background(
+                        if (index == currentIndex) SymbolCardGold
+                        else SymbolCardGold.copy(alpha = 0.22f)
+                    ),
+            )
+        }
+    }
+}
+
 @Composable
 private fun SymbolMarkupText(
     raw: String,
     onEntityRefSelected: (EntityRef) -> Unit,
     modifier: Modifier = Modifier,
+    prominent: Boolean = false,
 ) {
     val annotated = parseHubMarkup(raw)
     ClickableText(
         text = annotated,
         modifier = modifier,
         style = TextStyle(
-            color = SymbolCardMuted,
-            fontSize = 12.sp,
-            lineHeight = 17.sp,
+            color = if (prominent) {
+                MaterialTheme.colorScheme.onSurface.copy(alpha = 0.86f)
+            } else {
+                SymbolCardMuted
+            },
+            fontSize = if (prominent) 14.sp else 12.sp,
+            lineHeight = if (prominent) 21.sp else 17.sp,
         ),
         onClick = { offset ->
             annotated.getStringAnnotations(HUB_ENTITY_LINK_TAG, offset, offset).firstOrNull()?.let { annotation ->

@@ -602,6 +602,8 @@
     "art.chalices.title": "Types of Chalices",
     "art.chalices.lead": "Many shapes and styles, one purpose: to hold the Precious Blood at the Eucharist.",
     "art.chalices.intro": "The chalice is the cup in which wine is offered and consecrated at Mass, becoming the Precious Blood of Christ. Chalices differ in how they are used, how they are made and the age whose art they reflect, but the basic function never changes. Here are the kinds and styles you are most likely to see.",
+    "art.chalices.byuse": "By use",
+    "art.chalices.bystyle": "By style",
     "art.chalices.mass.name": "Mass Chalice",
     "art.chalices.mass.desc": "The principal chalice used by the priest or bishop celebrating Mass, the one placed on the corporal at the altar and lifted at the consecration. It is usually the finest chalice a parish owns, and many priests receive their own at ordination.",
     "art.chalices.communion.name": "Communion Chalice",
