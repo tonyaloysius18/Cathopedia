@@ -21,7 +21,7 @@
       "titleKey": "cat.creed.title",
       "summaryKey": "cat.creed.summary",
       "icon": "ic_creed",
-      "articleIds": ["art.cat.three_pillars", "art.cat.trinity", "art.cat.creeds", "art.cat.four_marks", "art.cat.last_things", "art.cat.angels", "art.cat.reverence", "art.cat.relics", "art.cat.images", "art.cat.stigmata"]
+      "articleIds": ["art.cat.three_pillars", "art.cat.trinity", "art.cat.creeds", "art.cat.four_marks", "art.cat.last_things", "art.cat.angels", "art.cat.reverence", "art.cat.relics", "art.cat.images", "art.cat.crowned", "art.cat.stigmata"]
     },
     {
       "id": "cat.scripture",
@@ -163,9 +163,43 @@
       ]
     },
     {
-      "id": "art.cat.stigmata",
+      "id": "art.cat.crowned",
       "sectionId": "cat.creed",
       "sortOrder": 10,
+      "titleKey": "art.crowned.title",
+      "leadKey": "art.crowned.lead",
+      "readingTimeMinutes": 5,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.crowned.intro" },
+        { "type": "heading", "level": 2, "textKey": "art.crowned.images.title" },
+        { "type": "image", "asset": "hub/catechism/crowned_santo_nino_cebu.png", "captionKey": "art.crowned.cebu.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.crowned.cebu.title", "textKey": "art.crowned.cebu.body" },
+        { "type": "image", "asset": "hub/catechism/crowned_bambino_aracoeli.png", "captionKey": "art.crowned.aracoeli.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.crowned.aracoeli.title", "textKey": "art.crowned.aracoeli.body" },
+        { "type": "image", "asset": "hub/catechism/crowned_bambino_arenzano.png", "captionKey": "art.crowned.arenzano.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.crowned.arenzano.title", "textKey": "art.crowned.arenzano.body" },
+        { "type": "image", "asset": "hub/catechism/crowned_infant_prague.png", "captionKey": "art.crowned.prague.caption", "license": "IN_HOUSE" },
+        { "type": "callout", "tone": "info", "titleKey": "art.crowned.prague.title", "textKey": "art.crowned.prague.body" },
+        { "type": "heading", "level": 2, "textKey": "art.crowned.meaning.title" },
+        { "type": "paragraph", "textKey": "art.crowned.meaning.body" },
+        { "type": "callout", "tone": "warning", "titleKey": "art.crowned.honour.title", "textKey": "art.crowned.honour.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.crowned.king.title", "textKey": "art.crowned.king.body" },
+        { "type": "quote", "textKey": "art.crowned.quote", "attributionKey": "art.crowned.quote.attribution" }
+      ],
+      "related": [
+        { "type": "ARTICLE", "id": "art.cat.images" },
+        { "type": "ARTICLE", "id": "art.cat.reverence" }
+      ],
+      "sources": [
+        { "label": "Catechism of the Catholic Church, 2129–2132 (sacred images)", "url": "https://www.vatican.va/archive/ENG0015/__P7I.HTM", "accessed": "2026-10-07" },
+        { "label": "Ordo coronandi imaginem Beatae Mariae Virginis (1981)" },
+        { "label": "Basilica Minore del Santo Niño de Cebu; Santa Maria in Aracoeli; Santuario di Gesù Bambino di Praga, Arenzano; Our Lady of Victory, Prague (shrine histories)" }
+      ]
+    },
+    {
+      "id": "art.cat.stigmata",
+      "sectionId": "cat.creed",
+      "sortOrder": 11,
       "titleKey": "art.stigmata.title",
       "leadKey": "art.stigmata.lead",
       "readingTimeMinutes": 4,

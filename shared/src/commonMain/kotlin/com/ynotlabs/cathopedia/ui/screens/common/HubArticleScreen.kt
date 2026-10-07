@@ -620,6 +620,7 @@ fun HubArticleScreen(
                 articleId == "art.bells.overview" ||
                 articleId == "art.oils.overview" ||
                 articleId == "art.cat.stigmata" ||
+                articleId == "art.cat.crowned" ||
                 articleId == "art.mass.altar_parts"
             ) {
                 current.blocks.asSacredObjectArticleContent()

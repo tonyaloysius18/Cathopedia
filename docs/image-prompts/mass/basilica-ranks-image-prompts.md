@@ -7,7 +7,7 @@ same side-by-side "VS" layout as "Basilica or Cathedral?".
 | Cell | Asset | Status |
 | --- | --- | --- |
 | Major Basilica | `mass_basilica.png` | **reused**, already in the app |
-| Minor Basilica | `mass_minor_basilica.png` | **needed** |
+| Minor Basilica | `mass_minor_basilica.png` | **done** 2026-10-07 |
 
 The major side reuses the existing domed Baroque basilica, so the new image
 **must match `mass_basilica.png`**: same scale, same three-quarter view, same
