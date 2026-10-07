@@ -670,7 +670,10 @@ fun HubArticleScreen(
                 null
             }
             if (symbolArticle != null && symbolCards != null) {
-                symbolArticle.leadingBlocks.forEachIndexed { index, block ->
+                // On the towers page the carousel and its card come first, so they are
+                // on screen without scrolling; the intro moves below them.
+                val introFirst = articleId != "art.mass.towers"
+                if (introFirst) symbolArticle.leadingBlocks.forEachIndexed { index, block ->
                     item {
                         BlockView(
                             block = block,
@@ -730,6 +733,18 @@ fun HubArticleScreen(
                                 },
                             )
                             Spacer(Modifier.height(22.dp))
+                        }
+                    }
+
+                    symbolArticle.leadingBlocks.forEachIndexed { index, block ->
+                        item(key = "tower-intro-$index") {
+                            BlockView(
+                                block = block,
+                                strings = strings,
+                                onEntityRefSelected = onEntityRefSelected,
+                                emphasizeParagraph = index == 0 && block is ParagraphBlock,
+                            )
+                            Spacer(Modifier.height(16.dp))
                         }
                     }
                 } else {
