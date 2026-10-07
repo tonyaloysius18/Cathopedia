@@ -247,6 +247,18 @@
       "articleIds": [
         "art.mass.roles"
       ]
+    },
+    {
+      "id": "mass.towers",
+      "sortOrder": 21,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.mass.towers.title",
+      "summaryKey": "sec.mass.towers.summary",
+      "icon": "ic_bell",
+      "articleIds": [
+        "art.mass.towers"
+      ]
     }
   ],
   "articles": [
@@ -1243,6 +1255,72 @@
         { "label": "General Instruction of the Roman Missal, 98–107 (the acolyte, lector and other ministries)" },
         { "label": "Paul VI, Ministeria quaedam (1972); Francis, Spiritus Domini (2021), amending canon 230 §1" },
         { "label": "Code of Canon Law, canons 230 and 910 §2; Congregation for Divine Worship, letter on female altar servers (1994)" }
+      ]
+    },
+    {
+      "id": "art.mass.towers",
+      "sectionId": "mass.towers",
+      "sortOrder": 1,
+      "titleKey": "art.towers.title",
+      "leadKey": "art.towers.lead",
+      "readingTimeMinutes": 5,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.towers.intro" },
+        { "type": "heading", "level": 3, "textKey": "art.towers.bell.name" },
+        { "type": "image", "asset": "hub/mass/tower_bell.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.towers.bell.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.towers.steeple.name" },
+        { "type": "image", "asset": "hub/mass/tower_steeple.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.towers.steeple.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.towers.spire.name" },
+        { "type": "image", "asset": "hub/mass/tower_spire.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.towers.spire.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.towers.clock.name" },
+        { "type": "image", "asset": "hub/mass/tower_clock.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.towers.clock.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.towers.fleche.name" },
+        { "type": "image", "asset": "hub/mass/tower_fleche.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.towers.fleche.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.towers.crossing.name" },
+        { "type": "image", "asset": "hub/mass/tower_crossing.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.towers.crossing.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.towers.west.name" },
+        { "type": "image", "asset": "hub/mass/tower_west.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.towers.west.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.towers.twin.name" },
+        { "type": "image", "asset": "hub/mass/tower_twin.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.towers.twin.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.towers.central.name" },
+        { "type": "image", "asset": "hub/mass/tower_central.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.towers.central.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.towers.detached.name" },
+        { "type": "image", "asset": "hub/mass/tower_detached.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.towers.detached.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.towers.gable.name" },
+        { "type": "image", "asset": "hub/mass/tower_gable.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.towers.gable.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.towers.onion.name" },
+        { "type": "image", "asset": "hub/mass/tower_onion.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.towers.onion.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.towers.romanesque.name" },
+        { "type": "image", "asset": "hub/mass/tower_romanesque.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.towers.romanesque.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.towers.gothic.name" },
+        { "type": "image", "asset": "hub/mass/tower_gothic.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.towers.gothic.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.towers.baroque.name" },
+        { "type": "image", "asset": "hub/mass/tower_baroque.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.towers.baroque.desc" },
+        { "type": "callout", "tone": "note", "titleKey": "art.towers.purpose.title", "textKey": "art.towers.purpose.body" },
+        { "type": "quote", "textKey": "art.towers.quote", "attributionKey": "art.towers.quote.attribution" }
+      ],
+      "related": [
+        { "type": "ARTICLE", "id": "art.bells.overview" },
+        { "type": "ARTICLE", "id": "art.mass.basilica_cathedral" }
+      ],
+      "sources": [
+        { "label": "Standard architectural terminology for church towers (campanile, steeple, spire, flèche, crossing tower, bell gable)" },
+        { "label": "Salisbury Cathedral; Notre-Dame de Paris restoration (2019–2024); Opera della Primaziale Pisana (the Leaning Tower as campanile)" }
       ]
     }
   ],

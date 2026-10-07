@@ -561,7 +561,7 @@ fun HubArticleScreen(
     }
 
     val s = LocalStrings.current
-    val isSymbolsArticle = articleId.startsWith("art.symbols.")
+    val isSymbolsArticle = articleId.startsWith("art.symbols.") || articleId == "art.mass.towers"
     val isBiblicalArticle = articleId.startsWith("art.biblical.")
     val isOrdersArticle = articleId.startsWith("art.orders.")
     var article by remember(articleId, language) { mutableStateOf<HubArticleDetail?>(initialArticle) }
@@ -613,7 +613,8 @@ fun HubArticleScreen(
         ) {
             if (current == null) return@LazyColumn
 
-            val symbolCards = if (isSymbolsArticle) current.blocks.asSymbolCards() else null
+            val symbolArticle = if (isSymbolsArticle) current.blocks.asSymbolArticle() else null
+            val symbolCards = symbolArticle?.cards
             val biblicalCards = if (isBiblicalArticle) current.blocks.asBiblicalCharacterCards() else null
             val orderCards = if (isOrdersArticle) current.blocks.asOrderCards() else null
             val sacredObjectArticle = if (
@@ -628,12 +629,24 @@ fun HubArticleScreen(
             } else {
                 null
             }
-            if (symbolCards != null) {
+            if (symbolArticle != null && symbolCards != null) {
+                symbolArticle.leadingBlocks.forEachIndexed { index, block ->
+                    item {
+                        BlockView(
+                            block = block,
+                            strings = strings,
+                            onEntityRefSelected = onEntityRefSelected,
+                            emphasizeParagraph = index == 0 && block is ParagraphBlock,
+                        )
+                        Spacer(Modifier.height(16.dp))
+                    }
+                }
                 item {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
                             text = when {
                                 articleId == "art.symbols.crosses" -> LocalStrings.current.hubSacredFormsCount
+                                articleId == "art.mass.towers" -> LocalStrings.current.hubTowersCount
                                 else -> LocalStrings.current.hubSymbolsCount
                             }.replace("{count}", symbolCards.size.toString()),
                             color = SymbolCardGold,
@@ -656,6 +669,16 @@ fun HubArticleScreen(
                     item {
                         SymbolCard(
                             card = card,
+                            strings = strings,
+                            onEntityRefSelected = onEntityRefSelected,
+                        )
+                        Spacer(Modifier.height(14.dp))
+                    }
+                }
+                symbolArticle.trailingBlocks.forEach { block ->
+                    item {
+                        BlockView(
+                            block = block,
                             strings = strings,
                             onEntityRefSelected = onEntityRefSelected,
                         )
@@ -903,16 +926,31 @@ private fun HubArticleHeaderCard(
     }
 }
 
-private fun List<Block>.asSymbolCards(): List<SymbolCardContent>? {
-    if (isEmpty() || size % 3 != 0) return null
+private class SymbolArticleContent(
+    val leadingBlocks: List<Block>,
+    val cards: List<SymbolCardContent>,
+    val trailingBlocks: List<Block>,
+)
+
+/**
+ * A symbol-card article: heading/image/paragraph triples, optionally preceded by intro
+ * paragraphs and followed by closing blocks (callouts, a quote). Articles that are pure
+ * triples parse exactly as before, with nothing leading or trailing.
+ */
+private fun List<Block>.asSymbolArticle(): SymbolArticleContent? {
+    val first = indexOfFirst { it is HeadingBlock }
+    if (first < 0 || take(first).any { it !is ParagraphBlock }) return null
     val cards = mutableListOf<SymbolCardContent>()
-    for (index in indices step 3) {
-        val heading = getOrNull(index) as? HeadingBlock ?: return null
-        val image = getOrNull(index + 1) as? ImageBlock ?: return null
-        val paragraph = getOrNull(index + 2) as? ParagraphBlock ?: return null
+    var index = first
+    while (index + 2 < size) {
+        val heading = getOrNull(index) as? HeadingBlock ?: break
+        val image = getOrNull(index + 1) as? ImageBlock ?: break
+        val paragraph = getOrNull(index + 2) as? ParagraphBlock ?: break
         cards += SymbolCardContent(heading, image, paragraph)
+        index += 3
     }
-    return cards
+    if (cards.isEmpty()) return null
+    return SymbolArticleContent(take(first), cards, drop(index))
 }
 
 private fun List<Block>.asBiblicalCharacterCards(): List<BiblicalCharacterContent>? {

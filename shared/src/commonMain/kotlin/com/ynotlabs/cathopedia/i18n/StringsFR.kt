@@ -393,6 +393,7 @@ val FR: Strings = Strings().apply {
     hubArticlesLabel = "Articles"
     hubSymbolsCount = "SYMBOLES · {count}"
     hubSacredFormsCount = "FORMES SACRÉES · {count}"
+    hubTowersCount = "TYPES DE TOURS · {count}"
     ordersCount = "ORDRES · {count}"
     ordersNoneFound = "Aucun ordre trouvé."
     ordersSearchPlaceholder = "Rechercher un ordre…"

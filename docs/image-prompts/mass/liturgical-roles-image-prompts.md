@@ -7,8 +7,8 @@ its own card, the same layout as the Stigmata and Crowned Images pages.
 | Role | Asset | Status |
 | --- | --- | --- |
 | Altar Server | `mass_crossbearer.png` | **reused**, already in the app |
-| Instituted Acolyte | `mass_role_acolyte.png` | **needed** |
-| Sacristan | `mass_role_sacristan.png` | **needed** |
+| Instituted Acolyte | `mass_role_acolyte.png` | **done** 2026-10-07 |
+| Sacristan | `mass_role_sacristan.png` | **done** 2026-10-07 |
 
 The altar server reuses the existing **cross-bearer** from the Entrance
 Procession: a young man in black cassock and lace surplice carrying the
