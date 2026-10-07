@@ -1,5 +1,10 @@
 package com.ynotlabs.cathopedia.ui.screens.home
 
+import com.ynotlabs.cathopedia.ui.theme.LocalIsDarkTheme
+import com.ynotlabs.cathopedia.ui.theme.imageFade
+import com.ynotlabs.cathopedia.ui.theme.CardBorder
+import androidx.compose.material3.MaterialTheme
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -68,14 +73,14 @@ import com.ynotlabs.cathopedia.ui.singularLabel
 import com.ynotlabs.cathopedia.ui.theme.LocalLiturgicalAccent
 import org.jetbrains.compose.resources.painterResource
 
-private val HomeBg = Color(0xFF061A13)
-private val HomeSurface = Color(0xFF0C271E)
-private val HomeSurfaceRaised = Color(0xFF123127)
-private val HomeBorder = Color(0xFF315444)
-private val HomeGold = Color(0xFFD8B24C)
-private val HomeGoldSoft = Color(0xFF9D8858)
-private val HomeCream = Color(0xFFF4ECDD)
-private val HomeMuted = Color(0xFFB4AD98)
+private val HomeBg: Color @Composable get() = MaterialTheme.colorScheme.background
+private val HomeSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val HomeSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val HomeBorder: Color @Composable get() = MaterialTheme.colorScheme.outline
+private val HomeGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val HomeGoldSoft: Color @Composable get() = MaterialTheme.colorScheme.secondary
+private val HomeCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+private val HomeMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
 @Composable
 fun HomeScreen(
@@ -211,7 +216,7 @@ fun HomeScreen(
                     color = HomeSurface,
                     border = BorderStroke(
                         width = 2.dp,
-                        color = HomeBorder.copy(alpha = 0.72f),
+                        color = CardBorder,
                     ),
                 ) {
                     Text(
@@ -259,8 +264,8 @@ private fun HomeHero(seasonLabel: String) {
                     Brush.horizontalGradient(
                         colorStops = arrayOf(
                             0.00f to HomeBg,
-                            0.48f to HomeBg.copy(alpha = 0.96f),
-                            0.72f to HomeBg.copy(alpha = 0.62f),
+                            0.48f to HomeBg.imageFade(0.96f),
+                            0.72f to HomeBg.imageFade(0.62f),
                             1.00f to Color.Transparent,
                         ),
                     ),
@@ -274,7 +279,7 @@ private fun HomeHero(seasonLabel: String) {
                     Brush.verticalGradient(
                         listOf(
                             Color.Transparent,
-                            HomeBg.copy(alpha = 0.16f),
+                            HomeBg.imageFade(0.16f),
                             HomeBg,
                         ),
                     ),
@@ -375,7 +380,7 @@ private fun DailyReadingsCard(
             .background(HomeSurface)
             .border(
                 width = 2.dp,
-                color = HomeGoldSoft.copy(alpha = 0.50f),
+                color = CardBorder,
                 shape = shape,
             ),
     ) {
@@ -386,7 +391,8 @@ private fun DailyReadingsCard(
                 .matchParentSize(),
             contentScale = ContentScale.Crop,
             alignment = Alignment.CenterEnd,
-            alpha = 0.60f
+            // Over dark green the art reads at 60%; on parchment that washes it out.
+            alpha = if (LocalIsDarkTheme.current) 0.60f else 0.90f
         )
 
         Box(
@@ -395,9 +401,9 @@ private fun DailyReadingsCard(
                 .background(
                     Brush.horizontalGradient(
                         colorStops = arrayOf(
-                            0.00f to HomeBg.copy(alpha = 0.99f),
-                            0.56f to HomeBg.copy(alpha = 0.94f),
-                            1.00f to HomeBg.copy(alpha = 0.38f),
+                            0.00f to HomeBg.imageFade(0.99f),
+                            0.56f to HomeBg.imageFade(0.94f),
+                            1.00f to HomeBg.imageFade(0.38f),
                         ),
                     ),
                 ),
@@ -624,7 +630,6 @@ private fun EditorialHomeCard(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(190.dp)
             .clip(shape)
             .background(
                 Brush.horizontalGradient(
@@ -636,12 +641,12 @@ private fun EditorialHomeCard(
             )
             .border(
                 width = 2.dp,
-                color = HomeBorder.copy(alpha = 0.78f),
+                color = CardBorder,
                 shape = shape,
             )
             .clickable(onClick = onClick)
             .padding(12.dp),
-        verticalAlignment = Alignment.CenterVertically,
+        verticalAlignment = Alignment.Top,
     ) {
         if (portrait != null) {
             Image(
@@ -653,7 +658,7 @@ private fun EditorialHomeCard(
                     .clip(RoundedCornerShape(18.dp))
                     .border(
                         width = 2.dp,
-                        color = HomeGoldSoft.copy(alpha = 0.50f),
+                        color = CardBorder,
                         shape = RoundedCornerShape(18.dp),
                     ),
                 contentScale = ContentScale.Crop,
@@ -665,8 +670,7 @@ private fun EditorialHomeCard(
 
         Column(
             modifier = Modifier
-                .weight(1f)
-                .height(166.dp),
+                .weight(1f),
         ) {
             Text(
                 text = item.type.singularLabel(s).uppercase(),

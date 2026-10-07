@@ -6,10 +6,10 @@ uses the same layout as "The Stigmata": each image sits beside its own card.
 
 | # | Asset | Subject | Status |
 | --- | --- | --- | --- |
-| 1 | `crowned_santo_nino_cebu.png` | Santo Niño de Cebú, Philippines | **needed** |
-| 2 | `crowned_bambino_aracoeli.png` | Santo Bambino of Aracoeli, Rome | **needed** |
-| 3 | `crowned_bambino_arenzano.png` | Child Jesus of Prague, Arenzano | **needed** |
-| 4 | `crowned_infant_prague.png` | Infant Jesus of Prague | **needed** |
+| 1 | `crowned_santo_nino_cebu.png` | Santo Niño de Cebú, Philippines | **done** 2026-10-07 |
+| 2 | `crowned_bambino_aracoeli.png` | Santo Bambino of Aracoeli, Rome | **done** 2026-10-07 |
+| 3 | `crowned_bambino_arenzano.png` | Child Jesus of Prague, Arenzano | **done** 2026-10-07 |
+| 4 | `crowned_infant_prague.png` | Infant Jesus of Prague | **done** 2026-10-07 |
 
 ## What these are
 
