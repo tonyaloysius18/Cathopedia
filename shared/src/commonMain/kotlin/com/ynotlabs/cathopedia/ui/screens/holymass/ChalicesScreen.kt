@@ -1,5 +1,22 @@
 package com.ynotlabs.cathopedia.ui.screens.holymass
 
+import kotlinx.coroutines.launch
+import kotlin.math.min
+import kotlin.math.abs
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clip
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
+import androidx.compose.foundation.border
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -92,10 +109,11 @@ private data class ChaliceGroup(val label: String, val chalices: List<Chalice>)
  * "Types of Chalices" — The Holy Mass → Sacred Vessels, second article.
  *
  * The page's point is that four of the eight are uses and four are styles, so the
- * chalices sit on two shelves, one per level-2 heading. Each shelf is a row of
- * large image tiles that scrolls sideways; tapping a tile selects it and its
- * description shows in the card beneath the row. Text before the first shelf is
- * the intro; callouts and the quote after the last shelf close the page.
+ * a switch at the top picks a group (one per level-2 heading). Below it, that
+ * group's chalices sit in a swipeable coverflow carousel; when a swipe settles,
+ * the centred chalice's description shows in the card underneath, and tapping a
+ * side card slides it to the centre. Text before the first group is the intro;
+ * callouts and the quote after the last group close the page.
  *
  * Block convention: intro `paragraph`, then for each shelf a level-2 `heading`
  * followed by (level-3 `heading`, `image`, `paragraph`) triples, then `callout`s
@@ -190,9 +208,9 @@ fun ChalicesScreen(
             }
         }
 
-        groups.forEachIndexed { index, group ->
-            item(key = "shelf-$index") {
-                ChaliceShelf(group)
+        if (groups.isNotEmpty()) {
+            item(key = "carousel") {
+                ChaliceCarouselSection(groups)
                 Spacer(Modifier.height(24.dp))
             }
         }
@@ -224,46 +242,145 @@ fun ChalicesScreen(
 }
 
 @Composable
-private fun ChaliceShelf(group: ChaliceGroup) {
-    var selected by remember(group.label) { mutableIntStateOf(0) }
+private fun ChaliceCarouselSection(groups: List<ChaliceGroup>) {
+    var groupIndex by remember { mutableIntStateOf(0) }
+    val group = groups[groupIndex.coerceIn(groups.indices)]
+    // A fresh scroll state per group, so switching groups starts at its first chalice.
+    val rowState = remember(groupIndex) { LazyListState() }
+    val scope = rememberCoroutineScope()
+
+    // The card nearest the centre of the row is the current one.
+    val centred by remember(rowState) {
+        derivedStateOf {
+            val info = rowState.layoutInfo
+            if (info.visibleItemsInfo.isEmpty()) 0
+            else {
+                val centre = (info.viewportStartOffset + info.viewportEndOffset) / 2
+                info.visibleItemsInfo.minByOrNull { abs(it.offset + it.size / 2 - centre) }?.index ?: 0
+            }
+        }
+    }
+    // The detail card follows the carousel, but only once a swipe has settled,
+    // so the text does not flicker while the cards are moving.
+    var selected by remember(groupIndex) { mutableIntStateOf(0) }
+    LaunchedEffect(rowState.isScrollInProgress, centred) {
+        if (!rowState.isScrollInProgress) selected = centred
+    }
 
     Column(Modifier.fillMaxWidth()) {
-        ArticleSectionLabel("${group.label} · ${group.chalices.size}")
+        ChaliceGroupSwitch(
+            labels = groups.map { it.label },
+            selected = groupIndex,
+            onSelected = { groupIndex = it },
+        )
+        Spacer(Modifier.height(18.dp))
 
-        // The row bleeds past the page's 20dp margin to the screen edges, so tiles
-        // slide out of view at the edge of the phone rather than at the margin.
-        LazyRow(
-            modifier = Modifier.bleed(ShelfBleed),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-            contentPadding = PaddingValues(horizontal = ShelfBleed),
-        ) {
-            itemsIndexed(group.chalices, key = { _, c -> c.asset }) { index, chalice ->
-                ChaliceTile(
-                    chalice = chalice,
-                    isSelected = index == selected,
-                    onClick = { selected = index },
-                )
+        BoxWithConstraints(Modifier.fillMaxWidth().bleed(ShelfBleed)) {
+            val side = ((maxWidth - CardWidth) / 2).coerceAtLeast(0.dp)
+            val cardWidthPx = with(LocalDensity.current) { CardWidth.toPx() }
+            LazyRow(
+                state = rowState,
+                flingBehavior = rememberSnapFlingBehavior(rowState),
+                horizontalArrangement = Arrangement.spacedBy(14.dp),
+                contentPadding = PaddingValues(horizontal = side),
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                itemsIndexed(group.chalices, key = { _, c -> c.asset }) { index, chalice ->
+                    ChaliceCarouselCard(
+                        chalice = chalice,
+                        isCurrent = index == selected,
+                        modifier = Modifier.coverflow(rowState, index, cardWidthPx),
+                        onClick = { scope.launch { rowState.animateScrollToItem(index) } },
+                    )
+                }
             }
         }
 
+        Spacer(Modifier.height(12.dp))
+        CarouselDots(count = group.chalices.size, current = selected)
+
         group.chalices.getOrNull(selected)?.let { chalice ->
-            Spacer(Modifier.height(14.dp))
-            ChaliceDetailCard(chalice)
+            Spacer(Modifier.height(16.dp))
+            Crossfade(targetState = chalice, label = "chalice-detail") { shown ->
+                ChaliceDetailCard(shown)
+            }
+        }
+    }
+}
+
+/** Width of one carousel card; its height comes from its content (image + name). */
+private val CardWidth = 160.dp
+
+/**
+ * Coverflow: cards shrink and fade a little as they move away from the centre, with
+ * a gentle tilt. Kept subtle so the side cards stay readable.
+ */
+private fun Modifier.coverflow(state: LazyListState, index: Int, cardWidthPx: Float): Modifier =
+    graphicsLayer {
+        val info = state.layoutInfo
+        val item = info.visibleItemsInfo.firstOrNull { it.index == index } ?: return@graphicsLayer
+        val centre = (info.viewportStartOffset + info.viewportEndOffset) / 2f
+        val offset = ((item.offset + item.size / 2f - centre) / cardWidthPx).coerceIn(-1.5f, 1.5f)
+        val distance = min(abs(offset), 1f)
+        cameraDistance = 16f * density
+        rotationY = offset * 18f
+        scaleX = 1f - distance * 0.14f
+        scaleY = 1f - distance * 0.14f
+        alpha = 1f - distance * 0.4f
+    }
+
+@Composable
+private fun ChaliceGroupSwitch(labels: List<String>, selected: Int, onSelected: (Int) -> Unit) {
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(18.dp),
+        color = MaterialTheme.colorScheme.surfaceContainerLow,
+        border = BorderStroke(1.dp, CardBorder),
+    ) {
+        Row(Modifier.padding(4.dp), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+            labels.forEachIndexed { index, label ->
+                val isSelected = index == selected
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(42.dp)
+                        .clip(RoundedCornerShape(14.dp))
+                        .background(if (isSelected) ArticleGold.copy(alpha = 0.16f) else Color.Transparent)
+                        .border(
+                            1.dp,
+                            if (isSelected) ArticleGold.copy(alpha = 0.72f) else Color.Transparent,
+                            RoundedCornerShape(14.dp),
+                        )
+                        .selectable(selected = isSelected, role = Role.Tab, onClick = { onSelected(index) }),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text = label,
+                        color = if (isSelected) ArticleCream else ArticleMuted,
+                        fontSize = 14.sp,
+                        fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Medium,
+                    )
+                }
+            }
         }
     }
 }
 
 @Composable
-private fun ChaliceTile(chalice: Chalice, isSelected: Boolean, onClick: () -> Unit) {
-    val shape = RoundedCornerShape(18.dp)
+private fun ChaliceCarouselCard(
+    chalice: Chalice,
+    isCurrent: Boolean,
+    modifier: Modifier,
+    onClick: () -> Unit,
+) {
     Surface(
-        modifier = Modifier
-            .width(148.dp)
-            .semantics { selected = isSelected }
-            .clickable(role = Role.Tab, onClick = onClick),
-        shape = shape,
+        modifier = modifier
+            .width(CardWidth)
+            .semantics { selected = isCurrent }
+            .clickable(role = Role.Button, onClick = onClick),
+        shape = RoundedCornerShape(18.dp),
         color = ArticleSurface,
-        border = if (isSelected) BorderStroke(2.dp, ArticleGold) else BorderStroke(1.dp, CardBorder),
+        border = if (isCurrent) BorderStroke(2.dp, ArticleGold) else BorderStroke(1.dp, CardBorder),
     ) {
         Column(
             modifier = Modifier.padding(10.dp),
@@ -290,16 +407,30 @@ private fun ChaliceTile(chalice: Chalice, isSelected: Boolean, onClick: () -> Un
             Spacer(Modifier.height(8.dp))
             Text(
                 text = chalice.name,
-                color = if (isSelected) ArticleGold else ArticleCream,
+                color = if (isCurrent) ArticleGold else ArticleCream,
                 fontFamily = FontFamily.Serif,
                 fontSize = 14.sp,
                 lineHeight = 18.sp,
-                fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
+                fontWeight = if (isCurrent) FontWeight.SemiBold else FontWeight.Normal,
                 textAlign = TextAlign.Center,
-                // Two lines reserved for every name, so one-line and two-line
-                // names make tiles of the same height.
+                // Two lines reserved for every name, so all cards are the same height.
                 minLines = 2,
                 maxLines = 2,
+            )
+        }
+    }
+}
+
+@Composable
+private fun CarouselDots(count: Int, current: Int) {
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+        repeat(count) { index ->
+            Box(
+                modifier = Modifier
+                    .padding(horizontal = 3.dp)
+                    .size(if (index == current) 8.dp else 6.dp)
+                    .clip(CircleShape)
+                    .background(if (index == current) ArticleGold else ArticleGold.copy(alpha = 0.22f)),
             )
         }
     }

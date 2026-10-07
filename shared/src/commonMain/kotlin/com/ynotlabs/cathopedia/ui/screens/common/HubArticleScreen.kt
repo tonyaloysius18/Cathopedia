@@ -1,5 +1,10 @@
 package com.ynotlabs.cathopedia.ui.screens.common
 
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.layout.layout
+import androidx.compose.ui.text.style.TextAlign
+import kotlinx.coroutines.launch
+import androidx.compose.runtime.rememberCoroutineScope
 import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import com.ynotlabs.cathopedia.ui.screens.catechism.ConfessionPrayersScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.CreedsScreen
@@ -160,11 +165,11 @@ private val SymbolCardGold: Color @Composable get() = MaterialTheme.colorScheme.
 private val SymbolCardCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
 private val SymbolCardMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
-private const val TOWER_CAROUSEL_CARD_WIDTH_DP = 220
-private const val TOWER_CAROUSEL_CARD_HEIGHT_DP = 300
-private const val TOWER_CAROUSEL_MAX_ROTATION_DEG = 38f
-private const val TOWER_CAROUSEL_MAX_SCALE_DROP = 0.22f
-private const val TOWER_CAROUSEL_MAX_ALPHA_DROP = 0.48f
+private const val TOWER_CAROUSEL_CARD_WIDTH_DP = 180
+private const val TOWER_CAROUSEL_CARD_HEIGHT_DP = 220
+private const val TOWER_CAROUSEL_MAX_ROTATION_DEG = 18f
+private const val TOWER_CAROUSEL_MAX_SCALE_DROP = 0.14f
+private const val TOWER_CAROUSEL_MAX_ALPHA_DROP = 0.4f
 
 private data class SymbolCardContent(
     val heading: HeadingBlock,
@@ -699,7 +704,21 @@ fun HubArticleScreen(
                                 selected = selectedTowerGroup,
                                 itemCount = groupCards.size,
                             )
-                            Spacer(Modifier.height(12.dp))
+                            Spacer(Modifier.height(14.dp))
+                        }
+
+                        // The carousel sits directly under the tabs and drives the card
+                        // below it, so a swipe and its result are on screen together.
+                        item(key = "tower-carousel-${selectedTowerGroup.name}") {
+                            TowerPreviewShelf(
+                                cards = groupCards,
+                                strings = strings,
+                                onSelected = { selectedTowerAsset = it.image.asset },
+                            )
+                            Spacer(Modifier.height(16.dp))
+                        }
+
+                        item {
                             TowerFeaturedCard(
                                 card = featuredCard,
                                 strings = strings,
@@ -710,18 +729,7 @@ fun HubArticleScreen(
                                     selectedTowerAsset = null
                                 },
                             )
-                            Spacer(Modifier.height(20.dp))
-                        }
-
-                        if (groupCards.size > 1) {
-                            item {
-                                TowerPreviewShelf(
-                                    cards = groupCards,
-                                    strings = strings,
-                                    onSelected = { selectedTowerAsset = it.image.asset },
-                                )
-                                Spacer(Modifier.height(22.dp))
-                            }
+                            Spacer(Modifier.height(22.dp))
                         }
                     }
                 } else {
@@ -1755,7 +1763,7 @@ private fun TowerFeaturedCard(
                             )
                         )
                     )
-                    .padding(start = 20.dp, top = 18.dp, end = 12.dp, bottom = 14.dp),
+                    .padding(start = 20.dp, top = 16.dp, end = 20.dp, bottom = 12.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Column(modifier = Modifier.weight(1f)) {
@@ -1778,15 +1786,6 @@ private fun TowerFeaturedCard(
                     )
                 }
 
-                hubAssetPainter(card.image.asset)?.let { painter ->
-                    Spacer(Modifier.width(8.dp))
-                    Image(
-                        painter = painter,
-                        contentDescription = title,
-                        modifier = Modifier.size(142.dp),
-                        contentScale = ContentScale.Fit,
-                    )
-                }
             }
 
             SymbolMarkupText(
@@ -1836,6 +1835,7 @@ private fun TowerPreviewShelf(
     onSelected: (SymbolCardContent) -> Unit,
 ) {
     val listState = rememberLazyListState()
+    val scope = rememberCoroutineScope()
     val density = LocalDensity.current
     val cardWidthPx = with(density) { TOWER_CAROUSEL_CARD_WIDTH_DP.dp.toPx() }
     val currentIndex by remember(cards, listState) {
@@ -1860,10 +1860,7 @@ private fun TowerPreviewShelf(
     }
 
     Column {
-        HubArticleSectionLabel(LocalStrings.current.hubTowersOtherTypes)
-        Spacer(Modifier.height(14.dp))
-
-        BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
+        BoxWithConstraints(modifier = Modifier.fillMaxWidth().bleedPastPadding(20.dp)) {
             val cardWidth = TOWER_CAROUSEL_CARD_WIDTH_DP.dp
             val sidePadding = ((maxWidth - cardWidth) / 2).coerceAtLeast(0.dp)
 
@@ -1884,9 +1881,10 @@ private fun TowerPreviewShelf(
                         card = card,
                         title = strings[card.heading.textKey].orEmpty(),
                         index = index,
+                        isCurrent = index == currentIndex,
                         listState = listState,
                         cardWidthPx = cardWidthPx,
-                        onClick = { onSelected(card) },
+                        onClick = { scope.launch { listState.animateScrollToItem(index) } },
                     )
                 }
             }
@@ -1905,11 +1903,13 @@ private fun TowerCarouselCard(
     card: SymbolCardContent,
     title: String,
     index: Int,
+    isCurrent: Boolean,
     listState: LazyListState,
     cardWidthPx: Float,
     onClick: () -> Unit,
 ) {
-    Box(
+    val shape = RoundedCornerShape(22.dp)
+    Column(
         modifier = Modifier
             .width(TOWER_CAROUSEL_CARD_WIDTH_DP.dp)
             .height(TOWER_CAROUSEL_CARD_HEIGHT_DP.dp)
@@ -1931,89 +1931,80 @@ private fun TowerCarouselCard(
                     scaleY = scale
                     alpha = 1f -
                         min(abs(normalized), 1f) * TOWER_CAROUSEL_MAX_ALPHA_DROP
-                    translationX = -normalized * cardWidthPx * 0.16f
                 }
             }
-            .border(1.dp, CardBorder, RoundedCornerShape(26.dp))
-            .clip(RoundedCornerShape(26.dp))
-            .background(
-                Brush.verticalGradient(
-                    listOf(
-                        MaterialTheme.colorScheme.surfaceContainerHighest,
-                        MaterialTheme.colorScheme.surfaceContainerHigh,
-                    )
-                )
+            .border(
+                if (isCurrent) 2.dp else 1.dp,
+                if (isCurrent) SymbolCardGold else CardBorder,
+                shape,
             )
-            .clickable(onClick = onClick),
-        contentAlignment = Alignment.BottomStart,
+            .clip(shape)
+            .background(MaterialTheme.colorScheme.surfaceContainerHigh)
+            .clickable(onClick = onClick)
+            .padding(10.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        hubAssetPainter(card.image.asset)?.let { painter ->
-            Image(
-                painter = painter,
-                contentDescription = title,
-                contentScale = ContentScale.Fit,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(start = 12.dp, top = 12.dp, end = 12.dp, bottom = 44.dp),
-            )
-        }
-
+        // The picture on its own panel, the name beneath it: nothing overlaps.
         Box(
             modifier = Modifier
-                .fillMaxSize()
-                .background(
-                    Brush.verticalGradient(
-                        0f to Color.Transparent,
-                        0.58f to Color.Transparent,
-                        1f to MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.98f),
-                    )
-                ),
-        )
-
-        Surface(
-            modifier = Modifier
-                .align(Alignment.TopEnd)
-                .padding(14.dp)
-                .size(36.dp),
-            shape = CircleShape,
-            color = SymbolCardGold.copy(alpha = 0.15f),
-            border = BorderStroke(1.dp, SymbolCardGold.copy(alpha = 0.38f)),
+                .fillMaxWidth()
+                .weight(1f)
+                .clip(RoundedCornerShape(14.dp))
+                .background(MaterialTheme.colorScheme.surfaceContainerLow),
+            contentAlignment = Alignment.Center,
         ) {
-            Box(contentAlignment = Alignment.Center) {
-                Text(
-                    text = (index + 1).toString(),
-                    color = SymbolCardGold,
-                    fontFamily = FontFamily.Serif,
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.SemiBold,
+            hubAssetPainter(card.image.asset)?.let { painter ->
+                Image(
+                    painter = painter,
+                    contentDescription = title,
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(8.dp),
                 )
             }
+            Surface(
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(6.dp)
+                    .size(26.dp),
+                shape = CircleShape,
+                color = SymbolCardGold.copy(alpha = 0.15f),
+                border = BorderStroke(1.dp, SymbolCardGold.copy(alpha = 0.38f)),
+            ) {
+                Box(contentAlignment = Alignment.Center) {
+                    Text(
+                        text = (index + 1).toString(),
+                        color = SymbolCardGold,
+                        fontFamily = FontFamily.Serif,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                }
+            }
         }
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(18.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Text(
-                text = title,
-                modifier = Modifier.weight(1f),
-                color = SymbolCardCream,
-                fontFamily = FontFamily.Serif,
-                fontSize = 18.sp,
-                lineHeight = 22.sp,
-                fontWeight = FontWeight.SemiBold,
-            )
-            Spacer(Modifier.width(8.dp))
-            Text(
-                text = "›",
-                color = SymbolCardGold,
-                fontSize = 24.sp,
-                lineHeight = 24.sp,
-            )
-        }
+        Spacer(Modifier.height(8.dp))
+        Text(
+            text = title,
+            color = if (isCurrent) SymbolCardGold else SymbolCardCream,
+            fontFamily = FontFamily.Serif,
+            fontSize = 14.sp,
+            lineHeight = 18.sp,
+            fontWeight = if (isCurrent) FontWeight.SemiBold else FontWeight.Normal,
+            textAlign = TextAlign.Center,
+            minLines = 2,
+            maxLines = 2,
+        )
     }
+}
+
+/** Lets the carousel reach past the page's side padding to the screen edges. */
+private fun Modifier.bleedPastPadding(amount: Dp): Modifier = layout { measurable, constraints ->
+    val extra = (amount * 2).roundToPx()
+    val placeable = measurable.measure(
+        constraints.copy(minWidth = constraints.maxWidth + extra, maxWidth = constraints.maxWidth + extra),
+    )
+    layout(constraints.maxWidth, placeable.height) { placeable.place(-extra / 2, 0) }
 }
 
 @Composable
