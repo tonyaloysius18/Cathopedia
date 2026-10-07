@@ -111,7 +111,8 @@
       "summaryKey": "sec.vessels.summary",
       "icon": "ic_chalice",
       "articleIds": [
-        "art.vessels.overview"
+        "art.vessels.overview",
+        "art.mass.chalices"
       ]
     },
     {
@@ -1321,6 +1322,52 @@
       "sources": [
         { "label": "Standard architectural terminology for church towers (campanile, steeple, spire, flèche, crossing tower, bell gable)" },
         { "label": "Salisbury Cathedral; Notre-Dame de Paris restoration (2019–2024); Opera della Primaziale Pisana (the Leaning Tower as campanile)" }
+      ]
+    },
+    {
+      "id": "art.mass.chalices",
+      "sectionId": "mass.vessels",
+      "sortOrder": 2,
+      "titleKey": "art.chalices.title",
+      "leadKey": "art.chalices.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.chalices.intro" },
+        { "type": "heading", "level": 3, "textKey": "art.chalices.mass.name" },
+        { "type": "image", "asset": "hub/mass/chalice.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.chalices.mass.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.chalices.communion.name" },
+        { "type": "image", "asset": "hub/mass/chalice_communion.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.chalices.communion.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.chalices.concelebration.name" },
+        { "type": "image", "asset": "hub/mass/chalice_concelebration.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.chalices.concelebration.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.chalices.travel.name" },
+        { "type": "image", "asset": "hub/mass/chalice_travel.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.chalices.travel.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.chalices.baroque.name" },
+        { "type": "image", "asset": "hub/mass/chalice_baroque.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.chalices.baroque.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.chalices.gothic.name" },
+        { "type": "image", "asset": "hub/mass/chalice_gothic.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.chalices.gothic.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.chalices.romanesque.name" },
+        { "type": "image", "asset": "hub/mass/chalice_romanesque.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.chalices.romanesque.desc" },
+        { "type": "heading", "level": 3, "textKey": "art.chalices.modern.name" },
+        { "type": "image", "asset": "hub/mass/chalice_modern.png", "license": "IN_HOUSE" },
+        { "type": "paragraph", "textKey": "art.chalices.modern.desc" },
+        { "type": "callout", "tone": "warning", "titleKey": "art.chalices.norms.title", "textKey": "art.chalices.norms.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.chalices.styles.title", "textKey": "art.chalices.styles.body" },
+        { "type": "quote", "textKey": "art.chalices.quote", "attributionKey": "art.chalices.quote.attribution" }
+      ],
+      "related": [
+        { "type": "ARTICLE", "id": "art.vessels.overview" }
+      ],
+      "sources": [
+        { "label": "General Instruction of the Roman Missal, 327–334 (sacred vessels)" },
+        { "label": "Redemptionis Sacramentum (2004), 117 (materials for sacred vessels)" },
+        { "label": "Roman Missal, Order of Concelebration; Book of Blessings, blessing of a chalice and paten" }
       ]
     }
   ],

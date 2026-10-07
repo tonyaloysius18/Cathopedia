@@ -394,6 +394,7 @@ val IT: Strings = Strings().apply {
     hubSymbolsCount = "SIMBOLI · {count}"
     hubSacredFormsCount = "FORME SACRE · {count}"
     hubTowersCount = "TIPI DI TORRI · {count}"
+    hubChaliceTypesCount = "TIPI DI CALICI · {count}"
     ordersCount = "ORDINI · {count}"
     ordersNoneFound = "Nessun ordine trovato."
     ordersSearchPlaceholder = "Cerca un ordine…"

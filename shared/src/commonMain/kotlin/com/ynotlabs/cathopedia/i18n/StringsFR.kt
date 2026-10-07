@@ -394,6 +394,7 @@ val FR: Strings = Strings().apply {
     hubSymbolsCount = "SYMBOLES · {count}"
     hubSacredFormsCount = "FORMES SACRÉES · {count}"
     hubTowersCount = "TYPES DE TOURS · {count}"
+    hubChaliceTypesCount = "TYPES DE CALICES · {count}"
     ordersCount = "ORDRES · {count}"
     ordersNoneFound = "Aucun ordre trouvé."
     ordersSearchPlaceholder = "Rechercher un ordre…"

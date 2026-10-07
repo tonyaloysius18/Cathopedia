@@ -8,21 +8,21 @@ thumbnail. A strong silhouette matters more than fine detail.
 
 | # | Asset | Tower type | Status |
 | --- | --- | --- | --- |
-| 1 | `tower_bell.png` | Bell tower (campanile) | **needed** |
-| 2 | `tower_steeple.png` | Steeple | **needed** |
-| 3 | `tower_spire.png` | Spire | **needed** |
-| 4 | `tower_clock.png` | Clock tower | **needed** |
-| 5 | `tower_fleche.png` | Flèche | **needed** |
-| 6 | `tower_crossing.png` | Crossing tower | **needed** |
-| 7 | `tower_west.png` | West tower | **needed** |
-| 8 | `tower_twin.png` | Twin towers | **needed** |
-| 9 | `tower_central.png` | Central tower | **needed** |
-| 10 | `tower_detached.png` | Detached bell tower | **needed** |
-| 11 | `tower_gable.png` | Bell gable (campanile a vela) | **needed** |
-| 12 | `tower_onion.png` | Onion-domed tower | **needed** |
-| 13 | `tower_romanesque.png` | Romanesque tower | **needed** |
-| 14 | `tower_gothic.png` | Gothic tower | **needed** |
-| 15 | `tower_baroque.png` | Baroque tower | **needed** |
+| 1 | `tower_bell.png` | Bell tower (campanile) | **done** 2026-10-07 |
+| 2 | `tower_steeple.png` | Steeple | **done** 2026-10-07 |
+| 3 | `tower_spire.png` | Spire | **done** 2026-10-07 |
+| 4 | `tower_clock.png` | Clock tower | **done** 2026-10-07 |
+| 5 | `tower_fleche.png` | Flèche | **done** 2026-10-07 |
+| 6 | `tower_crossing.png` | Crossing tower | **done** 2026-10-07 |
+| 7 | `tower_west.png` | West tower | **done** 2026-10-07 |
+| 8 | `tower_twin.png` | Twin towers | **done** 2026-10-07 |
+| 9 | `tower_central.png` | Central tower | **done** 2026-10-07 |
+| 10 | `tower_detached.png` | Detached bell tower | **done** 2026-10-07 |
+| 11 | `tower_gable.png` | Bell gable (campanile a vela) | **done** 2026-10-07 |
+| 12 | `tower_onion.png` | Onion-domed tower | **done** 2026-10-07 |
+| 13 | `tower_romanesque.png` | Romanesque tower | **done** 2026-10-07 |
+| 14 | `tower_gothic.png` | Gothic tower | **done** 2026-10-07 |
+| 15 | `tower_baroque.png` | Baroque tower | **done** 2026-10-07 |
 
 ## House style (all 15)
 

@@ -439,6 +439,7 @@ class Strings {
     var hubSymbolsCount: String = "SYMBOLS · {count}"
     var hubSacredFormsCount: String = "SACRED FORMS · {count}"
     var hubTowersCount: String = "TOWER TYPES · {count}"
+    var hubChaliceTypesCount: String = "CHALICE TYPES · {count}"
     var ordersCount: String = "ORDERS · {count}"
     var ordersNoneFound: String = "No orders found."
     var ordersSearchPlaceholder: String = "Search orders…"

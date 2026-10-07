@@ -561,7 +561,7 @@ fun HubArticleScreen(
     }
 
     val s = LocalStrings.current
-    val isSymbolsArticle = articleId.startsWith("art.symbols.") || articleId == "art.mass.towers"
+    val isSymbolsArticle = articleId.startsWith("art.symbols.") || articleId == "art.mass.towers" || articleId == "art.mass.chalices"
     val isBiblicalArticle = articleId.startsWith("art.biblical.")
     val isOrdersArticle = articleId.startsWith("art.orders.")
     var article by remember(articleId, language) { mutableStateOf<HubArticleDetail?>(initialArticle) }
@@ -647,6 +647,7 @@ fun HubArticleScreen(
                             text = when {
                                 articleId == "art.symbols.crosses" -> LocalStrings.current.hubSacredFormsCount
                                 articleId == "art.mass.towers" -> LocalStrings.current.hubTowersCount
+                                articleId == "art.mass.chalices" -> LocalStrings.current.hubChaliceTypesCount
                                 else -> LocalStrings.current.hubSymbolsCount
                             }.replace("{count}", symbolCards.size.toString()),
                             color = SymbolCardGold,
