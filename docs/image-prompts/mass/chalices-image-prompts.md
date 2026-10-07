@@ -9,13 +9,13 @@ silhouette.
 | # | Asset | Type | Status |
 | --- | --- | --- | --- |
 | 1 | `chalice.png` | Mass chalice | **reused**, already in the app (Sacred Vessels) |
-| 2 | `chalice_communion.png` | Communion chalice | **needed** |
-| 3 | `chalice_concelebration.png` | Concelebration chalices | **needed** |
-| 4 | `chalice_travel.png` | Travel or portable chalice | **needed** |
-| 5 | `chalice_baroque.png` | Baroque chalice | **needed** |
-| 6 | `chalice_gothic.png` | Gothic chalice | **needed** |
-| 7 | `chalice_romanesque.png` | Romanesque chalice | **needed** |
-| 8 | `chalice_modern.png` | Modern chalice | **needed** |
+| 2 | `chalice_communion.png` | Communion chalice | **done** 2026-10-08 |
+| 3 | `chalice_concelebration.png` | Concelebration chalices | **done** 2026-10-08 |
+| 4 | `chalice_travel.png` | Travel or portable chalice | **done** 2026-10-08 |
+| 5 | `chalice_baroque.png` | Baroque chalice | **done** 2026-10-08 |
+| 6 | `chalice_gothic.png` | Gothic chalice | **done** 2026-10-08 |
+| 7 | `chalice_romanesque.png` | Romanesque chalice | **done** 2026-10-08 |
+| 8 | `chalice_modern.png` | Modern chalice | **done** 2026-10-08 |
 
 ## House style (all seven)
 
