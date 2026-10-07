@@ -127,6 +127,9 @@ import com.ynotlabs.cathopedia.ui.theme.LocalFeastTheme
 import com.ynotlabs.cathopedia.ui.theme.LocalMarianTheme
 import com.ynotlabs.cathopedia.ui.theme.LocalMiracleTheme
 import com.ynotlabs.cathopedia.ui.theme.LocalPopeTheme
+import com.ynotlabs.cathopedia.ui.theme.LocalIsDarkTheme
+import com.ynotlabs.cathopedia.ui.theme.DarkText
+import com.ynotlabs.cathopedia.ui.theme.DarkGold
 import com.ynotlabs.cathopedia.ui.theme.MarianActionBar
 import com.ynotlabs.cathopedia.ui.theme.MarianBg
 import com.ynotlabs.cathopedia.ui.theme.MarianBorder
@@ -158,14 +161,18 @@ import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
-private val DetailBg: Color @Composable get() = if (LocalMarianTheme.current) MarianBg else if (LocalFeastTheme.current) FeastBg else if (LocalPopeTheme.current) PopeBg else if (LocalApostleTheme.current) ApostleBg else if (LocalMiracleTheme.current) MiracleBg else if (LocalChurchTheme.current) ChurchBg else MaterialTheme.colorScheme.background
-private val DetailSurface: Color @Composable get() = if (LocalMarianTheme.current) MarianCard else if (LocalFeastTheme.current) FeastCard else if (LocalPopeTheme.current) PopeCard else if (LocalApostleTheme.current) ApostleCard else if (LocalMiracleTheme.current) MiracleCard else if (LocalChurchTheme.current) ChurchCard else MaterialTheme.colorScheme.surfaceContainerHigh
-private val DetailSurfaceElevated: Color @Composable get() = if (LocalMarianTheme.current) MarianSurfaceElevated else if (LocalFeastTheme.current) FeastSurfaceElevated else if (LocalPopeTheme.current) PopeSurfaceElevated else if (LocalApostleTheme.current) ApostleSurfaceElevated else if (LocalMiracleTheme.current) MiracleSurfaceElevated else if (LocalChurchTheme.current) ChurchSurfaceElevated else MaterialTheme.colorScheme.surfaceContainerHighest
-private val DetailBorder: Color @Composable get() = if (LocalMarianTheme.current) MarianBorder else if (LocalFeastTheme.current) FeastBorder else if (LocalPopeTheme.current) PopeBorder else if (LocalApostleTheme.current) ApostleBorder else if (LocalMiracleTheme.current) MiracleBorder else if (LocalChurchTheme.current) ChurchBorder else MaterialTheme.colorScheme.outline
-private val DetailGold: Color @Composable get() = if (LocalMarianTheme.current) MarianGold else if (LocalFeastTheme.current) FeastGold else if (LocalPopeTheme.current) PopeGold else if (LocalApostleTheme.current) ApostleGold else if (LocalMiracleTheme.current) MiracleGold else if (LocalChurchTheme.current) ChurchGold else MaterialTheme.colorScheme.primary
-private val DetailCream: Color @Composable get() = if (LocalMarianTheme.current) MarianCream else if (LocalFeastTheme.current) FeastCream else if (LocalPopeTheme.current) PopeCream else if (LocalApostleTheme.current) ApostleCream else if (LocalMiracleTheme.current) MiracleCream else if (LocalChurchTheme.current) ChurchCream else MaterialTheme.colorScheme.onBackground
-private val DetailMuted: Color @Composable get() = if (LocalMarianTheme.current) MarianMuted else if (LocalFeastTheme.current) FeastMuted else if (LocalPopeTheme.current) PopeMuted else if (LocalApostleTheme.current) ApostleMuted else if (LocalMiracleTheme.current) MiracleMuted else if (LocalChurchTheme.current) ChurchMuted else MaterialTheme.colorScheme.onSurfaceVariant
-private val DetailActionBar: Color @Composable get() = if (LocalMarianTheme.current) MarianActionBar else if (LocalFeastTheme.current) FeastActionBar else if (LocalPopeTheme.current) PopeActionBar else if (LocalApostleTheme.current) ApostleActionBar else if (LocalMiracleTheme.current) MiracleActionBar else if (LocalChurchTheme.current) ChurchActionBar else MaterialTheme.colorScheme.surfaceDim
+private val DetailBg: Color @Composable get() = if (!LocalIsDarkTheme.current) MaterialTheme.colorScheme.background else if (LocalMarianTheme.current) MarianBg else if (LocalFeastTheme.current) FeastBg else if (LocalPopeTheme.current) PopeBg else if (LocalApostleTheme.current) ApostleBg else if (LocalMiracleTheme.current) MiracleBg else if (LocalChurchTheme.current) ChurchBg else MaterialTheme.colorScheme.background
+private val DetailSurface: Color @Composable get() = if (!LocalIsDarkTheme.current) MaterialTheme.colorScheme.surfaceContainerHigh else if (LocalMarianTheme.current) MarianCard else if (LocalFeastTheme.current) FeastCard else if (LocalPopeTheme.current) PopeCard else if (LocalApostleTheme.current) ApostleCard else if (LocalMiracleTheme.current) MiracleCard else if (LocalChurchTheme.current) ChurchCard else MaterialTheme.colorScheme.surfaceContainerHigh
+private val DetailSurfaceElevated: Color @Composable get() = if (!LocalIsDarkTheme.current) MaterialTheme.colorScheme.surfaceContainerHighest else if (LocalMarianTheme.current) MarianSurfaceElevated else if (LocalFeastTheme.current) FeastSurfaceElevated else if (LocalPopeTheme.current) PopeSurfaceElevated else if (LocalApostleTheme.current) ApostleSurfaceElevated else if (LocalMiracleTheme.current) MiracleSurfaceElevated else if (LocalChurchTheme.current) ChurchSurfaceElevated else MaterialTheme.colorScheme.surfaceContainerHighest
+private val DetailBorder: Color @Composable get() = if (!LocalIsDarkTheme.current) MaterialTheme.colorScheme.outline else if (LocalMarianTheme.current) MarianBorder else if (LocalFeastTheme.current) FeastBorder else if (LocalPopeTheme.current) PopeBorder else if (LocalApostleTheme.current) ApostleBorder else if (LocalMiracleTheme.current) MiracleBorder else if (LocalChurchTheme.current) ChurchBorder else MaterialTheme.colorScheme.outline
+private val DetailGold: Color @Composable get() = if (!LocalIsDarkTheme.current) MaterialTheme.colorScheme.primary else if (LocalMarianTheme.current) MarianGold else if (LocalFeastTheme.current) FeastGold else if (LocalPopeTheme.current) PopeGold else if (LocalApostleTheme.current) ApostleGold else if (LocalMiracleTheme.current) MiracleGold else if (LocalChurchTheme.current) ChurchGold else MaterialTheme.colorScheme.primary
+private val DetailCream: Color @Composable get() = if (!LocalIsDarkTheme.current) MaterialTheme.colorScheme.onBackground else if (LocalMarianTheme.current) MarianCream else if (LocalFeastTheme.current) FeastCream else if (LocalPopeTheme.current) PopeCream else if (LocalApostleTheme.current) ApostleCream else if (LocalMiracleTheme.current) MiracleCream else if (LocalChurchTheme.current) ChurchCream else MaterialTheme.colorScheme.onBackground
+private val DetailMuted: Color @Composable get() = if (!LocalIsDarkTheme.current) MaterialTheme.colorScheme.onSurfaceVariant else if (LocalMarianTheme.current) MarianMuted else if (LocalFeastTheme.current) FeastMuted else if (LocalPopeTheme.current) PopeMuted else if (LocalApostleTheme.current) ApostleMuted else if (LocalMiracleTheme.current) MiracleMuted else if (LocalChurchTheme.current) ChurchMuted else MaterialTheme.colorScheme.onSurfaceVariant
+// Text drawn over the hero portrait sits on a black scrim in both themes, so in light
+// mode it keeps light-on-dark colours instead of the parchment theme's dark ink.
+private val DetailHeroGold: Color @Composable get() = if (LocalIsDarkTheme.current) DetailGold else DarkGold
+private val DetailHeroCream: Color @Composable get() = if (LocalIsDarkTheme.current) DetailCream else DarkText
+private val DetailActionBar: Color @Composable get() = if (!LocalIsDarkTheme.current) MaterialTheme.colorScheme.surfaceDim else if (LocalMarianTheme.current) MarianActionBar else if (LocalFeastTheme.current) FeastActionBar else if (LocalPopeTheme.current) PopeActionBar else if (LocalApostleTheme.current) ApostleActionBar else if (LocalMiracleTheme.current) MiracleActionBar else if (LocalChurchTheme.current) ChurchActionBar else MaterialTheme.colorScheme.surfaceDim
 
 private data class DetailViewData(
     val name: String,
@@ -554,7 +561,7 @@ private fun DetailHero(
                     Icon(
                         imageVector = Icons.Default.Share,
                         contentDescription = s.detailShare,
-                        tint = DetailCream,
+                        tint = DetailHeroCream,
                         modifier = Modifier.size(24.dp),
                     )
                 }
@@ -572,13 +579,13 @@ private fun DetailHero(
                 if (isSaintPope) {
                     Text(
                         text = "✦",
-                        color = DetailGold,
+                        color = DetailHeroGold,
                         fontSize = 11.sp,
                     )
                     Spacer(Modifier.width(5.dp))
                     Text(
                         text = s.detailSaintTag,
-                        color = DetailGold,
+                        color = DetailHeroGold,
                         fontSize = 11.sp,
                         letterSpacing = 1.1.sp,
                         fontWeight = FontWeight.Bold,
@@ -586,7 +593,7 @@ private fun DetailHero(
                     Spacer(Modifier.width(10.dp))
                     Text(
                         text = "│",
-                        color = DetailCream.copy(alpha = 0.48f),
+                        color = DetailHeroCream.copy(alpha = 0.48f),
                         fontSize = 11.sp,
                     )
                     Spacer(Modifier.width(10.dp))
@@ -594,7 +601,7 @@ private fun DetailHero(
 
                 Text(
                     text = type.singularLabel(s).uppercase(),
-                    color = DetailGold,
+                    color = DetailHeroGold,
                     fontSize = 11.sp,
                     letterSpacing = 1.1.sp,
                     fontWeight = FontWeight.Bold,
@@ -605,7 +612,7 @@ private fun DetailHero(
 
             Text(
                 text = data.name,
-                color = DetailCream,
+                color = DetailHeroCream,
                 fontFamily = FontFamily.Serif,
                 fontSize = 37.sp,
                 lineHeight = 40.sp,
@@ -624,7 +631,7 @@ private fun DetailHero(
                 Spacer(Modifier.height(8.dp))
                 Text(
                     text = heroMeta,
-                    color = DetailGold,
+                    color = DetailHeroGold,
                     fontSize = 15.sp,
                     lineHeight = 20.sp,
                     fontWeight = FontWeight.SemiBold,

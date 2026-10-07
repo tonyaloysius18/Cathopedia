@@ -1,5 +1,10 @@
 package com.ynotlabs.cathopedia.ui.screens.prayers
 
+import com.ynotlabs.cathopedia.ui.theme.DarkGold
+import com.ynotlabs.cathopedia.ui.theme.DarkText
+import com.ynotlabs.cathopedia.ui.theme.DarkTextMuted
+import androidx.compose.material3.MaterialTheme
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -88,14 +93,22 @@ import org.jetbrains.compose.resources.painterResource
 private const val SEARCH_DEBOUNCE_MS = 300L
 private const val HOLY_ROSARY_ID = "holy-rosary"
 
-private val PrayerBg = Color(0xFF061A13)
-private val PrayerSurface = Color(0xFF0C271E)
-private val PrayerSurfaceRaised = Color(0xFF123127)
-private val PrayerBorder = Color(0xFF315444)
-private val PrayerGold = Color(0xFFD8B24C)
-private val PrayerGoldSoft = Color(0xFF9D8858)
-private val PrayerCream = Color(0xFFF4ECDD)
-private val PrayerMuted = Color(0xFFB4AD98)
+private val PrayerBg: Color @Composable get() = MaterialTheme.colorScheme.background
+private val PrayerSurface: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+private val PrayerSurfaceRaised: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHighest
+private val PrayerBorder: Color @Composable get() = MaterialTheme.colorScheme.outline
+private val PrayerGold: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val PrayerGoldSoft: Color @Composable get() = MaterialTheme.colorScheme.secondary
+private val PrayerCream: Color @Composable get() = MaterialTheme.colorScheme.onBackground
+
+// The Rosary and Way of the Cross banners are deep blue and red in both themes,
+// so their text keeps the dark theme's light-on-dark colours rather than the
+// theme's own (dark gold and ink on a light page would vanish into them).
+private val HeroGold = DarkGold
+private val HeroGoldSoft = DarkTextMuted
+private val HeroCream = DarkText
+private val HeroMuted = DarkTextMuted
+private val PrayerMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 private val MarianBlueDeep = Color(0xFF002B5C)
 private val MarianBlue = Color(0xFF0055A4)
 private val PassionRedDeep = Color(0xFF4B0A0A)
@@ -431,7 +444,7 @@ private fun RosaryHeroCard(
             )
             .border(
                 width = 2.dp,
-                color = PrayerGoldSoft.copy(alpha = 0.52f),
+                color = HeroGoldSoft.copy(alpha = 0.52f),
                 shape = shape,
             )
             .clickable(onClick = onClick),
@@ -493,7 +506,7 @@ private fun RosaryHeroCard(
         ) {
             Text(
                 text = s.prayersRosaryCardTitle.uppercase(),
-                color = PrayerGold,
+                color = HeroGold,
                 fontFamily = FontFamily.Serif,
                 fontSize = 22.sp,
                 lineHeight = 26.sp,
@@ -505,7 +518,7 @@ private fun RosaryHeroCard(
             Text(
                 text = s.prayersRosaryCardSubtitle,
                 modifier = Modifier.fillMaxWidth(0.53f),
-                color = PrayerCream.copy(alpha = 0.90f),
+                color = HeroCream.copy(alpha = 0.90f),
                 fontSize = 13.5.sp,
                 lineHeight = 19.sp,
             )
@@ -517,7 +530,7 @@ private fun RosaryHeroCard(
                 color = Color.Transparent,
                 border = BorderStroke(
                     width = 2.dp,
-                    color = PrayerGold.copy(alpha = 0.78f),
+                    color = HeroGold.copy(alpha = 0.78f),
                 ),
             ) {
                 Row(
@@ -528,7 +541,7 @@ private fun RosaryHeroCard(
                 ) {
                     Text(
                         text = s.prayersPrayNow,
-                        color = PrayerGold,
+                        color = HeroGold,
                         fontSize = 13.sp,
                         fontWeight = FontWeight.SemiBold,
                     )
@@ -538,7 +551,7 @@ private fun RosaryHeroCard(
                     Icon(
                         imageVector = Icons.Filled.ArrowForward,
                         contentDescription = null,
-                        tint = PrayerGold,
+                        tint = HeroGold,
                         modifier = Modifier.size(17.dp),
                     )
                 }
@@ -567,7 +580,7 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
             )
             .border(
                 width = 2.dp,
-                color = PrayerGoldSoft.copy(alpha = 0.45f),
+                color = HeroGoldSoft.copy(alpha = 0.45f),
                 shape = shape,
             )
             .clickable(onClick = onClick),
@@ -624,7 +637,7 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
         Column(modifier = Modifier.padding(18.dp)) {
             Text(
                 text = s.prayersWayOfCrossTitle.uppercase(),
-                color = PrayerGold,
+                color = HeroGold,
                 fontSize = 12.sp,
                 letterSpacing = 1.2.sp,
                 fontWeight = FontWeight.Bold,
@@ -634,7 +647,7 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
 
             Text(
                 text = s.prayersWayOfCrossTagline,
-                color = PrayerCream,
+                color = HeroCream,
                 fontFamily = FontFamily.Serif,
                 fontSize = 21.sp,
                 fontWeight = FontWeight.SemiBold,
@@ -644,7 +657,7 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
 
             Text(
                 text = s.prayersWayOfCrossDescription,
-                color = PrayerMuted,
+                color = HeroMuted,
                 fontSize = 13.sp,
             )
         }
@@ -993,11 +1006,12 @@ private fun HighlightedText(
     fontSize: androidx.compose.ui.unit.TextUnit,
     fontWeight: FontWeight,
 ) {
+    val highlightColor = PrayerGold
     val annotated = remember(text, query) {
         highlight(
             text = text,
             query = query,
-            highlightColor = PrayerGold,
+            highlightColor = highlightColor,
         )
     }
 
