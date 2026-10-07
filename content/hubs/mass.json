@@ -232,7 +232,8 @@
       "summaryKey": "sec.mass.basilica_cathedral.summary",
       "icon": "ic_basilica",
       "articleIds": [
-        "art.mass.basilica_cathedral"
+        "art.mass.basilica_cathedral",
+        "art.mass.basilica_ranks"
       ]
     }
   ],
@@ -1125,12 +1126,74 @@
         { "type": "callout", "tone": "note", "titleKey": "art.basicath.short.title", "textKey": "art.basicath.short.body" }
       ],
       "related": [
+        { "type": "ARTICLE", "id": "art.mass.basilica_ranks" },
         { "type": "ARTICLE", "id": "art.mass.cathedra_chair" },
         { "type": "ARTICLE", "id": "art.churchmap.overview" }
       ],
       "sources": [
         { "label": "Congregation for Divine Worship, Domus Ecclesiae (1989), on the title of minor basilica" },
         { "label": "Code of Canon Law, canons 368–369 and 389–390 (the diocese and its bishop)" }
+      ]
+    },
+    {
+      "id": "art.mass.basilica_ranks",
+      "sectionId": "mass.basilica_cathedral",
+      "sortOrder": 2,
+      "titleKey": "art.basrank.title",
+      "leadKey": "art.basrank.lead",
+      "readingTimeMinutes": 4,
+      "blocks": [
+        { "type": "paragraph", "textKey": "art.basrank.intro" },
+        { "type": "image", "asset": "hub/mass/mass_basilica.png", "captionKey": "art.basrank.major.caption", "license": "IN_HOUSE" },
+        { "type": "image", "asset": "hub/mass/mass_minor_basilica.png", "captionKey": "art.basrank.minor.caption", "license": "IN_HOUSE" },
+        {
+          "type": "factGrid",
+          "facts": [
+            { "labelKey": "art.basrank.label.rank", "valueKey": "art.basrank.major.rank" },
+            { "labelKey": "art.basrank.label.who", "valueKey": "art.basrank.major.who" },
+            { "labelKey": "art.basrank.label.howmany", "valueKey": "art.basrank.major.howmany" },
+            { "labelKey": "art.basrank.label.where", "valueKey": "art.basrank.major.where" },
+            { "labelKey": "art.basrank.label.mark", "valueKey": "art.basrank.major.mark" },
+            { "labelKey": "art.basrank.label.example", "valueKey": "art.basrank.major.example" }
+          ]
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            { "labelKey": "art.basrank.label.rank", "valueKey": "art.basrank.minor.rank" },
+            { "labelKey": "art.basrank.label.who", "valueKey": "art.basrank.minor.who" },
+            { "labelKey": "art.basrank.label.howmany", "valueKey": "art.basrank.minor.howmany" },
+            { "labelKey": "art.basrank.label.where", "valueKey": "art.basrank.minor.where" },
+            { "labelKey": "art.basrank.label.mark", "valueKey": "art.basrank.minor.mark" },
+            { "labelKey": "art.basrank.label.example", "valueKey": "art.basrank.minor.example" }
+          ]
+        },
+        { "type": "heading", "level": 2, "textKey": "art.basrank.points.title" },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": ["art.basrank.major.k1", "art.basrank.major.k2", "art.basrank.major.k3", "art.basrank.major.k4"]
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": ["art.basrank.minor.k1", "art.basrank.minor.k2", "art.basrank.minor.k3", "art.basrank.minor.k4"]
+        },
+        { "type": "callout", "tone": "info", "titleKey": "art.basrank.style.title", "textKey": "art.basrank.style.body" },
+        { "type": "callout", "tone": "note", "titleKey": "art.basrank.short.title", "textKey": "art.basrank.short.body" }
+      ],
+      "related": [
+        { "type": "ARTICLE", "id": "art.mass.basilica_cathedral" },
+        { "type": "CHURCH", "id": "st-john-lateran" },
+        { "type": "CHURCH", "id": "st-peters-basilica" },
+        { "type": "CHURCH", "id": "st-mary-major" },
+        { "type": "CHURCH", "id": "st-paul-outside-the-walls" },
+        { "type": "CHURCH", "id": "velankanni-basilica" }
+      ],
+      "sources": [
+        { "label": "Congregation for Divine Worship, Domus Ecclesiae (1989), decree on the title of minor basilica" },
+        { "label": "Apostolic Penitentiary, Enchiridion Indulgentiarum, on indulgences attached to basilicas" },
+        { "label": "Annuario Pontificio, on the papal basilicas of Rome and Assisi" }
       ]
     }
   ],

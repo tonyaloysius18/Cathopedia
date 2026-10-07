@@ -27,6 +27,7 @@ import com.ynotlabs.cathopedia.ui.screens.holymass.AltarScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.AltarOrSacristyScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.CathedraOrPresidersChairScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.BasilicaOrCathedralScreen
+import com.ynotlabs.cathopedia.ui.screens.holymass.MajorAndMinorBasilicasScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.MonstranceScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.PosturesScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.ThuribleScreen
@@ -244,6 +245,16 @@ fun HubArticleScreen(
 
     if (articleId == "art.mass.basilica_cathedral") {
         BasilicaOrCathedralScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            listState = listState,
+        )
+        return
+    }
+
+    if (articleId == "art.mass.basilica_ranks") {
+        MajorAndMinorBasilicasScreen(
             repository = repository,
             language = language,
             onBack = onBack,
