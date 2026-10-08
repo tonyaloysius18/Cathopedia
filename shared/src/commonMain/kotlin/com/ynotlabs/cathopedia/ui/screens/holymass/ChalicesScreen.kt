@@ -112,8 +112,9 @@ private data class ChaliceGroup(val label: String, val chalices: List<Chalice>)
  * a switch at the top picks a group (one per level-2 heading). Below it, that
  * group's chalices sit in a swipeable coverflow carousel; when a swipe settles,
  * the centred chalice's description shows in the card underneath, and tapping a
- * side card slides it to the centre. Text before the first group is the intro;
- * callouts and the quote after the last group close the page.
+ * side card slides it to the centre. Text before the first group is the intro,
+ * shown after the carousel so the carousel is what greets the reader; callouts
+ * and the quote after the last group close the page.
  *
  * Block convention: intro `paragraph`, then for each shelf a level-2 `heading`
  * followed by (level-3 `heading`, `image`, `paragraph`) triples, then `callout`s
@@ -201,17 +202,19 @@ fun ChalicesScreen(
         listState = listState,
         horizontalPadding = 20.dp,
     ) {
-        intro.forEachIndexed { index, block ->
-            item(key = "intro-$index") {
-                ArticleIntroCard(strings[block.textKey].orEmpty())
-                Spacer(Modifier.height(22.dp))
-            }
-        }
-
+        // The switch, carousel and description come first so they are on screen
+        // without scrolling; the intro follows them.
         if (groups.isNotEmpty()) {
             item(key = "carousel") {
                 ChaliceCarouselSection(groups)
                 Spacer(Modifier.height(24.dp))
+            }
+        }
+
+        intro.forEachIndexed { index, block ->
+            item(key = "intro-$index") {
+                ArticleIntroCard(strings[block.textKey].orEmpty())
+                Spacer(Modifier.height(16.dp))
             }
         }
 
