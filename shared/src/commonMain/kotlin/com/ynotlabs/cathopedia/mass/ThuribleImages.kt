@@ -8,7 +8,7 @@ import org.jetbrains.compose.resources.DrawableResource
  * the counterpart of [MonstranceImages].
  */
 object ThuribleImages {
-    private val images: Map<String, DrawableResource> = mapOf(
+    private val partImages: Map<String, DrawableResource> = mapOf(
         "finial" to Res.drawable.cross_thurible,
         "lid" to Res.drawable.lid_thurible,
         "charcoal" to Res.drawable.charcoal_plate_thurible,
@@ -18,5 +18,17 @@ object ThuribleImages {
         "handle" to Res.drawable.handle_thurible,
     )
 
-    fun forPart(id: String): DrawableResource? = images[id]
+    private val typeImages: Map<String, DrawableResource> = mapOf(
+        "single_chain" to Res.drawable.thurible_type_single_chain,
+        "three_chain" to Res.drawable.thurible_type_three_chain,
+        "four_chain" to Res.drawable.thurible_type_four_chain,
+        "four_chain_bells" to Res.drawable.thurible_type_four_chain_bells,
+        "roman" to Res.drawable.thurible_type_roman,
+        "stationary" to Res.drawable.thurible_type_stationary,
+        "ceremonial" to Res.drawable.thurible_type_ceremonial,
+        "botafumeiro" to Res.drawable.thurible_type_botafumeiro,
+    )
+
+    fun forPart(id: String): DrawableResource? = partImages[id]
+    fun forType(id: String): DrawableResource? = typeImages[id]
 }

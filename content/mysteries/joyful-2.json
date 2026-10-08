@@ -28,6 +28,11 @@
       "title": "La Visitación",
       "fruit": "el amor al prójimo",
       "meditation": null
+    },
+    "pt": {
+      "title": "Visitação",
+      "fruit": "amor ao próximo",
+      "meditation": null
     }
   }
 }

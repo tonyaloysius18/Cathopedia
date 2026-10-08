@@ -35,6 +35,12 @@
       "summary": "La basílica papal de la Ciudad del Vaticano, construida sobre el lugar tradicional de la tumba de Pedro.",
       "body": "La basílica de San Pedro se terminó en 1626 y se alza sobre el lugar considerado tradicionalmente la sepultura del apóstol Pedro.",
       "sourceAttribution": "Texto provisional — sustituir por texto con fuentes."
+    },
+    "pt": {
+      "name": "Basílica de São Pedro",
+      "summary": "A basílica papal na Cidade do Vaticano, construída sobre o lugar tradicional do túmulo de Pedro.",
+      "body": "A Basílica de São Pedro foi concluída em 1626 e ergue-se sobre o lugar tradicionalmente considerado a sepultura do apóstolo Pedro.",
+      "sourceAttribution": "Texto provisório — substituir por texto com fontes."
     }
   }
 }

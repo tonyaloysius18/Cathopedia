@@ -28,6 +28,11 @@
       "title": "La Ascensión",
       "fruit": "la esperanza",
       "meditation": null
+    },
+    "pt": {
+      "title": "Ascensão",
+      "fruit": "esperança",
+      "meditation": null
     }
   }
 }

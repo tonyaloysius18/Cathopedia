@@ -67,11 +67,9 @@ fun BottomNavBar(
     } else {
         MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.88f)
     }
-    val activeCircleColor = if (isLightMode) {
-        MaterialTheme.colorScheme.surface
-    } else {
-        MaterialTheme.colorScheme.surfaceContainerHighest
-    }
+    // Keep the raised icon bubble optically continuous with the translucent pill.
+    // The gold rim and halo still communicate selection without an opaque green patch.
+    val activeCircleColor = barBackgroundColor
     val rimColor = accentColor.copy(alpha = if (isLightMode) 0.42f else 0.55f)
     // When nothing is selected, we bias towards the center or maintain previous?
     // Let's hide the bubble if selectedIndex is -1.

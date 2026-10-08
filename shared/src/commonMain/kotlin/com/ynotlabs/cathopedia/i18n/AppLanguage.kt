@@ -49,7 +49,7 @@ object AppLanguages {
             formatCentury = { "siglo ${roman(it)}" },
         ),
         AppLanguage(
-            code = "pt", nativeName = "Português", available = false,
+            code = "pt", nativeName = "Português", available = true,
             localizedName = { it.languageNamePortuguese }, strings = { PT },
             formatCentury = { "século ${roman(it)}" },
         ),
