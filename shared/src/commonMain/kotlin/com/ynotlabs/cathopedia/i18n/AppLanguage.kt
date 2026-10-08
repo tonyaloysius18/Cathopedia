@@ -64,7 +64,7 @@ object AppLanguages {
             formatCentury = { "${it}e eeuw" },
         ),
         AppLanguage(
-            code = "pl", nativeName = "Polski", available = false,
+            code = "pl", nativeName = "Polski", available = true,
             localizedName = { it.languageNamePolish }, strings = { PL },
             formatCentury = { "${roman(it)} wiek" },
         ),
