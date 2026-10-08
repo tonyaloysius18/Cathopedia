@@ -59,7 +59,7 @@ object AppLanguages {
             formatCentury = { "$it. Jahrhundert" },
         ),
         AppLanguage(
-            code = "nl", nativeName = "Nederlands", available = false,
+            code = "nl", nativeName = "Nederlands", available = true,
             localizedName = { it.languageNameDutch }, strings = { NL },
             formatCentury = { "${it}e eeuw" },
         ),

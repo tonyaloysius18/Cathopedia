@@ -40,6 +40,12 @@
       "summary": "Solenidade que honra todos os santos, conhecidos e desconhecidos.",
       "body": "Celebrado em 1º de novembro, o Dia de Todos os Santos honra todos os santos que alcançaram a visão beatífica, inclusive os que nunca foram formalmente canonizados.",
       "sourceAttribution": "Texto provisório — substituir por texto com fontes."
+    },
+    "nl": {
+      "name": "Allerheiligen",
+      "summary": "Een hoogfeest ter ere van alle heiligen, bekend en onbekend.",
+      "body": "Allerheiligen, gevierd op 1 november, eert elke heilige die de zalige aanschouwing heeft bereikt, ook wie nooit formeel heilig is verklaard.",
+      "sourceAttribution": "Voorlopige tekst — te vervangen door tekst met bronnen."
     }
   }
 }
