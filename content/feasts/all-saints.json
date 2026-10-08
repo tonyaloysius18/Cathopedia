@@ -22,6 +22,12 @@
       "summary": "Una solennità in onore di tutti i santi, noti e sconosciuti.",
       "body": "Celebrata il 1° novembre, la solennità di Tutti i Santi onora ogni santo che ha raggiunto la visione beatifica, compresi quelli mai canonizzati formalmente.",
       "sourceAttribution": "Contenuto iniziale — da sostituire con un testo documentato."
+    },
+    "de": {
+      "name": "Allerheiligen",
+      "summary": "Ein Hochfest zu Ehren aller Heiligen, der bekannten und der unbekannten.",
+      "body": "Am 1. November gefeiert, ehrt Allerheiligen jeden Heiligen, der zur beseligenden Gottesschau gelangt ist, auch jene, die nie förmlich heiliggesprochen wurden.",
+      "sourceAttribution": "Platzhaltertext – durch belegten Text ersetzen."
     }
   }
 }
