@@ -98,17 +98,17 @@ fun HomeScreen(
     var discover by remember { mutableStateOf<ContentSummary?>(null) }
     var feastOfTheDay by remember { mutableStateOf<ContentSummary?>(null) }
     var saintsOfToday by remember { mutableStateOf<List<ContentSummary>>(emptyList()) }
-    var dailyReadings by remember(today) { mutableStateOf<DailyMassReadings?>(null) }
-    var dailyReadingsLoaded by remember(today) { mutableStateOf(false) }
+    var dailyReadings by remember(today, language) { mutableStateOf<DailyMassReadings?>(null) }
+    var dailyReadingsLoaded by remember(today, language) { mutableStateOf(false) }
     var loaded by remember { mutableStateOf(false) }
 
-    LaunchedEffect(today) {
-        dailyReadings = DailyReadingsCalendar.readingsFor(today)
+    LaunchedEffect(today, language) {
+        dailyReadings = DailyReadingsCalendar.readingsFor(today, language)
         dailyReadingsLoaded = true
     }
 
     LaunchedEffect(language) {
-        continueReading = repository.mostRecentlyViewed()
+        continueReading = repository.mostRecentlyViewed(language)
         discover = repository.discoverPick(language)
         feastOfTheDay = repository.feastOfToday(language, today)
         saintsOfToday = repository.saintsOfToday(language)
@@ -507,6 +507,7 @@ private fun DailyReadingsCard(
                     fontWeight = FontWeight.Bold,
                 )
 
+                if (verse.text.isNotBlank()) {
                 Spacer(Modifier.height(5.dp))
 
                 Text(
@@ -518,6 +519,7 @@ private fun DailyReadingsCard(
                     maxLines = 6,
                     overflow = TextOverflow.Ellipsis,
                 )
+                }
             }
         }
     }

@@ -37,6 +37,7 @@ private enum class SavedFilter { ALL, NOTES }
 @Composable
 fun SavedScreen(
     repository: CathopediaRepository,
+    language: String,
     onBack: () -> Unit,
     onItemSelected: (BookmarkItem) -> Unit,
     listState: LazyListState = rememberLazyListState(),
@@ -49,8 +50,8 @@ fun SavedScreen(
     // Re-entering this branch of the nav `when` (e.g. switching back to the Saved
     // tab after bookmarking something on a detail page) disposes and recomposes
     // this composable, so this refetches on every visit without needing a key.
-    LaunchedEffect(Unit) {
-        bookmarks = repository.listBookmarks()
+    LaunchedEffect(language) {
+        bookmarks = repository.listBookmarks(language)
     }
 
     val visible = when (filter) {

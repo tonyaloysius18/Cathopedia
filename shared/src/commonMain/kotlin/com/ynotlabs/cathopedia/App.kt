@@ -509,6 +509,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
 
                 is Destination.Saved -> SavedScreen(
                     repository = repository,
+                    language = language,
                     onBack = nav::back,
                     onItemSelected = { bookmark: BookmarkItem -> nav.navigate(Destination.EntityDetail(bookmark.type, bookmark.id)) },
                     listState = savedScrollState,

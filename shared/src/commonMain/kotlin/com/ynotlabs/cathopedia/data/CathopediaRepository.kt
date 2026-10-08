@@ -502,9 +502,18 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
             }
         }
 
-    suspend fun listBookmarks(): List<BookmarkItem> = withContext(Dispatchers.Default) {
-        database.bookmarkQueries.selectAllBookmarks().executeAsList().map {
-            BookmarkItem(ContentType.fromTag(it.entityType), it.entityId, it.name, it.summary, it.note, it.createdAt)
+    /**
+     * Bookmarks store the name and summary from the moment they were saved, which may be in another
+     * language; each one is re-resolved in [language] and the stored text is only a fallback.
+     */
+    suspend fun listBookmarks(language: String): List<BookmarkItem> = withContext(Dispatchers.Default) {
+        val rows = database.bookmarkQueries.selectAllBookmarks().executeAsList()
+        val byType = rows.map { ContentType.fromTag(it.entityType) }.distinct()
+            .associateWith { type -> listByType(type, language).associateBy { it.id } }
+        rows.map {
+            val type = ContentType.fromTag(it.entityType)
+            val current = byType[type]?.get(it.entityId)
+            BookmarkItem(type, it.entityId, current?.name ?: it.name, current?.summary ?: it.summary, it.note, it.createdAt)
         }
     }
 
@@ -516,9 +525,11 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
         )
     }
 
-    suspend fun mostRecentlyViewed(): ContentSummary? = withContext(Dispatchers.Default) {
+    /** The stored name/summary is a snapshot in whatever language was active when viewed; re-resolve it. */
+    suspend fun mostRecentlyViewed(language: String): ContentSummary? = withContext(Dispatchers.Default) {
         database.recentlyViewedQueries.selectMostRecent().executeAsOneOrNull()?.let {
-            ContentSummary(ContentType.fromTag(it.entityType), it.entityId, it.name, it.summary)
+            val type = ContentType.fromTag(it.entityType)
+            summaryOf(type, it.entityId, language) ?: ContentSummary(type, it.entityId, it.name, it.summary)
         }
     }
 

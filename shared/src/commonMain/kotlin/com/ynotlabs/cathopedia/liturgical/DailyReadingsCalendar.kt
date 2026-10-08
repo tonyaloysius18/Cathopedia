@@ -34,6 +34,15 @@ data class DailyMassReadings(
 @Serializable
 data class DailyFeaturedVerse(
     val citation: String,
+    /** Blank when no public-domain Bible exists in the requested language; show the citation alone. */
+    val text: String,
+    val translation: String,
+    /** Public-domain renderings keyed by language code, added by `tools/localize_daily_readings.py`. */
+    val localized: Map<String, LocalizedVerse> = emptyMap(),
+)
+
+@Serializable
+data class LocalizedVerse(
     val text: String,
     val translation: String,
 )
@@ -44,6 +53,8 @@ private data class DailyReadingsIndex(
     val year: Int,
     val source: String,
     val days: List<DailyMassReadings>,
+    /** `titleTranslations[lang][englishTitle]`, added by `tools/localize_daily_readings.py`. */
+    val titleTranslations: Map<String, Map<String, String>> = emptyMap(),
 )
 
 /**
@@ -57,17 +68,30 @@ object DailyReadingsCalendar {
     private const val RESOURCE_PATH = "files/content/daily_readings_2026.json"
 
     private val json = Json { ignoreUnknownKeys = true }
+    private var cachedIndex: DailyReadingsIndex? = null
     private var cachedDays: Map<String, DailyMassReadings>? = null
 
-    suspend fun readingsFor(date: LocalDate): DailyMassReadings? {
+    /**
+     * The day's readings with the title and featured verse in [language]. English Scripture is
+     * never shown in place of a missing translation: the verse text is left blank instead.
+     */
+    suspend fun readingsFor(date: LocalDate, language: String = "en"): DailyMassReadings? {
         if (date.year != BUNDLED_YEAR) return null
 
-        val days = cachedDays ?: run {
-            val index = json.decodeFromString<DailyReadingsIndex>(
-                Res.readBytes(RESOURCE_PATH).decodeToString(),
-            )
-            index.days.associateBy(DailyMassReadings::date).also { cachedDays = it }
+        val index = cachedIndex ?: json.decodeFromString<DailyReadingsIndex>(
+            Res.readBytes(RESOURCE_PATH).decodeToString(),
+        ).also { cachedIndex = it }
+        val days = cachedDays ?: index.days.associateBy(DailyMassReadings::date).also { cachedDays = it }
+        val day = days[date.toString()] ?: return null
+        if (language == "en") return day
+
+        val verse = day.featuredVerse?.let { verse ->
+            val localized = verse.localized[language]
+            verse.copy(text = localized?.text.orEmpty(), translation = localized?.translation.orEmpty())
         }
-        return days[date.toString()]
+        return day.copy(
+            title = index.titleTranslations[language]?.get(day.title) ?: day.title,
+            featuredVerse = verse,
+        )
     }
 }
