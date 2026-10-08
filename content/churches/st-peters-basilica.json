@@ -29,6 +29,12 @@
       "summary": "Die päpstliche Basilika in der Vatikanstadt, über der überlieferten Grabstätte des Petrus erbaut.",
       "body": "Der Petersdom wurde 1626 vollendet und steht über der Stätte, die traditionell als Grab des Apostels Petrus gilt.",
       "sourceAttribution": "Platzhaltertext – durch belegten Text ersetzen."
+    },
+    "es": {
+      "name": "Basílica de San Pedro",
+      "summary": "La basílica papal de la Ciudad del Vaticano, construida sobre el lugar tradicional de la tumba de Pedro.",
+      "body": "La basílica de San Pedro se terminó en 1626 y se alza sobre el lugar considerado tradicionalmente la sepultura del apóstol Pedro.",
+      "sourceAttribution": "Texto provisional — sustituir por texto con fuentes."
     }
   }
 }

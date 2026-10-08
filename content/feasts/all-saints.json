@@ -28,6 +28,12 @@
       "summary": "Ein Hochfest zu Ehren aller Heiligen, der bekannten und der unbekannten.",
       "body": "Am 1. November gefeiert, ehrt Allerheiligen jeden Heiligen, der zur beseligenden Gottesschau gelangt ist, auch jene, die nie förmlich heiliggesprochen wurden.",
       "sourceAttribution": "Platzhaltertext – durch belegten Text ersetzen."
+    },
+    "es": {
+      "name": "Todos los Santos",
+      "summary": "Solemnidad que honra a todos los santos, conocidos y desconocidos.",
+      "body": "Celebrada el 1 de noviembre, la fiesta de Todos los Santos honra a todos los santos que han alcanzado la visión beatífica, incluidos los que nunca fueron canonizados formalmente.",
+      "sourceAttribution": "Texto provisional — sustituir por texto con fuentes."
     }
   }
 }
