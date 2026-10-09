@@ -1396,12 +1396,12 @@ object MiracleGalleries {
             ),
             GalleryImage(
                 image = Res.drawable.miracle_assisi_clare_g1,
-                caption = "Saint Clare and the Saracens, Painting by Pietro Giordano, Holy Cross Monastery, Egnazio Magliocca.",
+                caption = "Saint Clare and the Saracens, painting.",
                 sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-saint-clare-assisi",
             ),
             GalleryImage(
                 image = Res.drawable.miracle_assisi_clare_g2,
-                caption = "Saint Clare and the Saracens. Painting by Piero Ghetti. Holy Cross Monastery, Egnazio Maggiore.",
+                caption = "Saint Clare and the Saracens, painting.",
                 sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-saint-clare-assisi",
             ),
             GalleryImage(
@@ -1416,7 +1416,7 @@ object MiracleGalleries {
             ),
             GalleryImage(
                 image = Res.drawable.miracle_assisi_clare_g5,
-                caption = "Saint Clare and the Saracens. Painting by Piero Giannetti, Holy Cross Monastery, Egnazio Magliocca.",
+                caption = "Saint Clare and the Saracens, painting.",
                 sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-saint-clare-assisi",
             ),
             GalleryImage(
@@ -4856,7 +4856,7 @@ object MiracleGalleries {
             ),
             GalleryImage(
                 image = Res.drawable.miracle_offida_g1,
-                caption = "Fugue of the Church of St. Augustine, Offida",
+                caption = "Façade of the Church of St. Augustine, Offida",
                 sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-offida",
             ),
             GalleryImage(
@@ -5287,7 +5287,7 @@ object MiracleGalleries {
             ),
             GalleryImage(
                 image = Res.drawable.miracle_rimini_g3,
-                caption = "Domencio Boccafumi, Saint Anthony and the Miracle of the Mule (1537) Louvre, Paris",
+                caption = "Domenico Beccafumi, Saint Anthony and the Miracle of the Mule (1537), Louvre, Paris",
                 sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-rimini",
             ),
             GalleryImage(
@@ -6380,7 +6380,7 @@ object MiracleGalleries {
             ),
             GalleryImage(
                 image = Res.drawable.miracle_turin_1640_g22,
-                caption = "Plague where the mule fell down, enclosed in ornate ironwork, commemorating the Eucharistic miracle during Turin's 1640 invasion.",
+                caption = "Plaque where the mule fell down, enclosed in ornate ironwork, commemorating Turin's Eucharistic miracle.",
                 sourceUrl = "https://eucharisticmiracles.faith/miracle/ita-turin-1640",
             ),
             GalleryImage(
@@ -6802,12 +6802,12 @@ object MiracleGalleries {
             ),
             GalleryImage(
                 image = Res.drawable.miracle_zaragoza_g1,
-                caption = "Ancient painting in the Cathedral of the Sev. representing the miracle in the Chapel of Luli San Domingo del Val.",
+                caption = "Old painting of the miracle in the Chapel of Santo Dominguito de Val, La Seo Cathedral.",
                 sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-zaragoza",
             ),
             GalleryImage(
                 image = Res.drawable.miracle_zaragoza_g2,
-                caption = "Cathedral of the Sev. Zaragoza",
+                caption = "La Seo Cathedral, Zaragoza",
                 sourceUrl = "https://eucharisticmiracles.faith/miracle/spa-zaragoza",
             ),
             GalleryImage(
