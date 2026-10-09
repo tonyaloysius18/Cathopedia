@@ -6,8 +6,8 @@
 * `titleTranslations[lang][englishTitle]` from `tools/translate/daily_titles/<lang>.txt`
   (one line per distinct English title, in first-appearance order), and
 * `featuredVerse.localized[lang] = {text, translation}` for each day, taken from a
-  public-domain Bible in that language. Languages without one (Tamil) get no text, and
-  the app then shows the citation alone rather than English Scripture.
+  public-domain (or, for Tamil, CC BY-SA) Bible in that language. A language without one
+  gets no text, and the app then shows the citation alone rather than English Scripture.
 
 Stray USCCB footnote digits glued to titles ("Lenten Weekday5") are also removed.
 
@@ -28,7 +28,7 @@ ROOT = Path(__file__).resolve().parent.parent
 INDEX = ROOT / "shared/src/commonMain/composeResources/files/content/daily_readings_2026.json"
 TITLES = ROOT / "tools/translate/daily_titles"
 
-# eBible.org VPL downloads (all public domain), plus the 1632 Gdańsk Bible for Polish.
+# eBible.org VPL downloads (public domain except Tamil), plus the 1632 Gdańsk Bible for Polish.
 EBIBLE = {
     "fr": ("fraLSG", "Louis Segond (1910)"),
     "it": ("ita1927", "Riveduta (1927)"),
@@ -36,6 +36,8 @@ EBIBLE = {
     "es": ("spaRV1909", "Reina-Valera (1909)"),
     "pt": ("porbrbsl", "Bíblia Portuguesa Mundial"),
     "nl": ("nld1939", "Petrus Canisius-vertaling (1939)"),
+    # Not public domain: CC BY-SA 4.0, so the credit line below must stay with the text.
+    "ta": ("tam2017", "இந்திய திருத்திய பதிப்பு (IRV) © 2017, 2019 Bridge Connectivity Solutions, CC BY-SA 4.0"),
 }
 POLISH = ("https://raw.githubusercontent.com/midvash/bible-data/main/versions/pl/bg/bg.json", "Biblia Gdańska (1632)")
 BOOKS = {"Mt": ("MAT", "Matthew"), "Mk": ("MAR", "Mark"), "Lk": ("LUK", "Luke"), "Jn": ("JOH", "John")}  # eBible VPL codes

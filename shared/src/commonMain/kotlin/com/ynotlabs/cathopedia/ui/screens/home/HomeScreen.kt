@@ -519,6 +519,16 @@ private fun DailyReadingsCard(
                     maxLines = 6,
                     overflow = TextOverflow.Ellipsis,
                 )
+                // The Tamil text is CC BY-SA, which requires the credit to travel with it.
+                if (verse.translation.isNotBlank()) {
+                    Spacer(Modifier.height(3.dp))
+                    Text(
+                        text = verse.translation,
+                        color = HomeGoldSoft.copy(alpha = 0.7f),
+                        fontSize = 8.5.sp,
+                        lineHeight = 10.5.sp,
+                    )
+                }
                 }
             }
         }
