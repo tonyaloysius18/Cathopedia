@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.ui.components.DarkSystemBars
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 private val CathopediaSplashGreen = Color(0xFF061A13)
@@ -32,6 +33,8 @@ fun SplashScreen(
     repository: CathopediaRepository,
     onReady: (Boolean) -> Unit,
 ) {
+    // The splash art is dark green in both themes.
+    DarkSystemBars()
     var contentReady by remember { mutableStateOf(false) }
     var videoFinished by remember { mutableStateOf(false) }
     var navigationTriggered by remember { mutableStateOf(false) }

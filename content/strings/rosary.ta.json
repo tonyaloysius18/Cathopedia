@@ -62,8 +62,8 @@
     "rosary.praying.view_rosary": "செபமாலையைக் காட்டு",
     "rosary.praying.shared_bead": "இந்த மணியில் செபம் {current} / {total}",
     "rosary.praying.bead_progress": "மணி {current} / {total}",
-    "rosary.landing.heading": "ஜெபிக்க\nஒரு தருணம்.",
-    "rosary.landing.hint": "ஒவ்வொரு மணியாக ஜெபியுங்கள்.",
-    "rosary.landing.resume": "என் ஜெபத்தைத் தொடருங்கள்"
+    "rosary.landing.heading": "செபிக்க\nஒரு தருணம்.",
+    "rosary.landing.hint": "ஒவ்வொரு மணியாக செபியுங்கள்.",
+    "rosary.landing.resume": "என் செபத்தைத் தொடருங்கள்"
   }
 }

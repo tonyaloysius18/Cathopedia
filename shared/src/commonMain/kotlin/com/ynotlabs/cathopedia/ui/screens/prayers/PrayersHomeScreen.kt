@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -432,7 +433,8 @@ private fun RosaryHeroCard(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(170.dp)
+            // Grows past 170dp when a translation needs more lines (Tamil, German).
+            .heightIn(min = 170.dp)
             .clip(shape)
             .background(
                 Brush.horizontalGradient(
@@ -459,13 +461,14 @@ private fun RosaryHeroCard(
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .fillMaxSize()
+                .matchParentSize()
                 .clip(shape),
         )
 
 
         // Soft blurred transition behind the text area only. The rosary artwork
         // stays sharp while the image fades naturally into the blue background.
+        Box(Modifier.matchParentSize()) {
         Box(
             modifier = Modifier
                 .fillMaxHeight()
@@ -482,13 +485,14 @@ private fun RosaryHeroCard(
                     ),
                 ),
         )
+        }
 
         // A fade over the art's left side so it blends into the card's
         // own blue as the text reaches the image, matching the Way of
         // the Cross card's treatment.
         Box(
             modifier = Modifier
-                .fillMaxSize()
+                .matchParentSize()
                 .clip(shape)
                 .background(
                     Brush.horizontalGradient(
@@ -502,8 +506,9 @@ private fun RosaryHeroCard(
 
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(start = 18.dp, end = 18.dp, top = 18.dp, bottom = 10.dp),
+                .fillMaxWidth()
+                .heightIn(min = 170.dp)
+                .padding(start = 18.dp, end = 18.dp, top = 18.dp, bottom = 14.dp),
         ) {
             Text(
                 text = s.prayersRosaryCardTitle.uppercase(),
@@ -569,7 +574,8 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(170.dp)
+            // Grows past 170dp when a translation needs more lines (Tamil, German).
+            .heightIn(min = 170.dp)
             .clip(shape)
             .background(
                 Brush.horizontalGradient(
@@ -595,12 +601,13 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .fillMaxSize()
+                .matchParentSize()
                 .clip(shape),
         )
 
         // Soft blurred transition near the text edge. The crucifix remains
         // crisp on the right side while the red artwork fades smoothly.
+        Box(Modifier.matchParentSize()) {
         Box(
             modifier = Modifier
                 .fillMaxHeight()
@@ -617,13 +624,14 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
                     ),
                 ),
         )
+        }
 
         // A light fade over the art's left side so it blends into the
         // card's own red rather than sitting as a flat pasted image,
         // matching the soft blend on the Holy Rosary card.
         Box(
             modifier = Modifier
-                .fillMaxSize()
+                .matchParentSize()
                 .clip(shape)
                 .background(
                     Brush.horizontalGradient(
@@ -635,7 +643,7 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
                 ),
         )
 
-        Column(modifier = Modifier.padding(18.dp)) {
+        Column(modifier = Modifier.fillMaxWidth().heightIn(min = 170.dp).padding(18.dp)) {
             Text(
                 text = s.prayersWayOfCrossTitle.uppercase(),
                 color = HeroGold,
