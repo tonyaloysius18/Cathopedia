@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "fr",
-  "contentVersion": 5,
+  "contentVersion": 7,
   "translationStatus": "COMPLETE",
   "strings": {
     "rosary.title": "Saint Rosaire",
@@ -20,8 +20,8 @@
     "rosary.mystery.sorrowful": "douloureux",
     "rosary.mystery.glorious": "glorieux",
     "rosary.mystery.luminous": "lumineux",
-    "rosary.mysteries.title": "Mystères du Saint Rosaire",
-    "rosary.mysteries.intro": "Vingt moments de l’Évangile contemplés avec Marie, répartis en quatre séries de cinq mystères.",
+    "rosary.mysteries.title": "Choisir les mystères",
+    "rosary.mysteries.intro": "Priez une série ou explorez ses moments évangéliques.",
     "rosary.mysteries.set.joyful": "Les mystères joyeux",
     "rosary.mysteries.set.sorrowful": "Les mystères douloureux",
     "rosary.mysteries.set.glorious": "Les mystères glorieux",
@@ -51,6 +51,16 @@
     "rosary.praying.bead.centerpiece": "Médaille centrale",
     "rosary.meter.recent": "Jours récents",
     "rosary.meter.breakdown": "Par série de mystères",
-    "rosary.meter.day_description": "{date} : {count} Rosaires terminés"
+    "rosary.meter.day_description": "{date} : {count} Rosaires terminés",
+    "rosary.mysteries.details": "Voir les mystères",
+    "rosary.mysteries.hide_details": "Masquer les mystères",
+    "rosary.praying.next": "Prière suivante",
+    "rosary.praying.previous": "Précédent",
+    "rosary.praying.finish": "Terminer le rosaire",
+    "rosary.praying.swipe_hint": "Faites glisser le rosaire pour changer de perle.",
+    "rosary.praying.loading": "Chargement de la prière…",
+    "rosary.praying.view_rosary": "Voir le rosaire",
+    "rosary.praying.shared_bead": "Prière {current} sur {total} sur cette perle",
+    "rosary.praying.bead_progress": "Perle {current} sur {total}"
   }
 }

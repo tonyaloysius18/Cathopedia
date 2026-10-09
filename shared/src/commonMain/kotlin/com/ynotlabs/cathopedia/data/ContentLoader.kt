@@ -60,8 +60,12 @@ object ContentLoader {
 
         val bytes = Res.readBytes(CATALOG_PATH)
         val catalog = json.decodeFromString<ContentCatalog>(bytes.decodeToString())
-        insert(database, catalog)
-        database.preferenceQueries.setPreference(CONTENT_VERSION_KEY, CONTENT_VERSION)
+        // A content upgrade (including new UI strings) must finish together. Committing
+        // each entry separately also made existing installs wait minutes at startup.
+        database.transaction {
+            insert(database, catalog)
+            database.preferenceQueries.setPreference(CONTENT_VERSION_KEY, CONTENT_VERSION)
+        }
     }
 
     /** internal (not private) so the hub-seeding test can call it without a Res-backed catalog.json. */

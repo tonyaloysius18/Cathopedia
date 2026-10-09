@@ -1,0 +1,77 @@
+[
+  {
+    "check": "resumed saved prayer",
+    "prayer": 10,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "fast long downward swipe",
+    "prayer": 11,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "fast long upward swipe",
+    "prayer": 10,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "short downward swipe",
+    "prayer": 11,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "slow long downward swipe",
+    "prayer": 12,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "short upward swipe",
+    "prayer": 11,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "fast reverse swipe",
+    "prayer": 10,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "two consecutive fast swipes",
+    "prayer": 12,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "two consecutive reverse swipes",
+    "prayer": 10,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "previous Hail Mary bead",
+    "prayer": 9,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "Hail Mary to larger Our Father bead",
+    "prayer": 8,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "past connector medal to pendant bead",
+    "prayer": 7,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "pendant to first decade Our Father",
+    "prayer": 8,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "larger Our Father to Hail Mary",
+    "prayer": 9,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "restore saved prayer",
+    "prayer": 10,
+    "selectedCenterY": 1371.0
+  }
+]

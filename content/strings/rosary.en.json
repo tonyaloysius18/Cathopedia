@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "en",
-  "contentVersion": 5,
+  "contentVersion": 7,
   "translationStatus": "COMPLETE",
   "strings": {
     "rosary.title": "Holy Rosary",
@@ -20,8 +20,8 @@
     "rosary.mystery.sorrowful": "Sorrowful",
     "rosary.mystery.glorious": "Glorious",
     "rosary.mystery.luminous": "Luminous",
-    "rosary.mysteries.title": "Mysteries of the Holy Rosary",
-    "rosary.mysteries.intro": "Twenty Gospel moments contemplated with Mary, arranged in four sets of five mysteries.",
+    "rosary.mysteries.title": "Choose mysteries",
+    "rosary.mysteries.intro": "Pray a set or explore its Gospel moments.",
     "rosary.mysteries.set.joyful": "The Joyful Mysteries",
     "rosary.mysteries.set.sorrowful": "The Sorrowful Mysteries",
     "rosary.mysteries.set.glorious": "The Glorious Mysteries",
@@ -51,6 +51,16 @@
     "rosary.praying.bead.centerpiece": "Centerpiece",
     "rosary.meter.recent": "Recent days",
     "rosary.meter.breakdown": "By mystery set",
-    "rosary.meter.day_description": "{date}: {count} Rosaries completed"
+    "rosary.meter.day_description": "{date}: {count} Rosaries completed",
+    "rosary.mysteries.details": "View mysteries",
+    "rosary.mysteries.hide_details": "Hide mysteries",
+    "rosary.praying.next": "Next prayer",
+    "rosary.praying.previous": "Previous",
+    "rosary.praying.finish": "Finish Rosary",
+    "rosary.praying.swipe_hint": "Swipe the rosary to change beads.",
+    "rosary.praying.loading": "Loading prayer…",
+    "rosary.praying.view_rosary": "View Rosary",
+    "rosary.praying.shared_bead": "Prayer {current} of {total} on this bead",
+    "rosary.praying.bead_progress": "Bead {current} of {total}"
   }
 }

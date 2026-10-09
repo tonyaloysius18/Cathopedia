@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "it",
-  "contentVersion": 5,
+  "contentVersion": 7,
   "translationStatus": "MACHINE_DRAFT",
   "strings": {
     "rosary.title": "Santo Rosario",
@@ -20,8 +20,8 @@
     "rosary.mystery.sorrowful": "Dolorosi",
     "rosary.mystery.glorious": "Gloriosi",
     "rosary.mystery.luminous": "Luminosi",
-    "rosary.mysteries.title": "Misteri del Santo Rosario",
-    "rosary.mysteries.intro": "Venti momenti del Vangelo contemplati con Maria, ordinati in quattro gruppi di cinque misteri.",
+    "rosary.mysteries.title": "Scegli i misteri",
+    "rosary.mysteries.intro": "Prega una serie o esplora i suoi momenti evangelici.",
     "rosary.mysteries.set.joyful": "I Misteri gaudiosi",
     "rosary.mysteries.set.sorrowful": "I Misteri dolorosi",
     "rosary.mysteries.set.glorious": "I Misteri gloriosi",
@@ -51,6 +51,16 @@
     "rosary.praying.bead.centerpiece": "Crociera",
     "rosary.meter.recent": "Ultimi giorni",
     "rosary.meter.breakdown": "Per gruppo di misteri",
-    "rosary.meter.day_description": "{date}: {count} Rosari completati"
+    "rosary.meter.day_description": "{date}: {count} Rosari completati",
+    "rosary.mysteries.details": "Vedi i misteri",
+    "rosary.mysteries.hide_details": "Nascondi i misteri",
+    "rosary.praying.next": "Preghiera successiva",
+    "rosary.praying.previous": "Precedente",
+    "rosary.praying.finish": "Concludi il Rosario",
+    "rosary.praying.swipe_hint": "Scorri il Rosario per cambiare grano.",
+    "rosary.praying.loading": "Caricamento della preghiera…",
+    "rosary.praying.view_rosary": "Vedi il Rosario",
+    "rosary.praying.shared_bead": "Preghiera {current} di {total} su questo grano",
+    "rosary.praying.bead_progress": "Grano {current} di {total}"
   }
 }

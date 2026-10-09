@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "nl",
-  "contentVersion": 5,
+  "contentVersion": 7,
   "translationStatus": "MACHINE_DRAFT",
   "strings": {
     "rosary.title": "Heilige rozenkrans",
@@ -20,8 +20,8 @@
     "rosary.mystery.sorrowful": "Droevige",
     "rosary.mystery.glorious": "Glorierijke",
     "rosary.mystery.luminous": "Lichtende",
-    "rosary.mysteries.title": "Geheimen van de heilige rozenkrans",
-    "rosary.mysteries.intro": "Twintig momenten uit het evangelie, met Maria overwogen, geordend in vier reeksen van vijf geheimen.",
+    "rosary.mysteries.title": "Kies geheimen",
+    "rosary.mysteries.intro": "Bid een reeks of verken de momenten uit het Evangelie.",
     "rosary.mysteries.set.joyful": "De blijde geheimen",
     "rosary.mysteries.set.sorrowful": "De droevige geheimen",
     "rosary.mysteries.set.glorious": "De glorierijke geheimen",
@@ -51,6 +51,16 @@
     "rosary.praying.bead.centerpiece": "Middenstuk",
     "rosary.meter.recent": "Recente dagen",
     "rosary.meter.breakdown": "Per reeks geheimen",
-    "rosary.meter.day_description": "{date}: {count} rozenkransen voltooid"
+    "rosary.meter.day_description": "{date}: {count} rozenkransen voltooid",
+    "rosary.mysteries.details": "Bekijk de mysteries",
+    "rosary.mysteries.hide_details": "Verberg de mysteries",
+    "rosary.praying.next": "Volgend gebed",
+    "rosary.praying.previous": "Vorige",
+    "rosary.praying.finish": "Rozenkrans afronden",
+    "rosary.praying.swipe_hint": "Veeg over de rozenkrans om van kraal te wisselen.",
+    "rosary.praying.loading": "Gebed laden…",
+    "rosary.praying.view_rosary": "Bekijk rozenkrans",
+    "rosary.praying.shared_bead": "Gebed {current} van {total} op deze kraal",
+    "rosary.praying.bead_progress": "Kraal {current} van {total}"
   }
 }

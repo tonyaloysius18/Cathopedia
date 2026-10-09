@@ -1,57 +1,51 @@
 package com.ynotlabs.cathopedia.ui.screens.rosary
 
 import androidx.compose.animation.Crossfade
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.combinedClickable
-import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.snapshotFlow
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.semantics.LiveRegionMode
-import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.data.RosarySessionRepository
@@ -59,25 +53,22 @@ import com.ynotlabs.cathopedia.model.MysteryDetail
 import com.ynotlabs.cathopedia.model.MysterySet
 import com.ynotlabs.cathopedia.model.PrayerDetail
 import com.ynotlabs.cathopedia.model.RosarySessionState
-import com.ynotlabs.cathopedia.rosary.BeadKind
-import com.ynotlabs.cathopedia.rosary.RosaryBead
 import com.ynotlabs.cathopedia.rosary.RosarySequence
 import com.ynotlabs.cathopedia.rosary.RosaryState
-import com.ynotlabs.cathopedia.rosary.rosaryLayout
-import com.ynotlabs.cathopedia.resources.Res
-import com.ynotlabs.cathopedia.resources.rosary_spacer_gold
 import com.ynotlabs.cathopedia.ui.components.PrayerBodyText
-import com.ynotlabs.cathopedia.ui.components.RosarySpriteRenderer
-import com.ynotlabs.cathopedia.ui.components.RosarySpriteUiModel
-import com.ynotlabs.cathopedia.ui.components.beadSprite
-import kotlin.math.abs
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
-import org.jetbrains.compose.resources.painterResource
 
 internal object RosaryPrayingStringKeys {
+    const val Next = "rosary.praying.next"
+    const val Previous = "rosary.praying.previous"
+    const val Finish = "rosary.praying.finish"
+    const val SwipeHint = "rosary.praying.swipe_hint"
+    const val Loading = "rosary.praying.loading"
+    const val ViewRosary = "rosary.praying.view_rosary"
+    const val SharedBead = "rosary.praying.shared_bead"
+    const val BeadProgress = "rosary.praying.bead_progress"
     const val Close = "rosary.praying.close"
     const val Progress = "rosary.praying.progress"
     const val Decade = "rosary.praying.decade"
@@ -93,6 +84,15 @@ internal object RosaryPrayingStringKeys {
     const val BeadCenterpiece = "rosary.praying.bead.centerpiece"
 
     val all = setOf(
+        Next,
+        Previous,
+        Finish,
+        SwipeHint,
+        Loading,
+        ViewRosary,
+        SharedBead,
+        BeadProgress,
+        RosaryStringKeys.Title,
         Close,
         Progress,
         Decade,
@@ -110,7 +110,13 @@ internal object RosaryPrayingStringKeys {
     )
 }
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalTime::class)
+private data class ResolvedRosaryPrayer(
+    val stepIndex: Int,
+    val prayer: PrayerDetail?,
+    val mystery: MysteryDetail?,
+)
+
+@OptIn(ExperimentalTime::class)
 @Composable
 internal fun RosaryPrayingScreen(
     repository: CathopediaRepository,
@@ -122,6 +128,7 @@ internal fun RosaryPrayingScreen(
     onCompleted: () -> Unit,
 ) {
     val scope = rememberCoroutineScope()
+    val haptics = LocalHapticFeedback.current
     val sequence = remember(session.mysterySet) { RosarySequence(session.mysterySet) }
     var state by remember(session.id) {
         mutableStateOf(
@@ -129,13 +136,15 @@ internal fun RosaryPrayingScreen(
                 sessionId = session.id,
                 mysterySet = session.mysterySet,
                 currentStepIndex = session.currentStepIndex.coerceIn(0, sequence.steps.lastIndex),
+                steps = sequence.steps,
             ),
         )
     }
     var strings by remember(language) { mutableStateOf<Map<String, String>>(emptyMap()) }
-    var prayer by remember { mutableStateOf<PrayerDetail?>(null) }
-    var mystery by remember { mutableStateOf<MysteryDetail?>(null) }
-    val currentDecade = state.currentNode?.decade
+    var resolved by remember(session.id, language) { mutableStateOf<ResolvedRosaryPrayer?>(null) }
+    var completing by remember(session.id) { mutableStateOf(false) }
+    var showOverview by remember(session.id) { mutableStateOf(false) }
+    val currentContent = resolved?.takeIf { it.stepIndex == state.currentStepIndex }
 
     LaunchedEffect(language) {
         strings = repository.resolveHubStrings(
@@ -143,14 +152,15 @@ internal fun RosaryPrayingScreen(
             language,
         )
     }
-
     LaunchedEffect(state.currentStepIndex, language) {
-        prayer = null
-        mystery = null
-        prayer = repository.prayerDetail(state.currentStep.prayerSlug, language)
-        mystery = currentDecade?.let { repository.mysteryDetail("${state.mysterySet.tag}-$it", language) }
+        resolved = null
+        val current = state
+        val prayer = repository.prayerDetail(current.currentStep.prayerSlug, language)
+        val mystery = current.currentNode?.decade?.let {
+            repository.mysteryDetail("${current.mysterySet.tag}-$it", language)
+        }
+        resolved = ResolvedRosaryPrayer(current.currentStepIndex, prayer, mystery)
     }
-
     LaunchedEffect(state.currentStepIndex) {
         val elapsed = ((Clock.System.now().toEpochMilliseconds() - session.startedAt) / 1000).coerceAtLeast(0)
         sessionRepository.saveProgress(
@@ -161,51 +171,85 @@ internal fun RosaryPrayingScreen(
         )
     }
 
-    fun completeRosary() {
-        scope.launch {
-            val elapsed = ((Clock.System.now().toEpochMilliseconds() - session.startedAt) / 1000).coerceAtLeast(0)
-            sessionRepository.complete(
-                id = state.sessionId,
-                currentStepIndex = state.steps.size,
-                decadesCompleted = 5,
-                durationSeconds = elapsed,
-            )
-            repository.recordPrayerRecited("holy-rosary")
-            onCompleted()
-        }
-    }
-
     fun advance() {
+        if (completing) return
+        haptics.performHapticFeedback(HapticFeedbackType.LongPress)
         val next = state.advance()
-        if (next == null) completeRosary() else state = next
+        if (next != null) {
+            state = next
+        } else {
+            completing = true
+            scope.launch {
+                try {
+                    val elapsed = ((Clock.System.now().toEpochMilliseconds() - session.startedAt) / 1000).coerceAtLeast(0)
+                    sessionRepository.complete(
+                        id = state.sessionId,
+                        currentStepIndex = state.steps.size,
+                        decadesCompleted = 5,
+                        durationSeconds = elapsed,
+                    )
+                    repository.recordPrayerRecited("holy-rosary")
+                    onCompleted()
+                } finally {
+                    completing = false
+                }
+            }
+        }
     }
 
     Scaffold(
         topBar = {
-            RosaryPrayingHeader(
+            RosaryPrayingHeader(strings, state, currentContent?.mystery, onClose = { if (!completing) onClose() })
+        },
+        bottomBar = {
+            RosaryPrayerControls(
                 strings = strings,
-                state = state,
-                mystery = mystery,
-                onClose = onClose,
+                first = state.currentStepIndex == 0,
+                last = state.currentStepIndex == state.steps.lastIndex,
+                enabled = !completing,
+                onAdvance = ::advance,
+                onViewRosary = { showOverview = true },
+                onBack = {
+                    haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+                    state = state.back()
+                },
             )
         },
     ) { padding ->
-        Column(modifier = Modifier.fillMaxSize().padding(padding)) {
-            RosaryBeadStrip(
-                state = state,
-                strings = strings,
-                onNodeSelected = { state = state.jumpToNode(it) },
+        Column(Modifier.fillMaxSize().padding(padding)) {
+            LinearProgressIndicator(
+                progress = { (state.currentStepIndex + 1f) / state.steps.size },
+                modifier = Modifier.fillMaxWidth(),
             )
-            PrayerPane(
-                state = state,
-                strings = strings,
-                prayer = prayer,
-                mystery = mystery,
-                onAdvance = ::advance,
-                onBack = { state = state.back() },
-                modifier = Modifier.weight(1f).fillMaxWidth(),
-            )
+            Row(
+                modifier = Modifier.fillMaxSize().padding(horizontal = 12.dp, vertical = 12.dp),
+            ) {
+                val rail: @Composable () -> Unit = {
+                    RosaryBeadCarousel(
+                        state = state,
+                        strings = strings,
+                        enabled = !completing,
+                        onNodeSelected = { index ->
+                            if (!completing && index != state.currentStep.beadIndex) {
+                                haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+                                state = state.jumpToNode(index)
+                            }
+                        },
+                        modifier = Modifier.width(92.dp).fillMaxHeight(),
+                    )
+                }
+                if (carouselOnLeft) rail()
+                PrayerPane(
+                    content = PrayerPaneContent(state, currentContent),
+                    strings = strings,
+                    modifier = Modifier.weight(1f).fillMaxHeight(),
+                )
+                if (!carouselOnLeft) rail()
+            }
         }
+    }
+    if (showOverview) {
+        RosaryOverview(state, strings, onClose = { showOverview = false })
     }
 }
 
@@ -216,242 +260,159 @@ private fun RosaryPrayingHeader(
     mystery: MysteryDetail?,
     onClose: () -> Unit,
 ) {
-    fun text(key: String): String = strings[key].orEmpty()
     val decade = state.currentNode?.decade
-    val title = mystery?.title ?: mysterySetName(state.mysterySet, strings)
-    val detail = if (decade != null) {
-        text(RosaryPrayingStringKeys.DecadeProgress)
-            .replace("{ordinal}", decade.toString())
-            .replace("{current}", (state.currentStepIndex + 1).toString())
-            .replace("{total}", state.steps.size.toString())
-    } else {
-        text(RosaryPrayingStringKeys.Progress)
-            .replace("{current}", (state.currentStepIndex + 1).toString())
-            .replace("{total}", state.steps.size.toString())
-    }
-
+    val detail = strings[if (decade != null) RosaryPrayingStringKeys.DecadeProgress else RosaryPrayingStringKeys.Progress]
+        .orEmpty()
+        .replace("{ordinal}", decade?.toString().orEmpty())
+        .replace("{current}", (state.currentStepIndex + 1).toString())
+        .replace("{total}", state.steps.size.toString())
     TopAppBar(
         title = {
             Column {
-                Text(title, style = MaterialTheme.typography.titleMedium)
+                Text(
+                    mystery?.title ?: mysterySetName(state.mysterySet, strings),
+                    style = MaterialTheme.typography.titleMedium,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                )
                 Text(detail, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         },
         actions = {
             IconButton(onClick = onClose) {
-                Icon(Icons.Filled.Close, contentDescription = text(RosaryPrayingStringKeys.Close))
+                Icon(Icons.Filled.Close, contentDescription = strings[RosaryPrayingStringKeys.Close].orEmpty())
             }
         },
     )
 }
 
-@OptIn(ExperimentalFoundationApi::class)
+private data class PrayerPaneContent(val state: RosaryState, val resolved: ResolvedRosaryPrayer?)
+
 @Composable
 private fun PrayerPane(
-    state: RosaryState,
+    content: PrayerPaneContent,
     strings: Map<String, String>,
-    prayer: PrayerDetail?,
-    mystery: MysteryDetail?,
-    onAdvance: () -> Unit,
-    onBack: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    fun text(key: String): String = strings[key].orEmpty()
-    val haptics = LocalHapticFeedback.current
-
-    Box(
-        modifier = modifier
-            .fillMaxSize()
-            .combinedClickable(
-                onClickLabel = text(RosaryPrayingStringKeys.TapHint),
-                onLongClickLabel = text(RosaryPrayingStringKeys.BackHint),
-                onClick = {
-                    haptics.performHapticFeedback(HapticFeedbackType.LongPress)
-                    onAdvance()
-                },
-                onLongClick = {
-                    haptics.performHapticFeedback(HapticFeedbackType.LongPress)
-                    onBack()
-                },
-            )
-            .semantics { liveRegion = LiveRegionMode.Polite }
-            .padding(horizontal = 20.dp, vertical = 12.dp),
-    ) {
-        Crossfade(targetState = state.currentStepIndex, label = "rosaryPrayer") {
+    Crossfade(
+        targetState = content,
+        label = "rosaryPrayer",
+        modifier = modifier.semantics { liveRegion = LiveRegionMode.Polite },
+    ) { page ->
+        key(page.state.currentStepIndex) {
             Column(
-                modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
+                modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())
+                    .padding(horizontal = 16.dp, vertical = 20.dp),
+                verticalArrangement = Arrangement.spacedBy(20.dp),
             ) {
-                LinearProgressIndicator(
-                    progress = { (state.currentStepIndex + 1f) / state.steps.size },
-                    modifier = Modifier.fillMaxWidth(),
-                )
-                Text(
-                    text = text(RosaryPrayingStringKeys.Progress)
-                        .replace("{current}", (state.currentStepIndex + 1).toString())
-                        .replace("{total}", state.steps.size.toString()),
-                    style = MaterialTheme.typography.labelLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-
-                if (state.currentStep.mysteryId != null && mystery != null) {
+                val prayer = page.resolved?.prayer
+                val mystery = page.resolved?.mystery
+                val sharedSteps = page.state.currentBeadPrayerSteps
+                val beadNumber = page.state.currentNode?.indexInDecade
+                if (beadNumber != null) {
+                    Text(
+                        strings[RosaryPrayingStringKeys.BeadProgress].orEmpty()
+                            .replace("{current}", beadNumber.toString()).replace("{total}", "10"),
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.primary,
+                    )
+                }
+                if (sharedSteps.first != sharedSteps.last) {
+                    Text(
+                        strings[RosaryPrayingStringKeys.SharedBead].orEmpty()
+                            .replace("{current}", (page.state.currentStepIndex - sharedSteps.first + 1).toString())
+                            .replace("{total}", (sharedSteps.last - sharedSteps.first + 1).toString()),
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.primary,
+                    )
+                }
+                if (page.state.currentStep.mysteryId != null && mystery != null) {
                     Card(
                         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+                        shape = RoundedCornerShape(16.dp),
                     ) {
-                        Column(modifier = Modifier.padding(16.dp)) {
+                        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                             Text(mystery.title, style = MaterialTheme.typography.titleMedium)
-                            mystery.scriptureRef?.let {
-                                Text(it, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.padding(top = 4.dp))
-                            }
+                            mystery.scriptureRef?.let { Text(it, style = MaterialTheme.typography.bodyMedium) }
                             Text(
-                                text = text(RosaryPrayingStringKeys.MysteryFruit).replace("{fruit}", mystery.fruit),
+                                strings[RosaryPrayingStringKeys.MysteryFruit].orEmpty().replace("{fruit}", mystery.fruit),
                                 style = MaterialTheme.typography.bodyMedium,
-                                modifier = Modifier.padding(top = 4.dp),
                             )
                         }
                     }
                 }
-
-                Text(prayer?.title.orEmpty(), style = MaterialTheme.typography.headlineSmall)
-                val body = prayer?.bodyMd
-                if (!body.isNullOrBlank()) {
-                    PrayerBodyText(bodyMd = body, color = MaterialTheme.colorScheme.onSurface)
-                } else if (prayer != null) {
-                    Text(
-                        text = text(RosaryPrayingStringKeys.TextUnavailable),
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
+                when {
+                    page.resolved == null -> {
+                        Text(
+                            strings[RosaryPrayingStringKeys.Loading].orEmpty(),
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                    else -> {
+                        Text(prayer?.title.orEmpty(), style = MaterialTheme.typography.headlineSmall)
+                        val body = prayer?.bodyMd
+                        if (!body.isNullOrBlank()) {
+                            PrayerBodyText(bodyMd = body, color = MaterialTheme.colorScheme.onSurface)
+                        } else {
+                            Text(
+                                strings[RosaryPrayingStringKeys.TextUnavailable].orEmpty(),
+                                style = MaterialTheme.typography.bodyLarge,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                    }
                 }
-                Spacer(Modifier.height(96.dp))
             }
         }
     }
 }
 
-/**
- * A single horizontal strip of every bead, current one enlarged and glowing at the centre —
- * replaces the old sidebar carousel (and the redundant full-ring diagram beside it) with one
- * layout that works the same way on a phone or a tablet. Drag or snap-scroll to jump to any
- * bead; the same snap-settle logic the sidebar used just reads the horizontal viewport now.
- */
 @Composable
-private fun RosaryBeadStrip(
-    state: RosaryState,
+private fun RosaryPrayerControls(
     strings: Map<String, String>,
-    onNodeSelected: (Int) -> Unit,
+    first: Boolean,
+    last: Boolean,
+    enabled: Boolean,
+    onAdvance: () -> Unit,
+    onBack: () -> Unit,
+    onViewRosary: () -> Unit,
 ) {
-    val currentNodeIndex = state.currentNode?.index ?: 0
-    val listState = rememberLazyListState()
-
-    LaunchedEffect(currentNodeIndex) {
-        listState.animateScrollToItem(currentNodeIndex)
-    }
-
-    LaunchedEffect(listState) {
-        snapshotFlow { listState.isScrollInProgress }
-            .distinctUntilChanged()
-            .collect { scrolling ->
-                if (!scrolling) {
-                    val layout = listState.layoutInfo
-                    val center = (layout.viewportStartOffset + layout.viewportEndOffset) / 2
-                    layout.visibleItemsInfo
-                        .minByOrNull { abs((it.offset + it.size / 2) - center) }
-                        ?.index
-                        ?.let { index -> rosaryLayout.getOrNull(index)?.index }
-                        ?.let(onNodeSelected)
+    Surface(color = MaterialTheme.colorScheme.surface) {
+        Column(
+            Modifier.navigationBarsPadding().padding(horizontal = 20.dp, vertical = 12.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                Text(
+                    strings[RosaryPrayingStringKeys.SwipeHint].orEmpty(),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.weight(1f),
+                )
+                TextButton(onClick = onViewRosary, enabled = enabled) {
+                    Text(strings[RosaryPrayingStringKeys.ViewRosary].orEmpty())
                 }
             }
-    }
-
-    BoxWithConstraints(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(104.dp)
-            .semantics {
-                contentDescription = strings[RosaryPrayingStringKeys.CarouselDescription].orEmpty()
-            },
-    ) {
-        val horizontalPadding = ((maxWidth - 76.dp) / 2).coerceAtLeast(0.dp)
-        LazyRow(
-            state = listState,
-            contentPadding = PaddingValues(horizontal = horizontalPadding),
-            flingBehavior = rememberSnapFlingBehavior(listState),
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxSize(),
-        ) {
-            itemsIndexed(rosaryLayout, key = { _, bead -> bead.index }) { index, bead ->
-                BeadStripSlot(
-                    listState = listState,
-                    index = index,
-                    bead = bead,
-                    current = bead.index == currentNodeIndex,
-                    prayed = index < currentNodeIndex,
-                    contentDescription = beadDescription(bead, strings),
-                    showSpacer = index < rosaryLayout.lastIndex,
-                )
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
+                OutlinedButton(
+                    onClick = onBack,
+                    enabled = enabled && !first,
+                    shape = RoundedCornerShape(16.dp),
+                    modifier = Modifier.weight(1f).heightIn(min = 52.dp),
+                ) {
+                    Text(strings[RosaryPrayingStringKeys.Previous].orEmpty())
+                }
+                Button(
+                    onClick = onAdvance,
+                    enabled = enabled,
+                    shape = RoundedCornerShape(16.dp),
+                    modifier = Modifier.weight(1.5f).heightIn(min = 52.dp),
+                ) {
+                    Text(strings[if (last) RosaryPrayingStringKeys.Finish else RosaryPrayingStringKeys.Next].orEmpty())
+                    Icon(Icons.AutoMirrored.Filled.ArrowForward, contentDescription = null, modifier = Modifier.padding(start = 8.dp))
+                }
             }
         }
     }
 }
-
-@Composable
-private fun BeadStripSlot(
-    listState: LazyListState,
-    index: Int,
-    bead: RosaryBead,
-    current: Boolean,
-    prayed: Boolean,
-    contentDescription: String,
-    showSpacer: Boolean,
-) {
-    val distance by remember(listState, index) {
-        derivedStateOf {
-            val layout = listState.layoutInfo
-            val info = layout.visibleItemsInfo.firstOrNull { it.index == index } ?: return@derivedStateOf 4f
-            val viewportCenter = (layout.viewportStartOffset + layout.viewportEndOffset) / 2f
-            ((info.offset + info.size / 2f) - viewportCenter) / info.size.coerceAtLeast(1)
-        }
-    }
-    val beadSize = when (bead.kind) {
-        BeadKind.HAIL_MARY -> 36.dp
-        BeadKind.OUR_FATHER -> 44.dp
-        BeadKind.CENTERPIECE -> 52.dp
-        BeadKind.CROSS -> 60.dp
-    }
-
-    Box(
-        modifier = Modifier.width(76.dp).fillMaxHeight(),
-        contentAlignment = Alignment.Center,
-    ) {
-        RosarySpriteRenderer(
-            model = RosarySpriteUiModel(
-                sprite = beadSprite(bead),
-                displaySize = beadSize,
-                contentDescription = contentDescription,
-                isCurrent = current,
-                isPrayed = prayed,
-            ),
-            distanceFromCenter = distance,
-            carouselOnLeft = false,
-            modifier = Modifier.fillMaxSize(),
-        )
-
-        if (showSpacer) {
-            Image(
-                painter = painterResource(Res.drawable.rosary_spacer_gold),
-                contentDescription = null,
-                modifier = Modifier.align(Alignment.CenterEnd).size(14.dp),
-            )
-        }
-    }
-}
-
-private fun beadDescription(bead: RosaryBead, strings: Map<String, String>): String = strings[
-    when (bead.kind) {
-        BeadKind.CROSS -> RosaryPrayingStringKeys.BeadCross
-        BeadKind.OUR_FATHER -> RosaryPrayingStringKeys.BeadOurFather
-        BeadKind.HAIL_MARY -> RosaryPrayingStringKeys.BeadHailMary
-        BeadKind.CENTERPIECE -> RosaryPrayingStringKeys.BeadCenterpiece
-    },
-].orEmpty()

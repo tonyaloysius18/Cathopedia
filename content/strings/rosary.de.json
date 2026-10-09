@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "de",
-  "contentVersion": 5,
+  "contentVersion": 7,
   "translationStatus": "MACHINE_DRAFT",
   "strings": {
     "rosary.title": "Heiliger Rosenkranz",
@@ -20,8 +20,8 @@
     "rosary.mystery.sorrowful": "Schmerzhaft",
     "rosary.mystery.glorious": "Glorreich",
     "rosary.mystery.luminous": "Lichtreich",
-    "rosary.mysteries.title": "Geheimnisse des heiligen Rosenkranzes",
-    "rosary.mysteries.intro": "Zwanzig Momente des Evangeliums, mit Maria betrachtet, in vier Reihen zu je fünf Geheimnissen geordnet.",
+    "rosary.mysteries.title": "Geheimnisse wählen",
+    "rosary.mysteries.intro": "Bete eine Reihe oder entdecke ihre Evangelienmomente.",
     "rosary.mysteries.set.joyful": "Die freudenreichen Geheimnisse",
     "rosary.mysteries.set.sorrowful": "Die schmerzhaften Geheimnisse",
     "rosary.mysteries.set.glorious": "Die glorreichen Geheimnisse",
@@ -51,6 +51,16 @@
     "rosary.praying.bead.centerpiece": "Mittelstück",
     "rosary.meter.recent": "Letzte Tage",
     "rosary.meter.breakdown": "Nach Geheimnisreihe",
-    "rosary.meter.day_description": "{date}: {count} Rosenkränze abgeschlossen"
+    "rosary.meter.day_description": "{date}: {count} Rosenkränze abgeschlossen",
+    "rosary.mysteries.details": "Mysterien ansehen",
+    "rosary.mysteries.hide_details": "Mysterien ausblenden",
+    "rosary.praying.next": "Nächstes Gebet",
+    "rosary.praying.previous": "Zurück",
+    "rosary.praying.finish": "Rosenkranz beenden",
+    "rosary.praying.swipe_hint": "Wische am Rosenkranz, um die Perle zu wechseln.",
+    "rosary.praying.loading": "Gebet wird geladen…",
+    "rosary.praying.view_rosary": "Rosenkranz ansehen",
+    "rosary.praying.shared_bead": "Gebet {current} von {total} an dieser Perle",
+    "rosary.praying.bead_progress": "Perle {current} von {total}"
   }
 }

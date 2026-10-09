@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "es",
-  "contentVersion": 5,
+  "contentVersion": 7,
   "translationStatus": "MACHINE_DRAFT",
   "strings": {
     "rosary.title": "Santo rosario",
@@ -20,8 +20,8 @@
     "rosary.mystery.sorrowful": "Dolorosos",
     "rosary.mystery.glorious": "Gloriosos",
     "rosary.mystery.luminous": "Luminosos",
-    "rosary.mysteries.title": "Misterios del santo rosario",
-    "rosary.mysteries.intro": "Veinte momentos del Evangelio contemplados con María, ordenados en cuatro series de cinco misterios.",
+    "rosary.mysteries.title": "Elegir misterios",
+    "rosary.mysteries.intro": "Reza una serie o explora sus momentos del Evangelio.",
     "rosary.mysteries.set.joyful": "Los misterios gozosos",
     "rosary.mysteries.set.sorrowful": "Los misterios dolorosos",
     "rosary.mysteries.set.glorious": "Los misterios gloriosos",
@@ -51,6 +51,16 @@
     "rosary.praying.bead.centerpiece": "Pieza central",
     "rosary.meter.recent": "Últimos días",
     "rosary.meter.breakdown": "Por serie de misterios",
-    "rosary.meter.day_description": "{date}: {count} rosarios completados"
+    "rosary.meter.day_description": "{date}: {count} rosarios completados",
+    "rosary.mysteries.details": "Ver los misterios",
+    "rosary.mysteries.hide_details": "Ocultar los misterios",
+    "rosary.praying.next": "Siguiente oración",
+    "rosary.praying.previous": "Anterior",
+    "rosary.praying.finish": "Terminar el Rosario",
+    "rosary.praying.swipe_hint": "Desliza el Rosario para cambiar de cuenta.",
+    "rosary.praying.loading": "Cargando oración…",
+    "rosary.praying.view_rosary": "Ver Rosario",
+    "rosary.praying.shared_bead": "Oración {current} de {total} en esta cuenta",
+    "rosary.praying.bead_progress": "Cuenta {current} de {total}"
   }
 }

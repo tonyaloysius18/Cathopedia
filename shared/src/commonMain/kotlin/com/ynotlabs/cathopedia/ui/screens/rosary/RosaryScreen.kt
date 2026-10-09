@@ -15,6 +15,7 @@ import com.ynotlabs.cathopedia.model.MysterySummary
 import com.ynotlabs.cathopedia.model.RosaryMeter
 import com.ynotlabs.cathopedia.model.RosarySessionState
 import com.ynotlabs.cathopedia.rosary.mysterySetForDate
+import com.ynotlabs.cathopedia.ui.theme.RosaryTheme
 import kotlinx.coroutines.launch
 
 /** Landing, mystery selection, praying mode, and exact-session resume for the Rosary feature. */
@@ -64,53 +65,60 @@ fun RosaryScreen(
         }
     }
 
-    if (showLanding) {
-        RosaryLandingScreen(
-            strings = localized,
-            mysteriesBySet = mysteriesBySet,
-            resumeSession = resumeSession,
-            meter = meter,
-            onStart = {
-                selectedMysterySet = todayMysterySet
-                showMysteryDialog = true
-            },
-            onResume = { session ->
-                activeSession = session
-                showLanding = false
-            },
-            onBack = onBack,
-        )
-        if (showMysteryDialog) {
-            RosaryMysterySelectionDialog(
+    RosaryTheme {
+        if (showLanding) {
+            RosaryLandingScreen(
                 strings = localized,
+                mysteriesBySet = mysteriesBySet,
+                resumeSession = resumeSession,
+                meter = meter,
                 todaySet = todayMysterySet,
-                selected = selectedMysterySet,
-                onSelect = { selectedMysterySet = it },
-                onConfirm = {
-                    showMysteryDialog = false
-                    scope.launch {
-                        val id = sessionRepository.startSession(selectedMysterySet)
-                        activeSession = sessionRepository.session(id)
-                        showLanding = false
-                    }
+                onStart = {
+                    selectedMysterySet = todayMysterySet
+                    showMysteryDialog = true
                 },
-                onDismiss = { showMysteryDialog = false },
-            )
-        }
-    } else {
-        activeSession?.let { session ->
-            RosaryPrayingScreen(
-                repository = repository,
-                sessionRepository = sessionRepository,
-                language = language,
-                session = session,
-                carouselOnLeft = carouselOnLeft,
-                onClose = { showLanding = true },
-                onCompleted = {
-                    activeSession = null
-                    showLanding = true
+                onResume = { session ->
+                    activeSession = session
+                    showLanding = false
                 },
+                onMysterySelected = { set ->
+                    selectedMysterySet = set
+                    showMysteryDialog = true
+                },
+                onBack = onBack,
             )
+            if (showMysteryDialog) {
+                RosaryMysterySelectionDialog(
+                    strings = localized,
+                    todaySet = todayMysterySet,
+                    selected = selectedMysterySet,
+                    onSelect = { selectedMysterySet = it },
+                    onConfirm = {
+                        showMysteryDialog = false
+                        scope.launch {
+                            val id = sessionRepository.startSession(selectedMysterySet)
+                            activeSession = sessionRepository.session(id)
+                            showLanding = false
+                        }
+                    },
+                    onDismiss = { showMysteryDialog = false },
+                )
+            }
+        } else {
+            activeSession?.let { session ->
+                RosaryPrayingScreen(
+                    repository = repository,
+                    sessionRepository = sessionRepository,
+                    language = language,
+                    session = session,
+                    carouselOnLeft = carouselOnLeft,
+                    onClose = { showLanding = true },
+                    onCompleted = {
+                        activeSession = null
+                        showLanding = true
+                    },
+                )
+            }
         }
     }
 }

@@ -1,0 +1,57 @@
+[
+  {
+    "check": "resume selected Marian medal",
+    "prayer": 73,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "fast swipe from medal to pendant bead",
+    "prayer": 7,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "fast swipe locks on medal from pendant side",
+    "prayer": 73,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "single swipe from medal to decade Our Father",
+    "prayer": 8,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "fast swipe locks on medal from decade side",
+    "prayer": 73,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "long slow swipe from medal moves one element",
+    "prayer": 7,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "short swipe locks on medal",
+    "prayer": 73,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "two fast gestures from medal move two elements",
+    "prayer": 9,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "two fast reverse gestures stop on medal",
+    "prayer": 73,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "second prayer keeps medal centered",
+    "prayer": 74,
+    "selectedCenterY": 1371.0
+  },
+  {
+    "check": "restore selected Marian medal and saved prayer",
+    "prayer": 73,
+    "selectedCenterY": 1371.0
+  }
+]

@@ -1,0 +1,7 @@
+# Marian Rosary landing artwork
+
+Generated with the built-in image generator for the Rosary opening screen.
+
+Asset: `shared/src/commonMain/composeResources/drawable/rosary_landing_marian.png`
+
+Use case: product-mockup. Asset type: wide landscape hero artwork for the Holy Rosary section in the Cathopedia mobile app. Primary request: a reverent premium photograph of a Marian blue and white Catholic rosary, resting naturally on very pale blue and white linen. The Hail Mary beads are polished white porcelain with delicate cobalt-blue floral motifs, the Our Father beads are deep Marian-blue enamel, small restrained silver metal links, an oval medal of the Virgin Mary, and an elegant white pearl and silver crucifix. A recognizable complete five-decade rosary arranged in a loose oval with its pendant and crucifix completely visible toward the lower right. Scene/backdrop: softly lit ivory and pale blue textile with subtle texture, no other objects. Composition: landscape 3:2, clean overhead view, object fills approximately 80% of frame, the entire rosary visible with breathing room and no cropped cross, enough visual detail to be compelling in a short mobile hero image. Lighting: gentle diffused daylight, calm devotional mood, realistic ceramic shine and fine shadow, no sparkles or artificial glow. Palette: Marian blue, pure pearl white, soft silver, pale ice blue, avoid warm brown or mustard gold cast. Constraints: no text, no letters, no logo, no phone, no UI, no watermark, no hands. This image is an app asset, not a screen mockup.

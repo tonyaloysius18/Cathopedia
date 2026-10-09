@@ -1,6 +1,6 @@
 package com.ynotlabs.cathopedia.rosary
 
-import com.ynotlabs.cathopedia.ui.screens.rosaryCompletionCountsByDay
+import com.ynotlabs.cathopedia.ui.screens.rosary.rosaryCompletionCountsByDay
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atStartOfDayIn

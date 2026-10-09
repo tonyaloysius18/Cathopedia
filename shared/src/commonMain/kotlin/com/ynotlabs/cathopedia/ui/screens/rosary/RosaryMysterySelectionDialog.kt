@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
@@ -43,8 +45,10 @@ internal fun RosaryMysterySelectionDialog(
         onDismissRequest = onDismiss,
         title = { Text(text(MysteryDialogStringKeys.Title)) },
         text = {
-            Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                Text(text(MysteryDialogStringKeys.Message), modifier = Modifier.padding(bottom = 8.dp))
+            Column(
+                modifier = Modifier.verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(4.dp),
+            ) {
                 Column(Modifier.selectableGroup()) {
                     MysterySet.entries.forEach { set ->
                         Row(

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "pl",
-  "contentVersion": 5,
+  "contentVersion": 7,
   "translationStatus": "MACHINE_DRAFT",
   "strings": {
     "rosary.title": "Różaniec Święty",
@@ -20,8 +20,8 @@
     "rosary.mystery.sorrowful": "Bolesne",
     "rosary.mystery.glorious": "Chwalebne",
     "rosary.mystery.luminous": "Światła",
-    "rosary.mysteries.title": "Tajemnice Różańca Świętego",
-    "rosary.mysteries.intro": "Dwadzieścia ewangelicznych chwil kontemplowanych z Maryją, ułożonych w cztery części po pięć tajemnic.",
+    "rosary.mysteries.title": "Wybierz tajemnice",
+    "rosary.mysteries.intro": "Módl się wybraną częścią lub poznaj jej wydarzenia ewangeliczne.",
     "rosary.mysteries.set.joyful": "Tajemnice radosne",
     "rosary.mysteries.set.sorrowful": "Tajemnice bolesne",
     "rosary.mysteries.set.glorious": "Tajemnice chwalebne",
@@ -51,6 +51,16 @@
     "rosary.praying.bead.centerpiece": "Łącznik",
     "rosary.meter.recent": "Ostatnie dni",
     "rosary.meter.breakdown": "Według części tajemnic",
-    "rosary.meter.day_description": "{date}: ukończone różańce: {count}"
+    "rosary.meter.day_description": "{date}: ukończone różańce: {count}",
+    "rosary.mysteries.details": "Zobacz tajemnice",
+    "rosary.mysteries.hide_details": "Ukryj tajemnice",
+    "rosary.praying.next": "Następna modlitwa",
+    "rosary.praying.previous": "Wstecz",
+    "rosary.praying.finish": "Zakończ różaniec",
+    "rosary.praying.swipe_hint": "Przesuń różaniec, aby zmienić paciorek.",
+    "rosary.praying.loading": "Ładowanie modlitwy…",
+    "rosary.praying.view_rosary": "Zobacz różaniec",
+    "rosary.praying.shared_bead": "Modlitwa {current} z {total} na tym paciorku",
+    "rosary.praying.bead_progress": "Paciorek {current} z {total}"
   }
 }

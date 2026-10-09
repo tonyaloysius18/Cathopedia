@@ -5,9 +5,8 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
@@ -69,6 +68,7 @@ fun beadSprite(bead: RosaryBead): DrawableResource? = when (bead.kind) {
 fun RosaryComposition(
     modifier: Modifier = Modifier,
     beads: List<RosaryBead> = rosaryLayout,
+    selectedBeadIndex: Int? = null,
 ) {
     val colors = rosaryColors()
     BoxWithConstraints(modifier.aspectRatio(ROSARY_ASPECT)) {
@@ -83,6 +83,22 @@ fun RosaryComposition(
             val top = h * bead.y - diameter / 2
             val sprite = beadSprite(bead)
             val beadModifier = Modifier.offset(x = left, y = top).size(diameter)
+            if (bead.index == selectedBeadIndex) {
+                Box(
+                    Modifier.offset(x = left - 12.dp, y = top - 12.dp).size(diameter + 24.dp)
+                        .drawBehind {
+                            drawCircle(
+                                brush = Brush.radialGradient(
+                                    0f to colors.candle.copy(alpha = 0.65f),
+                                    0.5f to colors.candle.copy(alpha = 0.38f),
+                                    1f to Color.Transparent,
+                                    center = center,
+                                    radius = size.minDimension / 2,
+                                ),
+                            )
+                        },
+                )
+            }
             if (sprite != null) {
                 Image(
                     painter = painterResource(sprite),
@@ -108,17 +124,14 @@ private fun DrawScope.drawCord(beads: List<RosaryBead>, color: Color) {
         Offset(it.x * size.width, it.y * size.height)
     }
 
-    val strokePx = 2.dp.toPx()
-    val cord = Path()
-    // Pendant: crucifix up to the centerpiece.
-    point(0)?.let { cord.moveTo(it.x, it.y) }
-    for (i in 1..6) point(i)?.let { cord.lineTo(it.x, it.y) }
-    // Loop: centerpiece around the five decades and back to the centerpiece.
-    point(6)?.let { cord.moveTo(it.x, it.y) }
-    for (i in 7..61) point(i)?.let { cord.lineTo(it.x, it.y) }
-    point(6)?.let { cord.lineTo(it.x, it.y) }
-
-    drawPath(cord, color = color, style = Stroke(width = strokePx))
+    fun link(from: Int, to: Int) {
+        val start = point(from) ?: return
+        val end = point(to) ?: return
+        drawRosaryChain(start, end, color)
+    }
+    for (i in 0 until 6) link(i, i + 1)
+    for (i in 6 until 61) link(i, i + 1)
+    link(61, 6)
 }
 
 private fun DrawScope.drawPlaceholder(color: Color) {
