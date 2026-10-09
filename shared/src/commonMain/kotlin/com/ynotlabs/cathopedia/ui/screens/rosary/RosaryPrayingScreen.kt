@@ -68,6 +68,7 @@ import com.ynotlabs.cathopedia.model.PrayerDetail
 import com.ynotlabs.cathopedia.model.RosarySessionState
 import com.ynotlabs.cathopedia.rosary.RosarySequence
 import com.ynotlabs.cathopedia.rosary.RosaryState
+import com.ynotlabs.cathopedia.ui.components.DarkSystemBars
 import com.ynotlabs.cathopedia.ui.components.PrayerBodyText
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
@@ -95,6 +96,8 @@ internal object RosaryPrayingStringKeys {
     const val BeadOurFather = "rosary.praying.bead.our_father"
     const val BeadHailMary = "rosary.praying.bead.hail_mary"
     const val BeadCenterpiece = "rosary.praying.bead.centerpiece"
+    const val OverviewCurrentPrayer = "rosary.overview.current_prayer"
+    const val OverviewReturnToPrayer = "rosary.overview.return_to_prayer"
 
     val all = setOf(
         Next,
@@ -119,6 +122,12 @@ internal object RosaryPrayingStringKeys {
         BeadOurFather,
         BeadHailMary,
         BeadCenterpiece,
+        OverviewCurrentPrayer,
+        OverviewReturnToPrayer,
+        "rosary.mysteries.set.joyful",
+        "rosary.mysteries.set.sorrowful",
+        "rosary.mysteries.set.glorious",
+        "rosary.mysteries.set.luminous",
         RosaryStringKeys.DiagramDescription,
     )
 }
@@ -210,6 +219,7 @@ internal fun RosaryPrayingScreen(
         }
     }
 
+    DarkSystemBars()
     // The Marian night palette of the Prayers screen's Rosary card, scoped to this screen.
     // The bead carousel reads background for its edge fades, so it follows automatically.
     MaterialTheme(
@@ -280,7 +290,12 @@ internal fun RosaryPrayingScreen(
         }
     }
     if (showOverview) {
-        RosaryOverview(state, strings, onClose = { showOverview = false })
+        RosaryOverview(
+            state = state,
+            strings = strings,
+            currentPrayerTitle = currentContent?.prayer?.title ?: strings[RosaryPrayingStringKeys.Loading].orEmpty(),
+            onClose = { showOverview = false },
+        )
     }
     }
 }
