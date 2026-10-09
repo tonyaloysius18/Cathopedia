@@ -69,7 +69,7 @@ object AppLanguages {
             formatCentury = { "${roman(it)} wiek" },
         ),
         AppLanguage(
-            code = "ta", nativeName = "தமிழ்", available = false,
+            code = "ta", nativeName = "தமிழ்", available = true,
             localizedName = { it.languageNameTamil }, strings = { TA },
             formatCentury = { "${it}ஆம் நூற்றாண்டு" },
         ),
