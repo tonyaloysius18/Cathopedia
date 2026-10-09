@@ -58,6 +58,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.CompositingStrategy
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.draw.BlurredEdgeTreatment
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.AnnotatedString
@@ -452,56 +460,12 @@ private fun RosaryHeroCard(
             )
             .clickable(onClick = onClick),
     ) {
-        // The user-supplied artwork is already composed as a full card
-        // background (deep blue velvet backdrop, rosary right-aligned,
-        // open space on the left for the text), matching the treatment
-        // on the Way of the Cross card.
-        Image(
+        // Same text protection as the Explore cards: the artwork is blurred and
+        // faded into the card colour under the text, sharp only on the right.
+        HeroArtworkLayers(
             painter = painterResource(Res.drawable.rosary_background),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .matchParentSize()
-                .clip(shape),
-        )
-
-
-        // Soft blurred transition behind the text area only. The rosary artwork
-        // stays sharp while the image fades naturally into the blue background.
-        Box(Modifier.matchParentSize()) {
-        Box(
-            modifier = Modifier
-                .fillMaxHeight()
-                .fillMaxWidth(0.55f)
-                .align(Alignment.CenterStart)
-                .blur(18.dp)
-                .background(
-                    Brush.horizontalGradient(
-                        listOf(
-                            MarianBlueDeep.copy(alpha = 0.95f),
-                            MarianBlueDeep.copy(alpha = 0.25f),
-                            Color.Transparent,
-                        ),
-                    ),
-                ),
-        )
-        }
-
-        // A fade over the art's left side so it blends into the card's
-        // own blue as the text reaches the image, matching the Way of
-        // the Cross card's treatment.
-        Box(
-            modifier = Modifier
-                .matchParentSize()
-                .clip(shape)
-                .background(
-                    Brush.horizontalGradient(
-                        0f to MarianBlueDeep.copy(alpha = 0.92f),
-                        0.28f to MarianBlueDeep.copy(alpha = 0.6f),
-                        0.5f to MarianBlueDeep.copy(alpha = 0.22f),
-                        0.78f to Color.Transparent,
-                    ),
-                ),
+            tint = MarianBlueDeep,
+            shape = shape,
         )
 
         Column(
@@ -592,55 +556,12 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
             )
             .clickable(onClick = onClick),
     ) {
-        // The user-supplied artwork is already composed as a full card
-        // background (red velvet backdrop, golden crucifix right-aligned,
-        // open space on the left for the text), so it fills the whole
-        // card rather than sitting as a right-aligned inset cutout.
-        Image(
+        // Same text protection as the Explore cards: the artwork is blurred and
+        // faded into the card colour under the text, sharp only on the right.
+        HeroArtworkLayers(
             painter = painterResource(Res.drawable.way_of_the_cross_background),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .matchParentSize()
-                .clip(shape),
-        )
-
-        // Soft blurred transition near the text edge. The crucifix remains
-        // crisp on the right side while the red artwork fades smoothly.
-        Box(Modifier.matchParentSize()) {
-        Box(
-            modifier = Modifier
-                .fillMaxHeight()
-                .fillMaxWidth(0.55f)
-                .align(Alignment.CenterStart)
-                .blur(18.dp)
-                .background(
-                    Brush.horizontalGradient(
-                        listOf(
-                            PassionRedDeep.copy(alpha = 0.95f),
-                            PassionRedDeep.copy(alpha = 0.25f),
-                            Color.Transparent,
-                        ),
-                    ),
-                ),
-        )
-        }
-
-        // A light fade over the art's left side so it blends into the
-        // card's own red rather than sitting as a flat pasted image,
-        // matching the soft blend on the Holy Rosary card.
-        Box(
-            modifier = Modifier
-                .matchParentSize()
-                .clip(shape)
-                .background(
-                    Brush.horizontalGradient(
-                        0f to PassionRedDeep.copy(alpha = 0.92f),
-                        0.28f to PassionRedDeep.copy(alpha = 0.6f),
-                        0.5f to PassionRedDeep.copy(alpha = 0.22f),
-                        0.78f to Color.Transparent,
-                    ),
-                ),
+            tint = PassionRedDeep,
+            shape = shape,
         )
 
         Column(modifier = Modifier.fillMaxWidth().heightIn(min = 170.dp).padding(18.dp)) {
@@ -656,6 +577,8 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
 
             Text(
                 text = s.prayersWayOfCrossTagline,
+                // Wrap before the crucifix on the right of the artwork.
+                modifier = Modifier.fillMaxWidth(0.66f),
                 color = HeroCream,
                 fontFamily = FontFamily.Serif,
                 fontSize = 21.sp,
@@ -666,11 +589,70 @@ private fun WayOfTheCrossCard(onClick: () -> Unit) {
 
             Text(
                 text = s.prayersWayOfCrossDescription,
+                // Wrap before the crucifix on the right of the artwork.
+                modifier = Modifier.fillMaxWidth(0.66f),
                 color = HeroMuted,
                 fontSize = 13.sp,
             )
         }
     }
+}
+
+/**
+ * Full-card artwork for the Prayers hero cards. Under the text (left side) a
+ * blurred copy of the art replaces the sharp one, and a fade in [tint] with
+ * the Explore cards' wide-card stops keeps the text readable; the right side
+ * keeps the sharp art. Must be placed inside a Box (uses matchParentSize).
+ */
+@Composable
+private fun BoxScope.HeroArtworkLayers(
+    painter: Painter,
+    tint: Color,
+    shape: Shape,
+) {
+    Image(
+        painter = painter,
+        contentDescription = null,
+        contentScale = ContentScale.Crop,
+        modifier = Modifier.matchParentSize().clip(shape),
+    )
+    // Blurred copy, masked so it covers the text side and dissolves into the
+    // sharp art. (Blur needs Android 12+; older devices rely on the fade.)
+    Image(
+        painter = painter,
+        contentDescription = null,
+        contentScale = ContentScale.Crop,
+        modifier = Modifier
+            .matchParentSize()
+            .clip(shape)
+            .graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
+            .drawWithContent {
+                drawContent()
+                drawRect(
+                    brush = Brush.horizontalGradient(
+                        0f to Color.Black,
+                        0.5f to Color.Black,
+                        0.78f to Color.Transparent,
+                    ),
+                    blendMode = BlendMode.DstIn,
+                )
+            }
+            .blur(16.dp, edgeTreatment = BlurredEdgeTreatment.Unbounded),
+    )
+    Box(
+        modifier = Modifier
+            .matchParentSize()
+            .clip(shape)
+            .background(
+                Brush.horizontalGradient(
+                    0f to tint.copy(alpha = 1f),
+                    0.34f to tint.copy(alpha = 0.94f),
+                    0.58f to tint.copy(alpha = 0.70f),
+                    0.80f to tint.copy(alpha = 0.24f),
+                    1f to Color.Transparent,
+                ),
+            ),
+    )
 }
 
 @Composable
