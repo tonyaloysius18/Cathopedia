@@ -179,6 +179,7 @@ fun PrayerDetailScreen(
 
                 else -> PrayerReadingContent(
                     detail = current,
+                    language = language,
                     readingLanguage = readingLanguage,
                     onLanguageChange = { readingLanguage = it },
                     fontScale = FONT_SCALE_STEPS[fontScaleIndex],
@@ -239,6 +240,7 @@ fun PrayerDetailScreen(
 @Composable
 private fun PrayerReadingContent(
     detail: PrayerDetail,
+    language: String,
     readingLanguage: String,
     onLanguageChange: (String) -> Unit,
     fontScale: Float,
@@ -265,7 +267,10 @@ private fun PrayerReadingContent(
 
         Spacer(Modifier.height(16.dp))
 
-        if (detail.availableLanguages.size > 1) {
+        // Prayers now exist in every app language; offer only the reader's own, English and
+        // Latin rather than a row of nine chips.
+        val readingChoices = detail.availableLanguages.filter { it == language || it == "en" || it == "la" }
+        if (readingChoices.size > 1) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -273,7 +278,7 @@ private fun PrayerReadingContent(
                     .padding(bottom = 12.dp)
             ) {
                 LanguageSegmentedControl(
-                    available = detail.availableLanguages,
+                    available = readingChoices,
                     selected = readingLanguage,
                     onSelect = onLanguageChange,
                 )
