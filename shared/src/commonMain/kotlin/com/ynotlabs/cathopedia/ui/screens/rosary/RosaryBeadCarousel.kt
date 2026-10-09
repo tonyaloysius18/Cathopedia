@@ -7,6 +7,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectVerticalDragGestures
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.PaddingValues
@@ -49,12 +50,11 @@ import com.ynotlabs.cathopedia.rosary.BeadKind
 import com.ynotlabs.cathopedia.rosary.RosaryBead
 import com.ynotlabs.cathopedia.rosary.RosaryState
 import com.ynotlabs.cathopedia.rosary.rosaryLayout
-import com.ynotlabs.cathopedia.ui.components.beadSprite
+import com.ynotlabs.cathopedia.ui.components.beadPainter
 import com.ynotlabs.cathopedia.ui.components.drawRosaryChain
 import com.ynotlabs.cathopedia.ui.theme.rosaryColors
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import org.jetbrains.compose.resources.painterResource
 
 /** Physical elements appear once, with the crucifix hanging below the pendant. */
 @Composable
@@ -176,7 +176,13 @@ internal fun RosaryBeadCarousel(
                 )
                 Box(
                     modifier = Modifier.fillMaxWidth().height(slotHeight(bead))
-                        .clickable(enabled = enabled) { latestSelection(bead.index) }
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            // The selected bead's glow supplies feedback; a ripple
+                            // would paint the rectangular touch area behind the strand.
+                            indication = null,
+                            enabled = enabled,
+                        ) { latestSelection(bead.index) }
                         .semantics(mergeDescendants = true) { selected = current },
                     contentAlignment = Alignment.Center,
                 ) {
@@ -203,10 +209,10 @@ internal fun RosaryBeadCarousel(
                             )
                         }
                     }
-                    beadSprite(bead)?.let { sprite ->
+                    beadPainter(bead)?.let { painter ->
                         val brightness = 0.65f + 0.35f * highlight
                         Image(
-                            painterResource(sprite),
+                            painter,
                             contentDescription = beadDescription(bead, strings),
                             contentScale = ContentScale.Fit,
                             // Preserve the bead's opacity so dimming does not

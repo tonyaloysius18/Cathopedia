@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "en",
-  "contentVersion": 7,
+  "contentVersion": 8,
   "translationStatus": "COMPLETE",
   "strings": {
     "rosary.title": "Holy Rosary",
@@ -61,6 +61,9 @@
     "rosary.praying.loading": "Loading prayer…",
     "rosary.praying.view_rosary": "View Rosary",
     "rosary.praying.shared_bead": "Prayer {current} of {total} on this bead",
-    "rosary.praying.bead_progress": "Bead {current} of {total}"
+    "rosary.praying.bead_progress": "Bead {current} of {total}",
+    "rosary.landing.heading": "A moment\nfor prayer.",
+    "rosary.landing.hint": "Follow each bead.",
+    "rosary.landing.resume": "Resume my prayer"
   }
 }

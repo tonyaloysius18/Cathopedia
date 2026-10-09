@@ -1,7 +1,19 @@
 package com.ynotlabs.cathopedia.ui.theme
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 
 /**
@@ -37,6 +49,48 @@ private val DarkRosaryColors = RosaryColors(
     candle = Color(0xFF8AC3F2),
     prayed = Color(0xFF5A7CA8),
 )
+
+/**
+ * The royal Marian blue of the Holy Rosary card on the Prayers screen. Rosary
+ * cards keep it in both themes, so their text uses the dark theme's gold and
+ * cream (the light theme's ink would vanish into the blue).
+ */
+object RosaryMarianCard {
+    val deep = Color(0xFF002B5C)
+    val blue = Color(0xFF0055A4)
+    val shade = Color(0xFF003D7A)
+    val gold = DarkGold
+    val goldSoft = DarkTextMuted
+    val cream = DarkText
+    val muted = Color(0xFFB8D0EC)
+
+    /** Page behind Marian cards on the praying screen: darker than [deep] so cards lift off it. */
+    val night = Color(0xFF001830)
+    val nightRaised = Color(0xFF002246)
+
+    val gradient: Brush get() = Brush.horizontalGradient(listOf(deep, blue, shade))
+    val verticalGradient: Brush get() = Brush.verticalGradient(listOf(shade, deep))
+}
+
+/** A rounded royal-blue panel with the soft gold border of the Prayers screen's Rosary card. */
+@Composable
+fun RosaryMarianPanel(
+    modifier: Modifier = Modifier,
+    padding: Dp = 20.dp,
+    brush: Brush = RosaryMarianCard.verticalGradient,
+    content: @Composable ColumnScope.() -> Unit,
+) {
+    val shape = RoundedCornerShape(20.dp)
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .clip(shape)
+            .background(brush)
+            .border(1.dp, RosaryMarianCard.goldSoft.copy(alpha = 0.52f), shape)
+            .padding(padding),
+        content = content,
+    )
+}
 
 /** Uses the resolved appearance, including an explicit override from Settings. */
 @Composable

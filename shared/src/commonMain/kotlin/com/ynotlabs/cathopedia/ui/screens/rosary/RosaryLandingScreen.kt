@@ -1,6 +1,13 @@
 package com.ynotlabs.cathopedia.ui.screens.rosary
 
 import androidx.compose.foundation.BorderStroke
+import com.ynotlabs.cathopedia.ui.theme.RosaryMarianCard
+import com.ynotlabs.cathopedia.ui.theme.RosaryMarianPanel
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.graphics.Color
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.foundation.border
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.background
@@ -10,27 +17,37 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -39,13 +56,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.model.MysterySet
 import com.ynotlabs.cathopedia.model.MysterySummary
 import com.ynotlabs.cathopedia.model.RosaryMeter
@@ -71,6 +91,9 @@ import org.jetbrains.compose.resources.painterResource
 internal object RosaryStringKeys {
     const val Title = "rosary.title"
     const val Subtitle = "rosary.landing.subtitle"
+    const val Heading = "rosary.landing.heading"
+    const val Hint = "rosary.landing.hint"
+    const val ResumeLabel = "rosary.landing.resume"
     const val DiagramDescription = "rosary.landing.diagram_description"
     const val Start = "rosary.start"
     const val Back = "rosary.back"
@@ -92,6 +115,9 @@ internal object RosaryStringKeys {
     val landing = setOf(
         Title,
         Subtitle,
+        Heading,
+        Hint,
+        ResumeLabel,
         DiagramDescription,
         Start,
         Back,
@@ -136,7 +162,17 @@ internal fun RosaryLandingScreen(
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text(strings[RosaryStringKeys.Title].orEmpty()) },
+                title = {
+                    Text(
+                        strings[RosaryStringKeys.Title].orEmpty(),
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                },
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background,
+                    scrolledContainerColor = MaterialTheme.colorScheme.background,
+                ),
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(
@@ -153,14 +189,14 @@ internal fun RosaryLandingScreen(
             val columns = if (maxWidth < 360.dp || LocalDensity.current.fontScale > 1.3f) 1 else 2
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(horizontal = if (wide) 28.dp else 20.dp, vertical = 16.dp),
+                contentPadding = PaddingValues(bottom = 24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(24.dp),
+                verticalArrangement = Arrangement.spacedBy(20.dp),
             ) {
                 item {
                     if (wide) {
                         Row(
-                            modifier = Modifier.widthIn(max = 1200.dp).fillMaxWidth(),
+                            modifier = Modifier.widthIn(max = 1200.dp).fillMaxWidth().padding(28.dp),
                             horizontalArrangement = Arrangement.spacedBy(28.dp),
                             verticalAlignment = Alignment.Top,
                         ) {
@@ -180,63 +216,106 @@ internal fun RosaryLandingScreen(
                             )
                         }
                     } else {
-                        RosaryLandingHero(strings, todaySet, onStart)
+                        RosaryLandingHero(
+                            strings, todaySet, onStart,
+                            modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 8.dp),
+                        )
                     }
                 }
                 if (!wide) {
                     item {
-                        RosaryMysteriesGallery(strings, mysteriesBySet, todaySet, columns, onMysterySelected)
+                        RosaryMysteriesGallery(
+                            strings, mysteriesBySet, todaySet, columns, onMysterySelected,
+                            modifier = Modifier.padding(horizontal = 20.dp),
+                        )
                     }
                     resumeSession?.let { session ->
                         item {
-                            ResumeRosaryCard(session, strings, onResume = { onResume(session) })
+                            ResumeRosaryCard(
+                                session, strings, onResume = { onResume(session) },
+                                modifier = Modifier.padding(horizontal = 20.dp),
+                            )
                         }
                     }
-                    item { RosaryMeterSummary(meter, strings) }
+                    item { RosaryMeterSummary(meter, strings, Modifier.padding(horizontal = 20.dp)) }
                 }
             }
         }
     }
 }
 
-/** A compact photographic entrance; the interactive beads live in prayer mode. */
+/** The compact split introduction chosen in the Option 1 design preview. */
 @Composable
 private fun RosaryLandingHero(
     strings: Map<String, String>,
     todaySet: MysterySet,
     onStart: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-    Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier.fillMaxWidth().aspectRatio(1f)
-                .clip(RoundedCornerShape(24.dp)).clickable(role = Role.Button, onClick = onStart),
+    // Same royal blue, gold and cream as the Holy Rosary card on the Prayers screen.
+    val shape = RoundedCornerShape(24.dp)
+    BoxWithConstraints(
+        modifier.fillMaxWidth()
+            .clip(shape)
+            .background(RosaryMarianCard.gradient)
+            .border(2.dp, RosaryMarianCard.goldSoft.copy(alpha = 0.52f), shape)
+            .padding(horizontal = 18.dp, vertical = 16.dp),
+    ) {
+        val compact = maxWidth < 320.dp || LocalDensity.current.fontScale > 1.3f
+        val artWidth = if (compact) 88.dp else 108.dp
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
+            Column(
+                modifier = Modifier.weight(1f),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+            ) {
+                Text(
+                    text = "${strings[MysteryDialogStringKeys.Today].orEmpty()} · ${mysterySetName(todaySet, strings).replaceFirstChar { it.titlecase() }}",
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.Medium,
+                    color = RosaryMarianCard.gold,
+                )
+                Text(
+                    text = strings[RosaryStringKeys.Heading].orEmpty(),
+                    style = MaterialTheme.typography.headlineMedium.copy(
+                        fontSize = if (compact) 26.sp else 28.sp,
+                        lineHeight = 32.sp,
+                    ),
+                    fontFamily = FontFamily.Serif,
+                    fontWeight = FontWeight.SemiBold,
+                    color = RosaryMarianCard.cream,
+                )
+                Text(
+                    text = strings[RosaryStringKeys.Hint].orEmpty(),
+                    style = MaterialTheme.typography.bodyMedium.copy(fontSize = 15.sp, lineHeight = 22.sp),
+                    color = RosaryMarianCard.cream.copy(alpha = 0.9f),
+                )
+                OutlinedButton(
+                    onClick = onStart,
+                    shape = RoundedCornerShape(22.dp),
+                    border = BorderStroke(2.dp, RosaryMarianCard.gold.copy(alpha = 0.78f)),
+                    colors = ButtonDefaults.outlinedButtonColors(contentColor = RosaryMarianCard.gold),
+                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp),
+                ) {
+                    Text(strings[MysteryDialogStringKeys.Begin].orEmpty(), style = MaterialTheme.typography.titleMedium)
+                    Spacer(Modifier.width(8.dp))
+                    Icon(Icons.AutoMirrored.Filled.ArrowForward, contentDescription = null)
+                }
+            }
+            // Crop the empty side margins of the square PNG at display time.
+            // The complete, narrow rosary remains inside this portrait frame.
             Image(
                 painter = painterResource(Res.drawable.rosary_landing_single_decade_marian),
-                contentDescription = strings[RosaryStringKeys.Start].orEmpty(),
-                contentScale = ContentScale.Fit,
-                modifier = Modifier.fillMaxSize().padding(8.dp),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.width(artWidth).height(if (compact) 196.dp else 208.dp)
+                    .clipToBounds()
+                    .clickable(role = Role.Button, onClick = onStart)
+                    .semantics { contentDescription = strings[RosaryStringKeys.Start].orEmpty() },
             )
-        }
-        Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            Text(
-                text = "${strings[MysteryDialogStringKeys.Today].orEmpty()} · ${mysterySetName(todaySet, strings)}",
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.primary,
-            )
-            Text(
-                text = strings[RosaryStringKeys.Subtitle].orEmpty(),
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        }
-        Button(
-            onClick = onStart,
-            shape = RoundedCornerShape(16.dp),
-            modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp),
-        ) {
-            Text(strings[RosaryStringKeys.Start].orEmpty(), style = MaterialTheme.typography.titleMedium)
         }
     }
 }
@@ -257,67 +336,82 @@ private fun RosaryMysteriesGallery(
     onMysterySelected: (MysterySet) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier = modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            Text(strings[RosaryStringKeys.MysteriesTitle].orEmpty(), style = MaterialTheme.typography.headlineSmall)
+    var detailsTag by rememberSaveable { mutableStateOf<String?>(null) }
+    BoxWithConstraints(modifier.fillMaxWidth()) {
+        val imageHeight = if (columns == 1) 180.dp else (maxWidth / 3.3f).coerceIn(104.dp, 144.dp)
+        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Text(
-                text = strings[RosaryStringKeys.MysteriesIntro].orEmpty(),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                strings[RosaryStringKeys.MysteriesTitle].orEmpty(),
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.SemiBold,
             )
-        }
-        mysteryDisplayOrder.chunked(columns).forEach { sets ->
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                verticalAlignment = Alignment.Top,
-            ) {
-                sets.forEach { set ->
-                    MysterySetCard(
-                        set = set,
-                        mysteries = mysteriesBySet[set].orEmpty(),
-                        strings = strings,
-                        today = set == todaySet,
-                        onSelect = { onMysterySelected(set) },
-                        modifier = Modifier.weight(1f),
-                    )
+            mysteryDisplayOrder.chunked(columns).forEach { sets ->
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalAlignment = Alignment.Top,
+                ) {
+                    sets.forEach { set ->
+                        MysterySetCard(
+                            set = set, strings = strings, today = set == todaySet,
+                            imageHeight = imageHeight,
+                            onSelect = { detailsTag = set.tag },
+                            modifier = Modifier.weight(1f),
+                        )
+                    }
                 }
             }
         }
+    }
+    MysterySet.entries.firstOrNull { it.tag == detailsTag }?.let { set ->
+        MysteryDetailsSheet(
+            set = set,
+            mysteries = mysteriesBySet[set].orEmpty(),
+            strings = strings,
+            onStart = {
+                detailsTag = null
+                onMysterySelected(set)
+            },
+            onDismiss = { detailsTag = null },
+        )
     }
 }
 
 @Composable
 private fun MysterySetCard(
     set: MysterySet,
-    mysteries: List<MysterySummary>,
     strings: Map<String, String>,
     today: Boolean,
+    imageHeight: androidx.compose.ui.unit.Dp,
     onSelect: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    var expanded by rememberSaveable(set) { mutableStateOf(false) }
     val title = strings["rosary.mysteries.set.${set.tag}"].orEmpty()
+    val shape = RoundedCornerShape(16.dp)
     Card(
         onClick = onSelect,
         modifier = modifier,
-        shape = RoundedCornerShape(18.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-        border = if (today) BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)) else null,
+        shape = shape,
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
+        border = BorderStroke(
+            if (today) 2.dp else 1.dp,
+            if (today) RosaryMarianCard.gold.copy(alpha = 0.78f) else RosaryMarianCard.goldSoft.copy(alpha = 0.52f),
+        ),
     ) {
+      Column(Modifier.background(RosaryMarianCard.verticalGradient)) {
         Box {
             Image(
                 painter = painterResource(mysterySetArtwork(set)),
                 contentDescription = title,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxWidth().aspectRatio(4f / 3f),
+                modifier = Modifier.fillMaxWidth().height(imageHeight),
             )
             if (today) {
                 Surface(
-                    color = MaterialTheme.colorScheme.primary,
-                    contentColor = MaterialTheme.colorScheme.onPrimary,
+                    color = RosaryMarianCard.gold,
+                    contentColor = RosaryMarianCard.deep,
                     shape = RoundedCornerShape(6.dp),
-                    modifier = Modifier.padding(10.dp),
+                    modifier = Modifier.padding(8.dp),
                 ) {
                     Text(
                         strings[MysteryDialogStringKeys.Today].orEmpty(),
@@ -327,25 +421,73 @@ private fun MysterySetCard(
                 }
             }
         }
-        Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            Text(mysterySetName(set, strings), style = MaterialTheme.typography.titleMedium)
+        Row(
+            Modifier.padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+        ) {
+            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                Text(
+                    mysterySetName(set, strings).replaceFirstChar { it.titlecase() },
+                    style = MaterialTheme.typography.titleMedium.copy(fontSize = 18.sp),
+                    fontFamily = FontFamily.Serif,
+                    fontWeight = FontWeight.SemiBold,
+                    color = RosaryMarianCard.gold,
+                )
+                Text(
+                    strings["rosary.mysteries.days.${set.tag}"].orEmpty(),
+                    style = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp, lineHeight = 18.sp),
+                    color = RosaryMarianCard.cream.copy(alpha = 0.85f),
+                    modifier = Modifier.heightIn(min = 36.dp),
+                )
+            }
+            Icon(
+                Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                contentDescription = null,
+                tint = RosaryMarianCard.gold,
+            )
+        }
+      }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun MysteryDetailsSheet(
+    set: MysterySet,
+    mysteries: List<MysterySummary>,
+    strings: Map<String, String>,
+    onStart: () -> Unit,
+    onDismiss: () -> Unit,
+) {
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
+        containerColor = MaterialTheme.colorScheme.surface,
+    ) {
+        Column(Modifier.fillMaxWidth().padding(horizontal = 24.dp)) {
+            Text(
+                strings["rosary.mysteries.set.${set.tag}"].orEmpty(),
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.SemiBold,
+            )
             Text(
                 strings["rosary.mysteries.days.${set.tag}"].orEmpty(),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = 4.dp, bottom = 16.dp),
             )
-            if (mysteries.isNotEmpty()) {
-                TextButton(onClick = { expanded = !expanded }, contentPadding = PaddingValues(vertical = 4.dp)) {
-                    Text(
-                        strings[if (expanded) RosaryStringKeys.HideMysteryDetails else RosaryStringKeys.MysteryDetails].orEmpty(),
-                        style = MaterialTheme.typography.labelLarge,
-                    )
-                }
-            }
-            if (expanded) {
-                mysteries.sortedBy { it.sortOrder }.forEachIndexed { index, mystery ->
-                    Column(Modifier.padding(top = 6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                        Text("${index + 1}. ${mystery.title}", style = MaterialTheme.typography.titleSmall)
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth().heightIn(max = 420.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+            ) {
+                itemsIndexed(mysteries.sortedBy { it.sortOrder }, key = { _, mystery -> mystery.id }) { index, mystery ->
+                    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text(
+                            "${index + 1}. ${mystery.title}",
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold,
+                        )
                         mystery.scriptureRef?.let { reference ->
                             Text(reference, style = MaterialTheme.typography.bodyMedium)
                         }
@@ -356,6 +498,15 @@ private fun MysterySetCard(
                         )
                     }
                 }
+            }
+            Button(
+                onClick = onStart,
+                shape = RoundedCornerShape(14.dp),
+                modifier = Modifier.fillMaxWidth().padding(top = 20.dp, bottom = 16.dp).heightIn(min = 52.dp),
+            ) {
+                Text(strings[RosaryStringKeys.Start].orEmpty(), style = MaterialTheme.typography.titleMedium)
+                Spacer(Modifier.width(8.dp))
+                Icon(Icons.AutoMirrored.Filled.ArrowForward, contentDescription = null)
             }
         }
     }
@@ -381,24 +532,36 @@ private fun ResumeRosaryCard(
         .replace("{set}", mysterySetName(session.mysterySet, strings))
 
     Card(
+        onClick = onResume,
         modifier = modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
+        border = BorderStroke(1.dp, RosaryMarianCard.goldSoft.copy(alpha = 0.52f)),
     ) {
-        Column(modifier = Modifier.padding(20.dp)) {
-            Text(
-                text = text(RosaryStringKeys.ResumeTitle),
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.onPrimaryContainer,
-            )
-            Text(
-                text = progress,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.78f),
-                modifier = Modifier.padding(top = 4.dp),
-            )
-            Button(onClick = onResume, modifier = Modifier.fillMaxWidth().padding(top = 16.dp)) {
-                Text(text(RosaryStringKeys.ResumeAction))
+        Row(
+            modifier = Modifier.background(RosaryMarianCard.gradient).padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Icon(Icons.AutoMirrored.Filled.MenuBook, contentDescription = null, tint = RosaryMarianCard.gold)
+            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                Text(
+                    text = text(RosaryStringKeys.ResumeLabel),
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color = RosaryMarianCard.cream,
+                )
+                Text(
+                    text = progress,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = RosaryMarianCard.cream.copy(alpha = 0.8f),
+                )
             }
+            Icon(
+                Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                contentDescription = null,
+                tint = RosaryMarianCard.gold,
+            )
         }
     }
 }
@@ -422,80 +585,94 @@ private fun RosaryMeterSummary(
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        Card(modifier = Modifier.fillMaxWidth()) {
-            Column(modifier = Modifier.padding(20.dp)) {
-                Text(text(RosaryStringKeys.MeterTitle), style = MaterialTheme.typography.titleMedium)
-                Row(
-                    modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                ) {
-                    MeterValue(
-                        value = meter.totalCompleted.toString(),
-                        label = text(RosaryStringKeys.MeterTotal),
-                        modifier = Modifier.weight(1f),
-                    )
-                    MeterValue(
-                        value = meter.completedThisMonth.toString(),
-                        label = text(RosaryStringKeys.MeterMonth),
-                        modifier = Modifier.weight(1f),
-                    )
-                }
+        RosaryMarianPanel {
+            Text(
+                text(RosaryStringKeys.MeterTitle),
+                style = MaterialTheme.typography.titleMedium,
+                fontFamily = FontFamily.Serif,
+                fontWeight = FontWeight.SemiBold,
+                color = RosaryMarianCard.gold,
+            )
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                MeterValue(
+                    value = meter.totalCompleted.toString(),
+                    label = text(RosaryStringKeys.MeterTotal),
+                    modifier = Modifier.weight(1f),
+                )
+                MeterValue(
+                    value = meter.completedThisMonth.toString(),
+                    label = text(RosaryStringKeys.MeterMonth),
+                    modifier = Modifier.weight(1f),
+                )
             }
         }
 
-        Card(modifier = Modifier.fillMaxWidth()) {
-            Column(modifier = Modifier.padding(20.dp)) {
-                Text(
-                    text = text(RosaryStringKeys.MeterRecent),
-                    style = MaterialTheme.typography.labelLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(bottom = 8.dp),
-                )
-                recentDays.chunked(7).forEach { week ->
-                    Row(modifier = Modifier.fillMaxWidth()) {
-                        week.forEach { day ->
-                            val count = countsByDay[day] ?: 0
-                            val intensity = when {
-                                count <= 0 -> 0.08f
-                                count == 1 -> 0.24f
-                                count == 2 -> 0.4f
-                                else -> 0.58f
-                            }
-                            Box(
-                                modifier = Modifier
-                                    .weight(1f)
-                                    .aspectRatio(1f)
-                                    .padding(3.dp)
-                                    .clip(RoundedCornerShape(4.dp))
-                                    .background(MaterialTheme.colorScheme.primary.copy(alpha = intensity))
-                                    .semantics {
-                                        contentDescription = text(RosaryStringKeys.MeterDayDescription)
-                                            .replace("{date}", day.toString())
-                                            .replace("{count}", count.toString())
-                                    },
-                            )
+        RosaryMarianPanel {
+            Text(
+                text = text(RosaryStringKeys.MeterRecent),
+                style = MaterialTheme.typography.labelLarge,
+                color = RosaryMarianCard.muted,
+                modifier = Modifier.padding(bottom = 8.dp),
+            )
+            recentDays.chunked(7).forEach { week ->
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    week.forEach { day ->
+                        val count = countsByDay[day] ?: 0
+                        val intensity = when {
+                            count <= 0 -> 0f
+                            count == 1 -> 0.45f
+                            count == 2 -> 0.7f
+                            else -> 0.95f
                         }
-                    }
-                }
-
-                Text(
-                    text = text(RosaryStringKeys.MeterBreakdown),
-                    style = MaterialTheme.typography.labelLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(top = 18.dp, bottom = 6.dp),
-                )
-                MysterySet.entries.forEach { set ->
-                    Row(
-                        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                    ) {
-                        Text(mysterySetName(set, strings), style = MaterialTheme.typography.bodyMedium)
-                        Text(
-                            text = (meter.byMysterySet[set] ?: 0).toString(),
-                            style = MaterialTheme.typography.labelLarge,
-                            color = MaterialTheme.colorScheme.primary,
+                        Box(
+                            modifier = Modifier
+                                .weight(1f)
+                                .aspectRatio(1f)
+                                .padding(3.dp)
+                                .clip(RoundedCornerShape(6.dp))
+                                .background(Color.White.copy(alpha = 0.07f))
+                                .background(RosaryMarianCard.gold.copy(alpha = intensity))
+                                .then(
+                                    if (day == today) {
+                                        Modifier.border(1.5.dp, RosaryMarianCard.gold, RoundedCornerShape(6.dp))
+                                    } else {
+                                        Modifier
+                                    },
+                                )
+                                .semantics {
+                                    contentDescription = text(RosaryStringKeys.MeterDayDescription)
+                                        .replace("{date}", day.toString())
+                                        .replace("{count}", count.toString())
+                                },
                         )
                     }
+                }
+            }
+
+            Text(
+                text = text(RosaryStringKeys.MeterBreakdown),
+                style = MaterialTheme.typography.labelLarge,
+                color = RosaryMarianCard.muted,
+                modifier = Modifier.padding(top = 18.dp, bottom = 6.dp),
+            )
+            MysterySet.entries.forEach { set ->
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Text(
+                        mysterySetName(set, strings),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = RosaryMarianCard.cream,
+                    )
+                    Text(
+                        text = (meter.byMysterySet[set] ?: 0).toString(),
+                        style = MaterialTheme.typography.labelLarge,
+                        color = RosaryMarianCard.gold,
+                    )
                 }
             }
         }
@@ -505,8 +682,13 @@ private fun RosaryMeterSummary(
 @Composable
 private fun MeterValue(value: String, label: String, modifier: Modifier = Modifier) {
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(value, style = MaterialTheme.typography.headlineMedium, color = MaterialTheme.colorScheme.primary)
-        Text(label, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Text(
+            value,
+            style = MaterialTheme.typography.headlineMedium,
+            fontFamily = FontFamily.Serif,
+            color = RosaryMarianCard.gold,
+        )
+        Text(label, style = MaterialTheme.typography.labelMedium, color = RosaryMarianCard.cream.copy(alpha = 0.85f))
     }
 }
 
@@ -525,10 +707,14 @@ internal fun rosaryCompletionCountsByDay(
 private val rosaryLandingPreviewStrings = mapOf(
     RosaryStringKeys.Title to "Holy Rosary",
     RosaryStringKeys.Subtitle to "Pray the mysteries with a bead-by-bead guide.",
+    RosaryStringKeys.Heading to "A moment\nfor prayer.",
+    RosaryStringKeys.Hint to "Follow each bead.",
+    RosaryStringKeys.ResumeLabel to "Resume my prayer",
     RosaryStringKeys.DiagramDescription to "Complete Rosary",
     RosaryStringKeys.Start to "Start Rosary",
     RosaryStringKeys.Back to "Back",
     MysteryDialogStringKeys.Today to "Today",
+    MysteryDialogStringKeys.Begin to "Begin",
     RosaryStringKeys.MysteriesTitle to "Mysteries of the Holy Rosary",
     RosaryStringKeys.MysteriesIntro to "Twenty Gospel moments contemplated with Mary.",
     RosaryStringKeys.MysteryDetails to "View mysteries",

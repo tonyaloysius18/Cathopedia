@@ -2,7 +2,7 @@
 
 ## 1. Enter and choose
 
-A single-decade Marian rosary sits directly on the app surface as a transparent cutout: ten white floral Hail Mary beads in a balanced upright oval, polished silver chain links, a centered Marian medal, one faceted blue pendant bead and a silver crucifix with shining blue crystal inlays and a silver corpus. The square hero frame keeps the complete upright artwork visible. Its jewelry design follows the supplied image reference. A clear Start Rosary action leads to mystery selection. The artwork gallery follows immediately, with short set names, prayer days and a Today marker. Tap an image to preselect its set, or expand its details to explore the five mysteries. Saved progress and completion history follow the gallery.
+A single-decade Marian rosary sits directly on the app surface as a transparent cutout: ten white floral Hail Mary beads in a balanced upright oval, polished silver chain links, a centered Marian medal, one faceted blue pendant bead and a silver crucifix with shining blue crystal inlays and a silver corpus. The selected Option 1 layout displays the complete upright artwork in a compact frame on the right, beside today's set, a short introduction and Start on the left. Start opens today's set directly. The four mystery images follow in a two-column grid, with short set names, prayer days and a Today marker. Tap an image to open its five mysteries in a bottom panel, then Start to pray that set. A compact Resume row and completion history follow the gallery. At larger text sizes the gallery uses one column. [Current implementation and previews](/Users/tonyaloysius/Documents/Cathopedia/design-concepts/holy-rosary/implemented-option1/README.md).
 
 ## 2. Pray with the right-side strand
 
@@ -16,7 +16,7 @@ View Rosary opens a complete overview with the active element highlighted. Close
 
 ## Screens
 
-- `landing-silver-crystal-rosary.png`: current ten-bead oval, silver chains, one pendant bead, shining crystal-blue crucifix and mystery gallery.
+- The current landing previews are `../implemented-option1/landing-light.png` and `../implemented-option1/landing-dark.png`. `landing-silver-crystal-rosary.png` records the earlier layout and the same accepted rosary asset.
 - `praying-light.png`: readable prayer on the left, connected strand on the right.
 - `praying-medal-soft-glow.png`: Marian medal selected by swiping, with a soft glow and no outline.
 - `praying-bead-soft-glow.png`: outline-free glow on a selected Hail Mary bead.
@@ -30,7 +30,7 @@ The transparent artwork was created with the built-in image generator: [saved PN
 - Android build and iOS simulator Kotlin compilation passed. iOS runtime was not tested.
 - All 37 shared tests passed with zero failures or errors.
 - Live Android checks covered bead selection, swiping both directions, Next and Previous, the complete Rosary overview and shared-bead prayers.
-- All eight supported Rosary language files include the new labels.
+- All nine Rosary language files include the new landing labels; their existing translation status is preserved.
 - The image is an RGBA PNG, with fully transparent pixels in the loop and around the object.
 - At 140% text size, the mystery gallery uses one column and the prayer, View Rosary, Previous and Next controls remain readable.
 - The medal locks at the center when selected by swiping from either side; subsequent swipes move one adjacent element. The saved session was restored after testing, and the original emulator text size and dark appearance were preserved.
@@ -52,4 +52,4 @@ The transparent artwork was created with the built-in image generator: [saved PN
 - Replaced the landing image with ten floral Hail Mary beads in an upright oval, silver chain links, one blue pendant bead, a centered Marian medal and a silver crucifix with shining blue crystal panels.
 - The built-in image generator created the final PNG. Transparent alpha was verified around the object and inside the loop; the count was checked visually before integration.
 - Android build and iOS simulator Kotlin compilation passed. The installed Android app rendered the transparent image correctly on the Rosary landing screen.
-- Latest preview: `landing-silver-crystal-rosary.png`.
+- Artwork preview: `landing-silver-crystal-rosary.png`. Current landing layout: `../implemented-option1/landing-light.png`.

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "pt",
-  "contentVersion": 7,
+  "contentVersion": 8,
   "translationStatus": "MACHINE_DRAFT",
   "strings": {
     "rosary.title": "Santo Rosário",
@@ -61,6 +61,9 @@
     "rosary.praying.loading": "A carregar a oração…",
     "rosary.praying.view_rosary": "Ver Rosário",
     "rosary.praying.shared_bead": "Oração {current} de {total} nesta conta",
-    "rosary.praying.bead_progress": "Conta {current} de {total}"
+    "rosary.praying.bead_progress": "Conta {current} de {total}",
+    "rosary.landing.heading": "Um momento\npara rezar.",
+    "rosary.landing.hint": "Acompanhe cada conta.",
+    "rosary.landing.resume": "Retomar minha oração"
   }
 }

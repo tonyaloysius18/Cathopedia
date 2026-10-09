@@ -14,7 +14,7 @@ The current layout reserves a full-width square area for a tall narrow image. Th
 
 ![Compact header with a four-mystery grid](/Users/tonyaloysius/Documents/Cathopedia/design-concepts/holy-rosary/landing-options-2026-10/option-1-compact-header.png)
 
-Today's set is the default for Start; tapping another mystery selects it. Mystery details remain accessible through the set entry. Saved progress has a separate Resume row.
+Option 1 was selected and implemented. Start opens today's set directly. Tapping a mystery opens its five mysteries in a bottom panel with a Start action for that set. Saved progress has a separate Resume row.
 
 ## Option 2 — Mystery selector (recommended)
 
@@ -38,7 +38,7 @@ The primary button starts today's recommended set. Tap an alternate set in the s
 - Resume is shown only when saved progress exists. Completion history can follow the mystery content below the first viewport.
 - On small screens or large text settings, content scrolls naturally rather than shrinking the text. In Option 2 the Start area remains docked while the selection list scrolls.
 
-These are visual design concepts. The existing app layout and rosary artwork have not been replaced by an unselected concept.
+Option 1 is now implemented in Cathopedia. Options 2 and 3 remain alternative concepts. The existing transparent rosary artwork is retained. [Actual app previews and UX notes](/Users/tonyaloysius/Documents/Cathopedia/design-concepts/holy-rosary/implemented-option1/README.md).
 
 Exact generation prompts and input paths: [prompts.md](/Users/tonyaloysius/Documents/Cathopedia/design-concepts/holy-rosary/landing-options-2026-10/prompts.md).
 

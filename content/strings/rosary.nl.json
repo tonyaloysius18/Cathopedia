@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "nl",
-  "contentVersion": 7,
+  "contentVersion": 8,
   "translationStatus": "MACHINE_DRAFT",
   "strings": {
     "rosary.title": "Heilige rozenkrans",
@@ -61,6 +61,9 @@
     "rosary.praying.loading": "Gebed laden…",
     "rosary.praying.view_rosary": "Bekijk rozenkrans",
     "rosary.praying.shared_bead": "Gebed {current} van {total} op deze kraal",
-    "rosary.praying.bead_progress": "Kraal {current} van {total}"
+    "rosary.praying.bead_progress": "Kraal {current} van {total}",
+    "rosary.landing.heading": "Een moment\nvoor gebed.",
+    "rosary.landing.hint": "Volg elke kraal.",
+    "rosary.landing.resume": "Mijn gebed hervatten"
   }
 }

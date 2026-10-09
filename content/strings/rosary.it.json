@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "it",
-  "contentVersion": 7,
+  "contentVersion": 8,
   "translationStatus": "MACHINE_DRAFT",
   "strings": {
     "rosary.title": "Santo Rosario",
@@ -61,6 +61,9 @@
     "rosary.praying.loading": "Caricamento della preghiera…",
     "rosary.praying.view_rosary": "Vedi il Rosario",
     "rosary.praying.shared_bead": "Preghiera {current} di {total} su questo grano",
-    "rosary.praying.bead_progress": "Grano {current} di {total}"
+    "rosary.praying.bead_progress": "Grano {current} di {total}",
+    "rosary.landing.heading": "Un momento\nper pregare.",
+    "rosary.landing.hint": "Segui ogni grano.",
+    "rosary.landing.resume": "Riprendi la mia preghiera"
   }
 }

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "fr",
-  "contentVersion": 7,
+  "contentVersion": 8,
   "translationStatus": "COMPLETE",
   "strings": {
     "rosary.title": "Saint Rosaire",
@@ -61,6 +61,9 @@
     "rosary.praying.loading": "Chargement de la prière…",
     "rosary.praying.view_rosary": "Voir le rosaire",
     "rosary.praying.shared_bead": "Prière {current} sur {total} sur cette perle",
-    "rosary.praying.bead_progress": "Perle {current} sur {total}"
+    "rosary.praying.bead_progress": "Perle {current} sur {total}",
+    "rosary.landing.heading": "Un moment\npour prier.",
+    "rosary.landing.hint": "Suivez chaque grain.",
+    "rosary.landing.resume": "Reprendre ma prière"
   }
 }

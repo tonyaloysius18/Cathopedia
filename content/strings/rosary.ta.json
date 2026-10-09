@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "ta",
-  "contentVersion": 7,
+  "contentVersion": 8,
   "translationStatus": "MACHINE_DRAFT",
   "strings": {
     "rosary.title": "புனித செபமாலை",
@@ -61,6 +61,9 @@
     "rosary.praying.loading": "செபம் ஏற்றப்படுகிறது…",
     "rosary.praying.view_rosary": "செபமாலையைக் காட்டு",
     "rosary.praying.shared_bead": "இந்த மணியில் செபம் {current} / {total}",
-    "rosary.praying.bead_progress": "மணி {current} / {total}"
+    "rosary.praying.bead_progress": "மணி {current} / {total}",
+    "rosary.landing.heading": "ஜெபிக்க\nஒரு தருணம்.",
+    "rosary.landing.hint": "ஒவ்வொரு மணியாக ஜெபியுங்கள்.",
+    "rosary.landing.resume": "என் ஜெபத்தைத் தொடருங்கள்"
   }
 }

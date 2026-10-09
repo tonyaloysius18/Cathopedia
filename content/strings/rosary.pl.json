@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "pl",
-  "contentVersion": 7,
+  "contentVersion": 8,
   "translationStatus": "MACHINE_DRAFT",
   "strings": {
     "rosary.title": "Różaniec Święty",
@@ -61,6 +61,9 @@
     "rosary.praying.loading": "Ładowanie modlitwy…",
     "rosary.praying.view_rosary": "Zobacz różaniec",
     "rosary.praying.shared_bead": "Modlitwa {current} z {total} na tym paciorku",
-    "rosary.praying.bead_progress": "Paciorek {current} z {total}"
+    "rosary.praying.bead_progress": "Paciorek {current} z {total}",
+    "rosary.landing.heading": "Chwila\nna modlitwę.",
+    "rosary.landing.hint": "Podążaj za paciorkami.",
+    "rosary.landing.resume": "Wznów moją modlitwę"
   }
 }

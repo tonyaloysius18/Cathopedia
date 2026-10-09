@@ -1,6 +1,19 @@
 package com.ynotlabs.cathopedia.ui.screens.rosary
 
 import androidx.compose.animation.Crossfade
+import com.ynotlabs.cathopedia.ui.theme.RosaryMarianPanel
+import com.ynotlabs.cathopedia.ui.theme.RosaryMarianCard
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clip
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.background
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -197,7 +210,21 @@ internal fun RosaryPrayingScreen(
         }
     }
 
+    // The Marian night palette of the Prayers screen's Rosary card, scoped to this screen.
+    // The bead carousel reads background for its edge fades, so it follows automatically.
+    MaterialTheme(
+        colorScheme = MaterialTheme.colorScheme.copy(
+            background = RosaryMarianCard.night,
+            onBackground = RosaryMarianCard.cream,
+            surface = RosaryMarianCard.night,
+            onSurface = RosaryMarianCard.cream,
+            onSurfaceVariant = RosaryMarianCard.muted,
+            primary = RosaryMarianCard.gold,
+            onPrimary = RosaryMarianCard.deep,
+        ),
+    ) {
     Scaffold(
+        containerColor = RosaryMarianCard.night,
         topBar = {
             RosaryPrayingHeader(strings, state, currentContent?.mystery, onClose = { if (!completing) onClose() })
         },
@@ -219,7 +246,11 @@ internal fun RosaryPrayingScreen(
         Column(Modifier.fillMaxSize().padding(padding)) {
             LinearProgressIndicator(
                 progress = { (state.currentStepIndex + 1f) / state.steps.size },
-                modifier = Modifier.fillMaxWidth(),
+                color = RosaryMarianCard.gold,
+                trackColor = RosaryMarianCard.goldSoft.copy(alpha = 0.22f),
+                gapSize = 0.dp,
+                drawStopIndicator = {},
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp).height(3.dp).clip(CircleShape),
             )
             Row(
                 modifier = Modifier.fillMaxSize().padding(horizontal = 12.dp, vertical = 12.dp),
@@ -251,6 +282,7 @@ internal fun RosaryPrayingScreen(
     if (showOverview) {
         RosaryOverview(state, strings, onClose = { showOverview = false })
     }
+    }
 }
 
 @Composable
@@ -267,20 +299,28 @@ private fun RosaryPrayingHeader(
         .replace("{current}", (state.currentStepIndex + 1).toString())
         .replace("{total}", state.steps.size.toString())
     TopAppBar(
+        colors = TopAppBarDefaults.topAppBarColors(containerColor = RosaryMarianCard.night),
         title = {
             Column {
                 Text(
                     mystery?.title ?: mysterySetName(state.mysterySet, strings),
                     style = MaterialTheme.typography.titleMedium,
+                    fontFamily = FontFamily.Serif,
+                    fontWeight = FontWeight.SemiBold,
+                    color = RosaryMarianCard.gold,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                 )
-                Text(detail, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text(detail, style = MaterialTheme.typography.labelMedium, color = RosaryMarianCard.muted)
             }
         },
         actions = {
             IconButton(onClick = onClose) {
-                Icon(Icons.Filled.Close, contentDescription = strings[RosaryPrayingStringKeys.Close].orEmpty())
+                Icon(
+                    Icons.Filled.Close,
+                    contentDescription = strings[RosaryPrayingStringKeys.Close].orEmpty(),
+                    tint = RosaryMarianCard.cream,
+                )
             }
         },
     )
@@ -302,9 +342,10 @@ private fun PrayerPane(
         key(page.state.currentStepIndex) {
             Column(
                 modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())
-                    .padding(horizontal = 16.dp, vertical = 20.dp),
-                verticalArrangement = Arrangement.spacedBy(20.dp),
+                    .padding(start = 4.dp, end = 4.dp, top = 8.dp, bottom = 16.dp),
             ) {
+              RosaryMarianPanel(padding = 20.dp) {
+               Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                 val prayer = page.resolved?.prayer
                 val mystery = page.resolved?.mystery
                 val sharedSteps = page.state.currentBeadPrayerSteps
@@ -314,7 +355,7 @@ private fun PrayerPane(
                         strings[RosaryPrayingStringKeys.BeadProgress].orEmpty()
                             .replace("{current}", beadNumber.toString()).replace("{total}", "10"),
                         style = MaterialTheme.typography.labelLarge,
-                        color = MaterialTheme.colorScheme.primary,
+                        color = RosaryMarianCard.gold,
                     )
                 }
                 if (sharedSteps.first != sharedSteps.last) {
@@ -323,20 +364,29 @@ private fun PrayerPane(
                             .replace("{current}", (page.state.currentStepIndex - sharedSteps.first + 1).toString())
                             .replace("{total}", (sharedSteps.last - sharedSteps.first + 1).toString()),
                         style = MaterialTheme.typography.labelLarge,
-                        color = MaterialTheme.colorScheme.primary,
+                        color = RosaryMarianCard.gold,
                     )
                 }
                 if (page.state.currentStep.mysteryId != null && mystery != null) {
                     Card(
-                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
-                        shape = RoundedCornerShape(16.dp),
+                        colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.06f)),
+                        border = BorderStroke(1.dp, RosaryMarianCard.gold.copy(alpha = 0.45f)),
+                        shape = RoundedCornerShape(14.dp),
                     ) {
-                        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                            Text(mystery.title, style = MaterialTheme.typography.titleMedium)
-                            mystery.scriptureRef?.let { Text(it, style = MaterialTheme.typography.bodyMedium) }
+                        Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                            Text(
+                                mystery.title,
+                                style = MaterialTheme.typography.titleMedium,
+                                fontFamily = FontFamily.Serif,
+                                color = RosaryMarianCard.gold,
+                            )
+                            mystery.scriptureRef?.let {
+                                Text(it, style = MaterialTheme.typography.bodyMedium, color = RosaryMarianCard.muted)
+                            }
                             Text(
                                 strings[RosaryPrayingStringKeys.MysteryFruit].orEmpty().replace("{fruit}", mystery.fruit),
                                 style = MaterialTheme.typography.bodyMedium,
+                                color = RosaryMarianCard.cream,
                             )
                         }
                     }
@@ -350,10 +400,20 @@ private fun PrayerPane(
                         )
                     }
                     else -> {
-                        Text(prayer?.title.orEmpty(), style = MaterialTheme.typography.headlineSmall)
+                        Text(
+                            prayer?.title.orEmpty(),
+                            style = MaterialTheme.typography.headlineSmall,
+                            fontFamily = FontFamily.Serif,
+                            fontWeight = FontWeight.SemiBold,
+                            color = RosaryMarianCard.cream,
+                        )
+                        Box(
+                            Modifier.width(40.dp).height(2.dp).clip(CircleShape)
+                                .background(RosaryMarianCard.gold.copy(alpha = 0.7f)),
+                        )
                         val body = prayer?.bodyMd
                         if (!body.isNullOrBlank()) {
-                            PrayerBodyText(bodyMd = body, color = MaterialTheme.colorScheme.onSurface)
+                            PrayerBodyText(bodyMd = body, color = RosaryMarianCard.cream)
                         } else {
                             Text(
                                 strings[RosaryPrayingStringKeys.TextUnavailable].orEmpty(),
@@ -363,6 +423,8 @@ private fun PrayerPane(
                         }
                     }
                 }
+               }
+              }
             }
         }
     }
@@ -378,7 +440,7 @@ private fun RosaryPrayerControls(
     onBack: () -> Unit,
     onViewRosary: () -> Unit,
 ) {
-    Surface(color = MaterialTheme.colorScheme.surface) {
+    Surface(color = RosaryMarianCard.nightRaised) {
         Column(
             Modifier.navigationBarsPadding().padding(horizontal = 20.dp, vertical = 12.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp),
@@ -387,10 +449,14 @@ private fun RosaryPrayerControls(
                 Text(
                     strings[RosaryPrayingStringKeys.SwipeHint].orEmpty(),
                     style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    color = RosaryMarianCard.muted,
                     modifier = Modifier.weight(1f),
                 )
-                TextButton(onClick = onViewRosary, enabled = enabled) {
+                TextButton(
+                    onClick = onViewRosary,
+                    enabled = enabled,
+                    colors = ButtonDefaults.textButtonColors(contentColor = RosaryMarianCard.gold),
+                ) {
                     Text(strings[RosaryPrayingStringKeys.ViewRosary].orEmpty())
                 }
             }
@@ -398,7 +464,15 @@ private fun RosaryPrayerControls(
                 OutlinedButton(
                     onClick = onBack,
                     enabled = enabled && !first,
-                    shape = RoundedCornerShape(16.dp),
+                    shape = RoundedCornerShape(26.dp),
+                    border = BorderStroke(
+                        1.5.dp,
+                        RosaryMarianCard.goldSoft.copy(alpha = if (enabled && !first) 0.8f else 0.3f),
+                    ),
+                    colors = ButtonDefaults.outlinedButtonColors(
+                        contentColor = RosaryMarianCard.cream,
+                        disabledContentColor = RosaryMarianCard.cream.copy(alpha = 0.35f),
+                    ),
                     modifier = Modifier.weight(1f).heightIn(min = 52.dp),
                 ) {
                     Text(strings[RosaryPrayingStringKeys.Previous].orEmpty())
@@ -406,7 +480,11 @@ private fun RosaryPrayerControls(
                 Button(
                     onClick = onAdvance,
                     enabled = enabled,
-                    shape = RoundedCornerShape(16.dp),
+                    shape = RoundedCornerShape(26.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = RosaryMarianCard.gold,
+                        contentColor = RosaryMarianCard.deep,
+                    ),
                     modifier = Modifier.weight(1.5f).heightIn(min = 52.dp),
                 ) {
                     Text(strings[if (last) RosaryPrayingStringKeys.Finish else RosaryPrayingStringKeys.Next].orEmpty())

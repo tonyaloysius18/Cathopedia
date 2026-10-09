@@ -32,8 +32,6 @@ fun RosaryScreen(
     var resumeSession by remember { mutableStateOf<RosarySessionState?>(null) }
     var activeSession by remember { mutableStateOf<RosarySessionState?>(null) }
     val todayMysterySet = remember { mysterySetForDate(LiturgicalCalendar.today()) }
-    var selectedMysterySet by remember { mutableStateOf(todayMysterySet) }
-    var showMysteryDialog by remember { mutableStateOf(false) }
     var meter by remember {
         mutableStateOf(
             RosaryMeter(
@@ -65,6 +63,14 @@ fun RosaryScreen(
         }
     }
 
+    fun startMysterySet(set: MysterySet) {
+        scope.launch {
+            val id = sessionRepository.startSession(set)
+            activeSession = sessionRepository.session(id)
+            showLanding = false
+        }
+    }
+
     RosaryTheme {
         if (showLanding) {
             RosaryLandingScreen(
@@ -73,37 +79,14 @@ fun RosaryScreen(
                 resumeSession = resumeSession,
                 meter = meter,
                 todaySet = todayMysterySet,
-                onStart = {
-                    selectedMysterySet = todayMysterySet
-                    showMysteryDialog = true
-                },
+                onStart = { startMysterySet(todayMysterySet) },
                 onResume = { session ->
                     activeSession = session
                     showLanding = false
                 },
-                onMysterySelected = { set ->
-                    selectedMysterySet = set
-                    showMysteryDialog = true
-                },
+                onMysterySelected = ::startMysterySet,
                 onBack = onBack,
             )
-            if (showMysteryDialog) {
-                RosaryMysterySelectionDialog(
-                    strings = localized,
-                    todaySet = todayMysterySet,
-                    selected = selectedMysterySet,
-                    onSelect = { selectedMysterySet = it },
-                    onConfirm = {
-                        showMysteryDialog = false
-                        scope.launch {
-                            val id = sessionRepository.startSession(selectedMysterySet)
-                            activeSession = sessionRepository.session(id)
-                            showLanding = false
-                        }
-                    },
-                    onDismiss = { showMysteryDialog = false },
-                )
-            }
         } else {
             activeSession?.let { session ->
                 RosaryPrayingScreen(

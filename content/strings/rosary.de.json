@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "rosary",
   "lang": "de",
-  "contentVersion": 7,
+  "contentVersion": 8,
   "translationStatus": "MACHINE_DRAFT",
   "strings": {
     "rosary.title": "Heiliger Rosenkranz",
@@ -61,6 +61,9 @@
     "rosary.praying.loading": "Gebet wird geladen…",
     "rosary.praying.view_rosary": "Rosenkranz ansehen",
     "rosary.praying.shared_bead": "Gebet {current} von {total} an dieser Perle",
-    "rosary.praying.bead_progress": "Perle {current} von {total}"
+    "rosary.praying.bead_progress": "Perle {current} von {total}",
+    "rosary.landing.heading": "Ein Moment\nzum Beten.",
+    "rosary.landing.hint": "Folge jeder Perle.",
+    "rosary.landing.resume": "Mein Gebet fortsetzen"
   }
 }

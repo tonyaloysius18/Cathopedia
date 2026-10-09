@@ -7,6 +7,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.FilterQuality
+import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
@@ -19,19 +21,23 @@ import com.ynotlabs.cathopedia.resources.rosary_bead_hm_02
 import com.ynotlabs.cathopedia.resources.rosary_bead_hm_03
 import com.ynotlabs.cathopedia.resources.rosary_bead_of_01
 import com.ynotlabs.cathopedia.resources.rosary_centerpiece_medal
-import com.ynotlabs.cathopedia.resources.rosary_cross_pearl
+import com.ynotlabs.cathopedia.resources.rosary_landing_single_decade_marian
 import com.ynotlabs.cathopedia.ui.theme.rosaryColors
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.IntSize
 import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.imageResource
 import org.jetbrains.compose.resources.painterResource
 
 /** The artwork the tuned coordinates were laid out against (portrait). */
@@ -48,12 +54,35 @@ private val hailMarySprites: List<DrawableResource> = listOf(
     Res.drawable.rosary_bead_hm_03,
 )
 
-/** The sprite for a bead, or null if its art is genuinely missing (drawn as a placeholder). */
-fun beadSprite(bead: RosaryBead): DrawableResource? = when (bead.kind) {
-    BeadKind.CROSS -> Res.drawable.rosary_cross_pearl
+private fun beadSprite(bead: RosaryBead): DrawableResource? = when (bead.kind) {
+    BeadKind.CROSS -> Res.drawable.rosary_landing_single_decade_marian
     BeadKind.CENTERPIECE -> Res.drawable.rosary_centerpiece_medal
     BeadKind.OUR_FATHER -> Res.drawable.rosary_bead_of_01
     BeadKind.HAIL_MARY -> hailMarySprites.getOrNull((bead.spriteVariant - 1) % hailMarySprites.size)
+}
+
+/** Shared artwork for the prayer strand and overview, including the landing's exact crucifix. */
+@Composable
+fun beadPainter(bead: RosaryBead): Painter? {
+    val sprite = beadSprite(bead) ?: return null
+    if (bead.kind != BeadKind.CROSS) return painterResource(sprite)
+
+    val image = imageResource(sprite)
+    return remember(image) {
+        if (image.width <= 1 || image.height <= 1) {
+            // Resources can briefly supply a transparent placeholder while loading.
+            BitmapPainter(image)
+        } else {
+            // Only display the crucifix and its top eyelet from the approved
+            // 1254 × 1254 landing artwork. Scale bounds for density-aware decoding.
+            BitmapPainter(
+                image = image,
+                srcOffset = IntOffset(image.width * 492 / 1254, image.height * 884 / 1254),
+                srcSize = IntSize(image.width * 272 / 1254, image.height * 354 / 1254),
+                filterQuality = FilterQuality.High,
+            )
+        }
+    }
 }
 
 /**
@@ -81,7 +110,7 @@ fun RosaryComposition(
             val diameter = w * (bead.radius * 2f)
             val left = w * bead.x - diameter / 2
             val top = h * bead.y - diameter / 2
-            val sprite = beadSprite(bead)
+            val painter = beadPainter(bead)
             val beadModifier = Modifier.offset(x = left, y = top).size(diameter)
             if (bead.index == selectedBeadIndex) {
                 Box(
@@ -99,9 +128,9 @@ fun RosaryComposition(
                         },
                 )
             }
-            if (sprite != null) {
+            if (painter != null) {
                 Image(
-                    painter = painterResource(sprite),
+                    painter = painter,
                     contentDescription = null,
                     contentScale = ContentScale.Fit,
                     modifier = beadModifier,
