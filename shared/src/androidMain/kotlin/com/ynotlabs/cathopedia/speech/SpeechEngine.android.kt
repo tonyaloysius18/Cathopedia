@@ -3,6 +3,8 @@ package com.ynotlabs.cathopedia.speech
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.media.AudioAttributes
+import android.media.MediaPlayer
 import android.os.Handler
 import android.os.Looper
 import android.speech.tts.TextToSpeech
@@ -15,13 +17,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
+import java.io.FileInputStream
 import java.util.Locale
 import java.util.concurrent.ConcurrentHashMap
 
 @Composable
 actual fun rememberSpeechEngine(): SpeechEngine {
     val context = LocalContext.current
-    val engine = remember { AndroidSpeechEngine(context.applicationContext) }
+    val engine = remember {
+        val app = context.applicationContext
+        PrayerAudioPacks.directory = java.io.File(app.filesDir, "prayer_audio").path
+        RecordedSpeechEngine(AndroidSpeechEngine(app), AndroidSegmentPlayer())
+    }
     DisposableEffect(engine) { onDispose { engine.release() } }
     return engine
 }
@@ -123,4 +130,43 @@ private class AndroidSpeechEngine(private val context: Context) : SpeechEngine {
         stop()
         tts.shutdown()
     }
+}
+
+/** Plays a recorded part straight out of the pack file (MediaPlayer takes a byte range). */
+private class AndroidSegmentPlayer : SegmentPlayer {
+    private val main = Handler(Looper.getMainLooper())
+    private var player: MediaPlayer? = null
+    private var token = 0
+
+    override fun play(segment: AudioSegment, rate: Float, onDone: () -> Unit) {
+        stop()
+        val mine = ++token
+        val finish = { main.post { if (mine == token) { stop(); onDone() } } }
+        val mp = MediaPlayer()
+        player = mp
+        try {
+            mp.setAudioAttributes(
+                AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_MEDIA)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+                    .build(),
+            )
+            FileInputStream(segment.path).use { mp.setDataSource(it.fd, segment.offset, segment.length) }
+            mp.setOnCompletionListener { finish() }
+            mp.setOnErrorListener { _, _, _ -> finish(); true }
+            mp.prepare()
+            mp.playbackParams = mp.playbackParams.setSpeed(rate)
+            mp.start()
+        } catch (e: Exception) {
+            finish()
+        }
+    }
+
+    override fun stop() {
+        token++
+        player?.let { runCatching { it.stop() }; it.release() }
+        player = null
+    }
+
+    override fun release() = stop()
 }

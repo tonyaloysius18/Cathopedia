@@ -41,9 +41,12 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
+import com.ynotlabs.cathopedia.speech.PackState
+import com.ynotlabs.cathopedia.speech.PrayerAudioPacks
 import com.ynotlabs.cathopedia.speech.ReadAloudController
 import com.ynotlabs.cathopedia.speech.SpeechEngine
 import com.ynotlabs.cathopedia.speech.SpeechUnit
+import com.ynotlabs.cathopedia.speech.prayerSections
 import com.ynotlabs.cathopedia.speech.prayerSpeechScript
 import com.ynotlabs.cathopedia.speech.rememberSpeechEngine
 import androidx.compose.material3.Card
@@ -281,6 +284,8 @@ private fun PrayerReadingContent(
         prayerSpeechScript(detail.title, sections.map { it.title to it.body })
     }
     LaunchedEffect(script, readingLanguage) { reader.load(script, readingLanguage) }
+    // A pack downloaded earlier is opened up front, so the first part is already recorded.
+    LaunchedEffect(readingLanguage) { PrayerAudioPacks.loadInstalled(readingLanguage) }
 
     val listState = rememberLazyListState()
     val reading = reader.current
@@ -674,8 +679,11 @@ private fun ReadAloudBar(
     languageName: String,
 ) {
     val s = LocalStrings.current
+    val scope = rememberCoroutineScope()
     if (reader.units.isEmpty()) return
-    val hasVoice = engine.hasVoice(reader.language)
+    val pack = PrayerAudioPacks.states[reader.language]
+    val hasVoice = pack == PackState.Ready || engine.hasVoice(reader.language)
+    val downloading = pack as? PackState.Downloading
 
     Surface(
         shape = RoundedCornerShape(30.dp),
@@ -724,7 +732,13 @@ private fun ReadAloudBar(
                     letterSpacing = 1.sp,
                 )
                 Text(
-                    text = if (reader.hasStarted) "$languageName · ${reader.index + 1}/${reader.units.size}" else languageName,
+                    text = when {
+                        downloading != null ->
+                            s.readAloudDownloading.replace("{percent}", (downloading.progress * 100).toInt().toString())
+                        pack == PackState.Failed && !reader.hasStarted -> s.readAloudDownloadFailed
+                        reader.hasStarted -> "$languageName · ${reader.index + 1}/${reader.units.size}"
+                        else -> languageName
+                    },
                     color = PrayerMuted,
                     style = MaterialTheme.typography.bodySmall,
                     maxLines = 1,
@@ -739,7 +753,20 @@ private fun ReadAloudBar(
                     .size(58.dp)
                     .clip(CircleShape)
                     .background(PrayerGold)
-                    .clickable(role = Role.Button) { reader.toggle() }
+                    .clickable(role = Role.Button) {
+                        when {
+                            reader.isPlaying -> reader.pause()
+                            downloading != null -> Unit
+                            else -> scope.launch {
+                                // The first play in a language fetches its recorded voice; if that
+                                // fails (offline), the device voice reads instead.
+                                if (PrayerAudioPacks.needsDownload(reader.language)) {
+                                    PrayerAudioPacks.ensure(reader.language)
+                                }
+                                reader.play()
+                            }
+                        }
+                    }
                     .semantics { contentDescription = if (reader.isPlaying) s.readAloudPause else s.readAloudPlay },
                 contentAlignment = Alignment.Center,
             ) {
@@ -835,31 +862,5 @@ private fun sevenSorrowsImage(prayerId: String, sectionIndex: Int): DrawableReso
     return SevenSorrowsImages.getOrNull(sectionIndex - 1)
 }
 
-private fun splitPrayerSections(bodyMd: String): List<PrayerSection> {
-    if (!bodyMd.contains("#")) {
-        return listOf(PrayerSection(null, bodyMd))
-    }
-
-    val sections = mutableListOf<PrayerSection>()
-    val lines = bodyMd.lines()
-    var currentTitle: String? = null
-    var currentBody = StringBuilder()
-
-    for (line in lines) {
-        if (line.trim().startsWith("#")) {
-            if (currentBody.isNotEmpty() || currentTitle != null) {
-                sections.add(PrayerSection(currentTitle, currentBody.toString().trim()))
-            }
-            currentTitle = line.trim().trimStart('#').trim()
-            currentBody = StringBuilder()
-        } else {
-            currentBody.append(line).append("\n")
-        }
-    }
-
-    if (currentBody.isNotEmpty() || currentTitle != null) {
-        sections.add(PrayerSection(currentTitle, currentBody.toString().trim()))
-    }
-
-    return sections
-}
+private fun splitPrayerSections(bodyMd: String): List<PrayerSection> =
+    prayerSections(bodyMd).map { (title, body) -> PrayerSection(title, body) }

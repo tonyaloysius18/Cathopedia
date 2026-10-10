@@ -304,6 +304,8 @@
   "ui#processionIndicator": "Schritt {number} von 6",
   "ui#processionMeaningLabel": "Was es bedeutet",
   "ui#processionScreenTitle": "Der Einzug",
+  "ui#readAloudDownloadFailed": "Die Stimme konnte nicht heruntergeladen werden. Stattdessen liest die Gerätestimme.",
+  "ui#readAloudDownloading": "Stimme wird heruntergeladen … {percent} %",
   "ui#readAloudInstallVoice": "Stimme installieren",
   "ui#readAloudIosVoiceHint": "Du kannst eine unter Einstellungen › Bedienungshilfen › Gesprochene Inhalte › Stimmen hinzufügen.",
   "ui#readAloudListen": "Anhören",

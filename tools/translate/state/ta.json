@@ -8208,6 +8208,8 @@
   "ui#processionIndicator": "04d55fb46fc35952",
   "ui#processionMeaningLabel": "6c8745f22410b96b",
   "ui#processionScreenTitle": "ff6427fe25fd6b1d",
+  "ui#readAloudDownloadFailed": "bc7de6b02ee2ad6f",
+  "ui#readAloudDownloading": "be1fbf7fa5131cc9",
   "ui#readAloudInstallVoice": "66916682f617ba4d",
   "ui#readAloudIosVoiceHint": "f7604dfee4666fb7",
   "ui#readAloudListen": "c518fb067439705f",

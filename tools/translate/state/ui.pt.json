@@ -304,6 +304,8 @@
   "ui#processionIndicator": "Passo {number} de 6",
   "ui#processionMeaningLabel": "O que significa",
   "ui#processionScreenTitle": "A procissão de entrada",
+  "ui#readAloudDownloadFailed": "Não foi possível baixar a voz. A voz do aparelho vai ler no lugar.",
+  "ui#readAloudDownloading": "Baixando a voz… {percent}%",
   "ui#readAloudInstallVoice": "Instalar uma voz",
   "ui#readAloudIosVoiceHint": "Adicione uma em Ajustes › Acessibilidade › Conteúdo Falado › Vozes.",
   "ui#readAloudListen": "Ouvir",

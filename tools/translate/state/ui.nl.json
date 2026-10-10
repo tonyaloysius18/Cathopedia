@@ -304,6 +304,8 @@
   "ui#processionIndicator": "Stap {number} van 6",
   "ui#processionMeaningLabel": "Wat het betekent",
   "ui#processionScreenTitle": "De intredeprocessie",
+  "ui#readAloudDownloadFailed": "De stem kon niet worden gedownload. De stem van het apparaat leest in plaats daarvan voor.",
+  "ui#readAloudDownloading": "Stem wordt gedownload… {percent}%",
   "ui#readAloudInstallVoice": "Een stem installeren",
   "ui#readAloudIosVoiceHint": "Voeg er een toe via Instellingen › Toegankelijkheid › Gesproken materiaal › Stemmen.",
   "ui#readAloudListen": "Luisteren",

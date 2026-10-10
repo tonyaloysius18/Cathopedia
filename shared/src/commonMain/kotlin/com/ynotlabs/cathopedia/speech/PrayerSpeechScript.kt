@@ -7,6 +7,29 @@ package com.ynotlabs.cathopedia.speech
  */
 data class SpeechUnit(val text: String, val section: Int, val paragraph: Int)
 
+/**
+ * Splits a prayer body into (heading, text) sections at its `#` heading lines;
+ * a body with no headings is one untitled section. The prayer screen draws one
+ * card per section.
+ */
+fun prayerSections(bodyMd: String): List<Pair<String?, String>> {
+    if (!bodyMd.contains("#")) return listOf(null to bodyMd)
+    val sections = mutableListOf<Pair<String?, String>>()
+    var title: String? = null
+    val body = StringBuilder()
+    for (line in bodyMd.lines()) {
+        if (line.trim().startsWith("#")) {
+            if (body.isNotEmpty() || title != null) sections += title to body.toString().trim()
+            title = line.trim().trimStart('#').trim()
+            body.clear()
+        } else {
+            body.append(line).append("\n")
+        }
+    }
+    if (body.isNotEmpty() || title != null) sections += title to body.toString().trim()
+    return sections
+}
+
 /** Splits a section body into paragraphs exactly as PrayerBodyText lays them out. */
 fun prayerParagraphs(bodyMd: String): List<String> =
     bodyMd.trim().split(Regex("\n\\s*\n")).filter { it.isNotBlank() }

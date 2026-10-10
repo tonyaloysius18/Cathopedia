@@ -55,6 +55,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.kotlinx.datetime)
             implementation(libs.kotlinx.serialization.json)
+            implementation(libs.kotlinx.io.core)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.sqldelight.coroutines.extensions)
             implementation(libs.ktor.client.core)

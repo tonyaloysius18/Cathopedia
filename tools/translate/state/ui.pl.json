@@ -304,6 +304,8 @@
   "ui#processionIndicator": "Krok {number} z 6",
   "ui#processionMeaningLabel": "Co oznacza",
   "ui#processionScreenTitle": "Procesja na wejście",
+  "ui#readAloudDownloadFailed": "Nie udało się pobrać głosu. Zamiast niego przeczyta głos urządzenia.",
+  "ui#readAloudDownloading": "Pobieranie głosu… {percent}%",
   "ui#readAloudInstallVoice": "Zainstaluj głos",
   "ui#readAloudIosVoiceHint": "Dodaj go w Ustawienia › Dostępność › Zawartość mówiona › Głosy.",
   "ui#readAloudListen": "Słuchaj",
