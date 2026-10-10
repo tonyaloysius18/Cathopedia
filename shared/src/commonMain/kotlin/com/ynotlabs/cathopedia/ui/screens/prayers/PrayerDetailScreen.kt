@@ -1,5 +1,10 @@
 package com.ynotlabs.cathopedia.ui.screens.prayers
 
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.LazyRow
 import com.ynotlabs.cathopedia.ui.theme.imageFade
 import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -267,9 +272,9 @@ private fun PrayerReadingContent(
 
         Spacer(Modifier.height(16.dp))
 
-        // Prayers now exist in every app language; offer only the reader's own, English and
-        // Latin rather than a row of nine chips.
-        val readingChoices = detail.availableLanguages.filter { it == language || it == "en" || it == "la" }
+        // Every language this prayer exists in, as a scrollable row: the reader's own
+        // language first, then English and Latin, then the rest in the app's order.
+        val readingChoices = orderReadingLanguages(detail.availableLanguages, language)
         if (readingChoices.size > 1) {
             Box(
                 modifier = Modifier
@@ -277,7 +282,7 @@ private fun PrayerReadingContent(
                     .padding(horizontal = 20.dp)
                     .padding(bottom = 12.dp)
             ) {
-                LanguageSegmentedControl(
+                LanguageChipRow(
                     available = readingChoices,
                     selected = readingLanguage,
                     onSelect = onLanguageChange,
@@ -396,13 +401,33 @@ private fun SacredPrayerHeader(
     }
 }
 
+/** App language, English, Latin, then the others in [AppLanguages.all] order. */
+internal fun orderReadingLanguages(available: List<String>, appLanguage: String): List<String> {
+    val preferred = listOf(appLanguage, "en", "la")
+    val rest = AppLanguages.all.map { it.code }
+    return (preferred + rest + available).distinct().filter { it in available }
+}
+
+/** A language's own name (Español, தமிழ்), so a reader finds theirs in any app language. */
+private fun nativeLanguageName(code: String, s: Strings): String = when {
+    code.equals("la", ignoreCase = true) -> "Latina"
+    AppLanguages.all.any { it.code.equals(code, ignoreCase = true) } -> AppLanguages.forCode(code).nativeName
+    else -> languageLabel(code, s)
+}
+
 @Composable
-private fun LanguageSegmentedControl(
+private fun LanguageChipRow(
     available: List<String>,
     selected: String,
     onSelect: (String) -> Unit,
 ) {
     val s = LocalStrings.current
+    val listState = rememberLazyListState()
+    // Keep the chosen language in view, e.g. when the screen opens on a language far along the row.
+    LaunchedEffect(selected, available) {
+        val index = available.indexOf(selected)
+        if (index >= 0) listState.animateScrollToItem(index)
+    }
 
     Surface(
         color = Color.Transparent,
@@ -410,31 +435,32 @@ private fun LanguageSegmentedControl(
         border = androidx.compose.foundation.BorderStroke(2.dp, CardBorder),
         modifier = Modifier.fillMaxWidth(),
     ) {
-        Row(
-            modifier = Modifier.padding(4.dp),
+        LazyRow(
+            state = listState,
+            contentPadding = PaddingValues(4.dp),
             horizontalArrangement = Arrangement.spacedBy(4.dp),
         ) {
-            available.forEach { lang ->
+            items(available, key = { it }) { lang ->
                 val isSelected = lang == selected
                 Box(
                     modifier = Modifier
-                        .weight(1f)
                         .clip(RoundedCornerShape(22.dp))
-                        .background(Color.Transparent)
                         .border(
                             width = if (isSelected) 2.dp else 0.dp,
                             color = if (isSelected) PrayerGold else Color.Transparent,
                             shape = RoundedCornerShape(22.dp),
                         )
                         .clickable { onSelect(lang) }
-                        .padding(vertical = 12.dp),
+                        .semantics { this.selected = isSelected }
+                        .padding(horizontal = 18.dp, vertical = 12.dp),
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
-                        text = languageLabel(lang, s),
+                        text = nativeLanguageName(lang, s),
                         color = if (isSelected) PrayerCream else PrayerMuted,
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
+                        maxLines = 1,
                     )
                 }
             }
