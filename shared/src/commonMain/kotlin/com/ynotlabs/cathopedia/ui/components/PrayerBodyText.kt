@@ -5,9 +5,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import com.ynotlabs.cathopedia.speech.prayerParagraphs
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -25,23 +27,29 @@ fun PrayerBodyText(
     color: Color,
     fontScale: Float = 1f,
     modifier: Modifier = Modifier,
+    /** The paragraph being read aloud, drawn in [highlightColor]; null when nothing is. */
+    highlightedParagraph: Int? = null,
+    highlightColor: Color = color,
 ) {
-    val paragraphs = remember(bodyMd) { bodyMd.trim().split(Regex("\n\\s*\n")).filter { it.isNotBlank() } }
+    val paragraphs = remember(bodyMd) { prayerParagraphs(bodyMd) }
     val bodySize = (CathopediaTypography.bodyLarge.fontSize.value * fontScale).sp
     val lineHeight = (CathopediaTypography.bodyLarge.lineHeight.value * fontScale).sp
 
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(18.dp)) {
-        paragraphs.forEach { paragraph ->
+        paragraphs.forEachIndexed { index, paragraph ->
             val lines = paragraph.lines()
             val isVersicle = lines.all { it.isBlank() || it.trimStart().startsWith(">") }
             val text = lines.joinToString("\n") { it.trimStart().removePrefix(">").trim() }
+            val highlighted = index == highlightedParagraph
+            val baseColor = if (isVersicle) color.copy(alpha = 0.82f) else color
 
             Text(
                 text = text,
                 fontSize = bodySize,
                 lineHeight = lineHeight,
                 fontStyle = if (isVersicle) FontStyle.Italic else FontStyle.Normal,
-                color = if (isVersicle) color.copy(alpha = 0.82f) else color,
+                color = if (highlighted) highlightColor else baseColor,
+                fontWeight = if (highlighted) FontWeight.SemiBold else null,
                 textAlign = if (isVersicle) TextAlign.Center else TextAlign.Start,
             )
         }

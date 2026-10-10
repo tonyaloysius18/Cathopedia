@@ -33,6 +33,19 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Pause
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.SkipNext
+import androidx.compose.material.icons.filled.SkipPrevious
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import com.ynotlabs.cathopedia.speech.ReadAloudController
+import com.ynotlabs.cathopedia.speech.SpeechEngine
+import com.ynotlabs.cathopedia.speech.SpeechUnit
+import com.ynotlabs.cathopedia.speech.prayerSpeechScript
+import com.ynotlabs.cathopedia.speech.rememberSpeechEngine
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -140,7 +153,12 @@ fun PrayerDetailScreen(
     LaunchedEffect(slug, language) { readingLanguage = language }
     LaunchedEffect(slug, readingLanguage) { detail = repository.prayerDetail(slug, readingLanguage) }
 
-    KeepScreenOn(enabled = keepScreenOn)
+    val speechEngine = rememberSpeechEngine()
+    val reader = remember(speechEngine) { ReadAloudController(speechEngine) }
+    DisposableEffect(reader) { onDispose { reader.release() } }
+
+    // Reading aloud keeps the screen awake too, so the highlighted text stays visible.
+    KeepScreenOn(enabled = keepScreenOn || reader.isPlaying)
 
     val current = detail
 
@@ -197,6 +215,8 @@ fun PrayerDetailScreen(
                     },
                     keepScreenOn = keepScreenOn,
                     onKeepScreenOnChange = { keepScreenOn = it },
+                    reader = reader,
+                    speechEngine = speechEngine,
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(bottom = padding.calculateBottomPadding())
@@ -252,9 +272,23 @@ private fun PrayerReadingContent(
     onFontScaleChange: (Int) -> Unit,
     keepScreenOn: Boolean,
     onKeepScreenOnChange: (Boolean) -> Unit,
+    reader: ReadAloudController,
+    speechEngine: SpeechEngine,
     modifier: Modifier = Modifier,
 ) {
     val sections = remember(detail.bodyMd) { splitPrayerSections(detail.bodyMd) }
+    val script = remember(detail.title, sections) {
+        prayerSpeechScript(detail.title, sections.map { it.title to it.body })
+    }
+    LaunchedEffect(script, readingLanguage) { reader.load(script, readingLanguage) }
+
+    val listState = rememberLazyListState()
+    val reading = reader.current
+    // Follow the voice: bring the section being read into view.
+    LaunchedEffect(reading?.section, reader.isPlaying) {
+        val section = reading?.section ?: return@LaunchedEffect
+        if (reader.isPlaying && section >= 0) listState.animateScrollToItem(section)
+    }
 
     Column(
         modifier = modifier,
@@ -291,6 +325,7 @@ private fun PrayerReadingContent(
         }
 
         LazyColumn(
+            state = listState,
             modifier = Modifier.weight(1f).fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
             contentPadding = PaddingValues(bottom = 28.dp)
@@ -321,6 +356,7 @@ private fun PrayerReadingContent(
                         bodyMd = section.body,
                         fontScale = fontScale,
                         isFirst = index == 0,
+                        reading = reading?.takeIf { it.section == index },
                     )
                 }
                 Spacer(Modifier.height(18.dp))
@@ -345,6 +381,12 @@ private fun PrayerReadingContent(
                 }
             }
         }
+
+        ReadAloudBar(
+            reader = reader,
+            engine = speechEngine,
+            languageName = nativeLanguageName(readingLanguage, LocalStrings.current),
+        )
     }
 }
 
@@ -474,13 +516,14 @@ private fun PrayerSectionCard(
     bodyMd: String,
     fontScale: Float,
     isFirst: Boolean,
+    reading: SpeechUnit? = null,
 ) {
     val s = LocalStrings.current
 
     Card(
         shape = RoundedCornerShape(28.dp),
         colors = CardDefaults.cardColors(containerColor = Color.Transparent),
-        border = androidx.compose.foundation.BorderStroke(2.dp, CardBorder),
+        border = androidx.compose.foundation.BorderStroke(2.dp, if (reading != null) PrayerGold else CardBorder),
         modifier = Modifier.fillMaxWidth(),
     ) {
         Column(modifier = Modifier.padding(22.dp)) {
@@ -497,7 +540,7 @@ private fun PrayerSectionCard(
             if (title != null) {
                 Text(
                     text = title.uppercase(),
-                    color = PrayerGoldSoft,
+                    color = if (reading?.paragraph == -1) PrayerGold else PrayerGoldSoft,
                     style = MaterialTheme.typography.labelLarge,
                     fontWeight = FontWeight.Bold,
                     letterSpacing = 1.sp,
@@ -516,6 +559,8 @@ private fun PrayerSectionCard(
                     bodyMd = bodyMd,
                     color = PrayerCream,
                     fontScale = fontScale,
+                    highlightedParagraph = reading?.paragraph?.takeIf { it >= 0 },
+                    highlightColor = PrayerGold,
                 )
             }
         }
@@ -613,6 +658,124 @@ private fun RoundAction(
             style = MaterialTheme.typography.labelSmall,
             textAlign = TextAlign.Center,
             maxLines = 2,
+        )
+    }
+}
+
+/**
+ * The read-aloud player docked under the prayer: previous / play-pause / next and
+ * the reading speed, in the language of the selected chip. Built for screen-reader
+ * users too: every control has a spoken label and a 48dp target.
+ */
+@Composable
+private fun ReadAloudBar(
+    reader: ReadAloudController,
+    engine: SpeechEngine,
+    languageName: String,
+) {
+    val s = LocalStrings.current
+    if (reader.units.isEmpty()) return
+    val hasVoice = engine.hasVoice(reader.language)
+
+    Surface(
+        shape = RoundedCornerShape(30.dp),
+        color = PrayerBg.copy(alpha = 0.94f),
+        border = androidx.compose.foundation.BorderStroke(2.dp, CardBorder),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 10.dp),
+    ) {
+        if (!hasVoice) {
+            Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 14.dp)) {
+                Text(
+                    text = s.readAloudNoVoice.replace("{language}", languageName),
+                    color = PrayerCream,
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+                Spacer(Modifier.height(6.dp))
+                if (engine.canInstallVoices) {
+                    Text(
+                        text = s.readAloudInstallVoice,
+                        color = PrayerGold,
+                        style = MaterialTheme.typography.labelLarge,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(12.dp))
+                            .clickable(role = Role.Button) { engine.openVoiceInstall() }
+                            .padding(vertical = 8.dp),
+                    )
+                } else {
+                    Text(s.readAloudIosVoiceHint, color = PrayerMuted, style = MaterialTheme.typography.bodySmall)
+                }
+            }
+            return@Surface
+        }
+
+        Row(
+            modifier = Modifier.padding(start = 20.dp, end = 10.dp, top = 8.dp, bottom = 8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = s.readAloudListen.uppercase(),
+                    color = PrayerGold,
+                    style = MaterialTheme.typography.labelMedium,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 1.sp,
+                )
+                Text(
+                    text = if (reader.hasStarted) "$languageName · ${reader.index + 1}/${reader.units.size}" else languageName,
+                    color = PrayerMuted,
+                    style = MaterialTheme.typography.bodySmall,
+                    maxLines = 1,
+                )
+            }
+
+            BarIconButton(Icons.Filled.SkipPrevious, s.readAloudPrevious, enabled = reader.hasStarted) { reader.previous() }
+
+            Box(
+                modifier = Modifier
+                    .padding(horizontal = 4.dp)
+                    .size(58.dp)
+                    .clip(CircleShape)
+                    .background(PrayerGold)
+                    .clickable(role = Role.Button) { reader.toggle() }
+                    .semantics { contentDescription = if (reader.isPlaying) s.readAloudPause else s.readAloudPlay },
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    imageVector = if (reader.isPlaying) Icons.Filled.Pause else Icons.Filled.PlayArrow,
+                    contentDescription = null,
+                    tint = PrayerBg,
+                    modifier = Modifier.size(34.dp),
+                )
+            }
+
+            BarIconButton(Icons.Filled.SkipNext, s.readAloudNext, enabled = reader.hasStarted) { reader.next() }
+
+            val speed = ReadAloudController.speedLabel(reader.speedIndex)
+            Box(
+                modifier = Modifier
+                    .size(48.dp)
+                    .clip(CircleShape)
+                    .clickable(role = Role.Button) { reader.cycleSpeed() }
+                    .semantics { contentDescription = "${s.readAloudSpeed}: $speed" },
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(speed, color = PrayerCream, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.SemiBold)
+            }
+        }
+    }
+}
+
+@Composable
+private fun BarIconButton(icon: ImageVector, label: String, enabled: Boolean, onClick: () -> Unit) {
+    IconButton(onClick = onClick, enabled = enabled, modifier = Modifier.size(48.dp)) {
+        Icon(
+            imageVector = icon,
+            contentDescription = label,
+            tint = if (enabled) PrayerCream else PrayerMuted.copy(alpha = 0.5f),
+            modifier = Modifier.size(28.dp),
         )
     }
 }
