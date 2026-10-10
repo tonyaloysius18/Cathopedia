@@ -101,3 +101,19 @@ Create an original illustration, matching a companion image of embossed gilt-bra
 ```
 Create an original illustration, matching a companion image of embossed gilt-brass altar candlesticks: a devotional candle stand, a low wrought iron and brass table-stand with a long tray filled with sand, holding many thin ivory taper candles of slightly different heights standing upright in the sand, most of them lit with small warm flames, and a pierced cross pattern along the front edge. Three-quarter front view, eye level, centred. Plain transparent background. Warm candlelight glow. No statue, no wall, no people, no text, no labels, no numbers, no watermark, no signature. Transparent alpha channel. Portrait 2:3, the stand filling the lower two-thirds of the frame.
 ```
+
+## 3. Diocese and Archdiocese (1 portrait)
+
+Square 1:1, 1024×1024, transparent. Must match the existing `hierarchy_bishop` portrait it stands beside. Put it in `docs/image-prompts/holy-see/`.
+
+**Negative prompt:**
+
+```
+text, letters, watermark, signature, frame, background scenery, real person, celebrity likeness, cardinal red, red cope, tiara, pope, white zucchetto, cartoon, flat vector, low detail
+```
+
+### 3.1 `archbishop_portrait.png` — Metropolitan archbishop (with pallium)
+
+```
+Create an original illustration, matching a companion portrait of a Catholic bishop: a realistic painted bust of a Catholic metropolitan archbishop (fictional, not resembling any real person), late fifties, dark hair greying at the temples, clean-shaven, calm pastoral expression, three-quarter view, cut at mid-chest. He wears a tall white-and-gold embroidered mitre with lappets, a cream-and-gold chasuble, and over it the pallium: a narrow white woollen band circling his shoulders with one pendant hanging straight down the front, marked with small black crosses and fastened with three gold pins. A gold pectoral cross on a gold chain. Warm soft light from the upper left, classical oil-portrait finish, fine detail in the embroidery. Transparent background. No text, no watermark, no signature, no frame. Square 1:1, 1024×1024.
+```

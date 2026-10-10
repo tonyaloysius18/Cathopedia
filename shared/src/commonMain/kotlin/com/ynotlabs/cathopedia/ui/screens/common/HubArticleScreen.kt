@@ -18,6 +18,7 @@ import com.ynotlabs.cathopedia.ui.screens.catechism.SacredImagesScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.ThreePillarsScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.ReverenceScreen
 import com.ynotlabs.cathopedia.ui.screens.catechism.WhoCreatedTheBibleScreen
+import com.ynotlabs.cathopedia.ui.screens.holysee.DioceseOrArchdioceseScreen
 import com.ynotlabs.cathopedia.ui.screens.holysee.PatriarchAndPopeScreen
 import com.ynotlabs.cathopedia.ui.screens.holysee.PapalTombsScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.MassTypesScreen
@@ -443,6 +444,16 @@ fun HubArticleScreen(
             language = language,
             onBack = onBack,
             onEntityRefSelected = onEntityRefSelected,
+            listState = listState,
+        )
+        return
+    }
+
+    if (articleId == "art.holy_see.diocese_vs_archdiocese") {
+        DioceseOrArchdioceseScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
             listState = listState,
         )
         return

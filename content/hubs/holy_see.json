@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": 13,
+  "contentVersion": 14,
   "hub": {
     "id": "holy_see",
     "slug": "holy-see",
@@ -300,6 +300,18 @@
       "articleIds": [
         "art.titles.monsignor",
         "art.titles.canon"
+      ]
+    },
+    {
+      "id": "holy_see.dioceses",
+      "sortOrder": 22,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.dioceses.title",
+      "summaryKey": "sec.dioceses.summary",
+      "icon": "ic_mitre",
+      "articleIds": [
+        "art.holy_see.diocese_vs_archdiocese"
       ]
     }
   ],
@@ -2264,6 +2276,153 @@
       "sources": [
         {
           "label": "Code of Canon Law (1983), cann. 503–510"
+        }
+      ]
+    },
+    {
+      "id": "art.holy_see.diocese_vs_archdiocese",
+      "sectionId": "holy_see.dioceses",
+      "sortOrder": 1,
+      "titleKey": "art.diocarch.title",
+      "leadKey": "art.diocarch.lead",
+      "readingTimeMinutes": 4,
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.offices.vicar_general"
+        },
+        {
+          "type": "ARTICLE",
+          "id": "art.holy_see.patriarch_vs_pope"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.diocarch.intro"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/hierarchy_bishop.png",
+          "captionKey": "art.diocarch.diocese.caption",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/archbishop_portrait.png",
+          "captionKey": "art.diocarch.archdiocese.caption",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "art.diocarch.label.what",
+              "valueKey": "art.diocarch.diocese.what"
+            },
+            {
+              "labelKey": "art.diocarch.label.led",
+              "valueKey": "art.diocarch.diocese.led"
+            },
+            {
+              "labelKey": "art.diocarch.label.area",
+              "valueKey": "art.diocarch.diocese.area"
+            },
+            {
+              "labelKey": "art.diocarch.label.others",
+              "valueKey": "art.diocarch.diocese.others"
+            },
+            {
+              "labelKey": "art.diocarch.label.seat",
+              "valueKey": "art.diocarch.diocese.seat"
+            },
+            {
+              "labelKey": "art.diocarch.label.sign",
+              "valueKey": "art.diocarch.diocese.sign",
+              "icon": "hub/holy_see/mitre_bishop.png"
+            }
+          ]
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "art.diocarch.label.what",
+              "valueKey": "art.diocarch.archdiocese.what"
+            },
+            {
+              "labelKey": "art.diocarch.label.led",
+              "valueKey": "art.diocarch.archdiocese.led"
+            },
+            {
+              "labelKey": "art.diocarch.label.area",
+              "valueKey": "art.diocarch.archdiocese.area"
+            },
+            {
+              "labelKey": "art.diocarch.label.others",
+              "valueKey": "art.diocarch.archdiocese.others"
+            },
+            {
+              "labelKey": "art.diocarch.label.seat",
+              "valueKey": "art.diocarch.archdiocese.seat"
+            },
+            {
+              "labelKey": "art.diocarch.label.sign",
+              "valueKey": "art.diocarch.archdiocese.sign",
+              "icon": "hub/holy_see/pallium_archbishop.png"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.diocarch.keypoints.title"
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": [
+            "art.diocarch.diocese.k1",
+            "art.diocarch.diocese.k2",
+            "art.diocarch.diocese.k3",
+            "art.diocarch.diocese.k4"
+          ]
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": [
+            "art.diocarch.archdiocese.k1",
+            "art.diocarch.archdiocese.k2",
+            "art.diocarch.archdiocese.k3",
+            "art.diocarch.archdiocese.k4"
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "titleKey": "art.diocarch.examples.title",
+          "textKey": "art.diocarch.examples.body"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.diocarch.short.title",
+          "textKey": "art.diocarch.short.body"
+        },
+        {
+          "type": "callout",
+          "tone": "devotional",
+          "titleKey": "art.diocarch.remember.title",
+          "textKey": "art.diocarch.remember.body"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Code of Canon Law (1983), cann. 369, 373, 381, 431–438, 1438"
+        },
+        {
+          "label": "Second Vatican Council, Christus Dominus 11, 39–40"
         }
       ]
     }
