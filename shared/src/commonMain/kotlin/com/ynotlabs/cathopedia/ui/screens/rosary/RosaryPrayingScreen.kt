@@ -51,6 +51,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -176,13 +177,22 @@ internal fun RosaryPrayingScreen(
             language,
         )
     }
+    // The set's five mysteries, loaded once, so the header can show the decade's
+    // mystery the moment the bead changes instead of flashing the set's name while
+    // each step loads.
+    val mysteries = remember(session.id, language) { mutableStateMapOf<String, MysteryDetail>() }
+    LaunchedEffect(state.mysterySet, language) {
+        for (decade in 1..5) {
+            val id = "${state.mysterySet.tag}-$decade"
+            if (id !in mysteries) repository.mysteryDetail(id, language)?.let { mysteries[id] = it }
+        }
+    }
     LaunchedEffect(state.currentStepIndex, language) {
         resolved = null
         val current = state
         val slug = current.currentStep.prayerSlug
         val prayer = if (slug == RosarySequence.ANNOUNCE_MYSTERY) null else repository.prayerDetail(slug, language)
-        val mystery = (current.currentStep.mysteryId ?: current.currentDecade?.let { "${current.mysterySet.tag}-$it" })
-            ?.let { repository.mysteryDetail(it, language) }
+        val mystery = current.mysteryId()?.let { id -> mysteries[id] ?: repository.mysteryDetail(id, language) }
         resolved = ResolvedRosaryPrayer(current.currentStepIndex, prayer, mystery)
     }
     LaunchedEffect(state.currentStepIndex) {
@@ -238,7 +248,12 @@ internal fun RosaryPrayingScreen(
     Scaffold(
         containerColor = RosaryMarianCard.night,
         topBar = {
-            RosaryPrayingHeader(strings, state, currentContent?.mystery, onClose = { if (!completing) onClose() })
+            RosaryPrayingHeader(
+                strings,
+                state,
+                state.mysteryId()?.let { mysteries[it] } ?: currentContent?.mystery,
+                onClose = { if (!completing) onClose() },
+            )
         },
         bottomBar = {
             RosaryPrayerControls(
@@ -301,6 +316,10 @@ internal fun RosaryPrayingScreen(
     }
     }
 }
+
+/** The mystery the current step belongs to, or null before the first decade. */
+private fun RosaryState.mysteryId(): String? =
+    currentStep.mysteryId ?: currentDecade?.let { "${mysterySet.tag}-$it" }
 
 @Composable
 private fun RosaryPrayingHeader(
