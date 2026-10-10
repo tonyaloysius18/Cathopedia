@@ -1097,7 +1097,7 @@
         { "type": "image", "asset": "hub/mass/mass_retablo.png", "captionKey": "art.altarparts.retablo.caption", "license": "IN_HOUSE" },
         { "type": "callout", "tone": "info", "titleKey": "art.altarparts.retablo.title", "textKey": "art.altarparts.retablo.body" },
         { "type": "heading", "level": 2, "textKey": "art.altarparts.remember.title" },
-        { "type": "callout", "tone": "note", "titleKey": "art.altarparts.remember.calloutTitle", "textKey": "art.altarparts.remember.body" }
+        { "type": "callout", "tone": "note", "titleKey": "art.altarparts.remember.callout_title", "textKey": "art.altarparts.remember.body" }
       ],
       "related": [
         {

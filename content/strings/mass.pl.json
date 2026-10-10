@@ -443,7 +443,7 @@
     "art.altarparts.retablo.body": "Artystyczna lub architektoniczna konstrukcja za ołtarzem lub nad nim, która może mieścić figury, obrazy i inne dzieła sztuki sakralnej, kierując wzrok ku Chrystusowi i tajemnicom sprawowanym na ołtarzu. Nazywane też nastawą ołtarzową.",
     "art.altarparts.retablo.caption": "Konstrukcja wznosząca się za ołtarzem",
     "art.altarparts.remember.title": "Łatwe do zapamiętania",
-    "art.altarparts.remember.calloutTitle": "W skrócie",
+    "art.altarparts.remember.callout_title": "W skrócie",
     "art.altarparts.remember.body": "Mensa = święty stół. Antepedium = dekoracja frontu. Retabulum = konstrukcja za ołtarzem.",
     "sec.mass.basilica_cathedral.title": "Bazyliki i katedry",
     "sec.mass.basilica_cathedral.summary": "Co czyni kościół bazyliką lub katedrą, oraz dwa stopnie bazylik — większe i mniejsze.",
@@ -630,6 +630,12 @@
     "art.candles.flame.title": "Żywy płomień",
     "art.candles.flame.body": "Świece w liturgii są znakami światła Chrystusa i modlitwy, która płonie i się spala, dlatego powinny dawać prawdziwy płomień. Światło elektryczne może oświetlać kościół, ale nie zastępuje świec liturgicznych, tradycyjnie wykonywanych w dużej części z wosku pszczelego.",
     "art.candles.quote": "„Ja jestem światłością świata. Kto idzie za Mną, nie będzie chodził w ciemności, lecz będzie miał światło życia”.",
-    "art.candles.quote.attribution": "J 8,12"
+    "art.candles.quote.attribution": "J 8,12",
+    "art.masstypes.solemn.ref": "",
+    "art.masstypes.sung.ref": "",
+    "art.masstypes.low.ref": "",
+    "art.masstypes.pontifical.ref": "",
+    "art.masstypes.votive.ref": "",
+    "art.masstypes.dead.ref": ""
   }
 }

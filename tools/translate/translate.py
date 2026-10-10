@@ -196,6 +196,30 @@ def write_hub_strings(lang: str, results: dict[str, str]) -> int:
     return len(by_hub)
 
 
+def sync_empty_strings(lang: str) -> int:
+    """Copy keys that are deliberately empty in English (e.g. a caption with no
+    reference) into the target file as empty strings. They are never sent for
+    translation, but the strict content validator requires every language to
+    carry every key, so a missing one fails CI."""
+    changed = 0
+    for en_file in sorted((CONTENT / "strings").glob("*.en.json")):
+        hub = en_file.name.removesuffix(".en.json")
+        target_file = CONTENT / "strings" / f"{hub}.{lang}.json"
+        if hub in SOURCED_STRING_FILES or not target_file.exists():
+            continue
+        en = load_json(en_file)["strings"]
+        doc = load_json(target_file)
+        missing = [k for k, v in en.items() if v == "" and k not in doc["strings"]]
+        if not missing:
+            continue
+        merged = dict(doc["strings"]) | {k: "" for k in missing}
+        doc["strings"] = {k: merged[k] for k in en if k in merged} | \
+                         {k: v for k, v in merged.items() if k not in en}
+        write_json(target_file, doc)
+        changed += 1
+    return changed
+
+
 def sync_gallery_source() -> None:
     """Mirror MiracleGalleries.kt's English captions into galleries.en.json (the Kotlin is the source)."""
     captions = [kotlin_unescape(c) for c in re.findall(r'^\s+caption = "((?:[^"\\]|\\.)*)",$',
@@ -570,6 +594,7 @@ def apply_results(lang: str, results: dict[str, str], segments: dict[str, Segmen
     for seg_id in results:
         state[seg_id] = sha(segments[seg_id].source)
     files = write_hub_strings(lang, results) + write_entities(lang, results, state)
+    files += sync_empty_strings(lang)
     write_ui(lang, results)
     save_state(lang, state)
     print(f"  [{lang}] wrote {len(results)} translations into {files} content files"

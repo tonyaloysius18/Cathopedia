@@ -443,7 +443,7 @@
     "art.altarparts.retablo.body": "De artistieke of architectonische constructie achter of boven het altaar, die beelden, schilderijen en andere heilige kunst kan bevatten en de blik richt op Christus en de mysteries die aan het altaar worden gevierd. Ook wel altaarstuk genoemd.",
     "art.altarparts.retablo.caption": "De constructie die achter het altaar oprijst",
     "art.altarparts.remember.title": "Gemakkelijk te onthouden",
-    "art.altarparts.remember.calloutTitle": "Kortom",
+    "art.altarparts.remember.callout_title": "Kortom",
     "art.altarparts.remember.body": "Altaartafel = de heilige tafel. Antependium = de versiering aan de voorkant. Retabel = de constructie achter het altaar.",
     "sec.mass.basilica_cathedral.title": "Basilieken en kathedralen",
     "sec.mass.basilica_cathedral.summary": "Wat een kerk tot basiliek of kathedraal maakt, en de twee rangen van basilieken — hoofd- en kleine basilieken.",
@@ -630,6 +630,12 @@
     "art.candles.flame.title": "Een levende vlam",
     "art.candles.flame.body": "Kaarsen in de liturgie zijn tekenen van het licht van Christus en van een gebed dat brandt en zich verteert; daarom moeten ze een echte vlam geven. Elektrisch licht kan een kerk verlichten, maar komt niet in de plaats van liturgische kaarsen, die van oudsher grotendeels van bijenwas zijn.",
     "art.candles.quote": "„Ik ben het licht van de wereld. Wie Mij volgt, zal niet in de duisternis rondgaan, maar hij zal het licht van het leven hebben.”",
-    "art.candles.quote.attribution": "Johannes 8,12"
+    "art.candles.quote.attribution": "Johannes 8,12",
+    "art.masstypes.solemn.ref": "",
+    "art.masstypes.sung.ref": "",
+    "art.masstypes.low.ref": "",
+    "art.masstypes.pontifical.ref": "",
+    "art.masstypes.votive.ref": "",
+    "art.masstypes.dead.ref": ""
   }
 }

@@ -443,7 +443,7 @@
     "art.altarparts.retablo.body": "Der künstlerische oder architektonische Aufbau hinter oder über dem Altar, der Statuen, Gemälde und andere sakrale Kunst tragen kann und den Blick auf Christus und die am Altar gefeierten Geheimnisse lenkt. Auch Altaraufsatz genannt.",
     "art.altarparts.retablo.caption": "Der Aufbau hinter dem Altar",
     "art.altarparts.remember.title": "Leicht zu merken",
-    "art.altarparts.remember.calloutTitle": "Kurz gesagt",
+    "art.altarparts.remember.callout_title": "Kurz gesagt",
     "art.altarparts.remember.body": "Altartisch = der heilige Tisch. Antependium = der Schmuck an der Vorderseite. Retabel = der Aufbau hinter dem Altar.",
     "sec.mass.basilica_cathedral.title": "Basiliken und Kathedralen",
     "sec.mass.basilica_cathedral.summary": "Was eine Kirche zur Basilika oder Kathedrale macht, und die zwei Ränge der Basilika – Haupt- und Nebenbasilika.",
@@ -630,6 +630,12 @@
     "art.candles.flame.title": "Eine lebendige Flamme",
     "art.candles.flame.body": "Kerzen in der Liturgie sind Zeichen für das Licht Christi und für ein Gebet, das brennt und sich verzehrt; darum sollen sie eine echte Flamme geben. Elektrisches Licht kann eine Kirche erhellen, ersetzt aber die liturgischen Kerzen nicht, die traditionell zum großen Teil aus Bienenwachs bestehen.",
     "art.candles.quote": "„Ich bin das Licht der Welt. Wer mir nachfolgt, wird nicht in der Finsternis umhergehen, sondern wird das Licht des Lebens haben.“",
-    "art.candles.quote.attribution": "Johannes 8,12"
+    "art.candles.quote.attribution": "Johannes 8,12",
+    "art.masstypes.solemn.ref": "",
+    "art.masstypes.sung.ref": "",
+    "art.masstypes.low.ref": "",
+    "art.masstypes.pontifical.ref": "",
+    "art.masstypes.votive.ref": "",
+    "art.masstypes.dead.ref": ""
   }
 }

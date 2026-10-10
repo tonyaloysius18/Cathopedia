@@ -443,7 +443,7 @@
     "art.altarparts.retablo.body": "La estructura artística o arquitectónica situada detrás o encima del altar, que puede contener estatuas, pinturas y otras obras de arte sacro, y que dirige la mirada hacia Cristo y los misterios celebrados en el altar.",
     "art.altarparts.retablo.caption": "La estructura que se alza detrás del altar",
     "art.altarparts.remember.title": "Fácil de recordar",
-    "art.altarparts.remember.calloutTitle": "En resumen",
+    "art.altarparts.remember.callout_title": "En resumen",
     "art.altarparts.remember.body": "Mesa del altar = la mesa sagrada. Frontal = la decoración delantera. Retablo = la estructura detrás del altar.",
     "sec.mass.basilica_cathedral.title": "Basílicas y catedrales",
     "sec.mass.basilica_cathedral.summary": "Qué hace que una iglesia sea basílica o catedral, y los dos rangos de basílica: mayor y menor.",
@@ -630,6 +630,12 @@
     "art.candles.flame.title": "Una llama viva",
     "art.candles.flame.body": "Las velas de la liturgia son signos de la luz de Cristo y de una oración que arde y se consume, por eso deben dar una llama verdadera. La luz eléctrica puede iluminar una iglesia, pero no sustituye a las velas litúrgicas, hechas tradicionalmente en buena parte de cera de abeja.",
     "art.candles.quote": "«Yo soy la luz del mundo; el que me sigue no camina en tinieblas, sino que tendrá la luz de la vida».",
-    "art.candles.quote.attribution": "Juan 8,12"
+    "art.candles.quote.attribution": "Juan 8,12",
+    "art.masstypes.solemn.ref": "",
+    "art.masstypes.sung.ref": "",
+    "art.masstypes.low.ref": "",
+    "art.masstypes.pontifical.ref": "",
+    "art.masstypes.votive.ref": "",
+    "art.masstypes.dead.ref": ""
   }
 }

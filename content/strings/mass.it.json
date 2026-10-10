@@ -443,7 +443,7 @@
     "art.altarparts.retablo.body": "La struttura artistica o architettonica dietro o sopra l'altare, che può ospitare statue, dipinti e altre opere sacre, e guida lo sguardo verso Cristo e i misteri celebrati all'altare. È detta anche pala d'altare o dossale.",
     "art.altarparts.retablo.caption": "La struttura che si eleva dietro l'altare",
     "art.altarparts.remember.title": "Facile da ricordare",
-    "art.altarparts.remember.calloutTitle": "In breve",
+    "art.altarparts.remember.callout_title": "In breve",
     "art.altarparts.remember.body": "Mensa = la tavola sacra. Paliotto = la decorazione frontale. Retablo = la struttura dietro l'altare.",
     "sec.mass.basilica_cathedral.title": "Basiliche e cattedrali",
     "sec.mass.basilica_cathedral.summary": "Che cosa rende una chiesa una basilica o una cattedrale, e i due ranghi di basilica: maggiore e minore.",
@@ -630,6 +630,12 @@
     "art.candles.flame.title": "Una fiamma viva",
     "art.candles.flame.body": "Le candele della liturgia sono segni della luce di Cristo e di una preghiera che arde e si consuma, perciò devono dare una fiamma vera. La luce elettrica può illuminare una chiesa, ma non sostituisce le candele liturgiche, tradizionalmente fatte in gran parte di cera d’api.",
     "art.candles.quote": "«Io sono la luce del mondo; chi segue me non camminerà nelle tenebre, ma avrà la luce della vita».",
-    "art.candles.quote.attribution": "Giovanni 8,12"
+    "art.candles.quote.attribution": "Giovanni 8,12",
+    "art.masstypes.solemn.ref": "",
+    "art.masstypes.sung.ref": "",
+    "art.masstypes.low.ref": "",
+    "art.masstypes.pontifical.ref": "",
+    "art.masstypes.votive.ref": "",
+    "art.masstypes.dead.ref": ""
   }
 }

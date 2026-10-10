@@ -460,7 +460,7 @@
     "art.altarparts.retablo.body": "The artistic or architectural structure behind or above the altar, which may hold statues, paintings and other sacred artwork, drawing the eye toward Christ and the mysteries celebrated at the altar. Also called a reredos.",
     "art.altarparts.retablo.caption": "The structure rising behind the altar",
     "art.altarparts.remember.title": "Easy to remember",
-    "art.altarparts.remember.calloutTitle": "In short",
+    "art.altarparts.remember.callout_title": "In short",
     "art.altarparts.remember.body": "Altar Table = the sacred table. Altar Frontal = the front decoration. Retablo = the structure behind the altar.",
 
     "sec.mass.basilica_cathedral.title": "Basilicas and Cathedrals",

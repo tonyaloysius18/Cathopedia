@@ -460,7 +460,7 @@
     "art.altarparts.retablo.body": "La structure artistique ou architecturale qui s'élève derrière ou au-dessus de l'autel, pouvant porter des statues, des tableaux et d'autres œuvres sacrées, attirant le regard vers le Christ et les mystères célébrés à l'autel. Appelé aussi retable d'autel.",
     "art.altarparts.retablo.caption": "La structure qui s'élève derrière l'autel",
     "art.altarparts.remember.title": "Facile à retenir",
-    "art.altarparts.remember.calloutTitle": "En bref",
+    "art.altarparts.remember.callout_title": "En bref",
     "art.altarparts.remember.body": "Table d'autel = la table sacrée. Antependium = la décoration frontale. Retable = la structure derrière l'autel.",
 
     "sec.mass.basilica_cathedral.title": "Basiliques et cathédrales",

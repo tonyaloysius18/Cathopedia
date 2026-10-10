@@ -1,0 +1,23 @@
+#!/bin/sh
+# Runs the same checks as .github/workflows/hub-content.yml before anything is
+# pushed, so a broken topic hub fails here instead of in CI (and in your inbox).
+# Enable once per clone:  git config core.hooksPath .githooks
+# Skip in an emergency:   git push --no-verify
+cd "$(git rev-parse --show-toplevel)" || exit 1
+
+if ! python3 -c "import jsonschema" 2>/dev/null; then
+    echo "pre-push: python package 'jsonschema' is missing (pip3 install jsonschema); skipping the hub content check." >&2
+    exit 0
+fi
+
+python3 tools/check_schema_model_sync.py || {
+    echo "pre-push: the content schema and the Kotlin content model disagree; push stopped." >&2
+    exit 1
+}
+
+if ! out=$(python3 tools/validate_content.py --root content --schemas content/schema --strict 2>&1); then
+    echo "$out" | grep -E '^ERROR' >&2
+    echo "pre-push: topic hub content failed validation (the same check GitHub runs); push stopped." >&2
+    exit 1
+fi
+exit 0
