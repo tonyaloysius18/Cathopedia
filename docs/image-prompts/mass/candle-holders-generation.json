@@ -1,0 +1,48 @@
+{
+  "generated_on": "2026-10-10",
+  "tool": "built-in image_gen",
+  "size": [
+    1024,
+    1536
+  ],
+  "transparent_background": true,
+  "webp_quality": 82,
+  "assets": [
+    {
+      "asset": "candle_processional",
+      "prompt": "Use case: scientific-educational. Create ONE original Cathopedia illustration: a pair of tall processional candlesticks standing upright side by side. Match the polished gold/brass, fine embossed acanthus decoration, ivory wax and realistic devotional illustration style of the altar candlesticks shown in this conversation, but use the following new shape: each has a very long slender gilded pole with decorative knops, stable embossed weighted foot and small drip pan at top holding a tall ivory candle with a small calm warm flame. The poles are about four times taller than the candles. Both complete objects stand freely without hands. Two tall narrow silhouettes clearly recognizable at thumbnail size. Centered, front view at eye level; entire pair upright with a small margin, filling about 85% of canvas height. Warm golden light from upper left. Portrait 2:3, exactly 1024x1536. REAL transparent background / RGBA alpha with clean soft antialiased edges, no checkerboard pattern baked into any pixel. No scene, altar, floor, wall, shadow box, text, letters, numbers, labels, watermark, signature, people, hands, altar servers, priest, tablecloth, cartoon, flat vector, electric bulb, LED or neon.",
+      "master": "content/hub/mass/candle_processional.png",
+      "drawable": "shared/src/commonMain/composeResources/drawable/candle_processional.webp"
+    },
+    {
+      "asset": "candle_sanctuary_lamp",
+      "prompt": "Use case: scientific-educational. Asset: a Cathopedia candle-holder card illustration, to read clearly at thumbnail size. Match the existing altar candlesticks shown in this conversation: realistic devotional illustration, polished embossed gilt brass with acanthus leaves and small crosses, warm ivory candles with small calm realistic flames, warm golden light from upper left. Centered upright composition. Portrait 2:3 exactly 1024x1536. Genuine transparent RGBA background and clean antialiased edges. No baked checkerboard, no scene, wall, floor, altar, background, shadow box, tablecloth, people, hands, altar servers, priest, statue, watermark, signature, labels, cartoon, flat vector, electric bulb, LED, neon. Create one hanging sanctuary lamp: an ornately embossed gilded bowl suspended from THREE fine gold chains meeting at a small crown-shaped canopy at the top. Bowl holds a deep ruby-red glass cylinder with a small steady candle flame glowing inside; a small ornamental cross hangs beneath the bowl. Front view at eye level. Long chains reach toward the top edge, canopy complete with margin. Entire lamp fills about 85% of frame height. Red glass glowing softly. No tabernacle, text, letters or numbers.",
+      "master": "content/hub/mass/candle_sanctuary_lamp.png",
+      "drawable": "shared/src/commonMain/composeResources/drawable/candle_sanctuary_lamp.webp"
+    },
+    {
+      "asset": "candle_paschal_stand",
+      "prompt": "Use case: scientific-educational. Asset: a Cathopedia candle-holder card illustration, to read clearly at thumbnail size. Match the existing altar candlesticks shown in this conversation: realistic devotional illustration, polished embossed gilt brass with acanthus leaves and small crosses, warm ivory candles with small calm realistic flames, warm golden light from upper left. Centered upright composition. Portrait 2:3 exactly 1024x1536. Genuine transparent RGBA background and clean antialiased edges. No baked checkerboard, no scene, wall, floor, altar, background, shadow box, tablecloth, people, hands, altar servers, priest, statue, watermark, signature, labels, cartoon, flat vector, electric bulb, LED, neon. Create one tall sturdy gilded Paschal candle stand with broad heavy embossed base, ornamented column and wide drip pan, holding ONE very large thick ivory Paschal candle with a small warm flame. On the candle red and gold relief: a cross, the Greek letter Alpha (Α) above and Omega (Ω) below, and exactly FIVE small red incense grains at the top, bottom, left, right and center of the cross. No year numbers, flowers or baptismal font. Front view, eye level; whole stand and candle fill about 85% of frame height. Only permitted lettering is Α and Ω; no other text.",
+      "master": "content/hub/mass/candle_paschal_stand.png",
+      "drawable": "shared/src/commonMain/composeResources/drawable/candle_paschal_stand.webp"
+    },
+    {
+      "asset": "candle_candelabrum",
+      "prompt": "Use case: scientific-educational. Asset: a Cathopedia candle-holder card illustration, to read clearly at thumbnail size. Match the existing altar candlesticks shown in this conversation: realistic devotional illustration, polished embossed gilt brass with acanthus leaves and small crosses, warm ivory candles with small calm realistic flames, warm golden light from upper left. Centered upright composition. Portrait 2:3 exactly 1024x1536. Genuine transparent RGBA background and clean antialiased edges. No baked checkerboard, no scene, wall, floor, altar, background, shadow box, tablecloth, people, hands, altar servers, priest, statue, watermark, signature, labels, cartoon, flat vector, electric bulb, LED, neon. Create ONE gilded five-light candelabrum: one central stem on a round embossed foot, branching into five graceful candle-bearing arms (one center and two to each side), with curved scrolled ornament and small drip pans. Exactly FIVE tall ivory candles with calm small warm flames, central candle slightly taller. Symmetrical front view at eye level, centered, entire object about 85% frame height. No table, text, letters or numbers.",
+      "master": "content/hub/mass/candle_candelabrum.png",
+      "drawable": "shared/src/commonMain/composeResources/drawable/candle_candelabrum.webp"
+    },
+    {
+      "asset": "candle_votive",
+      "prompt": "Use case: scientific-educational. Create ONE original Cathopedia candle-holder illustration, clear at thumbnail size. Match the realistic devotional rendering of the altar candlesticks shown earlier: finely detailed metalwork, warm ivory wax and small calm realistic flames. Genuine transparent RGBA background with clean antialiased edges, no baked checkerboard. Portrait 2:3 exactly 1024x1536, centered complete object in three-quarter front view at eye level. Rack/stand fills lower two-thirds of frame, candles included, modest margin and transparent empty space above. Warm candlelight and warm golden upper-left light. No statue, wall, floor, church interior, background, shadow box, people, hands, text, letters, labels, numbers, watermark, signature, cartoon, flat vector, electric bulb, LED, neon. Subject: tiered votive candle rack in dark wrought iron, THREE stepped rows filled with MANY small ruby-red glass cups, each holding a small votive candle. Most are lit with small warm flames, a few unlit. Include a small brass offering slot box at one end, blank surfaces without writing, and a pierced cross pattern on the front panel. The iron has slender legs with a stable base. Each cup clearly separate, multiple compact rows; no long thin tapers. Warm candlelight glow on the iron.",
+      "master": "content/hub/mass/candle_votive.png",
+      "drawable": "shared/src/commonMain/composeResources/drawable/candle_votive.webp"
+    },
+    {
+      "asset": "candle_devotional",
+      "prompt": "Use case: scientific-educational. Create ONE original Cathopedia candle-holder illustration, clear at thumbnail size. Match the realistic devotional rendering of the altar candlesticks shown earlier: finely detailed metalwork, warm ivory wax and small calm realistic flames. Genuine transparent RGBA background with clean antialiased edges, no baked checkerboard. Portrait 2:3 exactly 1024x1536, centered complete object in three-quarter front view at eye level. Rack/stand fills lower two-thirds of frame, candles included, modest margin and transparent empty space above. Warm candlelight and warm golden upper-left light. No statue, wall, floor, church interior, background, shadow box, people, hands, text, letters, labels, numbers, watermark, signature, cartoon, flat vector, electric bulb, LED, neon. Subject: a LOW devotional candle stand, a low wrought iron and brass table-stand with a LONG shallow sand-filled tray. MANY thin IVORY TAPER candles of slightly different heights stand upright in the sand, most lit with small warm flames, some unlit. Pierced cross pattern along the brass front edge; ornate slender short dark iron legs support the tray. Sand visible between the thin candles. Distinct from a votive rack: one broad sand tray, NO glass cups, NO rows of glass jars. Warm candlelight on metal. No supporting table or floor.",
+      "master": "content/hub/mass/candle_devotional.png",
+      "drawable": "shared/src/commonMain/composeResources/drawable/candle_devotional.webp"
+    }
+  ]
+}

@@ -9,12 +9,22 @@ silhouette that reads at thumbnail size.
 | # | Asset | Holder | Status |
 | --- | --- | --- | --- |
 | 1 | `altar_candles.png` | Altar candlesticks | **reused**, already in the app (Altar) |
-| 2 | `candle_processional.png` | Processional candlesticks | pending |
-| 3 | `candle_sanctuary_lamp.png` | Sanctuary lamp holder | pending |
-| 4 | `candle_paschal_stand.png` | Paschal candle stand | pending |
-| 5 | `candle_candelabrum.png` | Candelabrum | pending |
-| 6 | `candle_votive.png` | Votive candle holders | pending |
-| 7 | `candle_devotional.png` | Devotional candle stand | pending |
+| 2 | `candle_processional.png` | Processional candlesticks | generated |
+| 3 | `candle_sanctuary_lamp.png` | Sanctuary lamp holder | generated |
+| 4 | `candle_paschal_stand.png` | Paschal candle stand | generated |
+| 5 | `candle_candelabrum.png` | Candelabrum | generated |
+| 6 | `candle_votive.png` | Votive candle holders | generated |
+| 7 | `candle_devotional.png` | Devotional candle stand | generated |
+
+Generated on 2026-10-10 with the built-in image generator. The six RGBA PNG
+masters (1024×1536) are in `content/hub/mass/`; matching WebP exports at
+quality 82 are in `shared/src/commonMain/composeResources/drawable/`.
+Transparency was checked on light and dark backgrounds, and the exported
+WebP alpha channels match the PNG masters exactly. The final prompts are
+recorded in [candle-holders-generation.json](candle-holders-generation.json).
+The app's common resource accessors and Android resource collectors rebuilt
+successfully. A light/dark comparison is saved in
+[candle-holders-preview.jpg](candle-holders-preview.jpg).
 
 Until an image lands, its card shows without a picture. No code change is
 needed when it arrives: export it as `<asset>.webp` (quality 82) into

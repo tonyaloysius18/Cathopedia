@@ -8,9 +8,14 @@ table comparing the two, with a small symbol icon in the "Sign" row.
 | # | Asset | Role | Status |
 | --- | --- | --- | --- |
 | 1 | `hierarchy_bishop.png` | Diocese — diocesan bishop (left portrait) | **reused**, already in the app |
-| 2 | `archbishop_portrait.png` | Archdiocese — archbishop (right portrait) | pending |
+| 2 | `archbishop_portrait.png` | Archdiocese — archbishop (right portrait) | generated |
 | 3 | `mitre_bishop.png` | Diocese sign icon | **reused** |
 | 4 | `pallium_archbishop.png` | Archdiocese sign icon | **reused** |
+
+Generated on 2026-10-10 with the built-in image generator. The transparent
+1024×1024 PNG master is beside this brief, with a matching WebP export
+(quality 82) in the app's drawable folder. See the combined
+[generation record](cardinals-and-dioceses-generation.json).
 
 Only one new image is needed. Until it lands, the right-hand portrait reads as
 a name card. Export it as `archbishop_portrait.webp` (quality 82) into

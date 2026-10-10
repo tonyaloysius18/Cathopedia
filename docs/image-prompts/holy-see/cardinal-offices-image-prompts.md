@@ -8,13 +8,18 @@ side**.
 
 | # | Asset | Office | Status |
 | --- | --- | --- | --- |
-| 1 | `cardinal_office_dean.png` | Dean of the College | pending |
-| 2 | `cardinal_office_vice_dean.png` | Vice-Dean of the College | pending |
-| 3 | `cardinal_office_secretary_state.png` | Cardinal Secretary of State | pending |
-| 4 | `cardinal_office_camerlengo.png` | Cardinal Camerlengo | pending |
-| 5 | `cardinal_office_prefect.png` | Cardinal Prefect | pending |
-| 6 | `cardinal_office_vicar_rome.png` | Cardinal Vicar of Rome | pending |
-| 7 | `cardinal_office_archbishop.png` | Cardinal Archbishop | pending |
+| 1 | `cardinal_office_dean.png` | Dean of the College | generated |
+| 2 | `cardinal_office_vice_dean.png` | Vice-Dean of the College | generated |
+| 3 | `cardinal_office_secretary_state.png` | Cardinal Secretary of State | generated |
+| 4 | `cardinal_office_camerlengo.png` | Cardinal Camerlengo | generated |
+| 5 | `cardinal_office_prefect.png` | Cardinal Prefect | generated |
+| 6 | `cardinal_office_vicar_rome.png` | Cardinal Vicar of Rome | generated |
+| 7 | `cardinal_office_archbishop.png` | Cardinal Archbishop | generated |
+
+Generated on 2026-10-10 with the built-in image generator. Transparent
+1024×1024 PNG masters are beside this brief, as requested by the combined
+[cardinals-and-dioceses brief](cardinals-and-dioceses-image-prompts.md).
+Matching WebP exports (quality 82) are in the app's drawable folder.
 
 Until an image lands, its card shows without a picture. Export each as
 `<asset>.webp` (quality 82) into

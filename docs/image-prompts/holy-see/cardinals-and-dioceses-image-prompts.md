@@ -1,5 +1,13 @@
 # Image prompts — College of Cardinals and Diocese and Archdiocese
 
+**Status: generated — 2026-10-10.** All eight transparent RGBA PNGs are
+saved beside this brief at 1024×1024. Matching WebP copies (quality 82)
+are in `shared/src/commonMain/composeResources/drawable/`. The exports
+preserve the PNG alpha channels exactly. Final prompts are recorded in
+[cardinals-and-dioceses-generation.json](cardinals-and-dioceses-generation.json);
+light/dark checks are shown in
+[cardinals-and-dioceses-preview.jpg](cardinals-and-dioceses-preview.jpg).
+
 Eight images for two Holy See topics, ready to copy and paste: seven cardinal portraits and one archbishop portrait. Name each file exactly as its heading and put the finished PNGs in `docs/image-prompts/holy-see/`.
 
 **If your tool can't make transparent backgrounds,** replace “Transparent background” with “plain flat light grey background”; the backgrounds can be cut out afterwards.
