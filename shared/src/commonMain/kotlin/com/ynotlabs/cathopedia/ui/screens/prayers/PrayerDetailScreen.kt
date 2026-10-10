@@ -61,6 +61,14 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import kotlin.math.abs
+import androidx.compose.foundation.interaction.collectIsDraggedAsState
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.Animatable
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Slider
@@ -848,24 +856,44 @@ private fun ReadAloudBar(
 private fun PrayerSeekBar(reader: ReadAloudController) {
     val s = LocalStrings.current
     var dragging by remember { mutableStateOf<Float?>(null) }
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
+    val dragged by interaction.collectIsDraggedAsState()
+
+    // The voice reports its place a word at a time, a few times a second. Gliding
+    // linearly towards each new place keeps the marker moving smoothly between
+    // reports; a jump (seek, next part, pause) snaps straight there instead.
+    val shown = remember { Animatable(reader.progress) }
+    LaunchedEffect(reader.progress, reader.isPlaying) {
+        val target = reader.progress
+        if (!reader.isPlaying || abs(target - shown.value) > 0.08f) {
+            shown.snapTo(target)
+        } else {
+            shown.animateTo(target, tween(durationMillis = 450, easing = LinearEasing))
+        }
+    }
+
     val colors = SliderDefaults.colors(
         thumbColor = PrayerGold,
         activeTrackColor = PrayerGold,
         inactiveTrackColor = PrayerMuted.copy(alpha = 0.3f),
     )
+    // The marker grows a little while it is held, so the finger can see it.
+    val markerHeight by animateDpAsState(if (pressed || dragged) 26.dp else 20.dp)
     Slider(
-        value = dragging ?: reader.progress,
+        value = dragging ?: shown.value,
         onValueChange = { dragging = it },
         onValueChangeFinished = {
             dragging?.let(reader::seekTo)
             dragging = null
         },
         colors = colors,
+        interactionSource = interaction,
         thumb = {
             Box(
                 modifier = Modifier
-                    .size(16.dp)
-                    .clip(CircleShape)
+                    .size(width = 8.dp, height = markerHeight)
+                    .clip(RoundedCornerShape(4.dp))
                     .background(PrayerGold),
             )
         },
