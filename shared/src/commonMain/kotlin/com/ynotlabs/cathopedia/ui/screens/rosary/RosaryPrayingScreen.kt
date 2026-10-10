@@ -1,6 +1,8 @@
 package com.ynotlabs.cathopedia.ui.screens.rosary
 
 import androidx.compose.animation.Crossfade
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.border
 import com.ynotlabs.cathopedia.ui.theme.RosaryMarianPanel
 import com.ynotlabs.cathopedia.ui.theme.RosaryMarianCard
 import androidx.compose.ui.text.font.FontWeight
@@ -492,15 +494,23 @@ private fun RosaryPrayerControls(
                 ) {
                     Text(strings[RosaryPrayingStringKeys.Previous].orEmpty())
                 }
+                val pill = RoundedCornerShape(26.dp)
                 Button(
                     onClick = onAdvance,
                     enabled = enabled,
-                    shape = RoundedCornerShape(26.dp),
+                    shape = pill,
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = RosaryMarianCard.gold,
+                        containerColor = Color.Transparent,
                         contentColor = RosaryMarianCard.deep,
+                        disabledContainerColor = Color.Transparent,
+                        disabledContentColor = RosaryMarianCard.deep.copy(alpha = 0.6f),
                     ),
-                    modifier = Modifier.weight(1.5f).heightIn(min = 52.dp),
+                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
+                    modifier = Modifier.weight(1.5f)
+                        .clip(pill)
+                        .background(RosaryMarianCard.goldMetal)
+                        .border(1.dp, RosaryMarianCard.goldRim.copy(alpha = 0.7f), pill)
+                        .heightIn(min = 52.dp),
                 ) {
                     Text(strings[if (last) RosaryPrayingStringKeys.Finish else RosaryPrayingStringKeys.Next].orEmpty())
                     Icon(Icons.AutoMirrored.Filled.ArrowForward, contentDescription = null, modifier = Modifier.padding(start = 8.dp))

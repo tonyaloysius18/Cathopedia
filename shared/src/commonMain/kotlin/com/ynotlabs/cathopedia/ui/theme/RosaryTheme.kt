@@ -68,6 +68,14 @@ object RosaryMarianCard {
     val night = Color(0xFF001830)
     val nightRaised = Color(0xFF002246)
 
+    /** Metallic finish of the brand gold, light at the top and deep at the foot, like the app's gold-rimmed icons. */
+    val goldMetal: Brush get() = Brush.verticalGradient(
+        0f to Color(0xFFF2DA86),
+        0.45f to MetallicGold,
+        1f to Color(0xFFA9831F),
+    )
+    val goldRim = Color(0xFFF7E7AE)
+
     val gradient: Brush get() = Brush.horizontalGradient(listOf(deep, blue, shade))
     val verticalGradient: Brush get() = Brush.verticalGradient(listOf(shade, deep))
 }
