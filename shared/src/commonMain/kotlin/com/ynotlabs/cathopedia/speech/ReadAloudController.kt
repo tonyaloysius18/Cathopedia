@@ -30,7 +30,10 @@ class ReadAloudController(private val engine: SpeechEngine) {
         private set
 
     private var unitStarts: List<Int> = emptyList()
-    private var totalChars = 0
+
+    /** The whole prayer's length in characters, the seek bar's scale. */
+    var totalChars = 0
+        private set
 
     /** How far through the whole prayer reading has got, 0..1, for the seek bar. */
     val progress: Float

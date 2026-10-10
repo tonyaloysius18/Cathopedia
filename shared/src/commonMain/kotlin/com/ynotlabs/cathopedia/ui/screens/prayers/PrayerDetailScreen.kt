@@ -61,14 +61,14 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.withFrameNanos
+import androidx.compose.runtime.mutableFloatStateOf
 import kotlin.math.abs
 import androidx.compose.foundation.interaction.collectIsDraggedAsState
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.Animatable
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Slider
@@ -860,28 +860,19 @@ private fun PrayerSeekBar(reader: ReadAloudController) {
     val pressed by interaction.collectIsPressedAsState()
     val dragged by interaction.collectIsDraggedAsState()
 
-    // The voice reports its place a word at a time, a few times a second. Gliding
-    // linearly towards each new place keeps the marker moving smoothly between
-    // reports; a jump (seek, next part, pause) snaps straight there instead.
-    val shown = remember { Animatable(reader.progress) }
-    LaunchedEffect(reader.progress, reader.isPlaying) {
-        val target = reader.progress
-        if (!reader.isPlaying || abs(target - shown.value) > 0.08f) {
-            shown.snapTo(target)
-        } else {
-            shown.animateTo(target, tween(durationMillis = 450, easing = LinearEasing))
-        }
-    }
+    val shown = rememberGlidingProgress(reader)
 
     val colors = SliderDefaults.colors(
         thumbColor = PrayerGold,
         activeTrackColor = PrayerGold,
         inactiveTrackColor = PrayerMuted.copy(alpha = 0.3f),
     )
-    // The marker grows a little while it is held, so the finger can see it.
-    val markerHeight by animateDpAsState(if (pressed || dragged) 26.dp else 20.dp)
+    // A flat pill lying along the track; it grows a little while held, so the finger can see it.
+    val held = pressed || dragged
+    val markerWidth by animateDpAsState(if (held) 26.dp else 22.dp)
+    val markerHeight by animateDpAsState(if (held) 12.dp else 10.dp)
     Slider(
-        value = dragging ?: shown.value,
+        value = dragging ?: shown,
         onValueChange = { dragging = it },
         onValueChangeFinished = {
             dragging?.let(reader::seekTo)
@@ -890,12 +881,15 @@ private fun PrayerSeekBar(reader: ReadAloudController) {
         colors = colors,
         interactionSource = interaction,
         thumb = {
-            Box(
-                modifier = Modifier
-                    .size(width = 8.dp, height = markerHeight)
-                    .clip(RoundedCornerShape(4.dp))
-                    .background(PrayerGold),
-            )
+            // A fixed slot keeps the marker centred on the track whatever its animated size.
+            Box(modifier = Modifier.size(width = 28.dp, height = 20.dp), contentAlignment = Alignment.Center) {
+                Box(
+                    modifier = Modifier
+                        .size(width = markerWidth, height = markerHeight)
+                        .clip(RoundedCornerShape(50))
+                        .background(PrayerGold),
+                )
+            }
         },
         track = { state ->
             SliderDefaults.Track(
@@ -912,6 +906,70 @@ private fun PrayerSeekBar(reader: ReadAloudController) {
             .height(32.dp)
             .semantics { contentDescription = s.readAloudPosition },
     )
+}
+
+/** Characters per second the voice reads at 1x, gaps between lines included; refined while playing. */
+private const val DEFAULT_CHARS_PER_SECOND = 13f
+
+/**
+ * The seek bar's position, moving continuously while the voice reads. The voice
+ * reports its place only as each word starts, and says nothing during the gaps
+ * between lines, so following those reports makes the marker stop and start.
+ * Instead the marker runs at the prayer's average reading pace (learned as it
+ * plays, gaps included) and is steered gently towards the voice's real place:
+ * faster when behind, slower when ahead, never stopping. Seeks, skips, pauses and
+ * the end of the prayer snap straight to the new place.
+ */
+@Composable
+private fun rememberGlidingProgress(reader: ReadAloudController): Float {
+    var shown by remember { mutableFloatStateOf(reader.progress) }
+
+    LaunchedEffect(reader.isPlaying, reader.speedIndex, reader.totalChars) {
+        if (!reader.isPlaying || reader.totalChars == 0) {
+            shown = reader.progress
+            return@LaunchedEffect
+        }
+        val total = reader.totalChars.toFloat()
+        val speed = ReadAloudController.SPEEDS[reader.speedIndex]
+        var charsPerSecond = DEFAULT_CHARS_PER_SECOND * speed
+        var last = withFrameNanos { it }
+        var lastTarget = reader.progress
+        // Pace measurement: where and when this stretch of uninterrupted reading began.
+        var paceStartTime = last
+        var paceStartChars = lastTarget * total
+        shown = lastTarget
+
+        while (true) {
+            val now = withFrameNanos { it }
+            val dt = (now - last) / 1e9f
+            last = now
+            val target = reader.progress
+            val jump = abs(target - lastTarget) * total
+            lastTarget = target
+
+            if (jump > charsPerSecond * 2.5f) {
+                // A seek or skip, not reading: go straight there and start measuring afresh.
+                shown = target
+                paceStartTime = now
+                paceStartChars = target * total
+                continue
+            }
+
+            val elapsed = (now - paceStartTime) / 1e9f
+            if (elapsed > 3f) {
+                val measured = (target * total - paceStartChars) / elapsed
+                if (measured > 2f) charsPerSecond = measured
+            }
+
+            // Seconds the marker is behind (+) or ahead (-) of the voice, turned into a
+            // gentle speed-up or slow-down; it never stops and never runs far ahead.
+            val behind = (target - shown) * total / charsPerSecond
+            val factor = (1f + behind * 0.6f).coerceIn(0.35f, 2.5f)
+            val lead = charsPerSecond * 1.5f / total
+            shown = (shown + charsPerSecond * factor * dt / total).coerceAtMost(target + lead).coerceIn(0f, 1f)
+        }
+    }
+    return shown
 }
 
 /** "Next prayer · Hail Mary ›": moves on through the library without going back to the list. */
