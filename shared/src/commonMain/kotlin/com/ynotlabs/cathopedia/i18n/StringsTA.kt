@@ -369,6 +369,7 @@ val TA: Strings = Strings().apply {
     hubSacredFormsCount = "புனித வடிவங்கள் · {count}"
     hubTowersCount = "கோபுர வகைகள் · {count}"
     hubCandleHoldersCount = "மெழுகுதிரித் தாங்கிகள் · {count}"
+    hubOfficesCount = "பதவிகள் · {count}"
     hubTowersFormLabel = "வடிவம்"
     hubTowersPositionLabel = "இருப்பிடம்"
     hubTowersStyleLabel = "பாணி"

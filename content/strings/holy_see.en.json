@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "holy_see",
   "lang": "en",
-  "contentVersion": 5,
+  "contentVersion": 6,
   "translationStatus": "COMPLETE",
   "strings": {
     "hub.holy_see.title": "The Holy See",
@@ -660,6 +660,27 @@
     "art.insignia.ring.p_end": "When a pope dies or resigns, the Camerlengo — the cardinal who administers the Holy See until a successor is elected — has the ring and the papal lead seal cancelled in the presence of the cardinals (Universi Dominici Gregis, 13). Traditionally the face is scored with a deep cross. The old reason was practical, to stop anyone forging documents in the late pope's name; the gesture also says plainly that his office has ended.",
     "art.insignia.ring.img_defaced": "A cancelled ring, its face scored with a cross.",
     "art.insignia.ring.remember.title": "A ring of service",
-    "art.insignia.ring.remember.body": "When the faithful kiss the pope's ring, they honour the office of Peter, not the metal or the man. The ring stands for a task: to serve the whole Church as the \"servant of the servants of God\", strengthening the faith of his brothers (Luke 22:32) and feeding the flock that belongs to Christ."
+    "art.insignia.ring.remember.body": "When the faithful kiss the pope's ring, they honour the office of Peter, not the metal or the man. The ring stands for a task: to serve the whole Church as the \"servant of the servants of God\", strengthening the faith of his brothers (Luke 22:32) and feeding the flock that belongs to Christ.",
+    "art.cardoffices.title": "Offices in the College of Cardinals",
+    "art.cardoffices.lead": "Dean, Camerlengo, Secretary of State and more — the roles some cardinals hold, and what each one does.",
+    "art.cardoffices.intro": "The College of Cardinals has only three ranks: the orders of cardinal bishops, cardinal priests and cardinal deacons. Within it, though, some cardinals hold particular offices — in the College itself, in the Roman Curia or in a diocese. These describe what a cardinal does, not a higher degree of cardinal, and most of them are entrusted by the Pope for a time.",
+    "art.cardoffices.dean.name": "Dean of the College of Cardinals",
+    "art.cardoffices.dean.desc": "The first among equals in the College. He is elected by the cardinal bishops from among themselves and confirmed by the Pope, now for a five-year term that may be renewed, and he adds the title of the see of Ostia to his own (canons 350 §4, 352). When the see of Peter falls vacant he summons the cardinals and presides over their meetings and, if he is under eighty, over the conclave, where he asks the one elected whether he accepts and what name he will take.",
+    "art.cardoffices.vicedean.name": "Vice-Dean of the College of Cardinals",
+    "art.cardoffices.vicedean.desc": "Elected and confirmed in the same way as the Dean, the Vice-Dean takes the Dean's place when he is absent or impeded (canon 352 §4). If neither of them is a cardinal elector, the conclave is presided over by the senior elector by order and seniority.",
+    "art.cardoffices.secretary.name": "Cardinal Secretary of State",
+    "art.cardoffices.secretary.desc": "Heads the Secretariat of State, the office of the Roman Curia that works most closely with the Pope. It coordinates the work of the Curia and, through its Section for Relations with States, handles the Holy See's diplomacy with nations and international organizations. The Secretary of State has almost always been a cardinal.",
+    "art.cardoffices.camerlengo.name": "Cardinal Camerlengo",
+    "art.cardoffices.camerlengo.desc": "The Chamberlain of the Holy Roman Church. While the see is vacant he certifies the Pope's death, seals the papal apartments and looks after the temporal goods and rights of the Holy See, assisted by three cardinals chosen by lot. He administers; he does not govern the Church, and nothing new may be decided until a pope is elected.",
+    "art.cardoffices.prefect.name": "Cardinal Prefect",
+    "art.cardoffices.prefect.desc": "Heads a dicastery, one of the main departments of the Roman Curia, such as the Dicastery for the Doctrine of the Faith. Many prefects are cardinals, but since the 2022 constitution Praedicate Evangelium any member of the faithful may be appointed to lead a dicastery.",
+    "art.cardoffices.vicar.name": "Cardinal Vicar of Rome",
+    "art.cardoffices.vicar.desc": "The Pope is Bishop of Rome; the Cardinal Vicar exercises that ministry in his name for the diocese of Rome, whose cathedral is the Archbasilica of St John Lateran. His office does not lapse when the see falls vacant, so the diocese is never left without a pastor.",
+    "art.cardoffices.archbishop.name": "Cardinal Archbishop",
+    "art.cardoffices.archbishop.desc": "A cardinal who also leads an archdiocese, such as Milan, Manila or New York. This describes his pastoral office in that archdiocese, not a separate rank of cardinal: most residential cardinal archbishops belong to the order of cardinal priests.",
+    "art.cardoffices.vacancy.title": "When the see falls vacant",
+    "art.cardoffices.vacancy.body": "At a pope's death or resignation the heads of the Curia's dicasteries — including the Secretary of State and the prefects — cease from office. The Camerlengo, the Major Penitentiary and the Cardinal Vicar of Rome continue, so that the Holy See's goods, the forgiveness of sins and the diocese of Rome are still cared for (Universi Dominici Gregis 14).",
+    "art.cardoffices.closing.title": "One College, many services",
+    "art.cardoffices.closing.body": "Whatever office he holds, every cardinal shares the same calling: to assist the Pope and serve the whole Church, if need be to the shedding of his blood — which is what the cardinal's red recalls."
   }
 }

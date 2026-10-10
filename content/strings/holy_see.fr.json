@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "holy_see",
   "lang": "fr",
-  "contentVersion": 5,
+  "contentVersion": 6,
   "translationStatus": "COMPLETE",
   "strings": {
     "hub.holy_see.title": "Le Saint-Siège",
@@ -660,6 +660,27 @@
     "art.insignia.ring.p_end": "Quand un pape meurt ou renonce, le camerlingue — le cardinal qui administre le Saint-Siège jusqu'à l'élection d'un successeur — fait annuler l'anneau et le sceau de plomb en présence des cardinaux (Universi Dominici Gregis, 13). Traditionnellement, le chaton est rayé d'une croix profonde. La raison ancienne était pratique : empêcher toute falsification d'actes au nom du pape défunt ; le geste dit aussi clairement que sa charge a pris fin.",
     "art.insignia.ring.img_defaced": "Un anneau annulé, le chaton rayé d'une croix.",
     "art.insignia.ring.remember.title": "Un anneau de service",
-    "art.insignia.ring.remember.body": "Quand les fidèles baisent l'anneau du pape, ils honorent la charge de Pierre, non le métal ni l'homme. L'anneau représente une tâche : servir toute l'Église en « serviteur des serviteurs de Dieu », affermir la foi de ses frères (Luc 22, 32) et paître le troupeau qui appartient au Christ."
+    "art.insignia.ring.remember.body": "Quand les fidèles baisent l'anneau du pape, ils honorent la charge de Pierre, non le métal ni l'homme. L'anneau représente une tâche : servir toute l'Église en « serviteur des serviteurs de Dieu », affermir la foi de ses frères (Luc 22, 32) et paître le troupeau qui appartient au Christ.",
+    "art.cardoffices.title": "Les charges au sein du Collège des cardinaux",
+    "art.cardoffices.lead": "Doyen, camerlingue, secrétaire d’État et d’autres — les fonctions que tiennent certains cardinaux, et le rôle de chacune.",
+    "art.cardoffices.intro": "Le Collège des cardinaux ne compte que trois rangs : les ordres des cardinaux-évêques, des cardinaux-prêtres et des cardinaux-diacres. En son sein, pourtant, certains cardinaux exercent des charges particulières — dans le Collège lui-même, dans la Curie romaine ou dans un diocèse. Elles décrivent ce que fait un cardinal, non un degré supérieur de cardinalat, et la plupart sont confiées par le pape pour un temps.",
+    "art.cardoffices.dean.name": "Doyen du Collège des cardinaux",
+    "art.cardoffices.dean.desc": "Le premier parmi ses égaux au sein du Collège. Il est élu par les cardinaux-évêques parmi eux et confirmé par le pape, désormais pour un mandat de cinq ans renouvelable, et il ajoute à son titre celui du siège d’Ostie (canons 350 § 4, 352). Lorsque le siège de Pierre devient vacant, il convoque les cardinaux et préside leurs réunions et, s’il a moins de quatre-vingts ans, le conclave, où il demande à l’élu s’il accepte et quel nom il prendra.",
+    "art.cardoffices.vicedean.name": "Vice-doyen du Collège des cardinaux",
+    "art.cardoffices.vicedean.desc": "Élu et confirmé de la même manière que le doyen, le vice-doyen le remplace lorsqu’il est absent ou empêché (canon 352 § 4). Si aucun des deux n’est cardinal électeur, le conclave est présidé par le plus ancien des électeurs selon l’ordre et l’ancienneté.",
+    "art.cardoffices.secretary.name": "Cardinal secrétaire d’État",
+    "art.cardoffices.secretary.desc": "Il dirige la Secrétairerie d’État, l’organisme de la Curie romaine qui travaille le plus étroitement avec le pape. Elle coordonne le travail de la Curie et, par sa Section pour les relations avec les États, conduit la diplomatie du Saint-Siège auprès des nations et des organisations internationales. Le secrétaire d’État a presque toujours été un cardinal.",
+    "art.cardoffices.camerlengo.name": "Cardinal camerlingue",
+    "art.cardoffices.camerlengo.desc": "Le camérier de la Sainte Église romaine. Pendant la vacance du siège, il constate la mort du pape, fait sceller les appartements pontificaux et veille sur les biens et les droits temporels du Saint-Siège, assisté de trois cardinaux tirés au sort. Il administre ; il ne gouverne pas l’Église, et rien de nouveau ne peut être décidé avant l’élection d’un pape.",
+    "art.cardoffices.prefect.name": "Cardinal préfet",
+    "art.cardoffices.prefect.desc": "Il dirige un dicastère, l’un des principaux organismes de la Curie romaine, comme le Dicastère pour la doctrine de la foi. Beaucoup de préfets sont cardinaux, mais depuis la constitution Praedicate Evangelium de 2022, tout fidèle peut être nommé à la tête d’un dicastère.",
+    "art.cardoffices.vicar.name": "Cardinal vicaire de Rome",
+    "art.cardoffices.vicar.desc": "Le pape est évêque de Rome ; le cardinal vicaire exerce ce ministère en son nom pour le diocèse de Rome, dont la cathédrale est l’archibasilique Saint-Jean-de-Latran. Sa charge ne cesse pas pendant la vacance du siège, si bien que le diocèse n’est jamais privé de pasteur.",
+    "art.cardoffices.archbishop.name": "Cardinal archevêque",
+    "art.cardoffices.archbishop.desc": "Un cardinal qui dirige aussi un archidiocèse, comme Milan, Manille ou New York. Cela désigne sa charge pastorale dans cet archidiocèse, non un rang distinct de cardinal : la plupart des cardinaux archevêques résidentiels appartiennent à l’ordre des cardinaux-prêtres.",
+    "art.cardoffices.vacancy.title": "Quand le siège devient vacant",
+    "art.cardoffices.vacancy.body": "À la mort ou à la renonciation d’un pape, les chefs des dicastères de la Curie — dont le secrétaire d’État et les préfets — cessent leurs fonctions. Le camerlingue, le pénitencier majeur et le cardinal vicaire de Rome demeurent, afin que les biens du Saint-Siège, le pardon des péchés et le diocèse de Rome restent pris en charge (Universi Dominici Gregis 14).",
+    "art.cardoffices.closing.title": "Un seul Collège, de nombreux services",
+    "art.cardoffices.closing.body": "Quelle que soit sa charge, chaque cardinal partage la même vocation : assister le pape et servir l’Église tout entière, s’il le faut jusqu’à l’effusion de son sang — ce que rappelle la pourpre cardinalice."
   }
 }

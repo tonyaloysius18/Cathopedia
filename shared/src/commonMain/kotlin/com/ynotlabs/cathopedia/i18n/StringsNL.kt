@@ -369,6 +369,7 @@ val NL: Strings = Strings().apply {
     hubSacredFormsCount = "HEILIGE VORMEN · {count}"
     hubTowersCount = "TORENTYPES · {count}"
     hubCandleHoldersCount = "KANDELAARS · {count}"
+    hubOfficesCount = "AMBTEN · {count}"
     hubTowersFormLabel = "Vorm"
     hubTowersPositionLabel = "Positie"
     hubTowersStyleLabel = "Stijl"

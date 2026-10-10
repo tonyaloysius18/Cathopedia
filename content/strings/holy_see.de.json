@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "holy_see",
   "lang": "de",
-  "contentVersion": 5,
+  "contentVersion": 6,
   "translationStatus": "MACHINE_DRAFT",
   "strings": {
     "hub.holy_see.title": "Der Heilige Stuhl",
@@ -660,6 +660,27 @@
     "art.insignia.ring.p_end": "Wenn ein Papst stirbt oder zurücktritt, lässt der Camerlengo – der Kardinal, der den Heiligen Stuhl bis zur Wahl eines Nachfolgers verwaltet – den Ring und das päpstliche Bleisiegel im Beisein der Kardinäle entwerten (Universi Dominici Gregis, 13). Traditionell wird in die Siegelfläche ein tiefes Kreuz geritzt. Der alte Grund war praktisch: niemand sollte im Namen des verstorbenen Papstes Dokumente fälschen; die Geste sagt zugleich unmissverständlich, dass sein Amt beendet ist.",
     "art.insignia.ring.img_defaced": "Ein entwerteter Ring, die Siegelfläche mit einem Kreuz geritzt.",
     "art.insignia.ring.remember.title": "Ein Ring des Dienens",
-    "art.insignia.ring.remember.body": "Wenn die Gläubigen den Ring des Papstes küssen, ehren sie das Amt Petri, nicht das Metall oder den Menschen. Der Ring steht für eine Aufgabe: der ganzen Kirche als „Diener der Diener Gottes“ zu dienen, den Glauben seiner Brüder zu stärken (Lukas 22,32) und die Herde zu weiden, die Christus gehört."
+    "art.insignia.ring.remember.body": "Wenn die Gläubigen den Ring des Papstes küssen, ehren sie das Amt Petri, nicht das Metall oder den Menschen. Der Ring steht für eine Aufgabe: der ganzen Kirche als „Diener der Diener Gottes“ zu dienen, den Glauben seiner Brüder zu stärken (Lukas 22,32) und die Herde zu weiden, die Christus gehört.",
+    "art.cardoffices.title": "Ämter im Kardinalskollegium",
+    "art.cardoffices.lead": "Dekan, Camerlengo, Staatssekretär und mehr — die Aufgaben, die manche Kardinäle innehaben, und was jede bedeutet.",
+    "art.cardoffices.intro": "Das Kardinalskollegium kennt nur drei Ränge: die Ordnungen der Kardinalbischöfe, der Kardinalpriester und der Kardinaldiakone. Innerhalb des Kollegiums haben manche Kardinäle jedoch besondere Ämter inne — im Kollegium selbst, in der Römischen Kurie oder in einer Diözese. Sie beschreiben, was ein Kardinal tut, nicht eine höhere Stufe des Kardinalats, und die meisten werden vom Papst auf Zeit übertragen.",
+    "art.cardoffices.dean.name": "Dekan des Kardinalskollegiums",
+    "art.cardoffices.dean.desc": "Der Erste unter Gleichen im Kollegium. Er wird von den Kardinalbischöfen aus ihrer Mitte gewählt und vom Papst bestätigt, heute für eine verlängerbare Amtszeit von fünf Jahren, und er fügt seinem Titel den des Bistums Ostia hinzu (cann. 350 § 4, 352). Wird der Stuhl Petri vakant, beruft er die Kardinäle ein und leitet ihre Versammlungen und, wenn er jünger als achtzig ist, das Konklave, in dem er den Gewählten fragt, ob er annimmt und welchen Namen er tragen will.",
+    "art.cardoffices.vicedean.name": "Vizedekan des Kardinalskollegiums",
+    "art.cardoffices.vicedean.desc": "Auf dieselbe Weise gewählt und bestätigt wie der Dekan, vertritt ihn der Vizedekan, wenn er abwesend oder verhindert ist (can. 352 § 4). Ist keiner der beiden wahlberechtigt, leitet der nach Ordnung und Dienstalter erste Kardinalwähler das Konklave.",
+    "art.cardoffices.secretary.name": "Kardinalstaatssekretär",
+    "art.cardoffices.secretary.desc": "Er leitet das Staatssekretariat, die Behörde der Römischen Kurie, die am engsten mit dem Papst zusammenarbeitet. Es koordiniert die Arbeit der Kurie und führt durch seine Sektion für die Beziehungen mit den Staaten die Diplomatie des Heiligen Stuhls mit den Staaten und internationalen Organisationen. Der Staatssekretär war fast immer ein Kardinal.",
+    "art.cardoffices.camerlengo.name": "Kardinal Camerlengo",
+    "art.cardoffices.camerlengo.desc": "Der Kämmerer der Heiligen Römischen Kirche. Während der Sedisvakanz stellt er den Tod des Papstes fest, versiegelt die päpstlichen Gemächer und sorgt für die zeitlichen Güter und Rechte des Heiligen Stuhls, unterstützt von drei durch Los bestimmten Kardinälen. Er verwaltet, regiert aber die Kirche nicht, und bis zur Wahl eines Papstes darf nichts Neues entschieden werden.",
+    "art.cardoffices.prefect.name": "Kardinalpräfekt",
+    "art.cardoffices.prefect.desc": "Er leitet ein Dikasterium, eine der wichtigsten Behörden der Römischen Kurie, etwa das Dikasterium für die Glaubenslehre. Viele Präfekten sind Kardinäle, doch seit der Konstitution Praedicate Evangelium von 2022 kann jeder Gläubige zum Leiter eines Dikasteriums ernannt werden.",
+    "art.cardoffices.vicar.name": "Kardinalvikar von Rom",
+    "art.cardoffices.vicar.desc": "Der Papst ist Bischof von Rom; der Kardinalvikar übt diesen Dienst in seinem Namen für das Bistum Rom aus, dessen Kathedrale die Lateranbasilika ist. Sein Amt erlischt in der Sedisvakanz nicht, damit das Bistum nie ohne Hirten bleibt.",
+    "art.cardoffices.archbishop.name": "Kardinal-Erzbischof",
+    "art.cardoffices.archbishop.desc": "Ein Kardinal, der zugleich ein Erzbistum leitet, etwa Mailand, Manila oder New York. Das bezeichnet sein Hirtenamt in diesem Erzbistum, nicht einen eigenen Kardinalsrang: Die meisten residierenden Kardinal-Erzbischöfe gehören zur Ordnung der Kardinalpriester.",
+    "art.cardoffices.vacancy.title": "Wenn der Stuhl vakant wird",
+    "art.cardoffices.vacancy.body": "Mit dem Tod oder Amtsverzicht eines Papstes verlieren die Leiter der Dikasterien der Kurie — auch der Staatssekretär und die Präfekten — ihr Amt. Der Camerlengo, der Großpönitentiar und der Kardinalvikar von Rom bleiben im Amt, damit die Güter des Heiligen Stuhls, die Vergebung der Sünden und das Bistum Rom weiter versorgt sind (Universi Dominici Gregis 14).",
+    "art.cardoffices.closing.title": "Ein Kollegium, viele Dienste",
+    "art.cardoffices.closing.body": "Welches Amt er auch innehat, jeder Kardinal teilt dieselbe Berufung: dem Papst beizustehen und der ganzen Kirche zu dienen, wenn nötig bis zum Vergießen seines Blutes — daran erinnert das Purpurrot der Kardinäle."
   }
 }

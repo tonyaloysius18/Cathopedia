@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": 12,
+  "contentVersion": 13,
   "hub": {
     "id": "holy_see",
     "slug": "holy-see",
@@ -267,7 +267,8 @@
       "icon": "ic_red_hat",
       "heroAsset": "hub/holy_see/cardinals_hero.png",
       "articleIds": [
-        "art.cardinals.overview"
+        "art.cardinals.overview",
+        "art.cardinals.offices"
       ]
     },
     {
@@ -1769,6 +1770,147 @@
       "sources": [
         {
           "label": "Annuario Pontificio; Universi Dominici Gregis (1996)"
+        }
+      ]
+    },
+    {
+      "id": "art.cardinals.offices",
+      "sectionId": "holy_see.cardinals",
+      "sortOrder": 2,
+      "titleKey": "art.cardoffices.title",
+      "leadKey": "art.cardoffices.lead",
+      "readingTimeMinutes": 4,
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.cardinals.overview"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.cardoffices.intro"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.cardoffices.dean.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/cardinal_office_dean.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.cardoffices.dean.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.cardoffices.vicedean.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/cardinal_office_vice_dean.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.cardoffices.vicedean.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.cardoffices.secretary.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/cardinal_office_secretary_state.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.cardoffices.secretary.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.cardoffices.camerlengo.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/cardinal_office_camerlengo.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.cardoffices.camerlengo.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.cardoffices.prefect.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/cardinal_office_prefect.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.cardoffices.prefect.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.cardoffices.vicar.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/cardinal_office_vicar_rome.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.cardoffices.vicar.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.cardoffices.archbishop.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/cardinal_office_archbishop.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.cardoffices.archbishop.desc"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.cardoffices.vacancy.title",
+          "textKey": "art.cardoffices.vacancy.body"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.cardoffices.closing.title",
+          "textKey": "art.cardoffices.closing.body"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Code of Canon Law (1983), cann. 349–359"
+        },
+        {
+          "label": "John Paul II, Universi Dominici Gregis (1996), nos. 9, 14, 17, 87"
+        },
+        {
+          "label": "Francis, Praedicate Evangelium (2022); motu proprio on the office of Dean (2019)"
         }
       ]
     },

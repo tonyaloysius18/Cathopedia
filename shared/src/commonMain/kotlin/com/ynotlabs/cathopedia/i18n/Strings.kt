@@ -440,6 +440,7 @@ class Strings {
     var hubSacredFormsCount: String = "SACRED FORMS · {count}"
     var hubTowersCount: String = "TOWER TYPES · {count}"
     var hubCandleHoldersCount: String = "CANDLE HOLDERS · {count}"
+    var hubOfficesCount: String = "OFFICES · {count}"
     var hubTowersFormLabel: String = "Form"
     var hubTowersPositionLabel: String = "Position"
     var hubTowersStyleLabel: String = "Style"

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "holy_see",
   "lang": "pl",
-  "contentVersion": 5,
+  "contentVersion": 6,
   "translationStatus": "MACHINE_DRAFT",
   "strings": {
     "hub.holy_see.title": "Stolica Apostolska",
@@ -660,6 +660,27 @@
     "art.insignia.ring.p_end": "Gdy papież umiera lub rezygnuje, kamerling — kardynał zarządzający Stolicą Apostolską do czasu wyboru następcy — każe w obecności kardynałów unieważnić pierścień i papieską pieczęć ołowianą (Universi Dominici Gregis, 13). Tradycyjnie na licu wycina się głęboki krzyż. Dawny powód był praktyczny — uniemożliwić fałszowanie dokumentów w imieniu zmarłego papieża; gest ten mówi też wprost, że jego urząd dobiegł końca.",
     "art.insignia.ring.img_defaced": "Unieważniony pierścień, z licem przeciętym krzyżem.",
     "art.insignia.ring.remember.title": "Pierścień służby",
-    "art.insignia.ring.remember.body": "Gdy wierni całują pierścień papieża, oddają cześć urzędowi Piotra, a nie metalowi czy człowiekowi. Pierścień oznacza zadanie: służyć całemu Kościołowi jako „sługa sług Bożych”, umacniając wiarę swoich braci (Łk 22,32) i karmiąc owczarnię, która należy do Chrystusa."
+    "art.insignia.ring.remember.body": "Gdy wierni całują pierścień papieża, oddają cześć urzędowi Piotra, a nie metalowi czy człowiekowi. Pierścień oznacza zadanie: służyć całemu Kościołowi jako „sługa sług Bożych”, umacniając wiarę swoich braci (Łk 22,32) i karmiąc owczarnię, która należy do Chrystusa.",
+    "art.cardoffices.title": "Urzędy w Kolegium Kardynałów",
+    "art.cardoffices.lead": "Dziekan, kamerling, sekretarz stanu i inni — funkcje, które pełnią niektórzy kardynałowie, i na czym każda polega.",
+    "art.cardoffices.intro": "Kolegium Kardynałów ma tylko trzy stopnie: porządki kardynałów biskupów, kardynałów prezbiterów i kardynałów diakonów. W jego obrębie niektórzy kardynałowie pełnią jednak szczególne urzędy — w samym Kolegium, w Kurii Rzymskiej albo w diecezji. Określają one, co kardynał robi, a nie wyższy stopień kardynalski, i w większości są powierzane przez papieża na pewien czas.",
+    "art.cardoffices.dean.name": "Dziekan Kolegium Kardynałów",
+    "art.cardoffices.dean.desc": "Pierwszy wśród równych w Kolegium. Wybierają go spośród siebie kardynałowie biskupi, a zatwierdza papież, obecnie na pięcioletnią kadencję z możliwością przedłużenia; do swojego tytułu dołącza tytuł stolicy Ostii (kan. 350 § 4, 352). Gdy Stolica Piotrowa staje się wakująca, zwołuje kardynałów i przewodniczy ich zebraniom oraz, jeśli nie ukończył osiemdziesięciu lat, konklawe, gdzie pyta wybranego, czy przyjmuje wybór i jakie imię przybiera.",
+    "art.cardoffices.vicedean.name": "Wicedziekan Kolegium Kardynałów",
+    "art.cardoffices.vicedean.desc": "Wybierany i zatwierdzany w ten sam sposób co dziekan, wicedziekan zastępuje go, gdy jest nieobecny lub ma przeszkodę (kan. 352 § 4). Jeśli żaden z nich nie jest elektorem, konklawe przewodniczy pierwszy z elektorów według porządku i starszeństwa.",
+    "art.cardoffices.secretary.name": "Kardynał sekretarz stanu",
+    "art.cardoffices.secretary.desc": "Kieruje Sekretariatem Stanu, urzędem Kurii Rzymskiej najściślej współpracującym z papieżem. Koordynuje on pracę Kurii, a przez Sekcję ds. Relacji z Państwami prowadzi dyplomację Stolicy Apostolskiej wobec państw i organizacji międzynarodowych. Sekretarz stanu niemal zawsze był kardynałem.",
+    "art.cardoffices.camerlengo.name": "Kardynał kamerling",
+    "art.cardoffices.camerlengo.desc": "Kamerling Świętego Kościoła Rzymskiego. W czasie wakatu Stolicy Apostolskiej stwierdza śmierć papieża, pieczętuje apartamenty papieskie i troszczy się o dobra i prawa doczesne Stolicy Apostolskiej, wspomagany przez trzech kardynałów wybranych przez losowanie. Administruje, ale nie rządzi Kościołem, a do wyboru papieża nie wolno podejmować żadnych nowych decyzji.",
+    "art.cardoffices.prefect.name": "Kardynał prefekt",
+    "art.cardoffices.prefect.desc": "Kieruje dykasterią, jednym z głównych urzędów Kurii Rzymskiej, na przykład Dykasterią Nauki Wiary. Wielu prefektów to kardynałowie, ale od konstytucji Praedicate Evangelium z 2022 roku kierować dykasterią może zostać mianowany każdy wierny.",
+    "art.cardoffices.vicar.name": "Kardynał wikariusz Rzymu",
+    "art.cardoffices.vicar.desc": "Papież jest biskupem Rzymu; kardynał wikariusz sprawuje w jego imieniu tę posługę w diecezji rzymskiej, której katedrą jest archibazylika św. Jana na Lateranie. Jego urząd nie wygasa w czasie wakatu, dzięki czemu diecezja nigdy nie pozostaje bez pasterza.",
+    "art.cardoffices.archbishop.name": "Kardynał arcybiskup",
+    "art.cardoffices.archbishop.desc": "Kardynał, który kieruje także archidiecezją, na przykład Mediolanem, Manilą czy Nowym Jorkiem. Oznacza to jego urząd pasterski w tej archidiecezji, a nie odrębny stopień kardynalski: większość kardynałów arcybiskupów rezydencjalnych należy do porządku kardynałów prezbiterów.",
+    "art.cardoffices.vacancy.title": "Gdy Stolica staje się wakująca",
+    "art.cardoffices.vacancy.body": "Po śmierci lub rezygnacji papieża szefowie dykasterii Kurii — w tym sekretarz stanu i prefekci — tracą swój urząd. Kamerling, penitencjariusz większy i kardynał wikariusz Rzymu pełnią go dalej, aby dobra Stolicy Apostolskiej, odpuszczanie grzechów i diecezja rzymska nadal miały opiekę (Universi Dominici Gregis 14).",
+    "art.cardoffices.closing.title": "Jedno Kolegium, wiele posług",
+    "art.cardoffices.closing.body": "Jakikolwiek urząd pełni, każdy kardynał ma to samo powołanie: wspierać papieża i służyć całemu Kościołowi, a w razie potrzeby aż do przelania krwi — o czym przypomina kardynalska purpura."
   }
 }

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "holy_see",
   "lang": "nl",
-  "contentVersion": 5,
+  "contentVersion": 6,
   "translationStatus": "MACHINE_DRAFT",
   "strings": {
     "hub.holy_see.title": "De Heilige Stoel",
@@ -660,6 +660,27 @@
     "art.insignia.ring.p_end": "Wanneer een paus overlijdt of aftreedt, laat de camerlengo — de kardinaal die de Heilige Stoel bestuurt tot er een opvolger is gekozen — de ring en het pauselijk loden zegel in aanwezigheid van de kardinalen onbruikbaar maken (Universi Dominici Gregis, 13). Traditioneel wordt er een diep kruis in het oppervlak gekrast. De oude reden was praktisch: voorkomen dat iemand documenten zou vervalsen in naam van de overleden paus; het gebaar zegt ook duidelijk dat zijn ambt is beëindigd.",
     "art.insignia.ring.img_defaced": "Een onbruikbaar gemaakte ring, het oppervlak doorgekrast met een kruis.",
     "art.insignia.ring.remember.title": "Een ring van dienst",
-    "art.insignia.ring.remember.body": "Wanneer de gelovigen de ring van de paus kussen, eren zij het ambt van Petrus, niet het metaal of de man. De ring staat voor een opdracht: de hele Kerk dienen als \"dienaar van de dienaren Gods\", het geloof van zijn broeders versterken (Lucas 22,32) en de kudde weiden die aan Christus toebehoort."
+    "art.insignia.ring.remember.body": "Wanneer de gelovigen de ring van de paus kussen, eren zij het ambt van Petrus, niet het metaal of de man. De ring staat voor een opdracht: de hele Kerk dienen als \"dienaar van de dienaren Gods\", het geloof van zijn broeders versterken (Lucas 22,32) en de kudde weiden die aan Christus toebehoort.",
+    "art.cardoffices.title": "Ambten in het College van Kardinalen",
+    "art.cardoffices.lead": "Deken, camerlengo, staatssecretaris en meer — de taken die sommige kardinalen vervullen, en wat elk ervan inhoudt.",
+    "art.cardoffices.intro": "Het College van Kardinalen kent maar drie rangen: de orden van de kardinaal-bisschoppen, de kardinaal-priesters en de kardinaal-diakens. Binnen het college bekleden sommige kardinalen echter bijzondere ambten — in het college zelf, in de Romeinse Curie of in een bisdom. Die zeggen wat een kardinaal doet, niet dat hij een hogere graad van kardinaal is, en de meeste worden door de paus voor een tijd toevertrouwd.",
+    "art.cardoffices.dean.name": "Deken van het College van Kardinalen",
+    "art.cardoffices.dean.desc": "De eerste onder gelijken in het college. Hij wordt door de kardinaal-bisschoppen uit hun midden gekozen en door de paus bevestigd, tegenwoordig voor een verlengbare termijn van vijf jaar, en hij voegt aan zijn eigen titel die van het bisdom Ostia toe (can. 350 § 4, 352). Wanneer de stoel van Petrus vacant wordt, roept hij de kardinalen bijeen en zit hij hun vergaderingen voor en, als hij jonger dan tachtig is, het conclaaf, waar hij de gekozene vraagt of hij aanvaardt en welke naam hij wil dragen.",
+    "art.cardoffices.vicedean.name": "Vicedeken van het College van Kardinalen",
+    "art.cardoffices.vicedean.desc": "Op dezelfde manier gekozen en bevestigd als de deken, neemt de vicedeken zijn plaats in wanneer hij afwezig of verhinderd is (can. 352 § 4). Is geen van beiden kiesgerechtigd, dan wordt het conclaaf voorgezeten door de eerste kardinaal-kiezer naar orde en anciënniteit.",
+    "art.cardoffices.secretary.name": "Kardinaal-staatssecretaris",
+    "art.cardoffices.secretary.desc": "Hij leidt het Staatssecretariaat, het orgaan van de Romeinse Curie dat het nauwst met de paus samenwerkt. Het coördineert het werk van de Curie en voert via zijn Sectie voor de Betrekkingen met de Staten de diplomatie van de Heilige Stoel met naties en internationale organisaties. De staatssecretaris is bijna altijd een kardinaal geweest.",
+    "art.cardoffices.camerlengo.name": "Kardinaal-camerlengo",
+    "art.cardoffices.camerlengo.desc": "De kamerheer van de Heilige Roomse Kerk. Tijdens de sedisvacatie stelt hij de dood van de paus vast, verzegelt hij de pauselijke vertrekken en zorgt hij voor de tijdelijke goederen en rechten van de Heilige Stoel, bijgestaan door drie door loting aangewezen kardinalen. Hij beheert, maar bestuurt de Kerk niet, en tot de verkiezing van een paus mag er niets nieuws worden besloten.",
+    "art.cardoffices.prefect.name": "Kardinaal-prefect",
+    "art.cardoffices.prefect.desc": "Hij leidt een dicasterie, een van de belangrijkste organen van de Romeinse Curie, zoals het Dicasterie voor de Geloofsleer. Veel prefecten zijn kardinaal, maar sinds de constitutie Praedicate Evangelium van 2022 kan iedere gelovige worden benoemd tot hoofd van een dicasterie.",
+    "art.cardoffices.vicar.name": "Kardinaal-vicaris van Rome",
+    "art.cardoffices.vicar.desc": "De paus is bisschop van Rome; de kardinaal-vicaris oefent dat ambt in zijn naam uit voor het bisdom Rome, waarvan de kathedraal de aartsbasiliek van Sint-Jan van Lateranen is. Zijn ambt vervalt niet tijdens de sedisvacatie, zodat het bisdom nooit zonder herder is.",
+    "art.cardoffices.archbishop.name": "Kardinaal-aartsbisschop",
+    "art.cardoffices.archbishop.desc": "Een kardinaal die ook een aartsbisdom leidt, zoals Milaan, Manilla of New York. Dat duidt zijn herderlijk ambt in dat aartsbisdom aan, geen aparte kardinaalsrang: de meeste residerende kardinaal-aartsbisschoppen behoren tot de orde van de kardinaal-priesters.",
+    "art.cardoffices.vacancy.title": "Wanneer de stoel vacant wordt",
+    "art.cardoffices.vacancy.body": "Bij de dood of het aftreden van een paus verliezen de hoofden van de dicasteries van de Curie — onder wie de staatssecretaris en de prefecten — hun ambt. De camerlengo, de grootpenitentiarius en de kardinaal-vicaris van Rome blijven in functie, zodat de goederen van de Heilige Stoel, de vergeving van de zonden en het bisdom Rome verzorgd blijven (Universi Dominici Gregis 14).",
+    "art.cardoffices.closing.title": "Eén college, vele diensten",
+    "art.cardoffices.closing.body": "Welk ambt hij ook bekleedt, iedere kardinaal deelt dezelfde roeping: de paus bijstaan en de hele Kerk dienen, zo nodig tot het vergieten van zijn bloed — daaraan herinnert het rood van de kardinaal."
   }
 }

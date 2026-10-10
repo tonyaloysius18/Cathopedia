@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "holy_see",
   "lang": "pt",
-  "contentVersion": 5,
+  "contentVersion": 6,
   "translationStatus": "MACHINE_DRAFT",
   "strings": {
     "hub.holy_see.title": "A Santa Sé",
@@ -660,6 +660,27 @@
     "art.insignia.ring.p_end": "Quando um papa morre ou renuncia, o camerlengo — o cardeal que administra a Santa Sé até a eleição de um sucessor — manda anular o anel e o selo papal de chumbo na presença dos cardeais (Universi Dominici Gregis, 13). Tradicionalmente a face é riscada com uma cruz profunda. A razão antiga era prática, impedir que alguém falsificasse documentos em nome do falecido papa; o gesto também diz claramente que seu ofício terminou.",
     "art.insignia.ring.img_defaced": "Um anel anulado, com a face riscada com uma cruz.",
     "art.insignia.ring.remember.title": "Um anel de serviço",
-    "art.insignia.ring.remember.body": "Quando os fiéis beijam o anel do papa, honram o ofício de Pedro, não o metal nem o homem. O anel representa uma tarefa: servir a toda a Igreja como «servo dos servos de Deus», confirmando a fé de seus irmãos (Lucas 22,32) e apascentando o rebanho que pertence a Cristo."
+    "art.insignia.ring.remember.body": "Quando os fiéis beijam o anel do papa, honram o ofício de Pedro, não o metal nem o homem. O anel representa uma tarefa: servir a toda a Igreja como «servo dos servos de Deus», confirmando a fé de seus irmãos (Lucas 22,32) e apascentando o rebanho que pertence a Cristo.",
+    "art.cardoffices.title": "Os cargos no Colégio dos Cardeais",
+    "art.cardoffices.lead": "Decano, camerlengo, secretário de Estado e outros — as funções que alguns cardeais exercem e o que faz cada uma.",
+    "art.cardoffices.intro": "O Colégio dos Cardeais tem apenas três graus: as ordens dos cardeais bispos, dos cardeais presbíteros e dos cardeais diáconos. Dentro dele, porém, alguns cardeais exercem cargos particulares — no próprio Colégio, na Cúria Romana ou em uma diocese. Eles indicam o que um cardeal faz, não um grau superior de cardeal, e a maioria é confiada pelo Papa por um tempo.",
+    "art.cardoffices.dean.name": "Decano do Colégio dos Cardeais",
+    "art.cardoffices.dean.desc": "O primeiro entre iguais no Colégio. É eleito pelos cardeais bispos dentre eles e confirmado pelo Papa, hoje para um mandato de cinco anos renovável, e acrescenta ao seu o título da sé de Óstia (cân. 350 § 4, 352). Quando a sé de Pedro fica vacante, convoca os cardeais e preside suas reuniões e, se tiver menos de oitenta anos, o conclave, onde pergunta ao eleito se aceita e que nome deseja tomar.",
+    "art.cardoffices.vicedean.name": "Vice-decano do Colégio dos Cardeais",
+    "art.cardoffices.vicedean.desc": "Eleito e confirmado do mesmo modo que o decano, o vice-decano o substitui quando está ausente ou impedido (cân. 352 § 4). Se nenhum dos dois for cardeal eleitor, o conclave é presidido pelo primeiro dos eleitores por ordem e antiguidade.",
+    "art.cardoffices.secretary.name": "Cardeal secretário de Estado",
+    "art.cardoffices.secretary.desc": "Dirige a Secretaria de Estado, o organismo da Cúria Romana que trabalha mais de perto com o Papa. Coordena o trabalho da Cúria e, por meio de sua Seção para as Relações com os Estados, conduz a diplomacia da Santa Sé com as nações e os organismos internacionais. O secretário de Estado quase sempre foi um cardeal.",
+    "art.cardoffices.camerlengo.name": "Cardeal camerlengo",
+    "art.cardoffices.camerlengo.desc": "O camerlengo da Santa Igreja Romana. Durante a sé vacante, ele certifica a morte do Papa, lacra os aposentos pontifícios e cuida dos bens e direitos temporais da Santa Sé, auxiliado por três cardeais sorteados. Ele administra, mas não governa a Igreja, e nada de novo pode ser decidido até a eleição de um Papa.",
+    "art.cardoffices.prefect.name": "Cardeal prefeito",
+    "art.cardoffices.prefect.desc": "Dirige um dicastério, um dos principais organismos da Cúria Romana, como o Dicastério para a Doutrina da Fé. Muitos prefeitos são cardeais, mas desde a constituição Praedicate Evangelium, de 2022, qualquer fiel pode ser nomeado para dirigir um dicastério.",
+    "art.cardoffices.vicar.name": "Cardeal vigário de Roma",
+    "art.cardoffices.vicar.desc": "O Papa é bispo de Roma; o cardeal vigário exerce esse ministério em seu nome para a diocese de Roma, cuja catedral é a arquibasílica de São João de Latrão. Seu cargo não cessa durante a sé vacante, de modo que a diocese nunca fica sem pastor.",
+    "art.cardoffices.archbishop.name": "Cardeal arcebispo",
+    "art.cardoffices.archbishop.desc": "Um cardeal que também dirige uma arquidiocese, como Milão, Manila ou Nova York. Isso indica seu cargo pastoral naquela arquidiocese, não um grau distinto de cardeal: a maioria dos cardeais arcebispos residenciais pertence à ordem dos cardeais presbíteros.",
+    "art.cardoffices.vacancy.title": "Quando a sé fica vacante",
+    "art.cardoffices.vacancy.body": "Com a morte ou a renúncia de um Papa, os chefes dos dicastérios da Cúria — inclusive o secretário de Estado e os prefeitos — cessam suas funções. Continuam o camerlengo, o penitenciário-mor e o cardeal vigário de Roma, para que os bens da Santa Sé, o perdão dos pecados e a diocese de Roma continuem atendidos (Universi Dominici Gregis 14).",
+    "art.cardoffices.closing.title": "Um só Colégio, muitos serviços",
+    "art.cardoffices.closing.body": "Seja qual for seu cargo, todo cardeal partilha a mesma vocação: assistir o Papa e servir toda a Igreja, se preciso até derramar o próprio sangue — é o que lembra o vermelho cardinalício."
   }
 }

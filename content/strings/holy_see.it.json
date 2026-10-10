@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "hubId": "holy_see",
   "lang": "it",
-  "contentVersion": 5,
+  "contentVersion": 6,
   "translationStatus": "MACHINE_DRAFT",
   "strings": {
     "hub.holy_see.title": "La Santa Sede",
@@ -660,6 +660,27 @@
     "art.insignia.ring.p_end": "Quando un papa muore o rinuncia, il Camerlengo — il cardinale che amministra la Santa Sede fino all'elezione del successore — fa annullare l'anello e il sigillo di piombo papale alla presenza dei cardinali (Universi Dominici Gregis, 13). Tradizionalmente il volto viene inciso con una profonda croce. Il motivo antico era pratico, impedire che qualcuno falsificasse documenti a nome del papa defunto; il gesto dice anche chiaramente che il suo ufficio è terminato.",
     "art.insignia.ring.img_defaced": "Un anello annullato, con il volto inciso da una croce.",
     "art.insignia.ring.remember.title": "Un anello di servizio",
-    "art.insignia.ring.remember.body": "Quando i fedeli baciano l'anello del papa, onorano l'ufficio di Pietro, non il metallo né l'uomo. L'anello rappresenta un compito: servire tutta la Chiesa come «servo dei servi di Dio», confermando nella fede i suoi fratelli (Luca 22,32) e pascendo il gregge che appartiene a Cristo."
+    "art.insignia.ring.remember.body": "Quando i fedeli baciano l'anello del papa, onorano l'ufficio di Pietro, non il metallo né l'uomo. L'anello rappresenta un compito: servire tutta la Chiesa come «servo dei servi di Dio», confermando nella fede i suoi fratelli (Luca 22,32) e pascendo il gregge che appartiene a Cristo.",
+    "art.cardoffices.title": "Gli uffici nel Collegio cardinalizio",
+    "art.cardoffices.lead": "Decano, camerlengo, segretario di Stato e altri — i compiti che alcuni cardinali svolgono e che cosa fa ciascuno.",
+    "art.cardoffices.intro": "Il Collegio cardinalizio ha solo tre gradi: gli ordini dei cardinali vescovi, dei cardinali presbiteri e dei cardinali diaconi. Al suo interno, però, alcuni cardinali ricoprono uffici particolari — nel Collegio stesso, nella Curia romana o in una diocesi. Essi indicano che cosa fa un cardinale, non un grado superiore di cardinale, e per lo più sono affidati dal Papa per un tempo.",
+    "art.cardoffices.dean.name": "Decano del Collegio cardinalizio",
+    "art.cardoffices.dean.desc": "Il primo tra pari nel Collegio. È eletto dai cardinali vescovi tra loro e confermato dal Papa, oggi per un quinquennio rinnovabile, e aggiunge al proprio il titolo della sede di Ostia (cann. 350 § 4, 352). Quando la sede di Pietro diventa vacante, convoca i cardinali e presiede le loro riunioni e, se non ha ancora ottant’anni, il conclave, dove chiede all’eletto se accetta e con quale nome vuole essere chiamato.",
+    "art.cardoffices.vicedean.name": "Vicedecano del Collegio cardinalizio",
+    "art.cardoffices.vicedean.desc": "Eletto e confermato come il decano, il vicedecano ne fa le veci quando è assente o impedito (can. 352 § 4). Se nessuno dei due è cardinale elettore, il conclave è presieduto dal primo degli elettori per ordine e anzianità.",
+    "art.cardoffices.secretary.name": "Cardinale segretario di Stato",
+    "art.cardoffices.secretary.desc": "Guida la Segreteria di Stato, l’organismo della Curia romana che collabora più da vicino con il Papa. Coordina il lavoro della Curia e, con la Sezione per i rapporti con gli Stati, cura la diplomazia della Santa Sede con le nazioni e gli organismi internazionali. Il segretario di Stato è stato quasi sempre un cardinale.",
+    "art.cardoffices.camerlengo.name": "Cardinale camerlengo",
+    "art.cardoffices.camerlengo.desc": "Il camerlengo di Santa Romana Chiesa. Durante la sede vacante accerta la morte del Papa, fa sigillare l’appartamento pontificio e cura i beni e i diritti temporali della Santa Sede, assistito da tre cardinali estratti a sorte. Amministra, ma non governa la Chiesa, e nulla di nuovo può essere deciso fino all’elezione di un Papa.",
+    "art.cardoffices.prefect.name": "Cardinale prefetto",
+    "art.cardoffices.prefect.desc": "Guida un dicastero, uno dei principali organismi della Curia romana, come il Dicastero per la dottrina della fede. Molti prefetti sono cardinali, ma dalla costituzione Praedicate Evangelium del 2022 qualsiasi fedele può essere nominato a capo di un dicastero.",
+    "art.cardoffices.vicar.name": "Cardinale vicario di Roma",
+    "art.cardoffices.vicar.desc": "Il Papa è vescovo di Roma; il cardinale vicario esercita questo ministero a suo nome per la diocesi di Roma, la cui cattedrale è l’arcibasilica di San Giovanni in Laterano. Il suo ufficio non decade durante la sede vacante, così la diocesi non resta mai senza pastore.",
+    "art.cardoffices.archbishop.name": "Cardinale arcivescovo",
+    "art.cardoffices.archbishop.desc": "Un cardinale che guida anche un’arcidiocesi, come Milano, Manila o New York. Indica il suo ufficio pastorale in quell’arcidiocesi, non un grado distinto di cardinale: la maggior parte dei cardinali arcivescovi residenziali appartiene all’ordine dei cardinali presbiteri.",
+    "art.cardoffices.vacancy.title": "Quando la sede diventa vacante",
+    "art.cardoffices.vacancy.body": "Alla morte o alla rinuncia di un Papa, i capi dei dicasteri della Curia — tra cui il segretario di Stato e i prefetti — cessano dall’ufficio. Restano il camerlengo, il penitenziere maggiore e il cardinale vicario di Roma, perché i beni della Santa Sede, il perdono dei peccati e la diocesi di Roma continuino a essere curati (Universi Dominici Gregis 14).",
+    "art.cardoffices.closing.title": "Un solo Collegio, molti servizi",
+    "art.cardoffices.closing.body": "Qualunque ufficio ricopra, ogni cardinale condivide la stessa chiamata: assistere il Papa e servire tutta la Chiesa, se necessario fino all’effusione del sangue — ciò che ricorda la porpora cardinalizia."
   }
 }
