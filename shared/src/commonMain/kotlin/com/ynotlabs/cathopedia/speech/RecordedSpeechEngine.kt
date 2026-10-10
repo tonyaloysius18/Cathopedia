@@ -42,7 +42,22 @@ internal class RecordedSpeechEngine(
         stop()
         val segment = PrayerAudioPacks.segment(language, text)
         if (segment == null) {
-            deviceVoice.speak(text, language, rate, startAt, onProgress, onDone)
+            if (language == "la") {
+                // Latin goes to the Italian voice respelled as Church Latin; progress is mapped
+                // back to the Latin on screen.
+                val from = startAt.coerceIn(0, text.length)
+                val spoken = LatinPronunciation.respell(text.substring(from))
+                deviceVoice.speak(
+                    spoken.text,
+                    language,
+                    rate,
+                    startAt = 0,
+                    onProgress = { onProgress(from + spoken.originalOffset(it)) },
+                    onDone = onDone,
+                )
+            } else {
+                deviceVoice.speak(text, language, rate, startAt, onProgress, onDone)
+            }
             return
         }
         // A recording has no word timings, so a place in the text maps to the same
