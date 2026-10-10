@@ -310,6 +310,7 @@
   "ui#readAloudIosVoiceHint": "Dodaj go w Ustawienia › Dostępność › Zawartość mówiona › Głosy.",
   "ui#readAloudListen": "Słuchaj",
   "ui#readAloudNext": "Następna część",
+  "ui#readAloudNextPrayer": "Następna modlitwa",
   "ui#readAloudNoVoice": "To urządzenie nie ma głosu w języku {language}, aby odczytać modlitwę na głos.",
   "ui#readAloudPause": "Wstrzymaj czytanie",
   "ui#readAloudPlay": "Odczytaj modlitwę na głos",

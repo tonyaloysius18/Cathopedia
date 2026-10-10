@@ -24,14 +24,12 @@ class ReadAloudTest {
     }
 
     @Test
-    fun scriptDropsMarkdownAndVersicleMarks() {
+    fun scriptReadsOnlyThePrayerWithoutMarkdownOrVersicleMarks() {
         val script = prayerSpeechScript(
-            "The Angelus",
             listOf(null to "> V. The Angel of the Lord declared to Mary,\n> R. And she conceived.\n\n**Hail Mary**, full of grace"),
         )
         assertEquals(
             listOf(
-                SpeechUnit("The Angelus", -1, -1),
                 SpeechUnit("The Angel of the Lord declared to Mary,\nAnd she conceived.", 0, 0),
                 SpeechUnit("Hail Mary, full of grace", 0, 1),
             ),
@@ -41,21 +39,21 @@ class ReadAloudTest {
 
     @Test
     fun headingsAreReadAsTheirOwnPart() {
-        val script = prayerSpeechScript("Novena", listOf(null to "Opening", "Day 1" to "Pray."))
-        assertEquals(listOf(-1 to -1, 0 to 0, 1 to -1, 1 to 0), script.map { it.section to it.paragraph })
+        val script = prayerSpeechScript(listOf(null to "Opening", "Day 1" to "Pray."))
+        assertEquals(listOf(0 to 0, 1 to -1, 1 to 0), script.map { it.section to it.paragraph })
     }
 
     @Test
     fun playsEachPartInTurnAndStopsAtTheEnd() {
         val engine = FakeEngine()
         val reader = ReadAloudController(engine)
-        reader.load(prayerSpeechScript("Title", listOf(null to "One\n\nTwo")), "la")
+        reader.load(prayerSpeechScript(listOf(null to "One\n\nTwo\n\nThree")), "la")
         reader.play()
         engine.finish()
         engine.finish()
         assertTrue(reader.isPlaying)
         engine.finish()
-        assertEquals(listOf("Title", "One", "Two"), engine.spoken.map { it.first })
+        assertEquals(listOf("One", "Two", "Three"), engine.spoken.map { it.first })
         assertTrue(engine.spoken.all { it.second == "la" })
         assertFalse(reader.isPlaying)
         assertNull(reader.current)
@@ -65,7 +63,7 @@ class ReadAloudTest {
     fun aLateDoneFromAnInterruptedPartIsIgnored() {
         val engine = FakeEngine()
         val reader = ReadAloudController(engine)
-        reader.load(prayerSpeechScript("Title", listOf(null to "One\n\nTwo\n\nThree")), "en")
+        reader.load(prayerSpeechScript(listOf(null to "One\n\nTwo\n\nThree")), "en")
         reader.play()
         val stale = engine.pendingDone!!
         reader.next()

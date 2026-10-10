@@ -2,8 +2,8 @@ package com.ynotlabs.cathopedia.speech
 
 /**
  * One stretch of a prayer read in a single utterance. [section] and [paragraph]
- * point back at what is on screen so it can be highlighted: section -1 is the
- * prayer's title, and paragraph -1 is a section's heading.
+ * point back at what is on screen so it can be highlighted; paragraph -1 is a
+ * section's heading.
  */
 data class SpeechUnit(val text: String, val section: Int, val paragraph: Int)
 
@@ -35,13 +35,12 @@ fun prayerParagraphs(bodyMd: String): List<String> =
     bodyMd.trim().split(Regex("\n\\s*\n")).filter { it.isNotBlank() }
 
 /**
- * What the read-aloud player says for a prayer: the title, then each section's
- * heading and paragraphs, with the markdown and the V./R. versicle marks taken
- * out so they aren't read as letters.
+ * What the read-aloud player says for a prayer: only the prayer itself, i.e.
+ * each section's heading and paragraphs (not the prayer's title), with the
+ * markdown and the V./R. versicle marks taken out so they aren't read as letters.
  */
-fun prayerSpeechScript(title: String, sections: List<Pair<String?, String>>): List<SpeechUnit> {
+fun prayerSpeechScript(sections: List<Pair<String?, String>>): List<SpeechUnit> {
     val units = mutableListOf<SpeechUnit>()
-    cleanForSpeech(title).takeIf { it.isNotBlank() }?.let { units += SpeechUnit(it, -1, -1) }
     sections.forEachIndexed { s, (heading, body) ->
         heading?.let(::cleanForSpeech)?.takeIf { it.isNotBlank() }?.let { units += SpeechUnit(it, s, -1) }
         prayerParagraphs(body).forEachIndexed { p, paragraph ->

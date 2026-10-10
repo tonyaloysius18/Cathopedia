@@ -310,6 +310,7 @@
   "ui#readAloudIosVoiceHint": "Puedes añadir una en Ajustes › Accesibilidad › Contenido leído › Voces.",
   "ui#readAloudListen": "Escuchar",
   "ui#readAloudNext": "Parte siguiente",
+  "ui#readAloudNextPrayer": "Siguiente oración",
   "ui#readAloudNoVoice": "Este dispositivo no tiene una voz en {language} para leer la oración en voz alta.",
   "ui#readAloudPause": "Pausar la lectura",
   "ui#readAloudPlay": "Leer la oración en voz alta",

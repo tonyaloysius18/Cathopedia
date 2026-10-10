@@ -89,6 +89,7 @@ val FR: Strings = Strings().apply {
     readAloudIosVoiceHint = "Ajoutez-en une dans Réglages › Accessibilité › Contenu énoncé › Voix."
     readAloudDownloading = "Téléchargement de la voix… {percent} %"
     readAloudDownloadFailed = "Impossible de télécharger la voix. La voix de l’appareil lira à la place."
+    readAloudNextPrayer = "Prière suivante"
     prayerLanguageEn = "Anglais"
     prayerLanguageFr = "Français"
     prayerLanguageLa = "Latin"

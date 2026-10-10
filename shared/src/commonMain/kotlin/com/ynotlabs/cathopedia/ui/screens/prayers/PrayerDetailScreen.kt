@@ -41,6 +41,11 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.ui.text.style.TextOverflow
+import com.ynotlabs.cathopedia.model.PrayerSummary
 import com.ynotlabs.cathopedia.speech.PackState
 import com.ynotlabs.cathopedia.speech.PrayerAudioPacks
 import com.ynotlabs.cathopedia.speech.ReadAloudController
@@ -135,26 +140,36 @@ fun PrayerDetailScreen(
     val scope = rememberCoroutineScope()
     val density = LocalDensity.current
 
+    // "Next prayer" swaps the prayer in place, so Back still returns to where the reader came from.
+    var prayerId by remember(slug) { mutableStateOf(slug) }
     var readingLanguage by remember(slug) { mutableStateOf(language) }
     var detail by remember(slug) { mutableStateOf<PrayerDetail?>(null) }
-    var isFavorite by remember(slug) { mutableStateOf(false) }
+    var isFavorite by remember(prayerId) { mutableStateOf(false) }
     var keepScreenOn by remember(slug) { mutableStateOf(false) }
     var fontScaleIndex by remember(slug) { mutableStateOf(DEFAULT_FONT_SCALE_INDEX) }
+    var nextPrayer by remember(prayerId) { mutableStateOf<PrayerSummary?>(null) }
+    // Set when "Next prayer" is pressed while reading aloud: the next prayer starts by itself.
+    var autoPlayId by remember(slug) { mutableStateOf<String?>(null) }
 
     var buttonsHeightPx by remember { mutableIntStateOf(0) }
     val buttonsHeight = with(density) { buttonsHeightPx.toDp() }
 
-    LaunchedEffect(slug) {
-        isFavorite = repository.isPrayerFavorite(slug)
+    LaunchedEffect(prayerId) {
+        isFavorite = repository.isPrayerFavorite(prayerId)
         fontScaleIndex = FONT_SCALE_STEPS.indexOf(
             repository.getPreference(PreferenceKeys.PRAYER_FONT_SCALE)?.toFloatOrNull()
                 ?: FONT_SCALE_STEPS[DEFAULT_FONT_SCALE_INDEX],
         ).takeIf { it >= 0 } ?: DEFAULT_FONT_SCALE_INDEX
-        repository.recordPrayerRecited(slug)
+        repository.recordPrayerRecited(prayerId)
     }
 
     LaunchedEffect(slug, language) { readingLanguage = language }
-    LaunchedEffect(slug, readingLanguage) { detail = repository.prayerDetail(slug, readingLanguage) }
+    LaunchedEffect(prayerId, readingLanguage) {
+        val loaded = repository.prayerDetail(prayerId, readingLanguage)
+        // The next prayer may not exist in the chosen language (e.g. Latin): fall back to the app's.
+        if (loaded == null && readingLanguage != language) readingLanguage = language else detail = loaded
+    }
+    LaunchedEffect(prayerId, language) { nextPrayer = repository.nextPrayer(prayerId, language) }
 
     val speechEngine = rememberSpeechEngine()
     val reader = remember(speechEngine) { ReadAloudController(speechEngine) }
@@ -170,7 +185,7 @@ fun PrayerDetailScreen(
     ) { padding ->
         Box(modifier = Modifier.fillMaxSize()) {
             // Fill the entire screen with the prayer artwork
-            PrayerPortraits.forPrayer(slug)?.let { portrait ->
+            PrayerPortraits.forPrayer(prayerId)?.let { portrait ->
                 Image(
                     painter = painterResource(portrait),
                     contentDescription = null,
@@ -220,6 +235,14 @@ fun PrayerDetailScreen(
                     onKeepScreenOnChange = { keepScreenOn = it },
                     reader = reader,
                     speechEngine = speechEngine,
+                    nextPrayer = nextPrayer,
+                    onNextPrayer = { next ->
+                        autoPlayId = if (reader.isPlaying) next.id else null
+                        reader.pause()
+                        prayerId = next.id
+                    },
+                    autoPlayId = autoPlayId,
+                    onAutoPlayed = { autoPlayId = null },
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(bottom = padding.calculateBottomPadding())
@@ -247,7 +270,7 @@ fun PrayerDetailScreen(
                 if (current != null) {
                     IconButton(
                         onClick = {
-                            scope.launch { isFavorite = repository.togglePrayerFavorite(slug) }
+                            scope.launch { isFavorite = repository.togglePrayerFavorite(prayerId) }
                         },
                         modifier = Modifier.size(48.dp)
                     ) {
@@ -277,17 +300,26 @@ private fun PrayerReadingContent(
     onKeepScreenOnChange: (Boolean) -> Unit,
     reader: ReadAloudController,
     speechEngine: SpeechEngine,
+    nextPrayer: PrayerSummary?,
+    onNextPrayer: (PrayerSummary) -> Unit,
+    autoPlayId: String?,
+    onAutoPlayed: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val sections = remember(detail.bodyMd) { splitPrayerSections(detail.bodyMd) }
-    val script = remember(detail.title, sections) {
-        prayerSpeechScript(detail.title, sections.map { it.title to it.body })
+    val script = remember(sections) { prayerSpeechScript(sections.map { it.title to it.body }) }
+    LaunchedEffect(script, readingLanguage) {
+        reader.load(script, readingLanguage)
+        if (autoPlayId == detail.id) {
+            onAutoPlayed()
+            PrayerAudioPacks.loadInstalled(readingLanguage)
+            reader.play()
+        }
     }
-    LaunchedEffect(script, readingLanguage) { reader.load(script, readingLanguage) }
     // A pack downloaded earlier is opened up front, so the first part is already recorded.
     LaunchedEffect(readingLanguage) { PrayerAudioPacks.loadInstalled(readingLanguage) }
 
-    val listState = rememberLazyListState()
+    val listState = remember(detail.id) { LazyListState() }
     val reading = reader.current
     // Follow the voice: bring the section being read into view.
     LaunchedEffect(reading?.section, reader.isPlaying) {
@@ -391,6 +423,8 @@ private fun PrayerReadingContent(
             reader = reader,
             engine = speechEngine,
             languageName = nativeLanguageName(readingLanguage, LocalStrings.current),
+            nextPrayer = nextPrayer,
+            onNextPrayer = onNextPrayer,
         )
     }
 }
@@ -677,6 +711,8 @@ private fun ReadAloudBar(
     reader: ReadAloudController,
     engine: SpeechEngine,
     languageName: String,
+    nextPrayer: PrayerSummary?,
+    onNextPrayer: (PrayerSummary) -> Unit,
 ) {
     val s = LocalStrings.current
     val scope = rememberCoroutineScope()
@@ -693,105 +729,156 @@ private fun ReadAloudBar(
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 10.dp),
     ) {
-        if (!hasVoice) {
-            Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 14.dp)) {
-                Text(
-                    text = s.readAloudNoVoice.replace("{language}", languageName),
-                    color = PrayerCream,
-                    style = MaterialTheme.typography.bodyMedium,
-                )
-                Spacer(Modifier.height(6.dp))
-                if (engine.canInstallVoices) {
+        Column {
+            if (!hasVoice) {
+                Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 14.dp)) {
                     Text(
-                        text = s.readAloudInstallVoice,
-                        color = PrayerGold,
-                        style = MaterialTheme.typography.labelLarge,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(12.dp))
-                            .clickable(role = Role.Button) { engine.openVoiceInstall() }
-                            .padding(vertical = 8.dp),
+                        text = s.readAloudNoVoice.replace("{language}", languageName),
+                        color = PrayerCream,
+                        style = MaterialTheme.typography.bodyMedium,
                     )
-                } else {
-                    Text(s.readAloudIosVoiceHint, color = PrayerMuted, style = MaterialTheme.typography.bodySmall)
+                    Spacer(Modifier.height(6.dp))
+                    if (engine.canInstallVoices) {
+                        Text(
+                            text = s.readAloudInstallVoice,
+                            color = PrayerGold,
+                            style = MaterialTheme.typography.labelLarge,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(12.dp))
+                                .clickable(role = Role.Button) { engine.openVoiceInstall() }
+                                .padding(vertical = 8.dp),
+                        )
+                    } else {
+                        Text(s.readAloudIosVoiceHint, color = PrayerMuted, style = MaterialTheme.typography.bodySmall)
+                    }
+                }
+            } else {
+                Row(
+                    modifier = Modifier.padding(start = 20.dp, end = 10.dp, top = 8.dp, bottom = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = s.readAloudListen.uppercase(),
+                            color = PrayerGold,
+                            style = MaterialTheme.typography.labelMedium,
+                            fontWeight = FontWeight.Bold,
+                            letterSpacing = 1.sp,
+                        )
+                        Text(
+                            text = when {
+                                downloading != null ->
+                                    s.readAloudDownloading.replace("{percent}", (downloading.progress * 100).toInt().toString())
+                                pack == PackState.Failed && !reader.hasStarted -> s.readAloudDownloadFailed
+                                reader.hasStarted -> "$languageName · ${reader.index + 1}/${reader.units.size}"
+                                else -> languageName
+                            },
+                            color = PrayerMuted,
+                            style = MaterialTheme.typography.bodySmall,
+                            maxLines = 1,
+                        )
+                    }
+
+                    BarIconButton(Icons.Filled.SkipPrevious, s.readAloudPrevious, enabled = reader.hasStarted) { reader.previous() }
+
+                    Box(
+                        modifier = Modifier
+                            .padding(horizontal = 4.dp)
+                            .size(58.dp)
+                            .clip(CircleShape)
+                            .background(PrayerGold)
+                            .clickable(role = Role.Button) {
+                                when {
+                                    reader.isPlaying -> reader.pause()
+                                    downloading != null -> Unit
+                                    else -> scope.launch {
+                                        // The first play in a language fetches its recorded voice; if that
+                                        // fails (offline), the device voice reads instead.
+                                        if (PrayerAudioPacks.needsDownload(reader.language)) {
+                                            PrayerAudioPacks.ensure(reader.language)
+                                        }
+                                        reader.play()
+                                    }
+                                }
+                            }
+                            .semantics { contentDescription = if (reader.isPlaying) s.readAloudPause else s.readAloudPlay },
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Icon(
+                            imageVector = if (reader.isPlaying) Icons.Filled.Pause else Icons.Filled.PlayArrow,
+                            contentDescription = null,
+                            tint = PrayerBg,
+                            modifier = Modifier.size(34.dp),
+                        )
+                    }
+
+                    BarIconButton(Icons.Filled.SkipNext, s.readAloudNext, enabled = reader.hasStarted) { reader.next() }
+
+                    val speed = ReadAloudController.speedLabel(reader.speedIndex)
+                    Box(
+                        modifier = Modifier
+                            .size(48.dp)
+                            .clip(CircleShape)
+                            .clickable(role = Role.Button) { reader.cycleSpeed() }
+                            .semantics { contentDescription = "${s.readAloudSpeed}: $speed" },
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Text(speed, color = PrayerCream, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.SemiBold)
+                    }
                 }
             }
-            return@Surface
-        }
 
-        Row(
-            modifier = Modifier.padding(start = 20.dp, end = 10.dp, top = 8.dp, bottom = 8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = s.readAloudListen.uppercase(),
-                    color = PrayerGold,
-                    style = MaterialTheme.typography.labelMedium,
-                    fontWeight = FontWeight.Bold,
-                    letterSpacing = 1.sp,
-                )
-                Text(
-                    text = when {
-                        downloading != null ->
-                            s.readAloudDownloading.replace("{percent}", (downloading.progress * 100).toInt().toString())
-                        pack == PackState.Failed && !reader.hasStarted -> s.readAloudDownloadFailed
-                        reader.hasStarted -> "$languageName · ${reader.index + 1}/${reader.units.size}"
-                        else -> languageName
-                    },
-                    color = PrayerMuted,
-                    style = MaterialTheme.typography.bodySmall,
-                    maxLines = 1,
-                )
-            }
-
-            BarIconButton(Icons.Filled.SkipPrevious, s.readAloudPrevious, enabled = reader.hasStarted) { reader.previous() }
-
-            Box(
-                modifier = Modifier
-                    .padding(horizontal = 4.dp)
-                    .size(58.dp)
-                    .clip(CircleShape)
-                    .background(PrayerGold)
-                    .clickable(role = Role.Button) {
-                        when {
-                            reader.isPlaying -> reader.pause()
-                            downloading != null -> Unit
-                            else -> scope.launch {
-                                // The first play in a language fetches its recorded voice; if that
-                                // fails (offline), the device voice reads instead.
-                                if (PrayerAudioPacks.needsDownload(reader.language)) {
-                                    PrayerAudioPacks.ensure(reader.language)
-                                }
-                                reader.play()
-                            }
-                        }
-                    }
-                    .semantics { contentDescription = if (reader.isPlaying) s.readAloudPause else s.readAloudPlay },
-                contentAlignment = Alignment.Center,
-            ) {
-                Icon(
-                    imageVector = if (reader.isPlaying) Icons.Filled.Pause else Icons.Filled.PlayArrow,
-                    contentDescription = null,
-                    tint = PrayerBg,
-                    modifier = Modifier.size(34.dp),
-                )
-            }
-
-            BarIconButton(Icons.Filled.SkipNext, s.readAloudNext, enabled = reader.hasStarted) { reader.next() }
-
-            val speed = ReadAloudController.speedLabel(reader.speedIndex)
-            Box(
-                modifier = Modifier
-                    .size(48.dp)
-                    .clip(CircleShape)
-                    .clickable(role = Role.Button) { reader.cycleSpeed() }
-                    .semantics { contentDescription = "${s.readAloudSpeed}: $speed" },
-                contentAlignment = Alignment.Center,
-            ) {
-                Text(speed, color = PrayerCream, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.SemiBold)
+            nextPrayer?.let { next ->
+                NextPrayerRow(title = next.title, onClick = { onNextPrayer(next) })
             }
         }
+    }
+}
+
+/** "Next prayer · Hail Mary ›": moves on through the library without going back to the list. */
+@Composable
+private fun NextPrayerRow(title: String, onClick: () -> Unit) {
+    val s = LocalStrings.current
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+            .height(1.dp)
+            .background(CardBorder),
+    )
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(bottomStart = 30.dp, bottomEnd = 30.dp))
+            .clickable(role = Role.Button, onClick = onClick)
+            .semantics(mergeDescendants = true) { contentDescription = "${s.readAloudNextPrayer}: $title" }
+            .heightIn(min = 48.dp)
+            .padding(start = 20.dp, end = 14.dp, top = 8.dp, bottom = 10.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = s.readAloudNextPrayer.uppercase(),
+            color = PrayerGold,
+            style = MaterialTheme.typography.labelMedium,
+            fontWeight = FontWeight.Bold,
+            letterSpacing = 1.sp,
+        )
+        Spacer(Modifier.width(10.dp))
+        Text(
+            text = title,
+            color = PrayerCream,
+            style = MaterialTheme.typography.bodyMedium,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.weight(1f),
+        )
+        Icon(
+            imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+            contentDescription = null,
+            tint = PrayerGold,
+            modifier = Modifier.size(26.dp),
+        )
     }
 }
 

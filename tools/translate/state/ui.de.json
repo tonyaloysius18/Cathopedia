@@ -310,6 +310,7 @@
   "ui#readAloudIosVoiceHint": "Du kannst eine unter Einstellungen › Bedienungshilfen › Gesprochene Inhalte › Stimmen hinzufügen.",
   "ui#readAloudListen": "Anhören",
   "ui#readAloudNext": "Nächster Teil",
+  "ui#readAloudNextPrayer": "Nächstes Gebet",
   "ui#readAloudNoVoice": "Auf diesem Gerät ist keine Stimme für {language} installiert, um das Gebet vorzulesen.",
   "ui#readAloudPause": "Vorlesen anhalten",
   "ui#readAloudPlay": "Gebet vorlesen",

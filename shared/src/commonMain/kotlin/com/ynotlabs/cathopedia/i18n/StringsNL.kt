@@ -88,6 +88,7 @@ val NL: Strings = Strings().apply {
     readAloudIosVoiceHint = "Voeg er een toe via Instellingen › Toegankelijkheid › Gesproken materiaal › Stemmen."
     readAloudDownloading = "Stem wordt gedownload… {percent}%"
     readAloudDownloadFailed = "De stem kon niet worden gedownload. De stem van het apparaat leest in plaats daarvan voor."
+    readAloudNextPrayer = "Volgend gebed"
     prayerLanguageEn = "English"
     prayerLanguageFr = "Français"
     prayerLanguageIt = "Italiano"

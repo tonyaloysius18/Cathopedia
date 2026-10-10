@@ -2,7 +2,7 @@
 """Recorded prayer audio for Cathopedia's read-aloud player (phase 2).
 
 Turns every prayer in content/prayers/ into natural speech with Google Cloud
-Text-to-Speech, one recording per part (title, heading, stanza), exactly the
+Text-to-Speech, one recording per part (heading, stanza; the title is not read), exactly the
 parts the app reads (speech/PrayerSpeechScript.kt). Each language becomes one
 pack the app downloads on first play:
 
@@ -107,12 +107,9 @@ def clean(line: str) -> str:
     return s.lstrip("#").strip()
 
 
-def speech_units(title: str, body: str) -> list[str]:
-    """PrayerSpeechScript.prayerSpeechScript (texts only)"""
+def speech_units(body: str) -> list[str]:
+    """PrayerSpeechScript.prayerSpeechScript (texts only; the prayer's title is not read)"""
     units = []
-    t = clean(title)
-    if t:
-        units.append(t)
     for heading, section in split_sections(body):
         if heading is not None:
             h = clean(heading)
@@ -144,8 +141,7 @@ def load_units() -> dict[str, dict[str, str]]:
         for lang, text in prayer.get("text", {}).items():
             if lang not in out:
                 continue
-            title = text.get("title") or prayer["id"].replace("-", " ").title()
-            for unit in speech_units(title, text.get("bodyMd") or ""):
+            for unit in speech_units(text.get("bodyMd") or ""):
                 out[lang][speech_key(lang, unit)] = unit
     return out
 
@@ -328,7 +324,7 @@ def write_fixture() -> None:
         for lang, text in prayer["text"].items():
             title = text.get("title") or pid.replace("-", " ").title()
             body = text.get("bodyMd") or ""
-            keys = [speech_key(lang, u) for u in speech_units(title, body)]
+            keys = [speech_key(lang, u) for u in speech_units(body)]
             cases.append((lang, title, body, keys))
     lines = [
         "package com.ynotlabs.cathopedia.speech",

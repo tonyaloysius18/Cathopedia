@@ -88,6 +88,7 @@ val TA: Strings = Strings().apply {
     readAloudIosVoiceHint = "Settings › Accessibility › Spoken Content › Voices என்பதில் ஒன்றைச் சேர்க்கலாம்."
     readAloudDownloading = "குரல் பதிவிறக்கப்படுகிறது… {percent}%"
     readAloudDownloadFailed = "குரலைப் பதிவிறக்க முடியவில்லை. அதற்குப் பதிலாகச் சாதனத்தின் குரல் வாசிக்கும்."
+    readAloudNextPrayer = "அடுத்த செபம்"
     prayerLanguageEn = "English"
     prayerLanguageFr = "Français"
     prayerLanguageIt = "Italiano"

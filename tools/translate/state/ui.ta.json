@@ -310,6 +310,7 @@
   "ui#readAloudIosVoiceHint": "Settings › Accessibility › Spoken Content › Voices என்பதில் ஒன்றைச் சேர்க்கலாம்.",
   "ui#readAloudListen": "கேளுங்கள்",
   "ui#readAloudNext": "அடுத்த பகுதி",
+  "ui#readAloudNextPrayer": "அடுத்த செபம்",
   "ui#readAloudNoVoice": "இந்தச் சாதனத்தில் செபத்தை உரக்க வாசிக்க {language} குரல் இல்லை.",
   "ui#readAloudPause": "வாசிப்பை இடைநிறுத்து",
   "ui#readAloudPlay": "செபத்தை உரக்க வாசி",

@@ -88,6 +88,7 @@ val PL: Strings = Strings().apply {
     readAloudIosVoiceHint = "Dodaj go w Ustawienia › Dostępność › Zawartość mówiona › Głosy."
     readAloudDownloading = "Pobieranie głosu… {percent}%"
     readAloudDownloadFailed = "Nie udało się pobrać głosu. Zamiast niego przeczyta głos urządzenia."
+    readAloudNextPrayer = "Następna modlitwa"
     prayerLanguageEn = "English"
     prayerLanguageFr = "Français"
     prayerLanguageIt = "Italiano"

@@ -114,6 +114,7 @@ class Strings {
     var readAloudIosVoiceHint: String = "Add one in Settings › Accessibility › Spoken Content › Voices."
     var readAloudDownloading: String = "Downloading the voice… {percent}%"
     var readAloudDownloadFailed: String = "Couldn't download the voice. The device voice will read instead."
+    var readAloudNextPrayer: String = "Next prayer"
     var prayerLanguageEn: String = "English"
     var prayerLanguageFr: String = "Français"
     var prayerLanguageIt: String = "Italiano"

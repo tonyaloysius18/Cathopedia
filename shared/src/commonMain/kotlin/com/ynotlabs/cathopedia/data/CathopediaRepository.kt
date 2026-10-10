@@ -558,6 +558,17 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
             }
         }
 
+    /**
+     * The prayer after [id] in library order (categories in order, each by its sort
+     * order), wrapping around at the end; null when [id] is the only one.
+     */
+    suspend fun nextPrayer(id: String, language: String): PrayerSummary? {
+        val all = PrayerCategory.entries.flatMap { listPrayers(it, language) }
+        val index = all.indexOfFirst { it.id == id }
+        if (all.size < 2) return null
+        return all[(index + 1).mod(all.size)]
+    }
+
     suspend fun prayerDetail(id: String, language: String): PrayerDetail? = withContext(Dispatchers.Default) {
         database.prayerQueries.selectPrayerDetail(language = language, id = id).executeAsOneOrNull()?.let {
             PrayerDetail(

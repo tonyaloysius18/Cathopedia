@@ -15,7 +15,7 @@ class PrayerAudioParityTest {
         assertTrue(PrayerAudioParityCases.size > 20)
         for (case in PrayerAudioParityCases) {
             val sections = prayerSections(case.bodyMd)
-            val keys = prayerSpeechScript(case.title, sections).map { speechKey(case.language, it.text) }
+            val keys = prayerSpeechScript(sections).map { speechKey(case.language, it.text) }
             assertEquals(case.keys, keys, "${case.language}: ${case.title}")
         }
     }

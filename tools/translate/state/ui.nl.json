@@ -310,6 +310,7 @@
   "ui#readAloudIosVoiceHint": "Voeg er een toe via Instellingen › Toegankelijkheid › Gesproken materiaal › Stemmen.",
   "ui#readAloudListen": "Luisteren",
   "ui#readAloudNext": "Volgend deel",
+  "ui#readAloudNextPrayer": "Volgend gebed",
   "ui#readAloudNoVoice": "Dit apparaat heeft geen stem in het {language} om het gebed voor te lezen.",
   "ui#readAloudPause": "Voorlezen pauzeren",
   "ui#readAloudPlay": "Het gebed voorlezen",
