@@ -314,6 +314,7 @@
   "ui#readAloudNoVoice": "To urządzenie nie ma głosu w języku {language}, aby odczytać modlitwę na głos.",
   "ui#readAloudPause": "Wstrzymaj czytanie",
   "ui#readAloudPlay": "Odczytaj modlitwę na głos",
+  "ui#readAloudPosition": "Miejsce w modlitwie",
   "ui#readAloudPrevious": "Poprzednia część",
   "ui#readAloudSpeed": "Szybkość czytania",
   "ui#rosaryCanvasSummary": "Mapa paciorków różańca: krzyżyk, początek, medalik i pięć dziesiątek pętli, z widocznym postępem. Przełącz na tryb z przewodnikiem, aby się modlić.",

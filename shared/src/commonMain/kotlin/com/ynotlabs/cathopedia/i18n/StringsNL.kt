@@ -89,6 +89,7 @@ val NL: Strings = Strings().apply {
     readAloudDownloading = "Stem wordt gedownload… {percent}%"
     readAloudDownloadFailed = "De stem kon niet worden gedownload. De stem van het apparaat leest in plaats daarvan voor."
     readAloudNextPrayer = "Volgend gebed"
+    readAloudPosition = "Positie in het gebed"
     prayerLanguageEn = "English"
     prayerLanguageFr = "Français"
     prayerLanguageIt = "Italiano"

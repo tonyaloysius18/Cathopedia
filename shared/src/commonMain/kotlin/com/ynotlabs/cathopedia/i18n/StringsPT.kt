@@ -89,6 +89,7 @@ val PT: Strings = Strings().apply {
     readAloudDownloading = "Baixando a voz… {percent}%"
     readAloudDownloadFailed = "Não foi possível baixar a voz. A voz do aparelho vai ler no lugar."
     readAloudNextPrayer = "Próxima oração"
+    readAloudPosition = "Posição na oração"
     prayerLanguageEn = "English"
     prayerLanguageFr = "Français"
     prayerLanguageIt = "Italiano"

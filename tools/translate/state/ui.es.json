@@ -314,6 +314,7 @@
   "ui#readAloudNoVoice": "Este dispositivo no tiene una voz en {language} para leer la oración en voz alta.",
   "ui#readAloudPause": "Pausar la lectura",
   "ui#readAloudPlay": "Leer la oración en voz alta",
+  "ui#readAloudPosition": "Posición en la oración",
   "ui#readAloudPrevious": "Parte anterior",
   "ui#readAloudSpeed": "Velocidad de lectura",
   "ui#rosaryCanvasSummary": "Mapa de las cuentas del Rosario: el crucifijo, la cola, la medalla y las cinco decenas del círculo, con tu progreso. Cambia al modo guiado para rezarlo.",

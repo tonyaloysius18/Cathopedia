@@ -61,6 +61,9 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.SliderDefaults
+import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -322,9 +325,9 @@ private fun PrayerReadingContent(
     val listState = remember(detail.id) { LazyListState() }
     val reading = reader.current
     // Follow the voice: bring the section being read into view.
-    LaunchedEffect(reading?.section, reader.isPlaying) {
+    LaunchedEffect(reading?.section) {
         val section = reading?.section ?: return@LaunchedEffect
-        if (reader.isPlaying && section >= 0) listState.animateScrollToItem(section)
+        if (section >= 0) listState.animateScrollToItem(section)
     }
 
     Column(
@@ -754,8 +757,9 @@ private fun ReadAloudBar(
                     }
                 }
             } else {
+                PrayerSeekBar(reader)
                 Row(
-                    modifier = Modifier.padding(start = 20.dp, end = 10.dp, top = 8.dp, bottom = 8.dp),
+                    modifier = Modifier.padding(start = 20.dp, end = 10.dp, top = 0.dp, bottom = 8.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Column(modifier = Modifier.weight(1f)) {
@@ -771,8 +775,7 @@ private fun ReadAloudBar(
                                 downloading != null ->
                                     s.readAloudDownloading.replace("{percent}", (downloading.progress * 100).toInt().toString())
                                 pack == PackState.Failed && !reader.hasStarted -> s.readAloudDownloadFailed
-                                reader.hasStarted -> "$languageName · ${reader.index + 1}/${reader.units.size}"
-                                else -> languageName
+                                        else -> languageName
                             },
                             color = PrayerMuted,
                             style = MaterialTheme.typography.bodySmall,
@@ -834,6 +837,53 @@ private fun ReadAloudBar(
             }
         }
     }
+}
+
+/**
+ * The whole prayer as one track: drag to any place and reading carries on from
+ * the start of the word there (or waits there, if paused).
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun PrayerSeekBar(reader: ReadAloudController) {
+    val s = LocalStrings.current
+    var dragging by remember { mutableStateOf<Float?>(null) }
+    val colors = SliderDefaults.colors(
+        thumbColor = PrayerGold,
+        activeTrackColor = PrayerGold,
+        inactiveTrackColor = PrayerMuted.copy(alpha = 0.3f),
+    )
+    Slider(
+        value = dragging ?: reader.progress,
+        onValueChange = { dragging = it },
+        onValueChangeFinished = {
+            dragging?.let(reader::seekTo)
+            dragging = null
+        },
+        colors = colors,
+        thumb = {
+            Box(
+                modifier = Modifier
+                    .size(16.dp)
+                    .clip(CircleShape)
+                    .background(PrayerGold),
+            )
+        },
+        track = { state ->
+            SliderDefaults.Track(
+                sliderState = state,
+                colors = colors,
+                thumbTrackGapSize = 0.dp,
+                drawStopIndicator = null,
+                modifier = Modifier.height(4.dp),
+            )
+        },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 20.dp, end = 20.dp, top = 6.dp)
+            .height(32.dp)
+            .semantics { contentDescription = s.readAloudPosition },
+    )
 }
 
 /** "Next prayer · Hail Mary ›": moves on through the library without going back to the list. */

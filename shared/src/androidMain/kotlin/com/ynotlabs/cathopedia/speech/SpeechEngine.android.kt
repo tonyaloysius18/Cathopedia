@@ -38,7 +38,10 @@ private const val PRAYER_PACE = 0.9f
 
 private class AndroidSpeechEngine(private val context: Context) : SpeechEngine {
     private val main = Handler(Looper.getMainLooper())
-    private val callbacks = ConcurrentHashMap<String, () -> Unit>()
+    /** One utterance in flight: [base] is where in the part's text the spoken substring starts. */
+    private class Utterance(val base: Int, val onProgress: (Int) -> Unit, val onDone: () -> Unit)
+
+    private val callbacks = ConcurrentHashMap<String, Utterance>()
     private var counter = 0
     private var pending: (() -> Unit)? = null
     private var voiceTag: String? = null
@@ -61,6 +64,14 @@ private class AndroidSpeechEngine(private val context: Context) : SpeechEngine {
             override fun onStart(utteranceId: String) = Unit
             override fun onDone(utteranceId: String) = finish(utteranceId)
 
+            // Called as each word starts, with offsets into the spoken substring.
+            override fun onRangeStart(utteranceId: String, start: Int, end: Int, frame: Int) {
+                val utterance = callbacks[utteranceId] ?: return
+                main.post {
+                    if (callbacks[utteranceId] === utterance) utterance.onProgress(utterance.base + start)
+                }
+            }
+
             @Deprecated("Deprecated in Java")
             override fun onError(utteranceId: String) = finish(utteranceId)
             override fun onError(utteranceId: String, errorCode: Int) = finish(utteranceId)
@@ -68,7 +79,7 @@ private class AndroidSpeechEngine(private val context: Context) : SpeechEngine {
     }
 
     private fun finish(utteranceId: String) {
-        callbacks.remove(utteranceId)?.let { main.post(it) }
+        callbacks.remove(utteranceId)?.let { main.post(it.onDone) }
     }
 
     /** The best installed voice with the language's own accent (language and country both match). */
@@ -88,10 +99,17 @@ private class AndroidSpeechEngine(private val context: Context) : SpeechEngine {
             tts.isLanguageAvailable(Locale.forLanguageTag(tag)) >= TextToSpeech.LANG_AVAILABLE
     }
 
-    override fun speak(text: String, language: String, rate: Float, onDone: () -> Unit) {
+    override fun speak(
+        text: String,
+        language: String,
+        rate: Float,
+        startAt: Int,
+        onProgress: (Int) -> Unit,
+        onDone: () -> Unit,
+    ) {
         if (released) return
         if (!isReady) {
-            pending = { speak(text, language, rate, onDone) }
+            pending = { speak(text, language, rate, startAt, onProgress, onDone) }
             return
         }
         val tag = SpeechVoices.localeFor(language)
@@ -102,9 +120,10 @@ private class AndroidSpeechEngine(private val context: Context) : SpeechEngine {
         }
         tts.setSpeechRate(rate * PRAYER_PACE)
         callbacks.clear()
+        val from = startAt.coerceIn(0, text.length)
         val id = "prayer-${++counter}"
-        callbacks[id] = onDone
-        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, id)
+        callbacks[id] = Utterance(from, onProgress, onDone)
+        tts.speak(text.substring(from), TextToSpeech.QUEUE_FLUSH, null, id)
     }
 
     override fun stop() {
@@ -138,7 +157,13 @@ private class AndroidSegmentPlayer : SegmentPlayer {
     private var player: MediaPlayer? = null
     private var token = 0
 
-    override fun play(segment: AudioSegment, rate: Float, onDone: () -> Unit) {
+    override fun play(
+        segment: AudioSegment,
+        rate: Float,
+        startFraction: Float,
+        onProgress: (Float) -> Unit,
+        onDone: () -> Unit,
+    ) {
         stop()
         val mine = ++token
         val finish = { main.post { if (mine == token) { stop(); onDone() } } }
@@ -155,8 +180,19 @@ private class AndroidSegmentPlayer : SegmentPlayer {
             mp.setOnCompletionListener { finish() }
             mp.setOnErrorListener { _, _, _ -> finish(); true }
             mp.prepare()
+            val duration = mp.duration.coerceAtLeast(1)
+            if (startFraction > 0f) mp.seekTo((duration * startFraction).toInt())
             mp.playbackParams = mp.playbackParams.setSpeed(rate)
             mp.start()
+            // MediaPlayer has no position callback, so poll it a few times a second.
+            val tick = object : Runnable {
+                override fun run() {
+                    if (mine != token || player !== mp) return
+                    runCatching { onProgress(mp.currentPosition.toFloat() / duration) }
+                    main.postDelayed(this, 200)
+                }
+            }
+            main.postDelayed(tick, 200)
         } catch (e: Exception) {
             finish()
         }

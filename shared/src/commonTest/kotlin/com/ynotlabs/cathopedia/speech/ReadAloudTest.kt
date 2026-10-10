@@ -10,11 +10,22 @@ class ReadAloudTest {
     private class FakeEngine : SpeechEngine {
         val spoken = mutableListOf<Pair<String, String>>()
         var pendingDone: (() -> Unit)? = null
+        var pendingProgress: ((Int) -> Unit)? = null
+        val starts = mutableListOf<Int>()
         override val isReady = true
         override fun hasVoice(language: String) = true
-        override fun speak(text: String, language: String, rate: Float, onDone: () -> Unit) {
+        override fun speak(
+            text: String,
+            language: String,
+            rate: Float,
+            startAt: Int,
+            onProgress: (Int) -> Unit,
+            onDone: () -> Unit,
+        ) {
             spoken += text to language
+            starts += startAt
             pendingDone = onDone
+            pendingProgress = onProgress
         }
         override fun stop() = Unit
         override val canInstallVoices = false
@@ -80,5 +91,32 @@ class ReadAloudTest {
         assertEquals("it-IT", SpeechVoices.localeFor("la"))
         assertEquals("pt-BR", SpeechVoices.localeFor("pt"))
         assertEquals("ta-IN", SpeechVoices.localeFor("ta"))
+    }
+
+    @Test
+    fun pauseResumesFromTheWordWhereItStopped() {
+        val engine = FakeEngine()
+        val reader = ReadAloudController(engine)
+        reader.load(prayerSpeechScript(listOf(null to "Hail Mary, full of grace")), "en")
+        reader.play()
+        engine.pendingProgress!!.invoke(13) // "full" starts at 11; the engine reported mid-word
+        reader.pause()
+        reader.play()
+        assertEquals(listOf(0, 11), engine.starts)
+        assertEquals(0, reader.index)
+    }
+
+    @Test
+    fun seekingLandsOnTheRightPartAndWord() {
+        val engine = FakeEngine()
+        val reader = ReadAloudController(engine)
+        // Parts "One two" (7 chars) and "Three four" (10 chars): 17 in all.
+        reader.load(prayerSpeechScript(listOf(null to "One two\n\nThree four")), "en")
+        reader.seekTo(14f / 17f) // inside "four"
+        assertEquals(1, reader.index)
+        assertEquals(6, reader.charOffset)
+        reader.play()
+        assertEquals(listOf(6), engine.starts)
+        assertEquals(13f / 17f, reader.progress)
     }
 }

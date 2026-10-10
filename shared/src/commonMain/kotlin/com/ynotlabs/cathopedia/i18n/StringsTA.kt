@@ -89,6 +89,7 @@ val TA: Strings = Strings().apply {
     readAloudDownloading = "குரல் பதிவிறக்கப்படுகிறது… {percent}%"
     readAloudDownloadFailed = "குரலைப் பதிவிறக்க முடியவில்லை. அதற்குப் பதிலாகச் சாதனத்தின் குரல் வாசிக்கும்."
     readAloudNextPrayer = "அடுத்த செபம்"
+    readAloudPosition = "செபத்தில் உள்ள இடம்"
     prayerLanguageEn = "English"
     prayerLanguageFr = "Français"
     prayerLanguageIt = "Italiano"

@@ -314,6 +314,7 @@
   "ui#readAloudNoVoice": "Auf diesem Gerät ist keine Stimme für {language} installiert, um das Gebet vorzulesen.",
   "ui#readAloudPause": "Vorlesen anhalten",
   "ui#readAloudPlay": "Gebet vorlesen",
+  "ui#readAloudPosition": "Position im Gebet",
   "ui#readAloudPrevious": "Vorheriger Teil",
   "ui#readAloudSpeed": "Lesegeschwindigkeit",
   "ui#rosaryCanvasSummary": "Übersicht der Rosenkranzperlen: Kreuz, Anhänger, Medaille und die fünf Gesätze des Kranzes, mit deinem Fortschritt. Wechsle in den geführten Modus, um ihn zu beten.",

@@ -15,11 +15,20 @@ interface SpeechEngine {
     fun hasVoice(language: String): Boolean
 
     /**
-     * Reads [text] aloud, replacing anything already being read. [rate] is a
-     * multiplier on the app's prayer pace (1 = normal). [onDone] runs on the main
-     * thread when the text finishes, never after [stop].
+     * Reads [text] aloud from character [startAt], replacing anything already being
+     * read. [rate] is a multiplier on the app's prayer pace (1 = normal).
+     * [onProgress] reports the character offset in [text] being spoken, so a pause
+     * can resume there. Both callbacks run on the main thread and never after [stop];
+     * [onDone] runs when the text finishes.
      */
-    fun speak(text: String, language: String, rate: Float, onDone: () -> Unit)
+    fun speak(
+        text: String,
+        language: String,
+        rate: Float,
+        startAt: Int,
+        onProgress: (Int) -> Unit,
+        onDone: () -> Unit,
+    )
 
     fun stop()
 

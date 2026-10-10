@@ -314,6 +314,7 @@
   "ui#readAloudNoVoice": "Este aparelho não tem uma voz em {language} para ler a oração em voz alta.",
   "ui#readAloudPause": "Pausar a leitura",
   "ui#readAloudPlay": "Ler a oração em voz alta",
+  "ui#readAloudPosition": "Posição na oração",
   "ui#readAloudPrevious": "Parte anterior",
   "ui#readAloudSpeed": "Velocidade de leitura",
   "ui#rosaryCanvasSummary": "Mapa das contas do Rosário: o crucifixo, a corrente inicial, a medalha e as cinco dezenas do círculo, mostrando seu progresso. Mude para o modo Guiado para rezá-lo.",

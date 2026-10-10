@@ -3,7 +3,9 @@ package com.ynotlabs.cathopedia.speech
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
+import kotlinx.cinterop.CValue
 import kotlinx.cinterop.ExperimentalForeignApi
+import kotlinx.cinterop.useContents
 import platform.AVFAudio.AVAudioSession
 import platform.AVFAudio.AVAudioSessionCategoryOptionDuckOthers
 import platform.AVFAudio.AVAudioSessionCategoryPlayback
@@ -23,6 +25,8 @@ import platform.Foundation.NSApplicationSupportDirectory
 import platform.Foundation.NSData
 import platform.Foundation.NSDataReadingMappedIfSafe
 import platform.Foundation.NSMakeRange
+import platform.Foundation.NSRange
+import platform.Foundation.NSTimer
 import platform.Foundation.NSSearchPathForDirectoriesInDomains
 import platform.Foundation.NSTemporaryDirectory
 import platform.Foundation.NSUserDomainMask
@@ -50,6 +54,9 @@ private class IosSpeechEngine : SpeechEngine {
     private val synthesizer = AVSpeechSynthesizer()
     private var current: AVSpeechUtterance? = null
     private var onDone: (() -> Unit)? = null
+    private var onProgress: ((Int) -> Unit)? = null
+    /** Where in the part's text the spoken substring starts. */
+    private var base = 0
 
     // The synthesizer holds its delegate weakly, so the engine keeps it alive.
     private val delegate = object : NSObject(), AVSpeechSynthesizerDelegateProtocol {
@@ -60,7 +67,20 @@ private class IosSpeechEngine : SpeechEngine {
             if (didFinishSpeechUtterance != current) return
             val callback = onDone ?: return
             onDone = null
+            onProgress = null
             dispatch_async(dispatch_get_main_queue()) { callback() }
+        }
+
+        // Called as each word starts, with its range in the spoken substring.
+        override fun speechSynthesizer(
+            synthesizer: AVSpeechSynthesizer,
+            willSpeakRangeOfSpeechString: CValue<NSRange>,
+            utterance: AVSpeechUtterance,
+        ) {
+            if (utterance != current) return
+            val progress = onProgress ?: return
+            val offset = base + willSpeakRangeOfSpeechString.useContents { location.toInt() }
+            dispatch_async(dispatch_get_main_queue()) { if (onProgress === progress) progress(offset) }
         }
     }
 
@@ -85,21 +105,31 @@ private class IosSpeechEngine : SpeechEngine {
 
     override fun hasVoice(language: String): Boolean = bestVoice(SpeechVoices.localeFor(language)) != null
 
-    override fun speak(text: String, language: String, rate: Float, onDone: () -> Unit) {
+    override fun speak(
+        text: String,
+        language: String,
+        rate: Float,
+        startAt: Int,
+        onProgress: (Int) -> Unit,
+        onDone: () -> Unit,
+    ) {
         SpokenAudioSession.activate()
         stop()
-        val utterance = AVSpeechUtterance(string = text).apply {
+        base = startAt.coerceIn(0, text.length)
+        val utterance = AVSpeechUtterance(string = text.substring(base)).apply {
             voice = bestVoice(SpeechVoices.localeFor(language))
             this.rate = (AVSpeechUtteranceDefaultSpeechRate * PRAYER_PACE * rate)
             postUtteranceDelay = 0.25
         }
         current = utterance
         this.onDone = onDone
+        this.onProgress = onProgress
         synthesizer.speakUtterance(utterance)
     }
 
     override fun stop() {
         onDone = null
+        onProgress = null
         current = null
         if (synthesizer.speaking) synthesizer.stopSpeakingAtBoundary(AVSpeechBoundary.AVSpeechBoundaryImmediate)
     }
@@ -148,6 +178,7 @@ private object SpokenAudioSession {
 private class IosSegmentPlayer : SegmentPlayer {
     private var player: AVAudioPlayer? = null
     private var onDone: (() -> Unit)? = null
+    private var timer: NSTimer? = null
 
     private val delegate = object : NSObject(), AVAudioPlayerDelegateProtocol {
         override fun audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully: Boolean) {
@@ -160,10 +191,18 @@ private class IosSegmentPlayer : SegmentPlayer {
         val callback = onDone ?: return
         onDone = null
         player = null
+        timer?.invalidate()
+        timer = null
         dispatch_async(dispatch_get_main_queue()) { callback() }
     }
 
-    override fun play(segment: AudioSegment, rate: Float, onDone: () -> Unit) {
+    override fun play(
+        segment: AudioSegment,
+        rate: Float,
+        startFraction: Float,
+        onProgress: (Float) -> Unit,
+        onDone: () -> Unit,
+    ) {
         stop()
         SpokenAudioSession.activate()
         this.onDone = onDone
@@ -174,12 +213,20 @@ private class IosSegmentPlayer : SegmentPlayer {
         audio.delegate = delegate
         audio.enableRate = true
         audio.rate = rate
+        if (startFraction > 0f) audio.currentTime = audio.duration * startFraction
         player = audio
-        if (!audio.play()) finish()
+        if (!audio.play()) return finish()
+        // AVAudioPlayer has no position callback, so poll it a few times a second.
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.2, repeats = true) { _ ->
+            val playing = player ?: return@scheduledTimerWithTimeInterval
+            if (playing.duration > 0) onProgress((playing.currentTime / playing.duration).toFloat())
+        }
     }
 
     override fun stop() {
         onDone = null
+        timer?.invalidate()
+        timer = null
         player?.stop()
         player = null
     }

@@ -8218,6 +8218,7 @@
   "ui#readAloudNoVoice": "00b64e707859f5cc",
   "ui#readAloudPause": "9d8e6ce43fa875ab",
   "ui#readAloudPlay": "c1bd7d5663162d3f",
+  "ui#readAloudPosition": "446d38c55da14ea6",
   "ui#readAloudPrevious": "6382564db15ed607",
   "ui#readAloudSpeed": "8cc2c474d2cc1ccd",
   "ui#rosaryCanvasSummary": "dc73ef217400e5bf",
