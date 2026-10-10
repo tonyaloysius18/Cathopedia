@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": 10,
+  "contentVersion": 11,
   "hub": {
     "id": "mass",
     "slug": "holy-mass",
@@ -259,6 +259,18 @@
       "icon": "ic_bell",
       "articleIds": [
         "art.mass.towers"
+      ]
+    },
+    {
+      "id": "mass.candles",
+      "sortOrder": 22,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.mass.candles.title",
+      "summaryKey": "sec.mass.candles.summary",
+      "icon": "ic_candle",
+      "articleIds": [
+        "art.mass.candles"
       ]
     }
   ],
@@ -1370,6 +1382,146 @@
         { "label": "General Instruction of the Roman Missal, 327–334 (sacred vessels)" },
         { "label": "Redemptionis Sacramentum (2004), 117 (materials for sacred vessels)" },
         { "label": "Roman Missal, Order of Concelebration; Book of Blessings, blessing of a chalice and paten" }
+      ]
+    },
+    {
+      "id": "art.mass.candles",
+      "sectionId": "mass.candles",
+      "sortOrder": 1,
+      "titleKey": "art.candles.title",
+      "leadKey": "art.candles.lead",
+      "readingTimeMinutes": 4,
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.mass.altar_parts"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.candles.intro"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.candles.altar.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/mass/altar_candles.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.candles.altar.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.candles.processional.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/mass/candle_processional.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.candles.processional.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.candles.sanctuary.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/mass/candle_sanctuary_lamp.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.candles.sanctuary.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.candles.paschal.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/mass/candle_paschal_stand.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.candles.paschal.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.candles.candelabrum.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/mass/candle_candelabrum.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.candles.candelabrum.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.candles.votive.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/mass/candle_votive.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.candles.votive.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.candles.devotional.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/mass/candle_devotional.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.candles.devotional.desc"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.candles.flame.title",
+          "textKey": "art.candles.flame.body"
+        },
+        {
+          "type": "quote",
+          "textKey": "art.candles.quote",
+          "attributionKey": "art.candles.quote.attribution"
+        }
+      ],
+      "sources": [
+        {
+          "label": "General Instruction of the Roman Missal, nos. 117, 120, 307"
+        },
+        {
+          "label": "Code of Canon Law, canon 940 (the sanctuary lamp)"
+        },
+        {
+          "label": "Roman Missal, the Easter Vigil, and Order of Christian Funerals (the Paschal candle)"
+        }
       ]
     }
   ],

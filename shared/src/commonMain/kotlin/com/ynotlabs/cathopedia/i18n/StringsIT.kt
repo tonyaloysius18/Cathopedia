@@ -394,6 +394,7 @@ val IT: Strings = Strings().apply {
     hubSymbolsCount = "SIMBOLI · {count}"
     hubSacredFormsCount = "FORME SACRE · {count}"
     hubTowersCount = "TIPI DI TORRI · {count}"
+    hubCandleHoldersCount = "PORTACERI · {count}"
     hubTowersFormLabel = "Forma"
     hubTowersPositionLabel = "Posizione"
     hubTowersStyleLabel = "Stile"

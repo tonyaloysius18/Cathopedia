@@ -8,7 +8,7 @@ with a **Status** line saying whether their images have been generated.
 | Folder | Covers |
 | --- | --- |
 | `holy-see/` | The Holy See hub: Sistine ceiling, Fisherman's Ring, hierarchy, cardinals, patriarchs |
-| `mass/` | The Holy Mass hub: the Mass, Mass types, books, monstrance parts, liturgical year |
+| `mass/` | The Holy Mass hub: the Mass, Mass types, books, monstrance parts, liturgical year, candle holders |
 | `catechism/` | Catechism articles: sacraments, Four Marks, Last Things, angels, relics, sacred images, the Bible |
 | `symbols/` | Sacred Symbols: the symbol set, medals, scapulars |
 | `orders/` | Religious Orders: founders and emblems, the Franciscan family |
