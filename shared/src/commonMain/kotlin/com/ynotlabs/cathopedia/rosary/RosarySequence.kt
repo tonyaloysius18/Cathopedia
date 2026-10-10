@@ -15,9 +15,11 @@ private const val BEADS_PER_DECADE = 11 // 1 Our Father + 10 Hail Marys, matchin
 
 /**
  * Builds one full five-decade Rosary in [mysterySet]: Sign of the Cross →
- * Apostles' Creed → Our Father → 3x Hail Mary → Glory Be → 5 decades (Our
- * Father, 10x Hail Mary, Glory Be, Fatima prayer) → Salve Regina → closing
- * prayer → Sign of the Cross.
+ * Apostles' Creed → Our Father → 3x Hail Mary → Glory Be → announcement of
+ * the first mystery on the medal → 5 decades (Our Father, 10x Hail Mary,
+ * Glory Be, Fatima prayer) → Salve Regina → closing prayer → Sign of the
+ * Cross — 76 steps. The medal is visited twice: the announcement as the loop
+ * begins, and the closing prayers once it is complete.
  *
  * The brief's per-decade step list names "announce mystery" as its own item
  * ahead of "Our Father," but [SequenceStep.prayerSlug] is non-nullable — there
@@ -33,6 +35,15 @@ private const val BEADS_PER_DECADE = 11 // 1 Our Father + 10 Hail Marys, matchin
  */
 class RosarySequence(mysterySet: MysterySet) : PrayerSequence {
 
+    companion object {
+        /**
+         * Not a prayer: the step on the medal where the first mystery is
+         * announced. It has no content/prayers entry; the UI shows the
+         * mystery (from [SequenceStep.mysteryId]) instead of prayer text.
+         */
+        const val ANNOUNCE_MYSTERY = "announce-mystery"
+    }
+
     override val steps: List<SequenceStep> = buildList {
         var ordinal = 0
         fun step(prayerSlug: String, beadIndex: Int? = null, mysteryId: String? = null) {
@@ -44,6 +55,7 @@ class RosarySequence(mysterySet: MysterySet) : PrayerSequence {
         step("our-father", beadIndex = TAIL_OUR_FATHER_BEAD)
         repeat(3) { i -> step("hail-mary", beadIndex = TAIL_HAIL_MARY_START_BEAD + i) }
         step("glory-be", beadIndex = TAIL_CLOSING_BEAD)
+        step(ANNOUNCE_MYSTERY, beadIndex = MEDAL_BEAD, mysteryId = "${mysterySet.tag}-1")
 
         for (decade in 0 until 5) {
             val decadeOurFatherBead = LOOP_START_BEAD + decade * BEADS_PER_DECADE

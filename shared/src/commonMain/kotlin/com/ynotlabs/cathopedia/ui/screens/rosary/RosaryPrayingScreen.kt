@@ -179,10 +179,10 @@ internal fun RosaryPrayingScreen(
     LaunchedEffect(state.currentStepIndex, language) {
         resolved = null
         val current = state
-        val prayer = repository.prayerDetail(current.currentStep.prayerSlug, language)
-        val mystery = current.currentNode?.decade?.let {
-            repository.mysteryDetail("${current.mysterySet.tag}-$it", language)
-        }
+        val slug = current.currentStep.prayerSlug
+        val prayer = if (slug == RosarySequence.ANNOUNCE_MYSTERY) null else repository.prayerDetail(slug, language)
+        val mystery = (current.currentStep.mysteryId ?: current.currentDecade?.let { "${current.mysterySet.tag}-$it" })
+            ?.let { repository.mysteryDetail(it, language) }
         resolved = ResolvedRosaryPrayer(current.currentStepIndex, prayer, mystery)
     }
     LaunchedEffect(state.currentStepIndex) {
@@ -272,10 +272,10 @@ internal fun RosaryPrayingScreen(
                         state = state,
                         strings = strings,
                         enabled = !completing,
-                        onNodeSelected = { index ->
-                            if (!completing && index != state.currentStep.beadIndex) {
+                        onStateSelected = { selected ->
+                            if (!completing && selected.currentStepIndex != state.currentStepIndex) {
                                 haptics.performHapticFeedback(HapticFeedbackType.LongPress)
-                                state = state.jumpToNode(index)
+                                state = selected
                             }
                         },
                         modifier = Modifier.width(92.dp).fillMaxHeight(),
@@ -309,7 +309,7 @@ private fun RosaryPrayingHeader(
     mystery: MysteryDetail?,
     onClose: () -> Unit,
 ) {
-    val decade = state.currentNode?.decade
+    val decade = state.currentDecade
     val detail = strings[if (decade != null) RosaryPrayingStringKeys.DecadeProgress else RosaryPrayingStringKeys.Progress]
         .orEmpty()
         .replace("{ordinal}", decade?.toString().orEmpty())
@@ -384,7 +384,8 @@ private fun PrayerPane(
                         color = RosaryMarianCard.gold,
                     )
                 }
-                if (page.state.currentStep.mysteryId != null && mystery != null) {
+                val announcing = page.state.currentStep.prayerSlug == RosarySequence.ANNOUNCE_MYSTERY
+                if (!announcing && page.state.currentStep.mysteryId != null && mystery != null) {
                     Card(
                         colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.06f)),
                         border = BorderStroke(1.dp, RosaryMarianCard.gold.copy(alpha = 0.45f)),
@@ -409,6 +410,39 @@ private fun PrayerPane(
                     }
                 }
                 when {
+                    announcing && page.resolved != null -> {
+                        // The medal at the start of the loop: announce the first mystery.
+                        Text(
+                            strings[RosaryPrayingStringKeys.Decade].orEmpty()
+                                .replace("{ordinal}", page.state.currentDecade?.toString().orEmpty()),
+                            style = MaterialTheme.typography.labelLarge,
+                            color = RosaryMarianCard.gold,
+                        )
+                        Text(
+                            mystery?.title.orEmpty(),
+                            style = MaterialTheme.typography.headlineMedium,
+                            fontFamily = FontFamily.Serif,
+                            fontWeight = FontWeight.SemiBold,
+                            color = RosaryMarianCard.cream,
+                        )
+                        Box(
+                            Modifier.width(40.dp).height(2.dp).clip(CircleShape)
+                                .background(RosaryMarianCard.gold.copy(alpha = 0.7f)),
+                        )
+                        mystery?.scriptureRef?.let {
+                            Text(it, style = MaterialTheme.typography.titleSmall, color = RosaryMarianCard.muted)
+                        }
+                        mystery?.let {
+                            Text(
+                                strings[RosaryPrayingStringKeys.MysteryFruit].orEmpty().replace("{fruit}", it.fruit),
+                                style = MaterialTheme.typography.bodyLarge,
+                                color = RosaryMarianCard.gold,
+                            )
+                        }
+                        mystery?.meditation?.takeIf { it.isNotBlank() }?.let {
+                            PrayerBodyText(bodyMd = it, color = RosaryMarianCard.cream)
+                        }
+                    }
                     page.resolved == null -> {
                         Text(
                             strings[RosaryPrayingStringKeys.Loading].orEmpty(),

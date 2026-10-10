@@ -58,16 +58,16 @@ import kotlinx.coroutines.launch
 
 /**
  * A vertical strand with the crucifix at the foot. It follows the order of
- * prayer: up the pendant, round the five decades, then back to the Marian
- * medal to close the loop (Hail Holy Queen, closing prayer) and down to the
- * crucifix for the final Sign of the Cross.
+ * prayer: up the pendant to the Marian medal (the first mystery is announced),
+ * round the five decades, then the medal again to close the loop (Hail Holy
+ * Queen, closing prayer) and down to the crucifix for the final Sign of the Cross.
  */
 @Composable
 internal fun RosaryBeadCarousel(
     state: RosaryState,
     strings: Map<String, String>,
     enabled: Boolean,
-    onNodeSelected: (Int) -> Unit,
+    onStateSelected: (RosaryState) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     // Display order is top to bottom, so the strand is reversed: the closing
@@ -80,7 +80,9 @@ internal fun RosaryBeadCarousel(
     val density = LocalDensity.current
     fun centerOffset(index: Int) = with(density) { ((slotHeight(slots[index].bead) - 48.dp) / 2).roundToPx() }
     val listState = rememberLazyListState(currentIndex, centerOffset(currentIndex))
-    val latestSelection by rememberUpdatedState(onNodeSelected)
+    val latestState by rememberUpdatedState(state)
+    val latestOnSelect by rememberUpdatedState(onStateSelected)
+    fun latestSelection(slot: CarouselSlot) = latestOnSelect(latestState.selectSlot(slot))
     val latestIndex by rememberUpdatedState(currentIndex)
     val latestClosingCross by rememberUpdatedState(closingCross)
     val scope = rememberCoroutineScope()
@@ -117,11 +119,11 @@ internal fun RosaryBeadCarousel(
             if (enabled) {
                 customActions = listOf(
                     CustomAccessibilityAction(strings[RosaryPrayingStringKeys.Previous].orEmpty()) {
-                        latestSelection(slots[neighborIndex(latestIndex, forward = false)].selectionBead())
+                        latestSelection(slots[neighborIndex(latestIndex, forward = false)])
                         true
                     },
                     CustomAccessibilityAction(strings[RosaryPrayingStringKeys.Next].orEmpty()) {
-                        latestSelection(slots[neighborIndex(latestIndex, forward = true)].selectionBead())
+                        latestSelection(slots[neighborIndex(latestIndex, forward = true)])
                         true
                     },
                 )
@@ -159,7 +161,7 @@ internal fun RosaryBeadCarousel(
                         else -> startIndex
                     }
                     if (target == latestIndex) alignTo(target)
-                    else latestSelection(slots[target].selectionBead())
+                    else latestSelection(slots[target])
                 },
                 onDragCancel = { alignTo(latestIndex) },
             )
@@ -193,7 +195,7 @@ internal fun RosaryBeadCarousel(
                             // would paint the rectangular touch area behind the strand.
                             indication = null,
                             enabled = enabled,
-                        ) { latestSelection(slot.selectionBead()) }
+                        ) { latestSelection(slot) }
                         .semantics(mergeDescendants = true) { selected = current },
                     contentAlignment = Alignment.Center,
                 ) {
@@ -250,18 +252,11 @@ internal fun RosaryBeadCarousel(
 
 /**
  * One stop on the strand, listed from the crucifix upward. The Marian medal
- * appears twice: where the pendant joins the loop, and again after the fifth
- * decade, where the loop closes.
+ * appears twice: where the pendant joins the loop (the first mystery is
+ * announced there), and again after the fifth decade, where the loop closes.
  */
 internal data class CarouselSlot(val bead: RosaryBead, val closesLoop: Boolean = false) {
     val key: String get() = if (closesLoop) "${bead.index}-closing" else bead.index.toString()
-
-    /** No prayer is said on the joining medal, so swipes pass over it. */
-    val isStop: Boolean get() = bead.kind != BeadKind.CENTERPIECE || closesLoop
-
-    /** The bead to select for this stop; tapping the joining medal starts the first decade. */
-    fun selectionBead(): Int =
-        if (isStop) bead.index else rosaryLayout.first { it.decade == 1 && it.kind == BeadKind.OUR_FATHER }.index
 }
 
 internal val carouselSlots: List<CarouselSlot> =
@@ -272,14 +267,22 @@ internal val carouselSlots: List<CarouselSlot> =
 internal fun isClosingCross(state: RosaryState): Boolean =
     state.currentNode?.kind == BeadKind.CROSS && state.currentStepIndex > state.steps.size / 2
 
-/** Prayers on the medal are only the closing ones, so it always shows the loop's closing medal. */
+/** The medal's closing prayers come after the decades, so they sit on the closing medal. */
 internal fun currentCarouselSlot(state: RosaryState): Int {
     val beadIndex = state.currentStep.beadIndex
-    return if (state.currentNode?.kind == BeadKind.CENTERPIECE) {
-        carouselSlots.lastIndex
-    } else {
-        carouselSlots.indexOfFirst { !it.closesLoop && it.bead.index == beadIndex }.coerceAtLeast(0)
+    if (state.currentNode?.kind == BeadKind.CENTERPIECE && state.currentStepIndex > state.steps.size / 2) {
+        return carouselSlots.lastIndex
     }
+    return carouselSlots.indexOfFirst { !it.closesLoop && it.bead.index == beadIndex }.coerceAtLeast(0)
+}
+
+/** Selecting a stop: the joining medal opens with the announcement, the closing medal with Hail Holy Queen. */
+internal fun RosaryState.selectSlot(slot: CarouselSlot): RosaryState {
+    if (slot.bead.kind != BeadKind.CENTERPIECE) return jumpToNode(slot.bead.index)
+    val half = steps.size / 2
+    val medalSteps = steps.indices.filter { steps[it].beadIndex == slot.bead.index }
+    val target = if (slot.closesLoop) medalSteps.firstOrNull { it > half } else medalSteps.firstOrNull { it <= half }
+    return target?.let { jumpToStep(it) } ?: jumpToNode(slot.bead.index)
 }
 
 /**
@@ -292,10 +295,7 @@ internal fun adjacentCarouselSlot(slot: Int, forward: Boolean, closingCross: Boo
     if (slot == 0 && closingCross) return if (forward) 0 else last
     if (forward && slot == last) return 0
     if (!forward && slot == 0) return 0
-    val step = if (forward) 1 else -1
-    var next = slot + step
-    while (!carouselSlots[next].isStop) next += step
-    return next
+    return slot + if (forward) 1 else -1
 }
 
 private fun slotHeight(bead: RosaryBead): Dp = when (bead.kind) {

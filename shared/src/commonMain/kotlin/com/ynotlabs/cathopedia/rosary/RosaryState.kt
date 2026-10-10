@@ -14,6 +14,10 @@ data class RosaryState(
         rosaryLayout.firstOrNull { it.index == beadIndex }
     }
 
+    /** The decade being prayed, including the first mystery's announcement on the medal. */
+    val currentDecade: Int?
+        get() = currentNode?.decade ?: currentStep.mysteryId?.substringAfterLast('-')?.toIntOrNull()
+
     val decadesCompleted: Int
         get() = steps.take(currentStepIndex + 1).count { it.prayerSlug == "fatima-decade-prayer" }
 
@@ -38,13 +42,13 @@ data class RosaryState(
 
     fun jumpToNode(nodeIndex: Int): RosaryState {
         if (currentStep.beadIndex == nodeIndex) return this
-        // The cross is visited at the opening and closing. Returning to it near the
-        // end should reveal the final Sign of the Cross, rather than reset the session.
-        val target = if (nodeIndex == 0 && currentStepIndex > steps.size / 2) {
-            steps.indexOfLast { it.beadIndex == nodeIndex }
-        } else {
-            steps.indexOfFirst { it.beadIndex == nodeIndex }
-        }
-        return if (target < 0) this else copy(currentStepIndex = target)
+        // The cross and the medal are each visited at the opening and the closing.
+        // Returning to one near the end reveals its closing prayers rather than
+        // resetting the session to the opening ones.
+        val matches = steps.indices.filter { steps[it].beadIndex == nodeIndex }
+        if (matches.isEmpty()) return this
+        val half = steps.size / 2
+        val target = if (currentStepIndex > half) matches.firstOrNull { it > half } ?: matches.first() else matches.first()
+        return copy(currentStepIndex = target)
     }
 }

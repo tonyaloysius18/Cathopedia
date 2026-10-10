@@ -18,8 +18,8 @@ class RosarySequenceTest {
     @Test
     fun totalStepCountIsStable() {
         // 2 signs + creed + 6 Our Fathers + 53 Hail Marys + 6 Glory Bes +
-        // 5 Fatima + Salve Regina + closing = 75.
-        assertEquals(75, steps(MysterySet.JOYFUL).size)
+        // first-mystery announcement + 5 Fatima + Salve Regina + closing = 76.
+        assertEquals(76, steps(MysterySet.JOYFUL).size)
     }
 
     @Test
@@ -53,7 +53,7 @@ class RosarySequenceTest {
     fun fiveDecadesEachTenHailMarysBoundedByOurFatherAndGloryBe() {
         val s = steps(MysterySet.JOYFUL)
         // The five decade-opening Our Fathers are exactly the mystery-bearing steps.
-        val decadeOpeners = s.filter { it.mysteryId != null }
+        val decadeOpeners = s.filter { it.mysteryId != null && it.prayerSlug == "our-father" }
         assertEquals(5, decadeOpeners.size)
         decadeOpeners.forEachIndexed { d, opener ->
             assertEquals("our-father", opener.prayerSlug)
@@ -69,7 +69,7 @@ class RosarySequenceTest {
     @Test
     fun gloryBeAndFatimaShareTheDecadesLastHailMaryBead() {
         val s = steps(MysterySet.SORROWFUL)
-        s.filter { it.mysteryId != null }.forEach { opener ->
+        s.filter { it.mysteryId != null && it.prayerSlug == "our-father" }.forEach { opener ->
             val decade = s.subList(opener.ordinal, opener.ordinal + 13)
             val lastHailMaryBead = decade[10].beadIndex
             assertEquals(lastHailMaryBead, decade[11].beadIndex, "Glory Be sits on the last Hail Mary bead")
@@ -80,8 +80,21 @@ class RosarySequenceTest {
     @Test
     fun mysteryIdsAreTaggedPerSetAndNumberedOneToFive() {
         for (set in MysterySet.entries) {
-            val ids = steps(set).mapNotNull { it.mysteryId }
+            val ids = steps(set).filter { it.prayerSlug == "our-father" }.mapNotNull { it.mysteryId }
             assertEquals((1..5).map { "${set.tag}-$it" }, ids, "decade openers name this set's five mysteries in order")
+        }
+    }
+
+    @Test
+    fun theFirstMysteryIsAnnouncedOnTheMedalAfterThePendant() {
+        for (set in MysterySet.entries) {
+            val s = steps(set)
+            val announcement = s.single { it.prayerSlug == RosarySequence.ANNOUNCE_MYSTERY }
+            assertEquals("glory-be", s[announcement.ordinal - 1].prayerSlug)
+            assertEquals("${set.tag}-1", announcement.mysteryId)
+            assertEquals(rosaryLayout.first { it.kind == BeadKind.CENTERPIECE }.index, announcement.beadIndex)
+            assertEquals("our-father", s[announcement.ordinal + 1].prayerSlug)
+            assertEquals("${set.tag}-1", s[announcement.ordinal + 1].mysteryId)
         }
     }
 
