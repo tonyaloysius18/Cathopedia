@@ -3,6 +3,7 @@ package com.ynotlabs.cathopedia.data
 import com.ynotlabs.cathopedia.db.CathopediaDatabase
 import com.ynotlabs.cathopedia.db.Rosary_session
 import com.ynotlabs.cathopedia.model.MysterySet
+import com.ynotlabs.cathopedia.model.RosaryCompletion
 import com.ynotlabs.cathopedia.model.RosaryMeter
 import com.ynotlabs.cathopedia.model.RosarySessionState
 import kotlinx.coroutines.Dispatchers
@@ -98,12 +99,15 @@ class RosarySessionRepository(private val database: CathopediaDatabase) {
         val thisMonth = queries.countCompletedSince(firstOfMonthMillis(now)).executeAsOne()
         val bySet = queries.countCompletedByMysterySet().executeAsList()
             .associate { MysterySet.fromTag(it.mystery_set) to it.total }
-        val timestamps = queries.selectCompletedTimestamps().executeAsList().filterNotNull()
+        val completions = queries.selectCompletedHistory().executeAsList().map { row ->
+            RosaryCompletion(row.completed_at, MysterySet.fromTag(row.mystery_set))
+        }
         RosaryMeter(
             totalCompleted = total,
             completedThisMonth = thisMonth,
             byMysterySet = bySet,
-            completionTimestamps = timestamps,
+            completionTimestamps = completions.map { it.completedAt },
+            completions = completions,
         )
     }
 

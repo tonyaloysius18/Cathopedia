@@ -23,6 +23,12 @@ data class RosaryMeter(
     val totalCompleted: Long,
     val completedThisMonth: Long,
     val byMysterySet: Map<MysterySet, Long>,
-    /** Completion instants (epoch millis), newest first — feeds the calendar heat-map. */
+    /** Completion instants (epoch millis), newest first — feeds the weekly journal. */
     val completionTimestamps: List<Long>,
+    val completions: List<RosaryCompletion> = emptyList(),
+)
+
+data class RosaryCompletion(
+    val completedAt: Long,
+    val mysterySet: MysterySet,
 )

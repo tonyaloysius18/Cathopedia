@@ -1,0 +1,89 @@
+{
+  "entries": [
+    {
+      "item": 1,
+      "title": "Dean of the College of Cardinals",
+      "fullDescriptionVisible": true,
+      "descriptionBounds": [
+        120,
+        1721,
+        1160,
+        2274
+      ],
+      "screenHeight": 2856
+    },
+    {
+      "item": 2,
+      "title": "Vice-Dean of the College of Cardinals",
+      "fullDescriptionVisible": true,
+      "descriptionBounds": [
+        120,
+        1796,
+        1160,
+        2097
+      ],
+      "screenHeight": 2856
+    },
+    {
+      "item": 3,
+      "title": "Cardinal Secretary of State",
+      "fullDescriptionVisible": true,
+      "descriptionBounds": [
+        120,
+        1721,
+        1160,
+        2148
+      ],
+      "screenHeight": 2856
+    },
+    {
+      "item": 4,
+      "title": "Cardinal Camerlengo",
+      "fullDescriptionVisible": true,
+      "descriptionBounds": [
+        120,
+        1721,
+        1160,
+        2148
+      ],
+      "screenHeight": 2856
+    },
+    {
+      "item": 5,
+      "title": "Cardinal Prefect",
+      "fullDescriptionVisible": true,
+      "descriptionBounds": [
+        120,
+        1721,
+        1160,
+        2022
+      ],
+      "screenHeight": 2856
+    },
+    {
+      "item": 6,
+      "title": "Cardinal Vicar of Rome",
+      "fullDescriptionVisible": true,
+      "descriptionBounds": [
+        120,
+        1721,
+        1160,
+        2022
+      ],
+      "screenHeight": 2856
+    },
+    {
+      "item": 7,
+      "title": "Cardinal Archbishop",
+      "fullDescriptionVisible": true,
+      "descriptionBounds": [
+        120,
+        1721,
+        1160,
+        2022
+      ],
+      "screenHeight": 2856
+    }
+  ],
+  "swipeUpdatesDescription": true
+}

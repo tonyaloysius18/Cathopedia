@@ -1,0 +1,322 @@
+[
+  {
+    "name": "rosary_mystery_glorious_1",
+    "masterSize": [
+      1024,
+      1536
+    ],
+    "drawableSize": [
+      400,
+      600
+    ],
+    "drawableBytes": 53432,
+    "alphaExtrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "name": "rosary_mystery_glorious_2",
+    "masterSize": [
+      1062,
+      1481
+    ],
+    "drawableSize": [
+      430,
+      600
+    ],
+    "drawableBytes": 48894,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "rosary_mystery_glorious_3",
+    "masterSize": [
+      1312,
+      1199
+    ],
+    "drawableSize": [
+      480,
+      439
+    ],
+    "drawableBytes": 61096,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "rosary_mystery_glorious_4",
+    "masterSize": [
+      1024,
+      1536
+    ],
+    "drawableSize": [
+      400,
+      600
+    ],
+    "drawableBytes": 50012,
+    "alphaExtrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "name": "rosary_mystery_glorious_5",
+    "masterSize": [
+      1148,
+      1371
+    ],
+    "drawableSize": [
+      480,
+      573
+    ],
+    "drawableBytes": 76698,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "rosary_mystery_joyful_1",
+    "masterSize": [
+      1336,
+      1177
+    ],
+    "drawableSize": [
+      480,
+      423
+    ],
+    "drawableBytes": 76058,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "rosary_mystery_joyful_2",
+    "masterSize": [
+      1222,
+      1287
+    ],
+    "drawableSize": [
+      480,
+      506
+    ],
+    "drawableBytes": 64288,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "rosary_mystery_joyful_3",
+    "masterSize": [
+      1286,
+      1223
+    ],
+    "drawableSize": [
+      480,
+      456
+    ],
+    "drawableBytes": 78332,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "rosary_mystery_joyful_4",
+    "masterSize": [
+      1224,
+      1285
+    ],
+    "drawableSize": [
+      480,
+      504
+    ],
+    "drawableBytes": 71170,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "rosary_mystery_joyful_5",
+    "masterSize": [
+      1357,
+      1159
+    ],
+    "drawableSize": [
+      480,
+      410
+    ],
+    "drawableBytes": 62262,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "rosary_mystery_luminous_1",
+    "masterSize": [
+      1326,
+      1186
+    ],
+    "drawableSize": [
+      480,
+      429
+    ],
+    "drawableBytes": 66792,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "rosary_mystery_luminous_2",
+    "masterSize": [
+      1334,
+      1179
+    ],
+    "drawableSize": [
+      480,
+      424
+    ],
+    "drawableBytes": 58182,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "rosary_mystery_luminous_3",
+    "masterSize": [
+      1223,
+      1286
+    ],
+    "drawableSize": [
+      480,
+      505
+    ],
+    "drawableBytes": 54748,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "rosary_mystery_luminous_4",
+    "masterSize": [
+      1420,
+      1108
+    ],
+    "drawableSize": [
+      480,
+      375
+    ],
+    "drawableBytes": 57280,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "rosary_mystery_luminous_5",
+    "masterSize": [
+      1193,
+      1318
+    ],
+    "drawableSize": [
+      480,
+      530
+    ],
+    "drawableBytes": 58158,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "rosary_mystery_sorrowful_1",
+    "masterSize": [
+      1304,
+      1206
+    ],
+    "drawableSize": [
+      480,
+      444
+    ],
+    "drawableBytes": 50932,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "rosary_mystery_sorrowful_2",
+    "masterSize": [
+      1214,
+      1295
+    ],
+    "drawableSize": [
+      480,
+      512
+    ],
+    "drawableBytes": 54098,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "rosary_mystery_sorrowful_3",
+    "masterSize": [
+      1136,
+      1385
+    ],
+    "drawableSize": [
+      480,
+      585
+    ],
+    "drawableBytes": 77354,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "rosary_mystery_sorrowful_4",
+    "masterSize": [
+      1212,
+      1297
+    ],
+    "drawableSize": [
+      480,
+      514
+    ],
+    "drawableBytes": 50686,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "name": "rosary_mystery_sorrowful_5",
+    "masterSize": [
+      1173,
+      1341
+    ],
+    "drawableSize": [
+      480,
+      549
+    ],
+    "drawableBytes": 29498,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  }
+]

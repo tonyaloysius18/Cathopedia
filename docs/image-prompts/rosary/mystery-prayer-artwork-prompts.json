@@ -1,0 +1,170 @@
+{
+  "tool": "built-in image_gen",
+  "transparentBackground": true,
+  "drawableOptimization": "WebP quality 85, bounded to 480 × 600 pixels, alpha preserved",
+  "entries": [
+    {
+      "id": "glorious-1",
+      "title": "Resurrection",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_glorious_1.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_glorious_1.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Resurrection. Subject: The risen adult Jesus in luminous ivory robes stands in triumph, his right hand raised in blessing and a small plain resurrection banner in his left hand. A complete standing figure, gentle restrained golden light confined to the figure, no landscape or tomb.",
+      "finalEditPrompt": "Use case: background-extraction. Edit target: the supplied devotional illustration. Remove ALL of the broad gold/brown glow, haze, vignette and background surrounding the figure. Preserve the person exactly, including face, hands, pose, garments, drapery, all figure details and silhouette, and preserve any object the person holds. Keep the full figure and objects, with a little transparent margin. The result must be ONLY the sharply isolated figure and its held objects with genuine transparent alpha outside the silhouette, like a clean sticker cutout. No surrounding glow, clouds, particles, halo haze, shadows, floor or framing. Do not add text or change the scene. This is a small unframed corner illustration on a deep blue prayer card, so any background glow must be completely removed.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-30487c15-e342-4cb6-99cc-25ba0bb74097.png"
+    },
+    {
+      "id": "glorious-2",
+      "title": "Ascension",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_glorious_2.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_glorious_2.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Ascension. Subject: The risen adult Jesus in flowing ivory robes rises with open arms and a peaceful expression. Complete standing figure, robes lightly lifted as if ascending, subtle golden highlights confined to the figure, no clouds, scenery, or background glow.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-96baa1e3-0778-4eea-b0fb-4cf98d7c5e09.png"
+    },
+    {
+      "id": "glorious-3",
+      "title": "Descent of the Holy Spirit",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_glorious_3.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_glorious_3.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Descent of the Holy Spirit. Subject: The Virgin Mary in a blue mantle and ivory veil, with two apostles in muted ancient robes on either side, all prayerfully facing forward. Small tongues of golden flame above each head and one small white dove above the group signify Pentecost. A compact waist-up group; no room or architecture.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-02ad4ca0-7254-4a5b-9a97-f842505a96f8.png"
+    },
+    {
+      "id": "glorious-4",
+      "title": "Assumption",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_glorious_4.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_glorious_4.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Assumption. Subject: The Virgin Mary in a blue mantle and ivory robes is lifted upward, hands open in prayer, face raised gently toward heaven. Complete graceful standing figure, robes floating slightly, warm restrained gold highlights, no clouds or scenery.",
+      "finalEditPrompt": "Use case: background-extraction. Edit target: the supplied devotional illustration. Remove ALL of the broad gold/brown glow, haze, vignette and background surrounding the figure. Preserve the person exactly, including face, hands, pose, garments, drapery, all figure details and silhouette, and preserve any object the person holds. Keep the full figure and objects, with a little transparent margin. The result must be ONLY the sharply isolated figure and its held objects with genuine transparent alpha outside the silhouette, like a clean sticker cutout. No surrounding glow, clouds, particles, halo haze, shadows, floor or framing. Do not add text or change the scene. This is a small unframed corner illustration on a deep blue prayer card, so any background glow must be completely removed.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-44676572-b0f0-45f9-a8b9-73c458ffa291.png"
+    },
+    {
+      "id": "glorious-5",
+      "title": "Coronation of Mary",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_glorious_5.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_glorious_5.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Coronation of Mary. Subject: The Virgin Mary in blue and ivory with hands folded in prayer wears a small ornate golden crown as Queen of Heaven. A dignified graceful bust with a delicate gold halo, restrained embellishment, no throne, scenery or other figures.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-a9d03ebd-ba02-4bd9-8890-d2354c102ec8.png"
+    },
+    {
+      "id": "joyful-1",
+      "title": "Annunciation",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_joyful_1.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_joyful_1.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Annunciation. Subject: The Virgin Mary in a blue mantle and ivory veil receives the announcement from the angel Gabriel, who bears a white lily. A reverent waist-up group of Mary and the winged angel, turned toward one another.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-2efeeed7-d7d8-40ce-a2a6-2ee471cc5c48.png"
+    },
+    {
+      "id": "joyful-2",
+      "title": "Visitation",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_joyful_2.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_joyful_2.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Visitation. Subject: The young Virgin Mary in a blue mantle and ivory veil embraces her elderly cousin Elizabeth in muted earth-colored robes. A tender waist-up group of the two women.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-0c413ae2-cf3e-4759-87e4-391bca5360b8.png"
+    },
+    {
+      "id": "joyful-3",
+      "title": "Nativity",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_joyful_3.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_joyful_3.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Nativity. Subject: Mary in a blue mantle and ivory veil and Joseph in simple warm earth-toned robes gaze lovingly at the newborn Jesus nestled between them in a tiny straw manger. A compact intimate waist-up Holy Family group, with baby clearly visible.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-1758a184-a5ea-4071-959e-49110820b790.png"
+    },
+    {
+      "id": "joyful-4",
+      "title": "Presentation",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_joyful_4.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_joyful_4.webp",
+      "prompt": "Use case: background-extraction. Asset type: transparent sacred-art illustration for the top-right corner of Cathopedia's dark-blue Rosary prayer card. Edit the supplied Presentation of the Lord artwork into a clean compact cutout of the central event: Mary on the left, the infant Jesus between them, and elderly Simeon on the right. Preserve the reference's warm, realistic devotional painting, faces, garments, white veils, Mary's blue mantle and reverent expressions. Show only this group, framed from about waist up with a complete rounded silhouette and a little transparent margin on every side. The baby must be clear and the figures must read well at 100 pixels tall. Remove all temple architecture, columns, lamps, candles, other people and the entire painted rectangular background. No floor, vignette, opaque shadow, frame, border, lettering, logo or watermark. Actual transparent alpha everywhere outside the three figures. A single freestanding illustration, not a phone screenshot or UI mockup.",
+      "inputImage": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/feast_presentation_of_the_lord.webp",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-1f0f816b-b477-45ce-b672-6f29af57adc6.png"
+    },
+    {
+      "id": "joyful-5",
+      "title": "Finding in the Temple",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_joyful_5.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_joyful_5.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Finding in the Temple. Subject: The twelve-year-old Jesus in an ivory tunic sits with an open scroll, conversing with two elderly Jewish teachers in simple ancient robes. A compact waist-up group, boy Jesus central and clear; just the three people and the scroll.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-dd3bfbb0-ecd6-40c0-9657-b2ca6ca6ac00.png"
+    },
+    {
+      "id": "luminous-1",
+      "title": "Baptism of Jesus",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_luminous_1.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_luminous_1.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Baptism of Jesus. Subject: Adult Jesus in a modest ivory wrap inclines his head while John the Baptist in a simple rough brown garment pours water over him from a small shell. A small white dove above symbolizes the Holy Spirit. Compact waist-up group of the two men, no river or background.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-70ec2599-4cd1-4379-a226-160038bb16b7.png"
+    },
+    {
+      "id": "luminous-2",
+      "title": "Wedding at Cana",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_luminous_2.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_luminous_2.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Wedding at Cana. Subject: Adult Jesus in ivory robes with a muted red mantle blesses two small ancient stone water jars, with Mary in a blue mantle and ivory veil beside him. A compact waist-up pair; jars only at the base of their silhouette, no wedding guests, table or architecture.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-33118c10-ce8c-4179-8415-0fca48270fb3.png"
+    },
+    {
+      "id": "luminous-3",
+      "title": "Proclamation of the Kingdom",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_luminous_3.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_luminous_3.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Proclamation of the Kingdom. Subject: Adult Jesus in ivory robes and a muted red mantle teaches with his right hand raised, the left hand open in welcome. A calm, compassionate waist-up portrait with a small ancient scroll held lightly, no crowds or scenery.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-298ab7e2-d2e0-42d5-8219-ad586b066d33.png"
+    },
+    {
+      "id": "luminous-4",
+      "title": "Transfiguration",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_luminous_4.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_luminous_4.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Transfiguration. Subject: Adult Jesus in bright ivory robes with both hands open in blessing, a restrained golden halo, standing between elderly Moses holding two plain stone tablets and Elijah in simple ancient earth-toned robes. A compact waist-up trio with Jesus central, no mountain, clouds or scenic background.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-8900b9b7-5ae8-4a85-ad42-396a2521e4c9.png"
+    },
+    {
+      "id": "luminous-5",
+      "title": "Institution of the Eucharist",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_luminous_5.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_luminous_5.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Institution of the Eucharist. Subject: Adult Jesus in ivory robes with a muted red mantle holds a small piece of unleavened bread in one hand and a simple golden chalice in the other. A reverent waist-up portrait focused on his face, hands, bread and chalice; no table, room or apostles.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-02f2d604-b5ae-49f3-9e79-932f58bd2bc4.png"
+    },
+    {
+      "id": "sorrowful-1",
+      "title": "Agony in the Garden",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_sorrowful_1.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_sorrowful_1.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Agony in the Garden. Subject: Adult Jesus in ivory robes kneels in prayer with clasped hands, his weary face lifted toward heaven. A small olive branch beside him evokes Gethsemane, and a subtle small golden chalice rests nearby. Complete kneeling figure, solemn devotion, no landscape.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-67a9e432-58b8-4e38-bf3a-72ba8a5a14d4.png"
+    },
+    {
+      "id": "sorrowful-2",
+      "title": "Scourging at the Pillar",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_sorrowful_2.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_sorrowful_2.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Scourging at the Pillar. Subject: Adult Jesus bound to a short plain stone pillar, bare upper torso with a modest ivory cloth at the waist, head bowed with sorrowful compassion. A reverent waist-up portrayal, subtle healed-looking red marks, no graphic injuries, blood or torturers.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-504f751d-24b1-45c3-be94-85fdf046daa2.png"
+    },
+    {
+      "id": "sorrowful-3",
+      "title": "Crowning with Thorns",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_sorrowful_3.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_sorrowful_3.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Crowning with Thorns. Subject: A solemn bust of adult Jesus wearing a woven crown of thorns and deep burgundy mantle, his expression compassionate and sorrowful. A slender reed held gently in his bound hands. Reverent and dignified, no graphic injury or blood.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-b11864ef-f97a-4026-93d9-767db6f6e549.png"
+    },
+    {
+      "id": "sorrowful-4",
+      "title": "Carrying of the Cross",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_sorrowful_4.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_sorrowful_4.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Carrying of the Cross. Subject: Adult Jesus in muted ivory robes bends beneath a simple wooden cross carried diagonally over his shoulder, wearing a crown of thorns. A clear three-quarter figure and complete recognizable cross silhouette, solemn and reverent, no graphic injuries.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-321b9741-4a73-4a3c-bfbd-1272a8d6a196.png"
+    },
+    {
+      "id": "sorrowful-5",
+      "title": "Crucifixion",
+      "master": "/Users/tonyaloysius/Documents/Cathopedia/content/artwork/rosary/mysteries/rosary_mystery_sorrowful_5.png",
+      "drawable": "/Users/tonyaloysius/Documents/Cathopedia/shared/src/commonMain/composeResources/drawable/rosary_mystery_sorrowful_5.webp",
+      "prompt": "Use case: illustration-story. Asset type: transparent sacred-art cutout for the top-right corner of a Catholic Rosary prayer card. Style: warm realistic Catholic devotional painting, softly modeled natural faces and hands, detailed but calm cloth folds, ivory, Marian blue, muted burgundy and warm gold; match Cathopedia's traditional sacred illustrations. Composition: a single compact freestanding silhouette, all important subjects and objects complete, tight coherent grouping with transparent margin on every side, clearly recognizable at 100 pixels tall. Background must be actual transparent alpha. No rectangular painted background, landscape, buildings, framing, opaque vignette, broad glow, letters, watermark or text. Mystery: Crucifixion. Subject: Adult Jesus on a wooden cross, modest ivory cloth around his waist, head bowed, rendered as a reverent traditional Catholic crucifix. Complete cross silhouette, small simple footrest, no scenery, no graphic wounds, no lettering.",
+      "sourceGeneratedFile": "/Users/tonyaloysius/.codex/generated_images/01a125fa-e0b0-73a2-80b6-ccbe932197c5/exec-60328b49-43df-498a-b94c-82c0a9d6c207.png"
+    }
+  ]
+}

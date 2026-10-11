@@ -79,7 +79,6 @@ import com.ynotlabs.cathopedia.resources.rosary_mysteries_sorrowful
 import com.ynotlabs.cathopedia.ui.theme.CathopediaTheme
 import com.ynotlabs.cathopedia.ui.theme.RosaryTheme
 import com.ynotlabs.cathopedia.ui.theme.ThemeMode
-import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 import kotlinx.datetime.LocalDate
@@ -130,6 +129,7 @@ internal object RosaryStringKeys {
         MeterRecent,
         MeterBreakdown,
         MeterDayDescription,
+        *RosaryJournalStringKeys.all.toTypedArray(),
         MysteriesTitle,
         MysteriesIntro,
         MysteriesFruit,
@@ -166,6 +166,7 @@ internal fun RosaryLandingScreen(
                     Text(
                         strings[RosaryStringKeys.Title].orEmpty(),
                         style = MaterialTheme.typography.titleLarge,
+                        fontFamily = FontFamily.Serif,
                         fontWeight = FontWeight.SemiBold,
                     )
                 },
@@ -340,9 +341,14 @@ private fun RosaryMysteriesGallery(
     BoxWithConstraints(modifier.fillMaxWidth()) {
         val imageHeight = if (columns == 1) 180.dp else (maxWidth / 3.3f).coerceIn(104.dp, 144.dp)
         Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            val mysteriesTitle = strings[RosaryStringKeys.MysteriesTitle]
+                ?.takeIf { it.isNotBlank() }
+                ?.replace("Choose mysteries", "Choose Mysteries")
+                ?: "Choose Mysteries"
             Text(
-                strings[RosaryStringKeys.MysteriesTitle].orEmpty(),
+                mysteriesTitle,
                 style = MaterialTheme.typography.headlineSmall,
+                fontFamily = FontFamily.Serif,
                 fontWeight = FontWeight.SemiBold,
             )
             mysteryDisplayOrder.chunked(columns).forEach { sets ->
@@ -408,15 +414,17 @@ private fun MysterySetCard(
             )
             if (today) {
                 Surface(
-                    color = RosaryMarianCard.gold,
-                    contentColor = RosaryMarianCard.deep,
-                    shape = RoundedCornerShape(6.dp),
+                    color = RosaryMarianCard.deep.copy(alpha = 0.35f),
+                    contentColor = RosaryMarianCard.gold,
+                    shape = RoundedCornerShape(12.dp),
+                    border = BorderStroke(1.dp, RosaryMarianCard.gold),
                     modifier = Modifier.padding(8.dp),
                 ) {
                     Text(
                         strings[MysteryDialogStringKeys.Today].orEmpty(),
                         style = MaterialTheme.typography.labelMedium,
-                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+                        fontWeight = FontWeight.SemiBold,
+                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
                     )
                 }
             }
@@ -566,116 +574,37 @@ private fun ResumeRosaryCard(
     }
 }
 
-@OptIn(ExperimentalTime::class)
 @Composable
 private fun RosaryMeterSummary(
     meter: RosaryMeter,
     strings: Map<String, String>,
     modifier: Modifier = Modifier,
 ) {
-    fun text(key: String): String = strings[key].orEmpty()
-    val zone = TimeZone.currentSystemDefault()
-    val today = Clock.System.now().toLocalDateTime(zone).date
-    val countsByDay = rosaryCompletionCountsByDay(meter.completionTimestamps, zone)
-    val recentDays = (34 downTo 0).map { daysAgo ->
-        LocalDate.fromEpochDays(today.toEpochDays() - daysAgo)
-    }
-
     Column(
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         RosaryMarianPanel {
-            Text(
-                text(RosaryStringKeys.MeterTitle),
-                style = MaterialTheme.typography.titleMedium,
-                fontFamily = FontFamily.Serif,
-                fontWeight = FontWeight.SemiBold,
-                color = RosaryMarianCard.gold,
-            )
+            JournalHeading(strings[RosaryStringKeys.MeterTitle].orEmpty())
             Row(
                 modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 MeterValue(
                     value = meter.totalCompleted.toString(),
-                    label = text(RosaryStringKeys.MeterTotal),
+                    label = strings[RosaryStringKeys.MeterTotal].orEmpty(),
                     modifier = Modifier.weight(1f),
                 )
+                Box(Modifier.width(1.dp).height(52.dp).background(RosaryMarianCard.muted.copy(alpha = 0.3f)))
                 MeterValue(
                     value = meter.completedThisMonth.toString(),
-                    label = text(RosaryStringKeys.MeterMonth),
+                    label = strings[RosaryStringKeys.MeterMonth].orEmpty(),
                     modifier = Modifier.weight(1f),
                 )
             }
         }
-
-        RosaryMarianPanel {
-            Text(
-                text = text(RosaryStringKeys.MeterRecent),
-                style = MaterialTheme.typography.labelLarge,
-                color = RosaryMarianCard.muted,
-                modifier = Modifier.padding(bottom = 8.dp),
-            )
-            recentDays.chunked(7).forEach { week ->
-                Row(modifier = Modifier.fillMaxWidth()) {
-                    week.forEach { day ->
-                        val count = countsByDay[day] ?: 0
-                        val intensity = when {
-                            count <= 0 -> 0f
-                            count == 1 -> 0.45f
-                            count == 2 -> 0.7f
-                            else -> 0.95f
-                        }
-                        Box(
-                            modifier = Modifier
-                                .weight(1f)
-                                .aspectRatio(1f)
-                                .padding(3.dp)
-                                .clip(RoundedCornerShape(6.dp))
-                                .background(Color.White.copy(alpha = 0.07f))
-                                .background(RosaryMarianCard.gold.copy(alpha = intensity))
-                                .then(
-                                    if (day == today) {
-                                        Modifier.border(1.5.dp, RosaryMarianCard.gold, RoundedCornerShape(6.dp))
-                                    } else {
-                                        Modifier
-                                    },
-                                )
-                                .semantics {
-                                    contentDescription = text(RosaryStringKeys.MeterDayDescription)
-                                        .replace("{date}", day.toString())
-                                        .replace("{count}", count.toString())
-                                },
-                        )
-                    }
-                }
-            }
-
-            Text(
-                text = text(RosaryStringKeys.MeterBreakdown),
-                style = MaterialTheme.typography.labelLarge,
-                color = RosaryMarianCard.muted,
-                modifier = Modifier.padding(top = 18.dp, bottom = 6.dp),
-            )
-            MysterySet.entries.forEach { set ->
-                Row(
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                ) {
-                    Text(
-                        mysterySetName(set, strings),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = RosaryMarianCard.cream,
-                    )
-                    Text(
-                        text = (meter.byMysterySet[set] ?: 0).toString(),
-                        style = MaterialTheme.typography.labelLarge,
-                        color = RosaryMarianCard.gold,
-                    )
-                }
-            }
-        }
+        RosaryPrayerJournal(meter, strings)
+        RosaryMysteryTotals(meter, strings)
     }
 }
 
@@ -715,7 +644,7 @@ private val rosaryLandingPreviewStrings = mapOf(
     RosaryStringKeys.Back to "Back",
     MysteryDialogStringKeys.Today to "Today",
     MysteryDialogStringKeys.Begin to "Begin",
-    RosaryStringKeys.MysteriesTitle to "Mysteries of the Holy Rosary",
+    RosaryStringKeys.MysteriesTitle to "Choose Mysteries",
     RosaryStringKeys.MysteriesIntro to "Twenty Gospel moments contemplated with Mary.",
     RosaryStringKeys.MysteryDetails to "View mysteries",
     RosaryStringKeys.HideMysteryDetails to "Hide mysteries",
@@ -741,6 +670,43 @@ private val rosaryLandingPreviewStrings = mapOf(
     "rosary.mysteries.days.sorrowful" to "Tuesday & Friday",
     "rosary.mysteries.days.glorious" to "Wednesday & Sunday",
     "rosary.mysteries.days.luminous" to "Thursday",
+    "rosary.journal.title" to "Prayer journal",
+    "rosary.journal.previous_week" to "Previous week",
+    "rosary.journal.next_week" to "Next week",
+    "rosary.journal.empty_week" to "No completed rosaries this week",
+    "rosary.journal.no_other_completions" to "No other completions this week",
+    "rosary.journal.rosary_singular" to "rosary",
+    "rosary.journal.rosary_plural" to "rosaries",
+    "rosary.journal.mysteries" to "{set} mysteries",
+    "rosary.journal.completed" to "Completed rosaries",
+    "rosary.journal.date" to "{weekday}, {day} {month}",
+    "rosary.journal.rosary_few" to "rosaries",
+    "rosary.journal.month.1" to "January",
+    "rosary.journal.month.2" to "February",
+    "rosary.journal.month.3" to "March",
+    "rosary.journal.month.4" to "April",
+    "rosary.journal.month.5" to "May",
+    "rosary.journal.month.6" to "June",
+    "rosary.journal.month.7" to "July",
+    "rosary.journal.month.8" to "August",
+    "rosary.journal.month.9" to "September",
+    "rosary.journal.month.10" to "October",
+    "rosary.journal.month.11" to "November",
+    "rosary.journal.month.12" to "December",
+    "rosary.journal.weekday.0" to "Monday",
+    "rosary.journal.weekday.1" to "Tuesday",
+    "rosary.journal.weekday.2" to "Wednesday",
+    "rosary.journal.weekday.3" to "Thursday",
+    "rosary.journal.weekday.4" to "Friday",
+    "rosary.journal.weekday.5" to "Saturday",
+    "rosary.journal.weekday.6" to "Sunday",
+    "rosary.journal.weekday_short.0" to "Mon",
+    "rosary.journal.weekday_short.1" to "Tue",
+    "rosary.journal.weekday_short.2" to "Wed",
+    "rosary.journal.weekday_short.3" to "Thu",
+    "rosary.journal.weekday_short.4" to "Fri",
+    "rosary.journal.weekday_short.5" to "Sat",
+    "rosary.journal.weekday_short.6" to "Sun",
 )
 
 private val rosaryLandingPreviewMeter = RosaryMeter(

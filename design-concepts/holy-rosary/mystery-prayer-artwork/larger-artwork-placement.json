@@ -1,0 +1,23 @@
+{
+  "id": "luminous-5",
+  "title": "Institution of the Eucharist",
+  "imageBounds": [
+    581,
+    477,
+    896,
+    871
+  ],
+  "mysteryTitleBounds": [
+    150,
+    519,
+    509,
+    663
+  ],
+  "prayerTitleBounds": [
+    108,
+    919,
+    512,
+    1015
+  ],
+  "topRightWithoutTextOverlap": true
+}

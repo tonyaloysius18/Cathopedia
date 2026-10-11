@@ -33,8 +33,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
@@ -405,28 +403,10 @@ private fun PrayerPane(
                 }
                 val announcing = page.state.currentStep.prayerSlug == RosarySequence.ANNOUNCE_MYSTERY
                 if (!announcing && page.state.currentStep.mysteryId != null && mystery != null) {
-                    Card(
-                        colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.06f)),
-                        border = BorderStroke(1.dp, RosaryMarianCard.gold.copy(alpha = 0.45f)),
-                        shape = RoundedCornerShape(14.dp),
-                    ) {
-                        Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                            Text(
-                                mystery.title,
-                                style = MaterialTheme.typography.titleMedium,
-                                fontFamily = FontFamily.Serif,
-                                color = RosaryMarianCard.gold,
-                            )
-                            mystery.scriptureRef?.let {
-                                Text(it, style = MaterialTheme.typography.bodyMedium, color = RosaryMarianCard.muted)
-                            }
-                            Text(
-                                strings[RosaryPrayingStringKeys.MysteryFruit].orEmpty().replace("{fruit}", mystery.fruit),
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = RosaryMarianCard.cream,
-                            )
-                        }
-                    }
+                    RosaryMysteryPrayerHeader(
+                        mystery = mystery,
+                        fruitLabel = strings[RosaryPrayingStringKeys.MysteryFruit].orEmpty(),
+                    )
                 }
                 when {
                     announcing && page.resolved != null -> {

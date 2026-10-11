@@ -240,6 +240,7 @@ private fun HubEditorialImage(asset: String) {
                 painter = painter,
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
+                alignment = Alignment.TopCenter,
                 modifier = Modifier.fillMaxSize(),
             )
             Box(

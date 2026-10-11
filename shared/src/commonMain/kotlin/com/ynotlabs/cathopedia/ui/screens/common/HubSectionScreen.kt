@@ -352,6 +352,7 @@ private fun HubSectionEditorialImage(asset: String, title: String) {
                 painter = painter,
                 contentDescription = null,
                 contentScale = if (isDetailedVaticanMap) ContentScale.Fit else ContentScale.Crop,
+                alignment = Alignment.TopCenter,
                 modifier = Modifier.fillMaxSize(),
             )
             if (!isDetailedVaticanMap) {

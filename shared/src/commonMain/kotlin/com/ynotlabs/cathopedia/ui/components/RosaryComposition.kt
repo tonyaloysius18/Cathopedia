@@ -98,9 +98,10 @@ fun RosaryComposition(
     modifier: Modifier = Modifier,
     beads: List<RosaryBead> = rosaryLayout,
     selectedBeadIndex: Int? = null,
+    aspectRatio: Float = ROSARY_ASPECT,
 ) {
     val colors = rosaryColors()
-    BoxWithConstraints(modifier.aspectRatio(ROSARY_ASPECT)) {
+    BoxWithConstraints(modifier.aspectRatio(aspectRatio)) {
         val w = maxWidth
         val h = maxHeight
 

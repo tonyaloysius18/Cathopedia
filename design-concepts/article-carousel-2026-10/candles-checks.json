@@ -1,0 +1,89 @@
+{
+  "entries": [
+    {
+      "item": 1,
+      "title": "Altar Candlesticks",
+      "fullDescriptionVisible": true,
+      "descriptionBounds": [
+        120,
+        1607,
+        1160,
+        1971
+      ],
+      "screenHeight": 2856
+    },
+    {
+      "item": 2,
+      "title": "Processional Candlesticks",
+      "fullDescriptionVisible": true,
+      "descriptionBounds": [
+        120,
+        1607,
+        1160,
+        1971
+      ],
+      "screenHeight": 2856
+    },
+    {
+      "item": 3,
+      "title": "Sanctuary Lamp Holder",
+      "fullDescriptionVisible": true,
+      "descriptionBounds": [
+        120,
+        1607,
+        1160,
+        2034
+      ],
+      "screenHeight": 2856
+    },
+    {
+      "item": 4,
+      "title": "Paschal Candle Stand",
+      "fullDescriptionVisible": true,
+      "descriptionBounds": [
+        120,
+        1607,
+        1160,
+        1971
+      ],
+      "screenHeight": 2856
+    },
+    {
+      "item": 5,
+      "title": "Candelabrum",
+      "fullDescriptionVisible": true,
+      "descriptionBounds": [
+        120,
+        1607,
+        1160,
+        1908
+      ],
+      "screenHeight": 2856
+    },
+    {
+      "item": 6,
+      "title": "Votive Candle Holders",
+      "fullDescriptionVisible": true,
+      "descriptionBounds": [
+        120,
+        1607,
+        1160,
+        2034
+      ],
+      "screenHeight": 2856
+    },
+    {
+      "item": 7,
+      "title": "Devotional Candle Stands",
+      "fullDescriptionVisible": true,
+      "descriptionBounds": [
+        120,
+        1607,
+        1160,
+        1971
+      ],
+      "screenHeight": 2856
+    }
+  ],
+  "swipeUpdatesDescription": true
+}

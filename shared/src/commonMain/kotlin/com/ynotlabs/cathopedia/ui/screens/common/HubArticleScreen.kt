@@ -615,6 +615,7 @@ fun HubArticleScreen(
         articleId == "art.cardinals.offices"
     val isBiblicalArticle = articleId.startsWith("art.biblical.")
     val isOrdersArticle = articleId.startsWith("art.orders.")
+    val usesIllustrationCarousel = articleId == "art.mass.candles" || articleId == "art.cardinals.offices"
     var article by remember(articleId, language) { mutableStateOf<HubArticleDetail?>(initialArticle) }
     var strings by remember(articleId, language) { mutableStateOf<Map<String, String>>(initialStrings ?: emptyMap()) }
 
@@ -647,13 +648,15 @@ fun HubArticleScreen(
     var selectedTowerGroup by remember(articleId) { mutableStateOf(TowerGroup.FORM) }
     var selectedTowerAsset by remember(articleId) { mutableStateOf<String?>(null) }
 
-    Box(
+    BoxWithConstraints(
         modifier = Modifier
             .fillMaxSize()
             .background(
                 MaterialTheme.colorScheme.background
             ),
     ) {
+        val galleryViewportHeight = (maxHeight - headerHeightDp - 30.dp).coerceAtLeast(0.dp)
+        val compactGalleryHeader = usesIllustrationCarousel && maxHeight < 800.dp
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             state = listState,
@@ -683,9 +686,8 @@ fun HubArticleScreen(
                 null
             }
             if (symbolArticle != null && symbolCards != null) {
-                // On the towers page the carousel and its card come first, so they are
-                // on screen without scrolling; the intro moves below them.
-                val introFirst = articleId != "art.mass.towers"
+                // Galleries lead with the selected artwork and its complete description.
+                val introFirst = articleId != "art.mass.towers" && !usesIllustrationCarousel
                 if (introFirst) symbolArticle.leadingBlocks.forEachIndexed { index, block ->
                     item {
                         BlockView(
@@ -751,6 +753,34 @@ fun HubArticleScreen(
 
                     symbolArticle.leadingBlocks.forEachIndexed { index, block ->
                         item(key = "tower-intro-$index") {
+                            BlockView(
+                                block = block,
+                                strings = strings,
+                                onEntityRefSelected = onEntityRefSelected,
+                                emphasizeParagraph = index == 0 && block is ParagraphBlock,
+                            )
+                            Spacer(Modifier.height(16.dp))
+                        }
+                    }
+                } else if (usesIllustrationCarousel) {
+                    item(key = "illustration-gallery") {
+                        IllustratedArticleCarousel(
+                            label = (if (articleId == "art.mass.candles") s.hubCandleHoldersCount else s.hubOfficesCount)
+                                .replace("{count}", symbolCards.size.toString()),
+                            items = symbolCards.map { card ->
+                                IllustratedArticleCarouselItem(
+                                    asset = card.image.asset,
+                                    title = strings[card.heading.textKey].orEmpty(),
+                                    body = strings[card.paragraph.textKey].orEmpty(),
+                                )
+                            },
+                            viewportHeight = galleryViewportHeight,
+                            onEntityRefSelected = onEntityRefSelected,
+                        )
+                        Spacer(Modifier.height(20.dp))
+                    }
+                    symbolArticle.leadingBlocks.forEachIndexed { index, block ->
+                        item(key = "gallery-intro-$index") {
                             BlockView(
                                 block = block,
                                 strings = strings,
@@ -946,6 +976,7 @@ fun HubArticleScreen(
                 lead = current.leadKey?.let { strings[it] },
                 backDescription = s.back,
                 onBack = onBack,
+                compact = compactGalleryHeader,
                 modifier = Modifier.onGloballyPositioned {
                     if (headerHeightPx != it.size.height) {
                         headerHeightPx = it.size.height
@@ -972,6 +1003,7 @@ private fun HubArticleEditorialImage(asset: String) {
                 painter = painter,
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
+                alignment = Alignment.TopCenter,
                 modifier = Modifier.fillMaxSize(),
             )
             Box(
@@ -994,6 +1026,7 @@ private fun HubArticleHeaderCard(
     lead: String?,
     backDescription: String,
     onBack: () -> Unit,
+    compact: Boolean = false,
     modifier: Modifier = Modifier,
 ) {
     var titleLineCount by remember { mutableIntStateOf(1) }
@@ -1010,7 +1043,7 @@ private fun HubArticleHeaderCard(
             .clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp))
             .background(MaterialTheme.colorScheme.surface)
             .statusBarsPadding()
-            .padding(start = 18.dp, top = 6.dp, end = 18.dp, bottom = 18.dp),
+            .padding(start = 18.dp, top = 6.dp, end = 18.dp, bottom = if (compact) 14.dp else 18.dp),
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -1028,13 +1061,13 @@ private fun HubArticleHeaderCard(
                     text = title,
                     color = SymbolCardCream,
                     fontFamily = FontFamily.Serif,
-                    fontSize = if (useCompactTitle) 25.sp else 29.sp,
-                    lineHeight = if (useCompactTitle) 29.sp else 32.sp,
+                    fontSize = if (compact) 24.sp else if (useCompactTitle) 25.sp else 29.sp,
+                    lineHeight = if (compact) 28.sp else if (useCompactTitle) 29.sp else 32.sp,
                     fontWeight = FontWeight.Medium,
                     onTextLayout = { titleLineCount = it.lineCount }
                 )
 
-                if (!lead.isNullOrBlank()) {
+                if (!compact && !lead.isNullOrBlank()) {
                     Spacer(Modifier.height(if (titleLineCount <= 1) 4.dp else 10.dp))
                     Text(
                         text = lead,
@@ -2062,7 +2095,7 @@ private fun TowerCarouselDots(
 }
 
 @Composable
-private fun SymbolMarkupText(
+internal fun SymbolMarkupText(
     raw: String,
     onEntityRefSelected: (EntityRef) -> Unit,
     modifier: Modifier = Modifier,

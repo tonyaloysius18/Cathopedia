@@ -1,0 +1,462 @@
+[
+  {
+    "id": "joyful-1",
+    "title": "Annunciation",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      472,
+      591
+    ],
+    "prayerTitleBounds": [
+      108,
+      860,
+      512,
+      956
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "joyful-2",
+    "title": "Visitation",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      376,
+      591
+    ],
+    "prayerTitleBounds": [
+      108,
+      875,
+      512,
+      971
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "joyful-3",
+    "title": "Nativity",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      339,
+      591
+    ],
+    "prayerTitleBounds": [
+      108,
+      860,
+      512,
+      956
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "joyful-4",
+    "title": "Presentation",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      450,
+      591
+    ],
+    "prayerTitleBounds": [
+      108,
+      860,
+      512,
+      956
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "joyful-5",
+    "title": "Finding in the Temple",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      556,
+      663
+    ],
+    "prayerTitleBounds": [
+      108,
+      947,
+      512,
+      1043
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "sorrowful-1",
+    "title": "Agony in the Garden",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      556,
+      663
+    ],
+    "prayerTitleBounds": [
+      108,
+      887,
+      512,
+      983
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "sorrowful-2",
+    "title": "Scourging at the Pillar",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      556,
+      663
+    ],
+    "prayerTitleBounds": [
+      108,
+      887,
+      512,
+      983
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "sorrowful-3",
+    "title": "Crowning with Thorns",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      556,
+      663
+    ],
+    "prayerTitleBounds": [
+      108,
+      887,
+      512,
+      983
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "sorrowful-4",
+    "title": "Carrying of the Cross",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      556,
+      663
+    ],
+    "prayerTitleBounds": [
+      108,
+      887,
+      512,
+      983
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "sorrowful-5",
+    "title": "Crucifixion",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      412,
+      591
+    ],
+    "prayerTitleBounds": [
+      108,
+      860,
+      512,
+      956
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "glorious-1",
+    "title": "Resurrection",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      454,
+      591
+    ],
+    "prayerTitleBounds": [
+      108,
+      860,
+      512,
+      956
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "glorious-2",
+    "title": "Ascension",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      389,
+      591
+    ],
+    "prayerTitleBounds": [
+      108,
+      860,
+      512,
+      956
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "glorious-3",
+    "title": "Descent of the Holy Spirit",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      556,
+      663
+    ],
+    "prayerTitleBounds": [
+      108,
+      887,
+      512,
+      983
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "glorious-4",
+    "title": "Assumption",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      430,
+      591
+    ],
+    "prayerTitleBounds": [
+      108,
+      860,
+      512,
+      956
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "glorious-5",
+    "title": "Coronation",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      414,
+      591
+    ],
+    "prayerTitleBounds": [
+      108,
+      860,
+      512,
+      956
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "luminous-1",
+    "title": "Baptism in the Jordan",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      556,
+      663
+    ],
+    "prayerTitleBounds": [
+      108,
+      947,
+      512,
+      1043
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "luminous-2",
+    "title": "Wedding at Cana",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      545,
+      591
+    ],
+    "prayerTitleBounds": [
+      108,
+      875,
+      512,
+      971
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "luminous-3",
+    "title": "Proclamation of the Kingdom",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      556,
+      663
+    ],
+    "prayerTitleBounds": [
+      108,
+      887,
+      512,
+      983
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "luminous-4",
+    "title": "Transfiguration",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      518,
+      591
+    ],
+    "prayerTitleBounds": [
+      108,
+      875,
+      512,
+      971
+    ],
+    "topRightWithoutTextOverlap": true
+  },
+  {
+    "id": "luminous-5",
+    "title": "Institution of the Eucharist",
+    "imageBounds": [
+      628,
+      477,
+      896,
+      812
+    ],
+    "mysteryTitleBounds": [
+      150,
+      519,
+      556,
+      663
+    ],
+    "prayerTitleBounds": [
+      108,
+      887,
+      512,
+      983
+    ],
+    "topRightWithoutTextOverlap": true
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "id": "joyful-4",
+  "title": "Presentation",
+  "imageBounds": [
+    628,
+    477,
+    896,
+    812
+  ],
+  "mysteryTitleBounds": [
+    150,
+    519,
+    450,
+    591
+  ],
+  "prayerTitleBounds": [
+    108,
+    860,
+    512,
+    956
+  ],
+  "topRightWithoutTextOverlap": true
+}

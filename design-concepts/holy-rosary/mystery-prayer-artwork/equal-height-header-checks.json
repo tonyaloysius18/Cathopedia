@@ -1,0 +1,34 @@
+[
+  {
+    "id": "luminous-4",
+    "title": "Transfiguration",
+    "imageBounds": [
+      549,
+      477,
+      896,
+      767
+    ],
+    "mysteryTitleBounds": [
+      138,
+      501,
+      493,
+      561
+    ],
+    "prayerTitleBounds": [
+      108,
+      815,
+      512,
+      911
+    ],
+    "prayerBodyBounds": [
+      108,
+      1013,
+      896,
+      1877
+    ],
+    "fullPrayerVisible": true,
+    "titleFitsOneLine": true,
+    "topRightWithoutTextOverlap": true,
+    "imageAreaAndDetailsCardShareRowHeight": true
+  }
+]

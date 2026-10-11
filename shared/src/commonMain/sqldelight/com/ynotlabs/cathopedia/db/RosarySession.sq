@@ -79,3 +79,9 @@ selectCompletedTimestamps:
 SELECT completed_at FROM rosary_session
 WHERE completed_at IS NOT NULL
 ORDER BY completed_at DESC;
+
+-- Journal entries retain the actual set prayed on each completion date.
+selectCompletedHistory:
+SELECT completed_at, mystery_set FROM rosary_session
+WHERE completed_at IS NOT NULL
+ORDER BY completed_at DESC;
