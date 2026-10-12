@@ -1,0 +1,11 @@
+{
+  "compactHomeAndPrayerActionsVisible": true,
+  "saintRowOpensDetail": true,
+  "morningOfferingOpensPrayer": true,
+  "rosaryShortcutOpensRosary": true,
+  "fullReadingsLaunchesBrowser": true,
+  "browseOpensExplore": true,
+  "existingFloatingNavigationRetained": true,
+  "largeTextPrayerShortcutWorks": true,
+  "browseSelectsExploreTab": true
+}

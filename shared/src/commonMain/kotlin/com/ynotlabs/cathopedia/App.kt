@@ -72,6 +72,7 @@ import com.ynotlabs.cathopedia.ui.navigation.AppNavController
 import com.ynotlabs.cathopedia.ui.navigation.NavDirection
 import com.ynotlabs.cathopedia.ui.navigation.BottomNavBar
 import com.ynotlabs.cathopedia.ui.navigation.Destination
+import com.ynotlabs.cathopedia.ui.navigation.Tab
 import com.ynotlabs.cathopedia.ui.navigation.FloatingSearchButton
 import com.ynotlabs.cathopedia.ui.navigation.rememberAppNavController
 import com.ynotlabs.cathopedia.ui.screens.settings.AboutScreen
@@ -322,6 +323,9 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     repository = repository,
                     language = language,
                     onItemSelected = { item: ContentSummary -> nav.navigate(Destination.EntityDetail(item.type, item.id)) },
+                    onOpenPrayer = { slug -> nav.navigate(Destination.PrayerDetail(slug)) },
+                    onOpenRosary = { nav.navigate(Destination.RosaryScreen) },
+                    onExploreClick = { nav.selectTab(Tab.EXPLORE) },
                     scrollState = homeScrollState,
                 )
 

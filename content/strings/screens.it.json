@@ -237,6 +237,12 @@
     "screen.church.maps.choose": "Scegli un’app di mappe",
     "screen.church.maps.hint": "Apri la posizione salvata nella tua app di mappe.",
     "screen.church.maps.error": "Impossibile aprire la mappa. Riprova.",
-    "screen.church.maps.cancel": "Annulla"
+    "screen.church.maps.cancel": "Annulla",
+    "screen.home.prayer_moment": "Un momento di preghiera",
+    "screen.home.morning_offering": "Offerta del mattino",
+    "screen.home.pray_rosary": "Prega il Rosario",
+    "screen.home.browse": "Esplora santi e chiese",
+    "screen.home.full_readings": "Letture complete · USCCB",
+    "screen.home.readings_error": "Impossibile aprire le letture. Riprova."
   }
 }

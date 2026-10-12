@@ -237,6 +237,12 @@
     "screen.church.maps.choose": "வரைபடச் செயலியைத் தேர்ந்தெடுக்கவும்",
     "screen.church.maps.hint": "சேமிக்கப்பட்ட இடத்தை உங்கள் வரைபடச் செயலியில் திறக்கவும்.",
     "screen.church.maps.error": "வரைபடத்தைத் திறக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
-    "screen.church.maps.cancel": "ரத்து செய்"
+    "screen.church.maps.cancel": "ரத்து செய்",
+    "screen.home.prayer_moment": "செபத்திற்கான ஒரு தருணம்",
+    "screen.home.morning_offering": "காலை ஒப்புக்கொடுத்தல்",
+    "screen.home.pray_rosary": "செபமாலை செபியுங்கள்",
+    "screen.home.browse": "புனிதர்களையும் ஆலயங்களையும் காண்க",
+    "screen.home.full_readings": "முழு வாசகங்கள் · USCCB",
+    "screen.home.readings_error": "வாசகங்களைத் திறக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்."
   }
 }

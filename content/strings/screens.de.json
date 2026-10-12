@@ -237,6 +237,12 @@
     "screen.church.maps.choose": "Karten-App auswählen",
     "screen.church.maps.hint": "Öffne den gespeicherten Standort in deiner Karten-App.",
     "screen.church.maps.error": "Die Karte konnte nicht geöffnet werden. Bitte versuche es erneut.",
-    "screen.church.maps.cancel": "Abbrechen"
+    "screen.church.maps.cancel": "Abbrechen",
+    "screen.home.prayer_moment": "Ein Moment des Gebets",
+    "screen.home.morning_offering": "Morgengebet",
+    "screen.home.pray_rosary": "Rosenkranz beten",
+    "screen.home.browse": "Heilige und Kirchen entdecken",
+    "screen.home.full_readings": "Vollständige Lesungen · USCCB",
+    "screen.home.readings_error": "Die Lesungen konnten nicht geöffnet werden. Bitte erneut versuchen."
   }
 }

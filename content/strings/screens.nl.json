@@ -237,6 +237,12 @@
     "screen.church.maps.choose": "Kies een kaartenapp",
     "screen.church.maps.hint": "Open de opgeslagen locatie in je kaartenapp.",
     "screen.church.maps.error": "De kaart kon niet worden geopend. Probeer het opnieuw.",
-    "screen.church.maps.cancel": "Annuleren"
+    "screen.church.maps.cancel": "Annuleren",
+    "screen.home.prayer_moment": "Een moment van gebed",
+    "screen.home.morning_offering": "Ochtendoffer",
+    "screen.home.pray_rosary": "Bid de rozenkrans",
+    "screen.home.browse": "Ontdek heiligen en kerken",
+    "screen.home.full_readings": "Volledige lezingen · USCCB",
+    "screen.home.readings_error": "De lezingen konden niet worden geopend. Probeer het opnieuw."
   }
 }

@@ -237,6 +237,12 @@
     "screen.church.maps.choose": "Choose a map app",
     "screen.church.maps.hint": "Open the saved location in your map app.",
     "screen.church.maps.error": "Could not open Maps. Please try again.",
-    "screen.church.maps.cancel": "Cancel"
+    "screen.church.maps.cancel": "Cancel",
+    "screen.home.prayer_moment": "A moment of prayer",
+    "screen.home.morning_offering": "Morning offering",
+    "screen.home.pray_rosary": "Pray the Rosary",
+    "screen.home.browse": "Browse saints & churches",
+    "screen.home.full_readings": "Read full readings · USCCB",
+    "screen.home.readings_error": "Could not open the readings. Please try again."
   }
 }
