@@ -166,6 +166,7 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
         database.churchQueries.selectChurchDetail(language = language, fallbackLang = "en", id = id).executeAsOneOrNull()?.let {
             ChurchDetail(
                 id = it.id,
+                address = it.address,
                 name = it.name!!,
                 summary = it.summary!!,
                 body = it.body!!,

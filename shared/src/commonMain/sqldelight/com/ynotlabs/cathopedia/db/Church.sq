@@ -4,7 +4,8 @@ CREATE TABLE ChurchEntity (
     longitude REAL,
     foundedYear INTEGER,
     imageUrl TEXT,
-    sourceUrl TEXT
+    sourceUrl TEXT,
+    address TEXT
 );
 
 CREATE TABLE ChurchText (
@@ -19,8 +20,8 @@ CREATE TABLE ChurchText (
 );
 
 insertChurch:
-INSERT OR REPLACE INTO ChurchEntity(id, latitude, longitude, foundedYear, imageUrl, sourceUrl)
-VALUES (?, ?, ?, ?, ?, ?);
+INSERT OR REPLACE INTO ChurchEntity(id, latitude, longitude, foundedYear, imageUrl, sourceUrl, address)
+VALUES (?, ?, ?, ?, ?, ?, ?);
 
 insertChurchText:
 INSERT OR REPLACE INTO ChurchText(churchId, language, name, summary, body, sourceAttribution)
@@ -51,7 +52,7 @@ ORDER BY COALESCE(t.name, f.name) ASC;
 selectChurchDetail:
 SELECT ChurchEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
        COALESCE(t.body, f.body) AS body,
-       ChurchEntity.latitude AS latitude, ChurchEntity.longitude AS longitude,
+       ChurchEntity.latitude AS latitude, ChurchEntity.longitude AS longitude, ChurchEntity.address AS address,
        ChurchEntity.foundedYear AS foundedYear, ChurchEntity.imageUrl AS imageUrl,
        ChurchEntity.sourceUrl AS sourceUrl, COALESCE(t.sourceAttribution, f.sourceAttribution) AS sourceAttribution
 FROM ChurchEntity

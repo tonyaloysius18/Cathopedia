@@ -1,0 +1,20 @@
+{
+  "actions": [
+    {
+      "action": "View on map",
+      "googleMapsOpened": true
+    },
+    {
+      "action": "Get directions",
+      "googleMapsOpened": true
+    }
+  ],
+  "validChurchCoordinates": 65,
+  "completeLanguages": 9,
+  "navigationTests": 3,
+  "androidBuildPassed": true,
+  "iosSimulatorBuildPassed": true,
+  "iosUiVerified": false,
+  "iosUiLimitation": "Simulator input service failed to scroll or enter text.",
+  "deviceLocationAccessGranted": false
+}

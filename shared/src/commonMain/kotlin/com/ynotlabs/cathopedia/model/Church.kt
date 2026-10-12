@@ -12,4 +12,5 @@ data class ChurchDetail(
     val sourceUrl: String?,
     val sourceAttribution: String?,
     val related: List<RelatedItem> = emptyList(),
+    val address: String? = null,
 )

@@ -78,6 +78,7 @@ import com.ynotlabs.cathopedia.model.ContentCategory
 import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.model.DocumentKinds
 import com.ynotlabs.cathopedia.model.RelatedItem
+import com.ynotlabs.cathopedia.maps.ChurchMapLocation
 import com.ynotlabs.cathopedia.ui.GalleryImage
 import com.ynotlabs.cathopedia.ui.MiracleGalleries
 import com.ynotlabs.cathopedia.ui.Portraits
@@ -184,6 +185,7 @@ private data class DetailViewData(
     val related: List<RelatedItem>,
     /** Where the full text lives when we deliberately do not carry it — see [DocumentDetail]. */
     val externalUrl: String? = null,
+    val churchLocation: ChurchMapLocation? = null,
 )
 
 private data class ResolvedRelated(
@@ -278,14 +280,10 @@ fun EntityDetailScreen(
                     body = it.body,
                     facts = listOfNotNull(
                         it.foundedYear?.let { v -> "Founded" to v.toString() },
-                        if (it.latitude != null && it.longitude != null) {
-                            "Location" to "${it.latitude}, ${it.longitude}"
-                        } else {
-                            null
-                        },
                     ),
                     sourceAttribution = it.sourceAttribution,
                     related = it.related,
+                    churchLocation = ChurchMapLocation.from(it.name, it.latitude, it.longitude, it.address),
                 )
             }
 
@@ -799,6 +797,8 @@ private fun DetailContent(
             .padding(horizontal = 18.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
+        data.churchLocation?.let { ChurchLocationCard(it) }
+
         PremiumSectionCard {
             SectionTitle(s.detailOverviewTitle)
 

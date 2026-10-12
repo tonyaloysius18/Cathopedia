@@ -1,0 +1,12 @@
+{
+  "saintsHeadingVisible": "Saint of the day",
+  "saintsTextFullyVisible": true,
+  "einsiedelnAddressVisible": true,
+  "coordinatesHidden": true,
+  "existingInstallUpgraded": true,
+  "migrationPreservesExistingRows": true,
+  "sourcedChurchAddresses": 9,
+  "androidBuildPassed": true,
+  "iosKotlinCompilationPassed": true,
+  "navigationTestsPassed": 4
+}

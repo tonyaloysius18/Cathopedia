@@ -1,0 +1,50 @@
+{
+  "verifiedOn": "2026-10-12",
+  "churches": [
+    {
+      "id": "einsiedeln-basilica",
+      "address": "Kloster, 8840 Einsiedeln, Switzerland",
+      "sourceUrl": "https://www.kloster-einsiedeln.ch/information/kontakt"
+    },
+    {
+      "id": "st-marks-basilica-venice",
+      "address": "San Marco 328, 30124 Venezia, Italy",
+      "sourceUrl": "https://www.basilicasanmarco.it/en/"
+    },
+    {
+      "id": "chartres-cathedral",
+      "address": "16 cloître Notre-Dame, 28000 Chartres, France",
+      "sourceUrl": "https://www.cathedrale-chartres.org/"
+    },
+    {
+      "id": "aglona-basilica",
+      "address": "Ciriša iela 8, Aglona, LV-5304, Latvia",
+      "sourceUrl": "https://www.aglonasbazilika.lv/sazinai/"
+    },
+    {
+      "id": "antipolo-cathedral",
+      "address": "P. Oliveros Street, Antipolo, Rizal, Philippines",
+      "sourceUrl": "https://philhistoricsites.nhcp.gov.ph/registry_database/church-of-antipolo/"
+    },
+    {
+      "id": "basilica-our-lady-guadalupe",
+      "address": "Fray Juan de Zumárraga 2, Villa Gustavo A. Madero, 07050 Ciudad de México, Mexico",
+      "sourceUrl": "https://tienda.virgendeguadalupe.org.mx/politicas/"
+    },
+    {
+      "id": "aparecida-basilica",
+      "address": "Avenida Doutor Júlio Prestes, s/n, Ponte Alta, Aparecida – SP, 12570-000, Brazil",
+      "sourceUrl": "https://www.a12.com/area-do-devoto/central-de-ajuda/nossos-enderecos"
+    },
+    {
+      "id": "basilica-holy-redeemer-tiruchirapalli",
+      "address": "Eda Street, Palakarai, Tiruchirappalli, Tamil Nadu 620008, India",
+      "sourceUrl": "https://www.trichydiocese.org/shrines/"
+    },
+    {
+      "id": "annai-velankanni-basilica-besant-nagar",
+      "address": "Besant Nagar, Chennai 600090, India",
+      "sourceUrl": "https://vailankannishrinechennai.in/contact/"
+    }
+  ]
+}

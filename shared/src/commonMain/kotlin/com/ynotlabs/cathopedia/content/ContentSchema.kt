@@ -48,6 +48,7 @@ data class ApostleContent(
 @Serializable
 data class ChurchContent(
     val id: String,
+    val address: String? = null,
     val latitude: Double? = null,
     val longitude: Double? = null,
     val foundedYear: Long? = null,

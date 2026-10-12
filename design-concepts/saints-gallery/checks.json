@@ -1,0 +1,11 @@
+{
+  "upcomingFeastUsesActualDate": true,
+  "feastCardOpensDetail": true,
+  "featuredCardOpensDetail": true,
+  "featuredPortraitsSwipe": true,
+  "seeAllScrollsToBrowseList": true,
+  "searchFiltersSaintsAndHidesGallery": true,
+  "searchEmptyState": true,
+  "descendingSortStillWorks": true,
+  "largeTextRetainsCardContent": true
+}

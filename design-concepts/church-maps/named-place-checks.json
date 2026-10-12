@@ -1,0 +1,14 @@
+{
+  "church": "St. Mark's Basilica, Venice",
+  "actions": [
+    {
+      "action": "View on map",
+      "namedChurchVisible": true
+    },
+    {
+      "action": "Get directions",
+      "namedChurchVisible": true
+    }
+  ],
+  "navigationTests": 4
+}

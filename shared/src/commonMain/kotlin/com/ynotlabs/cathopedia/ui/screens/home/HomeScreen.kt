@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -557,12 +558,14 @@ private fun ReadingReferenceRow(
                 ReadingKind.SECOND_READING -> s.homeSecondReading
                 ReadingKind.GOSPEL -> s.homeGospel
             }.uppercase(),
-            modifier = Modifier.width(94.dp),
+            modifier = Modifier.widthIn(min = 108.dp),
             color = HomeGoldSoft,
             fontSize = 9.sp,
             letterSpacing = 0.65.sp,
             fontWeight = FontWeight.Bold,
         )
+
+        Spacer(Modifier.width(12.dp))
 
         Text(
             text = fullBookNameCitation(reference.citation, language),

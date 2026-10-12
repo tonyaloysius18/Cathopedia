@@ -239,7 +239,7 @@ fun EntityListScreen(
     var searchVisible by remember(type) { mutableStateOf(false) }
     var selectedCentury by remember(type, language) { mutableStateOf(initialSelectedCentury) }
     var selectedRank by remember(type) { mutableStateOf<String?>(null) }
-    var sortOption by remember(type) { mutableStateOf(EntitySortOption.EARLIEST_FIRST) }
+    var sortOption by remember(type) { mutableStateOf(if (type == ContentType.SAINT) EntitySortOption.NAME_ASC else EntitySortOption.EARLIEST_FIRST) }
     var showFilterSheet by remember(type) { mutableStateOf(false) }
     var hasObservedCenturySelection by remember(type) { mutableStateOf(false) }
 
@@ -316,6 +316,34 @@ fun EntityListScreen(
             EntitySortOption.EARLIEST_FIRST -> rankFiltered.sortedBy { it.sortYear ?: Long.MAX_VALUE }
             EntitySortOption.LATEST_FIRST -> rankFiltered.sortedByDescending { it.sortYear ?: Long.MIN_VALUE }
         }
+    }
+
+    if (type == ContentType.SAINT) {
+        SaintsGalleryScreen(
+            repository = repository,
+            language = language,
+            saints = currentItems,
+            filteredSaints = filteredItems,
+            query = query,
+            onQueryChange = { query = it },
+            listState = listState,
+            onBack = onBack,
+            onFilterClick = { showFilterSheet = true },
+            onSaintSelected = onItemSelected,
+        )
+        if (showFilterSheet) {
+            EntityFilterSheet(
+                type = type,
+                centuries = emptyList(), selectedCentury = null,
+                ranks = emptyList(), selectedRank = null,
+                selectedSort = sortOption,
+                onCenturySelected = {}, onRankSelected = {},
+                onSortSelected = { sortOption = it },
+                onDismiss = { showFilterSheet = false },
+                onApply = { showFilterSheet = false },
+            )
+        }
+        return
     }
 
     var headerHeightPx by remember(type, language) { mutableIntStateOf(initialHeaderHeightPx) }

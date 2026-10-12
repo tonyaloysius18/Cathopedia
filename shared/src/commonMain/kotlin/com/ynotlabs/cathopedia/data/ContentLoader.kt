@@ -40,7 +40,7 @@ object ContentLoader {
      * this just controls whether it re-runs on an existing install rather
      * than only ever loading once on a database with zero rows.
      */
-    private const val CONTENT_VERSION = "252"
+    private const val CONTENT_VERSION = "255"
     private const val CONTENT_VERSION_KEY = "content_version"
 
     // classDiscriminator/explicitNulls (from com.ynotlabs.cathopedia.content.hubContentJson) are
@@ -94,7 +94,7 @@ object ContentLoader {
             }
         }
         catalog.churches.forEach { c ->
-            database.churchQueries.insertChurch(c.id, c.latitude, c.longitude, c.foundedYear, c.imageUrl, c.sourceUrl)
+            database.churchQueries.insertChurch(c.id, c.latitude, c.longitude, c.foundedYear, c.imageUrl, c.sourceUrl, c.address)
             c.text.forEach { (lang, t) ->
                 database.churchQueries.insertChurchText(c.id, lang, t.name, t.summary, t.body, t.sourceAttribution)
                 index(database, ContentType.CHURCH, c.id, lang, t)
