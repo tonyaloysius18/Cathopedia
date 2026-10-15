@@ -260,7 +260,7 @@
     "screen.mass.weekday_readings": "Lezingen van de weekdag",
     "screen.mass.choose_celebration": "In plaats daarvan vieren",
     "screen.mass.out_of_range": "De offline kalender loopt van 2025 tot 2040.",
-    "screen.mass.english_only": "De misgids is voorlopig in het Engels.",
+    "screen.mass.english_only": "De tekst van de lezingen is voorlopig in het Engels.",
     "screen.mass.rank.weekday": "Weekdag",
     "screen.mass.rank.optional_memorial": "Vrije gedachtenis",
     "screen.mass.rank.memorial": "Gedachtenis",
@@ -276,6 +276,9 @@
     "screen.mass.week_ahead": "De komende week",
     "screen.mass.draft_note": "Concept: wacht op nalezing door een priester. Alleen zichtbaar in ontwikkelversies.",
     "screen.mass.missal_line": "Tekst uit het Romeins Missaal, volgt",
-    "screen.mass.refrain_line": "Refrein uit het Lectionarium, volgt"
+    "screen.mass.refrain_line": "Refrein uit het Lectionarium, volgt",
+    "screen.mass.short_form": "korte vorm",
+    "screen.mass.or": "of",
+    "screen.mass.celebrant_short": "Cel"
   }
 }

@@ -76,7 +76,7 @@ object DailyReadingsCalendar {
      * never shown in place of a missing translation: the verse text is left blank instead.
      */
     suspend fun readingsFor(date: LocalDate, language: String = "en"): DailyMassReadings? {
-        if (date.year != BUNDLED_YEAR) return fromOrdo(date)
+        if (date.year != BUNDLED_YEAR) return fromOrdo(date, language)
 
         val index = cachedIndex ?: json.decodeFromString<DailyReadingsIndex>(
             Res.readBytes(RESOURCE_PATH).decodeToString(),
@@ -96,11 +96,11 @@ object DailyReadingsCalendar {
     }
 
     /**
-     * Any year other than the bundled USCCB one comes from the offline Ordo. Titles stay English
-     * until the Ordo carries translated celebration names; there is no featured verse yet.
+     * Any year other than the bundled USCCB one comes from the offline Ordo. Titles come from the
+     * Ordo's localized names (English where a name is missing); there is no featured verse yet.
      */
-    private suspend fun fromOrdo(date: LocalDate): DailyMassReadings? {
-        val day = OrdoCalendar.day(date) ?: return null
+    private suspend fun fromOrdo(date: LocalDate, language: String): DailyMassReadings? {
+        val day = OrdoCalendar.day(date, language = language) ?: return null
         val principal = day.principal ?: return null
         val set = OrdoCalendar.readings(day) ?: return null
         val kinds = mapOf(

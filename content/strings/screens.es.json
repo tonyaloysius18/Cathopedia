@@ -260,7 +260,7 @@
     "screen.mass.weekday_readings": "Lecturas de la feria",
     "screen.mass.choose_celebration": "Celebrar en su lugar",
     "screen.mass.out_of_range": "El calendario sin conexión abarca de 2025 a 2040.",
-    "screen.mass.english_only": "La guía de la misa está por ahora en inglés.",
+    "screen.mass.english_only": "El texto de las lecturas está por ahora en inglés.",
     "screen.mass.rank.weekday": "Feria",
     "screen.mass.rank.optional_memorial": "Memoria libre",
     "screen.mass.rank.memorial": "Memoria obligatoria",
@@ -276,6 +276,9 @@
     "screen.mass.week_ahead": "La semana próxima",
     "screen.mass.draft_note": "Borrador: pendiente de revisión por un sacerdote. Solo visible en versiones de desarrollo.",
     "screen.mass.missal_line": "Texto del Misal Romano, por añadir",
-    "screen.mass.refrain_line": "Respuesta del Leccionario, por añadir"
+    "screen.mass.refrain_line": "Respuesta del Leccionario, por añadir",
+    "screen.mass.short_form": "forma breve",
+    "screen.mass.or": "o bien",
+    "screen.mass.celebrant_short": "Cel"
   }
 }

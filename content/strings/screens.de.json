@@ -260,7 +260,7 @@
     "screen.mass.weekday_readings": "Lesungen vom Wochentag",
     "screen.mass.choose_celebration": "Stattdessen feiern",
     "screen.mass.out_of_range": "Der Offline-Kalender umfasst 2025 bis 2040.",
-    "screen.mass.english_only": "Der Messleitfaden ist vorerst auf Englisch.",
+    "screen.mass.english_only": "Der Text der Lesungen ist vorerst auf Englisch.",
     "screen.mass.rank.weekday": "Wochentag",
     "screen.mass.rank.optional_memorial": "Nichtgebotener Gedenktag",
     "screen.mass.rank.memorial": "Gebotener Gedenktag",
@@ -276,6 +276,9 @@
     "screen.mass.week_ahead": "Die kommende Woche",
     "screen.mass.draft_note": "Entwurf: wartet auf die Prüfung durch einen Priester. Nur in Entwicklungsversionen sichtbar.",
     "screen.mass.missal_line": "Text aus dem Römischen Messbuch, folgt",
-    "screen.mass.refrain_line": "Kehrvers aus dem Lektionar, folgt"
+    "screen.mass.refrain_line": "Kehrvers aus dem Lektionar, folgt",
+    "screen.mass.short_form": "Kurzfassung",
+    "screen.mass.or": "oder",
+    "screen.mass.celebrant_short": "Zel"
   }
 }

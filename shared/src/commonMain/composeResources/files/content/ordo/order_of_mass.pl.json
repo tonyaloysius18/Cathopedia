@@ -1,0 +1,247 @@
+{
+  "language": "pl",
+  "note": "Struktura i wskazówki opracowane dla Cathopedii na podstawie Obrzędów Mszy Mszału Rzymskiego (wydanie trzecie). Teksty i rubryki Mszału nie są tu przytaczane: części oznaczone jako „mszał” pokazują, gdzie pojawi się licencjonowany tekst.",
+  "missalPending": "Tekst tej części pochodzi z Mszału Rzymskiego. Pojawi się tutaj, gdy licencjonowany polski Mszał zostanie dodany do Cathopedii.",
+  "readingPending": "Tekst czytania z zatwierdzonego Lekcjonarza pojawi się tutaj po uzyskaniu licencji. Odnośnik powyżej wskazuje fragment czytany dzisiaj.",
+  "readingStudyNote": "Tekst po angielsku: World English Bible (domena publiczna), do studium i przygotowania. Nie jest to zatwierdzony przekład liturgiczny; podczas Mszy czytanie należy proklamować z zatwierdzonego Lekcjonarza. Wersety podano w całości, więc czytanie zaczynające się lub kończące w środku wersetu może zawierać kilka słów więcej.",
+  "homilyPending": "Tutaj pojawią się krótkie myśli do homilii na dany dzień.",
+  "sections": [
+    {
+      "id": "introductory",
+      "title": "Obrzędy wstępne",
+      "parts": [
+        {
+          "id": "entrance",
+          "title": "Wejście",
+          "who": "Wszyscy",
+          "rubric": "Gdy kapłan i usługujący idą do ołtarza, śpiewa się pieśń na wejście albo odmawia antyfonę na wejście z dnia. Kapłan oddaje cześć ołtarzowi pocałunkiem, a jeśli używa się kadzidła, okadza go; następnie idzie do miejsca przewodniczenia.",
+          "missal": "Antyfona na wejście z dnia"
+        },
+        {
+          "id": "sign_of_cross",
+          "title": "Znak krzyża",
+          "who": "Kapłan i lud",
+          "rubric": "Stojąc przy miejscu przewodniczenia, kapłan i wierni czynią znak krzyża.",
+          "text": "W imię Ojca i Syna, i Ducha Świętego.\nAmen."
+        },
+        {
+          "id": "greeting",
+          "title": "Pozdrowienie",
+          "who": "Kapłan i lud",
+          "rubric": "Kapłan pozdrawia lud jedną z formuł Mszału; wierni odpowiadają. On sam lub inny usługujący może krótko wprowadzić w Mszę dnia.",
+          "missal": "Pozdrowienie"
+        },
+        {
+          "id": "penitential_act",
+          "title": "Akt pokuty",
+          "who": "Kapłan i lud",
+          "rubric": "Kapłan zachęca wiernych do uznania swoich grzechów. Po krótkiej chwili ciszy następuje jedna z form aktu pokuty, zakończona rozgrzeszeniem kapłana. W niedziele, zwłaszcza w okresie wielkanocnym, może go zastąpić pokropienie wodą święconą.",
+          "missal": "Akt pokuty"
+        },
+        {
+          "id": "kyrie",
+          "title": "Kyrie",
+          "who": "Kapłan i lud",
+          "rubric": "Jeśli nie było go już w akcie pokuty, następują wezwania Kyrie.",
+          "text": "Kyrie, eleison. Kyrie, eleison.\nChriste, eleison. Christe, eleison.\nKyrie, eleison. Kyrie, eleison.",
+          "textNote": "Po grecku, jak w Mszale: Panie, zmiłuj się. Chryste, zmiłuj się. Panie, zmiłuj się."
+        },
+        {
+          "id": "gloria",
+          "title": "Chwała na wysokości",
+          "who": "Wszyscy",
+          "rubric": "Dzisiaj śpiewa się lub odmawia hymn Chwała na wysokości Bogu.",
+          "condition": "gloria",
+          "missal": "Chwała na wysokości Bogu"
+        },
+        {
+          "id": "collect",
+          "title": "Kolekta",
+          "who": "Kapłan",
+          "rubric": "Kapłan mówi: „Módlmy się”, i wszyscy przez chwilę modlą się w ciszy. Potem z rozłożonymi rękami odmawia kolektę z dnia; wierni kończą: „Amen”.",
+          "missal": "Kolekta z dnia"
+        }
+      ]
+    },
+    {
+      "id": "word",
+      "title": "Liturgia słowa",
+      "parts": [
+        {
+          "id": "first_reading",
+          "title": "Pierwsze czytanie",
+          "who": "Lektor",
+          "rubric": "Wszyscy siadają. Lektor proklamuje pierwsze czytanie z ambony i kończy je aklamacją; wierni odpowiadają. Może nastąpić krótka chwila ciszy.",
+          "reading": "FIRST_READING"
+        },
+        {
+          "id": "psalm",
+          "title": "Psalm responsoryjny",
+          "who": "Psałterzysta i lud",
+          "rubric": "Psałterzysta lub kantor śpiewa albo recytuje strofy; lud odpowiada refrenem.",
+          "reading": "PSALM"
+        },
+        {
+          "id": "second_reading",
+          "title": "Drugie czytanie",
+          "who": "Lektor",
+          "rubric": "W niedziele i uroczystości następuje drugie czytanie, proklamowane tak jak pierwsze.",
+          "reading": "SECOND_READING",
+          "condition": "second_reading"
+        },
+        {
+          "id": "sequence",
+          "title": "Sekwencja",
+          "who": "Wszyscy",
+          "rubric": "Sekwencję dnia śpiewa się przed Alleluja. Jest obowiązkowa w Niedzielę Wielkanocną i w Zesłanie Ducha Świętego, a w inne dni, które ją mają, dowolna.",
+          "reading": "SEQUENCE",
+          "condition": "sequence"
+        },
+        {
+          "id": "acclamation",
+          "title": "Aklamacja przed Ewangelią",
+          "who": "Wszyscy, stojąc",
+          "rubric": "Wszyscy wstają. Śpiewa się Alleluja z wersetem, a w Wielkim Poście werset przed Ewangelią, bez Alleluja.",
+          "rubricLent": "Wszyscy wstają. W Wielkim Poście nie śpiewa się Alleluja: śpiewa się werset przed Ewangelią z aklamacją wielkopostną.",
+          "reading": "ACCLAMATION"
+        },
+        {
+          "id": "gospel",
+          "title": "Ewangelia",
+          "who": "Diakon lub kapłan",
+          "rubric": "Diakon prosi kapłana o błogosławieństwo i je otrzymuje; kapłan, który sam głosi Ewangelię, najpierw modli się po cichu, aby się przygotować. Przy ambonie pozdrawia lud, zapowiada Ewangelię, kreśli znak krzyża na księdze i na sobie, na czole, ustach i piersi, może okadzić księgę, i głosi Ewangelię. Na końcu całuje księgę.",
+          "reading": "GOSPEL"
+        },
+        {
+          "id": "homily",
+          "title": "Homilia",
+          "who": "Kapłan lub diakon",
+          "rubric": "Wszyscy siadają. Homilia jest obowiązkowa w niedziele i święta nakazane, a w inne dni zalecana. Może nastąpić krótka chwila ciszy.",
+          "homily": true
+        },
+        {
+          "id": "creed",
+          "title": "Wyznanie wiary",
+          "who": "Wszyscy, stojąc",
+          "rubric": "Dzisiaj śpiewa się lub odmawia Credo. Używa się symbolu nicejsko-konstantynopolitańskiego; zwłaszcza w Wielkim Poście i okresie wielkanocnym można go zastąpić Składem Apostolskim. Wszyscy pochylają się przy słowach o Wcieleniu, a w uroczystości Zwiastowania Pańskiego i Narodzenia Pańskiego przyklękają.",
+          "condition": "creed",
+          "missal": "Wyznanie wiary"
+        },
+        {
+          "id": "universal_prayer",
+          "title": "Modlitwa powszechna",
+          "who": "Kapłan, diakon lub lektor, i lud",
+          "rubric": "Kapłan od miejsca przewodniczenia wprowadza w modlitwę wiernych. Przedstawia się wezwania za Kościół, za rządzących i zbawienie świata, za cierpiących wszelką potrzebę oraz za wspólnotę miejscową; lud odpowiada po każdym wezwaniu. Kapłan kończy modlitwą.",
+          "intentions": true
+        }
+      ]
+    },
+    {
+      "id": "eucharist",
+      "title": "Liturgia eucharystyczna",
+      "parts": [
+        {
+          "id": "preparation",
+          "title": "Przygotowanie darów",
+          "who": "Kapłan",
+          "rubric": "Przygotowuje się ołtarz i przynosi dary, podczas gdy śpiewa się pieśń na przygotowanie darów. Kapłan składa chleb i wino z właściwymi modlitwami, wlewa do wina trochę wody, obmywa ręce i zachęca lud do modlitwy; lud odpowiada.",
+          "missal": "Modlitwy przygotowania darów"
+        },
+        {
+          "id": "prayer_over_offerings",
+          "title": "Modlitwa nad darami",
+          "who": "Kapłan",
+          "rubric": "Z rozłożonymi rękami kapłan odmawia modlitwę nad darami z dnia; wierni odpowiadają: „Amen”.",
+          "missal": "Modlitwa nad darami z dnia"
+        },
+        {
+          "id": "preface",
+          "title": "Prefacja",
+          "who": "Kapłan i lud",
+          "rubric": "Modlitwa eucharystyczna rozpoczyna się dialogiem i prefacją. Należy wybrać prefację właściwą dla dnia lub okresu.",
+          "missal": "Dialog i prefacja",
+          "preface": true
+        },
+        {
+          "id": "sanctus",
+          "title": "Święty",
+          "who": "Wszyscy",
+          "rubric": "Na zakończenie prefacji wszyscy śpiewają lub mówią Święty. Tam, gdzie jest taki zwyczaj, wierni następnie klękają.",
+          "missal": "Święty"
+        },
+        {
+          "id": "eucharistic_prayer",
+          "title": "Modlitwa eucharystyczna",
+          "who": "Kapłan",
+          "rubric": "Kapłan odmawia jedną z modlitw eucharystycznych. Przeistoczenie następuje w opisie ustanowienia: kapłan ukazuje ludowi konsekrowaną Hostię i kielich, a po każdym przyklęka. Po aklamacji ludu po przeistoczeniu modlitwa trwa aż do końcowej doksologii, na którą lud odpowiada: „Amen”.",
+          "missal": "Modlitwa eucharystyczna",
+          "eucharisticPrayer": true
+        },
+        {
+          "id": "lords_prayer",
+          "title": "Modlitwa Pańska",
+          "who": "Wszyscy",
+          "rubric": "Wszyscy stoją. Po wprowadzeniu kapłana wszyscy razem odmawiają lub śpiewają Ojcze nasz. Kapłan sam kontynuuje embolizm, a lud kończy doksologią.",
+          "text": "Ojcze nasz, któryś jest w niebie,\nświęć się imię Twoje,\nprzyjdź królestwo Twoje,\nbądź wola Twoja jako w niebie, tak i na ziemi.\nChleba naszego powszedniego daj nam dzisiaj\ni odpuść nam nasze winy,\njako i my odpuszczamy naszym winowajcom,\ni nie wódź nas na pokuszenie,\nale nas zbaw ode złego.",
+          "missal": "Embolizm i doksologia"
+        },
+        {
+          "id": "sign_of_peace",
+          "title": "Znak pokoju",
+          "who": "Kapłan i lud",
+          "rubric": "Kapłan odmawia modlitwę o pokój i pozdrawia lud pokojem Pańskim. Diakon lub kapłan może zachęcić wszystkich do przekazania sobie znaku pokoju.",
+          "missal": "Obrzęd pokoju"
+        },
+        {
+          "id": "agnus_dei",
+          "title": "Baranku Boży",
+          "who": "Wszyscy",
+          "rubric": "Podczas śpiewu lub recytacji Baranku Boży kapłan łamie Hostię i wpuszcza cząstkę do kielicha. Następnie modli się po cichu, przygotowując się do Komunii.",
+          "missal": "Agnus Dei i cicha modlitwa kapłana"
+        },
+        {
+          "id": "communion",
+          "title": "Komunia",
+          "who": "Kapłan i lud",
+          "rubric": "Kapłan przyklęka, ukazuje ludowi Hostię i razem z nim wypowiada odpowiedź przed Komunią. Przyjmuje Komunię, a następnie jej udziela. Śpiewa się pieśń na Komunię albo odmawia antyfonę na Komunię. Potem oczyszcza się naczynia, i może nastąpić chwila ciszy.",
+          "missal": "Antyfona na Komunię z dnia"
+        },
+        {
+          "id": "prayer_after_communion",
+          "title": "Modlitwa po Komunii",
+          "who": "Kapłan",
+          "rubric": "Stojąc przy ołtarzu lub przy miejscu przewodniczenia, kapłan mówi: „Módlmy się” i odmawia modlitwę po Komunii z dnia; wierni odpowiadają: „Amen”.",
+          "missal": "Modlitwa po Komunii z dnia"
+        }
+      ]
+    },
+    {
+      "id": "concluding",
+      "title": "Obrzędy zakończenia",
+      "parts": [
+        {
+          "id": "announcements",
+          "title": "Ogłoszenia",
+          "who": "Kapłan, diakon lub inny usługujący",
+          "rubric": "Jeśli są, podaje się teraz krótkie ogłoszenia."
+        },
+        {
+          "id": "blessing",
+          "title": "Błogosławieństwo",
+          "who": "Kapłan i lud",
+          "rubric": "Kapłan pozdrawia lud i mu błogosławi. W niektóre dni lub z określonych okazji można użyć błogosławieństwa uroczystego albo modlitwy nad ludem.",
+          "missal": "Pozdrowienie i błogosławieństwo"
+        },
+        {
+          "id": "dismissal",
+          "title": "Rozesłanie",
+          "who": "Diakon lub kapłan, i lud",
+          "rubric": "Diakon albo kapłan rozsyła lud jedną z formuł Mszału; lud odpowiada: „Bogu niech będą dzięki”. W oktawie Wielkanocy i w Zesłanie Ducha Świętego dodaje się podwójne Alleluja. Kapłan całuje ołtarz i po głębokim skłonie wraz z usługującymi odchodzi.",
+          "missal": "Rozesłanie"
+        }
+      ]
+    }
+  ],
+  "goodFriday": "W Wielki Piątek nie sprawuje się Mszy. Liturgia Męki Pańskiej ma własny porządek: liturgię słowa, adorację Krzyża i Komunię. Czytania dnia podano poniżej.",
+  "holySaturday": "W Wielką Sobotę Kościół trwa przy grobie Pana; Ofiarę Mszy sprawuje się dopiero w Wigilię Paschalną, po zapadnięciu zmroku."
+}

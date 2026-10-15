@@ -86,11 +86,12 @@ internal fun MassSheet(
     LaunchedEffect(plan.day.date, profile) {
         week = (1..7).mapNotNull { offset ->
             val date = plan.day.date.plus(offset, DateTimeUnit.DAY)
-            val day = OrdoCalendar.day(date, profile) ?: return@mapNotNull null
+            val day = OrdoCalendar.day(date, profile, language) ?: return@mapNotNull null
             val principal = day.principal ?: return@mapNotNull null
             val readings = OrdoCalendar.readings(day)?.readings.orEmpty()
                 .filter { it.kind in setOf(LectionaryKind.FIRST_READING, LectionaryKind.PSALM, LectionaryKind.SECOND_READING, LectionaryKind.GOSPEL) }
                 .mapNotNull { r -> (r.options.firstOrNull { !it.short } ?: r.options.firstOrNull())?.citation }
+                .map { displayCitation(it, language) }
             WeekDay(date, principal.name, principal.colors.firstOrNull(), readings.joinToString(" / "))
         }
     }
@@ -155,7 +156,7 @@ internal fun MassSheet(
                         if (pof == null) {
                             MissalLine(planned.rubric) // no approved intentions yet: describe the part instead
                         } else {
-                            Speaker("Cel", pof.invitation, scale)
+                            Speaker(t["screen.mass.celebrant_short"], pof.invitation, scale)
                             Spacer(Modifier.height(6.dp))
                             Text(
                                 buildAnnotatedString {
@@ -169,7 +170,7 @@ internal fun MassSheet(
                                 Text("${i + 1}. $intention", color = colors.onSurface, fontSize = body, lineHeight = bodyLine)
                             }
                             Spacer(Modifier.height(6.dp))
-                            Speaker("Cel", pof.conclusion, scale)
+                            Speaker(t["screen.mass.celebrant_short"], pof.conclusion, scale)
                         }
                     }
                     else -> {

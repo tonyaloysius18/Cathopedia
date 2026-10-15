@@ -69,15 +69,22 @@ data class MassPlan(
  */
 object OrderOfMass {
     private val json = Json { ignoreUnknownKeys = true }
-    private var cached: OrderOfMassText? = null
+    private val cache = mutableMapOf<String, OrderOfMassText>()
 
-    /** Phase 1 ships English guidance only; other languages arrive with their licensed Missals. */
-    suspend fun text(): OrderOfMassText = cached ?: json.decodeFromString<OrderOfMassText>(
-        Res.readBytes("files/content/ordo/order_of_mass.en.json").decodeToString(),
-    ).also { cached = it }
+    /**
+     * Cathopedia's own guidance (part names, rubrics, notes) in [language], falling back to English.
+     * The Missal's texts themselves arrive per language with their licences.
+     */
+    suspend fun text(language: String = "en"): OrderOfMassText = cache.getOrPut(language) {
+        runCatching { load(language) }.getOrNull() ?: cache.getOrPut("en") { load("en") }
+    }
 
-    suspend fun plan(day: OrdoDay, celebrationKey: String? = null): MassPlan? {
-        val text = text()
+    private suspend fun load(language: String): OrderOfMassText = json.decodeFromString<OrderOfMassText>(
+        Res.readBytes("files/content/ordo/order_of_mass.$language.json").decodeToString(),
+    )
+
+    suspend fun plan(day: OrdoDay, celebrationKey: String? = null, language: String = "en"): MassPlan? {
+        val text = text(language)
         val celebration = day.celebrations.firstOrNull { it.key == celebrationKey } ?: day.principal ?: return null
         val season = LiturgicalCalendar.liturgicalDayFor(day.date).season
         val readings = OrdoCalendar.readings(day, celebration.key)

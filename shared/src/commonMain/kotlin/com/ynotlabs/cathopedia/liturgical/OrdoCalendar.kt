@@ -107,14 +107,17 @@ object OrdoCalendar {
     private val calendars = mutableMapOf<OrdoProfile, JsonObject>()
     private var lectionary: JsonObject? = null
     private var commons: JsonObject? = null
-    private var names: Map<String, String> = emptyMap()
+    private val names = mutableMapOf<String, Map<String, String>>()
 
     const val firstYear = 2025
     const val lastYear = 2040
 
-    suspend fun day(date: LocalDate, profile: OrdoProfile = OrdoProfile.GENERAL): OrdoDay? {
+    /** [language] picks the celebration names; any name missing in it falls back to English. */
+    suspend fun day(date: LocalDate, profile: OrdoProfile = OrdoProfile.GENERAL, language: String = "en"): OrdoDay? {
         if (date.year !in firstYear..lastYear) return null
         val years = calendar(profile)
+        val local = namesFor(language)
+        val english = namesFor("en")
         val key = date.month.ordinal.plus(1).toString().padStart(2, '0') + date.day.toString().padStart(2, '0')
         val raw = years[date.year.toString()]?.jsonObject?.get(key)?.jsonObject ?: return null
         val celebrations = raw["e"]!!.jsonArray.map { e ->
@@ -122,7 +125,7 @@ object OrdoCalendar {
             val eventKey = a[0].jsonPrimitive.content
             OrdoCelebration(
                 key = eventKey,
-                name = names[eventKey] ?: eventKey,
+                name = local[eventKey] ?: english[eventKey] ?: eventKey,
                 rank = OrdoRank.ofGrade(a[1].jsonPrimitive.int),
                 colors = a[2].jsonPrimitive.content.split('/').filter(String::isNotBlank),
             )
@@ -218,10 +221,15 @@ object OrdoCalendar {
         )
     }
 
-    private suspend fun calendar(profile: OrdoProfile): JsonObject = mutex.withLock {
-        if (names.isEmpty()) {
-            names = json.decodeFromString(Res.readBytes("$DIR/names_en.json").decodeToString())
+    private suspend fun namesFor(language: String): Map<String, String> = mutex.withLock {
+        names.getOrPut(language) {
+            runCatching {
+                json.decodeFromString<Map<String, String>>(Res.readBytes("$DIR/names_$language.json").decodeToString())
+            }.getOrDefault(emptyMap())
         }
+    }
+
+    private suspend fun calendar(profile: OrdoProfile): JsonObject = mutex.withLock {
         calendars.getOrPut(profile) {
             json.parseToJsonElement(Res.readBytes("$DIR/${profile.file}.json").decodeToString())
                 .jsonObject["years"]!!.jsonObject

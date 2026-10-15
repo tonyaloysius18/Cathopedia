@@ -132,10 +132,10 @@ fun CelebrateMassScreen(
     var text by remember { mutableStateOf<OrderOfMassText?>(null) }
     var loaded by remember { mutableStateOf(false) }
 
-    LaunchedEffect(date, profile, celebrationKey) {
+    LaunchedEffect(date, profile, celebrationKey, language) {
         loaded = false
-        text = OrderOfMass.text()
-        plan = OrdoCalendar.day(date, profile)?.let { OrderOfMass.plan(it, celebrationKey) }
+        text = OrderOfMass.text(language)
+        plan = OrdoCalendar.day(date, profile, language)?.let { OrderOfMass.plan(it, celebrationKey, language) }
         loaded = true
     }
 
@@ -253,7 +253,8 @@ private fun MassHeader(
                 title,
                 color = colors.onSurface,
                 fontFamily = FontFamily.Serif,
-                fontSize = 24.sp,
+                // Some languages' titles ("Ordinaire de la messe") are long beside the three icons.
+                fontSize = if (title.length > 14) 19.sp else 24.sp,
                 modifier = Modifier.weight(1f).padding(start = 8.dp),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -378,6 +379,7 @@ private fun CelebrationCard(
                 )
             }
         }
+        // The guide and celebration names are translated; the reading texts are still English.
         if (language != "en" && t["screen.mass.english_only"].isNotBlank()) {
             Spacer(Modifier.height(6.dp))
             Text(t["screen.mass.english_only"], color = colors.onSurfaceVariant, fontSize = 11.sp, fontStyle = FontStyle.Italic)
@@ -651,11 +653,12 @@ private fun PartContent(
 @Composable
 private fun ReadingBlock(reading: LectionaryReading, language: String, scale: Float, text: OrderOfMassText) {
     val colors = MaterialTheme.colorScheme
+    val t = LocalScreenText.current
     var chosen by remember(reading) { mutableStateOf(0) }
     reading.options.forEachIndexed { index, option ->
         if (index > 0) {
             Text(
-                if (option.short) "— short form" else "— or",
+                "— " + (if (option.short) t["screen.mass.short_form"] else t["screen.mass.or"]),
                 color = colors.onSurfaceVariant,
                 fontSize = (12 * scale).sp,
                 modifier = Modifier.padding(vertical = 2.dp),

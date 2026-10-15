@@ -260,7 +260,7 @@
     "screen.mass.weekday_readings": "Leituras do dia de semana",
     "screen.mass.choose_celebration": "Celebrar em vez disso",
     "screen.mass.out_of_range": "O calendário offline abrange de 2025 a 2040.",
-    "screen.mass.english_only": "O guia da Missa está por enquanto em inglês.",
+    "screen.mass.english_only": "O texto das leituras está por enquanto em inglês.",
     "screen.mass.rank.weekday": "Dia de semana",
     "screen.mass.rank.optional_memorial": "Memória facultativa",
     "screen.mass.rank.memorial": "Memória obrigatória",
@@ -276,6 +276,9 @@
     "screen.mass.week_ahead": "A semana que vem",
     "screen.mass.draft_note": "Rascunho: aguarda revisão de um sacerdote. Visível apenas em versões de desenvolvimento.",
     "screen.mass.missal_line": "Texto do Missal Romano, a acrescentar",
-    "screen.mass.refrain_line": "Refrão do Lecionário, a acrescentar"
+    "screen.mass.refrain_line": "Refrão do Lecionário, a acrescentar",
+    "screen.mass.short_form": "forma breve",
+    "screen.mass.or": "ou",
+    "screen.mass.celebrant_short": "Cel"
   }
 }

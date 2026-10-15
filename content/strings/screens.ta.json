@@ -260,7 +260,7 @@
     "screen.mass.weekday_readings": "வாரநாள் வாசகங்கள்",
     "screen.mass.choose_celebration": "அதற்குப் பதிலாக நிறைவேற்று",
     "screen.mass.out_of_range": "இணைப்பில்லா நாள்காட்டி 2025 முதல் 2040 வரை உள்ளடக்கியது.",
-    "screen.mass.english_only": "திருப்பலி வழிகாட்டி தற்போது ஆங்கிலத்தில் மட்டுமே உள்ளது.",
+    "screen.mass.english_only": "வாசகங்களின் உரை தற்போது ஆங்கிலத்தில் உள்ளது.",
     "screen.mass.rank.weekday": "வாரநாள்",
     "screen.mass.rank.optional_memorial": "விருப்ப நினைவு",
     "screen.mass.rank.memorial": "நினைவு",
@@ -276,6 +276,9 @@
     "screen.mass.week_ahead": "வரும் வாரம்",
     "screen.mass.draft_note": "வரைவு: ஒரு குருவின் மதிப்பாய்வுக்காகக் காத்திருக்கிறது. மேம்பாட்டுப் பதிப்புகளில் மட்டும் தெரியும்.",
     "screen.mass.missal_line": "உரோமைத் திருப்பலி நூலின் உரை, சேர்க்கப்படும்",
-    "screen.mass.refrain_line": "வாசக நூலின் பல்லவி, சேர்க்கப்படும்"
+    "screen.mass.refrain_line": "வாசக நூலின் பல்லவி, சேர்க்கப்படும்",
+    "screen.mass.short_form": "சுருக்க வடிவம்",
+    "screen.mass.or": "அல்லது",
+    "screen.mass.celebrant_short": "குரு"
   }
 }

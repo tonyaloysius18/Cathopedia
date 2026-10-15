@@ -1,0 +1,247 @@
+{
+  "language": "pt",
+  "note": "Estrutura e indicações redigidas para o Cathopedia, segundo o Ordinário da Missa do Missal Romano (terceira edição). Os textos e as rubricas do Missal não são reproduzidos: as partes marcadas «missal» mostram onde aparecerá o texto autorizado.",
+  "missalPending": "O texto desta parte vem do Missal Romano. Aparecerá aqui quando o Missal em português, licenciado, for incluído no Cathopedia.",
+  "readingPending": "O texto da leitura, tirado de um Lecionário aprovado, aparecerá aqui quando estiver licenciado. A referência acima indica o trecho lido hoje.",
+  "readingStudyNote": "Texto em inglês: World English Bible (domínio público), para estudo e preparação. Não é uma tradução litúrgica aprovada; na Missa, proclame a leitura a partir de um Lecionário aprovado. Os versículos aparecem completos, por isso uma leitura que começa ou termina no meio de um versículo pode trazer algumas palavras a mais.",
+  "homilyPending": "Aqui aparecerão breves ideias para a homilia do dia.",
+  "sections": [
+    {
+      "id": "introductory",
+      "title": "Ritos iniciais",
+      "parts": [
+        {
+          "id": "entrance",
+          "title": "Entrada",
+          "who": "Todos",
+          "rubric": "Enquanto o sacerdote e os ministros se dirigem ao altar, canta-se o canto de entrada ou diz-se a antífona de entrada do dia. O sacerdote venera o altar com um beijo e, se se usa incenso, incensa-o; depois vai para a cadeira presidencial.",
+          "missal": "Antífona de entrada do dia"
+        },
+        {
+          "id": "sign_of_cross",
+          "title": "Sinal da cruz",
+          "who": "Sacerdote e povo",
+          "rubric": "De pé junto à cadeira, o sacerdote e os fiéis fazem o sinal da cruz.",
+          "text": "Em nome do Pai e do Filho e do Espírito Santo.\nAmém."
+        },
+        {
+          "id": "greeting",
+          "title": "Saudação",
+          "who": "Sacerdote e povo",
+          "rubric": "O sacerdote saúda o povo com uma das fórmulas do Missal; os fiéis respondem. Ele próprio ou outro ministro pode introduzir brevemente a Missa do dia.",
+          "missal": "Saudação"
+        },
+        {
+          "id": "penitential_act",
+          "title": "Ato penitencial",
+          "who": "Sacerdote e povo",
+          "rubric": "O sacerdote convida os fiéis a reconhecerem os seus pecados. Após um breve silêncio, segue-se uma das formas do ato penitencial, concluída pela absolvição do sacerdote. Aos domingos, sobretudo no tempo pascal, pode ser substituído pela bênção e aspersão da água.",
+          "missal": "Ato penitencial"
+        },
+        {
+          "id": "kyrie",
+          "title": "Kyrie",
+          "who": "Sacerdote e povo",
+          "rubric": "Se não tiver sido dito no ato penitencial, seguem-se as invocações do Kyrie.",
+          "text": "Kyrie, eleison. Kyrie, eleison.\nChriste, eleison. Christe, eleison.\nKyrie, eleison. Kyrie, eleison.",
+          "textNote": "Em grego, como no Missal: Senhor, tende piedade. Cristo, tende piedade. Senhor, tende piedade."
+        },
+        {
+          "id": "gloria",
+          "title": "Glória",
+          "who": "Todos",
+          "rubric": "Hoje se canta ou se diz o Glória.",
+          "condition": "gloria",
+          "missal": "Glória"
+        },
+        {
+          "id": "collect",
+          "title": "Oração do dia",
+          "who": "Sacerdote",
+          "rubric": "O sacerdote diz «Oremos», e todos rezam em silêncio por alguns momentos. Depois, de braços abertos, diz a oração do dia; os fiéis concluem com «Amém».",
+          "missal": "Oração do dia (coleta)"
+        }
+      ]
+    },
+    {
+      "id": "word",
+      "title": "Liturgia da Palavra",
+      "parts": [
+        {
+          "id": "first_reading",
+          "title": "Primeira leitura",
+          "who": "Leitor",
+          "rubric": "Todos se sentam. O leitor proclama a primeira leitura no ambão e conclui com a aclamação; os fiéis respondem. Pode seguir-se um breve silêncio.",
+          "reading": "FIRST_READING"
+        },
+        {
+          "id": "psalm",
+          "title": "Salmo responsorial",
+          "who": "Salmista e povo",
+          "rubric": "O salmista ou o cantor canta ou diz as estrofes; o povo responde com o refrão.",
+          "reading": "PSALM"
+        },
+        {
+          "id": "second_reading",
+          "title": "Segunda leitura",
+          "who": "Leitor",
+          "rubric": "Aos domingos e solenidades segue-se uma segunda leitura, proclamada como a primeira.",
+          "reading": "SECOND_READING",
+          "condition": "second_reading"
+        },
+        {
+          "id": "sequence",
+          "title": "Sequência",
+          "who": "Todos",
+          "rubric": "A sequência do dia é cantada antes do Aleluia. É obrigatória no domingo de Páscoa e em Pentecostes, e facultativa nos outros dias que a têm.",
+          "reading": "SEQUENCE",
+          "condition": "sequence"
+        },
+        {
+          "id": "acclamation",
+          "title": "Aclamação ao Evangelho",
+          "who": "Todos, de pé",
+          "rubric": "Todos se levantam. Canta-se o Aleluia com o seu versículo, ou, na Quaresma, o versículo antes do Evangelho, sem Aleluia.",
+          "rubricLent": "Todos se levantam. Na Quaresma não se canta o Aleluia: canta-se o versículo antes do Evangelho com a sua aclamação quaresmal.",
+          "reading": "ACCLAMATION"
+        },
+        {
+          "id": "gospel",
+          "title": "Evangelho",
+          "who": "Diácono ou sacerdote",
+          "rubric": "O diácono pede e recebe a bênção do sacerdote; o sacerdote que proclama ele mesmo o Evangelho reza antes em silêncio para se preparar. No ambão, saúda o povo, anuncia o Evangelho, traça o sinal da cruz no livro e em si mesmo, na fronte, na boca e no peito, pode incensar o livro e proclama o Evangelho. No fim, beija o livro.",
+          "reading": "GOSPEL"
+        },
+        {
+          "id": "homily",
+          "title": "Homilia",
+          "who": "Sacerdote ou diácono",
+          "rubric": "Todos se sentam. A homilia é obrigatória aos domingos e dias de preceito, e recomendada nos outros dias. Pode seguir-se um breve silêncio.",
+          "homily": true
+        },
+        {
+          "id": "creed",
+          "title": "Profissão de fé",
+          "who": "Todos, de pé",
+          "rubric": "Hoje se canta ou se diz o Credo. Usa-se o símbolo niceno-constantinopolitano; pode ser substituído pelo símbolo dos Apóstolos, sobretudo na Quaresma e no tempo pascal. Todos se inclinam às palavras sobre a Encarnação, e ajoelham-se nas solenidades da Anunciação e do Natal do Senhor.",
+          "condition": "creed",
+          "missal": "Profissão de fé"
+        },
+        {
+          "id": "universal_prayer",
+          "title": "Oração universal",
+          "who": "Sacerdote, diácono ou leitor, e povo",
+          "rubric": "O sacerdote introduz, da cadeira, a oração dos fiéis. Apresentam-se intenções pela Igreja, pelos governantes e pela salvação do mundo, por todos os que passam necessidade e pela comunidade local; o povo responde depois de cada uma. O sacerdote conclui com uma oração.",
+          "intentions": true
+        }
+      ]
+    },
+    {
+      "id": "eucharist",
+      "title": "Liturgia eucarística",
+      "parts": [
+        {
+          "id": "preparation",
+          "title": "Preparação das oferendas",
+          "who": "Sacerdote",
+          "rubric": "Prepara-se o altar e trazem-se as oferendas enquanto se canta o canto das oferendas. O sacerdote apresenta o pão e o vinho com as suas orações, deita um pouco de água no vinho, lava as mãos e convida o povo a rezar; o povo responde.",
+          "missal": "Orações da preparação das oferendas"
+        },
+        {
+          "id": "prayer_over_offerings",
+          "title": "Oração sobre as oferendas",
+          "who": "Sacerdote",
+          "rubric": "De braços abertos, o sacerdote diz a oração sobre as oferendas do dia; os fiéis respondem: «Amém».",
+          "missal": "Oração sobre as oferendas do dia"
+        },
+        {
+          "id": "preface",
+          "title": "Prefácio",
+          "who": "Sacerdote e povo",
+          "rubric": "A oração eucarística começa com o diálogo e o prefácio. Escolha o prefácio próprio do dia ou do tempo.",
+          "missal": "Diálogo e prefácio",
+          "preface": true
+        },
+        {
+          "id": "sanctus",
+          "title": "Santo",
+          "who": "Todos",
+          "rubric": "No fim do prefácio, todos cantam ou dizem o Santo. Onde é costume, os fiéis ajoelham-se em seguida.",
+          "missal": "Santo"
+        },
+        {
+          "id": "eucharistic_prayer",
+          "title": "Oração eucarística",
+          "who": "Sacerdote",
+          "rubric": "O sacerdote diz uma das orações eucarísticas. A consagração segue a narrativa da instituição: mostra ao povo a hóstia consagrada e o cálice, e genuflete depois de cada um. Depois do mistério da fé, a oração continua até à doxologia final, à qual o povo responde: «Amém».",
+          "missal": "Oração eucarística",
+          "eucharisticPrayer": true
+        },
+        {
+          "id": "lords_prayer",
+          "title": "Pai-nosso",
+          "who": "Todos",
+          "rubric": "Todos se levantam. Depois da introdução do sacerdote, todos juntos rezam ou cantam o Pai-nosso. O sacerdote continua sozinho com o embolismo, e o povo conclui com a doxologia.",
+          "text": "Pai nosso que estais nos céus,\nsantificado seja o vosso nome;\nvenha a nós o vosso reino;\nseja feita a vossa vontade, assim na terra como no céu.\nO pão nosso de cada dia nos dai hoje;\nperdoai-nos as nossas ofensas,\nassim como nós perdoamos a quem nos tem ofendido;\ne não nos deixeis cair em tentação,\nmas livrai-nos do mal.",
+          "missal": "Embolismo e doxologia"
+        },
+        {
+          "id": "sign_of_peace",
+          "title": "Rito da paz",
+          "who": "Sacerdote e povo",
+          "rubric": "O sacerdote diz a oração pela paz e saúda o povo com a paz do Senhor. O diácono ou o sacerdote pode convidar todos a trocarem um sinal de paz.",
+          "missal": "Rito da paz"
+        },
+        {
+          "id": "agnus_dei",
+          "title": "Cordeiro de Deus",
+          "who": "Todos",
+          "rubric": "Enquanto se canta ou se diz o Agnus Dei, o sacerdote parte a hóstia e coloca uma pequena parte no cálice. Depois reza em silêncio para se preparar para a Comunhão.",
+          "missal": "Agnus Dei e oração em silêncio do sacerdote"
+        },
+        {
+          "id": "communion",
+          "title": "Comunhão",
+          "who": "Sacerdote e povo",
+          "rubric": "O sacerdote genuflete, mostra a hóstia ao povo e diz com ele a resposta antes da Comunhão. Comunga e depois distribui a Comunhão. Canta-se o canto da comunhão ou diz-se a antífona da comunhão. Em seguida purificam-se os vasos sagrados, e pode guardar-se um tempo de silêncio.",
+          "missal": "Antífona da comunhão do dia"
+        },
+        {
+          "id": "prayer_after_communion",
+          "title": "Oração depois da comunhão",
+          "who": "Sacerdote",
+          "rubric": "De pé junto ao altar ou à cadeira, o sacerdote diz «Oremos» e a oração depois da comunhão do dia; os fiéis respondem: «Amém».",
+          "missal": "Oração depois da comunhão do dia"
+        }
+      ]
+    },
+    {
+      "id": "concluding",
+      "title": "Ritos finais",
+      "parts": [
+        {
+          "id": "announcements",
+          "title": "Avisos",
+          "who": "Sacerdote, diácono ou outro ministro",
+          "rubric": "Se houver, dão-se agora breves avisos."
+        },
+        {
+          "id": "blessing",
+          "title": "Bênção",
+          "who": "Sacerdote e povo",
+          "rubric": "O sacerdote saúda o povo e o abençoa. Em certos dias ou ocasiões pode usar-se uma bênção solene ou uma oração sobre o povo.",
+          "missal": "Saudação e bênção"
+        },
+        {
+          "id": "dismissal",
+          "title": "Despedida",
+          "who": "Diácono ou sacerdote, e povo",
+          "rubric": "O diácono, ou o sacerdote, despede o povo com uma das fórmulas do Missal; o povo responde: «Graças a Deus». Na oitava da Páscoa e em Pentecostes acrescenta-se um duplo Aleluia. O sacerdote venera o altar com um beijo e, feita uma inclinação profunda com os ministros, retira-se.",
+          "missal": "Despedida"
+        }
+      ]
+    }
+  ],
+  "goodFriday": "Na Sexta-feira Santa não se celebra a Missa. A celebração da Paixão do Senhor tem a sua própria ordem: a liturgia da Palavra, a adoração da Santa Cruz e a sagrada Comunhão. As leituras do dia estão indicadas abaixo.",
+  "holySaturday": "No Sábado Santo a Igreja permanece junto ao sepulcro do Senhor; o sacrifício da Missa só é celebrado na Vigília Pascal, depois do anoitecer."
+}

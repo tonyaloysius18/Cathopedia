@@ -260,7 +260,7 @@
     "screen.mass.weekday_readings": "Lectures du jour de semaine",
     "screen.mass.choose_celebration": "Célébrer plutôt",
     "screen.mass.out_of_range": "Le calendrier hors ligne couvre 2025 à 2040.",
-    "screen.mass.english_only": "Le guide de la messe est pour l’instant en anglais.",
+    "screen.mass.english_only": "Le texte des lectures est pour l'instant en anglais.",
     "screen.mass.rank.weekday": "Férie",
     "screen.mass.rank.optional_memorial": "Mémoire facultative",
     "screen.mass.rank.memorial": "Mémoire",
@@ -276,6 +276,9 @@
     "screen.mass.week_ahead": "La semaine à venir",
     "screen.mass.draft_note": "Brouillon : en attente de relecture par un prêtre. Visible uniquement dans les versions de développement.",
     "screen.mass.missal_line": "Texte du Missel romain, à ajouter",
-    "screen.mass.refrain_line": "Refrain du Lectionnaire, à ajouter"
+    "screen.mass.refrain_line": "Refrain du Lectionnaire, à ajouter",
+    "screen.mass.short_form": "forme brève",
+    "screen.mass.or": "ou",
+    "screen.mass.celebrant_short": "Cél"
   }
 }

@@ -260,7 +260,7 @@
     "screen.mass.weekday_readings": "Czytania z dnia powszedniego",
     "screen.mass.choose_celebration": "Zamiast tego odpraw",
     "screen.mass.out_of_range": "Kalendarz offline obejmuje lata 2025–2040.",
-    "screen.mass.english_only": "Przewodnik po Mszy jest na razie po angielsku.",
+    "screen.mass.english_only": "Tekst czytań jest na razie po angielsku.",
     "screen.mass.rank.weekday": "Dzień powszedni",
     "screen.mass.rank.optional_memorial": "Wspomnienie dowolne",
     "screen.mass.rank.memorial": "Wspomnienie obowiązkowe",
@@ -276,6 +276,9 @@
     "screen.mass.week_ahead": "Nadchodzący tydzień",
     "screen.mass.draft_note": "Szkic: oczekuje na przegląd kapłana. Widoczny tylko w wersjach deweloperskich.",
     "screen.mass.missal_line": "Tekst z Mszału Rzymskiego, zostanie dodany",
-    "screen.mass.refrain_line": "Refren z Lekcjonarza, zostanie dodany"
+    "screen.mass.refrain_line": "Refren z Lekcjonarza, zostanie dodany",
+    "screen.mass.short_form": "forma krótsza",
+    "screen.mass.or": "albo",
+    "screen.mass.celebrant_short": "Cel"
   }
 }
