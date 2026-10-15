@@ -14,6 +14,8 @@ CREATE TABLE SaintText (
     summary TEXT NOT NULL,
     body TEXT NOT NULL,
     sourceAttribution TEXT,
+    -- Patronage in this language; the SaintEntity column keeps the English original as last fallback.
+    patronage TEXT,
     PRIMARY KEY (saintId, language),
     FOREIGN KEY (saintId) REFERENCES SaintEntity(id) ON DELETE CASCADE
 );
@@ -23,8 +25,8 @@ INSERT OR REPLACE INTO SaintEntity(id, feastDay, canonizationYear, patronage, im
 VALUES (?, ?, ?, ?, ?, ?);
 
 insertSaintText:
-INSERT OR REPLACE INTO SaintText(saintId, language, name, summary, body, sourceAttribution)
-VALUES (?, ?, ?, ?, ?, ?);
+INSERT OR REPLACE INTO SaintText(saintId, language, name, summary, body, sourceAttribution, patronage)
+VALUES (?, ?, ?, ?, ?, ?, ?);
 
 -- Counting rows for the Explore tiles: cheaper than materialising every
 -- summary just to take the size of the list.
@@ -53,7 +55,7 @@ selectSaintDetail:
 SELECT SaintEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
        COALESCE(t.body, f.body) AS body,
        SaintEntity.feastDay AS feastDay, SaintEntity.canonizationYear AS canonizationYear,
-       SaintEntity.patronage AS patronage, SaintEntity.imageUrl AS imageUrl, SaintEntity.sourceUrl AS sourceUrl,
+       COALESCE(t.patronage, f.patronage, SaintEntity.patronage) AS patronage, SaintEntity.imageUrl AS imageUrl, SaintEntity.sourceUrl AS sourceUrl,
        COALESCE(t.sourceAttribution, f.sourceAttribution) AS sourceAttribution
 FROM SaintEntity
 LEFT JOIN SaintText t ON t.saintId = SaintEntity.id AND t.language = :language

@@ -10,55 +10,64 @@
       "name": "Francis of Assisi",
       "summary": "Founder of the Franciscan order, known for his embrace of poverty and love of creation.",
       "body": "Francis of Assisi (c. 1181-1226) renounced his family's wealth to live in poverty, founded the Franciscan order, and is traditionally associated with a deep reverence for the natural world.",
-      "sourceAttribution": "Seed content — replace with sourced text."
+      "sourceAttribution": "Seed content — replace with sourced text.",
+      "patronage": "Animals, ecology, merchants"
     },
     "fr": {
       "name": "François d'Assise",
       "summary": "Fondateur de l'ordre franciscain, connu pour son embrassement de la pauvreté et son amour de la création.",
       "body": "François d'Assise (v. 1181-1226) renonça à la richesse de sa famille pour vivre dans la pauvreté, fonda l'ordre franciscain, et est traditionnellement associé à une profonde vénération pour le monde naturel.",
-      "sourceAttribution": "Contenu de base — à remplacer par un texte sourcé."
+      "sourceAttribution": "Contenu de base — à remplacer par un texte sourcé.",
+      "patronage": "Animaux, écologie, marchands"
     },
     "it": {
       "name": "Francesco d'Assisi",
       "summary": "Fondatore dell'ordine francescano, noto per la scelta della povertà e per l'amore verso il creato.",
       "body": "Francesco d'Assisi (c. 1181-1226) rinunciò alle ricchezze della famiglia per vivere in povertà, fondò l'ordine francescano ed è tradizionalmente associato a una profonda riverenza per il mondo naturale.",
-      "sourceAttribution": "Contenuto iniziale — da sostituire con un testo documentato."
+      "sourceAttribution": "Contenuto iniziale — da sostituire con un testo documentato.",
+      "patronage": "Animali, ecologia, mercanti"
     },
     "de": {
       "name": "Franz von Assisi",
       "summary": "Gründer des Franziskanerordens, bekannt für seine Annahme der Armut und seine Liebe zur Schöpfung.",
       "body": "Franz von Assisi (um 1181–1226) verzichtete auf den Reichtum seiner Familie, um in Armut zu leben, gründete den Franziskanerorden und wird traditionell mit einer tiefen Ehrfurcht vor der Natur verbunden.",
-      "sourceAttribution": "Platzhaltertext – durch belegten Text ersetzen."
+      "sourceAttribution": "Platzhaltertext – durch belegten Text ersetzen.",
+      "patronage": "Tiere, Ökologie, Kaufleute"
     },
     "es": {
       "name": "Francisco de Asís",
       "summary": "Fundador de la orden franciscana, conocido por su abrazo a la pobreza y su amor a la creación.",
       "body": "Francisco de Asís (hacia 1181-1226) renunció a la riqueza de su familia para vivir en pobreza, fundó la orden franciscana y se le asocia tradicionalmente con una profunda reverencia por el mundo natural.",
-      "sourceAttribution": "Texto provisional — sustituir por texto con fuentes."
+      "sourceAttribution": "Texto provisional — sustituir por texto con fuentes.",
+      "patronage": "Animales, ecología, comerciantes"
     },
     "pt": {
       "name": "Francisco de Assis",
       "summary": "Fundador da ordem franciscana, conhecido por abraçar a pobreza e por seu amor à criação.",
       "body": "Francisco de Assis (c. 1181-1226) renunciou à riqueza de sua família para viver na pobreza, fundou a ordem franciscana e é tradicionalmente associado a uma profunda reverência pelo mundo natural.",
-      "sourceAttribution": "Texto provisório — substituir por texto com fontes."
+      "sourceAttribution": "Texto provisório — substituir por texto com fontes.",
+      "patronage": "Animais, ecologia, comerciantes"
     },
     "nl": {
       "name": "Franciscus van Assisi",
       "summary": "Stichter van de franciscaanse orde, bekend om zijn omarming van de armoede en zijn liefde voor de schepping.",
       "body": "Franciscus van Assisi (ca. 1181-1226) deed afstand van de rijkdom van zijn familie om in armoede te leven, stichtte de franciscaanse orde en wordt traditioneel verbonden met een diepe eerbied voor de natuur.",
-      "sourceAttribution": "Voorlopige tekst — te vervangen door tekst met bronnen."
+      "sourceAttribution": "Voorlopige tekst — te vervangen door tekst met bronnen.",
+      "patronage": "Dieren, ecologie, kooplieden"
     },
     "pl": {
       "name": "Franciszek z Asyżu",
       "summary": "Założyciel zakonu franciszkanów, znany z umiłowania ubóstwa i miłości do stworzenia.",
       "body": "Franciszek z Asyżu (ok. 1181–1226) wyrzekł się bogactwa rodziny, by żyć w ubóstwie, założył zakon franciszkanów i tradycyjnie kojarzony jest z głębokim szacunkiem dla świata przyrody.",
-      "sourceAttribution": "Tekst tymczasowy — do zastąpienia tekstem ze źródłami."
+      "sourceAttribution": "Tekst tymczasowy — do zastąpienia tekstem ze źródłami.",
+      "patronage": "Zwierzęta, ekologia, kupcy"
     },
     "ta": {
       "name": "அசிசியின் பிரான்சிஸ்",
       "summary": "ஏழ்மையைத் தழுவியதற்கும் படைப்பின் மீதான அன்புக்கும் அறியப்படும் பிரான்சிஸ்கன் சபையின் நிறுவுநர்.",
       "body": "அசிசியின் பிரான்சிஸ் (ஏறத்தாழ 1181-1226) ஏழ்மையில் வாழத் தம் குடும்பச் செல்வத்தைத் துறந்து, பிரான்சிஸ்கன் சபையை நிறுவினார்; இயற்கை உலகின் மீதான ஆழ்ந்த மரியாதையோடு மரபுப்படி இணைக்கப்படுகிறார்.",
-      "sourceAttribution": "தற்காலிக உரை — ஆதாரங்களுடன் கூடிய உரையால் மாற்றப்பட வேண்டும்."
+      "sourceAttribution": "தற்காலிக உரை — ஆதாரங்களுடன் கூடிய உரையால் மாற்றப்பட வேண்டும்.",
+      "patronage": "விலங்குகள், சூழலியல், வணிகர்கள்"
     }
   }
 }

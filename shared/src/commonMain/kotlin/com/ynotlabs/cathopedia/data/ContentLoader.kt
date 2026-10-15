@@ -40,7 +40,7 @@ object ContentLoader {
      * this just controls whether it re-runs on an existing install rather
      * than only ever loading once on a database with zero rows.
      */
-    private const val CONTENT_VERSION = "264"
+    private const val CONTENT_VERSION = "267"
     private const val CONTENT_VERSION_KEY = "content_version"
 
     // classDiscriminator/explicitNulls (from com.ynotlabs.cathopedia.content.hubContentJson) are
@@ -75,7 +75,7 @@ object ContentLoader {
         catalog.saints.forEach { s ->
             database.saintQueries.insertSaint(s.id, s.feastDay, s.canonizationYear, s.patronage, s.imageUrl, s.sourceUrl)
             s.text.forEach { (lang, t) ->
-                database.saintQueries.insertSaintText(s.id, lang, t.name, t.summary, t.body, t.sourceAttribution)
+                database.saintQueries.insertSaintText(s.id, lang, t.name, t.summary, t.body, t.sourceAttribution, t.patronage)
                 index(database, ContentType.SAINT, s.id, lang, t)
             }
         }
