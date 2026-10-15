@@ -14,6 +14,7 @@ import urllib.request
 from pathlib import Path
 
 from names_ta import TA_SAINTS
+from names_us import US_NAMES
 
 ROOT = Path(__file__).resolve().parents[2]
 CACHE = ROOT / "build" / "liturgy-cache" / "i18n"
@@ -227,7 +228,7 @@ def main() -> None:
                     names[k] = f"{TA_SUNDAY[m.group(1)]} {m.group(2)}ஆம் ஞாயிறு"
         out = {}
         for k in sorted(keys):
-            v = CORRECTIONS.get(lang, {}).get(k) or generated(k, t) or names.get(k)
+            v = CORRECTIONS.get(lang, {}).get(k) or US_NAMES.get(lang, {}).get(k) or generated(k, t) or names.get(k)
             if v and lang == "pt":
                 # Upstream pt keeps the Missal heading form ("Na Natividade do Senhor"); a calendar wants the name.
                 v = re.sub(r"^N[ao]s? (\w)", lambda m: m.group(1).upper(), v).replace("Santo Paulo", "São Paulo")

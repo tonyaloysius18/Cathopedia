@@ -84,7 +84,10 @@ DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 # CDW decree of 3 June 2016 raised St Mary Magdalene to a feast; CDW decree of 26 January 2021
 # renamed St Martha's memorial "Saints Martha, Mary and Lazarus".
 GRADE_CORRECTIONS = {"StMaryMagdalene": 4}
-NAME_CORRECTIONS = {"StMartha": "Saints Martha, Mary and Lazarus"}
+NAME_CORRECTIONS = {"StMartha": "Saints Martha, Mary and Lazarus",
+                    # Upstream still says "Blessed": canonized 2015 and 2012.
+                    "JuniperoSerra": "[ US ] Saint Junípero Serra, Priest",
+                    "KateriTekakwitha": "[ US ] Saint Kateri Tekakwitha, Virgin"}
 
 
 def fetch(url: str, dest: Path) -> bytes:
