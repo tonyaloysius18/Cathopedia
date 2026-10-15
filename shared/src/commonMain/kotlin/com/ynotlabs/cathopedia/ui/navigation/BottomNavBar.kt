@@ -38,6 +38,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.ui.theme.LocalIsDarkTheme
 import androidx.compose.ui.layout.ContentScale
 import com.ynotlabs.cathopedia.resources.Res
@@ -320,7 +321,7 @@ fun BottomNavBar(
                     ) {
                         Image(
                             painter = painterResource(bottomNavIcon(tab)),
-                            contentDescription = tab.name,
+                            contentDescription = tabLabel(tab, LocalStrings.current),
                             contentScale = ContentScale.Fit,
                             modifier = Modifier.size(iconSize),
                         )
@@ -392,6 +393,14 @@ fun FloatingSearchButton(
             alpha = if (isSelected) 1f else 0.82f
         )
     }
+}
+
+/** The tab's name in the UI language, for screen readers. */
+private fun tabLabel(tab: Tab, s: Strings): String = when (tab) {
+    Tab.HOME -> s.navHome
+    Tab.EXPLORE -> s.navExplore
+    Tab.PRAYERS -> s.navPrayers
+    Tab.SETTINGS -> s.navSettings
 }
 
 private fun bottomNavIcon(tab: Tab): DrawableResource =

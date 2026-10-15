@@ -21,6 +21,11 @@ class AppLanguage(
     val strings: () -> Strings,
     /** "1st century", "1er siècle", "5. Jahrhundert", "siglo V"… */
     val formatCentury: (Int) -> String,
+    /**
+     * Multiplies the font scale for the whole UI. Scripts whose glyphs are larger than Latin ones
+     * at the same sp (Tamil) shrink, so the app's sizes, written against Latin text, still fit.
+     */
+    val textScale: Float = 1f,
 )
 
 object AppLanguages {
@@ -72,6 +77,7 @@ object AppLanguages {
             code = "ta", nativeName = "தமிழ்", available = true,
             localizedName = { it.languageNameTamil }, strings = { TA },
             formatCentury = { "${it}ஆம் நூற்றாண்டு" },
+            textScale = 0.84f,
         ),
     )
 

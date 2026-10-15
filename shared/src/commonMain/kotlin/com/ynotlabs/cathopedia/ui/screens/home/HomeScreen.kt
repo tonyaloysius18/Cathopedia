@@ -46,6 +46,7 @@ import androidx.compose.material.icons.filled.AutoStories
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import com.ynotlabs.cathopedia.ui.components.WordFitText
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.VerticalDivider
@@ -694,7 +695,7 @@ private fun HomePrayerShortcut(title: String, rosary: Boolean, onClick: () -> Un
             }
         }
         Spacer(Modifier.width(8.dp))
-        Text(title, color = HomeCream, fontFamily = FontFamily.Serif, fontWeight = FontWeight.Medium,
+        WordFitText(title, color = HomeCream, fontFamily = FontFamily.Serif, fontWeight = FontWeight.Medium,
             fontSize = 14.sp, lineHeight = 19.sp, modifier = Modifier.weight(1f))
         Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = gold,
             modifier = Modifier.padding(start = 4.dp).size(16.dp))

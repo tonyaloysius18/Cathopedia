@@ -429,7 +429,7 @@ private fun CommandmentsArticleCard(
                 Column(modifier = Modifier.weight(1f)) {
                     article.readingTimeMinutes?.let { minutes ->
                         Text(
-                            text = "ARTICLE · $minutes MIN",
+                            text = LocalStrings.current.hubArticleReadTime.replace("{minutes}", minutes.toString()).uppercase(),
                             color = CommandmentsGold.copy(alpha = 0.78f),
                             fontSize = 9.sp,
                             letterSpacing = 1.sp,

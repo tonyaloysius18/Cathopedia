@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.common
 
+import com.ynotlabs.cathopedia.ui.components.WordFitText
 import com.ynotlabs.cathopedia.ui.theme.imageFade
 import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
@@ -393,7 +394,7 @@ private fun HubSectionCard(
                     .padding(start = 18.dp, top = 14.dp, end = 16.dp, bottom = 14.dp),
             ) {
                 Box(modifier = Modifier.fillMaxWidth()) {
-                    Text(
+                    WordFitText(
                         text = title,
                         color = HubCream,
                         fontFamily = FontFamily.Serif,

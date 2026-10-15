@@ -213,6 +213,8 @@ class Strings {
     var exploreVestmentsSubtitle: String = "Liturgical garments"
     var exploreCardIconDescription: String = "{title} icon"
     var countHolyLives: String = "{count} holy lives"
+    var hubArticleCount: String = "{count} articles"
+    var hubArticleReadTime: String = "Article · {minutes} min"
     var countPontiffs: String = "{count} pontiffs"
     var countWitnesses: String = "{count} witnesses of Christ"
     var countSacredPlaces: String = "{count} sacred places"

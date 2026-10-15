@@ -538,7 +538,7 @@ private fun androidx.compose.foundation.lazy.LazyListScope.articlesSectionBody(
             if (articles.isNotEmpty()) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = "${articles.size} ARTICLES",
+                        text = LocalStrings.current.hubArticleCount.replace("{count}", articles.size.toString()).uppercase(),
                         color = HubSectionGold,
                         fontSize = 10.sp,
                         fontWeight = FontWeight.Medium,
@@ -652,7 +652,7 @@ private fun ArticleRow(
                 Column(modifier = Modifier.weight(1f)) {
                     readingTimeMinutes?.let { minutes ->
                         Text(
-                            text = "ARTICLE · $minutes MIN",
+                            text = LocalStrings.current.hubArticleReadTime.replace("{minutes}", minutes.toString()).uppercase(),
                             color = HubSectionGold.copy(alpha = 0.72f),
                             fontSize = 9.sp,
                             fontWeight = FontWeight.Medium,

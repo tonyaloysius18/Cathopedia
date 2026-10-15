@@ -33,6 +33,10 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.ScrollState
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.unit.Density
+import androidx.compose.ui.backhandler.BackHandler
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -54,6 +58,7 @@ import androidx.compose.ui.unit.dp
 import com.ynotlabs.cathopedia.data.PreferenceKeys
 import com.ynotlabs.cathopedia.di.AppContainer
 import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.AppLanguages
 import com.ynotlabs.cathopedia.i18n.stringsFor
 import com.ynotlabs.cathopedia.i18n.LocalScreenText
 import com.ynotlabs.cathopedia.i18n.ScreenText
@@ -119,6 +124,7 @@ private val TAB_DESTINATIONS = setOf(
 )
 
 /** Root composable, shared verbatim between the Android and iOS entry points. */
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun App(container: AppContainer, notificationScheduler: FeastNotificationScheduler) {
     val repository = container.repository
@@ -253,7 +259,23 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
     val liturgicalAccent = remember { LiturgicalCalendar.liturgicalDayFor(LiturgicalCalendar.today()).color.toAccentColor() }
 
     CathopediaTheme(themeMode = themeMode, liturgicalAccent = liturgicalAccent) {
-    CompositionLocalProvider(LocalStrings provides stringsFor(language), LocalScreenText provides screenText) {
+    // Shrinks every sp in the app for scripts that run larger than Latin at the same size (Tamil).
+    val baseDensity = LocalDensity.current
+    val textScale = AppLanguages.forCode(language).textScale
+    val scaledDensity = remember(baseDensity, textScale) {
+        Density(baseDensity.density, baseDensity.fontScale * textScale)
+    }
+    CompositionLocalProvider(
+        LocalStrings provides stringsFor(language),
+        LocalScreenText provides screenText,
+        LocalDensity provides scaledDensity,
+    ) {
+        // System back (Android button/gesture, iOS edge swipe) pops the in-app stack; at the root
+        // it falls through to the platform, which leaves the app. The common BackHandler is
+        // deprecated for NavigationEventHandler, which has no common Compose artifact here yet.
+        @Suppress("DEPRECATION")
+        BackHandler(enabled = nav.canGoBack) { nav.back() }
+
         val destination = nav.current
         val navDirection = nav.lastDirection
         val showBottomBar = destination in TAB_DESTINATIONS
