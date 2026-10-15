@@ -1,5 +1,8 @@
 package com.ynotlabs.cathopedia.ui.screens.startup
 
+import androidx.compose.ui.unit.Density
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.runtime.CompositionLocalProvider
 import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -69,9 +72,31 @@ fun LanguageScreenStartup(
     currentLanguage: String = "en",
     onContinue: (languageCode: String) -> Unit,
 ) {
+    var selected by remember(currentLanguage) { mutableStateOf(currentLanguage) }
+
+    // Preview the choice: the screen re-renders in the selected language (strings and its text
+    // scale) before Continue, so a Tamil reader sees Tamil as soon as they tap it.
+    val outer = LocalDensity.current
+    val previewDensity = remember(outer, currentLanguage, selected) {
+        val baseFontScale = outer.fontScale / AppLanguages.forCode(currentLanguage).textScale
+        Density(outer.density, baseFontScale * AppLanguages.forCode(selected).textScale)
+    }
+    CompositionLocalProvider(
+        LocalStrings provides AppLanguages.forCode(selected).strings(),
+        LocalDensity provides previewDensity,
+    ) {
+        LanguageStartupContent(selected, onSelect = { selected = it }, onContinue = { onContinue(selected) })
+    }
+}
+
+@Composable
+private fun LanguageStartupContent(
+    selected: String,
+    onSelect: (String) -> Unit,
+    onContinue: () -> Unit,
+) {
     val s = LocalStrings.current
     val options = remember(s) { startupLanguageOptions(s) }
-    var selected by remember(currentLanguage) { mutableStateOf(currentLanguage) }
 
     Column(
         modifier = Modifier
@@ -136,7 +161,7 @@ fun LanguageScreenStartup(
                 option = option,
                 selected = selected == option.code,
                 onClick = {
-                    if (option.available) selected = option.code
+                    if (option.available) onSelect(option.code)
                 },
             )
             Spacer(Modifier.height(10.dp))
@@ -148,7 +173,7 @@ fun LanguageScreenStartup(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(58.dp)
-                .clickable { onContinue(selected) },
+                .clickable { onContinue() },
             shape = RoundedCornerShape(29.dp),
             color = MaterialTheme.colorScheme.primary,
             shadowElevation = 4.dp,
