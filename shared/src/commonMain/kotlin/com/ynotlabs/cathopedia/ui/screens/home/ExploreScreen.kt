@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.home
 
+import com.ynotlabs.cathopedia.ui.theme.LocalIsDarkTheme
 import com.ynotlabs.cathopedia.ui.theme.imageFade
 import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
@@ -1071,18 +1072,30 @@ private fun ArtworkFadeOverlay(
     )
 
     if (includeBottomFade) {
+        // The card's title and subtitle sit on this fade, so it is a text scrim first: light mode
+        // keeps full alpha (imageFade would thin it to ~27% at mid-height) and starts higher, to
+        // cover titles that wrap to two lines (Tamil, German). Dark mode is unchanged.
+        val bottomFade = if (LocalIsDarkTheme.current) {
+            Brush.verticalGradient(
+                0f to Color.Transparent,
+                0.40f to Color.Transparent,
+                0.66f to bg.imageFade(0.55f),
+                0.84f to bg.imageFade(0.90f),
+                1f to bg.imageFade(0.99f),
+            )
+        } else {
+            Brush.verticalGradient(
+                0f to Color.Transparent,
+                0.28f to Color.Transparent,
+                0.50f to bg.copy(alpha = 0.72f),
+                0.70f to bg.copy(alpha = 0.92f),
+                1f to bg.copy(alpha = 0.98f),
+            )
+        }
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(
-                    Brush.verticalGradient(
-                        0f to Color.Transparent,
-                        0.40f to Color.Transparent,
-                        0.66f to bg.imageFade(0.55f),
-                        0.84f to bg.imageFade(0.90f),
-                        1f to bg.imageFade(0.99f),
-                    )
-                )
+                .background(bottomFade)
         )
     }
 }

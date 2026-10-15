@@ -59,6 +59,7 @@ import com.ynotlabs.cathopedia.ui.screens.common.WrappedImageTitleBody
 import com.ynotlabs.cathopedia.ui.components.GoldCardAccent
 import com.ynotlabs.cathopedia.ui.components.SacredDivider
 import com.ynotlabs.cathopedia.ui.hubAssetPainter
+import com.ynotlabs.cathopedia.ui.theme.LocalIsDarkTheme
 
 private const val LAST_THINGS_ARTICLE_ID = "art.cat.last_things"
 
@@ -73,6 +74,14 @@ private val StateAccents = listOf(
     Color(0xFFC08A46), // purgatory — refining amber
     Color(0xFF8FB6D6), // heaven — pale sky
     Color(0xFF9E5A50), // hell — banked ember
+)
+
+/** The same hues, deepened for the cream light theme: the dark-theme ones fall below text contrast there. */
+private val StateAccentsLight = listOf(
+    Color(0xFF466B3E), // earth
+    Color(0xFF8E5C1E), // purgatory
+    Color(0xFF3B6890), // heaven
+    Color(0xFF86423A), // hell
 )
 
 private data class LastThing(
@@ -133,6 +142,7 @@ fun LastThingsScreen(
     val blocks = current?.blocks.orEmpty()
     val intro = blocks.filterIsInstance<ParagraphBlock>().firstOrNull()?.let { strings[it.textKey] }.orEmpty()
     val fallbackAccent = ArticleGold
+    val stateAccents = if (LocalIsDarkTheme.current) StateAccents else StateAccentsLight
 
     ArticleScaffold(
         title = current?.let { strings[it.titleKey] }.orEmpty(),
@@ -161,7 +171,7 @@ fun LastThingsScreen(
                 val position = stateIndex
                 stateIndex += 1
                 val thing = LastThing(
-                    accent = StateAccents.getOrElse(position) { fallbackAccent },
+                    accent = stateAccents.getOrElse(position) { fallbackAccent },
                     asset = block.asset,
                     title = next.titleKey?.let(strings::get).orEmpty(),
                     body = strings[next.textKey].orEmpty(),
