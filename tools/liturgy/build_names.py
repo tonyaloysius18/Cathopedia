@@ -4,8 +4,7 @@
 Saints, Sundays and feasts come from the Liturgical Calendar API's source translations
 (Apache-2.0; missals/*/i18n and decrees/i18n). Weekday names, which that project generates in
 code, are built here from each language's usual liturgical phrasing. Tamil has no upstream
-translation: seasons and the main feasts are written here, and other names fall back to English
-in the app. Run after build_ordo.py.
+translation: seasons and the main feasts are written here and the saints in names_ta.py. Run after build_ordo.py.
 """
 from __future__ import annotations
 
@@ -13,6 +12,8 @@ import json
 import re
 import urllib.request
 from pathlib import Path
+
+from names_ta import TA_SAINTS
 
 ROOT = Path(__file__).resolve().parents[2]
 CACHE = ROOT / "build" / "liturgy-cache" / "i18n"
@@ -119,9 +120,53 @@ TA_FIXED = {
     "Presentation": "ஆண்டவரைக் காணிக்கையாக அர்ப்பணித்தல்", "DedicationLateran": "இலாத்தரன் பேராலய நேர்ந்தளிப்பு",
 }
 
-# Known slips in the upstream names.
+# Known slips in the upstream names, and gaps: upstream de and pt lack 20 February–March celebrations.
 CORRECTIONS = {
     "fr": {"StTeresaJesus": "Sainte Thérèse d'Avila, vierge et docteur de l'Église"},
+    "de": {
+        "StScholastica": "Hl. Scholastika, Jungfrau",
+        "OurLadyOfLourdes": "Gedenktag Unserer Lieben Frau in Lourdes",
+        "StsCyrilMethodius": "Hll. Cyrill, Mönch, und Methodius, Bischof",
+        "SevenHolyFounders": "Hll. Sieben Gründer des Servitenordens",
+        "StPeterDamian": "Hl. Petrus Damiani, Bischof und Kirchenlehrer",
+        "ChairStPeter": "Kathedra Petri",
+        "StPolycarp": "Hl. Polykarp, Bischof und Märtyrer",
+        "StCasimir": "Hl. Kasimir",
+        "StsPerpetuaFelicity": "Hll. Perpetua und Felizitas, Märtyrinnen",
+        "StJohnGod": "Hl. Johannes von Gott, Ordensgründer",
+        "StFrancesRome": "Hl. Franziska von Rom, Ordensfrau",
+        "StPatrick": "Hl. Patrick, Bischof",
+        "StCyrilJerusalem": "Hl. Cyrill von Jerusalem, Bischof und Kirchenlehrer",
+        "StJoseph": "Hl. Josef, Bräutigam der Gottesmutter Maria",
+        "StTuribius": "Hl. Turibio von Mongrovejo, Bischof",
+        "Annunciation": "Verkündigung des Herrn",
+        "StFrancisPaola": "Hl. Franz von Paola, Einsiedler",
+        "StIsidore": "Hl. Isidor, Bischof und Kirchenlehrer",
+        "StVincentFerrer": "Hl. Vinzenz Ferrer, Priester",
+        "StJohnBaptistDeLaSalle": "Hl. Johannes Baptist de La Salle, Priester",
+    },
+    "pt": {
+        "StScholastica": "Santa Escolástica, virgem",
+        "OurLadyOfLourdes": "Nossa Senhora de Lourdes",
+        "StsCyrilMethodius": "São Cirilo, monge, e São Metódio, bispo",
+        "SevenHolyFounders": "Santos Sete Fundadores da Ordem dos Servos de Maria",
+        "StPeterDamian": "São Pedro Damião, bispo e doutor da Igreja",
+        "ChairStPeter": "Cátedra de São Pedro, apóstolo",
+        "StPolycarp": "São Policarpo, bispo e mártir",
+        "StCasimir": "São Casimiro",
+        "StsPerpetuaFelicity": "Santas Perpétua e Felicidade, mártires",
+        "StJohnGod": "São João de Deus, religioso",
+        "StFrancesRome": "Santa Francisca Romana, religiosa",
+        "StPatrick": "São Patrício, bispo",
+        "StCyrilJerusalem": "São Cirilo de Jerusalém, bispo e doutor da Igreja",
+        "StJoseph": "São José, Esposo da Bem-aventurada Virgem Maria",
+        "StTuribius": "São Turíbio de Mogrovejo, bispo",
+        "Annunciation": "Anunciação do Senhor",
+        "StFrancisPaola": "São Francisco de Paula, eremita",
+        "StIsidore": "Santo Isidoro, bispo e doutor da Igreja",
+        "StVincentFerrer": "São Vicente Ferrer, presbítero",
+        "StJohnBaptistDeLaSalle": "São João Batista de la Salle, presbítero",
+    },
 }
 
 
@@ -176,12 +221,16 @@ def main() -> None:
                 names.update(fetch(path, lang))
         else:
             names.update(TA_FIXED)
+            names.update(TA_SAINTS)
             for k in keys:
                 if m := re.fullmatch(r"(OrdSunday|Advent|Lent|Easter)(\d+)", k):
                     names[k] = f"{TA_SUNDAY[m.group(1)]} {m.group(2)}ஆம் ஞாயிறு"
         out = {}
         for k in sorted(keys):
             v = CORRECTIONS.get(lang, {}).get(k) or generated(k, t) or names.get(k)
+            if v and lang == "pt":
+                # Upstream pt keeps the Missal heading form ("Na Natividade do Senhor"); a calendar wants the name.
+                v = re.sub(r"^N[ao]s? (\w)", lambda m: m.group(1).upper(), v).replace("Santo Paulo", "São Paulo")
             if v:
                 out[k] = v
         (ORDO / f"names_{lang}.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")))
