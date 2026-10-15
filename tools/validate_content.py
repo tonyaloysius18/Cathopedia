@@ -116,8 +116,8 @@ TAMIL_RE = re.compile(r"[\u0B80-\u0BFF]")
 JSON_STRING_RE = re.compile(r'"(?:[^"\\]|\\.)*"')
 
 
-def check_tamil_quotes(root: Path, errors: list[str]) -> None:
-    for path in sorted(root.rglob("*.json")):
+def check_tamil_quotes(root: Path, errors: list[str], pattern: str = "*.json") -> None:
+    for path in sorted(root.rglob(pattern)):
         for literal in JSON_STRING_RE.findall(path.read_text(encoding="utf-8")):
             if "\u201e" in literal and TAMIL_RE.search(literal):
                 errors.append(f"{path.relative_to(root)}: Tamil text uses „ — use “…” instead: {literal[:60]}…")
@@ -186,6 +186,10 @@ def main() -> int:
               f"{len(string_files)} language(s)")
 
     check_tamil_quotes(root, errors)
+    # The UI string tables (StringsTA.kt, VestmentStringsTA.kt) are generated from the same translations.
+    i18n = root.parent / "shared/src/commonMain/kotlin/com/ynotlabs/cathopedia/i18n"
+    if i18n.is_dir():
+        check_tamil_quotes(i18n, errors, "*TA.kt")
 
     for w in warnings:
         print(f"warning: {w}", file=sys.stderr)
