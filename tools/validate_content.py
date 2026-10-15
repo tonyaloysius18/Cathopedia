@@ -10,6 +10,8 @@ Runs in CI before any content is seeded into the app. Checks:
   5. No orphan strings (defined but never referenced).
   6. No dangling internal ids (articleIds / diagramIds / factSheetId / etc.).
   7. Inline [[type:id|label]] links are well-formed and use known entity types.
+  8. Tamil text uses Tamil/English quotation marks, never the German-style low „ (machine
+     translation slips it in; every content file is scanned, not only hub strings).
 
 Usage:
     python tools/validate_content.py --root content --schemas schema [--strict]
@@ -110,6 +112,17 @@ def check_inline_links(strings: dict[str, str], lang: str, errors: list[str]) ->
                 errors.append(f"[{lang}] {key}: malformed entity link {fragment!r}")
 
 
+TAMIL_RE = re.compile(r"[\u0B80-\u0BFF]")
+JSON_STRING_RE = re.compile(r'"(?:[^"\\]|\\.)*"')
+
+
+def check_tamil_quotes(root: Path, errors: list[str]) -> None:
+    for path in sorted(root.rglob("*.json")):
+        for literal in JSON_STRING_RE.findall(path.read_text(encoding="utf-8")):
+            if "\u201e" in literal and TAMIL_RE.search(literal):
+                errors.append(f"{path.relative_to(root)}: Tamil text uses „ — use “…” instead: {literal[:60]}…")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default="content")
@@ -171,6 +184,8 @@ def main() -> int:
         print(f"✓ {hub_path.name}: {len(ids['section'])} sections, {len(ids['article'])} articles, "
               f"{len(ids['diagram'])} diagrams, {len(referenced)} string keys, "
               f"{len(string_files)} language(s)")
+
+    check_tamil_quotes(root, errors)
 
     for w in warnings:
         print(f"warning: {w}", file=sys.stderr)
