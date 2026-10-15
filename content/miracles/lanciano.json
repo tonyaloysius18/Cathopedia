@@ -9,55 +9,64 @@
       "name": "Eucharistic Miracle of Lanciano",
       "summary": "An 8th-century Eucharistic miracle still displayed in the Church of San Francesco.",
       "body": "Tradition holds that around AD 750, a monk in Lanciano witnessed the consecrated host and wine visibly turn to flesh and blood; the relics are still preserved and displayed today.",
-      "sourceAttribution": "Seed content — replace with sourced text."
+      "sourceAttribution": "Seed content — replace with sourced text.",
+      "location": "Lanciano, Italy"
     },
     "fr": {
       "name": "Miracle eucharistique de Lanciano",
       "summary": "Un miracle eucharistique du huitième siècle encore exposé dans l'église San Francesco.",
       "body": "La tradition rapporte qu'aux environs de l'an 750, un moine de Lanciano fut témoin de la transformation visible de l'hostie et du vin consacrés en chair et en sang ; les reliques sont encore conservées et exposées aujourd'hui.",
-      "sourceAttribution": "Contenu de base — à remplacer par un texte sourcé."
+      "sourceAttribution": "Contenu de base — à remplacer par un texte sourcé.",
+      "location": "Lanciano, Italie"
     },
     "it": {
       "name": "Miracolo eucaristico di Lanciano",
       "summary": "Un miracolo eucaristico dell'VIII secolo ancora esposto nella chiesa di San Francesco.",
       "body": "La tradizione vuole che verso il 750 d.C. un monaco di Lanciano abbia visto l'ostia e il vino consacrati trasformarsi visibilmente in carne e sangue; le reliquie sono ancora oggi conservate ed esposte.",
-      "sourceAttribution": "Contenuto iniziale — da sostituire con un testo documentato."
+      "sourceAttribution": "Contenuto iniziale — da sostituire con un testo documentato.",
+      "location": "Lanciano, Italia"
     },
     "de": {
       "name": "Eucharistisches Wunder von Lanciano",
       "summary": "Ein eucharistisches Wunder des 8. Jahrhunderts, bis heute in der Kirche San Francesco ausgestellt.",
       "body": "Die Überlieferung sagt, um 750 n. Chr. habe ein Mönch in Lanciano gesehen, wie sich die konsekrierte Hostie und der Wein sichtbar in Fleisch und Blut verwandelten; die Reliquien werden bis heute aufbewahrt und gezeigt.",
-      "sourceAttribution": "Platzhaltertext – durch belegten Text ersetzen."
+      "sourceAttribution": "Platzhaltertext – durch belegten Text ersetzen.",
+      "location": "Lanciano, Italien"
     },
     "es": {
       "name": "Milagro eucarístico de Lanciano",
       "summary": "Un milagro eucarístico del siglo VIII que todavía se expone en la iglesia de San Francisco.",
       "body": "La tradición sostiene que hacia el año 750 un monje de Lanciano vio cómo la hostia y el vino consagrados se convertían visiblemente en carne y sangre; las reliquias se conservan y se exponen todavía hoy.",
-      "sourceAttribution": "Texto provisional — sustituir por texto con fuentes."
+      "sourceAttribution": "Texto provisional — sustituir por texto con fuentes.",
+      "location": "Lanciano, Italia"
     },
     "pt": {
       "name": "Milagre eucarístico de Lanciano",
       "summary": "Milagre eucarístico do século VIII ainda exposto na igreja de São Francisco.",
       "body": "A tradição afirma que, por volta do ano 750 d.C., um monge em Lanciano viu a hóstia e o vinho consagrados transformarem-se visivelmente em carne e sangue; as relíquias continuam conservadas e expostas até hoje.",
-      "sourceAttribution": "Texto provisório — substituir por texto com fontes."
+      "sourceAttribution": "Texto provisório — substituir por texto com fontes.",
+      "location": "Lanciano, Itália"
     },
     "nl": {
       "name": "Eucharistisch wonder van Lanciano",
       "summary": "Een eucharistisch wonder uit de achtste eeuw dat nog steeds in de kerk van San Francesco wordt getoond.",
       "body": "Volgens de overlevering zag een monnik in Lanciano rond 750 n.Chr. de geconsacreerde hostie en wijn zichtbaar in vlees en bloed veranderen; de relieken worden vandaag nog bewaard en getoond.",
-      "sourceAttribution": "Voorlopige tekst — te vervangen door tekst met bronnen."
+      "sourceAttribution": "Voorlopige tekst — te vervangen door tekst met bronnen.",
+      "location": "Lanciano, Italië"
     },
     "pl": {
       "name": "Cud eucharystyczny w Lanciano",
       "summary": "Ósmowieczny cud eucharystyczny wciąż wystawiony w kościele San Francesco.",
       "body": "Tradycja głosi, że około 750 roku mnich w Lanciano był świadkiem, jak konsekrowana Hostia i wino widocznie przemieniły się w ciało i krew; relikwie są przechowywane i wystawiane do dziś.",
-      "sourceAttribution": "Tekst tymczasowy — do zastąpienia tekstem ze źródłami."
+      "sourceAttribution": "Tekst tymczasowy — do zastąpienia tekstem ze źródłami.",
+      "location": "Lanciano, Włochy"
     },
     "ta": {
       "name": "லான்சியானோ நற்கருணைப் புதுமை",
       "summary": "சான் பிரான்செஸ்கோ ஆலயத்தில் இன்றும் காட்சிக்கு வைக்கப்பட்டுள்ள எட்டாம் நூற்றாண்டு நற்கருணைப் புதுமை.",
       "body": "கி.பி. 750 வாக்கில், லான்சியானோவில் ஒரு துறவி அர்ச்சிக்கப்பட்ட அப்பமும் இரசமும் கண்ணுக்குத் தெரியும் வகையில் சதையாகவும் இரத்தமாகவும் மாறுவதைக் கண்டதாக மரபு கூறுகிறது; அத்திருப்பண்டங்கள் இன்றும் பாதுகாக்கப்பட்டுக் காட்சிக்கு வைக்கப்பட்டுள்ளன.",
-      "sourceAttribution": "தற்காலிக உரை — ஆதாரங்களுடன் கூடிய உரையால் மாற்றப்பட வேண்டும்."
+      "sourceAttribution": "தற்காலிக உரை — ஆதாரங்களுடன் கூடிய உரையால் மாற்றப்பட வேண்டும்.",
+      "location": "லான்சியானோ, இத்தாலி"
     }
   }
 }

@@ -17,7 +17,7 @@ data class LocalizedText(
     /** Apostles. */
     val originalName: String? = null,
     val martyrdom: String? = null,
-    /** Apparitions. */
+    /** Apparitions and miracles. */
     val location: String? = null,
     val approvalStatus: String? = null,
 )
