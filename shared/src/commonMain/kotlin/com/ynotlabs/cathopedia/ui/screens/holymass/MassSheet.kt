@@ -176,6 +176,10 @@ internal fun MassSheet(
                     else -> {
                         SheetHeading(sheetTitle(planned, language))
                         planned.part.text?.let { Text(it, color = colors.onSurface, fontFamily = FontFamily.Serif, fontSize = body, lineHeight = bodyLine) }
+                        planned.part.textCredit?.let {
+                            Text(it, color = colors.onSurfaceVariant, fontSize = 10.sp, lineHeight = 14.sp,
+                                modifier = Modifier.padding(top = 4.dp))
+                        }
                         planned.reading?.let { reading ->
                             if (reading.kind == LectionaryKind.PSALM) MissalLine(t["screen.mass.refrain_line"])
                             SheetReading(reading, scale)
@@ -185,7 +189,8 @@ internal fun MassSheet(
                                     lineHeight = 15.sp, fontStyle = FontStyle.Italic, modifier = Modifier.padding(top = 6.dp))
                             }
                         }
-                        if (planned.part.missal != null && planned.part.text == null) MissalLine(t["screen.mass.missal_line"])
+                        // A part can have both: said text (e.g. Lamb of God) and Missal text still pending (the priest's prayer).
+                        if (planned.part.missal != null) MissalLine(t["screen.mass.missal_line"])
                     }
                 }
             }

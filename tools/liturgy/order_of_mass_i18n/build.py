@@ -11,6 +11,8 @@ ROOT=os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abs
 OUT=ROOT+'/shared/src/commonMain/composeResources/files/content/ordo/'
 en=json.load(open(OUT+'order_of_mass.en.json'))
 prayers={s:json.load(open(f'{ROOT}/content/prayers/{s}.json'))['text'] for s in ['sign-of-the-cross','our-father']}
+GREEK_KYRIE='Kyrie, eleison. Kyrie, eleison.\nChriste, eleison. Christe, eleison.\nKyrie, eleison. Kyrie, eleison.'
+
 def strip_amen(t):
     lines=t.strip().split('\n')
     if lines[-1].strip().rstrip('.').lower() in ('amen','amén','amém','ஆமென்'): lines=lines[:-1]
@@ -33,5 +35,11 @@ for lang in sys.argv[1:]:
     parts={p['id']:p for s in doc['sections'] for p in s['parts']}
     parts['sign_of_cross']['text']=prayers['sign-of-the-cross'][lang]['bodyMd'].strip()
     parts['lords_prayer']['text']=T.get('lords_prayer') or strip_amen(prayers['our-father'][lang]['bodyMd'])
+    # English carries the ELLC "Lord, have mercy" and "Lamb of God" (free, credited). Other languages keep
+    # the Greek Kyrie, and the Lamb of God stays a pending Missal slot until their Missal is licensed.
+    parts['kyrie']['text']=GREEK_KYRIE
+    for pid in ('kyrie','agnus_dei'):
+        parts[pid].pop('textCredit',None)
+    parts['agnus_dei'].pop('text',None)
     open(OUT+f'order_of_mass.{lang}.json','w').write(json.dumps(doc,ensure_ascii=False,indent=2)+'\n')
     print('wrote',lang)

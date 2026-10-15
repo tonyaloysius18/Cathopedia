@@ -629,6 +629,10 @@ private fun PartContent(
                 Spacer(Modifier.height(6.dp))
                 Text(it, color = colors.onSurfaceVariant, fontSize = (12 * scale).sp)
             }
+            part.textCredit?.let {
+                Spacer(Modifier.height(4.dp))
+                Text(it, color = colors.onSurfaceVariant, fontSize = (10 * scale).sp, lineHeight = (14 * scale).sp)
+            }
         }
         planned.reading?.let { reading ->
             Spacer(Modifier.height(16.dp))

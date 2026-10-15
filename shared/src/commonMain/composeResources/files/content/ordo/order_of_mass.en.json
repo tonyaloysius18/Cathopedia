@@ -43,8 +43,9 @@
           "title": "Kyrie",
           "who": "Priest and people",
           "rubric": "Unless already included in the Penitential Act, the Kyrie invocations follow.",
-          "text": "Kyrie, eleison. Kyrie, eleison.\nChriste, eleison. Christe, eleison.\nKyrie, eleison. Kyrie, eleison.",
-          "textNote": "Greek, as in the Missal: Lord, have mercy. Christ, have mercy. Lord, have mercy."
+          "text": "Lord, have mercy.\nLord, have mercy.\nChrist, have mercy.\nChrist, have mercy.\nLord, have mercy.\nLord, have mercy.",
+          "textNote": "Or in Greek: Kyrie, eleison. Christe, eleison. Kyrie, eleison.",
+          "textCredit": "English translation of Kyrie (Lord, have mercy) © 1988 English Language Liturgical Consultation (ELLC). www.englishtexts.org. Used by permission."
         },
         {
           "id": "gloria",
@@ -197,7 +198,9 @@
           "title": "Lamb of God",
           "who": "All",
           "rubric": "While the Agnus Dei is sung or said, the priest breaks the host and places a small piece in the chalice. He then prays quietly in preparation for Communion.",
-          "missal": "Agnus Dei and the priest's private prayer"
+          "missal": "The priest's private prayer",
+          "text": "Lamb of God, you take away the sins of the world,\nhave mercy on us.\nLamb of God, you take away the sins of the world,\nhave mercy on us.\nLamb of God, you take away the sins of the world,\ngrant us peace.",
+          "textCredit": "English translation of Agnus Dei (Lamb of God) © 1988 English Language Liturgical Consultation (ELLC). www.englishtexts.org. Used by permission."
         },
         {
           "id": "communion",

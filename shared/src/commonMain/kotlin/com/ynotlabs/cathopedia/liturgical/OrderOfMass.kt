@@ -13,9 +13,11 @@ data class MassPart(
     val rubric: String,
     /** Replaces [rubric] during Lent (e.g. the Gospel acclamation without Alleluia). */
     val rubricLent: String? = null,
-    /** Public-domain text said or sung at this point. */
+    /** Public-domain or freely licensed text said or sung at this point. */
     val text: String? = null,
     val textNote: String? = null,
+    /** Acknowledgement the licence of [text] requires (e.g. ELLC), printed small beneath it. */
+    val textCredit: String? = null,
     /** Names the Roman Missal text that belongs here; shown as a pending slot until it is licensed. */
     val missal: String? = null,
     /** The lectionary reading shown at this point, as a [LectionaryKind] name. */
