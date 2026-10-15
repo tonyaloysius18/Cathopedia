@@ -27,8 +27,12 @@ CREATE TABLE PrayerText (
 );
 
 insertPrayer:
-INSERT OR REPLACE INTO PrayerEntity(id, category, sortOrder, isSequence)
+INSERT OR IGNORE INTO PrayerEntity(id, category, sortOrder, isSequence)
 VALUES (?, ?, ?, ?);
+
+-- Update without REPLACE's implicit DELETE, which can cascade into favourites/history.
+updatePrayerMetadata:
+UPDATE PrayerEntity SET category = :category, sortOrder = :sortOrder, isSequence = :isSequence WHERE id = :id;
 
 insertPrayerText:
 INSERT OR REPLACE INTO PrayerText(prayerId, language, title, subtitle, bodyMd, about, attribution, source)

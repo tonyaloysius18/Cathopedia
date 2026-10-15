@@ -30,6 +30,8 @@ import com.ynotlabs.cathopedia.model.MysterySet
 import com.ynotlabs.cathopedia.model.MysterySummary
 import com.ynotlabs.cathopedia.model.PopeDetail
 import com.ynotlabs.cathopedia.model.PRAYER_SEARCH_ENTITY_TYPE
+import com.ynotlabs.cathopedia.model.AppSearchResult
+import com.ynotlabs.cathopedia.model.SearchTarget
 import com.ynotlabs.cathopedia.model.PrayerCategory
 import com.ynotlabs.cathopedia.model.PrayerDetail
 import com.ynotlabs.cathopedia.model.PrayerSummary
@@ -52,8 +54,51 @@ import kotlin.random.Random
 @OptIn(ExperimentalTime::class)
 class CathopediaRepository(private val database: CathopediaDatabase) {
 
+    /** Global search includes every published topic and devotional guide, as well as entities. */
+    suspend fun searchAll(query: String, language: String, limit: Long = 150): List<AppSearchResult> =
+        withContext(Dispatchers.Default) {
+            val tokens = SearchQuery.tokens(query)
+            if (tokens.isEmpty() || limit <= 0) return@withContext emptyList()
+
+            fun fetch(words: List<String>): List<AppSearchResult> =
+                listOf(language, "en", "la").distinct().flatMap { lang ->
+                    database.searchQueries.search(SearchQuery.match(words), lang, null, limit)
+                        .executeAsList().mapNotNull { row ->
+                            val target = SearchTarget.decode(row.entityType, row.entityId) ?: return@mapNotNull null
+                            val artwork = when (target) {
+                                is SearchTarget.Article -> database.hubContentQueries.selectArticle(target.id).executeAsOneOrNull()?.hero_asset
+                                is SearchTarget.Hub -> database.hubContentQueries.selectHub(target.id).executeAsOneOrNull()?.hero_asset
+                                is SearchTarget.Section -> database.hubContentQueries.selectSections(target.hubId).executeAsList()
+                                    .find { it.id == target.id }?.hero_asset
+                                else -> null
+                            }
+                            AppSearchResult(target, row.name.orEmpty(), row.summary.orEmpty(), artwork)
+                        }
+                }.distinctBy { it.key }
+
+            var matchedTokens = tokens
+            var results = fetch(tokens)
+            if (results.isEmpty()) {
+                val vocabulary = database.searchQueries.searchNames(language).executeAsList()
+                    .flatMap { SearchQuery.tokens(it.name.orEmpty()) }.toSet()
+                matchedTokens = SearchQuery.corrected(tokens, vocabulary)
+                if (matchedTokens != tokens) results = fetch(matchedTokens)
+            }
+            // Keep direct title matches ahead of incidental mentions in long articles.
+            results.sortedBy { result ->
+                val title = SearchQuery.tokens(result.name)
+                when {
+                    title == matchedTokens -> 0
+                    matchedTokens.all { token -> title.any { it.startsWith(token) } } -> 1
+                    else -> 2
+                }
+            }.take(limit.toInt())
+        }
+
+    // Sainted popes live in PopeEntity, so they're merged in (as POPE items, opening the
+    // pope page) — otherwise the Saints section never shows e.g. St John Paul II.
     suspend fun listSaints(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
-        database.saintQueries.selectAllSaints(language = language, fallbackLang = "en")
+        val saints = database.saintQueries.selectAllSaints(language = language, fallbackLang = "en")
             .executeAsList()
             .map {
                 ContentSummary(
@@ -68,6 +113,19 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
                     feastDay = it.feastDay
                 )
             }
+        val popes = database.popeQueries.selectSaintedPopes(language = language, fallbackLang = "en")
+            .executeAsList()
+            .map {
+                ContentSummary(
+                    type = ContentType.POPE,
+                    id = it.id,
+                    name = it.name!!,
+                    summary = it.summary!!,
+                    imageUrl = it.imageUrl,
+                    feastDay = it.feastDay
+                )
+            }
+        (saints + popes).sortedBy { it.name.lowercase() }
     }
 
     suspend fun saintsOfToday(language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
@@ -76,8 +134,10 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
         saintsByFeastDay(feastDay, language)
     }
 
+    // Sainted popes live in PopeEntity, not SaintEntity, so they're merged in here —
+    // otherwise e.g. St Callixtus I (14 Oct) or St John Paul II (22 Oct) never show.
     suspend fun saintsByFeastDay(feastDay: String, language: String): List<ContentSummary> = withContext(Dispatchers.Default) {
-        database.saintQueries.selectSaintsByFeastDay(language = language, fallbackLang = "en", feastDay = feastDay)
+        val saints = database.saintQueries.selectSaintsByFeastDay(language = language, fallbackLang = "en", feastDay = feastDay)
             .executeAsList()
             .map {
                 ContentSummary(
@@ -89,6 +149,19 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
                     feastDay = it.feastDay
                 )
             }
+        val popes = database.popeQueries.selectPopesByFeastDay(language = language, fallbackLang = "en", feastDay = feastDay)
+            .executeAsList()
+            .map {
+                ContentSummary(
+                    type = ContentType.POPE,
+                    id = it.id,
+                    name = it.name!!,
+                    summary = it.summary!!,
+                    imageUrl = it.imageUrl,
+                    feastDay = it.feastDay
+                )
+            }
+        saints + popes
     }
 
     suspend fun saintDetail(id: String, language: String): SaintDetail? = withContext(Dispatchers.Default) {
@@ -125,6 +198,7 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
                 regnalNumber = it.regnalNumber,
                 papacyStart = it.papacyStart,
                 papacyEnd = it.papacyEnd,
+                feastDay = it.feastDay,
                 imageUrl = it.imageUrl,
                 sourceUrl = it.sourceUrl,
                 sourceAttribution = it.sourceAttribution,
@@ -394,8 +468,7 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
         limit: Long = 50,
     ): List<ContentSummary> = withContext(Dispatchers.Default) {
         // FTS5 prefix match so "franc*" finds "Francis" as the user is still typing.
-        val matchQuery = query.trim().split(Regex("\\s+")).filter { it.isNotBlank() }
-            .joinToString(" ") { "$it*" }
+        val matchQuery = SearchQuery.match(query)
         if (matchQuery.isBlank()) return@withContext emptyList()
 
         database.searchQueries.search(
@@ -411,14 +484,11 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
                 // with real values — safe to assert non-null here.
                 val entityType = it.entityType ?: return@mapNotNull null
 
-                // ContentSearch index shared by encyclopedia (7 types) and prayers.
-                // Prayers are handled by searchPrayers() from the Prayers tab, but
-                // global search needs to filter them out here because they don't
-                // map to the ContentType enum.
-                if (entityType == PRAYER_SEARCH_ENTITY_TYPE) return@mapNotNull null
+                // Legacy encyclopedia-only callers do not consume topic/prayer destinations.
+                val contentType = ContentType.entries.find { it.tag == entityType } ?: return@mapNotNull null
 
                 ContentSummary(
-                    type = ContentType.fromTag(entityType),
+                    type = contentType,
                     id = it.entityId!!,
                     name = it.name!!,
                     summary = it.summary!!
@@ -447,7 +517,8 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
      */
     suspend fun contentCounts(language: String): Map<ContentType, Int> = withContext(Dispatchers.Default) {
         mapOf(
-            ContentType.SAINT to database.saintQueries.countSaints(language = language, fallbackLang = "en").executeAsOne().toInt(),
+            ContentType.SAINT to (database.saintQueries.countSaints(language = language, fallbackLang = "en").executeAsOne() +
+                database.popeQueries.countSaintedPopes().executeAsOne()).toInt(),
             ContentType.POPE to database.popeQueries.countPopes(language = language, fallbackLang = "en").executeAsOne().toInt(),
             ContentType.APOSTLE to database.apostleQueries.countApostles(language = language, fallbackLang = "en").executeAsOne().toInt(),
             ContentType.CHURCH to database.churchQueries.countChurches(language = language, fallbackLang = "en").executeAsOne().toInt(),
@@ -590,8 +661,7 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
     /** FTS5 search scoped to prayers only — see the PRAYER_SEARCH_ENTITY_TYPE note in ContentLoader. */
     suspend fun searchPrayers(query: String, language: String, limit: Long = 50): List<PrayerSummary> =
         withContext(Dispatchers.Default) {
-            val matchQuery = query.trim().split(Regex("\\s+")).filter { it.isNotBlank() }
-                .joinToString(" ") { "$it*" }
+            val matchQuery = SearchQuery.match(query)
             if (matchQuery.isBlank()) return@withContext emptyList()
 
             database.searchQueries.search(

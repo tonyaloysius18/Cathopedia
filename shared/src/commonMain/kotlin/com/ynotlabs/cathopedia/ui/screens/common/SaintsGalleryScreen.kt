@@ -271,7 +271,7 @@ private fun SaintsFeastCard(saint: ContentSummary, discover: String,
         Box(Modifier.fillMaxWidth().heightIn(min = 244.dp).clip(shape).background(bg)
             .clickable(role = Role.Button, onClick = onClick)) {
             Box(Modifier.matchParentSize()) {
-                Portraits.fullForEntity(ContentType.SAINT, saint.id)?.let { art ->
+                Portraits.fullForEntity(saint.type, saint.id)?.let { art ->
                     Image(painterResource(art), null,
                         Modifier.fillMaxWidth(0.68f).fillMaxHeight().align(Alignment.CenterEnd),
                         contentScale = ContentScale.Crop, alignment = Alignment.TopCenter)
@@ -360,13 +360,14 @@ private fun SaintsFeaturedCard(saint: ContentSummary, onClick: () -> Unit, modif
     Box(modifier.heightIn(min = 224.dp).clip(shape).background(bg)
         .border(BorderStroke(1.dp, colors.primary.copy(alpha = 0.8f)), shape)
         .clickable(role = Role.Button, onClick = onClick)) {
-        Portraits.fullForEntity(ContentType.SAINT, saint.id)?.let { art ->
+        Portraits.fullForEntity(saint.type, saint.id)?.let { art ->
             Image(painterResource(art), null, Modifier.matchParentSize(), contentScale = ContentScale.Crop,
                 alignment = Alignment.TopCenter)
         }
         Box(Modifier.matchParentSize().background(
             Brush.verticalGradient(*easedFade(bg, solidUntil = 0.94f, clearFrom = 0.30f))))
-        Column(Modifier.fillMaxWidth().padding(start = 13.dp, end = 13.dp, top = 134.dp, bottom = 14.dp)) {
+        Column(Modifier.align(Alignment.BottomStart).fillMaxWidth()
+            .padding(start = 13.dp, end = 13.dp, top = 134.dp, bottom = 12.dp)) {
             Text(saint.name, color = colors.onSurface, fontFamily = FontFamily.Serif,
                 fontSize = 18.sp, lineHeight = 22.sp)
             Text(saint.summary, color = colors.onSurfaceVariant, fontSize = 11.sp, lineHeight = 15.sp,
@@ -390,7 +391,7 @@ private fun SaintsBrowseCard(saint: ContentSummary, labels: Map<String, String>,
             horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             Box(Modifier.size(width = 66.dp, height = 80.dp).clip(RoundedCornerShape(12.dp))
                 .background(colors.surfaceContainerHighest), contentAlignment = Alignment.Center) {
-                val portrait = Portraits.forEntity(ContentType.SAINT, saint.id)
+                val portrait = Portraits.forEntity(saint.type, saint.id)
                 if (portrait != null) Image(painterResource(portrait), null, Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop)
                 else Text(saint.name.take(1), fontFamily = FontFamily.Serif, fontSize = 28.sp, color = colors.primary)

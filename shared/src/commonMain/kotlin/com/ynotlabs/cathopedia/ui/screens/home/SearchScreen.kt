@@ -59,6 +59,8 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -70,9 +72,19 @@ import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.model.ContentCategory
-import com.ynotlabs.cathopedia.model.ContentSummary
+import com.ynotlabs.cathopedia.model.AppSearchResult
+import com.ynotlabs.cathopedia.model.SearchCategory
+import com.ynotlabs.cathopedia.model.SearchTarget
+import com.ynotlabs.cathopedia.i18n.Strings
+import com.ynotlabs.cathopedia.ui.PrayerPortraits
+import com.ynotlabs.cathopedia.ui.hubAssetPainter
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.material3.CircularProgressIndicator
+import kotlinx.coroutines.delay
+import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.settings_header_bg
+import com.ynotlabs.cathopedia.resources.papal_document_cover
 import com.ynotlabs.cathopedia.ui.Portraits
 import com.ynotlabs.cathopedia.ui.components.FilterChipsRow
 import com.ynotlabs.cathopedia.ui.label
@@ -100,7 +112,7 @@ private val SearchMuted: Color @Composable get() = MaterialTheme.colorScheme.onS
 fun SearchScreen(
     repository: CathopediaRepository,
     language: String,
-    onResultSelected: (ContentSummary) -> Unit,
+    onResultSelected: (AppSearchResult) -> Unit,
     landingListState: LazyListState = rememberLazyListState(),
     resultsListState: LazyListState = rememberLazyListState(),
 ) {
@@ -108,9 +120,9 @@ fun SearchScreen(
     val focusManager = LocalFocusManager.current
     val scope = rememberCoroutineScope()
 
-    var query by remember { mutableStateOf("") }
-    var allResults by remember { mutableStateOf<List<ContentSummary>>(emptyList()) }
-    var filter by remember { mutableStateOf<ContentCategory?>(null) }
+    var query by rememberSaveable { mutableStateOf("") }
+    var allResults by remember { mutableStateOf<List<AppSearchResult>>(emptyList()) }
+    var filter by remember { mutableStateOf<SearchCategory?>(null) }
 
     var recentSearches by remember { mutableStateOf(emptyList<String>()) }
 
@@ -128,23 +140,28 @@ fun SearchScreen(
         }
     }
 
+    var searching by remember { mutableStateOf(false) }
     LaunchedEffect(query, language) {
+        searching = query.isNotBlank()
+        allResults = emptyList()
+        filter = null
+        if (query.isNotBlank()) delay(150)
         allResults = if (query.isBlank()) {
             emptyList()
         } else {
-            repository.search(query.trim(), language)
+            repository.searchAll(query.trim(), language)
         }
-        filter = null
+        searching = false
     }
 
-    val counts = ContentCategory.entries.associateWith { category ->
-        allResults.count { it.type in category.types }
+    val counts = SearchCategory.entries.associateWith { category ->
+        allResults.count { it.category == category }
     }
 
     val visible = if (filter == null) {
         allResults
     } else {
-        allResults.filter { it.type in filter!!.types }
+        allResults.filter { it.category == filter }
     }
 
     Column(
@@ -187,6 +204,10 @@ fun SearchScreen(
                 },
                 listState = landingListState,
             )
+        } else if (searching) {
+            Box(Modifier.fillMaxWidth().padding(36.dp), contentAlignment = Alignment.Center) {
+                CircularProgressIndicator(Modifier.size(28.dp))
+            }
         } else {
             SearchResultsContent(
                 allResults = allResults,
@@ -649,12 +670,12 @@ private fun SearchTipsCard() {
 
 @Composable
 private fun SearchResultsContent(
-    allResults: List<ContentSummary>,
-    visibleResults: List<ContentSummary>,
-    filter: ContentCategory?,
-    counts: Map<ContentCategory, Int>,
-    onFilterChange: (ContentCategory?) -> Unit,
-    onResultSelected: (ContentSummary) -> Unit,
+    allResults: List<AppSearchResult>,
+    visibleResults: List<AppSearchResult>,
+    filter: SearchCategory?,
+    counts: Map<SearchCategory, Int>,
+    onFilterChange: (SearchCategory?) -> Unit,
+    onResultSelected: (AppSearchResult) -> Unit,
     listState: LazyListState,
 ) {
     val s = LocalStrings.current
@@ -665,7 +686,7 @@ private fun SearchResultsContent(
         if (allResults.isNotEmpty()) {
             val chipOptions = buildList {
                 add("${s.all} ${allResults.size}" to null)
-                ContentCategory.entries.forEach { category ->
+                SearchCategory.entries.forEach { category ->
                     val count = counts[category] ?: 0
                     if (count > 0) {
                         add("${category.label(s)} $count" to category)
@@ -705,7 +726,7 @@ private fun SearchResultsContent(
 
                 items(
                     items = visibleResults,
-                    key = { it.type.tag + it.id },
+                    key = { it.key },
                 ) { result ->
                     SearchResultCard(
                         result = result,
@@ -721,17 +742,24 @@ private fun SearchResultsContent(
 
 @Composable
 private fun SearchResultCard(
-    result: ContentSummary,
+    result: AppSearchResult,
     onClick: () -> Unit,
 ) {
     val s = LocalStrings.current
-    val portrait = Portraits.fullForEntity(result.type, result.id)
+    val entity = result.target as? SearchTarget.Entity
+    val isDocument = entity?.type == ContentType.DOCUMENT
+    val compact = entity == null || isDocument
+    val portrait = when (val target = result.target) {
+        is SearchTarget.Entity -> if (isDocument) Res.drawable.papal_document_cover else Portraits.fullForEntity(target.type, target.id)
+        is SearchTarget.Prayer -> PrayerPortraits.forPrayer(target.id)
+        else -> null
+    }
+    val painter = portrait?.let { painterResource(it) } ?: hubAssetPainter(result.artworkAsset)
     val shape = RoundedCornerShape(20.dp)
 
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(126.dp)
             .clip(shape)
             .background(
                 Brush.horizontalGradient(
@@ -746,17 +774,18 @@ private fun SearchResultCard(
                 color = CardBorder,
                 shape = shape,
             )
-            .clickable(onClick = onClick)
+            .semantics(mergeDescendants = true) {}
+            .clickable(role = Role.Button, onClick = onClick)
             .padding(10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        if (portrait != null) {
+        if (painter != null) {
             Image(
-                painter = painterResource(portrait),
-                contentDescription = result.name,
+                painter = painter,
+                contentDescription = null,
                 modifier = Modifier
-                    .width(78.dp)
-                    .height(106.dp)
+                    .width(if (compact) 56.dp else 78.dp)
+                    .height(if (compact) 72.dp else 106.dp)
                     .clip(RoundedCornerShape(14.dp))
                     .border(
                         width = 2.dp,
@@ -770,11 +799,20 @@ private fun SearchResultCard(
             Spacer(Modifier.width(12.dp))
         }
 
+        if (painter == null && entity == null) {
+            Icon(Icons.Filled.AutoStories, contentDescription = null, tint = SearchGold,
+                modifier = Modifier.size(38.dp).padding(4.dp))
+            Spacer(Modifier.width(12.dp))
+        }
         Column(
             modifier = Modifier.weight(1f),
         ) {
             Text(
-                text = result.type.singularLabel(s).uppercase(),
+                text = (entity?.type?.singularLabel(s) ?: when (result.target) {
+                    is SearchTarget.Prayer -> s.prayerDetailTitle
+                    is SearchTarget.Article -> s.searchArticleLabel
+                    else -> result.category.label(s)
+                }).uppercase(),
                 color = SearchGold,
                 fontSize = 9.5.sp,
                 letterSpacing = 0.85.sp,
@@ -790,8 +828,6 @@ private fun SearchResultCard(
                 fontSize = 18.sp,
                 lineHeight = 21.sp,
                 fontWeight = FontWeight.SemiBold,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
             )
 
             Spacer(Modifier.height(5.dp))
@@ -855,4 +891,10 @@ private fun SearchEmptyState() {
             lineHeight = 18.sp,
         )
     }
+}
+
+private fun SearchCategory.label(s: Strings): String = when (this) {
+    SearchCategory.TOPICS -> s.searchTopicsLabel
+    SearchCategory.PRAYERS -> s.navPrayers
+    else -> ContentCategory.valueOf(name).label(s)
 }

@@ -19,6 +19,12 @@ VALUES (?, ?, ?, ?, ?, ?);
 deleteSearchEntriesFor:
 DELETE FROM ContentSearch WHERE entityType = :entityType AND entityId = :entityId AND language = :language;
 
+deleteAllSearchEntries:
+DELETE FROM ContentSearch;
+
+searchNames:
+SELECT name FROM ContentSearch WHERE language = :language OR language IN ('en', 'la');
+
 -- entityTypeFilter: pass NULL to search across every content type.
 search:
 SELECT entityType, entityId, name, summary

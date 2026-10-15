@@ -30,6 +30,7 @@ data class PopeContent(
     val regnalNumber: Long? = null,
     val papacyStart: String? = null,
     val papacyEnd: String? = null,
+    val feastDay: String? = null,
     val imageUrl: String? = null,
     val sourceUrl: String? = null,
     val text: Map<String, LocalizedText>,

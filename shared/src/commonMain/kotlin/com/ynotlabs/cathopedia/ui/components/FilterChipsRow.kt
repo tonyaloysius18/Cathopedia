@@ -2,6 +2,8 @@ package com.ynotlabs.cathopedia.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.MaterialTheme
@@ -18,12 +20,13 @@ fun <T> FilterChipsRow(
     onSelect: (T) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Row(modifier = modifier, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+    Row(modifier = modifier.horizontalScroll(rememberScrollState()),
+        horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         options.forEach { (label, value) ->
             val isSelected = value == selected
             AssistChip(
                 onClick = { onSelect(value) },
-                label = { Text(label) },
+                label = { Text(label, maxLines = 1, softWrap = false) },
                 colors = if (isSelected) {
                     AssistChipDefaults.assistChipColors(
                         containerColor = MaterialTheme.colorScheme.onBackground,

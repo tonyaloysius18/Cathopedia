@@ -8,7 +8,9 @@ CREATE TABLE PopeEntity (
     -- precision date strings. papacyStart/papacyEnd stay untouched for display.
     papacyStartYear INTEGER,
     imageUrl TEXT,
-    sourceUrl TEXT
+    sourceUrl TEXT,
+    -- "MM-DD" for canonized popes, same format as SaintEntity.feastDay; null otherwise.
+    feastDay TEXT
 );
 
 CREATE TABLE PopeText (
@@ -23,8 +25,8 @@ CREATE TABLE PopeText (
 );
 
 insertPope:
-INSERT OR REPLACE INTO PopeEntity(id, regnalNumber, papacyStart, papacyEnd, papacyStartYear, imageUrl, sourceUrl)
-VALUES (?, ?, ?, ?, ?, ?, ?);
+INSERT OR REPLACE INTO PopeEntity(id, regnalNumber, papacyStart, papacyEnd, papacyStartYear, imageUrl, sourceUrl, feastDay)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?);
 
 insertPopeText:
 INSERT OR REPLACE INTO PopeText(popeId, language, name, summary, body, sourceAttribution)
@@ -57,9 +59,33 @@ selectPopeDetail:
 SELECT PopeEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
        COALESCE(t.body, f.body) AS body,
        PopeEntity.regnalNumber AS regnalNumber, PopeEntity.papacyStart AS papacyStart,
-       PopeEntity.papacyEnd AS papacyEnd, PopeEntity.imageUrl AS imageUrl, PopeEntity.sourceUrl AS sourceUrl,
+       PopeEntity.papacyEnd AS papacyEnd, PopeEntity.feastDay AS feastDay,
+       PopeEntity.imageUrl AS imageUrl, PopeEntity.sourceUrl AS sourceUrl,
        COALESCE(t.sourceAttribution, f.sourceAttribution) AS sourceAttribution
 FROM PopeEntity
 LEFT JOIN PopeText t ON t.popeId = PopeEntity.id AND t.language = :language
 LEFT JOIN PopeText f ON f.popeId = PopeEntity.id AND f.language = :fallbackLang
 WHERE PopeEntity.id = :id AND (t.popeId IS NOT NULL OR f.popeId IS NOT NULL);
+
+-- Sainted popes celebrated on a given "MM-DD", for Home's saints-of-the-day list
+-- alongside selectSaintsByFeastDay.
+selectPopesByFeastDay:
+SELECT PopeEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
+       PopeEntity.feastDay AS feastDay, PopeEntity.imageUrl AS imageUrl
+FROM PopeEntity
+LEFT JOIN PopeText t ON t.popeId = PopeEntity.id AND t.language = :language
+LEFT JOIN PopeText f ON f.popeId = PopeEntity.id AND f.language = :fallbackLang
+WHERE PopeEntity.feastDay = :feastDay AND (t.popeId IS NOT NULL OR f.popeId IS NOT NULL)
+ORDER BY PopeEntity.papacyStartYear ASC;
+
+-- Canonized popes (those with a feast day), listed in the Saints section too.
+selectSaintedPopes:
+SELECT PopeEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
+       PopeEntity.feastDay AS feastDay, PopeEntity.imageUrl AS imageUrl
+FROM PopeEntity
+LEFT JOIN PopeText t ON t.popeId = PopeEntity.id AND t.language = :language
+LEFT JOIN PopeText f ON f.popeId = PopeEntity.id AND f.language = :fallbackLang
+WHERE PopeEntity.feastDay IS NOT NULL AND (t.popeId IS NOT NULL OR f.popeId IS NOT NULL);
+
+countSaintedPopes:
+SELECT COUNT(*) FROM PopeEntity WHERE feastDay IS NOT NULL;

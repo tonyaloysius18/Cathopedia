@@ -1,0 +1,247 @@
+{
+  "language": "en",
+  "note": "Structure and guidance written for Cathopedia, following the Order of Mass of the Roman Missal (third edition). The Missal's own texts and rubrics are not reproduced: parts marked \"missal\" show where the licensed text will appear.",
+  "missalPending": "The text of this part comes from the Roman Missal. It will appear here once the licensed English Missal is added to Cathopedia.",
+  "readingPending": "The reading text from an approved Lectionary will appear here once it is licensed. The reference above shows which passage is read today.",
+  "readingStudyNote": "Text: World English Bible (public domain), for study and preparation. It is not an approved liturgical translation; at Mass, proclaim the reading from an approved Lectionary. Whole verses are shown, so a reading that begins or ends mid-verse may include a few extra words.",
+  "homilyPending": "Short homily ideas for this day will appear here.",
+  "sections": [
+    {
+      "id": "introductory",
+      "title": "Introductory Rites",
+      "parts": [
+        {
+          "id": "entrance",
+          "title": "Entrance",
+          "who": "All",
+          "rubric": "As the priest and ministers process to the altar, the Entrance Chant is sung, or the Entrance Antiphon of the day is said. The priest venerates the altar with a kiss and, if incense is used, incenses it, then goes to the chair.",
+          "missal": "Entrance Antiphon of the day"
+        },
+        {
+          "id": "sign_of_cross",
+          "title": "Sign of the Cross",
+          "who": "Priest and people",
+          "rubric": "Standing at the chair, the priest and the faithful sign themselves.",
+          "text": "In the name of the Father, and of the Son, and of the Holy Spirit.\nAmen."
+        },
+        {
+          "id": "greeting",
+          "title": "Greeting",
+          "who": "Priest and people",
+          "rubric": "The priest greets the people with one of the forms given in the Missal; the people reply. He or another minister may briefly introduce the Mass of the day.",
+          "missal": "Greeting"
+        },
+        {
+          "id": "penitential_act",
+          "title": "Penitential Act",
+          "who": "Priest and people",
+          "rubric": "The priest invites the faithful to recall their sins. After a brief silence, one of the forms of the Penitential Act follows, concluded by the priest's absolution. On Sundays, especially in Easter Time, the blessing and sprinkling of water may take its place.",
+          "missal": "Penitential Act"
+        },
+        {
+          "id": "kyrie",
+          "title": "Kyrie",
+          "who": "Priest and people",
+          "rubric": "Unless already included in the Penitential Act, the Kyrie invocations follow.",
+          "text": "Kyrie, eleison. Kyrie, eleison.\nChriste, eleison. Christe, eleison.\nKyrie, eleison. Kyrie, eleison.",
+          "textNote": "Greek, as in the Missal: Lord, have mercy. Christ, have mercy. Lord, have mercy."
+        },
+        {
+          "id": "gloria",
+          "title": "Gloria",
+          "who": "All",
+          "rubric": "The Gloria is sung or said today.",
+          "condition": "gloria",
+          "missal": "Gloria"
+        },
+        {
+          "id": "collect",
+          "title": "Collect",
+          "who": "Priest",
+          "rubric": "The priest says, \"Let us pray,\" and all pray in silence for a while. Then, with hands extended, he says the Collect of the day; the people conclude with \"Amen.\"",
+          "missal": "Collect of the day"
+        }
+      ]
+    },
+    {
+      "id": "word",
+      "title": "Liturgy of the Word",
+      "parts": [
+        {
+          "id": "first_reading",
+          "title": "First Reading",
+          "who": "Reader",
+          "rubric": "All sit. The reader proclaims the first reading from the ambo and ends with the acclamation; the people reply. A brief silence may follow.",
+          "reading": "FIRST_READING"
+        },
+        {
+          "id": "psalm",
+          "title": "Responsorial Psalm",
+          "who": "Psalmist and people",
+          "rubric": "The psalmist or cantor sings or says the verses; the people respond with the refrain.",
+          "reading": "PSALM"
+        },
+        {
+          "id": "second_reading",
+          "title": "Second Reading",
+          "who": "Reader",
+          "rubric": "On Sundays and solemnities a second reading follows, proclaimed as the first.",
+          "reading": "SECOND_READING",
+          "condition": "second_reading"
+        },
+        {
+          "id": "sequence",
+          "title": "Sequence",
+          "who": "All",
+          "rubric": "The Sequence of the day is sung before the Alleluia. It is obligatory on Easter Sunday and Pentecost, optional on other days that have one.",
+          "reading": "SEQUENCE",
+          "condition": "sequence"
+        },
+        {
+          "id": "acclamation",
+          "title": "Gospel Acclamation",
+          "who": "All, standing",
+          "rubric": "All stand. The Alleluia is sung with its verse, or the verse before the Gospel during Lent, when the Alleluia is not sung.",
+          "rubricLent": "All stand. During Lent the Alleluia is not sung; the verse before the Gospel is sung with its Lenten acclamation.",
+          "reading": "ACCLAMATION"
+        },
+        {
+          "id": "gospel",
+          "title": "Gospel",
+          "who": "Deacon or priest",
+          "rubric": "A deacon asks for and receives the priest's blessing; a priest proclaiming the Gospel himself first prays quietly for worthiness. At the ambo he greets the people, announces the Gospel, signs the book and himself on forehead, lips and breast, may incense the book, and proclaims the Gospel. At the end he kisses the book.",
+          "reading": "GOSPEL"
+        },
+        {
+          "id": "homily",
+          "title": "Homily",
+          "who": "Priest or deacon",
+          "rubric": "All sit. The homily is required on Sundays and holydays of obligation and recommended on other days. A brief silence may follow.",
+          "homily": true
+        },
+        {
+          "id": "creed",
+          "title": "Profession of Faith",
+          "who": "All, standing",
+          "rubric": "The Creed is sung or said today. The Niceno-Constantinopolitan Creed is used; the Apostles' Creed may be used instead, especially in Lent and Easter Time. All bow at the words about the Incarnation, and genuflect on the solemnities of the Annunciation and the Nativity of the Lord.",
+          "condition": "creed",
+          "missal": "Profession of Faith"
+        },
+        {
+          "id": "universal_prayer",
+          "title": "Universal Prayer",
+          "who": "Priest, deacon or reader, and people",
+          "rubric": "The priest introduces the Prayer of the Faithful from the chair. Intentions are announced for the Church, for public authorities and the salvation of the world, for those in any need, and for the local community; the people respond after each. The priest concludes with a prayer.",
+          "intentions": true
+        }
+      ]
+    },
+    {
+      "id": "eucharist",
+      "title": "Liturgy of the Eucharist",
+      "parts": [
+        {
+          "id": "preparation",
+          "title": "Preparation of the Gifts",
+          "who": "Priest",
+          "rubric": "The altar is prepared and the gifts are brought forward while the Offertory Chant is sung. The priest offers the bread and the wine with their prayers, mixes a little water with the wine, washes his hands, and invites the people to pray; they respond.",
+          "missal": "Prayers at the preparation of the gifts"
+        },
+        {
+          "id": "prayer_over_offerings",
+          "title": "Prayer over the Offerings",
+          "who": "Priest",
+          "rubric": "With hands extended, the priest says the Prayer over the Offerings of the day; the people reply, \"Amen.\"",
+          "missal": "Prayer over the Offerings of the day"
+        },
+        {
+          "id": "preface",
+          "title": "Preface",
+          "who": "Priest and people",
+          "rubric": "The Eucharistic Prayer begins with the dialogue and the Preface. Choose the Preface proper to the day or the season.",
+          "missal": "Preface dialogue and Preface",
+          "preface": true
+        },
+        {
+          "id": "sanctus",
+          "title": "Holy, Holy, Holy",
+          "who": "All",
+          "rubric": "At the end of the Preface, all sing or say the Sanctus. The people kneel after it, where that is the custom.",
+          "missal": "Sanctus"
+        },
+        {
+          "id": "eucharistic_prayer",
+          "title": "Eucharistic Prayer",
+          "who": "Priest",
+          "rubric": "The priest says one of the Eucharistic Prayers. The consecration follows the Institution Narrative: he shows the consecrated host and the chalice to the people and genuflects after each. After the Mystery of Faith, the prayer continues to the concluding doxology, to which the people reply, \"Amen.\"",
+          "missal": "Eucharistic Prayer",
+          "eucharisticPrayer": true
+        },
+        {
+          "id": "lords_prayer",
+          "title": "The Lord's Prayer",
+          "who": "All",
+          "rubric": "All stand. After the priest's introduction, all say or sing the Lord's Prayer together. The priest continues alone with the embolism, and the people conclude with the doxology.",
+          "text": "Our Father, who art in heaven,\nhallowed be thy name;\nthy kingdom come,\nthy will be done\non earth as it is in heaven.\nGive us this day our daily bread,\nand forgive us our trespasses,\nas we forgive those who trespass against us;\nand lead us not into temptation,\nbut deliver us from evil.",
+          "missal": "Embolism and doxology"
+        },
+        {
+          "id": "sign_of_peace",
+          "title": "Sign of Peace",
+          "who": "Priest and people",
+          "rubric": "The priest says the prayer for peace and greets the people with the peace of the Lord. The deacon or priest may invite all to offer one another a sign of peace.",
+          "missal": "Rite of Peace"
+        },
+        {
+          "id": "agnus_dei",
+          "title": "Lamb of God",
+          "who": "All",
+          "rubric": "While the Agnus Dei is sung or said, the priest breaks the host and places a small piece in the chalice. He then prays quietly in preparation for Communion.",
+          "missal": "Agnus Dei and the priest's private prayer"
+        },
+        {
+          "id": "communion",
+          "title": "Communion",
+          "who": "Priest and people",
+          "rubric": "The priest genuflects, shows the host to the people and, with them, makes the response before Communion. He receives Communion, then distributes it. The Communion Chant is sung, or the Communion Antiphon is said. Afterwards the vessels are purified and a period of silence may be kept.",
+          "missal": "Communion Antiphon of the day"
+        },
+        {
+          "id": "prayer_after_communion",
+          "title": "Prayer after Communion",
+          "who": "Priest",
+          "rubric": "Standing at the altar or the chair, the priest says, \"Let us pray,\" and the Prayer after Communion of the day; the people reply, \"Amen.\"",
+          "missal": "Prayer after Communion of the day"
+        }
+      ]
+    },
+    {
+      "id": "concluding",
+      "title": "Concluding Rites",
+      "parts": [
+        {
+          "id": "announcements",
+          "title": "Announcements",
+          "who": "Priest, deacon or other minister",
+          "rubric": "Brief announcements, if any, are made now."
+        },
+        {
+          "id": "blessing",
+          "title": "Blessing",
+          "who": "Priest and people",
+          "rubric": "The priest greets the people and blesses them. On certain days or occasions a Solemn Blessing or a Prayer over the People may be used.",
+          "missal": "Greeting and Blessing"
+        },
+        {
+          "id": "dismissal",
+          "title": "Dismissal",
+          "who": "Deacon or priest, and people",
+          "rubric": "The deacon, or the priest, dismisses the people with one of the formulas in the Missal; the people reply, \"Thanks be to God.\" During the Octave of Easter and on Pentecost a double Alleluia is added. The priest venerates the altar with a kiss and, after a profound bow with the ministers, withdraws.",
+          "missal": "Dismissal"
+        }
+      ]
+    }
+  ],
+  "goodFriday": "There is no Mass on Good Friday. The Celebration of the Passion of the Lord follows its own order: the Liturgy of the Word, the Adoration of the Holy Cross, and Holy Communion. The readings of the day are shown below.",
+  "holySaturday": "On Holy Saturday the Church waits at the Lord's tomb, and the Sacrifice of the Mass is not celebrated until the Easter Vigil after nightfall."
+}

@@ -16,10 +16,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -27,6 +29,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PageSize
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -42,6 +48,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -60,6 +67,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -105,8 +113,8 @@ fun HomeScreen(
     onItemSelected: (ContentSummary) -> Unit,
     onOpenPrayer: (String) -> Unit,
     onOpenRosary: () -> Unit,
-    onExploreClick: () -> Unit,
     onReadingSelected: ((ScriptureReference) -> Unit)? = null,
+    onOpenMass: (() -> Unit)? = null,
     scrollState: ScrollState = rememberScrollState(),
 ) {
     val s = LocalStrings.current
@@ -130,69 +138,69 @@ fun HomeScreen(
     }
     LaunchedEffect(language) { continueReading = repository.mostRecentlyViewed(language) }
 
-    Column(
-        modifier = Modifier.fillMaxSize().background(HomeBg).verticalScroll(scrollState)
-            // Reserve the existing floating bar's full resting height at the end of the scroll.
-            .padding(bottom = 142.dp),
+    HomeSections(
+        scrollState = scrollState,
+        header = {
+            Spacer(Modifier.height(12.dp))
+            HomeHero(seasonLabel = season.label(s))
+            Box(Modifier.fillMaxWidth().padding(horizontal = 18.dp)) {
+                DailyReadingsCard(dailyReadings, dailyReadingsLoaded, language, onReadingSelected, onOpenMass)
+            }
+        },
     ) {
-        HomeHero(seasonLabel = season.label(s))
-        Column(Modifier.fillMaxWidth().padding(horizontal = 18.dp)) {
-            DailyReadingsCard(dailyReadings, dailyReadingsLoaded, language, onReadingSelected)
-            Spacer(Modifier.height(16.dp))
-
-            feastOfTheDay?.let { feast ->
-                HomeSectionHeader(s.homeFeastOfTheDay, dateLabel)
-                Spacer(Modifier.height(6.dp))
-                CompactHomeItem(feast, { onItemSelected(feast) })
-                Spacer(Modifier.height(16.dp))
-            }
-            if (saintsOfToday.isNotEmpty()) {
-                HomeSectionHeader(
-                    if (saintsOfToday.size == 1) t["screen.saints.today"] else s.homeSaintsOfToday,
-                    dateLabel,
-                )
-                Spacer(Modifier.height(6.dp))
-                saintsOfToday.forEachIndexed { index, saint ->
-                    if (index > 0) Spacer(Modifier.height(6.dp))
-                    CompactHomeItem(saint, { onItemSelected(saint) })
-                }
-                Spacer(Modifier.height(16.dp))
-            }
-
-            HomeSectionHeader(t["screen.home.prayer_moment"])
+        feastOfTheDay?.let { feast ->
+            HomeSectionHeader(s.homeFeastOfTheDay, dateLabel)
             Spacer(Modifier.height(6.dp))
-            BoxWithConstraints(Modifier.fillMaxWidth()) {
-                val stack = maxWidth < 300.dp || LocalDensity.current.fontScale > 1.15f
-                if (stack) {
-                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        HomePrayerShortcut(t["screen.home.morning_offering"], false,
-                            { onOpenPrayer("morning-offering") }, Modifier.fillMaxWidth())
-                        HomePrayerShortcut(t["screen.home.pray_rosary"], true, onOpenRosary, Modifier.fillMaxWidth())
-                    }
-                } else {
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        HomePrayerShortcut(t["screen.home.morning_offering"], false,
-                            { onOpenPrayer("morning-offering") }, Modifier.weight(1f))
-                        HomePrayerShortcut(t["screen.home.pray_rosary"], true, onOpenRosary, Modifier.weight(1f))
-                    }
-                }
-            }
+            CompactHomeItem(feast, { onItemSelected(feast) })
             Spacer(Modifier.height(16.dp))
+        }
+        if (saintsOfToday.isNotEmpty()) {
+            HomeSectionHeader(
+                if (saintsOfToday.size == 1) t["screen.saints.today"] else s.homeSaintsOfToday,
+                dateLabel,
+            )
+            Spacer(Modifier.height(6.dp))
+            HomeSaintCarousel(saintsOfToday, onItemSelected)
+            Spacer(Modifier.height(16.dp))
+        }
 
-            continueReading?.let { item ->
-                HomeSectionHeader(s.homeContinueReading)
-                Spacer(Modifier.height(6.dp))
-                HorizontalDivider(color = HomeBorder.copy(alpha = 0.65f))
-                CompactHomeItem(item, { onItemSelected(item) }, outlined = false)
-                HorizontalDivider(color = HomeBorder.copy(alpha = 0.65f))
-                Spacer(Modifier.height(6.dp))
+        HomePrayerStrip(onOpenPrayer = { onOpenPrayer("morning-offering") }, onOpenRosary = onOpenRosary)
+        Spacer(Modifier.height(16.dp))
+
+        continueReading?.let { item ->
+            HomeSectionHeader(s.homeContinueReading)
+            Spacer(Modifier.height(6.dp))
+            CompactHomeItem(item, { onItemSelected(item) }, showType = true)
+            Spacer(Modifier.height(6.dp))
+        }
+    }
+}
+
+@Composable
+private fun HomeSections(
+    scrollState: ScrollState,
+    header: @Composable () -> Unit,
+    content: @Composable () -> Unit,
+) {
+    BoxWithConstraints(Modifier.fillMaxSize().background(HomeBg)) {
+        val density = LocalDensity.current
+        var headerHeightPx by remember { mutableStateOf(0) }
+        // Keep the readings fixed whenever there is room for useful content above the dock.
+        // On very short screens or with large text, allow the whole page to remain reachable.
+        val pinReadings = with(density) { headerHeightPx.toDp() } <= maxHeight - 238.dp
+        Column(Modifier.fillMaxSize().then(
+            if (pinReadings) Modifier else Modifier.verticalScroll(scrollState),
+        )) {
+            Column(Modifier.fillMaxWidth().wrapContentHeight(Alignment.Top, unbounded = true)
+                .onSizeChanged { headerHeightPx = it.height }) {
+                header()
+                // Keep this gap outside the scrolling viewport so cards cannot touch the readings.
+                Spacer(Modifier.height(16.dp))
             }
-            TextButton(onClick = onExploreClick, contentPadding = PaddingValues(vertical = 10.dp),
-                modifier = Modifier.heightIn(min = 44.dp)) {
-                Text(t["screen.home.browse"], color = HomeGold, fontFamily = FontFamily.Serif,
-                    fontSize = 16.sp, lineHeight = 22.sp, modifier = Modifier.weight(1f, fill = false))
-                Icon(Icons.AutoMirrored.Filled.ArrowForward, null, tint = HomeGold,
-                    modifier = Modifier.padding(start = 8.dp).size(18.dp))
+            Column(Modifier.fillMaxWidth().then(
+                if (pinReadings) Modifier.weight(1f).verticalScroll(scrollState) else Modifier,
+            ).padding(start = 18.dp, end = 18.dp, bottom = 142.dp)) {
+                content()
             }
         }
     }
@@ -251,6 +259,7 @@ private fun DailyReadingsCard(
     loaded: Boolean,
     language: String,
     onReadingSelected: ((ScriptureReference) -> Unit)?,
+    onOpenMass: (() -> Unit)? = null,
 ) {
     val s = LocalStrings.current
     val t = LocalScreenText.current
@@ -418,6 +427,18 @@ private fun DailyReadingsCard(
                 }
                 }
             }
+            if (onOpenMass != null && readings != null) {
+                TextButton(
+                    onClick = onOpenMass,
+                    contentPadding = PaddingValues(top = 8.dp),
+                    modifier = Modifier.heightIn(min = 44.dp),
+                ) {
+                    Text(t["screen.mass.celebrate"], color = HomeGold, fontFamily = FontFamily.Serif,
+                        fontSize = 15.sp, lineHeight = 20.sp)
+                    Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = HomeGold,
+                        modifier = Modifier.padding(start = 4.dp).size(20.dp))
+                }
+            }
             sourceUrl?.let { url ->
                 TextButton(
                     onClick = {
@@ -509,16 +530,91 @@ private fun HomeSectionHeader(title: String, date: String? = null) {
 }
 
 @Composable
-private fun CompactHomeItem(item: ContentSummary, onClick: () -> Unit, outlined: Boolean = true) {
+private fun HomeSaintCarousel(saints: List<ContentSummary>, onSelected: (ContentSummary) -> Unit) {
+    val pager = rememberPagerState { saints.size }
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val pageWidth = if (saints.size > 1) maxWidth - 22.dp else maxWidth
+            HorizontalPager(
+                state = pager,
+                modifier = Modifier.fillMaxWidth(),
+                pageSize = PageSize.Fixed(pageWidth),
+                pageSpacing = 12.dp,
+                key = { "${saints[it].type}:${saints[it].id}" },
+                userScrollEnabled = saints.size > 1,
+                verticalAlignment = Alignment.Top,
+            ) { index ->
+                val saint = saints[index]
+                HomeSaintPortraitCard(saint, { onSelected(saint) })
+            }
+        }
+        if (saints.size > 1) {
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterHorizontally)) {
+                repeat(saints.size) { index ->
+                    Box(Modifier.size(6.dp).clip(CircleShape).background(
+                        HomeGold.copy(alpha = if (index == pager.currentPage) 1f else 0.3f)))
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun HomeSaintPortraitCard(saint: ContentSummary, onClick: () -> Unit) {
+    val shape = RoundedCornerShape(18.dp)
+    val background = HomeSurface
+    val discover = LocalScreenText.current["screen.saints.discover"]
+    val portrait = Portraits.fullForEntity(saint.type, saint.id)
+    Box(Modifier.fillMaxWidth().clip(shape).background(background)
+        .border(1.dp, HomeGold.copy(alpha = 0.65f), shape)
+        .semantics(mergeDescendants = true) {}.clickable(role = Role.Button, onClick = onClick)) {
+        Box(Modifier.matchParentSize()) {
+            if (portrait != null) {
+                Image(painterResource(portrait), null,
+                    Modifier.fillMaxWidth(0.46f).fillMaxHeight().align(Alignment.CenterStart),
+                    contentScale = ContentScale.Crop, alignment = Alignment.TopCenter)
+            } else {
+                Box(Modifier.fillMaxWidth(0.42f).fillMaxHeight(), contentAlignment = Alignment.Center) {
+                    Icon(Icons.Filled.AutoStories, null, tint = HomeGold, modifier = Modifier.size(44.dp))
+                }
+            }
+            Box(Modifier.matchParentSize().background(Brush.horizontalGradient(
+                0f to Color.Transparent, 0.32f to Color.Transparent,
+                0.47f to background, 1f to background)))
+        }
+        Row(Modifier.fillMaxWidth().heightIn(min = 144.dp), verticalAlignment = Alignment.CenterVertically) {
+            Spacer(Modifier.weight(0.42f))
+            Column(Modifier.weight(0.58f).padding(start = 10.dp, end = 12.dp, top = 14.dp, bottom = 14.dp)) {
+                Text(saint.name, color = HomeCream, fontFamily = FontFamily.Serif,
+                    fontSize = 20.sp, lineHeight = 24.sp, fontWeight = FontWeight.Medium)
+                Text(saint.summary, color = HomeMuted, fontSize = 12.sp, lineHeight = 17.sp,
+                    maxLines = 3, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(top = 5.dp))
+                Row(Modifier.padding(top = 10.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Text(discover, color = HomeGold, fontFamily = FontFamily.Serif,
+                        fontSize = 13.sp, lineHeight = 18.sp, modifier = Modifier.weight(1f, fill = false))
+                    Icon(Icons.AutoMirrored.Filled.ArrowForward, null, tint = HomeGold,
+                        modifier = Modifier.padding(start = 5.dp).size(17.dp))
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun CompactHomeItem(
+    item: ContentSummary,
+    onClick: () -> Unit,
+    showType: Boolean = false,
+) {
     val s = LocalStrings.current
     val shape = RoundedCornerShape(16.dp)
-    val portraitShape = if (outlined) RoundedCornerShape(12.dp) else CircleShape
-    val pictureSize = if (outlined) 60.dp else 48.dp
+    val portraitShape = RoundedCornerShape(12.dp)
+    val pictureSize = if (showType) 64.dp else 60.dp
     val portrait = Portraits.fullForEntity(item.type, item.id)
-    val decoration = if (outlined) Modifier.clip(shape).background(HomeSurface.copy(alpha = 0.55f))
-        .border(1.dp, HomeGold.copy(alpha = 0.5f), shape) else Modifier
-    Row(Modifier.fillMaxWidth().then(decoration).semantics(mergeDescendants = true) {}
-        .clickable(role = Role.Button, onClick = onClick).padding(horizontal = 8.dp, vertical = 6.dp),
+    Row(Modifier.fillMaxWidth().clip(shape).background(HomeSurface.copy(alpha = 0.55f))
+        .border(1.dp, HomeGold.copy(alpha = 0.5f), shape).semantics(mergeDescendants = true) {}
+        .clickable(role = Role.Button, onClick = onClick)
+        .padding(horizontal = if (showType) 12.dp else 8.dp, vertical = if (showType) 12.dp else 6.dp),
         verticalAlignment = Alignment.CenterVertically) {
         Box(Modifier.size(pictureSize).clip(portraitShape).background(HomeSurface)
             .border(1.dp, HomeGold.copy(alpha = 0.55f), portraitShape), contentAlignment = Alignment.Center) {
@@ -528,10 +624,11 @@ private fun CompactHomeItem(item: ContentSummary, onClick: () -> Unit, outlined:
         }
         Spacer(Modifier.width(12.dp))
         Column(Modifier.weight(1f)) {
-            Text(item.name, color = HomeCream, fontFamily = FontFamily.Serif, fontSize = 19.sp,
+            Text(item.name, color = HomeCream, fontFamily = FontFamily.Serif, fontSize = if (showType) 20.sp else 19.sp,
                 lineHeight = 24.sp, fontWeight = FontWeight.Medium)
-            Text(if (outlined) item.summary else item.type.singularLabel(s), color = HomeMuted,
-                fontSize = 12.sp, lineHeight = 17.sp, maxLines = if (outlined) 2 else 1,
+            Text(if (showType) item.type.singularLabel(s) else item.summary, color = HomeMuted,
+                fontSize = 12.sp, lineHeight = 17.sp,
+                maxLines = if (showType) 1 else 2,
                 overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(top = 3.dp))
         }
         Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = HomeGold,
@@ -540,10 +637,32 @@ private fun CompactHomeItem(item: ContentSummary, onClick: () -> Unit, outlined:
 }
 
 @Composable
+private fun HomePrayerStrip(onOpenPrayer: () -> Unit, onOpenRosary: () -> Unit) {
+    val t = LocalScreenText.current
+    BoxWithConstraints(Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp))
+        .background(HomeSurface.copy(alpha = 0.3f))
+        .border(1.dp, HomeGold.copy(alpha = 0.6f), RoundedCornerShape(12.dp))) {
+        val stack = maxWidth < 300.dp || LocalDensity.current.fontScale > 1.15f
+        if (stack) {
+            Column {
+                HomePrayerShortcut(t["screen.home.morning_offering"], false, onOpenPrayer, Modifier.fillMaxWidth())
+                HorizontalDivider(Modifier.padding(horizontal = 12.dp), color = HomeGold.copy(alpha = 0.25f))
+                HomePrayerShortcut(t["screen.home.pray_rosary"], true, onOpenRosary, Modifier.fillMaxWidth())
+            }
+        } else {
+            Row(Modifier.height(IntrinsicSize.Min)) {
+                HomePrayerShortcut(t["screen.home.morning_offering"], false, onOpenPrayer, Modifier.weight(1f))
+                VerticalDivider(Modifier.padding(vertical = 12.dp).fillMaxHeight(), color = HomeGold.copy(alpha = 0.25f))
+                HomePrayerShortcut(t["screen.home.pray_rosary"], true, onOpenRosary, Modifier.weight(1f))
+            }
+        }
+    }
+}
+
+@Composable
 private fun HomePrayerShortcut(title: String, rosary: Boolean, onClick: () -> Unit, modifier: Modifier) {
     val gold = HomeGold
-    Row(modifier.heightIn(min = 56.dp).clip(RoundedCornerShape(12.dp))
-        .border(1.dp, gold.copy(alpha = 0.6f), RoundedCornerShape(12.dp))
+    Row(modifier.heightIn(min = 56.dp)
         .semantics(mergeDescendants = true) {}.clickable(role = Role.Button, onClick = onClick)
         .padding(horizontal = 10.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
         Canvas(Modifier.size(30.dp)) {

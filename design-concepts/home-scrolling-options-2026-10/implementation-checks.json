@@ -1,0 +1,9 @@
+{
+  "portraitCardVisible": true,
+  "portraitCardOpensDetail": true,
+  "readingsStayFixedWhileLowerContentScrolls": true,
+  "continueReadingCardOpensDetail": true,
+  "prayerStripMorningOfferingWorks": true,
+  "prayerStripRosaryWorks": true,
+  "largeTextPrayerStripWorks": true
+}

@@ -253,6 +253,7 @@ fun EntityDetailScreen(
                         it.regnalNumber?.let { v -> "Regnal number" to v.toString() },
                         it.papacyStart?.let { v -> "Papacy start" to v },
                         it.papacyEnd?.let { v -> "Papacy end" to v },
+                        it.feastDay?.let { v -> "Feast day" to v },
                     ),
                     sourceAttribution = it.sourceAttribution,
                     related = it.related,

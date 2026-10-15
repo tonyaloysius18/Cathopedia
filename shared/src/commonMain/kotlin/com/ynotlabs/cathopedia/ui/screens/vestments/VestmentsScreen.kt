@@ -548,6 +548,22 @@ private fun LiturgicalColor.localized(s: Strings): LiturgicalColor = copy(
     meaning = s.vestmentText(meaning),
 )
 
+/** Search shares the actual guide copy, including its localized fallback text. */
+internal fun vestmentsSearchText(s: Strings): String = buildList {
+    ministers.map { it.localized(s) }.forEach { minister ->
+        add(minister.name)
+        add(minister.title)
+        add(minister.description)
+        minister.vestments.forEach { vestment ->
+            addAll(listOf(vestment.name, vestment.purpose, vestment.significance, vestment.detail))
+            vestment.colorNote?.let(::add)
+        }
+    }
+    liturgicalColors.map { it.localized(s) }.forEach { color ->
+        addAll(listOf(color.name, color.occasion, color.meaning))
+    }
+}.joinToString("\n")
+
 @Composable
 fun VestmentsScreen(
     onBackClick: () -> Unit = {},

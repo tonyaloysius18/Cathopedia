@@ -71,8 +71,8 @@ import com.ynotlabs.cathopedia.content.model.EntityType
 import com.ynotlabs.cathopedia.ui.navigation.AppNavController
 import com.ynotlabs.cathopedia.ui.navigation.NavDirection
 import com.ynotlabs.cathopedia.ui.navigation.BottomNavBar
+import com.ynotlabs.cathopedia.ui.navigation.destination
 import com.ynotlabs.cathopedia.ui.navigation.Destination
-import com.ynotlabs.cathopedia.ui.navigation.Tab
 import com.ynotlabs.cathopedia.ui.navigation.FloatingSearchButton
 import com.ynotlabs.cathopedia.ui.navigation.rememberAppNavController
 import com.ynotlabs.cathopedia.ui.screens.settings.AboutScreen
@@ -100,6 +100,7 @@ import com.ynotlabs.cathopedia.ui.screens.home.SavedScreen
 import com.ynotlabs.cathopedia.ui.screens.home.SearchScreen
 import com.ynotlabs.cathopedia.ui.screens.settings.SettingsScreen
 import com.ynotlabs.cathopedia.ui.screens.startup.SplashScreen
+import com.ynotlabs.cathopedia.ui.screens.holymass.CelebrateMassScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.ProcessionScreen
 import com.ynotlabs.cathopedia.ui.screens.sacraments.SacramentsScreen
 import com.ynotlabs.cathopedia.ui.screens.stations.StationsScreen
@@ -325,7 +326,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     onItemSelected = { item: ContentSummary -> nav.navigate(Destination.EntityDetail(item.type, item.id)) },
                     onOpenPrayer = { slug -> nav.navigate(Destination.PrayerDetail(slug)) },
                     onOpenRosary = { nav.navigate(Destination.RosaryScreen) },
-                    onExploreClick = { nav.selectTab(Tab.EXPLORE) },
+                    onOpenMass = { nav.navigate(Destination.CelebrateMass) },
                     scrollState = homeScrollState,
                 )
 
@@ -497,6 +498,12 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     listState = sacramentsScrollState,
                 )
 
+                is Destination.CelebrateMass -> CelebrateMassScreen(
+                    repository = repository,
+                    language = language,
+                    onBack = nav::back,
+                )
+
                 is Destination.ProcessionScreen -> ProcessionScreen(
                     language = language,
                     onBack = nav::back,
@@ -506,7 +513,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                 is Destination.Search -> SearchScreen(
                     repository = repository,
                     language = language,
-                    onResultSelected = { result: ContentSummary -> nav.navigate(Destination.EntityDetail(result.type, result.id)) },
+                    onResultSelected = { result -> nav.navigate(result.target.destination()) },
                     landingListState = searchLandingScrollState,
                     resultsListState = searchResultsScrollState,
                 )

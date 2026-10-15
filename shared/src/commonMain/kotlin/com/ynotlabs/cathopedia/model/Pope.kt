@@ -8,6 +8,7 @@ data class PopeDetail(
     val regnalNumber: Long?,
     val papacyStart: String?,
     val papacyEnd: String?,
+    val feastDay: String? = null,
     val imageUrl: String?,
     val sourceUrl: String?,
     val sourceAttribution: String?,

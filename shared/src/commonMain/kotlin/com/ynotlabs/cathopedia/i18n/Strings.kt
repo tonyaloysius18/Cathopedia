@@ -234,6 +234,8 @@ class Strings {
     var searchReadyBody: String = "Type a name, place, or topic to start exploring the richness of the faith."
     var searchRemoveRecent: String = "Remove"
     var searchTipsTitle: String = "Search tips"
+    var searchTopicsLabel: String = "Topics"
+    var searchArticleLabel: String = "Article"
     var searchTipsBody: String = "Search by name, title, place, keyword, or topic to quickly find Catholic content."
     var searchOneResult: String = "{count} result"
     var searchManyResults: String = "{count} results"

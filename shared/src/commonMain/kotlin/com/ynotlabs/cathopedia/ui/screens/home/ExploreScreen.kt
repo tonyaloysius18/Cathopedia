@@ -58,6 +58,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.LocalScreenText
 import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.model.ContentCategory
 import com.ynotlabs.cathopedia.model.ContentType
@@ -132,6 +133,7 @@ fun ExploreScreen(
     onDataLoaded: (ExploreData) -> Unit = {},
 ) {
     val s = LocalStrings.current
+    val t = LocalScreenText.current
     var query by remember { mutableStateOf("") }
     // Seeded from the caller's cache so returning to Explore paints the hubs in the first
     // frame; without it every visit started empty and the tab appeared to load late.
@@ -198,7 +200,8 @@ fun ExploreScreen(
                         firstGrid.sortedBy { it.id != "symbols" }.forEach { hub ->
                             PortraitHubExploreCard(
                                 hub = hub,
-                                title = hubStrings[hub.titleKey].orEmpty(),
+                                title = if (hub.id == "mass") t["screen.explore.catholic_church"]
+                                    else hubStrings[hub.titleKey].orEmpty(),
                                 subtitle = hub.subtitleKey?.let { hubStrings[it] },
                                 onClick = { onHubSelected(hub) },
                                 modifier = Modifier.weight(1f).fillMaxHeight()

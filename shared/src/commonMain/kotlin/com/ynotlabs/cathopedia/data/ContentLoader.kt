@@ -40,7 +40,7 @@ object ContentLoader {
      * this just controls whether it re-runs on an existing install rather
      * than only ever loading once on a database with zero rows.
      */
-    private const val CONTENT_VERSION = "256"
+    private const val CONTENT_VERSION = "259"
     private const val CONTENT_VERSION_KEY = "content_version"
 
     // classDiscriminator/explicitNulls (from com.ynotlabs.cathopedia.content.hubContentJson) are
@@ -70,6 +70,8 @@ object ContentLoader {
 
     /** internal (not private) so the hub-seeding test can call it without a Res-backed catalog.json. */
     internal fun insert(database: CathopediaDatabase, catalog: ContentCatalog) {
+        // Only the derived index is rebuilt; saved items and prayer progress stay intact.
+        database.searchQueries.deleteAllSearchEntries()
         catalog.saints.forEach { s ->
             database.saintQueries.insertSaint(s.id, s.feastDay, s.canonizationYear, s.patronage, s.imageUrl, s.sourceUrl)
             s.text.forEach { (lang, t) ->
@@ -79,7 +81,7 @@ object ContentLoader {
         }
         catalog.popes.forEach { p ->
             database.popeQueries.insertPope(
-                p.id, p.regnalNumber, p.papacyStart, p.papacyEnd, sortKey(p.papacyStart), p.imageUrl, p.sourceUrl,
+                p.id, p.regnalNumber, p.papacyStart, p.papacyEnd, sortKey(p.papacyStart), p.imageUrl, p.sourceUrl, p.feastDay,
             )
             p.text.forEach { (lang, t) ->
                 database.popeQueries.insertPopeText(p.id, lang, t.name, t.summary, t.body, t.sourceAttribution)
@@ -145,6 +147,7 @@ object ContentLoader {
 
         catalog.prayers.forEach { p ->
             database.prayerQueries.insertPrayer(p.id, p.category, p.sortOrder, if (p.isSequence) 1L else 0L)
+            database.prayerQueries.updatePrayerMetadata(p.category, p.sortOrder, if (p.isSequence) 1L else 0L, p.id)
             p.text.forEach { (lang, t) ->
                 database.prayerQueries.insertPrayerText(
                     p.id,
@@ -156,7 +159,7 @@ object ContentLoader {
                     t.attribution,
                     t.source,
                 )
-                database.searchQueries.insertSearchEntry(PRAYER_SEARCH_ENTITY_TYPE, p.id, lang, t.title, t.subtitle ?: "", t.bodyMd)
+                database.searchQueries.insertSearchEntry(PRAYER_SEARCH_ENTITY_TYPE, p.id, lang, t.title, t.subtitle ?: "", t.bodyMd + "\n" + t.about)
             }
             database.prayerUserStateQueries.insertPrayerUserStateDefault(p.id)
         }
@@ -179,6 +182,7 @@ object ContentLoader {
                 database.hubContentQueries.insertString(Localized_text(key, file.lang, value))
             }
         }
+        GlobalSearchIndex.insert(database, catalog)
     }
 
     /** One transaction per hub, as required by the topic-hub brief (docs/briefs/topic-hubs.md, T2). */
