@@ -10,55 +10,73 @@
       "name": "Our Lady of Lourdes",
       "summary": "A series of Marian apparitions reported by Bernadette Soubirous in 1858.",
       "body": "Between February and July 1858, Bernadette Soubirous reported eighteen apparitions of the Virgin Mary at a grotto in Lourdes, France, later approved by the Church.",
-      "sourceAttribution": "Seed content — replace with sourced text."
+      "sourceAttribution": "Seed content — replace with sourced text.",
+      "location": "Lourdes, France",
+      "approvalStatus": "Approved"
     },
     "fr": {
       "name": "Notre-Dame de Lourdes",
       "summary": "Une série d'apparitions mariales rapportées par Bernadette Soubirous en 1858.",
       "body": "Entre février et juillet 1858, Bernadette Soubirous rapporta dix-huit apparitions de la Vierge Marie dans une grotte de Lourdes, en France, plus tard approuvées par l'Église.",
-      "sourceAttribution": "Contenu de base — à remplacer par un texte sourcé."
+      "sourceAttribution": "Contenu de base — à remplacer par un texte sourcé.",
+      "location": "Lourdes, France",
+      "approvalStatus": "Approuvée"
     },
     "it": {
       "name": "Nostra Signora di Lourdes",
       "summary": "Una serie di apparizioni mariane riferite da Bernadette Soubirous nel 1858.",
       "body": "Tra febbraio e luglio 1858, Bernadette Soubirous riferì diciotto apparizioni della Vergine Maria in una grotta di Lourdes, in Francia, poi approvate dalla Chiesa.",
-      "sourceAttribution": "Contenuto iniziale — da sostituire con un testo documentato."
+      "sourceAttribution": "Contenuto iniziale — da sostituire con un testo documentato.",
+      "location": "Lourdes, Francia",
+      "approvalStatus": "Approvata"
     },
     "de": {
       "name": "Unsere Liebe Frau von Lourdes",
       "summary": "Eine Reihe von Marienerscheinungen, von denen Bernadette Soubirous 1858 berichtete.",
       "body": "Zwischen Februar und Juli 1858 berichtete Bernadette Soubirous von achtzehn Erscheinungen der Jungfrau Maria an einer Grotte in Lourdes in Frankreich, die später von der Kirche anerkannt wurden.",
-      "sourceAttribution": "Platzhaltertext – durch belegten Text ersetzen."
+      "sourceAttribution": "Platzhaltertext – durch belegten Text ersetzen.",
+      "location": "Lourdes, Frankreich",
+      "approvalStatus": "Anerkannt"
     },
     "es": {
       "name": "Nuestra Señora de Lourdes",
       "summary": "Serie de apariciones marianas relatadas por Bernadette Soubirous en 1858.",
       "body": "Entre febrero y julio de 1858, Bernadette Soubirous contó dieciocho apariciones de la Virgen María en una gruta de Lourdes, en Francia, aprobadas después por la Iglesia.",
-      "sourceAttribution": "Texto provisional — sustituir por texto con fuentes."
+      "sourceAttribution": "Texto provisional — sustituir por texto con fuentes.",
+      "location": "Lourdes, Francia",
+      "approvalStatus": "Aprobada"
     },
     "pt": {
       "name": "Nossa Senhora de Lourdes",
       "summary": "Série de aparições marianas relatadas por Bernadette Soubirous em 1858.",
       "body": "Entre fevereiro e julho de 1858, Bernadette Soubirous relatou dezoito aparições da Virgem Maria em uma gruta de Lourdes, na França, depois aprovadas pela Igreja.",
-      "sourceAttribution": "Texto provisório — substituir por texto com fontes."
+      "sourceAttribution": "Texto provisório — substituir por texto com fontes.",
+      "location": "Lourdes, França",
+      "approvalStatus": "Aprovada"
     },
     "nl": {
       "name": "Onze-Lieve-Vrouw van Lourdes",
       "summary": "Een reeks Mariaverschijningen die Bernadette Soubirous in 1858 meldde.",
       "body": "Tussen februari en juli 1858 meldde Bernadette Soubirous achttien verschijningen van de Maagd Maria bij een grot in Lourdes, Frankrijk, die later door de Kerk werden erkend.",
-      "sourceAttribution": "Voorlopige tekst — te vervangen door tekst met bronnen."
+      "sourceAttribution": "Voorlopige tekst — te vervangen door tekst met bronnen.",
+      "location": "Lourdes, Frankrijk",
+      "approvalStatus": "Erkend"
     },
     "pl": {
       "name": "Matka Boża z Lourdes",
       "summary": "Seria objawień maryjnych, o których opowiadała Bernadeta Soubirous w 1858 roku.",
       "body": "Między lutym a lipcem 1858 roku Bernadeta Soubirous opowiadała o osiemnastu objawieniach Maryi Panny w grocie w Lourdes we Francji, później uznanych przez Kościół.",
-      "sourceAttribution": "Tekst tymczasowy — do zastąpienia tekstem ze źródłami."
+      "sourceAttribution": "Tekst tymczasowy — do zastąpienia tekstem ze źródłami.",
+      "location": "Lourdes, Francja",
+      "approvalStatus": "Zatwierdzone"
     },
     "ta": {
       "name": "லூர்து அன்னை",
       "summary": "1858-இல் பெர்னதெத் சூபிரூ அறிவித்த மரியன்னைக் காட்சிகளின் தொடர்.",
       "body": "1858 பிப்ரவரிக்கும் ஜூலைக்கும் இடையே, பிரான்சின் லூர்துவிலுள்ள ஒரு கெபியில் கன்னி மரியாவின் பதினெட்டுக் காட்சிகளைப் பெர்னதெத் சூபிரூ அறிவித்தார்; அவை பின்னர் திருஅவையால் அங்கீகரிக்கப்பட்டன.",
-      "sourceAttribution": "தற்காலிக உரை — ஆதாரங்களுடன் கூடிய உரையால் மாற்றப்பட வேண்டும்."
+      "sourceAttribution": "தற்காலிக உரை — ஆதாரங்களுடன் கூடிய உரையால் மாற்றப்பட வேண்டும்.",
+      "location": "லூர்து, பிரான்ஸ்",
+      "approvalStatus": "அங்கீகரிக்கப்பட்டது"
     }
   }
 }

@@ -9,55 +9,73 @@
       "name": "Peter",
       "summary": "Leader of the twelve apostles, traditionally regarded as the first pope.",
       "body": "Peter (originally Simon) was a fisherman called by Jesus to become \"a fisher of men\", and is traditionally regarded as the first Bishop of Rome.",
-      "sourceAttribution": "Seed content — replace with sourced text."
+      "sourceAttribution": "Seed content — replace with sourced text.",
+      "originalName": "Simon",
+      "martyrdom": "Crucified in Rome, c. AD 64-68"
     },
     "fr": {
       "name": "Pierre",
       "summary": "Chef des douze apôtres, traditionnellement considéré comme le premier pape.",
       "body": "Pierre (à l'origine Simon) était un pêcheur appelé par Jésus à devenir « pêcheur d'hommes », et il est traditionnellement considéré comme le premier évêque de Rome.",
-      "sourceAttribution": "Contenu de base — à remplacer par un texte sourcé."
+      "sourceAttribution": "Contenu de base — à remplacer par un texte sourcé.",
+      "originalName": "Simon",
+      "martyrdom": "Crucifié à Rome, vers 64-68 apr. J.-C."
     },
     "it": {
       "name": "Pietro",
       "summary": "Capo dei dodici apostoli, considerato dalla tradizione il primo papa.",
       "body": "Pietro (in origine Simone) era un pescatore chiamato da Gesù a diventare «pescatore di uomini», ed è tradizionalmente considerato il primo vescovo di Roma.",
-      "sourceAttribution": "Contenuto iniziale — da sostituire con un testo documentato."
+      "sourceAttribution": "Contenuto iniziale — da sostituire con un testo documentato.",
+      "originalName": "Simone",
+      "martyrdom": "Crocifisso a Roma, intorno al 64-68 d.C."
     },
     "de": {
       "name": "Petrus",
       "summary": "Anführer der zwölf Apostel, traditionell als erster Papst angesehen.",
       "body": "Petrus (ursprünglich Simon) war ein Fischer, den Jesus berief, „Menschenfischer“ zu werden, und gilt traditionell als erster Bischof von Rom.",
-      "sourceAttribution": "Platzhaltertext – durch belegten Text ersetzen."
+      "sourceAttribution": "Platzhaltertext – durch belegten Text ersetzen.",
+      "originalName": "Simon",
+      "martyrdom": "Um 64–68 n. Chr. in Rom gekreuzigt"
     },
     "es": {
       "name": "Pedro",
       "summary": "Jefe de los doce apóstoles, considerado tradicionalmente el primer papa.",
       "body": "Pedro (originalmente Simón) era un pescador al que Jesús llamó a ser «pescador de hombres», y se le considera tradicionalmente el primer obispo de Roma.",
-      "sourceAttribution": "Texto provisional — sustituir por texto con fuentes."
+      "sourceAttribution": "Texto provisional — sustituir por texto con fuentes.",
+      "originalName": "Simón",
+      "martyrdom": "Crucificado en Roma, hacia el 64-68 d. C."
     },
     "pt": {
       "name": "Pedro",
       "summary": "Líder dos doze apóstolos, tradicionalmente considerado o primeiro papa.",
       "body": "Pedro (originalmente Simão) era um pescador chamado por Jesus para se tornar «pescador de homens», e é tradicionalmente considerado o primeiro bispo de Roma.",
-      "sourceAttribution": "Texto provisório — substituir por texto com fontes."
+      "sourceAttribution": "Texto provisório — substituir por texto com fontes.",
+      "originalName": "Simão",
+      "martyrdom": "Crucificado em Roma, por volta de 64-68 d.C."
     },
     "nl": {
       "name": "Petrus",
       "summary": "Leider van de twaalf apostelen, traditioneel beschouwd als de eerste paus.",
       "body": "Petrus (oorspronkelijk Simon) was een visser die door Jezus werd geroepen om \"visser van mensen\" te worden, en wordt traditioneel beschouwd als de eerste bisschop van Rome.",
-      "sourceAttribution": "Voorlopige tekst — te vervangen door tekst met bronnen."
+      "sourceAttribution": "Voorlopige tekst — te vervangen door tekst met bronnen.",
+      "originalName": "Simon",
+      "martyrdom": "Gekruisigd in Rome, ca. 64-68 n.Chr."
     },
     "pl": {
       "name": "Piotr",
       "summary": "Przywódca dwunastu apostołów, tradycyjnie uważany za pierwszego papieża.",
       "body": "Piotr (pierwotnie Szymon) był rybakiem powołanym przez Jezusa, by stał się „rybakiem ludzi”, i tradycyjnie uważany jest za pierwszego biskupa Rzymu.",
-      "sourceAttribution": "Tekst tymczasowy — do zastąpienia tekstem ze źródłami."
+      "sourceAttribution": "Tekst tymczasowy — do zastąpienia tekstem ze źródłami.",
+      "originalName": "Szymon",
+      "martyrdom": "Ukrzyżowany w Rzymie ok. 64–68 r. po Chr."
     },
     "ta": {
       "name": "பேதுரு",
       "summary": "பன்னிரு திருத்தூதர்களின் தலைவர், மரபுப்படி முதல் திருத்தந்தையாகக் கருதப்படுபவர்.",
       "body": "பேதுரு (முதலில் சீமோன்) “மனிதரைப் பிடிப்பவர்“ ஆகும்படி இயேசுவால் அழைக்கப்பட்ட மீனவர்; உரோமையின் முதல் ஆயராக மரபுப்படி கருதப்படுகிறார்.",
-      "sourceAttribution": "தற்காலிக உரை — ஆதாரங்களுடன் கூடிய உரையால் மாற்றப்பட வேண்டும்."
+      "sourceAttribution": "தற்காலிக உரை — ஆதாரங்களுடன் கூடிய உரையால் மாற்றப்பட வேண்டும்.",
+      "originalName": "சீமோன்",
+      "martyrdom": "கி.பி. ஏறத்தாழ 64-68-இல் உரோமையில் சிலுவையில் அறையப்பட்டார்"
     }
   }
 }

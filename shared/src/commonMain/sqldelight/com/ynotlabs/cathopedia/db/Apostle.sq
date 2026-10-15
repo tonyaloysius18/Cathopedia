@@ -13,6 +13,9 @@ CREATE TABLE ApostleText (
     summary TEXT NOT NULL,
     body TEXT NOT NULL,
     sourceAttribution TEXT,
+    -- Fact values in this language; ApostleEntity keeps the English originals as last fallback.
+    originalName TEXT,
+    martyrdom TEXT,
     PRIMARY KEY (apostleId, language),
     FOREIGN KEY (apostleId) REFERENCES ApostleEntity(id) ON DELETE CASCADE
 );
@@ -22,8 +25,8 @@ INSERT OR REPLACE INTO ApostleEntity(id, originalName, martyrdom, imageUrl, sour
 VALUES (?, ?, ?, ?, ?);
 
 insertApostleText:
-INSERT OR REPLACE INTO ApostleText(apostleId, language, name, summary, body, sourceAttribution)
-VALUES (?, ?, ?, ?, ?, ?);
+INSERT OR REPLACE INTO ApostleText(apostleId, language, name, summary, body, sourceAttribution, originalName, martyrdom)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?);
 
 -- Counting rows for the Explore tiles: cheaper than materialising every
 -- summary just to take the size of the list.
@@ -50,7 +53,8 @@ ORDER BY COALESCE(t.name, f.name) ASC;
 selectApostleDetail:
 SELECT ApostleEntity.id AS id, COALESCE(t.name, f.name) AS name, COALESCE(t.summary, f.summary) AS summary,
        COALESCE(t.body, f.body) AS body,
-       ApostleEntity.originalName AS originalName, ApostleEntity.martyrdom AS martyrdom,
+       COALESCE(t.originalName, f.originalName, ApostleEntity.originalName) AS originalName,
+       COALESCE(t.martyrdom, f.martyrdom, ApostleEntity.martyrdom) AS martyrdom,
        ApostleEntity.imageUrl AS imageUrl, ApostleEntity.sourceUrl AS sourceUrl,
        COALESCE(t.sourceAttribution, f.sourceAttribution) AS sourceAttribution
 FROM ApostleEntity

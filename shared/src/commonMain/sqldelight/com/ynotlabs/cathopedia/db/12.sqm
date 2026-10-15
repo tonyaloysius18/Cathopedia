@@ -1,0 +1,4 @@
+ALTER TABLE ApostleText ADD COLUMN originalName TEXT;
+ALTER TABLE ApostleText ADD COLUMN martyrdom TEXT;
+ALTER TABLE ApparitionText ADD COLUMN location TEXT;
+ALTER TABLE ApparitionText ADD COLUMN approvalStatus TEXT;

@@ -11,8 +11,15 @@ data class LocalizedText(
     val summary: String,
     val body: String,
     val sourceAttribution: String? = null,
-    /** Saints only: patronage in this language (the entity's top-level patronage is the English source). */
+    // Fact values in this language; each entity's top-level field of the same name is the English source.
+    /** Saints. */
     val patronage: String? = null,
+    /** Apostles. */
+    val originalName: String? = null,
+    val martyrdom: String? = null,
+    /** Apparitions. */
+    val location: String? = null,
+    val approvalStatus: String? = null,
 )
 
 @Serializable

@@ -40,7 +40,7 @@ object ContentLoader {
      * this just controls whether it re-runs on an existing install rather
      * than only ever loading once on a database with zero rows.
      */
-    private const val CONTENT_VERSION = "267"
+    private const val CONTENT_VERSION = "268"
     private const val CONTENT_VERSION_KEY = "content_version"
 
     // classDiscriminator/explicitNulls (from com.ynotlabs.cathopedia.content.hubContentJson) are
@@ -91,7 +91,7 @@ object ContentLoader {
         catalog.apostles.forEach { a ->
             database.apostleQueries.insertApostle(a.id, a.originalName, a.martyrdom, a.imageUrl, a.sourceUrl)
             a.text.forEach { (lang, t) ->
-                database.apostleQueries.insertApostleText(a.id, lang, t.name, t.summary, t.body, t.sourceAttribution)
+                database.apostleQueries.insertApostleText(a.id, lang, t.name, t.summary, t.body, t.sourceAttribution, t.originalName, t.martyrdom)
                 index(database, ContentType.APOSTLE, a.id, lang, t)
             }
         }
@@ -105,7 +105,7 @@ object ContentLoader {
         catalog.apparitions.forEach { a ->
             database.apparitionQueries.insertApparition(a.id, a.location, a.apparitionYear, a.approvalStatus, a.imageUrl, a.sourceUrl)
             a.text.forEach { (lang, t) ->
-                database.apparitionQueries.insertApparitionText(a.id, lang, t.name, t.summary, t.body, t.sourceAttribution)
+                database.apparitionQueries.insertApparitionText(a.id, lang, t.name, t.summary, t.body, t.sourceAttribution, t.location, t.approvalStatus)
                 index(database, ContentType.APPARITION, a.id, lang, t)
             }
         }
