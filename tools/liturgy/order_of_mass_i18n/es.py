@@ -52,7 +52,7 @@ T = {
  "sanctus": {"title": "Santo", "who": "Todos", "missal": "Santo",
   "rubric": "Al terminar el prefacio, todos cantan o dicen el Santo. Donde es costumbre, los fieles se arrodillan después."},
  "eucharistic_prayer": {"title": "Plegaria eucarística", "who": "Sacerdote", "missal": "Plegaria eucarística",
-  "rubric": "El sacerdote dice una de las plegarias eucarísticas. La consagración sigue al relato de la institución: muestra al pueblo la hostia consagrada y el cáliz, y hace genuflexión después de cada uno. Tras el misterio de la fe, la plegaria continúa hasta la doxología final, a la que el pueblo responde: «Amén»."},
+  "rubric": "El sacerdote dice una de las plegarias eucarísticas. La consagración tiene lugar en el relato de la institución: muestra al pueblo la hostia consagrada y el cáliz, y hace genuflexión después de cada uno. Tras el misterio de la fe, la plegaria continúa hasta la doxología final, a la que el pueblo responde: «Amén»."},
  "lords_prayer": {"title": "Padre nuestro", "who": "Todos", "missal": "Embolismo y doxología",
   "rubric": "Todos se ponen de pie. Después de la introducción del sacerdote, todos juntos dicen o cantan el Padre nuestro. El sacerdote continúa solo con el embolismo, y el pueblo concluye con la doxología."},
  "sign_of_peace": {"title": "Rito de la paz", "who": "Sacerdote y pueblo", "missal": "Rito de la paz",

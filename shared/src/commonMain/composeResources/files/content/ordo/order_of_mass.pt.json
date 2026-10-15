@@ -44,7 +44,7 @@
           "who": "Sacerdote e povo",
           "rubric": "Se não tiver sido dito no ato penitencial, seguem-se as invocações do Kyrie.",
           "text": "Kyrie, eleison. Kyrie, eleison.\nChriste, eleison. Christe, eleison.\nKyrie, eleison. Kyrie, eleison.",
-          "textNote": "Em grego, como no Missal: Senhor, tende piedade. Cristo, tende piedade. Senhor, tende piedade."
+          "textNote": "Em grego, como no Missal: Senhor, tende piedade de nós. Cristo, tende piedade de nós. Senhor, tende piedade de nós."
         },
         {
           "id": "gloria",
@@ -123,7 +123,7 @@
           "id": "creed",
           "title": "Profissão de fé",
           "who": "Todos, de pé",
-          "rubric": "Hoje se canta ou se diz o Credo. Usa-se o símbolo niceno-constantinopolitano; pode ser substituído pelo símbolo dos Apóstolos, sobretudo na Quaresma e no tempo pascal. Todos se inclinam às palavras sobre a Encarnação, e ajoelham-se nas solenidades da Anunciação e do Natal do Senhor.",
+          "rubric": "Hoje se canta ou se diz o Credo. Usa-se o símbolo niceno-constantinopolitano; pode ser substituído pelo símbolo dos Apóstolos, sobretudo na Quaresma e no tempo pascal. Todos se inclinam às palavras sobre a Encarnação, e se ajoelham nas solenidades da Anunciação e do Natal do Senhor.",
           "condition": "creed",
           "missal": "Profissão de fé"
         },
@@ -144,7 +144,7 @@
           "id": "preparation",
           "title": "Preparação das oferendas",
           "who": "Sacerdote",
-          "rubric": "Prepara-se o altar e trazem-se as oferendas enquanto se canta o canto das oferendas. O sacerdote apresenta o pão e o vinho com as suas orações, deita um pouco de água no vinho, lava as mãos e convida o povo a rezar; o povo responde.",
+          "rubric": "Prepara-se o altar e trazem-se as oferendas enquanto se canta o canto das oferendas. O sacerdote apresenta o pão e o vinho com as suas orações, põe um pouco de água no vinho, lava as mãos e convida o povo a rezar; o povo responde.",
           "missal": "Orações da preparação das oferendas"
         },
         {
@@ -166,14 +166,14 @@
           "id": "sanctus",
           "title": "Santo",
           "who": "Todos",
-          "rubric": "No fim do prefácio, todos cantam ou dizem o Santo. Onde é costume, os fiéis ajoelham-se em seguida.",
+          "rubric": "No fim do prefácio, todos cantam ou dizem o Santo. Onde é costume, os fiéis se ajoelham em seguida.",
           "missal": "Santo"
         },
         {
           "id": "eucharistic_prayer",
           "title": "Oração eucarística",
           "who": "Sacerdote",
-          "rubric": "O sacerdote diz uma das orações eucarísticas. A consagração segue a narrativa da instituição: mostra ao povo a hóstia consagrada e o cálice, e genuflete depois de cada um. Depois do mistério da fé, a oração continua até à doxologia final, à qual o povo responde: «Amém».",
+          "rubric": "O sacerdote diz uma das orações eucarísticas. A consagração acontece na narrativa da instituição: mostra ao povo a hóstia consagrada e o cálice, e genuflete depois de cada um. Depois do mistério da fé, a oração continua até a doxologia final, à qual o povo responde: «Amém».",
           "missal": "Oração eucarística",
           "eucharisticPrayer": true
         },
@@ -203,7 +203,7 @@
           "id": "communion",
           "title": "Comunhão",
           "who": "Sacerdote e povo",
-          "rubric": "O sacerdote genuflete, mostra a hóstia ao povo e diz com ele a resposta antes da Comunhão. Comunga e depois distribui a Comunhão. Canta-se o canto da comunhão ou diz-se a antífona da comunhão. Em seguida purificam-se os vasos sagrados, e pode guardar-se um tempo de silêncio.",
+          "rubric": "O sacerdote genuflete, mostra a hóstia ao povo e diz com ele a resposta antes da Comunhão. Comunga e depois distribui a Comunhão. Canta-se o canto da comunhão ou diz-se a antífona da comunhão. Em seguida purificam-se os vasos sagrados, e pode-se guardar um tempo de silêncio.",
           "missal": "Antífona da comunhão do dia"
         },
         {

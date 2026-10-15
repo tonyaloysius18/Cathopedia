@@ -44,7 +44,7 @@
           "who": "Kapłan i lud",
           "rubric": "Jeśli nie było go już w akcie pokuty, następują wezwania Kyrie.",
           "text": "Kyrie, eleison. Kyrie, eleison.\nChriste, eleison. Christe, eleison.\nKyrie, eleison. Kyrie, eleison.",
-          "textNote": "Po grecku, jak w Mszale: Panie, zmiłuj się. Chryste, zmiłuj się. Panie, zmiłuj się."
+          "textNote": "Po grecku, jak w Mszale: Panie, zmiłuj się nad nami. Chryste, zmiłuj się nad nami. Panie, zmiłuj się nad nami."
         },
         {
           "id": "gloria",
@@ -93,7 +93,7 @@
           "id": "sequence",
           "title": "Sekwencja",
           "who": "Wszyscy",
-          "rubric": "Sekwencję dnia śpiewa się przed Alleluja. Jest obowiązkowa w Niedzielę Wielkanocną i w Zesłanie Ducha Świętego, a w inne dni, które ją mają, dowolna.",
+          "rubric": "Sekwencję dnia śpiewa się przed Alleluja. Jest obowiązkowa w Niedzielę Wielkanocną i w uroczystość Zesłania Ducha Świętego, a w inne dni, które ją mają, dowolna.",
           "reading": "SEQUENCE",
           "condition": "sequence"
         },
@@ -236,7 +236,7 @@
           "id": "dismissal",
           "title": "Rozesłanie",
           "who": "Diakon lub kapłan, i lud",
-          "rubric": "Diakon albo kapłan rozsyła lud jedną z formuł Mszału; lud odpowiada: „Bogu niech będą dzięki”. W oktawie Wielkanocy i w Zesłanie Ducha Świętego dodaje się podwójne Alleluja. Kapłan całuje ołtarz i po głębokim skłonie wraz z usługującymi odchodzi.",
+          "rubric": "Diakon albo kapłan rozsyła lud jedną z formuł Mszału; lud odpowiada: „Bogu niech będą dzięki”. W oktawie Wielkanocy i w uroczystość Zesłania Ducha Świętego dodaje się podwójne Alleluja. Kapłan całuje ołtarz i po głębokim skłonie wraz z usługującymi odchodzi.",
           "missal": "Rozesłanie"
         }
       ]

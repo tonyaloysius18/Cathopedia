@@ -52,7 +52,7 @@ T = {
  "sanctus": {"title": "Heilig", "who": "Allen", "missal": "Sanctus",
   "rubric": "Aan het einde van de prefatie zingen of zeggen allen het Sanctus. Waar het gebruikelijk is, knielen de gelovigen daarna."},
  "eucharistic_prayer": {"title": "Eucharistisch gebed", "who": "Priester", "missal": "Eucharistisch gebed",
-  "rubric": "De priester zegt een van de eucharistische gebeden. De consecratie volgt op het instellingsverhaal: hij toont het volk de geconsacreerde hostie en de kelk en maakt na elk een kniebuiging. Na het mysterie van het geloof gaat het gebed verder tot de slotdoxologie, waarop het volk antwoordt: „Amen”."},
+  "rubric": "De priester zegt een van de eucharistische gebeden. De consecratie gebeurt in het instellingsverhaal: hij toont het volk de geconsacreerde hostie en de kelk en maakt na elk een kniebuiging. Na het mysterie van het geloof gaat het gebed verder tot de slotdoxologie, waarop het volk antwoordt: „Amen”."},
  "lords_prayer": {"title": "Onze Vader", "who": "Allen", "missal": "Embolisme en doxologie",
   "rubric": "Allen staan. Na de inleiding van de priester bidden of zingen allen samen het Onze Vader. De priester gaat alleen verder met het embolisme, en het volk besluit met de doxologie."},
  "sign_of_peace": {"title": "Vredeswens", "who": "Priester en volk", "missal": "Vredesritus",

@@ -173,7 +173,7 @@
           "id": "eucharistic_prayer",
           "title": "Eucharistic Prayer",
           "who": "Priest",
-          "rubric": "The priest says one of the Eucharistic Prayers. The consecration follows the Institution Narrative: he shows the consecrated host and the chalice to the people and genuflects after each. After the Mystery of Faith, the prayer continues to the concluding doxology, to which the people reply, \"Amen.\"",
+          "rubric": "The priest says one of the Eucharistic Prayers. The consecration takes place within the Institution Narrative: he shows the consecrated host and the chalice to the people and genuflects after each. After the Mystery of Faith, the prayer continues to the concluding doxology, to which the people reply, \"Amen.\"",
           "missal": "Eucharistic Prayer",
           "eucharisticPrayer": true
         },

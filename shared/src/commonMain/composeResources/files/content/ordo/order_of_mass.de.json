@@ -173,7 +173,7 @@
           "id": "eucharistic_prayer",
           "title": "Hochgebet",
           "who": "Priester",
-          "rubric": "Der Priester spricht eines der Hochgebete. Die Wandlung folgt dem Einsetzungsbericht: Er zeigt der Gemeinde die konsekrierte Hostie und den Kelch und macht nach jedem eine Kniebeuge. Nach dem Geheimnis des Glaubens wird das Gebet bis zur Schlussdoxologie fortgesetzt, auf die die Gemeinde mit „Amen“ antwortet.",
+          "rubric": "Der Priester spricht eines der Hochgebete. Die Wandlung geschieht im Einsetzungsbericht: Er zeigt der Gemeinde die konsekrierte Hostie und den Kelch und macht nach jedem eine Kniebeuge. Nach dem Geheimnis des Glaubens wird das Gebet bis zur Schlussdoxologie fortgesetzt, auf die die Gemeinde mit „Amen“ antwortet.",
           "missal": "Eucharistisches Hochgebet",
           "eucharisticPrayer": true
         },
@@ -229,7 +229,7 @@
           "id": "blessing",
           "title": "Segen",
           "who": "Priester und Gemeinde",
-          "rubric": "Der Priester grüßt die Gemeinde und segnet sie. An bestimmten Tagen oder Anlässen kann ein feierlicher Schlusssegen oder ein Gebet über das Volk verwendet werden.",
+          "rubric": "Der Priester grüßt die Gemeinde und segnet sie. An bestimmten Tagen oder bei bestimmten Anlässen kann ein feierlicher Schlusssegen oder ein Gebet über das Volk verwendet werden.",
           "missal": "Gruß und Segen"
         },
         {

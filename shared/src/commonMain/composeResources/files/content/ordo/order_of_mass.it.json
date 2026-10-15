@@ -158,7 +158,7 @@
           "id": "preface",
           "title": "Prefazio",
           "who": "Sacerdote e assemblea",
-          "rubric": "La preghiera eucaristica inizia con il dialogo e il prefazio. Scegliete il prefazio proprio del giorno o del tempo.",
+          "rubric": "La preghiera eucaristica inizia con il dialogo e il prefazio. Si sceglie il prefazio proprio del giorno o del tempo.",
           "missal": "Dialogo e prefazio",
           "preface": true
         },
@@ -173,7 +173,7 @@
           "id": "eucharistic_prayer",
           "title": "Preghiera eucaristica",
           "who": "Sacerdote",
-          "rubric": "Il sacerdote dice una delle preghiere eucaristiche. La consacrazione segue il racconto dell'istituzione: egli mostra al popolo l'ostia consacrata e poi il calice, e genuflette dopo ciascuno. Dopo il mistero della fede, la preghiera prosegue fino alla dossologia finale, a cui il popolo risponde: «Amen».",
+          "rubric": "Il sacerdote dice una delle preghiere eucaristiche. La consacrazione avviene nel racconto dell'istituzione: egli mostra al popolo l'ostia consacrata e poi il calice, e genuflette dopo ciascuno. Dopo il mistero della fede, la preghiera prosegue fino alla dossologia finale, a cui il popolo risponde: «Amen».",
           "missal": "Preghiera eucaristica",
           "eucharisticPrayer": true
         },

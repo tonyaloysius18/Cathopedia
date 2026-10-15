@@ -56,7 +56,7 @@ L = {
             advdec=lambda d: f"Advent: {d}. Dezember", xmasdec=lambda d: f"{d}. Dezember, Weihnachtsoktav",
             xmasjan=lambda d: f"{d}. Januar, Weihnachtszeit", epjan=lambda d: f"{d}. Januar, nach Erscheinung des Herrn",
             epday=lambda D: f"{D} nach Erscheinung des Herrn", ash=lambda D: f"{D} nach Aschermittwoch",
-            satmary="Marien-Samstag"),
+            satmary="Gedenktag der seligen Jungfrau Maria am Samstag"),
  "es": dict(days=["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
             week=lambda d, n, s: f"{d} de la {n}.ª semana {s}",
             seasons=dict(ord="del Tiempo Ordinario", adv="de Adviento", lent="de Cuaresma", east="de Pascua"),

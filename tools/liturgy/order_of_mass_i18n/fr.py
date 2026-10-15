@@ -52,7 +52,7 @@ T = {
  "sanctus": {"title": "Sanctus", "who": "Tous", "missal": "Sanctus",
   "rubric": "À la fin de la préface, tous chantent ou disent le Sanctus. Là où c'est l'usage, les fidèles s'agenouillent ensuite."},
  "eucharistic_prayer": {"title": "Prière eucharistique", "who": "Prêtre", "missal": "Prière eucharistique",
-  "rubric": "Le prêtre dit l'une des prières eucharistiques. La consécration suit le récit de l'institution : il montre au peuple l'hostie consacrée puis le calice, et fait la génuflexion après chacun. Après l'anamnèse, la prière se poursuit jusqu'à la doxologie finale, à laquelle le peuple répond : « Amen »."},
+  "rubric": "Le prêtre dit l'une des prières eucharistiques. La consécration a lieu au cours du récit de l'institution : il montre au peuple l'hostie consacrée puis le calice, et fait la génuflexion après chacun. Après l'acclamation de l'assemblée qui suit la consécration, la prière se poursuit jusqu'à la doxologie finale, à laquelle le peuple répond : « Amen »."},
  "lords_prayer": {"title": "Notre Père", "who": "Tous", "missal": "Embolisme et doxologie",
   "rubric": "Tous se lèvent. Après l'introduction du prêtre, tous disent ou chantent ensemble le Notre Père. Le prêtre poursuit seul l'embolisme, et le peuple conclut par la doxologie."},
  "sign_of_peace": {"title": "Rite de la paix", "who": "Prêtre et assemblée", "missal": "Rite de la paix",

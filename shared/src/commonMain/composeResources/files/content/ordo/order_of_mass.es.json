@@ -173,7 +173,7 @@
           "id": "eucharistic_prayer",
           "title": "Plegaria eucarística",
           "who": "Sacerdote",
-          "rubric": "El sacerdote dice una de las plegarias eucarísticas. La consagración sigue al relato de la institución: muestra al pueblo la hostia consagrada y el cáliz, y hace genuflexión después de cada uno. Tras el misterio de la fe, la plegaria continúa hasta la doxología final, a la que el pueblo responde: «Amén».",
+          "rubric": "El sacerdote dice una de las plegarias eucarísticas. La consagración tiene lugar en el relato de la institución: muestra al pueblo la hostia consagrada y el cáliz, y hace genuflexión después de cada uno. Tras el misterio de la fe, la plegaria continúa hasta la doxología final, a la que el pueblo responde: «Amén».",
           "missal": "Plegaria eucarística",
           "eucharisticPrayer": true
         },
