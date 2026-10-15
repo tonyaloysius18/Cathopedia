@@ -266,6 +266,16 @@
     "screen.mass.rank.memorial": "Gedachtenis",
     "screen.mass.rank.feast": "Feest",
     "screen.mass.rank.solemnity": "Hoogfeest",
-    "screen.mass.rank.sunday": "Zondag"
+    "screen.mass.rank.sunday": "Zondag",
+    "screen.mass.view_guide": "Gids",
+    "screen.mass.view_sheet": "Blad",
+    "screen.mass.introduction": "Inleiding",
+    "screen.mass.prayer_faithful": "Voorbede",
+    "screen.mass.response": "Antwoord",
+    "screen.mass.reflection": "Overweging",
+    "screen.mass.week_ahead": "De komende week",
+    "screen.mass.draft_note": "Concept: wacht op nalezing door een priester. Alleen zichtbaar in ontwikkelversies.",
+    "screen.mass.missal_line": "Tekst uit het Romeins Missaal, volgt",
+    "screen.mass.refrain_line": "Refrein uit het Lectionarium, volgt"
   }
 }

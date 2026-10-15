@@ -266,6 +266,16 @@
     "screen.mass.rank.memorial": "Memória obrigatória",
     "screen.mass.rank.feast": "Festa",
     "screen.mass.rank.solemnity": "Solenidade",
-    "screen.mass.rank.sunday": "Domingo"
+    "screen.mass.rank.sunday": "Domingo",
+    "screen.mass.view_guide": "Guia",
+    "screen.mass.view_sheet": "Folheto",
+    "screen.mass.introduction": "Introdução",
+    "screen.mass.prayer_faithful": "Oração dos fiéis",
+    "screen.mass.response": "Resposta",
+    "screen.mass.reflection": "Reflexão",
+    "screen.mass.week_ahead": "A semana que vem",
+    "screen.mass.draft_note": "Rascunho: aguarda revisão de um sacerdote. Visível apenas em versões de desenvolvimento.",
+    "screen.mass.missal_line": "Texto do Missal Romano, a acrescentar",
+    "screen.mass.refrain_line": "Refrão do Lecionário, a acrescentar"
   }
 }

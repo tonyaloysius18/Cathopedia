@@ -266,6 +266,16 @@
     "screen.mass.rank.memorial": "Gebotener Gedenktag",
     "screen.mass.rank.feast": "Fest",
     "screen.mass.rank.solemnity": "Hochfest",
-    "screen.mass.rank.sunday": "Sonntag"
+    "screen.mass.rank.sunday": "Sonntag",
+    "screen.mass.view_guide": "Leitfaden",
+    "screen.mass.view_sheet": "Blatt",
+    "screen.mass.introduction": "Einführung",
+    "screen.mass.prayer_faithful": "Fürbitten",
+    "screen.mass.response": "Antwort",
+    "screen.mass.reflection": "Betrachtung",
+    "screen.mass.week_ahead": "Die kommende Woche",
+    "screen.mass.draft_note": "Entwurf: wartet auf die Prüfung durch einen Priester. Nur in Entwicklungsversionen sichtbar.",
+    "screen.mass.missal_line": "Text aus dem Römischen Messbuch, folgt",
+    "screen.mass.refrain_line": "Kehrvers aus dem Lektionar, folgt"
   }
 }

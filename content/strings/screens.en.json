@@ -266,6 +266,16 @@
     "screen.mass.rank.memorial": "Memorial",
     "screen.mass.rank.feast": "Feast",
     "screen.mass.rank.solemnity": "Solemnity",
-    "screen.mass.rank.sunday": "Sunday"
+    "screen.mass.rank.sunday": "Sunday",
+    "screen.mass.view_guide": "Guide",
+    "screen.mass.view_sheet": "Sheet",
+    "screen.mass.introduction": "Introduction",
+    "screen.mass.prayer_faithful": "Prayer of the Faithful",
+    "screen.mass.response": "Response",
+    "screen.mass.reflection": "Reflection",
+    "screen.mass.week_ahead": "The week ahead",
+    "screen.mass.draft_note": "Draft: awaiting a priest's review. Shown only in development builds.",
+    "screen.mass.missal_line": "Text from the Roman Missal, to be added",
+    "screen.mass.refrain_line": "Refrain from the Lectionary, to be added"
   }
 }

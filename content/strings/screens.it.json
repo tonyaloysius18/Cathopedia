@@ -266,6 +266,16 @@
     "screen.mass.rank.memorial": "Memoria",
     "screen.mass.rank.feast": "Festa",
     "screen.mass.rank.solemnity": "Solennità",
-    "screen.mass.rank.sunday": "Domenica"
+    "screen.mass.rank.sunday": "Domenica",
+    "screen.mass.view_guide": "Guida",
+    "screen.mass.view_sheet": "Foglietto",
+    "screen.mass.introduction": "Introduzione",
+    "screen.mass.prayer_faithful": "Preghiera dei fedeli",
+    "screen.mass.response": "Risposta",
+    "screen.mass.reflection": "Riflessione",
+    "screen.mass.week_ahead": "La settimana che viene",
+    "screen.mass.draft_note": "Bozza: in attesa della revisione di un sacerdote. Visibile solo nelle versioni di sviluppo.",
+    "screen.mass.missal_line": "Testo del Messale Romano, da aggiungere",
+    "screen.mass.refrain_line": "Ritornello del Lezionario, da aggiungere"
   }
 }

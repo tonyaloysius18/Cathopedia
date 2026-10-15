@@ -100,6 +100,7 @@ import kotlinx.datetime.plus
 
 private const val PROFILE_PREF = "ordo_profile"
 private const val TEXT_SCALE_PREF = "mass_text_scale"
+private const val VIEW_PREF = "mass_view"
 
 /** Width at which the parts list sits beside the text (tablets, and phones in landscape). */
 private val TwoPaneWidth = 720.dp
@@ -126,6 +127,7 @@ fun CelebrateMassScreen(
     }
     var textScale by remember { mutableFloatStateOf(repository.getPreference(TEXT_SCALE_PREF)?.toFloatOrNull() ?: 1f) }
     var celebrationKey by remember(date, profile) { mutableStateOf<String?>(null) }
+    var sheetView by remember { mutableStateOf(repository.getPreference(VIEW_PREF) == "sheet") }
     var plan by remember { mutableStateOf<MassPlan?>(null) }
     var text by remember { mutableStateOf<OrderOfMassText?>(null) }
     var loaded by remember { mutableStateOf(false) }
@@ -154,6 +156,10 @@ fun CelebrateMassScreen(
             },
             backLabel = s.back,
         )
+        ViewToggle(sheetView) {
+            sheetView = it
+            repository.setPreference(VIEW_PREF, if (it) "sheet" else "guide")
+        }
         val current = plan
         val omt = text
         when {
@@ -162,6 +168,14 @@ fun CelebrateMassScreen(
                 t["screen.mass.out_of_range"],
                 color = colors.onSurfaceVariant,
                 modifier = Modifier.padding(24.dp),
+            )
+            sheetView -> MassSheet(
+                plan = current,
+                text = omt,
+                language = language,
+                textScale = textScale,
+                profile = profile,
+                onCelebrationChosen = { celebrationKey = it },
             )
             else -> BoxWithConstraints(Modifier.fillMaxSize()) {
                 val wide = maxWidth >= TwoPaneWidth
@@ -186,6 +200,31 @@ fun CelebrateMassScreen(
                     }
                 }
             }
+        }
+    }
+}
+
+@Composable
+private fun ViewToggle(sheet: Boolean, onChange: (Boolean) -> Unit) {
+    val t = LocalScreenText.current
+    val colors = MaterialTheme.colorScheme
+    Row(
+        horizontalArrangement = Arrangement.Center,
+        modifier = Modifier.fillMaxWidth().background(colors.surface).padding(bottom = 8.dp),
+    ) {
+        listOf(false to t["screen.mass.view_guide"], true to t["screen.mass.view_sheet"]).forEach { (isSheet, label) ->
+            val selected = isSheet == sheet
+            Text(
+                label,
+                color = if (selected) colors.primary else colors.onSurfaceVariant,
+                fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
+                fontSize = 14.sp,
+                modifier = Modifier.padding(horizontal = 4.dp).clip(RoundedCornerShape(50))
+                    .background(if (selected) colors.primary.copy(alpha = 0.16f) else Color.Transparent)
+                    .border(1.dp, colors.primary.copy(alpha = if (selected) 0.6f else 0.25f), RoundedCornerShape(50))
+                    .clickable { onChange(isSheet) }
+                    .padding(horizontal = 18.dp, vertical = 7.dp),
+            )
         }
     }
 }
@@ -275,7 +314,7 @@ private fun MassHeader(
 }
 
 @Composable
-private fun dateLabel(date: LocalDate): String {
+internal fun dateLabel(date: LocalDate): String {
     val t = LocalScreenText.current
     val month = t["screen.saints.month.${date.month.ordinal + 1}"]
     val day = t["screen.saints.date"].replace("{day}", date.day.toString()).replace("{month}", month)
@@ -379,7 +418,7 @@ private fun CelebrationStrip(plan: MassPlan, onClick: () -> Unit) {
 }
 
 @Composable
-private fun rankLabel(celebration: OrdoCelebration, date: LocalDate): String {
+internal fun rankLabel(celebration: OrdoCelebration, date: LocalDate): String {
     val t = LocalScreenText.current
     val key = when {
         date.dayOfWeek == DayOfWeek.SUNDAY && celebration.rank < OrdoRank.SOLEMNITY -> "sunday"
@@ -393,7 +432,7 @@ private fun rankLabel(celebration: OrdoCelebration, date: LocalDate): String {
     return t["screen.mass.rank.$key"]
 }
 
-private fun vestmentColor(name: String?): Color = when (name) {
+internal fun vestmentColor(name: String?): Color = when (name) {
     "purple" -> LiturgicalAdventLent
     "red" -> LiturgicalPentecostMartyrs
     "rose" -> LiturgicalGaudeteLaetare
@@ -672,7 +711,7 @@ private fun ReadingBlock(reading: LectionaryReading, language: String, scale: Fl
 }
 
 /** Verse numbers small and raised, as in a printed Bible; a new chapter shows "chapter:verse". */
-private fun passageText(passage: ReadingText, numberColor: Color, scale: Float, stanzas: Boolean): AnnotatedString = buildAnnotatedString {
+internal fun passageText(passage: ReadingText, numberColor: Color, scale: Float, stanzas: Boolean): AnnotatedString = buildAnnotatedString {
     var lastChapter = -1
     passage.verses.forEachIndexed { index, verse ->
         if (index > 0) append(if (stanzas && verse.stanza != passage.verses[index - 1].stanza) "\n\n" else " ")
@@ -692,7 +731,7 @@ private fun passageText(passage: ReadingText, numberColor: Color, scale: Float, 
 }
 
 /** Expands the book name, keeping a leading "Cf." (an adapted acclamation verse). */
-private fun displayCitation(citation: String, language: String): String =
+internal fun displayCitation(citation: String, language: String): String =
     if (citation.startsWith("Cf. ")) "Cf. " + fullBookNameCitation(citation.removePrefix("Cf. "), language)
     else fullBookNameCitation(citation, language)
 

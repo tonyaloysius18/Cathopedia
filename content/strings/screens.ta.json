@@ -266,6 +266,16 @@
     "screen.mass.rank.memorial": "நினைவு",
     "screen.mass.rank.feast": "விழா",
     "screen.mass.rank.solemnity": "பெருவிழா",
-    "screen.mass.rank.sunday": "ஞாயிறு"
+    "screen.mass.rank.sunday": "ஞாயிறு",
+    "screen.mass.view_guide": "வழிகாட்டி",
+    "screen.mass.view_sheet": "தாள்",
+    "screen.mass.introduction": "முன்னுரை",
+    "screen.mass.prayer_faithful": "மன்றாட்டுகள்",
+    "screen.mass.response": "பதில்",
+    "screen.mass.reflection": "சிந்தனை",
+    "screen.mass.week_ahead": "வரும் வாரம்",
+    "screen.mass.draft_note": "வரைவு: ஒரு குருவின் மதிப்பாய்வுக்காகக் காத்திருக்கிறது. மேம்பாட்டுப் பதிப்புகளில் மட்டும் தெரியும்.",
+    "screen.mass.missal_line": "உரோமைத் திருப்பலி நூலின் உரை, சேர்க்கப்படும்",
+    "screen.mass.refrain_line": "வாசக நூலின் பல்லவி, சேர்க்கப்படும்"
   }
 }

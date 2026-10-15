@@ -266,6 +266,16 @@
     "screen.mass.rank.memorial": "Wspomnienie obowiązkowe",
     "screen.mass.rank.feast": "Święto",
     "screen.mass.rank.solemnity": "Uroczystość",
-    "screen.mass.rank.sunday": "Niedziela"
+    "screen.mass.rank.sunday": "Niedziela",
+    "screen.mass.view_guide": "Przewodnik",
+    "screen.mass.view_sheet": "Arkusz",
+    "screen.mass.introduction": "Wprowadzenie",
+    "screen.mass.prayer_faithful": "Modlitwa wiernych",
+    "screen.mass.response": "Odpowiedź",
+    "screen.mass.reflection": "Rozważanie",
+    "screen.mass.week_ahead": "Nadchodzący tydzień",
+    "screen.mass.draft_note": "Szkic: oczekuje na przegląd kapłana. Widoczny tylko w wersjach deweloperskich.",
+    "screen.mass.missal_line": "Tekst z Mszału Rzymskiego, zostanie dodany",
+    "screen.mass.refrain_line": "Refren z Lekcjonarza, zostanie dodany"
   }
 }

@@ -266,6 +266,16 @@
     "screen.mass.rank.memorial": "Mémoire",
     "screen.mass.rank.feast": "Fête",
     "screen.mass.rank.solemnity": "Solennité",
-    "screen.mass.rank.sunday": "Dimanche"
+    "screen.mass.rank.sunday": "Dimanche",
+    "screen.mass.view_guide": "Guide",
+    "screen.mass.view_sheet": "Feuillet",
+    "screen.mass.introduction": "Introduction",
+    "screen.mass.prayer_faithful": "Prière universelle",
+    "screen.mass.response": "Réponse",
+    "screen.mass.reflection": "Méditation",
+    "screen.mass.week_ahead": "La semaine à venir",
+    "screen.mass.draft_note": "Brouillon : en attente de relecture par un prêtre. Visible uniquement dans les versions de développement.",
+    "screen.mass.missal_line": "Texte du Missel romain, à ajouter",
+    "screen.mass.refrain_line": "Refrain du Lectionnaire, à ajouter"
   }
 }
