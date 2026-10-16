@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.ui.theme.ThemeMode
+import com.ynotlabs.cathopedia.ui.theme.LocalIsDarkTheme
 import com.ynotlabs.cathopedia.ui.theme.label
 import com.ynotlabs.cathopedia.ui.theme.MetallicGold
 import com.ynotlabs.cathopedia.resources.Res
@@ -482,7 +483,8 @@ private fun ThemePreview(
     selected: ThemeMode,
 ) {
     val s = LocalStrings.current
-    val isLightPreview = selected == ThemeMode.LIGHT
+    // System previews whichever theme the device is using right now.
+    val isLightPreview = selected == ThemeMode.LIGHT || (selected == ThemeMode.SYSTEM && !LocalIsDarkTheme.current)
 
     val cardBackground = if (isLightPreview) Color(0xFFF3EBDD) else Color(0xFF082219)
     val primaryText = if (isLightPreview) Color(0xFF173128) else Color(0xFFF4ECDD)

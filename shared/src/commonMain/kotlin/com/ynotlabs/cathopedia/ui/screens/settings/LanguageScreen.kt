@@ -260,8 +260,8 @@ private fun SettingsLanguageRow(
                 },
             )
             .border(
-                width = 2.dp,
-                color = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline.copy(alpha = 0.76f),
+                width = if (selected) 2.dp else 1.5.dp,
+                color = if (selected) MaterialTheme.colorScheme.primary else CardBorder,
                 shape = shape,
             )
             .then(
