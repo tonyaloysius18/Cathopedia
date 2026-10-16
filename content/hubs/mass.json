@@ -272,6 +272,16 @@
       "articleIds": [
         "art.mass.candles"
       ]
+    },
+    {
+      "id": "mass.hours",
+      "sortOrder": 23,
+      "status": "PUBLISHED",
+      "layout": "ARTICLES",
+      "titleKey": "sec.mass.hours.title",
+      "summaryKey": "sec.mass.hours.summary",
+      "icon": "ic_book",
+      "articleIds": ["art.mass.hours"]
     }
   ],
   "articles": [
@@ -1521,6 +1531,105 @@
         },
         {
           "label": "Roman Missal, the Easter Vigil, and Order of Christian Funerals (the Paschal candle)"
+        }
+      ]
+    },
+    {
+      "id": "art.mass.hours",
+      "sectionId": "mass.hours",
+      "sortOrder": 1,
+      "titleKey": "art.hours.title",
+      "leadKey": "art.hours.lead",
+      "readingTimeMinutes": 4,
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.mass.books"
+        },
+        {
+          "type": "ARTICLE",
+          "id": "art.mass.liturgical_year"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Second Vatican Council, Sacrosanctum Concilium, chapter 4 (nos. 83–101)"
+        },
+        {
+          "label": "General Instruction of the Liturgy of the Hours (1971)"
+        },
+        {
+          "label": "Code of Canon Law, canons 276 §2 3° and 1173–1175"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.hours.p1"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.hours.p2"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.hours.h_hours"
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": [
+            "art.hours.li_readings",
+            "art.hours.li_morning",
+            "art.hours.li_daytime",
+            "art.hours.li_evening",
+            "art.hours.li_night"
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.hours.hinges.title",
+          "textKey": "art.hours.hinges.body"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.hours.h_shape"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.hours.p3"
+        },
+        {
+          "type": "list",
+          "style": "bullet",
+          "itemKeys": [
+            "art.hours.li_benedictus",
+            "art.hours.li_magnificat",
+            "art.hours.li_nunc"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.hours.h_who"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.hours.p4"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "titleKey": "art.hours.start.title",
+          "textKey": "art.hours.start.body"
+        },
+        {
+          "type": "quote",
+          "textKey": "art.hours.quote",
+          "attributionKey": "art.hours.quote.attribution"
         }
       ]
     }
