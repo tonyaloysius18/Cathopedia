@@ -21,7 +21,7 @@ sealed interface SearchTarget {
                     if (parts.size != 2 || parts.any { it.isBlank() }) null
                     else if (tag == "section") Section(parts[0], parts[1]) else Article(parts[0], parts[1])
                 }
-                "guide" -> if (id in setOf("rosary", "stations", "vestments")) Guide(id) else null
+                "guide" -> if (id in setOf("rosary", "stations", "vestments", "mass")) Guide(id) else null
                 else -> null
             }
         }
@@ -40,7 +40,7 @@ data class AppSearchResult(
     val category: SearchCategory get() = when (val t = target) {
         is SearchTarget.Entity -> SearchCategory.valueOf(ContentCategory.of(t.type).name)
         is SearchTarget.Prayer -> SearchCategory.PRAYERS
-        is SearchTarget.Guide -> if (t.id == "vestments") SearchCategory.TOPICS else SearchCategory.PRAYERS
+        is SearchTarget.Guide -> if (t.id in setOf("vestments", "mass")) SearchCategory.TOPICS else SearchCategory.PRAYERS
         else -> SearchCategory.TOPICS
     }
 }

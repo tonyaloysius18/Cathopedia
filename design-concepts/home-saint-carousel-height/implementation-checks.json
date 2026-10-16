@@ -1,0 +1,43 @@
+{
+  "normalText": {
+    "saints": [
+      "Gerard Majella",
+      "Hedwig of Silesia",
+      "Margaret Mary Alacoque"
+    ],
+    "heightsPx": [
+      483,
+      483,
+      483
+    ]
+  },
+  "largerText": {
+    "Gerard Majella": {
+      "heightPx": 575,
+      "bounds": [
+        54,
+        1949,
+        1160,
+        2524
+      ]
+    },
+    "Hedwig of Silesia": {
+      "heightPx": 575,
+      "bounds": [
+        54,
+        1949,
+        1160,
+        2524
+      ]
+    },
+    "Margaret Mary Alacoque": {
+      "heightPx": 575,
+      "bounds": [
+        120,
+        1949,
+        1226,
+        2524
+      ]
+    }
+  }
+}

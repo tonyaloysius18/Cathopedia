@@ -25,6 +25,13 @@ DELETE FROM ContentSearch;
 searchNames:
 SELECT name FROM ContentSearch WHERE language = :language OR language IN ('en', 'la');
 
+-- The display row of one entry in one language: a hit found through the English
+-- or Latin index is shown with the reader's own name and summary.
+entryFor:
+SELECT name, summary FROM ContentSearch
+WHERE entityType = :entityType AND entityId = :entityId AND language = :language
+LIMIT 1;
+
 -- entityTypeFilter: pass NULL to search across every content type.
 search:
 SELECT entityType, entityId, name, summary

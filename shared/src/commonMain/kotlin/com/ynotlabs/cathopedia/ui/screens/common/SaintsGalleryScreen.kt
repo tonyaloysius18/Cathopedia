@@ -1,9 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.common
 
-import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -58,12 +55,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.CornerRadius
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontFamily
@@ -80,7 +73,8 @@ import com.ynotlabs.cathopedia.saints.saintsFeastSelection
 import com.ynotlabs.cathopedia.saints.saintsFeatured
 import com.ynotlabs.cathopedia.ui.Portraits
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
-import com.ynotlabs.cathopedia.ui.theme.LocalIsDarkTheme
+import com.ynotlabs.cathopedia.ui.components.SaintsOrnateFrame
+import androidx.compose.ui.semantics.semantics
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.datetime.LocalDate
@@ -261,15 +255,12 @@ private fun SaintsFeastCarousel(saints: List<ContentSummary>, discover: String,
 @Composable
 private fun SaintsFeastCard(saint: ContentSummary, discover: String,
     onClick: () -> Unit, modifier: Modifier = Modifier) {
-    val dark = LocalIsDarkTheme.current
     val colors = MaterialTheme.colorScheme
     val bg = colors.surfaceContainerHigh
-    val shape = RoundedCornerShape(24.dp)
-    val shine = remember(saint.id) { Animatable(-0.3f) }
-    LaunchedEffect(saint.id) { delay(250); shine.animateTo(1.3f, tween(1400)) }
-    Box(modifier.fillMaxWidth().padding(5.dp)) {
-        Box(Modifier.fillMaxWidth().heightIn(min = 244.dp).clip(shape).background(bg)
-            .clickable(role = Role.Button, onClick = onClick)) {
+    val shape = RoundedCornerShape(16.dp)
+    SaintsOrnateFrame(modifier.semantics(mergeDescendants = true) {}
+        .clickable(role = Role.Button, onClick = onClick)) {
+        Box(Modifier.fillMaxWidth().heightIn(min = 200.dp).clip(shape).background(bg)) {
             Box(Modifier.matchParentSize()) {
                 Portraits.fullForEntity(saint.type, saint.id)?.let { art ->
                     Image(painterResource(art), null,
@@ -281,42 +272,17 @@ private fun SaintsFeastCard(saint: ContentSummary, discover: String,
                 Box(Modifier.matchParentSize().background(
                     Brush.horizontalGradient(*easedFade(bg, solidUntil = 0.30f, clearFrom = 0.74f))))
             }
-            Column(Modifier.fillMaxWidth(0.48f).padding(start = 17.dp, top = 22.dp, end = 2.dp, bottom = 22.dp)) {
+            Column(Modifier.fillMaxWidth(0.50f).padding(start = 13.dp, top = 16.dp, end = 2.dp, bottom = 16.dp)) {
                 Text(saint.name, color = colors.onSurface, fontFamily = FontFamily.Serif,
                     fontSize = 25.sp, lineHeight = 29.sp)
                 Text(saint.summary, color = colors.onSurface.copy(alpha = 0.90f), fontSize = 13.sp, lineHeight = 18.sp,
-                    modifier = Modifier.padding(top = 8.dp))
-                Row(Modifier.padding(top = 18.dp), verticalAlignment = Alignment.CenterVertically) {
+                    maxLines = 4, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(top = 6.dp))
+                Row(Modifier.padding(top = 12.dp), verticalAlignment = Alignment.CenterVertically) {
                     Text(discover, color = colors.primary, fontSize = 13.sp, fontWeight = FontWeight.Medium,
                         modifier = Modifier.weight(1f, fill = false))
                     Icon(Icons.AutoMirrored.Filled.ArrowForward, null,
                         Modifier.padding(start = 6.dp).size(18.dp), tint = colors.primary)
                 }
-            }
-        }
-        Canvas(Modifier.matchParentSize()) {
-            val gold = Color(0xFFE9CB69)
-            val inset = 1.dp.toPx()
-            val radius = CornerRadius(24.dp.toPx())
-            // The glow stays outside the content; the light theme uses a quieter edge.
-            if (dark) for (spread in listOf(10f, 6f, 3f)) {
-                drawRoundRect(gold.copy(alpha = 0.055f), topLeft = Offset(inset, inset),
-                    size = Size(size.width - inset * 2, size.height - inset * 2), cornerRadius = radius,
-                    style = Stroke(spread.dp.toPx()))
-            }
-            drawRoundRect(Brush.verticalGradient(listOf(gold, Color(0xFF9B7429), gold)),
-                topLeft = Offset(inset, inset), size = Size(size.width - inset * 2, size.height - inset * 2),
-                cornerRadius = radius, style = Stroke(1.8.dp.toPx()))
-            val inner = 5.dp.toPx()
-            drawRoundRect(gold.copy(alpha = 0.65f), topLeft = Offset(inner, inner),
-                size = Size(size.width - inner * 2, size.height - inner * 2),
-                cornerRadius = CornerRadius(20.dp.toPx()), style = Stroke(0.6.dp.toPx()))
-            if (shine.value < 1.3f) {
-                val x = size.width * shine.value
-                drawRoundRect(Brush.linearGradient(listOf(Color.Transparent, Color(0xFFFFF4CE), Color.Transparent),
-                    start = Offset(x - 45.dp.toPx(), 0f), end = Offset(x + 45.dp.toPx(), size.height)),
-                    topLeft = Offset(inset, inset), size = Size(size.width - inset * 2, size.height - inset * 2),
-                    cornerRadius = radius, style = Stroke(2.dp.toPx()))
             }
         }
     }

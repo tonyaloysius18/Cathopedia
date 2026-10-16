@@ -102,11 +102,8 @@ private val SearchCream: Color @Composable get() = MaterialTheme.colorScheme.onB
 private val SearchMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
 /**
- * Premium global search screen.
- *
- * Search history is intentionally kept in-memory here so this file remains compatible
- * with the current repository API. If you later add a preference table/repository method,
- * replace [recentSearches] with persisted history.
+ * Global search across encyclopedia entries, published topics, prayers and guides.
+ * Search history is persisted by the repository; the local list is its current UI snapshot.
  */
 @Composable
 fun SearchScreen(

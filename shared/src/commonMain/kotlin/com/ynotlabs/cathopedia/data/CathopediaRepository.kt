@@ -60,6 +60,8 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
             val tokens = SearchQuery.tokens(query)
             if (tokens.isEmpty() || limit <= 0) return@withContext emptyList()
 
+            // Hits matched only through the English or Latin index, by result key.
+            val foundElsewhere = mutableMapOf<String, Pair<String, String>>()
             fun fetch(words: List<String>): List<AppSearchResult> =
                 listOf(language, "en", "la").distinct().flatMap { lang ->
                     database.searchQueries.search(SearchQuery.match(words), lang, null, limit)
@@ -73,6 +75,7 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
                                 else -> null
                             }
                             AppSearchResult(target, row.name.orEmpty(), row.summary.orEmpty(), artwork)
+                                .also { if (lang != language) foundElsewhere.getOrPut(it.key) { row.entityType!! to row.entityId!! } }
                         }
                 }.distinctBy { it.key }
 
@@ -92,7 +95,14 @@ class CathopediaRepository(private val database: CathopediaDatabase) {
                     matchedTokens.all { token -> title.any { it.startsWith(token) } } -> 1
                     else -> 2
                 }
-            }.take(limit.toInt())
+            }.take(limit.toInt()).map { result ->
+                // Ranked by the name that matched; shown in the reader's language when it exists
+                // ("Francis" finds the English row, a Tamil or French reader still sees their own text).
+                val (type, id) = foundElsewhere[result.key] ?: return@map result
+                database.searchQueries.entryFor(type, id, language).executeAsOneOrNull()
+                    ?.let { result.copy(name = it.name ?: result.name, summary = it.summary ?: result.summary) }
+                    ?: result
+            }
         }
 
     // Sainted popes live in PopeEntity, so they're merged in (as POPE items, opening the

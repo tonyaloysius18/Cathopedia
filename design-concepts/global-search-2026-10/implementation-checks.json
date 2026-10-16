@@ -1,0 +1,15 @@
+{
+  "thuribleFindsCard": true,
+  "thuribleOpensCorrectPage": true,
+  "canon-lawFindsCard": true,
+  "canon-lawOpensCorrectPage": true,
+  "our-fatherFindsCard": true,
+  "our-fatherOpensCorrectPage": true,
+  "prayerBodyTextSearch": true,
+  "commonSpellingCorrection": true,
+  "rosaryGuideSearch": true,
+  "vestmentsBodySearch": true,
+  "papalDocumentSearchStillWorks": true,
+  "order-of-massFindsCard": true,
+  "order-of-massOpensCorrectPage": true
+}

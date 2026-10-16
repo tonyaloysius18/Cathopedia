@@ -32,6 +32,7 @@ class SearchQueryTest {
         assertEquals(Destination.RosaryScreen, SearchTarget.Guide("rosary").destination())
         assertEquals(Destination.StationsScreen, SearchTarget.Guide("stations").destination())
         assertEquals(Destination.Vestments, SearchTarget.Guide("vestments").destination())
+        assertEquals(Destination.CelebrateMass, SearchTarget.decode("guide", "mass")?.destination())
         assertNull(SearchTarget.decode("article", "broken-id"))
         assertNull(SearchTarget.decode("future-type", "one"))
         assertNull(SearchTarget.decode("guide", "unknown"))

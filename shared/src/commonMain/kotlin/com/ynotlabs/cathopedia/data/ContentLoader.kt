@@ -19,6 +19,8 @@ import com.ynotlabs.cathopedia.db.Localized_text
 import com.ynotlabs.cathopedia.db.Topic_hub
 import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.model.PRAYER_SEARCH_ENTITY_TYPE
+import com.ynotlabs.cathopedia.liturgical.OrderOfMass
+import com.ynotlabs.cathopedia.liturgical.OrderOfMassText
 import com.ynotlabs.cathopedia.resources.Res
 import kotlinx.serialization.encodeToString
 import kotlinx.coroutines.sync.Mutex
@@ -40,7 +42,7 @@ object ContentLoader {
      * this just controls whether it re-runs on an existing install rather
      * than only ever loading once on a database with zero rows.
      */
-    private const val CONTENT_VERSION = "269"
+    private const val CONTENT_VERSION = "270"
     private const val CONTENT_VERSION_KEY = "content_version"
 
     // classDiscriminator/explicitNulls (from com.ynotlabs.cathopedia.content.hubContentJson) are
@@ -60,16 +62,18 @@ object ContentLoader {
 
         val bytes = Res.readBytes(CATALOG_PATH)
         val catalog = json.decodeFromString<ContentCatalog>(bytes.decodeToString())
+        // This guide lives outside catalog.json; index the same licensed copy its screen uses.
+        val massTexts = AppLanguages.contentCodes.associateWith { OrderOfMass.text(it) }
         // A content upgrade (including new UI strings) must finish together. Committing
         // each entry separately also made existing installs wait minutes at startup.
         database.transaction {
-            insert(database, catalog)
+            insert(database, catalog, massTexts)
             database.preferenceQueries.setPreference(CONTENT_VERSION_KEY, CONTENT_VERSION)
         }
     }
 
     /** internal (not private) so the hub-seeding test can call it without a Res-backed catalog.json. */
-    internal fun insert(database: CathopediaDatabase, catalog: ContentCatalog) {
+    internal fun insert(database: CathopediaDatabase, catalog: ContentCatalog, massTexts: Map<String, OrderOfMassText> = emptyMap()) {
         // Only the derived index is rebuilt; saved items and prayer progress stay intact.
         database.searchQueries.deleteAllSearchEntries()
         catalog.saints.forEach { s ->
@@ -99,7 +103,7 @@ object ContentLoader {
             database.churchQueries.insertChurch(c.id, c.latitude, c.longitude, c.foundedYear, c.imageUrl, c.sourceUrl, c.address)
             c.text.forEach { (lang, t) ->
                 database.churchQueries.insertChurchText(c.id, lang, t.name, t.summary, t.body, t.sourceAttribution)
-                index(database, ContentType.CHURCH, c.id, lang, t)
+                index(database, ContentType.CHURCH, c.id, lang, t, c.address)
             }
         }
         catalog.apparitions.forEach { a ->
@@ -182,7 +186,7 @@ object ContentLoader {
                 database.hubContentQueries.insertString(Localized_text(key, file.lang, value))
             }
         }
-        GlobalSearchIndex.insert(database, catalog)
+        GlobalSearchIndex.insert(database, catalog, massTexts)
     }
 
     /** One transaction per hub, as required by the topic-hub brief (docs/briefs/topic-hubs.md, T2). */
@@ -315,9 +319,12 @@ object ContentLoader {
         }
     }
 
-    private fun index(database: CathopediaDatabase, type: ContentType, id: String, language: String, text: LocalizedText) {
-        database.searchQueries.deleteSearchEntriesFor(type.tag, id, language)
-        database.searchQueries.insertSearchEntry(type.tag, id, language, text.name, text.summary, text.body)
+    private fun index(database: CathopediaDatabase, type: ContentType, id: String, language: String, text: LocalizedText, extra: String? = null) {
+        // insert() cleared the whole derived index once. Deleting again for every row
+        // scans the growing FTS table and makes a content upgrade unnecessarily slow.
+        val body = listOfNotNull(text.body, text.patronage, text.originalName, text.martyrdom,
+            text.location, text.approvalStatus, extra).joinToString("\n")
+        database.searchQueries.insertSearchEntry(type.tag, id, language, text.name, text.summary, body)
     }
 
     /**

@@ -33,7 +33,8 @@ class RosaryContentResolutionTest {
     }
 
     private val allSteps = MysterySet.entries.flatMap { RosarySequence(it).steps }
-    private val prayerSlugs = allSteps.map { it.prayerSlug }.distinct().sorted()
+    // ANNOUNCE_MYSTERY is not a prayer: that step shows the mystery itself, so it has no prayer text.
+    private val prayerSlugs = allSteps.map { it.prayerSlug }.filter { it != RosarySequence.ANNOUNCE_MYSTERY }.distinct().sorted()
     private val mysteryIds = allSteps.mapNotNull { it.mysteryId }.distinct().sorted()
 
     @Test

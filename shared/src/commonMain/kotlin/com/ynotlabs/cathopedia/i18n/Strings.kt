@@ -228,7 +228,7 @@ class Strings {
     // Search
     var searchCathopedia: String = "Search Cathopedia"
     var searchHeroSubtitle: String = "Explore the richness of the Catholic faith"
-    var searchPlaceholder: String = "Search saints, popes, places, topics..."
+    var searchPlaceholder: String = "Search names, topics, prayers…"
     var searchClear: String = "Clear search"
     var searchRecent: String = "Recent searches"
     var searchClearAll: String = "Clear all"
@@ -238,7 +238,7 @@ class Strings {
     var searchTipsTitle: String = "Search tips"
     var searchTopicsLabel: String = "Topics"
     var searchArticleLabel: String = "Article"
-    var searchTipsBody: String = "Search by name, title, place, keyword, or topic to quickly find Catholic content."
+    var searchTipsBody: String = "Search names, topics and prayer text across Cathopedia."
     var searchOneResult: String = "{count} result"
     var searchManyResults: String = "{count} results"
     var searchNoResultsDetail: String = "Try another name, place, title, or Catholic topic."

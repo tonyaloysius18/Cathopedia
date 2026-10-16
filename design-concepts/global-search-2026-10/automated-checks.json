@@ -1,0 +1,19 @@
+{
+  "androidBuild": "passed",
+  "iosCompilation": "passed",
+  "searchTests": [
+    {
+      "suite": "com.ynotlabs.cathopedia.data.GlobalSearchTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "suite": "com.ynotlabs.cathopedia.data.SearchQueryTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "totalTests": 7
+}

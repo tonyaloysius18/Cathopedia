@@ -15,6 +15,7 @@ fun SearchTarget.destination(): Destination = when (this) {
     is SearchTarget.Guide -> when (id) {
         "rosary" -> Destination.RosaryScreen
         "stations" -> Destination.StationsScreen
+        "mass" -> Destination.CelebrateMass
         else -> Destination.Vestments
     }
 }

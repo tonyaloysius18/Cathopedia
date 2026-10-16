@@ -5,6 +5,9 @@ import com.ynotlabs.cathopedia.content.*
 import com.ynotlabs.cathopedia.content.model.*
 import com.ynotlabs.cathopedia.db.CathopediaDatabase
 import com.ynotlabs.cathopedia.model.SearchTarget
+import com.ynotlabs.cathopedia.liturgical.MassPart
+import com.ynotlabs.cathopedia.liturgical.MassSection
+import com.ynotlabs.cathopedia.liturgical.OrderOfMassText
 import kotlinx.coroutines.runBlocking
 import kotlin.random.Random
 import kotlin.test.*
@@ -12,6 +15,13 @@ import kotlin.test.*
 /** Real FTS5 and the production seeding/repository path, with no external services. */
 class GlobalSearchTest {
     private fun fixture() = ContentCatalog(
+        churches = listOf(ChurchContent("test-church", address = "77 Pilgrim Avenue", text = mapOf(
+            "en" to LocalizedText("Test Church", "", ""),
+        ))),
+        saints = listOf(SaintContent("test-saint", text = mapOf(
+            "en" to LocalizedText("Test Saint", "", "", patronage = "Lighthouse keepers"),
+            "fr" to LocalizedText("Sainte Test", "Résumé", "", patronage = "Gardiens de phare"),
+        ))),
         prayers = listOf(PrayerContent("our-father", "everyday", 1, text = mapOf(
             "en" to PrayerLocalizedText("Our Father", bodyMd = "Hallowed be thy name", about = "The Lord's Prayer", source = "Test fixture"),
             "la" to PrayerLocalizedText("Pater Noster", bodyMd = "Sanctificetur nomen tuum", source = "Test fixture"),
@@ -43,6 +53,14 @@ class GlobalSearchTest {
         ),
     )
 
+    private fun massTexts() = mapOf("en" to OrderOfMassText(
+        language = "en", note = "", missalPending = "", readingPending = "", homilyPending = "",
+        goodFriday = "", holySaturday = "",
+        sections = listOf(MassSection("intro", "Introductory Rites", listOf(
+            MassPart("kyrie", "Kyrie", rubric = "The penitential act", text = "Lord, have mercy"),
+        ))),
+    ))
+
     private fun withDatabase(block: (CathopediaDatabase, CathopediaRepository) -> Unit) {
         val driver = NativeSqliteDriver(CathopediaDatabase.Schema, "global_search_${Random.nextLong()}.db",
             onConfiguration = { it.copy(inMemory = true) })
@@ -50,7 +68,7 @@ class GlobalSearchTest {
             // Enable cascades to catch an accidental REPLACE that destroys prayer user state.
             driver.execute(null, "PRAGMA foreign_keys = ON", 0)
             val db = CathopediaDatabase(driver)
-            db.transaction { ContentLoader.insert(db, fixture()) }
+            db.transaction { ContentLoader.insert(db, fixture(), massTexts()) }
             block(db, CathopediaRepository(db))
         } finally { driver.close() }
     }
@@ -62,11 +80,15 @@ class GlobalSearchTest {
         assertTrue(repository.searchAll("removable brazier", "en").any { it.target == SearchTarget.Article("mass", "art.thurible.overview") })
         assertTrue(repository.searchAll("perforated dome", "en").any { it.target == SearchTarget.Article("mass", "art.thurible.overview") })
         assertEquals(SearchTarget.Prayer("our-father"), repository.searchAll("hallowed", "en").single().target)
-        assertEquals(SearchTarget.Prayer("our-father"), repository.searchAll("Lord's Prayer", "en").single().target)
+        // A phrase may also occur in a guide; the matching prayer must still be included.
+        assertTrue(repository.searchAll("Lord's Prayer", "en").any { it.target == SearchTarget.Prayer("our-father") })
         assertEquals(SearchTarget.Prayer("our-father"), repository.searchAll("sanctificetur", "en").single().target)
         assertEquals(SearchTarget.Guide("rosary"), repository.searchAll("Simeon welcomes", "en").single().target)
         assertEquals(SearchTarget.Guide("stations"), repository.searchAll("Veronica wipes", "en").single().target)
         assertTrue(repository.searchAll("chasuble", "en").any { it.target == SearchTarget.Guide("vestments") })
+        assertTrue(repository.searchAll("Kyrie", "en").any { it.target == SearchTarget.Guide("mass") })
+        assertTrue(repository.searchAll("Pilgrim Avenue", "en").any { it.target == SearchTarget.Entity(com.ynotlabs.cathopedia.model.ContentType.CHURCH, "test-church") })
+        assertTrue(repository.searchAll("Lighthouse keepers", "en").any { it.target == SearchTarget.Entity(com.ynotlabs.cathopedia.model.ContentType.SAINT, "test-saint") })
         assertTrue(repository.searchAll("Unpublished secret", "en").isEmpty())
     } }
 
@@ -75,12 +97,15 @@ class GlobalSearchTest {
         assertEquals("L'encensoir", results.single().name)
         assertEquals("Our Father", repository.searchAll("hallowed", "fr").single().name)
         assertEquals("The Thurible", repository.searchAll("thurible", "de").first().name)
+        // Found through the English index, shown with the reader's own name and summary.
+        val saint = repository.searchAll("Lighthouse keepers", "fr").single()
+        assertEquals("Sainte Test" to "Résumé", saint.name to saint.summary)
     } }
 
     @Test fun punctuationAndSpellingNeverBecomeFtsSyntax() = withDatabase { _, repository -> runBlocking {
         assertTrue(repository.searchAll("\"canon-law\"?", "en").isNotEmpty())
         assertTrue(repository.searchAll(" :*()\" ", "en").isEmpty())
-        assertTrue(repository.searchAll("name: OR body:*", "en").isEmpty())
+        assertTrue(repository.searchAll("name: OR zxqneverword:*", "en").isEmpty())
         assertEquals("Our Father", repository.searchAll("our fathre", "en").single().name)
         assertEquals("Our Father", repository.searchPrayers("hallowed?", "en").single().title)
         assertTrue(repository.search("thurible", "en").isEmpty()) // entity-only API safely ignores article/guide tags
@@ -90,7 +115,7 @@ class GlobalSearchTest {
         db.prayerUserStateQueries.setPrayerFavorite(1, "our-father")
         db.prayerUserStateQueries.recordPrayerOpened(123, "our-father")
         db.searchQueries.insertSearchEntry("article", "mass|obsolete", "en", "Obsolete", "", "")
-        db.transaction { ContentLoader.insert(db, fixture()) }
+        db.transaction { ContentLoader.insert(db, fixture(), massTexts()) }
         assertTrue(repository.searchAll("Obsolete", "en").isEmpty())
         assertEquals(1, db.searchQueries.search("hallowed", "en", "prayer", 50).executeAsList().size)
         val state = db.prayerUserStateQueries.selectPrayerUserState("our-father").executeAsOne()

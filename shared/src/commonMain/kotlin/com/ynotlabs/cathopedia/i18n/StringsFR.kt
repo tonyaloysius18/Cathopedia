@@ -195,7 +195,7 @@ val FR: Strings = Strings().apply {
 
     searchCathopedia = "Rechercher dans Cathopedia"
     searchHeroSubtitle = "Découvrez la richesse de la foi catholique"
-    searchPlaceholder = "Rechercher saints, papes, lieux, sujets…"
+    searchPlaceholder = "Rechercher noms, sujets, prières…"
     searchClear = "Effacer la recherche"
     searchRecent = "Recherches récentes"
     searchClearAll = "Tout effacer"
@@ -205,7 +205,7 @@ val FR: Strings = Strings().apply {
     searchTipsTitle = "Conseils de recherche"
     searchTopicsLabel = "Sujets"
     searchArticleLabel = "Article"
-    searchTipsBody = "Recherchez par nom, titre, lieu, mot-clé ou sujet pour trouver rapidement du contenu catholique."
+    searchTipsBody = "Recherchez des noms, des sujets et le texte des prières dans Cathopedia."
     searchOneResult = "{count} résultat"
     searchManyResults = "{count} résultats"
     searchNoResultsDetail = "Essayez un autre nom, lieu, titre ou sujet catholique."

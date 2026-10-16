@@ -5,6 +5,7 @@ import com.ynotlabs.cathopedia.content.hubContentJson
 import com.ynotlabs.cathopedia.content.model.*
 import com.ynotlabs.cathopedia.db.CathopediaDatabase
 import com.ynotlabs.cathopedia.i18n.stringsFor
+import com.ynotlabs.cathopedia.liturgical.OrderOfMassText
 import com.ynotlabs.cathopedia.ui.screens.vestments.vestmentsSearchText
 import kotlinx.serialization.json.*
 
@@ -20,11 +21,11 @@ internal object GlobalSearchIndex {
         "art.cat.gifts_prayers" to "screen.catechism.gifts.",
     )
 
-    fun insert(database: CathopediaDatabase, catalog: ContentCatalog) {
+    fun insert(database: CathopediaDatabase, catalog: ContentCatalog, massTexts: Map<String, OrderOfMassText> = emptyMap()) {
         val byLanguage = catalog.hubStrings.groupBy { it.lang }
             .mapValues { (_, files) -> files.flatMap { it.strings.entries }.associate { it.toPair() } }
         val english = byLanguage["en"].orEmpty()
-        (byLanguage.keys + "en").forEach { language ->
+        (byLanguage.keys + massTexts.keys + "en").forEach { language ->
             val strings = english + byLanguage[language].orEmpty()
             fun text(key: String?) = key?.let { strings[it] }.orEmpty()
             fun prefix(prefix: String) = strings.filterKeys { it.startsWith(prefix) }.values.joinToString("\n")
@@ -63,12 +64,12 @@ internal object GlobalSearchIndex {
                     listOf(text(doc.hub.introKey), doc.hub.tags.joinToString(" ")).joinToString("\n"))
 
                 val sections = doc.sections.filter { it.status == SectionStatus.PUBLISHED }.associateBy { it.id }
-                sections.values.forEach { section ->
+                sections.values.forEach sectionLoop@{ section ->
                     val articles = doc.articles.filter { it.sectionId == section.id }
                     // A one-article section opens that article directly in search: no duplicate cards.
                     if (section.layout == SectionLayout.ARTICLES && articles.size == 1 &&
                         section.diagramIds.isEmpty() && section.factSheetId == null &&
-                        section.stepperId == null && section.timelineId == null) return@forEach
+                        section.stepperId == null && section.timelineId == null) return@sectionLoop
                     val extra = when (section.id) {
                         "cat.sacraments" -> prefix("screen.sacraments.")
                         "mass.procession" -> prefix("screen.mass.procession.")
@@ -96,6 +97,16 @@ internal object GlobalSearchIndex {
             add("guide", "stations", s.stationsScreenTitle, s.prayersWayOfCrossDescription,
                 "Stations of the Cross\n" + prefix("screen.stations."))
             add("guide", "vestments", s.vestmentsTitle, "", vestmentsSearchText(s))
+            (massTexts[language] ?: massTexts["en"])?.let { mass ->
+                val body = mass.sections.joinToString("\n") { section ->
+                    section.title + "\n" + section.parts.joinToString("\n") { part ->
+                        listOfNotNull(part.title, part.who, part.rubric, part.rubricLent,
+                            part.text, part.textNote, part.missal).joinToString("\n")
+                    }
+                }
+                add("guide", "mass", text("screen.mass.title").ifBlank { "Order of Mass" },
+                    text("screen.mass.parts"), body)
+            }
         }
     }
 }

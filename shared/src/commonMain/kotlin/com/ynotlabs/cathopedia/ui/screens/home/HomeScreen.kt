@@ -46,6 +46,7 @@ import androidx.compose.material.icons.filled.AutoStories
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.LocalTextStyle
 import com.ynotlabs.cathopedia.ui.components.WordFitText
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.HorizontalDivider
@@ -71,7 +72,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
@@ -533,12 +538,36 @@ private fun HomeSectionHeader(title: String, date: String? = null) {
 @Composable
 private fun HomeSaintCarousel(saints: List<ContentSummary>, onSelected: (ContentSummary) -> Unit) {
     val pager = rememberPagerState { saints.size }
+    val density = LocalDensity.current
+    val measurer = rememberTextMeasurer()
+    val discover = LocalScreenText.current["screen.saints.discover"]
+    val textStyle = LocalTextStyle.current
+    val styles = SaintCardTextStyles(
+        name = textStyle.copy(fontFamily = FontFamily.Serif, fontSize = 20.sp,
+            lineHeight = 24.sp, fontWeight = FontWeight.Medium),
+        summary = textStyle.copy(fontSize = 12.sp, lineHeight = 17.sp),
+        link = textStyle.copy(fontFamily = FontFamily.Serif, fontSize = 13.sp, lineHeight = 18.sp),
+    )
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         BoxWithConstraints(Modifier.fillMaxWidth()) {
             val pageWidth = if (saints.size > 1) maxWidth - 22.dp else maxWidth
+            // Use the tallest text block across the whole carousel. Every page gets the
+            // same height immediately, including offscreen pages and larger text settings.
+            val textWidth = with(density) { (pageWidth * 0.58f - 22.dp).toPx().toInt().coerceAtLeast(1) }
+            val linkWidth = (textWidth - with(density) { 22.dp.roundToPx() }).coerceAtLeast(1)
+            val textHeight = saints.maxOfOrNull { saint ->
+                val name = measurer.measure(saint.name, styles.name,
+                    constraints = Constraints(maxWidth = textWidth)).size.height
+                val summary = measurer.measure(saint.summary, styles.summary, maxLines = 3,
+                    overflow = TextOverflow.Ellipsis, constraints = Constraints(maxWidth = textWidth)).size.height
+                val link = measurer.measure(discover, styles.link,
+                    constraints = Constraints(maxWidth = linkWidth)).size.height
+                name + summary + maxOf(link, with(density) { 17.dp.roundToPx() })
+            } ?: 0
+            val cardHeight = maxOf(144.dp, with(density) { textHeight.toDp() } + 44.dp)
             HorizontalPager(
                 state = pager,
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().height(cardHeight),
                 pageSize = PageSize.Fixed(pageWidth),
                 pageSpacing = 12.dp,
                 key = { "${saints[it].type}:${saints[it].id}" },
@@ -546,7 +575,7 @@ private fun HomeSaintCarousel(saints: List<ContentSummary>, onSelected: (Content
                 verticalAlignment = Alignment.Top,
             ) { index ->
                 val saint = saints[index]
-                HomeSaintPortraitCard(saint, { onSelected(saint) })
+                HomeSaintPortraitCard(saint, cardHeight, styles, { onSelected(saint) })
             }
         }
         if (saints.size > 1) {
@@ -560,13 +589,15 @@ private fun HomeSaintCarousel(saints: List<ContentSummary>, onSelected: (Content
     }
 }
 
+private data class SaintCardTextStyles(val name: TextStyle, val summary: TextStyle, val link: TextStyle)
+
 @Composable
-private fun HomeSaintPortraitCard(saint: ContentSummary, onClick: () -> Unit) {
+private fun HomeSaintPortraitCard(saint: ContentSummary, cardHeight: Dp, styles: SaintCardTextStyles, onClick: () -> Unit) {
     val shape = RoundedCornerShape(18.dp)
     val background = HomeSurface
     val discover = LocalScreenText.current["screen.saints.discover"]
     val portrait = Portraits.fullForEntity(saint.type, saint.id)
-    Box(Modifier.fillMaxWidth().clip(shape).background(background)
+    Box(Modifier.fillMaxWidth().height(cardHeight).clip(shape).background(background)
         .border(1.dp, HomeGold.copy(alpha = 0.65f), shape)
         .semantics(mergeDescendants = true) {}.clickable(role = Role.Button, onClick = onClick)) {
         Box(Modifier.matchParentSize()) {
@@ -583,16 +614,15 @@ private fun HomeSaintPortraitCard(saint: ContentSummary, onClick: () -> Unit) {
                 0f to Color.Transparent, 0.32f to Color.Transparent,
                 0.47f to background, 1f to background)))
         }
-        Row(Modifier.fillMaxWidth().heightIn(min = 144.dp), verticalAlignment = Alignment.CenterVertically) {
+        Row(Modifier.fillMaxSize(), verticalAlignment = Alignment.CenterVertically) {
             Spacer(Modifier.weight(0.42f))
             Column(Modifier.weight(0.58f).padding(start = 10.dp, end = 12.dp, top = 14.dp, bottom = 14.dp)) {
-                Text(saint.name, color = HomeCream, fontFamily = FontFamily.Serif,
-                    fontSize = 20.sp, lineHeight = 24.sp, fontWeight = FontWeight.Medium)
-                Text(saint.summary, color = HomeMuted, fontSize = 12.sp, lineHeight = 17.sp,
+                Text(saint.name, color = HomeCream, style = styles.name)
+                Text(saint.summary, color = HomeMuted, style = styles.summary,
                     maxLines = 3, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(top = 5.dp))
                 Row(Modifier.padding(top = 10.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Text(discover, color = HomeGold, fontFamily = FontFamily.Serif,
-                        fontSize = 13.sp, lineHeight = 18.sp, modifier = Modifier.weight(1f, fill = false))
+                    Text(discover, color = HomeGold, style = styles.link,
+                        modifier = Modifier.weight(1f, fill = false))
                     Icon(Icons.AutoMirrored.Filled.ArrowForward, null, tint = HomeGold,
                         modifier = Modifier.padding(start = 5.dp).size(17.dp))
                 }
