@@ -84,6 +84,18 @@ DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 # CDW decree of 3 June 2016 raised St Mary Magdalene to a feast; CDW decree of 26 January 2021
 # renamed St Martha's memorial "Saints Martha, Mary and Lazarus".
 GRADE_CORRECTIONS = {"StMaryMagdalene": 4}
+# Proper readings missing from the Tamil list: Our Lady of Guadalupe is a feast in the USA with its own
+# readings (Lectionary 690A; Zec 2:14-17 there = 2:10-13 in RSV numbering); elsewhere it is an optional memorial and these are offered, not imposed.
+PROPER_OVERRIDES = {
+    "OurLadyOfGuadalupe": {"cycles": {"*": [
+        {"kind": "FIRST_READING", "options": [{"citation": "Zec 2:10-13"}, {"citation": "Rv 11:19a; 12:1-6a, 10ab"}]},
+        {"kind": "PSALM", "options": [{"citation": "Jdt 13:18bcde, 19"}]},
+        {"kind": "GOSPEL", "options": [{"citation": "Lk 1:26-38"}, {"citation": "Lk 1:39-47"}]},
+    ]}, "commons": ["Mary"], "source_day": "USCCB Lectionary 690A"},
+}
+# Holy Thursday has two Masses; the evening Mass of the Lord's Supper is the day's principal one
+# (as in the USCCB calendar); the Chrism Mass stays available as the second celebration.
+FIRST_ON_DAY = ["HolyThurs"]
 NAME_CORRECTIONS = {"StMartha": "Saints Martha, Mary and Lazarus",
                     # Upstream still says "Blessed": canonized 2015 and 2012.
                     "JuniperoSerra": "[ US ] Saint Junípero Serra, Priest",
@@ -510,6 +522,8 @@ def main() -> None:
         else:
             unmatched.append(key)
 
+    lectionary.update(PROPER_OVERRIDES)
+
     commons_out = {}
     for cid in [k for k in tamil if k.startswith("_")]:
         commons_out[cid.lstrip("_")] = build_readings(tamil[cid], common=True)
@@ -529,6 +543,7 @@ def main() -> None:
                 entry["e"].append([e["event_key"], e["grade"], "/".join(e.get("color") or []),
                                    e.get("liturgical_season") or "", e.get("psalter_week") or 0])
             for day, entry in days.items():
+                entry["e"].sort(key=lambda ev: ev[0] not in FIRST_ON_DAY)  # stable: other events keep their order
                 f = ferial_key(date(y, int(day[:2]), int(day[2:])), sunday_epiphany)
                 if f:
                     entry["f"] = f
