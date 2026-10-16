@@ -11,12 +11,15 @@ coordinates measured from the painted frames, and the table below is the
 Sibyl as a man and Erythraean/Isaiah swapped; those three figures were
 regenerated and pasted into their existing frames.
 
-Still open (optional): panel 9 shows Noah under a rainbow, not the Drunkenness
-of Noah.
+Panel 9 was corrected on 16 October 2026: the Drunkenness of Noah now replaces the
+rainbow scene. Its source is `content/hub/holy_see/sistine_panel_09.png`, pasted into
+the existing master at (386, 2399), size 252 × 208, preserving the painted border inside
+the current hotspot rectangle (378, 2389), size 268 × 233.
 
 ## The hard constraint
 
-**The artwork must match the hotspot geometry below exactly.** Twenty-one
+**The artwork must match the current hotspot geometry in `content/hubs/holy_see.json` exactly.** The table below
+records the original request and must not be used to place patches in the shipped artwork. Twenty-one
 hotspots are already authored against normalized coordinates in
 `content/hubs/holy_see.json`; the app hit-tests taps against those numbers, not
 against the picture. If a panel in the new art sits anywhere other than its box,

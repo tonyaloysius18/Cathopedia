@@ -4,15 +4,19 @@
 `shared/src/commonMain/composeResources/drawable/` (checked 16 October 2026; the cardinal portraits and
 candle holders that used to be listed here are done).
 
-## Optional: Sistine ceiling, panel 9
+## Completed: Sistine ceiling, panel 9 (16 October 2026)
 
-Panel 9 of the ceiling diagram should be the **Drunkenness of Noah**, but the generated art shows Noah under a
-rainbow. Tapping it opens the right caption over the wrong scene. The full brief is
+Panel 9 now shows the **Drunkenness of Noah**, replacing the incorrect rainbow scene.
+The generated source is `content/hub/holy_see/sistine_panel_09.png`; the master and bundled WebP
+have been updated without changing the hotspots. Generation notes and exact pixel checks are in
+`design-concepts/sistine-panel-09/`. The full brief is
 `holy-see/sistine-ceiling-image-prompts.md`.
 
-Make one image, **`sistine_panel_09.png`**, about **1.15 : 1** (for example 1150×1000). It is pasted into the
-existing frame of `content/hub/holy_see/sistine_ceiling.png` at x 0.369, y 0.770, w 0.262, h 0.075 of the
-1024×3103 canvas (268×233 px), then re-exported as `sistine_ceiling.webp`. The hotspots stay as they are.
+The source image, **`sistine_panel_09.png`**, is **1344×1170** (about **1.15 : 1**).
+The existing hotspot is x 0.369, y 0.770, w 0.262, h 0.075 of the 1024×3103 canvas
+(268×233 px at 378, 2389). Since this box includes the painted border, the scene was fitted
+inside it at **(386, 2399), size 252×208**, preserving that border. The master was then
+re-exported as `sistine_ceiling.webp` at quality 90. The hotspots are unchanged.
 
 ```
 A small fresco panel in the style of Michelangelo's Sistine Chapel ceiling, matching soft faded fresco colours

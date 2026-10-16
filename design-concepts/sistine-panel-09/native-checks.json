@@ -1,0 +1,22 @@
+[
+  {
+    "panel": 4,
+    "label": "The Creation of Adam",
+    "passed": true
+  },
+  {
+    "panel": 7,
+    "label": "The Sacrifice of Noah",
+    "passed": true
+  },
+  {
+    "panel": 8,
+    "label": "The Flood",
+    "passed": true
+  },
+  {
+    "panel": 9,
+    "label": "The Drunkenness of Noah",
+    "passed": true
+  }
+]

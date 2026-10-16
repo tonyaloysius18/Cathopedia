@@ -1,0 +1,66 @@
+{
+  "canvas": [
+    1024,
+    3103
+  ],
+  "panelSourceSize": [
+    1344,
+    1170
+  ],
+  "replacementRectangle": [
+    386,
+    2399,
+    252,
+    208
+  ],
+  "changedPixelBounds": [
+    386,
+    2399,
+    638,
+    2607
+  ],
+  "masterUnchangedOutsidePanel": true,
+  "hotspotDataUnchanged": true,
+  "hotspotTarget": "art_work.drunkenness_of_noah",
+  "webpQuality": 90,
+  "webpCanvas": [
+    1024,
+    3103
+  ],
+  "hubSha256": "f80f41101fb381e2430806ff36bc4114cd3e3909d9297a4baa4bf38d26e606e3",
+  "panelSha256": "a37740b90ed540c70c2d5c53b094f8e662b1a66afe7bbaab0ab532195389f660",
+  "shippedWebpSha256": "991a6f7e7010d6f2fa501bf74e7090bf378280a547701429890f1fa8f52e3716",
+  "hotspotRectangle": [
+    378,
+    2389,
+    268,
+    233
+  ],
+  "paintedFramePreserved": true,
+  "androidPackageImageMatchesSource": true,
+  "androidDebugBuild": "passed",
+  "iosSimulatorCompilation": "passed",
+  "nativeHotspotChecks": [
+    {
+      "panel": 4,
+      "label": "The Creation of Adam",
+      "passed": true
+    },
+    {
+      "panel": 7,
+      "label": "The Sacrifice of Noah",
+      "passed": true
+    },
+    {
+      "panel": 8,
+      "label": "The Flood",
+      "passed": true
+    },
+    {
+      "panel": 9,
+      "label": "The Drunkenness of Noah",
+      "passed": true
+    }
+  ],
+  "rebuiltResourceCopiesMatchSource": 4
+}
