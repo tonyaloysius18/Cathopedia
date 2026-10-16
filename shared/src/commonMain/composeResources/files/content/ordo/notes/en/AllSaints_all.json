@@ -1,9 +1,9 @@
 {
   "celebration": "AllSaints",
   "cycle": "all",
-  "status": "draft",
-  "reviewedBy": null,
-  "reviewedOn": null,
+  "status": "approved",
+  "reviewedBy": "Parish priest, Basilique Saint-Sernin, Toulouse",
+  "reviewedOn": "2026-10-16",
   "introduction": "Today the whole Church rejoices with all the saints: not only those whose names we know, but the great multitude, from every nation and language, that no one can count. They were people like us, who let God's love transform them. The Beatitudes are their portrait, and our calling too, for, as John tells us, we are already God's children. As we celebrate, let us ask the saints to pray for us, and tomorrow let us remember all the faithful departed.",
   "prayerOfTheFaithful": {
     "invitation": "Surrounded by so great a cloud of witnesses, let us pray with confidence to the Father of all holiness.",
