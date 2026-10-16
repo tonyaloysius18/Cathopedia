@@ -1,119 +1,33 @@
 # Pending image prompts
 
-Every image the app is still waiting for, ready to copy and paste. Name each file exactly as its heading, then put the finished PNGs in `docs/image-prompts/holy-see/` (cardinals) or `docs/image-prompts/mass/` (candle holders). The full briefs, with style notes, are `holy-see/cardinal-offices-image-prompts.md` and `mass/candle-holders-image-prompts.md`.
+**No image is blocking the app.** Every image the code uses is in
+`shared/src/commonMain/composeResources/drawable/` (checked 16 October 2026; the cardinal portraits and
+candle holders that used to be listed here are done).
 
-**If your tool can't make transparent backgrounds,** replace “Transparent background” with “plain flat light grey background”; the backgrounds can be cut out afterwards.
+## Optional: Sistine ceiling, panel 9
 
-## 1. Offices in the College of Cardinals (7 portraits)
+Panel 9 of the ceiling diagram should be the **Drunkenness of Noah**, but the generated art shows Noah under a
+rainbow. Tapping it opens the right caption over the wrong scene. The full brief is
+`holy-see/sistine-ceiling-image-prompts.md`.
 
-Square 1:1, 1024×1024. Fictional faces only — none may resemble a real cardinal.
-
-**Negative prompt (all seven):**
-
-```
-text, letters, watermark, signature, frame, background scenery, real person, celebrity likeness, pope, white cassock, cartoon, flat vector, low detail
-```
-
-### 1.1 `cardinal_office_dean.png` — Dean of the College
+Make one image, **`sistine_panel_09.png`**, about **1.15 : 1** (for example 1150×1000). It is pasted into the
+existing frame of `content/hub/holy_see/sistine_ceiling.png` at x 0.369, y 0.770, w 0.262, h 0.075 of the
+1024×3103 canvas (268×233 px), then re-exported as `sistine_ceiling.webp`. The hotspots stay as they are.
 
 ```
-Realistic painted devotional portrait, waist-up, of an elderly Catholic cardinal (fictional, not resembling any real person), white hair, rimless glasses, in choir dress: scarlet cassock, scarlet mozzetta with small buttons, scarlet biretta, gold pectoral cross on a red-and-gold cord. He holds a closed red leather-bound liturgical book against his chest with both hands; calm, dignified expression; three-quarter view. Warm soft light from the upper left, classical oil-portrait finish. Transparent background. No text, no watermark, no signature, no frame. Square 1:1.
+A small fresco panel in the style of Michelangelo's Sistine Chapel ceiling, matching soft faded fresco colours
+(muted ochres, rose, sage green, pale blue) and the same painted look as the neighbouring Genesis panels.
+The Drunkenness of Noah, shown modestly: on the right, the elderly white-bearded Noah lies asleep on the ground
+beside a wooden wine vat, his body fully covered by a loose rose-coloured cloak. In the centre, two of his sons
+walk backwards towards him with their faces turned away, holding a cloak between them to cover their father.
+On the left, the third son, Ham, points towards Noah. In the background, Noah tends a grapevine with a spade.
+Fully clothed figures, no nudity. Painted frame-free scene filling the whole canvas. No text, no letters,
+no numerals, no watermark, no signature, no border.
 ```
 
-### 1.2 `cardinal_office_vice_dean.png` — Vice-Dean of the College
+## Briefs that are not wired into the app
 
-```
-Realistic painted devotional portrait, waist-up, of an older Catholic cardinal (fictional), grey hair, in choir dress: scarlet cassock, scarlet mozzetta, scarlet biretta, gold pectoral cross on a red-and-gold cord. His hands are joined in prayer at chest height and his head is slightly bowed, eyes lowered; three-quarter view. Warm soft light from the upper left, classical oil-portrait finish. Transparent background. No text, no watermark, no signature, no frame. Square 1:1.
-```
+These briefs exist but no screen uses them; make them only if the feature is built:
 
-### 1.3 `cardinal_office_secretary_state.png` — Cardinal Secretary of State
-
-```
-Realistic painted devotional portrait, waist-up, of a Catholic cardinal in his sixties (fictional), short dark-grey hair, alert expression, in choir dress: scarlet cassock, scarlet mozzetta, scarlet biretta, gold pectoral cross on a red-and-gold cord. He holds a dark brown leather diplomatic portfolio under his left arm; three-quarter view. Warm soft light from the upper left, classical oil-portrait finish. Transparent background. No text, no letters on the portfolio, no watermark, no signature, no frame. Square 1:1.
-```
-
-### 1.4 `cardinal_office_camerlengo.png` — Cardinal Camerlengo
-
-```
-Realistic painted devotional portrait, waist-up, of a Catholic cardinal (fictional), balding with grey temples, serious composed expression, in choir dress: scarlet cassock, scarlet mozzetta, scarlet biretta, gold pectoral cross on a red-and-gold cord. In his right hand he holds up a large iron ring of old ornate keys; three-quarter view. Warm soft light from the upper left, classical oil-portrait finish. Transparent background. No text, no watermark, no signature, no frame. Square 1:1.
-```
-
-### 1.5 `cardinal_office_prefect.png` — Cardinal Prefect
-
-```
-Realistic painted devotional portrait, waist-up, of a Catholic cardinal (fictional), wearing round glasses, salt-and-pepper hair, in choir dress: scarlet cassock, scarlet mozzetta, scarlet biretta, gold pectoral cross on a red-and-gold cord. He holds a small sheaf of cream parchment documents with a red wax seal in front of him with both hands; three-quarter view. Warm soft light from the upper left, classical oil-portrait finish. Transparent background. No readable text on the documents, no watermark, no signature, no frame. Square 1:1.
-```
-
-### 1.6 `cardinal_office_vicar_rome.png` — Cardinal Vicar of Rome
-
-```
-Realistic painted devotional portrait, waist-up, of a Catholic cardinal (fictional), kind face, grey beard trimmed short, in choir dress: scarlet cassock, scarlet mozzetta, scarlet biretta, gold pectoral cross on a red-and-gold cord. His right hand is raised in a gesture of blessing (first two fingers extended); three-quarter view. Warm soft light from the upper left, classical oil-portrait finish. Transparent background. No text, no watermark, no signature, no frame. Square 1:1.
-```
-
-### 1.7 `cardinal_office_archbishop.png` — Cardinal Archbishop
-
-```
-Realistic painted devotional portrait, waist-up, of a Catholic cardinal archbishop (fictional), in choir dress: scarlet cassock, scarlet mozzetta, scarlet biretta, gold pectoral cross on a red-and-gold cord. He holds a gold crozier (pastoral staff) in his left hand, its ornate curved crook rising beside his head; three-quarter view, confident pastoral expression. Warm soft light from the upper left, classical oil-portrait finish. Transparent background. No text, no watermark, no signature, no frame. Square 1:1.
-```
-
-## 2. Types of Candle Holders (6 images)
-
-Portrait 2:3, 1024×1536. No people, not even hands. Match the existing gilded `altar_candles` image.
-
-**Negative prompt (all six):**
-
-```
-text, letters, numbers, labels, watermark, signature, people, hands, altar servers, priest, church interior, wall, floor, background, table cloth, cartoon, flat vector, low detail, electric bulb, LED, neon
-```
-
-### 2.1 `candle_processional.png` — Processional candlesticks
-
-```
-Create an original illustration, matching a companion image of embossed gilt-brass altar candlesticks: a pair of tall processional candlesticks standing upright side by side, each a long slender gilded pole with decorative knops along its length and a small drip pan at the top holding a tall ivory candle with a small warm flame. The poles are about four times taller than the candles, so the pair reads as tall and narrow. No one is holding them. Centred, front view, eye level. Plain transparent background. Warm golden light from the upper left, polished metal, fine embossed detail. No people, no hands, no text, no labels, no watermark, no signature. Transparent alpha channel. Portrait 2:3.
-```
-
-### 2.2 `candle_sanctuary_lamp.png` — Sanctuary lamp holder
-
-```
-Create an original illustration, matching a companion image of embossed gilt-brass altar candlesticks: a hanging sanctuary lamp, a gilded, ornately embossed bowl suspended from three fine gold chains that meet at a small crown-shaped canopy at the top, holding a deep red glass cylinder with a small, steady candle flame glowing inside, and a small ornamental cross hanging beneath the bowl. Centred, front view, eye level, the chains running to the top edge of the frame. Plain transparent background. Warm golden light, the red glass glowing softly. No tabernacle, no wall, no text, no labels, no watermark, no signature. Transparent alpha channel. Portrait 2:3.
-```
-
-### 2.3 `candle_paschal_stand.png` — Paschal candle stand
-
-```
-Create an original illustration, matching a companion image of embossed gilt-brass altar candlesticks: a tall, sturdy gilded Paschal candle stand with a broad heavy base, a column with embossed ornament and a wide drip pan, holding one very large, thick ivory Paschal candle with a small warm flame. On the candle, in red and gold relief: a cross, the Greek letters Alpha above and Omega below the cross, and five small red incense grains set in the shape of a cross. No year numbers. Centred, front view, eye level. Plain transparent background. Warm golden light from the upper left. No flowers, no font, no text other than Alpha and Omega, no labels, no watermark, no signature. Transparent alpha channel. Portrait 2:3.
-```
-
-### 2.4 `candle_candelabrum.png` — Candelabrum
-
-```
-Create an original illustration, matching a companion image of embossed gilt-brass altar candlesticks: a gilded candelabrum with one central stem on a round embossed foot, branching into five graceful curved arms with scrolled ornament, each arm ending in a small drip pan holding a tall ivory candle with a small warm flame; the central candle slightly taller. Symmetrical, centred, front view, eye level. Plain transparent background. Warm golden light from the upper left, polished metal, fine detail. No table, no altar, no text, no labels, no watermark, no signature. Transparent alpha channel. Portrait 2:3.
-```
-
-### 2.5 `candle_votive.png` — Votive candle holders
-
-```
-Create an original illustration, matching a companion image of embossed gilt-brass altar candlesticks: a tiered votive candle rack in dark wrought iron with three stepped rows, filled with small votive candles in ruby-red glass cups, most of them lit with small warm flames and a few unlit, a small brass offering slot box at one end, and a pierced cross pattern on the front panel. Three-quarter front view, eye level, centred. Plain transparent background. Warm candlelight glow on the iron. No statue, no wall, no people, no text, no labels, no numbers, no watermark, no signature. Transparent alpha channel. Portrait 2:3, the rack filling the lower two-thirds of the frame.
-```
-
-### 2.6 `candle_devotional.png` — Devotional candle stand
-
-```
-Create an original illustration, matching a companion image of embossed gilt-brass altar candlesticks: a devotional candle stand, a low wrought iron and brass table-stand with a long tray filled with sand, holding many thin ivory taper candles of slightly different heights standing upright in the sand, most of them lit with small warm flames, and a pierced cross pattern along the front edge. Three-quarter front view, eye level, centred. Plain transparent background. Warm candlelight glow. No statue, no wall, no people, no text, no labels, no numbers, no watermark, no signature. Transparent alpha channel. Portrait 2:3, the stand filling the lower two-thirds of the frame.
-```
-
-## 3. Diocese and Archdiocese (1 portrait)
-
-Square 1:1, 1024×1024, transparent. Must match the existing `hierarchy_bishop` portrait it stands beside. Put it in `docs/image-prompts/holy-see/`.
-
-**Negative prompt:**
-
-```
-text, letters, watermark, signature, frame, background scenery, real person, celebrity likeness, cardinal red, red cope, tiara, pope, white zucchetto, cartoon, flat vector, low detail
-```
-
-### 3.1 `archbishop_portrait.png` — Metropolitan archbishop (with pallium)
-
-```
-Create an original illustration, matching a companion portrait of a Catholic bishop: a realistic painted bust of a Catholic metropolitan archbishop (fictional, not resembling any real person), late fifties, dark hair greying at the temples, clean-shaven, calm pastoral expression, three-quarter view, cut at mid-chest. He wears a tall white-and-gold embroidered mitre with lappets, a cream-and-gold chasuble, and over it the pallium: a narrow white woollen band circling his shoulders with one pendant hanging straight down the front, marked with small black crosses and fastened with three gold pins. A gold pectoral cross on a gold chain. Warm soft light from the upper left, classical oil-portrait finish, fine detail in the embroidery. Transparent background. No text, no watermark, no signature, no frame. Square 1:1, 1024×1024.
-```
+- `mass/monstrance-parts-image-prompts-v2.md`: eleven part images for monstrance part cards.
+- `prayers/rosary-hero-image-prompt.md` and `prayers/rosary-interactive-image-prompt.md`: alternative Rosary art.
