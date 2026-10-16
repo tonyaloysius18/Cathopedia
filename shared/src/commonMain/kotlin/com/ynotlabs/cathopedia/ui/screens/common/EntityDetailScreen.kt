@@ -219,7 +219,8 @@ fun EntityDetailScreen(
     var relatedY by remember(type, id) { mutableIntStateOf(0) }
     var sourceY by remember(type, id) { mutableIntStateOf(0) }
 
-    LaunchedEffect(type, id, language) {
+    val screenText = LocalScreenText.current
+    LaunchedEffect(type, id, language, screenText) {
         // A related entity reuses this detail composable, so rememberScrollState()
         // would otherwise keep the previous entity's scroll position. Always reset
         // to the hero before loading the newly selected entity.
@@ -235,7 +236,7 @@ fun EntityDetailScreen(
                     summary = it.summary,
                     body = it.body,
                     facts = listOfNotNull(
-                        it.feastDay?.let { v -> "Feast day" to v },
+                        it.feastDay?.let { v -> "Feast day" to screenText.monthDay(v) },
                         it.canonizationYear?.let { v -> "Canonized" to v.toString() },
                         it.patronage?.let { v -> "Patronage" to v },
                     ),
@@ -253,7 +254,7 @@ fun EntityDetailScreen(
                         it.regnalNumber?.let { v -> "Regnal number" to v.toString() },
                         it.papacyStart?.let { v -> "Papacy start" to v },
                         it.papacyEnd?.let { v -> "Papacy end" to v },
-                        it.feastDay?.let { v -> "Feast day" to v },
+                        it.feastDay?.let { v -> "Feast day" to screenText.monthDay(v) },
                     ),
                     sourceAttribution = it.sourceAttribution,
                     related = it.related,

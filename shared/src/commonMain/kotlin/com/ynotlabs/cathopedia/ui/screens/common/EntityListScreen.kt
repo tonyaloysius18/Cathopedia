@@ -76,6 +76,8 @@ import com.ynotlabs.cathopedia.data.CathopediaRepository
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.i18n.AppLanguages
 import com.ynotlabs.cathopedia.i18n.Strings
+import com.ynotlabs.cathopedia.i18n.ScreenText
+import com.ynotlabs.cathopedia.i18n.LocalScreenText
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.model.ContentSummary
 import com.ynotlabs.cathopedia.model.ContentType
@@ -772,7 +774,7 @@ private fun PremiumEntityCard(
     val isChurchCard = type == ContentType.CHURCH
     val isSaintPope = type == ContentType.POPE && item.isDeclaredSaint()
     val popeTimeline = if (type == ContentType.POPE) item.papacyTimeline(s) else null
-    val saintFeastDay = if (type == ContentType.SAINT) item.feastDayLabel(s) else null
+    val saintFeastDay = if (type == ContentType.SAINT) item.feastDayLabel(s, LocalScreenText.current) else null
     val titleSize = when {
         item.name.length <= 18 -> 18.sp
         item.name.length <= 26 -> 16.sp
@@ -1248,9 +1250,9 @@ private fun ContentSummary.papacyTimeline(s: Strings): String? {
     }
 }
 
-private fun ContentSummary.feastDayLabel(s: Strings): String? {
+private fun ContentSummary.feastDayLabel(s: Strings, t: ScreenText): String? {
     feastDay?.trim()?.takeIf { it.isNotEmpty() }?.let {
-        return "${s.detailFactFeastDay} · $it"
+        return "${s.detailFactFeastDay} · ${t.monthDay(it)}"
     }
 
     val source = summary.replace('\n', ' ')

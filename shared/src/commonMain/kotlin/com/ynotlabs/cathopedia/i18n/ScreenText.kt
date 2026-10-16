@@ -12,6 +12,15 @@ import androidx.compose.runtime.compositionLocalOf
 class ScreenText(private val values: Map<String, String>) {
     operator fun get(key: String): String = values[key].orEmpty()
 
+    /** "10-16" (the content's MM-DD feast days) → "16 October" in the app language; anything else unchanged. */
+    fun monthDay(mmdd: String): String {
+        val m = Regex("""^(\d{1,2})-(\d{1,2})$""").find(mmdd.trim()) ?: return mmdd
+        val (month, day) = m.destructured
+        val monthName = get("screen.saints.month.${month.toInt()}").ifEmpty { return mmdd }
+        return get("screen.saints.date").ifEmpty { "{day} {month}" }
+            .replace("{day}", day.toInt().toString()).replace("{month}", monthName)
+    }
+
     companion object {
         const val PREFIX = "screen."
         val Empty = ScreenText(emptyMap())
