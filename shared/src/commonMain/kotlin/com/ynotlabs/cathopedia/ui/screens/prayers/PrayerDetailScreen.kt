@@ -5,7 +5,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.LazyRow
-import com.ynotlabs.cathopedia.ui.theme.imageFade
+import com.ynotlabs.cathopedia.ui.theme.LocalIsDarkTheme
 import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -205,20 +205,14 @@ fun PrayerDetailScreen(
                 )
             }
 
-            // A single translucent veil keeps text readable without hiding the artwork.
+            // A single translucent veil keeps text readable without hiding the artwork. It is a
+            // text scrim, so light mode keeps it strong (imageFade would thin it to ~20% and leave
+            // the controls and dark text sitting on a bright painting).
+            val veil = if (LocalIsDarkTheme.current) listOf(0.78f, 0.62f, 0.48f, 0.66f) else listOf(0.86f, 0.74f, 0.66f, 0.8f)
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(
-                        Brush.verticalGradient(
-                            colors = listOf(
-                                PrayerBg.imageFade(0.78f),
-                                PrayerBg.imageFade(0.62f),
-                                PrayerBg.imageFade(0.48f),
-                                PrayerBg.imageFade(0.66f),
-                            ),
-                        ),
-                    ),
+                    .background(Brush.verticalGradient(colors = veil.map { PrayerBg.copy(alpha = it) })),
             )
 
             when {

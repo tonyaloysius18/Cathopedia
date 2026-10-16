@@ -202,7 +202,7 @@ fun TenCommandmentsScreen(
                 item {
                     Spacer(Modifier.height(8.dp))
                     CommandmentsArticleLabel(
-                        text = "${articles.size} ${copy.articleLabel}",
+                        text = "${articles.size} ${if (articles.size == 1) s.hubArticleLabel else copy.articleLabel}",
                     )
                 }
                 itemsIndexed(articles, key = { _, article -> article.id }) { _, article ->

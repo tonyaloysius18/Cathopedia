@@ -165,7 +165,7 @@ fun FruitsOfHolySpiritScreen(
             if (articles.isNotEmpty()) {
                 item {
                     Spacer(Modifier.height(8.dp))
-                    FruitsArticleLabel("${articles.size} ${LocalStrings.current.hubArticlesLabel}")
+                    FruitsArticleLabel("${articles.size} ${with(LocalStrings.current) { if (articles.size == 1) hubArticleLabel else hubArticlesLabel }}")
                 }
                 itemsIndexed(articles, key = { _, article -> article.id }) { _, article ->
                     FruitsArticleCard(

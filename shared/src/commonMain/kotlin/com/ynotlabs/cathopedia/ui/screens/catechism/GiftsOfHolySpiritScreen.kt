@@ -178,7 +178,7 @@ fun GiftsOfHolySpiritScreen(
             if (articles.isNotEmpty()) {
                 item {
                     Spacer(Modifier.height(8.dp))
-                    GiftsArticleLabel("${articles.size} ${copy.articles}")
+                    GiftsArticleLabel("${articles.size} ${if (articles.size == 1) LocalStrings.current.hubArticleLabel else copy.articles}")
                 }
                 itemsIndexed(articles, key = { _, article -> article.id }) { _, article ->
                     GiftsArticleCard(

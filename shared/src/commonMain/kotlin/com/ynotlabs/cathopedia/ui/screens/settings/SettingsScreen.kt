@@ -490,12 +490,14 @@ private fun InspirationCard() {
             modifier = Modifier
                 .fillMaxSize()
                 .background(
+                    // Text scrim: the quote sits on the right, so the veil is strongest there and the
+                    // candle, book and lilies on the left stay visible. Plain alpha (not imageFade) so
+                    // light mode keeps enough contrast for the dark text over the basilica.
                     Brush.horizontalGradient(
-                        listOf(
-                            MaterialTheme.colorScheme.background.imageFade(0.86f),
-                            MaterialTheme.colorScheme.background.imageFade(0.62f),
-                            MaterialTheme.colorScheme.background.imageFade(0.30f),
-                        ),
+                        0f to MaterialTheme.colorScheme.background.copy(alpha = 0.10f),
+                        0.34f to MaterialTheme.colorScheme.background.copy(alpha = 0.55f),
+                        0.5f to MaterialTheme.colorScheme.background.copy(alpha = 0.84f),
+                        1f to MaterialTheme.colorScheme.background.copy(alpha = 0.84f),
                     ),
                 ),
         )

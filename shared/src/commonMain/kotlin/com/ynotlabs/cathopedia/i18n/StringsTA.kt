@@ -382,6 +382,7 @@ val TA: Strings = Strings().apply {
     vestmentsGoodToKnowLabel = "தெரிந்துகொள்ள வேண்டியது"
     vestmentsWornForLabel = "அணியப்படும் தருணம்"
     hubArticlesLabel = "கட்டுரைகள்"
+    hubArticleLabel = "கட்டுரை"
     hubSymbolsCount = "அடையாளங்கள் · {count}"
     hubSacredFormsCount = "புனித வடிவங்கள் · {count}"
     hubTowersCount = "கோபுர வகைகள் · {count}"

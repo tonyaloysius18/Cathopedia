@@ -382,6 +382,7 @@ val PL: Strings = Strings().apply {
     vestmentsGoodToKnowLabel = "Warto wiedzieć"
     vestmentsWornForLabel = "Noszona na"
     hubArticlesLabel = "Artykuły"
+    hubArticleLabel = "Artykuł"
     hubSymbolsCount = "SYMBOLE · {count}"
     hubSacredFormsCount = "ŚWIĘTE FORMY · {count}"
     hubTowersCount = "TYPY WIEŻ · {count}"

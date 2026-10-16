@@ -453,6 +453,7 @@ class Strings {
     var vestmentsWornForLabel: String = "Worn for"
     // Hub list labels
     var hubArticlesLabel: String = "Articles"
+    var hubArticleLabel: String = "Article"
     var hubSymbolsCount: String = "SYMBOLS · {count}"
     var hubSacredFormsCount: String = "SACRED FORMS · {count}"
     var hubTowersCount: String = "TOWER TYPES · {count}"
