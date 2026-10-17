@@ -281,16 +281,7 @@
       "icon": "ic_scroll",
       "articleIds": [
         "art.offices.overview",
-        "art.offices.positions",
-        "art.offices.vicar_general",
-        "art.offices.episcopal_vicar",
-        "art.offices.vicar_forane",
-        "art.offices.councils",
-        "art.offices.curia",
-        "art.offices.chancellor",
-        "art.offices.judicial_vicar",
-        "art.offices.parish_clergy",
-        "art.offices.rectors"
+        "art.offices.positions"
       ]
     },
     {
@@ -1990,207 +1981,12 @@
       "related": [
         {
           "type": "ARTICLE",
-          "id": "art.offices.vicar_general"
+          "id": "art.offices.positions"
         }
       ],
       "sources": [
         {
           "label": "Code of Canon Law (1983), cann. 145, 469–494"
-        }
-      ]
-    },
-    {
-      "id": "art.offices.vicar_general",
-      "sectionId": "holy_see.church_offices",
-      "sortOrder": 3,
-      "titleKey": "art.offices.vicar_general.title",
-      "leadKey": "art.offices.vicar_general.lead",
-      "readingTimeMinutes": 3,
-      "blocks": [
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.vicar_general.p1"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "textKey": "art.offices.vicar_general.h_limits"
-        },
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.vicar_general.p2"
-        },
-        {
-          "type": "callout",
-          "tone": "note",
-          "titleKey": "art.offices.vicar_general.callout.title",
-          "textKey": "art.offices.vicar_general.callout.body"
-        }
-      ],
-      "related": [
-        {
-          "type": "ARTICLE",
-          "id": "art.offices.episcopal_vicar"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Code of Canon Law (1983), cann. 475–481"
-        }
-      ]
-    },
-    {
-      "id": "art.offices.episcopal_vicar",
-      "sectionId": "holy_see.church_offices",
-      "sortOrder": 4,
-      "titleKey": "art.offices.episcopal_vicar.title",
-      "leadKey": "art.offices.episcopal_vicar.lead",
-      "readingTimeMinutes": 2,
-      "blocks": [
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.episcopal_vicar.p1"
-        },
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.episcopal_vicar.p2"
-        }
-      ],
-      "related": [
-        {
-          "type": "ARTICLE",
-          "id": "art.offices.vicar_general"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Code of Canon Law (1983), can. 476"
-        }
-      ]
-    },
-    {
-      "id": "art.offices.vicar_forane",
-      "sectionId": "holy_see.church_offices",
-      "sortOrder": 5,
-      "titleKey": "art.offices.vicar_forane.title",
-      "leadKey": "art.offices.vicar_forane.lead",
-      "readingTimeMinutes": 3,
-      "blocks": [
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.vicar_forane.p1"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "textKey": "art.offices.vicar_forane.h_role"
-        },
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.vicar_forane.p2"
-        },
-        {
-          "type": "callout",
-          "tone": "note",
-          "titleKey": "art.offices.vicar_forane.callout.title",
-          "textKey": "art.offices.vicar_forane.callout.body"
-        }
-      ],
-      "related": [
-        {
-          "type": "ARTICLE",
-          "id": "art.offices.parish_clergy"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Code of Canon Law (1983), cann. 553–555"
-        }
-      ]
-    },
-    {
-      "id": "art.offices.chancellor",
-      "sectionId": "holy_see.church_offices",
-      "sortOrder": 8,
-      "titleKey": "art.offices.chancellor.title",
-      "leadKey": "art.offices.chancellor.lead",
-      "readingTimeMinutes": 2,
-      "blocks": [
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.chancellor.p1"
-        },
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.chancellor.p2"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Code of Canon Law (1983), cann. 482–491"
-        }
-      ]
-    },
-    {
-      "id": "art.offices.judicial_vicar",
-      "sectionId": "holy_see.church_offices",
-      "sortOrder": 9,
-      "titleKey": "art.offices.judicial_vicar.title",
-      "leadKey": "art.offices.judicial_vicar.lead",
-      "readingTimeMinutes": 2,
-      "blocks": [
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.judicial_vicar.p1"
-        },
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.judicial_vicar.p2"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Code of Canon Law (1983), cann. 1420–1421"
-        }
-      ]
-    },
-    {
-      "id": "art.offices.parish_clergy",
-      "sectionId": "holy_see.church_offices",
-      "sortOrder": 10,
-      "titleKey": "art.offices.parish_clergy.title",
-      "leadKey": "art.offices.parish_clergy.lead",
-      "readingTimeMinutes": 3,
-      "blocks": [
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.parish_clergy.p1"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "textKey": "art.offices.parish_clergy.h_helpers"
-        },
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.parish_clergy.p2"
-        },
-        {
-          "type": "callout",
-          "tone": "note",
-          "titleKey": "art.offices.parish_clergy.callout.title",
-          "textKey": "art.offices.parish_clergy.callout.body"
-        }
-      ],
-      "related": [
-        {
-          "type": "ARTICLE",
-          "id": "art.offices.vicar_forane"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Code of Canon Law (1983), cann. 515–552, 556–563"
         }
       ]
     },
@@ -2459,129 +2255,6 @@
       "sortOrder": 2
     },
     {
-      "id": "art.offices.councils",
-      "sectionId": "holy_see.church_offices",
-      "titleKey": "art.offices.councils.title",
-      "leadKey": "art.offices.councils.lead",
-      "readingTimeMinutes": 3,
-      "related": [
-        {
-          "type": "ARTICLE",
-          "id": "art.offices.curia"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Code of Canon Law (1983), cann. 421, 495–502"
-        }
-      ],
-      "blocks": [
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.councils.p1"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "textKey": "art.offices.councils.h_consultors"
-        },
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.councils.p2"
-        },
-        {
-          "type": "callout",
-          "tone": "note",
-          "titleKey": "art.offices.councils.callout.title",
-          "textKey": "art.offices.councils.callout.body"
-        }
-      ],
-      "sortOrder": 6
-    },
-    {
-      "id": "art.offices.curia",
-      "sectionId": "holy_see.church_offices",
-      "titleKey": "art.offices.curia.title",
-      "leadKey": "art.offices.curia.lead",
-      "readingTimeMinutes": 3,
-      "related": [
-        {
-          "type": "ARTICLE",
-          "id": "art.offices.vicar_general"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Code of Canon Law (1983), cann. 469–473, 492–494"
-        }
-      ],
-      "blocks": [
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.curia.p1"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "textKey": "art.offices.curia.h_finance"
-        },
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.curia.p2"
-        },
-        {
-          "type": "callout",
-          "tone": "info",
-          "titleKey": "art.offices.curia.callout.title",
-          "textKey": "art.offices.curia.callout.body"
-        }
-      ],
-      "sortOrder": 7
-    },
-    {
-      "id": "art.offices.rectors",
-      "sectionId": "holy_see.church_offices",
-      "titleKey": "art.offices.rectors.title",
-      "leadKey": "art.offices.rectors.lead",
-      "readingTimeMinutes": 3,
-      "related": [
-        {
-          "type": "ARTICLE",
-          "id": "art.offices.parish_clergy"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Code of Canon Law (1983), cann. 239, 556–572"
-        }
-      ],
-      "blocks": [
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.rectors.p1"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "textKey": "art.offices.rectors.h_seminary"
-        },
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.rectors.p2"
-        },
-        {
-          "type": "heading",
-          "level": 2,
-          "textKey": "art.offices.rectors.h_chaplain"
-        },
-        {
-          "type": "paragraph",
-          "textKey": "art.offices.rectors.p3"
-        }
-      ],
-      "sortOrder": 11
-    },
-    {
       "id": "art.titles.monsignor",
       "sectionId": "holy_see.honorary_titles",
       "sortOrder": 1,
@@ -2661,7 +2334,7 @@
       "related": [
         {
           "type": "ARTICLE",
-          "id": "art.offices.vicar_forane"
+          "id": "art.offices.positions"
         }
       ],
       "sources": [
@@ -2680,7 +2353,7 @@
       "related": [
         {
           "type": "ARTICLE",
-          "id": "art.offices.vicar_general"
+          "id": "art.offices.positions"
         },
         {
           "type": "ARTICLE",

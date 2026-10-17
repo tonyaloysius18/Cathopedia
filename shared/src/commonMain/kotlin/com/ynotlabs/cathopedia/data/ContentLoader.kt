@@ -42,7 +42,7 @@ object ContentLoader {
      * this just controls whether it re-runs on an existing install rather
      * than only ever loading once on a database with zero rows.
      */
-    private const val CONTENT_VERSION = "275"
+    private const val CONTENT_VERSION = "277"
     private const val CONTENT_VERSION_KEY = "content_version"
 
     // classDiscriminator/explicitNulls (from com.ynotlabs.cathopedia.content.hubContentJson) are
@@ -198,6 +198,8 @@ object ContentLoader {
 
         database.transaction {
             val hub = doc.hub
+            database.hubContentQueries.deleteArticlesForHub(hub.id)
+            database.hubContentQueries.deleteSectionsForHub(hub.id)
             database.hubContentQueries.insertHub(
                 Topic_hub(
                     id = hub.id,

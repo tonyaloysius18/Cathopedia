@@ -198,3 +198,11 @@ INSERT OR REPLACE INTO localized_text VALUES ?;
 
 deleteHubCascade:
 DELETE FROM topic_hub WHERE id = :id;
+
+-- A content update re-seeds each hub with INSERT OR REPLACE, which never removes sections or
+-- articles dropped from the content. Clear them first (foreign keys are off, so no cascade).
+deleteArticlesForHub:
+DELETE FROM hub_article WHERE section_id IN (SELECT id FROM hub_section WHERE hub_id = :hubId);
+
+deleteSectionsForHub:
+DELETE FROM hub_section WHERE hub_id = :hubId;
