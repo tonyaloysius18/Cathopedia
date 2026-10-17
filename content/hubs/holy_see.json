@@ -281,12 +281,16 @@
       "icon": "ic_scroll",
       "articleIds": [
         "art.offices.overview",
+        "art.offices.positions",
         "art.offices.vicar_general",
         "art.offices.episcopal_vicar",
         "art.offices.vicar_forane",
+        "art.offices.councils",
+        "art.offices.curia",
         "art.offices.chancellor",
         "art.offices.judicial_vicar",
-        "art.offices.parish_clergy"
+        "art.offices.parish_clergy",
+        "art.offices.rectors"
       ]
     },
     {
@@ -1998,7 +2002,7 @@
     {
       "id": "art.offices.vicar_general",
       "sectionId": "holy_see.church_offices",
-      "sortOrder": 2,
+      "sortOrder": 3,
       "titleKey": "art.offices.vicar_general.title",
       "leadKey": "art.offices.vicar_general.lead",
       "readingTimeMinutes": 3,
@@ -2038,7 +2042,7 @@
     {
       "id": "art.offices.episcopal_vicar",
       "sectionId": "holy_see.church_offices",
-      "sortOrder": 3,
+      "sortOrder": 4,
       "titleKey": "art.offices.episcopal_vicar.title",
       "leadKey": "art.offices.episcopal_vicar.lead",
       "readingTimeMinutes": 2,
@@ -2067,7 +2071,7 @@
     {
       "id": "art.offices.vicar_forane",
       "sectionId": "holy_see.church_offices",
-      "sortOrder": 4,
+      "sortOrder": 5,
       "titleKey": "art.offices.vicar_forane.title",
       "leadKey": "art.offices.vicar_forane.lead",
       "readingTimeMinutes": 3,
@@ -2107,7 +2111,7 @@
     {
       "id": "art.offices.chancellor",
       "sectionId": "holy_see.church_offices",
-      "sortOrder": 5,
+      "sortOrder": 8,
       "titleKey": "art.offices.chancellor.title",
       "leadKey": "art.offices.chancellor.lead",
       "readingTimeMinutes": 2,
@@ -2130,7 +2134,7 @@
     {
       "id": "art.offices.judicial_vicar",
       "sectionId": "holy_see.church_offices",
-      "sortOrder": 6,
+      "sortOrder": 9,
       "titleKey": "art.offices.judicial_vicar.title",
       "leadKey": "art.offices.judicial_vicar.lead",
       "readingTimeMinutes": 2,
@@ -2153,7 +2157,7 @@
     {
       "id": "art.offices.parish_clergy",
       "sectionId": "holy_see.church_offices",
-      "sortOrder": 7,
+      "sortOrder": 10,
       "titleKey": "art.offices.parish_clergy.title",
       "leadKey": "art.offices.parish_clergy.lead",
       "readingTimeMinutes": 3,
@@ -2189,6 +2193,393 @@
           "label": "Code of Canon Law (1983), cann. 515–552, 556–563"
         }
       ]
+    },
+    {
+      "id": "art.offices.positions",
+      "sectionId": "holy_see.church_offices",
+      "titleKey": "art.offices.positions.title",
+      "leadKey": "art.offices.positions.lead",
+      "readingTimeMinutes": 5,
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.offices.overview"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Code of Canon Law (1983), cann. 239, 473–502, 515–572, 1420"
+        },
+        {
+          "label": "Second Vatican Council, Christus Dominus 27; Sacrosanctum Concilium 45"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.positions.intro"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.offices.positions.vg.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/diocese_position_vg.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.positions.vg.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.offices.positions.ev.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/diocese_position_ev.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.positions.ev.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.offices.positions.chancellor.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/diocese_position_chancellor.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.positions.chancellor.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.offices.positions.consultors.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/diocese_position_consultors.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.positions.consultors.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.offices.positions.dean.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/diocese_position_dean.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.positions.dean.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.offices.positions.judicial.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/diocese_position_judicial.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.positions.judicial.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.offices.positions.finance.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/diocese_position_finance.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.positions.finance.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.offices.positions.presbyteral.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/diocese_position_presbyteral.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.positions.presbyteral.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.offices.positions.moderator.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/diocese_position_moderator.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.positions.moderator.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.offices.positions.seminary.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/diocese_position_seminary.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.positions.seminary.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.offices.positions.pastor.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/diocese_position_pastor.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.positions.pastor.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.offices.positions.parochial.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/diocese_position_parochial.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.positions.parochial.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.offices.positions.cathedral.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/diocese_position_cathedral.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.positions.cathedral.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.offices.positions.catechesis.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/diocese_position_catechesis.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.positions.catechesis.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.offices.positions.liturgy.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/diocese_position_liturgy.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.positions.liturgy.desc"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "textKey": "art.offices.positions.chaplain.name"
+        },
+        {
+          "type": "image",
+          "asset": "hub/holy_see/diocese_position_chaplain.png",
+          "license": "IN_HOUSE"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.positions.chaplain.desc"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "titleKey": "art.offices.positions.lay.title",
+          "textKey": "art.offices.positions.lay.body"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.offices.positions.many.title",
+          "textKey": "art.offices.positions.many.body"
+        }
+      ],
+      "sortOrder": 2
+    },
+    {
+      "id": "art.offices.councils",
+      "sectionId": "holy_see.church_offices",
+      "titleKey": "art.offices.councils.title",
+      "leadKey": "art.offices.councils.lead",
+      "readingTimeMinutes": 3,
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.offices.curia"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Code of Canon Law (1983), cann. 421, 495–502"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.councils.p1"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.offices.councils.h_consultors"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.councils.p2"
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "titleKey": "art.offices.councils.callout.title",
+          "textKey": "art.offices.councils.callout.body"
+        }
+      ],
+      "sortOrder": 6
+    },
+    {
+      "id": "art.offices.curia",
+      "sectionId": "holy_see.church_offices",
+      "titleKey": "art.offices.curia.title",
+      "leadKey": "art.offices.curia.lead",
+      "readingTimeMinutes": 3,
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.offices.vicar_general"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Code of Canon Law (1983), cann. 469–473, 492–494"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.curia.p1"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.offices.curia.h_finance"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.curia.p2"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "titleKey": "art.offices.curia.callout.title",
+          "textKey": "art.offices.curia.callout.body"
+        }
+      ],
+      "sortOrder": 7
+    },
+    {
+      "id": "art.offices.rectors",
+      "sectionId": "holy_see.church_offices",
+      "titleKey": "art.offices.rectors.title",
+      "leadKey": "art.offices.rectors.lead",
+      "readingTimeMinutes": 3,
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.offices.parish_clergy"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Code of Canon Law (1983), cann. 239, 556–572"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.rectors.p1"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.offices.rectors.h_seminary"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.rectors.p2"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.offices.rectors.h_chaplain"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.offices.rectors.p3"
+        }
+      ],
+      "sortOrder": 11
     },
     {
       "id": "art.titles.monsignor",
