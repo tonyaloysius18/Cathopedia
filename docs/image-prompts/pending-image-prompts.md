@@ -4,6 +4,13 @@
 `shared/src/commonMain/composeResources/drawable/` (checked 16 October 2026; the cardinal portraits and
 candle holders that used to be listed here are done).
 
+## Pending: Positions Given to Priests in a Diocese (17 October 2026)
+
+There are 16 portraits for the Holy See → Offices of Governance carousel
+(`diocese_position_*.png`). The full brief is
+[`holy-see/diocese-positions-image-prompts.md`](holy-see/diocese-positions-image-prompts.md).
+Until the portraits land, the cards show text only.
+
 ## Completed: Sistine ceiling, panel 9 (16 October 2026)
 
 Panel 9 now shows the **Drunkenness of Noah**, replacing the incorrect rainbow scene.
