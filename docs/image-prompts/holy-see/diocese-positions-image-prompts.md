@@ -12,22 +12,22 @@ name. Keep the PNG master in `content/hub/holy_see/`.
 
 | # | Asset | Position | Status |
 | --- | --- | --- | --- |
-| 1 | `diocese_position_vg.png` | Vicar General | pending |
-| 2 | `diocese_position_ev.png` | Episcopal Vicar | pending |
-| 3 | `diocese_position_chancellor.png` | Chancellor | pending |
-| 4 | `diocese_position_consultors.png` | College of Consultors | pending |
-| 5 | `diocese_position_dean.png` | Vicar Forane (Dean) | pending |
-| 6 | `diocese_position_judicial.png` | Judicial Vicar | pending |
-| 7 | `diocese_position_finance.png` | Finance Officer (Economus) | pending |
-| 8 | `diocese_position_presbyteral.png` | Presbyteral Council Member | pending |
-| 9 | `diocese_position_moderator.png` | Moderator of the Curia | pending |
-| 10 | `diocese_position_seminary.png` | Seminary Rector | pending |
-| 11 | `diocese_position_pastor.png` | Parish Priest (Pastor) | pending |
-| 12 | `diocese_position_parochial.png` | Parochial Vicar (Curate) | pending |
-| 13 | `diocese_position_cathedral.png` | Rector of the Cathedral | pending |
-| 14 | `diocese_position_catechesis.png` | Director of Catechesis | pending |
-| 15 | `diocese_position_liturgy.png` | Director of Liturgy | pending |
-| 16 | `diocese_position_chaplain.png` | Chaplain | pending |
+| 1 | `diocese_position_vg.png` | Vicar General | generated |
+| 2 | `diocese_position_ev.png` | Episcopal Vicar | generated |
+| 3 | `diocese_position_chancellor.png` | Chancellor | generated |
+| 4 | `diocese_position_consultors.png` | College of Consultors | generated |
+| 5 | `diocese_position_dean.png` | Vicar Forane (Dean) | generated |
+| 6 | `diocese_position_judicial.png` | Judicial Vicar | generated |
+| 7 | `diocese_position_finance.png` | Finance Officer (Economus) | generated |
+| 8 | `diocese_position_presbyteral.png` | Presbyteral Council Member | generated |
+| 9 | `diocese_position_moderator.png` | Moderator of the Curia | generated |
+| 10 | `diocese_position_seminary.png` | Seminary Rector | generated |
+| 11 | `diocese_position_pastor.png` | Parish Priest (Pastor) | generated |
+| 12 | `diocese_position_parochial.png` | Parochial Vicar (Curate) | generated |
+| 13 | `diocese_position_cathedral.png` | Rector of the Cathedral | generated |
+| 14 | `diocese_position_catechesis.png` | Director of Catechesis | generated |
+| 15 | `diocese_position_liturgy.png` | Director of Liturgy | generated |
+| 16 | `diocese_position_chaplain.png` | Chaplain | generated |
 
 ## House style (all sixteen)
 
