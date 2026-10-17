@@ -84,6 +84,9 @@ import com.ynotlabs.cathopedia.liturgical.OrdoCelebration
 import com.ynotlabs.cathopedia.liturgical.OrdoProfile
 import com.ynotlabs.cathopedia.liturgical.OrdoRank
 import com.ynotlabs.cathopedia.liturgical.PlannedPart
+import com.ynotlabs.cathopedia.liturgical.IcelTexts
+import com.ynotlabs.cathopedia.ui.components.isDebugBuild
+import com.ynotlabs.cathopedia.liturgical.SpokenLine
 import com.ynotlabs.cathopedia.liturgical.fullBookNameCitation
 import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.ui.components.KeepScreenOn
@@ -634,9 +637,28 @@ private fun PartContent(
                 Text(it, color = colors.onSurfaceVariant, fontSize = (10 * scale).sp, lineHeight = (14 * scale).sp)
             }
         }
+        val showIcel = planned.responses.isNotEmpty() && (IcelTexts.PERMISSION_GRANTED || isDebugBuild())
+        val (beforeReading, afterReading) =
+            if (showIcel) IcelTexts.aroundReading(planned.responses) else emptyList<SpokenLine>() to emptyList()
+        if (beforeReading.isNotEmpty()) {
+            Spacer(Modifier.height(16.dp))
+            SpokenLines(beforeReading, scale)
+        }
         planned.reading?.let { reading ->
             Spacer(Modifier.height(16.dp))
             ReadingBlock(reading, language, scale, text)
+        }
+        if (afterReading.isNotEmpty()) {
+            Spacer(Modifier.height(16.dp))
+            SpokenLines(afterReading, scale)
+        }
+        if (showIcel) {
+            Spacer(Modifier.height(6.dp))
+            Text(
+                (if (IcelTexts.PERMISSION_GRANTED) "" else "DRAFT · awaiting ICEL permission · ") +
+                    "Excerpts from the English translation of The Roman Missal © 2010, International Commission on English in the Liturgy Corporation. All rights reserved.",
+                color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = (10 * scale).sp, lineHeight = (14 * scale).sp,
+            )
         }
         if (part.reading != null && planned.reading == null) {
             Spacer(Modifier.height(16.dp))
@@ -646,7 +668,7 @@ private fun PartContent(
             Spacer(Modifier.height(16.dp))
             PendingSlot(null, text.homilyPending, scale)
         }
-        part.missal?.let { label ->
+        part.missal?.takeUnless { showIcel && part.id in IcelTexts.completeParts }?.let { label ->
             Spacer(Modifier.height(16.dp))
             PendingSlot(label, text.missalPending, scale)
         }
@@ -756,5 +778,28 @@ private fun PendingSlot(label: String?, message: String, scale: Float) {
             Spacer(Modifier.height(4.dp))
         }
         Text(message, color = colors.onSurfaceVariant, fontSize = (13 * scale).sp, lineHeight = (18 * scale).sp)
+    }
+}
+
+/** A liturgical dialogue: who speaks in small caps, the people's words in bold. */
+@Composable
+private fun SpokenLines(lines: List<SpokenLine>, scale: Float) {
+    val colors = MaterialTheme.colorScheme
+    lines.forEachIndexed { i, line ->
+        if (i > 0) Spacer(Modifier.height(10.dp))
+        Text(line.who.uppercase(), color = colors.primary, fontSize = (11 * scale).sp, letterSpacing = 1.sp,
+            fontWeight = FontWeight.SemiBold)
+        Text(
+            line.text,
+            color = colors.onSurface,
+            fontFamily = FontFamily.Serif,
+            fontWeight = if (line.isPeople) FontWeight.Bold else FontWeight.Normal,
+            fontSize = (20 * scale).sp,
+            lineHeight = (29 * scale).sp,
+        )
+        line.note?.let {
+            Text(it, color = colors.onSurfaceVariant, fontSize = (12 * scale).sp, lineHeight = (17 * scale).sp,
+                modifier = Modifier.padding(top = 4.dp))
+        }
     }
 }

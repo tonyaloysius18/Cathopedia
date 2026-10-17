@@ -52,7 +52,55 @@ data class PlannedPart(
     val part: MassPart,
     val rubric: String,
     val reading: LectionaryReading?,
+    /** The Missal's dialogue and people's parts at this point (ICEL; see [IcelTexts]). */
+    val responses: List<SpokenLine> = emptyList(),
 )
+
+/** One line of a liturgical dialogue: who says it and the words. */
+@Serializable
+data class SpokenLine(val who: String, val text: String, val note: String? = null) {
+    /** Lines the congregation says, shown in bold. */
+    val isPeople: Boolean get() = who in setOf("People", "All", "Communicant")
+}
+
+@Serializable
+private data class IcelResponsesFile(val credit: String, val parts: Map<String, List<SpokenLine>>)
+
+/**
+ * The 2010 English Missal texts (ICEL copyright). Until ICEL's letter of permission arrives the
+ * bundled file exists only in debug builds (see :shared:syncIcelDraft), and screens show the texts
+ * only when [PERMISSION_GRANTED] or isDebugBuild(); then flip [PERMISSION_GRANTED].
+ */
+object IcelTexts {
+    const val PERMISSION_GRANTED = false
+
+    private val json = Json { ignoreUnknownKeys = true }
+    private var cached: IcelResponsesFile? = null
+    private var loaded = false
+
+    private suspend fun file(language: String): IcelResponsesFile? {
+        if (language != "en") return null
+        if (!loaded) {
+            loaded = true
+            cached = runCatching {
+                json.decodeFromString<IcelResponsesFile>(Res.readBytes("files/content/ordo/icel/mass_responses.en.json").decodeToString())
+            }.getOrNull()
+        }
+        return cached
+    }
+
+    suspend fun responses(language: String): Map<String, List<SpokenLine>> = file(language)?.parts.orEmpty()
+    suspend fun credit(language: String): String? = file(language)?.credit
+
+    /** Parts whose whole Missal text these lines supply, so their "to be added" slot can go. */
+    val completeParts = setOf("gloria", "creed", "sanctus", "greeting", "lords_prayer", "dismissal")
+
+    /** Splits a reading's dialogue: the announcement before the text, "The word of the Lord" after it. */
+    fun aroundReading(lines: List<SpokenLine>): Pair<List<SpokenLine>, List<SpokenLine>> {
+        val i = lines.indexOfFirst { it.text.startsWith("The word of the Lord") || it.text.startsWith("The Gospel of the Lord") }
+        return if (i < 0) lines to emptyList() else lines.take(i) to lines.drop(i)
+    }
+}
 
 /** The Mass of one day, laid out part by part. */
 data class MassPlan(
@@ -106,6 +154,7 @@ object OrderOfMass {
             return MassPlan(day, celebration, readings, season, wordParts, noMassNote = noMass)
         }
 
+        val responses = IcelTexts.responses(language)
         val parts = text.sections.flatMap { section ->
             section.parts.mapNotNull { part ->
                 val reading = part.reading?.let { kind -> readings?.readings?.firstOrNull { it.kind.name == kind } }
@@ -117,7 +166,7 @@ object OrderOfMass {
                 }
                 if (!include) return@mapNotNull null
                 val rubric = if (season == LiturgicalSeason.LENT) part.rubricLent ?: part.rubric else part.rubric
-                PlannedPart(section, part, rubric, reading)
+                PlannedPart(section, part, rubric, reading, responses[part.id].orEmpty())
             }
         }
         return MassPlan(day, celebration, readings, season, parts)

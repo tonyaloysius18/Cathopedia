@@ -33,3 +33,7 @@ tools/translate/work/
 tools/audio/google-tts.key
 tools/audio/cache/
 tools/audio/dist/
+
+# ICEL Missal texts: kept local (public repo) until ICEL grants written permission; see content/icel/README
+content/icel/*.json
+shared/src/commonMain/composeResources/files/content/ordo/icel/

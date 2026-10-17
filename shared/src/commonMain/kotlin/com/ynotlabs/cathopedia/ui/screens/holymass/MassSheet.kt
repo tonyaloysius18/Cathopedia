@@ -50,6 +50,8 @@ import com.ynotlabs.cathopedia.liturgical.OrdoCalendar
 import com.ynotlabs.cathopedia.liturgical.OrdoProfile
 import com.ynotlabs.cathopedia.liturgical.OrdoRank
 import com.ynotlabs.cathopedia.liturgical.PlannedPart
+import com.ynotlabs.cathopedia.liturgical.IcelTexts
+import com.ynotlabs.cathopedia.liturgical.SpokenLine
 import com.ynotlabs.cathopedia.liturgical.ReadingText
 import com.ynotlabs.cathopedia.liturgical.ReadingTexts
 import com.ynotlabs.cathopedia.ui.components.isDebugBuild
@@ -180,6 +182,10 @@ internal fun MassSheet(
                             Text(it, color = colors.onSurfaceVariant, fontSize = 10.sp, lineHeight = 14.sp,
                                 modifier = Modifier.padding(top = 4.dp))
                         }
+                        val showIcel = planned.responses.isNotEmpty() && (IcelTexts.PERMISSION_GRANTED || isDebugBuild())
+                        val (beforeReading, afterReading) =
+                            if (showIcel) IcelTexts.aroundReading(planned.responses) else emptyList<SpokenLine>() to emptyList()
+                        beforeReading.forEach { SheetLine(it, scale) }
                         planned.reading?.let { reading ->
                             if (reading.kind == LectionaryKind.PSALM) MissalLine(t["screen.mass.refrain_line"])
                             SheetReading(reading, scale)
@@ -190,11 +196,22 @@ internal fun MassSheet(
                             }
                         }
                         // A part can have both: said text (e.g. Lamb of God) and Missal text still pending (the priest's prayer).
-                        if (planned.part.missal != null) MissalLine(t["screen.mass.missal_line"])
+                        afterReading.forEach { SheetLine(it, scale) }
+                        if (planned.part.missal != null && !(showIcel && planned.part.id in IcelTexts.completeParts)) {
+                            MissalLine(t["screen.mass.missal_line"])
+                        }
                     }
                 }
             }
 
+            if ((IcelTexts.PERMISSION_GRANTED || isDebugBuild()) && plan.parts.any { it.responses.isNotEmpty() }) {
+                Text(
+                    (if (IcelTexts.PERMISSION_GRANTED) "" else "DRAFT · awaiting ICEL permission · ") +
+                        "Excerpts from the English translation of The Roman Missal © 2010, International Commission on English in the Liturgy Corporation. All rights reserved.",
+                    color = colors.onSurfaceVariant, fontSize = 10.sp, lineHeight = 14.sp,
+                    modifier = Modifier.padding(top = 16.dp),
+                )
+            }
             note?.let { n ->
                 Spacer(Modifier.height(26.dp))
                 Text(t["screen.mass.reflection"].uppercase(), color = colors.primary, fontSize = 12.sp,
@@ -261,6 +278,24 @@ private fun Speaker(who: String, line: String, scale: Float) {
         },
         color = MaterialTheme.colorScheme.onSurface, fontSize = (17 * scale).sp, lineHeight = (26 * scale).sp,
     )
+}
+
+/** One dialogue line on the sheet: "People: And with your spirit." with the people's words in bold. */
+@Composable
+private fun SheetLine(line: SpokenLine, scale: Float) {
+    Text(
+        buildAnnotatedString {
+            withStyle(SpanStyle(fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.primary)) { append("${line.who}: ") }
+            if (line.isPeople) withStyle(SpanStyle(fontWeight = FontWeight.Bold)) { append(line.text) } else append(line.text)
+        },
+        color = MaterialTheme.colorScheme.onSurface, fontFamily = FontFamily.Serif,
+        fontSize = (17 * scale).sp, lineHeight = (26 * scale).sp,
+        modifier = Modifier.padding(vertical = 3.dp),
+    )
+    line.note?.let {
+        Text(it, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = (12 * scale).sp, lineHeight = (17 * scale).sp,
+            fontStyle = FontStyle.Italic)
+    }
 }
 
 @Composable

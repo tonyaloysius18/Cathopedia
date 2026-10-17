@@ -299,6 +299,26 @@ val compileContent by tasks.registering {
 // validation fails the build on an undeclared-dependency race. Broad name
 // match rather than an exhaustive list, since Compose Resources' internal
 // task set has changed across versions and will again.
+// ICEL's 2010 Missal texts (dialogues and people's parts) may not be published until ICEL's
+// letter of permission arrives (see content/icel/README.md). The source is git-ignored; this task
+// copies it into the bundled resources for debug builds only and removes it for any release build.
+val syncIcelDraft by tasks.registering {
+    group = "content"
+    description = "Copies the local ICEL draft texts into resources for debug builds only."
+    val source = rootProject.layout.projectDirectory.dir("content/icel").asFile
+    val target = layout.projectDirectory.dir("src/commonMain/composeResources/files/content/ordo/icel").asFile
+    val release = gradle.startParameter.taskNames.any { it.contains("Release", ignoreCase = true) } ||
+        System.getenv("CONFIGURATION")?.equals("Release", ignoreCase = true) == true
+    outputs.upToDateWhen { false }
+    doLast {
+        target.deleteRecursively()
+        if (!release && source.isDirectory) {
+            source.listFiles { f -> f.isFile && f.extension == "json" }?.forEach { it.copyTo(target.resolve(it.name), overwrite = true) }
+        }
+    }
+}
+
 tasks.matching { it.name.contains("Resources") }.configureEach {
     if (name != compileContent.name) dependsOn(compileContent)
+    if (name != syncIcelDraft.name) dependsOn(syncIcelDraft)
 }
