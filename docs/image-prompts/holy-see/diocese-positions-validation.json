@@ -1,0 +1,162 @@
+[
+  {
+    "asset": "diocese_position_vg",
+    "size": [
+      1024,
+      1024
+    ],
+    "alpha": true,
+    "transparentPixels": 488389,
+    "webpBytes": 75976
+  },
+  {
+    "asset": "diocese_position_ev",
+    "size": [
+      1024,
+      1024
+    ],
+    "alpha": true,
+    "transparentPixels": 441198,
+    "webpBytes": 109742
+  },
+  {
+    "asset": "diocese_position_chancellor",
+    "size": [
+      1024,
+      1024
+    ],
+    "alpha": true,
+    "transparentPixels": 443007,
+    "webpBytes": 97582
+  },
+  {
+    "asset": "diocese_position_consultors",
+    "size": [
+      1024,
+      1024
+    ],
+    "alpha": true,
+    "transparentPixels": 295069,
+    "webpBytes": 94334
+  },
+  {
+    "asset": "diocese_position_dean",
+    "size": [
+      1024,
+      1024
+    ],
+    "alpha": true,
+    "transparentPixels": 265285,
+    "webpBytes": 109944
+  },
+  {
+    "asset": "diocese_position_judicial",
+    "size": [
+      1024,
+      1024
+    ],
+    "alpha": true,
+    "transparentPixels": 449447,
+    "webpBytes": 100492
+  },
+  {
+    "asset": "diocese_position_finance",
+    "size": [
+      1024,
+      1024
+    ],
+    "alpha": true,
+    "transparentPixels": 433178,
+    "webpBytes": 108602
+  },
+  {
+    "asset": "diocese_position_presbyteral",
+    "size": [
+      1024,
+      1024
+    ],
+    "alpha": true,
+    "transparentPixels": 356371,
+    "webpBytes": 118112
+  },
+  {
+    "asset": "diocese_position_moderator",
+    "size": [
+      1024,
+      1024
+    ],
+    "alpha": true,
+    "transparentPixels": 544740,
+    "webpBytes": 76196
+  },
+  {
+    "asset": "diocese_position_seminary",
+    "size": [
+      1024,
+      1024
+    ],
+    "alpha": true,
+    "transparentPixels": 278030,
+    "webpBytes": 103526
+  },
+  {
+    "asset": "diocese_position_pastor",
+    "size": [
+      1024,
+      1024
+    ],
+    "alpha": true,
+    "transparentPixels": 433345,
+    "webpBytes": 121736
+  },
+  {
+    "asset": "diocese_position_parochial",
+    "size": [
+      1024,
+      1024
+    ],
+    "alpha": true,
+    "transparentPixels": 476121,
+    "webpBytes": 121370
+  },
+  {
+    "asset": "diocese_position_cathedral",
+    "size": [
+      1024,
+      1024
+    ],
+    "alpha": true,
+    "transparentPixels": 454253,
+    "webpBytes": 171916
+  },
+  {
+    "asset": "diocese_position_catechesis",
+    "size": [
+      1024,
+      1024
+    ],
+    "alpha": true,
+    "transparentPixels": 416722,
+    "webpBytes": 116982
+  },
+  {
+    "asset": "diocese_position_liturgy",
+    "size": [
+      1024,
+      1024
+    ],
+    "alpha": true,
+    "transparentPixels": 483695,
+    "webpBytes": 122954
+  },
+  {
+    "asset": "diocese_position_chaplain",
+    "size": [
+      1024,
+      1024
+    ],
+    "alpha": true,
+    "transparentPixels": 504687,
+    "webpBytes": 115836
+  }
+]

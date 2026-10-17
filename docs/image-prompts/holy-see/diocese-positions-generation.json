@@ -1,0 +1,90 @@
+{
+  "tool": "built-in image_gen",
+  "basePrompt": "Use case: illustration-story. Asset for Cathopedia educational carousel: one separate square 1024x1024 realistic classical oil-painted portrait, detailed natural skin and fabric, soft warm light from upper left. Waist-up three-quarter view, head in upper third, figure fills about 90% of height, dignified natural expression. True transparent background with alpha, isolated cutout; no room, landscape or background scenery, no frame. Fictional people only, no likeness to any real cleric. Standard dress black diocesan priest cassock with simple black buttons and white Roman collar unless specified otherwise. No text, letters, numbers, writing or symbols resembling writing anywhere, including books, papers, maps. No watermark or signature. No mitre, zucchetto, scarlet or purple clothing except the explicitly requested violet stole/ritual book. No cartoon, watercolor, flat vector, anime. Each requested asset a distinct man. ",
+  "assets": [
+    {
+      "asset": "diocese_position_vg",
+      "prompt": "Vicar General: mature man about 60, Mediterranean olive complexion, broad face, grey temples, clean shaven. Holds a closed dark brown leather folio with one small gold cross on cover; calm authoritative look."
+    },
+    {
+      "asset": "diocese_position_ev",
+      "prompt": "Episcopal Vicar: East Asian man about 50, slender build, short black hair grey at sides. Holds an unrolled wordless parchment map of a region with tiny church silhouettes; looks down thoughtfully. No marks resembling text."
+    },
+    {
+      "asset": "diocese_position_chancellor",
+      "prompt": "Chancellor: Black African man about 45, glasses, short tightly curled hair. Holds a heavy bound register under one arm and fountain pen in other hand; old wax seal hanging from ribbon on register. All book surfaces blank."
+    },
+    {
+      "asset": "diocese_position_consultors",
+      "prompt": "College of Consultors GROUP: five fictional priests of different ages (35 to70), different builds and ethnicities stand close together in conversation, waist-up. Centre priest speaks with one open hand. Black cassocks white collars; group fills square, all five faces distinct, no scenery or props."
+    },
+    {
+      "asset": "diocese_position_dean",
+      "prompt": "Vicar Forane (Dean): elderly South Asian man about68, grey hair, warm expression, hand on shoulder of a younger African priest cropped at right frame edge, gesture of elder brother. Both black cassocks white collars."
+    },
+    {
+      "asset": "diocese_position_judicial",
+      "prompt": "Judicial Vicar: serious attentive light-skinned man about55, balding, short grey beard. Holds slim red canon law book with completely blank cover and sheet of blank wordless paper; one small brass balance scale beside him."
+    },
+    {
+      "asset": "diocese_position_finance",
+      "prompt": "Finance Officer (Economus): Filipino lay man about48, sturdy build, dark suit and tie rather than priest cassock. Holds open ledger with blank ruled columns NO NUMBERS OR TEXT, and pencil."
+    },
+    {
+      "asset": "diocese_position_presbyteral",
+      "prompt": "Presbyteral Council Member: Latino priest about42, wavy dark hair, clean-shaven. Seated at edge of council table (only small near corner visible), leaning forward to speak, one hand raised explaining. Black cassock white collar."
+    },
+    {
+      "asset": "diocese_position_moderator",
+      "prompt": "Moderator of Curia: Black African priest about58, tall lean build, close-cropped grey hair. Stands holding clipboard of completely blank papers, glances to side as coordinating others, alert organised look."
+    },
+    {
+      "asset": "diocese_position_seminary",
+      "prompt": "Seminary Rector: white European priest about62, stocky, silver hair, clean-shaven. Holds stack of three blank-cover books against chest; young East Asian seminarian in black cassock cropped at frame edge beside him."
+    },
+    {
+      "asset": "diocese_position_pastor",
+      "prompt": "Parish Priest Pastor: Pacific Islander man about50, broad build, black short hair, warm welcoming smile. Green chasuble with simple gold cross over white alb, arms open greeting at Mass. No additional props."
+    },
+    {
+      "asset": "diocese_position_parochial",
+      "prompt": "Parochial Vicar Curate: youngest man about30, North African olive skin, short curly dark hair, clean-shaven. White surplice and violet stole over black cassock, holding small purple ritual book, all book surfaces completely blank."
+    },
+    {
+      "asset": "diocese_position_cathedral",
+      "prompt": "Rector of Cathedral: elderly East Asian man about65, slender, silver hair. Black cassock with white surplice choir dress; holds ring of large old iron church keys; small isolated stone Gothic pinnacle beside him, no building or scenery."
+    },
+    {
+      "asset": "diocese_position_catechesis",
+      "prompt": "Director of Catechesis: Black Caribbean man about38, round face, short natural curls, smiling teaching expression. Holds open children's catechism with picture pages only, simple small illustrations of bread and sheep, absolutely no text. Black cassock white collar."
+    },
+    {
+      "asset": "diocese_position_liturgy",
+      "prompt": "Director of Liturgy: Indian priest about52, slim, black hair with grey, neat moustache. Holds large red altar missal closed against chest, blank cover except simple small gold cross; lit brass altar candlestick beside him."
+    },
+    {
+      "asset": "diocese_position_chaplain",
+      "prompt": "Hospital Chaplain: white European man about57, receding brown-grey hair, short beard, kind compassionate face. Black clerical shirt and white collar with purple stole over shoulders, holding small round golden pyx. No other props."
+    }
+  ],
+  "export": {
+    "pngMaster": "content/hub/holy_see/<asset>.png",
+    "appAsset": "shared/src/commonMain/composeResources/drawable/<asset>.webp",
+    "size": [
+      1024,
+      1024
+    ],
+    "webpQuality": 82,
+    "alphaPreserved": true
+  },
+  "corrections": [
+    {
+      "asset": "diocese_position_ev",
+      "prompt": "Edit only the priest's clothing: REMOVE the purple stole completely. Show plain black diocesan cassock with simple black buttons and white Roman collar, with no stole or colored trim. Preserve exact face, pose, hands, wordless parchment map, realistic painted style and lighting. True transparent alpha background. No text, letters, numbers or watermark. Square."
+    },
+    {
+      "asset": "diocese_position_chaplain",
+      "prompt": "Change only black garment: this hospital chaplain wears a normal black short-sleeved clerical SHIRT with white Roman collar tab, NOT a cassock or robe. Remove cassock waist sash and cassock style buttons, shirt simple black ordinary shirt. Preserve exact man face, purple stole over shoulders, round golden pyx in hands, pose, warm painted style and transparent alpha background. No writing, text, watermark. Square."
+    }
+  ]
+}

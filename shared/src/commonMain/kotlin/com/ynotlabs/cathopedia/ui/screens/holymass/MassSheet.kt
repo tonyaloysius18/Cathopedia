@@ -4,7 +4,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,11 +17,18 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,6 +36,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -55,6 +65,7 @@ import com.ynotlabs.cathopedia.liturgical.SpokenLine
 import com.ynotlabs.cathopedia.liturgical.ReadingText
 import com.ynotlabs.cathopedia.liturgical.ReadingTexts
 import com.ynotlabs.cathopedia.ui.components.isDebugBuild
+import kotlinx.coroutines.launch
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.plus
@@ -68,6 +79,7 @@ private data class WeekDay(val date: LocalDate, val name: String, val color: Str
  * week ahead. Cathopedia's own notes appear only once a priest has approved them (drafts are
  * visible in development builds, marked as drafts).
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun MassSheet(
     plan: MassPlan,
@@ -98,156 +110,180 @@ internal fun MassSheet(
         }
     }
 
+    val listState = rememberLazyListState()
+    val scope = rememberCoroutineScope()
+    var showParts by remember { mutableStateOf(false) }
+    LaunchedEffect(plan.day.date, plan.celebration.key) { listState.scrollToItem(0) }
     val scale = textScale
     val body = (17 * scale).sp
     val bodyLine = (26 * scale).sp
-    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
-        Column(
-            Modifier.widthIn(max = 760.dp).fillMaxSize().verticalScroll(rememberScrollState())
-                .navigationBarsPadding().padding(horizontal = 20.dp, vertical = 12.dp),
-        ) {
-            // Masthead
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Box(
-                    Modifier.size(12.dp).clip(CircleShape).background(vestmentColor(plan.celebration.colors.firstOrNull()))
-                        .border(1.dp, colors.outline, CircleShape),
-                )
-                Spacer(Modifier.width(8.dp))
-                Text(
-                    "${rankLabel(plan.celebration, plan.day.date).uppercase()}  ·  ${dateLabel(plan.day.date)}",
-                    color = colors.primary, fontSize = 11.sp, fontWeight = FontWeight.Bold, letterSpacing = 0.8.sp,
-                )
-            }
-            Spacer(Modifier.height(6.dp))
-            Text(plan.celebration.name, color = colors.onSurface, fontFamily = FontFamily.Serif,
-                fontSize = (26 * scale).sp, lineHeight = (32 * scale).sp)
-            Text(
-                t["screen.mass.cycle"].replace("{sunday}", plan.day.sundayCycle.toString())
-                    .replace("{weekday}", if (plan.day.weekdayCycle == 1) "I" else "II"),
-                color = colors.onSurfaceVariant, fontSize = 12.sp,
-            )
-            plan.day.celebrations.filter { it.key != plan.celebration.key && it.rank <= OrdoRank.OPTIONAL_MEMORIAL && it.rank != OrdoRank.COMMEMORATION }
-                .forEach { alt ->
-                    Text("› ${alt.name}", color = colors.primary, fontSize = 13.sp,
-                        modifier = Modifier.clip(RoundedCornerShape(6.dp)).clickable { onCelebrationChosen(alt.key) }.padding(vertical = 4.dp))
-                }
-            plan.noMassNote?.let {
-                Spacer(Modifier.height(10.dp))
-                Text(it, color = colors.onSurface, fontSize = body, lineHeight = bodyLine)
-            }
+    MassReaderOverlay(content = { bottomClearance ->
+        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
+            LazyColumn(
+                state = listState,
+                contentPadding = PaddingValues(bottom = bottomClearance),
+                modifier = Modifier.widthIn(max = 760.dp).fillMaxSize(),
+            ) {
+                item {
+                    CelebrationMasthead(plan)
+                    Column(Modifier.padding(horizontal = 20.dp)) {
+                        plan.day.celebrations.filter { it.key != plan.celebration.key && it.rank <= OrdoRank.OPTIONAL_MEMORIAL && it.rank != OrdoRank.COMMEMORATION }
+                            .forEach { alt ->
+                            Text("› ${alt.name}", color = colors.primary, fontSize = 13.sp,
+                                modifier = Modifier.clip(RoundedCornerShape(6.dp)).clickable { onCelebrationChosen(alt.key) }.padding(vertical = 4.dp))
+                        }
+                        plan.noMassNote?.let {
+                            Spacer(Modifier.height(10.dp))
+                            Text(it, color = colors.onSurface, fontSize = body, lineHeight = bodyLine)
+                        }
 
-            note?.let { n ->
-                if (!n.approved) DraftBanner(t["screen.mass.draft_note"])
-                SheetHeading(t["screen.mass.introduction"])
-                Text(n.introduction, color = colors.onSurface, fontSize = body, lineHeight = bodyLine, fontStyle = FontStyle.Italic)
-            }
+                        note?.let { n ->
+                            if (!n.approved) DraftBanner(t["screen.mass.draft_note"])
+                            SheetHeading(t["screen.mass.introduction"])
+                            Text(n.introduction, color = colors.onSurface, fontSize = body, lineHeight = bodyLine, fontStyle = FontStyle.Italic)
+                        }
 
-            var studyNoteShown = false
-            plan.parts.forEachIndexed { index, planned ->
-                if (index == 0 || plan.parts[index - 1].section.id != planned.section.id) {
-                    Spacer(Modifier.height(22.dp))
-                    Text(planned.section.title.uppercase(), color = colors.primary, fontSize = 12.sp,
-                        fontWeight = FontWeight.Bold, letterSpacing = 1.sp)
-                    HorizontalDivider(color = colors.primary.copy(alpha = 0.35f), modifier = Modifier.padding(top = 4.dp))
+                    }
                 }
-                when {
-                    planned.part.homily -> Unit // the reflection below stands in for homily notes
-                    planned.part.intentions -> {
-                        SheetHeading(t["screen.mass.prayer_faithful"])
-                        val pof = note?.prayerOfTheFaithful
-                        if (pof == null) {
-                            MissalLine(planned.rubric) // no approved intentions yet: describe the part instead
-                        } else {
-                            Speaker(t["screen.mass.celebrant_short"], pof.invitation, scale)
-                            Spacer(Modifier.height(6.dp))
-                            Text(
-                                buildAnnotatedString {
-                                    withStyle(SpanStyle(fontWeight = FontWeight.Bold)) { append("${t["screen.mass.response"]}: ") }
-                                    append(pof.response)
-                                },
-                                color = colors.onSurface, fontSize = body, lineHeight = bodyLine,
-                            )
-                            pof.intentions.forEachIndexed { i, intention ->
+                itemsIndexed(plan.parts) { index, planned ->
+                    Column(Modifier.padding(horizontal = 20.dp)) {
+                        if (index == 0 || plan.parts[index - 1].section.id != planned.section.id) {
+                            Spacer(Modifier.height(22.dp))
+                            Text(planned.section.title, color = colors.onSurface, fontSize = (26 * scale).sp,
+                                lineHeight = (32 * scale).sp, fontFamily = FontFamily.Serif)
+                            Spacer(Modifier.height(12.dp))
+                        }
+                        when {
+                            planned.part.homily -> Unit // the reflection below stands in for homily notes
+                            planned.part.intentions -> {
+                                SheetHeading(t["screen.mass.prayer_faithful"])
+                                MassPostureBadges(planned.part.id, profile, plan.celebration.key,
+                                    previousPartId = plan.parts.getOrNull(index - 1)?.part?.id)
+                                val pof = note?.prayerOfTheFaithful
+                                if (pof == null) {
+                                    MissalLine(planned.rubric) // no approved intentions yet: describe the part instead
+                                } else {
+                                    Speaker(t["screen.mass.celebrant_short"], pof.invitation, scale)
+                                    Spacer(Modifier.height(6.dp))
+                                    Text(
+                                        buildAnnotatedString {
+                                            withStyle(SpanStyle(fontWeight = FontWeight.Bold)) { append("${t["screen.mass.response"]}: ") }
+                                            append(pof.response)
+                                        },
+                                        color = colors.onSurface, fontSize = body, lineHeight = bodyLine,
+                                    )
+                                    pof.intentions.forEachIndexed { i, intention ->
+                                        Spacer(Modifier.height(6.dp))
+                                        Text("${i + 1}. $intention", color = colors.onSurface, fontSize = body, lineHeight = bodyLine)
+                                    }
+                                    Spacer(Modifier.height(6.dp))
+                                    Speaker(t["screen.mass.celebrant_short"], pof.conclusion, scale)
+                                }
+                            }
+                            else -> {
+                                SheetHeading(sheetTitle(planned, language))
+                                MassPostureBadges(planned.part.id, profile, plan.celebration.key,
+                                    previousPartId = plan.parts.getOrNull(index - 1)?.part?.id)
                                 Spacer(Modifier.height(6.dp))
-                                Text("${i + 1}. $intention", color = colors.onSurface, fontSize = body, lineHeight = bodyLine)
+                                planned.part.text?.let { Text(it, color = colors.onSurface, fontFamily = FontFamily.Serif, fontSize = body, lineHeight = bodyLine) }
+                                planned.part.textCredit?.let {
+                                    Text(it, color = colors.onSurfaceVariant, fontSize = 10.sp, lineHeight = 14.sp,
+                                        modifier = Modifier.padding(top = 4.dp))
+                                }
+                                val showIcel = planned.responses.isNotEmpty() && (IcelTexts.PERMISSION_GRANTED || isDebugBuild())
+                                val (beforeReading, afterReading) =
+                                    if (showIcel) IcelTexts.aroundReading(planned.responses) else emptyList<SpokenLine>() to emptyList()
+                                beforeReading.forEach { SheetLine(it, scale) }
+                                planned.reading?.let { reading ->
+                                    if (reading.kind == LectionaryKind.PSALM) MissalLine(t["screen.mass.refrain_line"])
+                                    SheetReading(reading, scale)
+                                    if (reading.kind != LectionaryKind.SEQUENCE &&
+                                        plan.parts.take(index).none { it.reading?.kind?.let { kind -> kind != LectionaryKind.SEQUENCE } == true }) {
+                                        Text(text.readingStudyNote, color = colors.onSurfaceVariant, fontSize = 11.sp,
+                                            lineHeight = 15.sp, fontStyle = FontStyle.Italic, modifier = Modifier.padding(top = 6.dp))
+                                    }
+                                }
+                                afterReading.forEach { SheetLine(it, scale) }
+                                // A part can have both: said text (e.g. Lamb of God) and Missal text still pending (the priest's prayer).
+                                if (planned.part.missal != null && !(showIcel && planned.part.id in IcelTexts.completeParts)) {
+                                    MissalLine(t["screen.mass.missal_line"])
+                                }
                             }
-                            Spacer(Modifier.height(6.dp))
-                            Speaker(t["screen.mass.celebrant_short"], pof.conclusion, scale)
                         }
                     }
-                    else -> {
-                        SheetHeading(sheetTitle(planned, language))
-                        planned.part.text?.let { Text(it, color = colors.onSurface, fontFamily = FontFamily.Serif, fontSize = body, lineHeight = bodyLine) }
-                        planned.part.textCredit?.let {
-                            Text(it, color = colors.onSurfaceVariant, fontSize = 10.sp, lineHeight = 14.sp,
-                                modifier = Modifier.padding(top = 4.dp))
+
+                }
+                item {
+                    Column(Modifier.padding(horizontal = 20.dp)) {
+                        if ((IcelTexts.PERMISSION_GRANTED || isDebugBuild()) && plan.parts.any { it.responses.isNotEmpty() }) {
+                            Text(
+                                (if (IcelTexts.PERMISSION_GRANTED) "" else "DRAFT · awaiting ICEL permission · ") +
+                                    "Excerpts from the English translation of The Roman Missal © 2010, International Commission on English in the Liturgy Corporation. All rights reserved.",
+                                color = colors.onSurfaceVariant, fontSize = 10.sp, lineHeight = 14.sp,
+                                modifier = Modifier.padding(top = 16.dp),
+                            )
                         }
-                        val showIcel = planned.responses.isNotEmpty() && (IcelTexts.PERMISSION_GRANTED || isDebugBuild())
-                        val (beforeReading, afterReading) =
-                            if (showIcel) IcelTexts.aroundReading(planned.responses) else emptyList<SpokenLine>() to emptyList()
-                        beforeReading.forEach { SheetLine(it, scale) }
-                        planned.reading?.let { reading ->
-                            if (reading.kind == LectionaryKind.PSALM) MissalLine(t["screen.mass.refrain_line"])
-                            SheetReading(reading, scale)
-                            if (!studyNoteShown && reading.kind != LectionaryKind.SEQUENCE) {
-                                studyNoteShown = true
-                                Text(text.readingStudyNote, color = colors.onSurfaceVariant, fontSize = 11.sp,
-                                    lineHeight = 15.sp, fontStyle = FontStyle.Italic, modifier = Modifier.padding(top = 6.dp))
+                        note?.let { n ->
+                            Spacer(Modifier.height(26.dp))
+                            Text(t["screen.mass.reflection"].uppercase(), color = colors.primary, fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold, letterSpacing = 1.sp)
+                            HorizontalDivider(color = colors.primary.copy(alpha = 0.35f), modifier = Modifier.padding(top = 4.dp, bottom = 8.dp))
+                            Text(n.reflection.title, color = colors.onSurface, fontFamily = FontFamily.Serif,
+                                fontSize = (21 * scale).sp, lineHeight = (27 * scale).sp)
+                            Spacer(Modifier.height(8.dp))
+                            n.reflection.body.split("\n\n").forEach { paragraph ->
+                                Text(paragraph, color = colors.onSurface, fontFamily = FontFamily.Serif, fontSize = body, lineHeight = bodyLine)
+                                Spacer(Modifier.height(10.dp))
+                            }
+                            Text("— ${n.reflection.author}", color = colors.onSurfaceVariant, fontSize = 12.sp, fontStyle = FontStyle.Italic)
+                        }
+
+                        if (week.isNotEmpty()) {
+                            Spacer(Modifier.height(26.dp))
+                            Text(t["screen.mass.week_ahead"].uppercase(), color = colors.primary, fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold, letterSpacing = 1.sp)
+                            HorizontalDivider(color = colors.primary.copy(alpha = 0.35f), modifier = Modifier.padding(top = 4.dp, bottom = 6.dp))
+                            week.forEach { d ->
+                                Row(verticalAlignment = Alignment.Top, modifier = Modifier.padding(vertical = 5.dp)) {
+                                    Box(
+                                        Modifier.padding(top = 5.dp).size(9.dp).clip(CircleShape).background(vestmentColor(d.color))
+                                        .border(1.dp, colors.outline, CircleShape),
+                                    )
+                                    Spacer(Modifier.width(8.dp))
+                                    Column {
+                                        Text("${dateLabel(d.date)} · ${d.name}", color = colors.onSurface, fontSize = (13.5f * scale).sp,
+                                            fontWeight = FontWeight.SemiBold)
+                                        Text(d.readings, color = colors.onSurfaceVariant, fontSize = (12.5f * scale).sp)
+                                    }
+                                }
                             }
                         }
-                        // A part can have both: said text (e.g. Lamb of God) and Missal text still pending (the priest's prayer).
-                        afterReading.forEach { SheetLine(it, scale) }
-                        if (planned.part.missal != null && !(showIcel && planned.part.id in IcelTexts.completeParts)) {
-                            MissalLine(t["screen.mass.missal_line"])
-                        }
+                        Spacer(Modifier.height(32.dp))
                     }
                 }
             }
-
-            if ((IcelTexts.PERMISSION_GRANTED || isDebugBuild()) && plan.parts.any { it.responses.isNotEmpty() }) {
-                Text(
-                    (if (IcelTexts.PERMISSION_GRANTED) "" else "DRAFT · awaiting ICEL permission · ") +
-                        "Excerpts from the English translation of The Roman Missal © 2010, International Commission on English in the Liturgy Corporation. All rights reserved.",
-                    color = colors.onSurfaceVariant, fontSize = 10.sp, lineHeight = 14.sp,
-                    modifier = Modifier.padding(top = 16.dp),
-                )
+        }
+    }, controls = {
+        Row(
+            Modifier.fillMaxWidth().navigationBarsPadding()
+                .padding(horizontal = 20.dp, vertical = 6.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center,
+        ) {
+            TextButton(onClick = { showParts = true }, enabled = plan.parts.isNotEmpty()) {
+                Icon(Icons.AutoMirrored.Filled.List, null, modifier = Modifier.size(20.dp))
+                Spacer(Modifier.width(8.dp))
+                Text(t["screen.mass.parts"], color = colors.onSurface)
             }
-            note?.let { n ->
-                Spacer(Modifier.height(26.dp))
-                Text(t["screen.mass.reflection"].uppercase(), color = colors.primary, fontSize = 12.sp,
-                    fontWeight = FontWeight.Bold, letterSpacing = 1.sp)
-                HorizontalDivider(color = colors.primary.copy(alpha = 0.35f), modifier = Modifier.padding(top = 4.dp, bottom = 8.dp))
-                Text(n.reflection.title, color = colors.onSurface, fontFamily = FontFamily.Serif,
-                    fontSize = (21 * scale).sp, lineHeight = (27 * scale).sp)
-                Spacer(Modifier.height(8.dp))
-                n.reflection.body.split("\n\n").forEach { paragraph ->
-                    Text(paragraph, color = colors.onSurface, fontFamily = FontFamily.Serif, fontSize = body, lineHeight = bodyLine)
-                    Spacer(Modifier.height(10.dp))
-                }
-                Text("— ${n.reflection.author}", color = colors.onSurfaceVariant, fontSize = 12.sp, fontStyle = FontStyle.Italic)
+        }
+    })
+    if (showParts && plan.parts.isNotEmpty()) {
+        ModalBottomSheet(onDismissRequest = { showParts = false }) {
+            PartsIndex(plan, (listState.firstVisibleItemIndex - 1).coerceIn(0, plan.parts.lastIndex),
+                Modifier.fillMaxWidth().padding(bottom = 24.dp)) { index ->
+                showParts = false
+                scope.launch { listState.scrollToItem(index + 1) }
             }
-
-            if (week.isNotEmpty()) {
-                Spacer(Modifier.height(26.dp))
-                Text(t["screen.mass.week_ahead"].uppercase(), color = colors.primary, fontSize = 12.sp,
-                    fontWeight = FontWeight.Bold, letterSpacing = 1.sp)
-                HorizontalDivider(color = colors.primary.copy(alpha = 0.35f), modifier = Modifier.padding(top = 4.dp, bottom = 6.dp))
-                week.forEach { d ->
-                    Row(verticalAlignment = Alignment.Top, modifier = Modifier.padding(vertical = 5.dp)) {
-                        Box(
-                            Modifier.padding(top = 5.dp).size(9.dp).clip(CircleShape).background(vestmentColor(d.color))
-                                .border(1.dp, colors.outline, CircleShape),
-                        )
-                        Spacer(Modifier.width(8.dp))
-                        Column {
-                            Text("${dateLabel(d.date)} · ${d.name}", color = colors.onSurface, fontSize = (13.5f * scale).sp,
-                                fontWeight = FontWeight.SemiBold)
-                            Text(d.readings, color = colors.onSurfaceVariant, fontSize = (12.5f * scale).sp)
-                        }
-                    }
-                }
-            }
-            Spacer(Modifier.height(48.dp))
         }
     }
 }
@@ -263,9 +299,11 @@ private fun sheetTitle(planned: PlannedPart, language: String): String {
 
 @Composable
 private fun SheetHeading(title: String) {
-    Spacer(Modifier.height(14.dp))
-    Text(title.uppercase(), color = MaterialTheme.colorScheme.primary, fontSize = 11.sp,
-        fontWeight = FontWeight.Bold, letterSpacing = 0.8.sp)
+    Spacer(Modifier.height(20.dp))
+    HorizontalDivider(color = MaterialTheme.colorScheme.primary.copy(alpha = 0.45f))
+    Text(title.uppercase(), color = MaterialTheme.colorScheme.primary, fontSize = 12.sp,
+        fontWeight = FontWeight.Medium, letterSpacing = 1.sp,
+        modifier = Modifier.padding(vertical = 10.dp))
     Spacer(Modifier.height(4.dp))
 }
 

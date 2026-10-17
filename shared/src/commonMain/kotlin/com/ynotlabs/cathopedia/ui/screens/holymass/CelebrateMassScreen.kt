@@ -1,9 +1,13 @@
 package com.ynotlabs.cathopedia.ui.screens.holymass
 
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -13,7 +17,11 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -32,10 +40,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.filled.List
-import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.TextDecrease
-import androidx.compose.material.icons.filled.TextIncrease
+import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -66,9 +73,15 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.data.CathopediaRepository
+import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.resources.mass_calendar_icon
+import org.jetbrains.compose.resources.painterResource
 import com.ynotlabs.cathopedia.i18n.LocalScreenText
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.liturgical.LectionaryReading
@@ -85,11 +98,11 @@ import com.ynotlabs.cathopedia.liturgical.OrdoProfile
 import com.ynotlabs.cathopedia.liturgical.OrdoRank
 import com.ynotlabs.cathopedia.liturgical.PlannedPart
 import com.ynotlabs.cathopedia.liturgical.IcelTexts
-import com.ynotlabs.cathopedia.ui.components.isDebugBuild
 import com.ynotlabs.cathopedia.liturgical.SpokenLine
+import com.ynotlabs.cathopedia.ui.components.isDebugBuild
 import com.ynotlabs.cathopedia.liturgical.fullBookNameCitation
-import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.ui.components.KeepScreenOn
+import com.ynotlabs.cathopedia.ui.components.CathopediaBackButton
 import com.ynotlabs.cathopedia.ui.theme.LiturgicalAdventLent
 import com.ynotlabs.cathopedia.ui.theme.LiturgicalGaudeteLaetare
 import com.ynotlabs.cathopedia.ui.theme.LiturgicalOrdinary
@@ -119,6 +132,22 @@ fun CelebrateMassScreen(
     language: String,
     onBack: () -> Unit,
 ) {
+    val baseColors = MaterialTheme.colorScheme
+    val readerColors = if (LocalIsDarkTheme.current) baseColors.copy(
+        primary = Color(0xFFD6BE7D), onPrimary = Color(0xFF081D17),
+        background = Color(0xFF081D17), onBackground = Color(0xFFF4EFDF),
+        surface = Color(0xFF0D261E), onSurface = Color(0xFFF4EFDF),
+        onSurfaceVariant = Color(0xFFB7C2B9),
+        surfaceContainerLow = Color(0xFF102D23), surfaceContainerHigh = Color(0xFF17382C),
+        outline = Color(0xFF52675B), outlineVariant = Color(0xFF294638),
+    ) else baseColors
+    MaterialTheme(colorScheme = readerColors) {
+        MassReader(repository, language, onBack)
+    }
+}
+
+@Composable
+private fun MassReader(repository: CathopediaRepository, language: String, onBack: () -> Unit) {
     val s = LocalStrings.current
     val t = LocalScreenText.current
     val colors = MaterialTheme.colorScheme
@@ -142,6 +171,10 @@ fun CelebrateMassScreen(
         loaded = true
     }
 
+    val changeTextScale: (Float) -> Unit = { delta ->
+        textScale = (textScale + delta).coerceIn(0.85f, 1.9f)
+        repository.setPreference(TEXT_SCALE_PREF, textScale.toString())
+    }
     Column(Modifier.fillMaxSize().background(colors.background)) {
         MassHeader(
             title = t["screen.mass.title"],
@@ -153,10 +186,7 @@ fun CelebrateMassScreen(
                 profile = it
                 repository.setPreference(PROFILE_PREF, it.name)
             },
-            onTextScale = { delta ->
-                textScale = (textScale + delta).coerceIn(0.85f, 1.9f)
-                repository.setPreference(TEXT_SCALE_PREF, textScale.toString())
-            },
+            onTextScale = changeTextScale,
             backLabel = s.back,
         )
         ViewToggle(sheetView) {
@@ -181,26 +211,15 @@ fun CelebrateMassScreen(
                 onCelebrationChosen = { celebrationKey = it },
             )
             else -> BoxWithConstraints(Modifier.fillMaxSize()) {
-                val wide = maxWidth >= TwoPaneWidth
-                var cardOpen by remember(current.celebration.key, current.day.date) { mutableStateOf(false) }
-                Column(Modifier.fillMaxSize()) {
-                    if (wide || cardOpen) {
-                        CelebrationCard(
-                            plan = current,
-                            language = language,
-                            onCelebrationChosen = { celebrationKey = it; cardOpen = false },
-                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
-                                .then(if (wide) Modifier else Modifier.clickable { cardOpen = false }),
-                        )
-                    } else {
-                        // On phones the reading needs the room; one line, tap for the full card.
-                        CelebrationStrip(current, onClick = { cardOpen = true })
+                if (maxWidth >= TwoPaneWidth) {
+                    Column(Modifier.fillMaxSize()) {
+                        CelebrationCard(current, language, { celebrationKey = it },
+                            Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
+                        TwoPaneMass(current, omt, language, textScale, profile)
                     }
-                    if (wide) {
-                        TwoPaneMass(current, omt, language, textScale)
-                    } else {
-                        PagedMass(current, omt, language, textScale)
-                    }
+                } else {
+                    PagedMass(current, omt, language, textScale, profile,
+                        onCelebrationChosen = { celebrationKey = it })
                 }
             }
         }
@@ -211,23 +230,34 @@ fun CelebrateMassScreen(
 private fun ViewToggle(sheet: Boolean, onChange: (Boolean) -> Unit) {
     val t = LocalScreenText.current
     val colors = MaterialTheme.colorScheme
-    Row(
-        horizontalArrangement = Arrangement.Center,
-        modifier = Modifier.fillMaxWidth().background(colors.surface).padding(bottom = 8.dp),
-    ) {
-        listOf(false to t["screen.mass.view_guide"], true to t["screen.mass.view_sheet"]).forEach { (isSheet, label) ->
-            val selected = isSheet == sheet
-            Text(
-                label,
-                color = if (selected) colors.primary else colors.onSurfaceVariant,
-                fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
-                fontSize = 14.sp,
-                modifier = Modifier.padding(horizontal = 4.dp).clip(RoundedCornerShape(50))
-                    .background(if (selected) colors.primary.copy(alpha = 0.16f) else Color.Transparent)
-                    .border(1.dp, colors.primary.copy(alpha = if (selected) 0.6f else 0.25f), RoundedCornerShape(50))
-                    .clickable { onChange(isSheet) }
-                    .padding(horizontal = 18.dp, vertical = 7.dp),
+    Box(Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 4.dp), contentAlignment = Alignment.Center) {
+        BoxWithConstraints(
+            Modifier.widthIn(max = 280.dp).fillMaxWidth().clip(CircleShape).background(colors.surfaceContainerLow)
+                .border(1.dp, colors.primary.copy(alpha = 0.6f), CircleShape).padding(3.dp),
+        ) {
+            val halfWidth = maxWidth / 2
+            val selectionOffset by animateDpAsState(
+                targetValue = if (sheet) halfWidth else 0.dp,
+                animationSpec = tween(220), label = "Mass view selection",
             )
+            Box(Modifier.matchParentSize()) {
+                Box(Modifier.offset(x = selectionOffset).width(halfWidth).fillMaxHeight()
+                    .clip(CircleShape).background(colors.primary))
+            }
+            Row(Modifier.fillMaxWidth().selectableGroup()) {
+                listOf(false to t["screen.mass.view_guide"], true to t["screen.mass.view_sheet"]).forEach { (isSheet, label) ->
+                    val selected = isSheet == sheet
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier.weight(1f).heightIn(min = 38.dp).clip(CircleShape)
+                            .selectable(selected = selected, role = Role.Tab, onClick = { onChange(isSheet) })
+                            .padding(horizontal = 12.dp, vertical = 6.dp),
+                    ) {
+                        Text(label, color = if (selected) colors.onPrimary else colors.primary,
+                            fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Medium, fontSize = 14.sp)
+                    }
+                }
+            }
         }
     }
 }
@@ -247,8 +277,8 @@ private fun MassHeader(
     val colors = MaterialTheme.colorScheme
     var calendarMenu by remember { mutableStateOf(false) }
     Column(
-        Modifier.fillMaxWidth().background(colors.surface).statusBarsPadding()
-            .padding(start = 8.dp, end = 8.dp, top = 6.dp, bottom = 6.dp),
+        Modifier.fillMaxWidth().statusBarsPadding()
+            .padding(start = 8.dp, end = 8.dp, top = 2.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             CathopediaBackButton(onClick = onBack, contentDescription = backLabel)
@@ -256,21 +286,16 @@ private fun MassHeader(
                 title,
                 color = colors.onSurface,
                 fontFamily = FontFamily.Serif,
-                // Some languages' titles ("Ordinaire de la messe") are long beside the three icons.
-                fontSize = if (title.length > 14) 19.sp else 24.sp,
+                // Some languages' titles ("Ordinaire de la messe") are long beside the toolbar controls.
+                fontSize = if (title.length > 20) 18.sp else 22.sp,
                 modifier = Modifier.weight(1f).padding(start = 8.dp),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
-            IconButton(onClick = { onTextScale(-0.1f) }) {
-                Icon(Icons.Default.TextDecrease, t["screen.mass.text_size"], tint = colors.primary)
-            }
-            IconButton(onClick = { onTextScale(0.1f) }) {
-                Icon(Icons.Default.TextIncrease, t["screen.mass.text_size"], tint = colors.primary)
-            }
             Box {
-                IconButton(onClick = { calendarMenu = true }) {
-                    Icon(Icons.Default.DateRange, t["screen.mass.calendar"], tint = colors.primary)
+                IconButton(onClick = { calendarMenu = true }, modifier = Modifier.size(48.dp)) {
+                    Image(painterResource(Res.drawable.mass_calendar_icon), t["screen.mass.calendar"],
+                        modifier = Modifier.size(38.dp))
                 }
                 DropdownMenu(expanded = calendarMenu, onDismissRequest = { calendarMenu = false }) {
                     OrdoProfile.entries.forEach { option ->
@@ -290,30 +315,74 @@ private fun MassHeader(
                 }
             }
         }
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            IconButton(onClick = { onDateChange(date.plus(-1, DateTimeUnit.DAY)) }) {
-                Icon(Icons.AutoMirrored.Filled.KeyboardArrowLeft, t["screen.mass.previous"], tint = colors.primary)
-            }
-            Text(
-                text = dateLabel(date),
-                color = colors.onSurface,
-                fontSize = 15.sp,
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.clip(RoundedCornerShape(8.dp))
-                    .clickable { onDateChange(LiturgicalCalendar.today()) }
-                    .padding(horizontal = 10.dp, vertical = 4.dp),
-            )
-            IconButton(onClick = { onDateChange(date.plus(1, DateTimeUnit.DAY)) }) {
-                Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, t["screen.mass.next"], tint = colors.primary)
-            }
-            if (date != LiturgicalCalendar.today()) {
-                TextButton(onClick = { onDateChange(LiturgicalCalendar.today()) }) { Text(t["screen.mass.today"]) }
+        BoxWithConstraints(Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 2.dp)) {
+            val showToday = date != LiturgicalCalendar.today()
+            val separateTodayRow = showToday && maxWidth < 340.dp
+            Column(Modifier.fillMaxWidth()) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(4.dp),
+                    modifier = Modifier.widthIn(max = if (showToday && !separateTodayRow) 372.dp else 304.dp)
+                        .fillMaxWidth().align(Alignment.CenterHorizontally),
+                ) {
+                    TextButton(onClick = { onTextScale(-0.1f) },
+                        modifier = Modifier.width(44.dp).height(44.dp), contentPadding = PaddingValues(0.dp)) {
+                        Text("Aa−", color = colors.primary, fontSize = 14.sp)
+                    }
+                    Box(Modifier.weight(1f), contentAlignment = Alignment.Center) {
+                        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterHorizontally)) {
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.weight(1f, fill = false).widthIn(max = 200.dp).height(36.dp).clip(CircleShape)
+                                    .background(colors.surfaceContainerLow)
+                                    .border(1.dp, colors.primary, CircleShape),
+                            ) {
+                                IconButton(onClick = { onDateChange(date.plus(-1, DateTimeUnit.DAY)) },
+                                    modifier = Modifier.size(32.dp)) {
+                                    Icon(Icons.AutoMirrored.Filled.KeyboardArrowLeft, t["screen.mass.previous"],
+                                        tint = colors.primary, modifier = Modifier.size(20.dp))
+                                }
+                                Text(dateLabel(date), color = colors.onSurface, fontSize = 13.sp,
+                                    lineHeight = 18.sp, textAlign = TextAlign.Center, maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                    modifier = Modifier.weight(1f).clickable { onDateChange(LiturgicalCalendar.today()) })
+                                IconButton(onClick = { onDateChange(date.plus(1, DateTimeUnit.DAY)) },
+                                    modifier = Modifier.size(32.dp)) {
+                                    Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, t["screen.mass.next"],
+                                        tint = colors.primary, modifier = Modifier.size(20.dp))
+                                }
+                            }
+                            if (showToday && !separateTodayRow) {
+                                TodayPill { onDateChange(LiturgicalCalendar.today()) }
+                            }
+                        }
+                    }
+                    TextButton(onClick = { onTextScale(0.1f) },
+                        modifier = Modifier.width(44.dp).height(44.dp), contentPadding = PaddingValues(0.dp)) {
+                        Text("Aa+", color = colors.primary, fontSize = 14.sp)
+                    }
+                }
+                if (separateTodayRow) {
+                    Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                        TodayPill { onDateChange(LiturgicalCalendar.today()) }
+                    }
+                }
             }
         }
+    }
+}
+
+@Composable
+private fun TodayPill(onClick: () -> Unit) {
+    val colors = MaterialTheme.colorScheme
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier.height(36.dp).clip(CircleShape).background(colors.surfaceContainerLow)
+            .border(1.dp, colors.primary, CircleShape).clickable(role = Role.Button, onClick = onClick)
+            .padding(horizontal = 12.dp),
+    ) {
+        Text(LocalScreenText.current["screen.mass.today"], color = colors.primary, fontSize = 13.sp)
     }
 }
 
@@ -391,34 +460,32 @@ private fun CelebrationCard(
 }
 
 @Composable
-private fun CelebrationStrip(plan: MassPlan, onClick: () -> Unit) {
+private fun GuideCelebration(plan: MassPlan, language: String, onCelebrationChosen: (String) -> Unit) {
+    var expanded by remember(plan.day.date, plan.celebration.key) { mutableStateOf(false) }
+    if (expanded) {
+        CelebrationCard(plan, language, { onCelebrationChosen(it); expanded = false },
+            Modifier.padding(horizontal = 20.dp, vertical = 8.dp).clickable { expanded = false })
+    } else {
+        CelebrationMasthead(plan, Modifier.clickable { expanded = true })
+    }
+}
+
+@Composable
+internal fun CelebrationMasthead(plan: MassPlan, modifier: Modifier = Modifier) {
     val colors = MaterialTheme.colorScheme
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.fillMaxWidth().clickable(onClick = onClick).background(colors.surfaceContainerHigh)
-            .padding(horizontal = 16.dp, vertical = 10.dp),
-    ) {
-        Box(
-            Modifier.size(12.dp).clip(CircleShape).background(vestmentColor(plan.celebration.colors.firstOrNull()))
-                .border(1.dp, colors.outline, CircleShape),
-        )
-        Spacer(Modifier.width(10.dp))
-        Text(
-            plan.celebration.name,
-            color = colors.onSurface,
-            fontFamily = FontFamily.Serif,
-            fontSize = 15.sp,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-            modifier = Modifier.weight(1f),
-        )
-        Text(
-            rankLabel(plan.celebration, plan.day.date),
-            color = colors.primary,
-            fontSize = 11.sp,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(start = 8.dp),
-        )
+    Column(modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp)) {
+        Text(plan.celebration.name, color = colors.onSurface, fontFamily = FontFamily.Serif,
+            fontSize = 19.sp, lineHeight = 24.sp)
+        Spacer(Modifier.height(6.dp))
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Box(Modifier.size(10.dp).clip(CircleShape)
+                .background(vestmentColor(plan.celebration.colors.firstOrNull()))
+                .border(1.dp, colors.outline, CircleShape))
+            Spacer(Modifier.width(10.dp))
+            Text(rankLabel(plan.celebration, plan.day.date).uppercase(), color = colors.onSurfaceVariant,
+                fontSize = 11.sp, fontWeight = FontWeight.Medium, letterSpacing = 1.5.sp)
+        }
+        HorizontalDivider(color = colors.outlineVariant, modifier = Modifier.padding(top = 10.dp))
     }
 }
 
@@ -448,23 +515,33 @@ internal fun vestmentColor(name: String?): Color = when (name) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun PagedMass(plan: MassPlan, text: OrderOfMassText, language: String, textScale: Float) {
+private fun PagedMass(
+    plan: MassPlan, text: OrderOfMassText, language: String, textScale: Float, profile: OrdoProfile,
+    onCelebrationChosen: (String) -> Unit,
+) {
     val t = LocalScreenText.current
     val colors = MaterialTheme.colorScheme
     val pager = rememberPagerState(pageCount = { plan.parts.size })
     val scope = rememberCoroutineScope()
     var showParts by remember { mutableStateOf(false) }
-    LaunchedEffect(plan.celebration.key, plan.day.date) { pager.scrollToPage(0) }
+    LaunchedEffect(plan.celebration.key, plan.day.date) {
+        if (plan.parts.isNotEmpty()) pager.scrollToPage(0)
+    }
 
-    Column(Modifier.fillMaxSize()) {
-        plan.noMassNote?.let { NoMassNote(it, textScale) }
-        HorizontalPager(state = pager, modifier = Modifier.weight(1f)) { page ->
-            PartContent(plan.parts[page], text, language, textScale)
+    MassReaderOverlay(content = { bottomClearance ->
+        Column(Modifier.fillMaxSize()) {
+            plan.noMassNote?.let { NoMassNote(it, textScale) }
+            HorizontalPager(state = pager, modifier = Modifier.weight(1f)) { page ->
+                PartContent(plan.parts[page], text, language, textScale, profile, plan.celebration.key,
+                    progress = (page + 1).toFloat() / plan.parts.size,
+                    header = { GuideCelebration(plan, language, onCelebrationChosen) },
+                    bottomClearance = bottomClearance)
+            }
         }
-        HorizontalDivider(color = colors.outlineVariant)
+    }, controls = {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxWidth().background(colors.surface).navigationBarsPadding()
+            modifier = Modifier.fillMaxWidth().navigationBarsPadding()
                 .padding(horizontal = 8.dp, vertical = 4.dp),
         ) {
             TextButton(
@@ -474,23 +551,28 @@ private fun PagedMass(plan: MassPlan, text: OrderOfMassText, language: String, t
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center,
-                modifier = Modifier.weight(1f).clip(RoundedCornerShape(10.dp)).clickable { showParts = true }
+                modifier = Modifier.weight(1f).clip(RoundedCornerShape(10.dp))
+                    .clickable(enabled = plan.parts.isNotEmpty()) { showParts = true }
                     .padding(vertical = 8.dp),
             ) {
                 Icon(Icons.AutoMirrored.Filled.List, t["screen.mass.parts"], tint = colors.primary, modifier = Modifier.size(18.dp))
                 Spacer(Modifier.width(6.dp))
-                Text(
-                    "${pager.currentPage + 1} / ${plan.parts.size}",
-                    color = colors.onSurfaceVariant,
-                    fontSize = 13.sp,
-                )
+                Column(Modifier.weight(1f, fill = false), horizontalAlignment = Alignment.CenterHorizontally) {
+                    Text(t["screen.mass.parts"], color = colors.onSurface, fontSize = 11.sp,
+                        maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    Text("${if (plan.parts.isEmpty()) 0 else pager.currentPage + 1} / ${plan.parts.size}", color = colors.onSurfaceVariant, fontSize = 11.sp)
+                }
             }
-            TextButton(
+            Button(
                 onClick = { scope.launch { pager.animateScrollToPage(pager.currentPage + 1) } },
                 enabled = pager.currentPage < plan.parts.lastIndex,
-            ) { Text(t["screen.mass.next"]) }
+                shape = RoundedCornerShape(12.dp),
+            ) {
+                Text(t["screen.mass.next"])
+                Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, modifier = Modifier.size(20.dp))
+            }
         }
-    }
+    })
     if (showParts) {
         ModalBottomSheet(onDismissRequest = { showParts = false }) {
             PartsIndex(plan, pager.currentPage, Modifier.fillMaxWidth().padding(bottom = 24.dp)) { index ->
@@ -502,7 +584,7 @@ private fun PagedMass(plan: MassPlan, text: OrderOfMassText, language: String, t
 }
 
 @Composable
-private fun TwoPaneMass(plan: MassPlan, text: OrderOfMassText, language: String, textScale: Float) {
+private fun TwoPaneMass(plan: MassPlan, text: OrderOfMassText, language: String, textScale: Float, profile: OrdoProfile) {
     val t = LocalScreenText.current
     val colors = MaterialTheme.colorScheme
     var selected by remember(plan.celebration.key, plan.day.date) { mutableStateOf(0) }
@@ -516,7 +598,7 @@ private fun TwoPaneMass(plan: MassPlan, text: OrderOfMassText, language: String,
         Column(Modifier.weight(1f).fillMaxHeight()) {
             plan.noMassNote?.let { NoMassNote(it, textScale) }
             Box(Modifier.weight(1f)) {
-                plan.parts.getOrNull(selected)?.let { PartContent(it, text, language, textScale, wide = true) }
+                plan.parts.getOrNull(selected)?.let { PartContent(it, text, language, textScale, profile, plan.celebration.key, wide = true) }
             }
             Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp)) {
                 TextButton(onClick = { selected-- }, enabled = selected > 0) { Text(t["screen.mass.previous"]) }
@@ -528,7 +610,7 @@ private fun TwoPaneMass(plan: MassPlan, text: OrderOfMassText, language: String,
 }
 
 @Composable
-private fun PartsIndex(plan: MassPlan, selected: Int, modifier: Modifier, onSelect: (Int) -> Unit) {
+internal fun PartsIndex(plan: MassPlan, selected: Int, modifier: Modifier, onSelect: (Int) -> Unit) {
     val colors = MaterialTheme.colorScheme
     val listState = rememberLazyListState()
     LaunchedEffect(Unit) { listState.scrollToItem((selected - 2).coerceAtLeast(0)) }
@@ -583,96 +665,111 @@ private fun PartContent(
     text: OrderOfMassText,
     language: String,
     textScale: Float,
+    profile: OrdoProfile,
+    celebrationKey: String,
     wide: Boolean = false,
+    progress: Float? = null,
+    header: (@Composable () -> Unit)? = null,
+    bottomClearance: Dp = 0.dp,
 ) {
     val colors = MaterialTheme.colorScheme
     val part = planned.part
     val base = if (wide) 1.1f else 1f
     val scale = textScale * base
     Column(
-        Modifier.fillMaxSize().verticalScroll(rememberScrollState())
-            .padding(horizontal = if (wide) 32.dp else 20.dp, vertical = 16.dp),
+        Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
     ) {
-        Text(
-            planned.section.title.uppercase(),
-            color = colors.primary,
-            fontSize = 11.sp,
-            fontWeight = FontWeight.Bold,
-            letterSpacing = 0.8.sp,
-        )
-        Spacer(Modifier.height(4.dp))
-        Text(
-            part.title,
-            color = colors.onSurface,
-            fontFamily = FontFamily.Serif,
-            fontSize = (28 * scale).sp,
-            lineHeight = (33 * scale).sp,
-        )
-        if (part.who.isNotBlank()) {
-            Text(part.who, color = colors.onSurfaceVariant, fontSize = (13 * scale).sp)
-        }
-        Spacer(Modifier.height(12.dp))
-        Text(
-            planned.rubric,
-            color = rubricColor(),
-            fontStyle = FontStyle.Italic,
-            fontSize = (15 * scale).sp,
-            lineHeight = (22 * scale).sp,
-        )
-        part.text?.let { spoken ->
-            Spacer(Modifier.height(16.dp))
+        header?.invoke()
+        Column(Modifier.padding(horizontal = if (wide) 32.dp else 20.dp, vertical = 10.dp)) {
             Text(
-                spoken,
+                planned.section.title.uppercase(),
+                color = colors.primary,
+                fontSize = 11.sp,
+                fontWeight = FontWeight.Bold,
+                letterSpacing = 0.8.sp,
+            )
+            progress?.let {
+                Spacer(Modifier.height(10.dp))
+                LinearProgressIndicator(progress = { it }, modifier = Modifier.fillMaxWidth().height(5.dp).clip(CircleShape),
+                    color = colors.primary, trackColor = colors.surfaceContainerHigh)
+            }
+            Spacer(Modifier.height(10.dp))
+            Text(
+                part.title,
                 color = colors.onSurface,
                 fontFamily = FontFamily.Serif,
-                fontSize = (21 * scale).sp,
-                lineHeight = (31 * scale).sp,
+                fontSize = (32 * scale).sp,
+                lineHeight = (38 * scale).sp,
             )
-            part.textNote?.let {
+            MassPostureBadges(part.id, profile, celebrationKey)
+            if (part.who.isNotBlank()) {
+                Text(part.who, color = colors.onSurfaceVariant, fontSize = (13 * scale).sp,
+                    modifier = Modifier.padding(top = 8.dp))
+            }
+            Spacer(Modifier.height(12.dp))
+            if (planned.rubric.isNotBlank()) {
+                Row(Modifier.fillMaxWidth().heightIn(min = 24.dp)) {
+                    Box(Modifier.width(3.dp).height(32.dp).background(rubricColor()))
+                    Text(planned.rubric, color = rubricColor(),
+                        fontSize = (16 * scale).sp, lineHeight = (25 * scale).sp,
+                        modifier = Modifier.padding(start = 12.dp))
+                }
+            }
+            part.text?.let { spoken ->
+                Spacer(Modifier.height(16.dp))
+                Text(
+                    spoken,
+                    color = colors.onSurface,
+                    fontFamily = FontFamily.Serif,
+                    fontSize = (21 * scale).sp,
+                    lineHeight = (31 * scale).sp,
+                )
+                part.textNote?.let {
+                    Spacer(Modifier.height(6.dp))
+                    Text(it, color = colors.onSurfaceVariant, fontSize = (12 * scale).sp)
+                }
+                part.textCredit?.let {
+                    Spacer(Modifier.height(4.dp))
+                    Text(it, color = colors.onSurfaceVariant, fontSize = (10 * scale).sp, lineHeight = (14 * scale).sp)
+                }
+            }
+            val showIcel = planned.responses.isNotEmpty() && (IcelTexts.PERMISSION_GRANTED || isDebugBuild())
+            val (beforeReading, afterReading) =
+                if (showIcel) IcelTexts.aroundReading(planned.responses) else emptyList<SpokenLine>() to emptyList()
+            if (beforeReading.isNotEmpty()) {
+                Spacer(Modifier.height(16.dp))
+                SpokenLines(beforeReading, scale)
+            }
+            planned.reading?.let { reading ->
+                Spacer(Modifier.height(16.dp))
+                ReadingBlock(reading, language, scale, text)
+            }
+            if (afterReading.isNotEmpty()) {
+                Spacer(Modifier.height(16.dp))
+                SpokenLines(afterReading, scale)
+            }
+            if (showIcel) {
                 Spacer(Modifier.height(6.dp))
-                Text(it, color = colors.onSurfaceVariant, fontSize = (12 * scale).sp)
+                Text(
+                    (if (IcelTexts.PERMISSION_GRANTED) "" else "DRAFT · awaiting ICEL permission · ") +
+                        "Excerpts from the English translation of The Roman Missal © 2010, International Commission on English in the Liturgy Corporation. All rights reserved.",
+                    color = colors.onSurfaceVariant, fontSize = (10 * scale).sp, lineHeight = (14 * scale).sp,
+                )
             }
-            part.textCredit?.let {
-                Spacer(Modifier.height(4.dp))
-                Text(it, color = colors.onSurfaceVariant, fontSize = (10 * scale).sp, lineHeight = (14 * scale).sp)
+            if (part.reading != null && planned.reading == null) {
+                Spacer(Modifier.height(16.dp))
+                PendingSlot(null, text.readingPending, scale)
             }
+            if (part.homily) {
+                Spacer(Modifier.height(16.dp))
+                PendingSlot(null, text.homilyPending, scale)
+            }
+            part.missal?.takeUnless { showIcel && part.id in IcelTexts.completeParts }?.let { label ->
+                Spacer(Modifier.height(16.dp))
+                PendingSlot(label, text.missalPending, scale)
+            }
+            Spacer(Modifier.height(40.dp + bottomClearance))
         }
-        val showIcel = planned.responses.isNotEmpty() && (IcelTexts.PERMISSION_GRANTED || isDebugBuild())
-        val (beforeReading, afterReading) =
-            if (showIcel) IcelTexts.aroundReading(planned.responses) else emptyList<SpokenLine>() to emptyList()
-        if (beforeReading.isNotEmpty()) {
-            Spacer(Modifier.height(16.dp))
-            SpokenLines(beforeReading, scale)
-        }
-        planned.reading?.let { reading ->
-            Spacer(Modifier.height(16.dp))
-            ReadingBlock(reading, language, scale, text)
-        }
-        if (afterReading.isNotEmpty()) {
-            Spacer(Modifier.height(16.dp))
-            SpokenLines(afterReading, scale)
-        }
-        if (showIcel) {
-            Spacer(Modifier.height(6.dp))
-            Text(
-                (if (IcelTexts.PERMISSION_GRANTED) "" else "DRAFT · awaiting ICEL permission · ") +
-                    "Excerpts from the English translation of The Roman Missal © 2010, International Commission on English in the Liturgy Corporation. All rights reserved.",
-                color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = (10 * scale).sp, lineHeight = (14 * scale).sp,
-            )
-        }
-        if (part.reading != null && planned.reading == null) {
-            Spacer(Modifier.height(16.dp))
-            PendingSlot(null, text.readingPending, scale)
-        }
-        if (part.homily) {
-            Spacer(Modifier.height(16.dp))
-            PendingSlot(null, text.homilyPending, scale)
-        }
-        part.missal?.takeUnless { showIcel && part.id in IcelTexts.completeParts }?.let { label ->
-            Spacer(Modifier.height(16.dp))
-            PendingSlot(label, text.missalPending, scale)
-        }
-        Spacer(Modifier.height(40.dp))
     }
 }
 
@@ -769,12 +866,12 @@ private fun PendingSlot(label: String?, message: String, scale: Float) {
     val colors = MaterialTheme.colorScheme
     Column(
         Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp))
-            .border(1.5.dp, colors.primary.copy(alpha = 0.45f), RoundedCornerShape(14.dp))
+            .border(1.dp, colors.outlineVariant, RoundedCornerShape(14.dp))
             .background(colors.surfaceContainerLow)
             .padding(14.dp),
     ) {
         label?.let {
-            Text(it, color = colors.primary, fontWeight = FontWeight.SemiBold, fontSize = (14 * scale).sp)
+            Text(it, color = colors.onSurface, fontWeight = FontWeight.SemiBold, fontFamily = FontFamily.Serif, fontSize = (18 * scale).sp)
             Spacer(Modifier.height(4.dp))
         }
         Text(message, color = colors.onSurfaceVariant, fontSize = (13 * scale).sp, lineHeight = (18 * scale).sp)
