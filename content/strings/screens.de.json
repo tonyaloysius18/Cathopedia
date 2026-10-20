@@ -282,6 +282,24 @@
     "screen.mass.refrain_line": "Kehrvers aus dem Lektionar, folgt",
     "screen.mass.short_form": "Kurzfassung",
     "screen.mass.or": "oder",
-    "screen.mass.celebrant_short": "Zel"
+    "screen.mass.celebrant_short": "Zel",
+    "screen.news.title": "Katholische Nachrichten",
+    "screen.news.subtitle": "Nachrichten und Ereignisse aus der Weltkirche",
+    "screen.news.see_all": "Alle ansehen",
+    "screen.news.filter_all": "Alle",
+    "screen.news.filter_news": "Nachrichten",
+    "screen.news.filter_events": "Termine",
+    "screen.news.kind_news": "Nachricht",
+    "screen.news.kind_event": "Termin",
+    "screen.news.in_days": "In {n} Tagen",
+    "screen.news.tomorrow": "Morgen",
+    "screen.news.happening_now": "Läuft gerade",
+    "screen.news.official_site": "Offizielle Website",
+    "screen.news.read_on": "Weiterlesen bei {source}",
+    "screen.news.source": "Quelle: {source}",
+    "screen.news.empty": "Derzeit keine Nachrichten oder Termine.",
+    "screen.news.open_error": "Der Link konnte nicht geöffnet werden. Bitte versuche es erneut.",
+    "screen.news.date_year": "{date} {year}",
+    "screen.news.photo_credit": "Foto: {author} · {license} · Wikimedia Commons"
   }
 }

@@ -84,6 +84,9 @@ import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.i18n.LocalScreenText
 import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.liturgical.DailyMassReadings
+import com.ynotlabs.cathopedia.data.CatholicNews
+import com.ynotlabs.cathopedia.data.NewsItem
+import com.ynotlabs.cathopedia.ui.screens.news.NewsCard
 import com.ynotlabs.cathopedia.liturgical.DailyReadingsCalendar
 import com.ynotlabs.cathopedia.liturgical.LiturgicalCalendar
 import com.ynotlabs.cathopedia.liturgical.LiturgicalSeason
@@ -121,6 +124,8 @@ fun HomeScreen(
     onOpenRosary: () -> Unit,
     onReadingSelected: ((ScriptureReference) -> Unit)? = null,
     onOpenMass: (() -> Unit)? = null,
+    onOpenNews: () -> Unit = {},
+    onOpenNewsItem: (String) -> Unit = {},
     scrollState: ScrollState = rememberScrollState(),
 ) {
     val s = LocalStrings.current
@@ -143,6 +148,8 @@ fun HomeScreen(
         saintsOfToday = repository.saintsOfToday(language)
     }
     LaunchedEffect(language) { continueReading = repository.mostRecentlyViewed(language) }
+    LaunchedEffect(Unit) { CatholicNews.load(repository) }
+    val news = CatholicNews.visibleItems(today).take(HOME_NEWS_LIMIT)
 
     HomeSections(
         scrollState = scrollState,
@@ -154,6 +161,12 @@ fun HomeScreen(
             }
         },
     ) {
+        if (news.isNotEmpty()) {
+            HomeNewsHeader(onSeeAll = onOpenNews)
+            Spacer(Modifier.height(6.dp))
+            HomeNewsCarousel(news, language, today, onOpenNewsItem)
+            Spacer(Modifier.height(16.dp))
+        }
         feastOfTheDay?.let { feast ->
             HomeSectionHeader(s.homeFeastOfTheDay, dateLabel)
             Spacer(Modifier.height(6.dp))
@@ -531,6 +544,52 @@ private fun HomeSectionHeader(title: String, date: String? = null) {
         date?.let {
             Text(it, color = HomeGold, fontFamily = FontFamily.Serif, fontSize = 13.sp,
                 lineHeight = 18.sp, modifier = Modifier.padding(start = 12.dp))
+        }
+    }
+}
+
+private const val HOME_NEWS_LIMIT = 5
+
+@Composable
+private fun HomeNewsHeader(onSeeAll: () -> Unit) {
+    val t = LocalScreenText.current
+    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+        Text(t["screen.news.title"], color = HomeCream, fontFamily = FontFamily.Serif, fontSize = 21.sp,
+            lineHeight = 26.sp, modifier = Modifier.weight(1f))
+        Row(Modifier.clip(RoundedCornerShape(8.dp)).clickable(role = Role.Button, onClick = onSeeAll)
+            .padding(start = 8.dp, top = 4.dp, bottom = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+            Text(t["screen.news.see_all"], color = HomeGold, fontFamily = FontFamily.Serif, fontSize = 13.sp,
+                lineHeight = 18.sp)
+            Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = HomeGold, modifier = Modifier.size(18.dp))
+        }
+    }
+}
+
+@Composable
+private fun HomeNewsCarousel(items: List<NewsItem>, language: String, today: LocalDate, onSelected: (String) -> Unit) {
+    val pager = rememberPagerState { items.size }
+    val t = LocalScreenText.current
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            HorizontalPager(
+                state = pager,
+                modifier = Modifier.fillMaxWidth(),
+                pageSize = PageSize.Fixed(if (items.size > 1) maxWidth - 22.dp else maxWidth),
+                pageSpacing = 12.dp,
+                key = { items[it].id },
+                userScrollEnabled = items.size > 1,
+            ) { index ->
+                val item = items[index]
+                NewsCard(item, language, today, t, { onSelected(item.id) })
+            }
+        }
+        if (items.size > 1) {
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterHorizontally)) {
+                repeat(items.size) { index ->
+                    Box(Modifier.size(6.dp).clip(CircleShape).background(
+                        HomeGold.copy(alpha = if (index == pager.currentPage) 1f else 0.3f)))
+                }
+            }
         }
     }
 }

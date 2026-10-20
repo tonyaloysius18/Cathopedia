@@ -282,6 +282,24 @@
     "screen.mass.refrain_line": "Refren z Lekcjonarza, zostanie dodany",
     "screen.mass.short_form": "forma krótsza",
     "screen.mass.or": "albo",
-    "screen.mass.celebrant_short": "Cel"
+    "screen.mass.celebrant_short": "Cel",
+    "screen.news.title": "Wiadomości katolickie",
+    "screen.news.subtitle": "Wiadomości i wydarzenia z Kościoła na całym świecie",
+    "screen.news.see_all": "Zobacz wszystkie",
+    "screen.news.filter_all": "Wszystkie",
+    "screen.news.filter_news": "Wiadomości",
+    "screen.news.filter_events": "Wydarzenia",
+    "screen.news.kind_news": "Wiadomość",
+    "screen.news.kind_event": "Wydarzenie",
+    "screen.news.in_days": "Za {n} dni",
+    "screen.news.tomorrow": "Jutro",
+    "screen.news.happening_now": "Trwa teraz",
+    "screen.news.official_site": "Oficjalna strona",
+    "screen.news.read_on": "Czytaj w {source}",
+    "screen.news.source": "Źródło: {source}",
+    "screen.news.empty": "Obecnie brak wiadomości i wydarzeń.",
+    "screen.news.open_error": "Nie udało się otworzyć linku. Spróbuj ponownie.",
+    "screen.news.date_year": "{date} {year}",
+    "screen.news.photo_credit": "Zdjęcie: {author} · {license} · Wikimedia Commons"
   }
 }

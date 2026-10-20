@@ -282,6 +282,24 @@
     "screen.mass.refrain_line": "Refrão do Lecionário, a acrescentar",
     "screen.mass.short_form": "forma breve",
     "screen.mass.or": "ou",
-    "screen.mass.celebrant_short": "Cel"
+    "screen.mass.celebrant_short": "Cel",
+    "screen.news.title": "Notícias católicas",
+    "screen.news.subtitle": "Notícias e eventos da Igreja em todo o mundo",
+    "screen.news.see_all": "Ver tudo",
+    "screen.news.filter_all": "Tudo",
+    "screen.news.filter_news": "Notícias",
+    "screen.news.filter_events": "Eventos",
+    "screen.news.kind_news": "Notícia",
+    "screen.news.kind_event": "Evento",
+    "screen.news.in_days": "Daqui a {n} dias",
+    "screen.news.tomorrow": "Amanhã",
+    "screen.news.happening_now": "A decorrer",
+    "screen.news.official_site": "Site oficial",
+    "screen.news.read_on": "Ler em {source}",
+    "screen.news.source": "Fonte: {source}",
+    "screen.news.empty": "Não há notícias nem eventos de momento.",
+    "screen.news.open_error": "Não foi possível abrir a ligação. Tente novamente.",
+    "screen.news.date_year": "{date} de {year}",
+    "screen.news.photo_credit": "Foto: {author} · {license} · Wikimedia Commons"
   }
 }

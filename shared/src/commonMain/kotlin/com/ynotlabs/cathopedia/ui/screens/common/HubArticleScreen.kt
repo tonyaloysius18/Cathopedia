@@ -41,6 +41,7 @@ import com.ynotlabs.cathopedia.ui.screens.holymass.PosturesScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.ThuribleScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.VesselsScreen
 import com.ynotlabs.cathopedia.ui.screens.holysee.CardinalsScreen
+import com.ynotlabs.cathopedia.ui.screens.holysee.CollegeOfCardinalsScreen
 import com.ynotlabs.cathopedia.ui.screens.orders.FranciscanFamilyScreen
 import com.ynotlabs.cathopedia.ui.screens.orders.NunOrSisterScreen
 
@@ -461,6 +462,16 @@ fun HubArticleScreen(
 
     if (articleId == "art.holy_see.patriarch_vs_pope") {
         PatriarchAndPopeScreen(
+            repository = repository,
+            language = language,
+            onBack = onBack,
+            listState = listState,
+        )
+        return
+    }
+
+    if (articleId == "art.cardinals.college") {
+        CollegeOfCardinalsScreen(
             repository = repository,
             language = language,
             onBack = onBack,

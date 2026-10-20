@@ -282,6 +282,24 @@
     "screen.mass.refrain_line": "Ritornello del Lezionario, da aggiungere",
     "screen.mass.short_form": "forma breve",
     "screen.mass.or": "oppure",
-    "screen.mass.celebrant_short": "Cel"
+    "screen.mass.celebrant_short": "Cel",
+    "screen.news.title": "Notizie cattoliche",
+    "screen.news.subtitle": "Notizie ed eventi della Chiesa nel mondo",
+    "screen.news.see_all": "Vedi tutto",
+    "screen.news.filter_all": "Tutto",
+    "screen.news.filter_news": "Notizie",
+    "screen.news.filter_events": "Eventi",
+    "screen.news.kind_news": "Notizia",
+    "screen.news.kind_event": "Evento",
+    "screen.news.in_days": "Tra {n} giorni",
+    "screen.news.tomorrow": "Domani",
+    "screen.news.happening_now": "In corso",
+    "screen.news.official_site": "Sito ufficiale",
+    "screen.news.read_on": "Leggi su {source}",
+    "screen.news.source": "Fonte: {source}",
+    "screen.news.empty": "Nessuna notizia o evento al momento.",
+    "screen.news.open_error": "Impossibile aprire il link. Riprova.",
+    "screen.news.date_year": "{date} {year}",
+    "screen.news.photo_credit": "Foto: {author} · {license} · Wikimedia Commons"
   }
 }

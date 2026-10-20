@@ -282,6 +282,24 @@
     "screen.mass.refrain_line": "Refrain du Lectionnaire, à ajouter",
     "screen.mass.short_form": "forme brève",
     "screen.mass.or": "ou",
-    "screen.mass.celebrant_short": "Cél"
+    "screen.mass.celebrant_short": "Cél",
+    "screen.news.title": "Actualités catholiques",
+    "screen.news.subtitle": "L’actualité et les événements de l’Église dans le monde",
+    "screen.news.see_all": "Tout voir",
+    "screen.news.filter_all": "Tout",
+    "screen.news.filter_news": "Actualités",
+    "screen.news.filter_events": "Événements",
+    "screen.news.kind_news": "Actualité",
+    "screen.news.kind_event": "Événement",
+    "screen.news.in_days": "Dans {n} jours",
+    "screen.news.tomorrow": "Demain",
+    "screen.news.happening_now": "En ce moment",
+    "screen.news.official_site": "Site officiel",
+    "screen.news.read_on": "Lire sur {source}",
+    "screen.news.source": "Source : {source}",
+    "screen.news.empty": "Aucune actualité ni aucun événement pour le moment.",
+    "screen.news.open_error": "Impossible d’ouvrir le lien. Veuillez réessayer.",
+    "screen.news.date_year": "{date} {year}",
+    "screen.news.photo_credit": "Photo : {author} · {license} · Wikimedia Commons"
   }
 }

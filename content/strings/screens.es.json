@@ -282,6 +282,24 @@
     "screen.mass.refrain_line": "Respuesta del Leccionario, por añadir",
     "screen.mass.short_form": "forma breve",
     "screen.mass.or": "o bien",
-    "screen.mass.celebrant_short": "Cel"
+    "screen.mass.celebrant_short": "Cel",
+    "screen.news.title": "Noticias católicas",
+    "screen.news.subtitle": "Noticias y eventos de la Iglesia en todo el mundo",
+    "screen.news.see_all": "Ver todo",
+    "screen.news.filter_all": "Todo",
+    "screen.news.filter_news": "Noticias",
+    "screen.news.filter_events": "Eventos",
+    "screen.news.kind_news": "Noticia",
+    "screen.news.kind_event": "Evento",
+    "screen.news.in_days": "Dentro de {n} días",
+    "screen.news.tomorrow": "Mañana",
+    "screen.news.happening_now": "En curso",
+    "screen.news.official_site": "Sitio oficial",
+    "screen.news.read_on": "Leer en {source}",
+    "screen.news.source": "Fuente: {source}",
+    "screen.news.empty": "No hay noticias ni eventos por ahora.",
+    "screen.news.open_error": "No se pudo abrir el enlace. Inténtalo de nuevo.",
+    "screen.news.date_year": "{date} de {year}",
+    "screen.news.photo_credit": "Foto: {author} · {license} · Wikimedia Commons"
   }
 }

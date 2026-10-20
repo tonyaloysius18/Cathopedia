@@ -282,6 +282,24 @@
     "screen.mass.refrain_line": "வாசக நூலின் பல்லவி, சேர்க்கப்படும்",
     "screen.mass.short_form": "சுருக்க வடிவம்",
     "screen.mass.or": "அல்லது",
-    "screen.mass.celebrant_short": "குரு"
+    "screen.mass.celebrant_short": "குரு",
+    "screen.news.title": "கத்தோலிக்கச் செய்திகள்",
+    "screen.news.subtitle": "உலகெங்கும் திருஅவையின் செய்திகளும் நிகழ்வுகளும்",
+    "screen.news.see_all": "அனைத்தும்",
+    "screen.news.filter_all": "அனைத்தும்",
+    "screen.news.filter_news": "செய்திகள்",
+    "screen.news.filter_events": "நிகழ்வுகள்",
+    "screen.news.kind_news": "செய்தி",
+    "screen.news.kind_event": "நிகழ்வு",
+    "screen.news.in_days": "{n} நாட்களில்",
+    "screen.news.tomorrow": "நாளை",
+    "screen.news.happening_now": "இப்போது நடைபெறுகிறது",
+    "screen.news.official_site": "அதிகாரபூர்வ இணையதளம்",
+    "screen.news.read_on": "{source} இல் படிக்க",
+    "screen.news.source": "ஆதாரம்: {source}",
+    "screen.news.empty": "தற்போது செய்திகளோ நிகழ்வுகளோ இல்லை.",
+    "screen.news.open_error": "இணைப்பைத் திறக்க முடியவில்லை. மீண்டும் முயலவும்.",
+    "screen.news.date_year": "{date} {year}",
+    "screen.news.photo_credit": "படம்: {author} · {license} · Wikimedia Commons"
   }
 }

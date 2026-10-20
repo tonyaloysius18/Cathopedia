@@ -31,6 +31,8 @@ sealed interface Destination {
     data object Notifications : Destination
     data object About : Destination
     data object Feedback : Destination
+    data object News : Destination
+    data class NewsDetail(val id: String) : Destination
 }
 
 /**

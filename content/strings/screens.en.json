@@ -282,6 +282,24 @@
     "screen.mass.refrain_line": "Refrain from the Lectionary, to be added",
     "screen.mass.short_form": "short form",
     "screen.mass.or": "or",
-    "screen.mass.celebrant_short": "Cel"
+    "screen.mass.celebrant_short": "Cel",
+    "screen.news.title": "Catholic News",
+    "screen.news.subtitle": "News and events from the Church around the world",
+    "screen.news.see_all": "See all",
+    "screen.news.filter_all": "All",
+    "screen.news.filter_news": "News",
+    "screen.news.filter_events": "Events",
+    "screen.news.kind_news": "News",
+    "screen.news.kind_event": "Event",
+    "screen.news.in_days": "In {n} days",
+    "screen.news.tomorrow": "Tomorrow",
+    "screen.news.happening_now": "Happening now",
+    "screen.news.official_site": "Official website",
+    "screen.news.read_on": "Read on {source}",
+    "screen.news.source": "Source: {source}",
+    "screen.news.empty": "No news or events right now.",
+    "screen.news.open_error": "Could not open the link. Please try again.",
+    "screen.news.date_year": "{date} {year}",
+    "screen.news.photo_credit": "Photo: {author} · {license} · Wikimedia Commons"
   }
 }

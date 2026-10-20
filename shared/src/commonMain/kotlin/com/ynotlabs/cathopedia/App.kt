@@ -89,6 +89,8 @@ import com.ynotlabs.cathopedia.ui.screens.home.ExploreData
 import com.ynotlabs.cathopedia.ui.screens.home.ExploreScreen
 import com.ynotlabs.cathopedia.ui.screens.home.loadExploreData
 import com.ynotlabs.cathopedia.ui.screens.settings.FeedbackScreen
+import com.ynotlabs.cathopedia.ui.screens.news.NewsDetailScreen
+import com.ynotlabs.cathopedia.ui.screens.news.NewsScreen
 import com.ynotlabs.cathopedia.ui.screens.home.HomeScreen
 import com.ynotlabs.cathopedia.ui.screens.common.HubArticleScreen
 import com.ynotlabs.cathopedia.ui.screens.common.HubScreen
@@ -349,6 +351,8 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     onOpenPrayer = { slug -> nav.navigate(Destination.PrayerDetail(slug)) },
                     onOpenRosary = { nav.navigate(Destination.RosaryScreen) },
                     onOpenMass = { nav.navigate(Destination.CelebrateMass) },
+                    onOpenNews = { nav.navigate(Destination.News) },
+                    onOpenNewsItem = { id -> nav.navigate(Destination.NewsDetail(id)) },
                     scrollState = homeScrollState,
                 )
 
@@ -588,6 +592,15 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                 is Destination.About -> AboutScreen(onBack = nav::back)
 
                 is Destination.Feedback -> FeedbackScreen(onBack = nav::back)
+
+                is Destination.News -> NewsScreen(
+                    repository = repository,
+                    language = language,
+                    onOpenItem = { id -> nav.navigate(Destination.NewsDetail(id)) },
+                    onBack = nav::back,
+                )
+
+                is Destination.NewsDetail -> NewsDetailScreen(repository, current.id, language, nav::back)
             }
             }
 

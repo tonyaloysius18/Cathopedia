@@ -282,6 +282,24 @@
     "screen.mass.refrain_line": "Refrein uit het Lectionarium, volgt",
     "screen.mass.short_form": "korte vorm",
     "screen.mass.or": "of",
-    "screen.mass.celebrant_short": "Cel"
+    "screen.mass.celebrant_short": "Cel",
+    "screen.news.title": "Katholiek nieuws",
+    "screen.news.subtitle": "Nieuws en evenementen uit de wereldkerk",
+    "screen.news.see_all": "Alles bekijken",
+    "screen.news.filter_all": "Alles",
+    "screen.news.filter_news": "Nieuws",
+    "screen.news.filter_events": "Evenementen",
+    "screen.news.kind_news": "Nieuws",
+    "screen.news.kind_event": "Evenement",
+    "screen.news.in_days": "Over {n} dagen",
+    "screen.news.tomorrow": "Morgen",
+    "screen.news.happening_now": "Nu bezig",
+    "screen.news.official_site": "Officiële website",
+    "screen.news.read_on": "Lees verder op {source}",
+    "screen.news.source": "Bron: {source}",
+    "screen.news.empty": "Op dit moment geen nieuws of evenementen.",
+    "screen.news.open_error": "De link kon niet worden geopend. Probeer het opnieuw.",
+    "screen.news.date_year": "{date} {year}",
+    "screen.news.photo_credit": "Foto: {author} · {license} · Wikimedia Commons"
   }
 }

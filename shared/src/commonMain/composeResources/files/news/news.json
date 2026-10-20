@@ -1,0 +1,400 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-10-21T09:00:00Z",
+  "items": [
+    {
+      "id": "wyd-seoul-2027",
+      "kind": "event",
+      "theme": "wyd",
+      "pinned": true,
+      "published": "2026-10-20",
+      "start": "2027-08-03",
+      "end": "2027-08-08",
+      "expires": "2027-08-15",
+      "image": null,
+      "badge": "images/wyd-seoul-2027-logo.webp",
+      "badgeCredit": "Logo © WYD Seoul 2027 Foundation",
+      "source": "WYD Seoul 2027",
+      "url": {
+        "en": "https://wydseoul.org/en",
+        "fr": "https://wydseoul.org/fr",
+        "es": "https://wydseoul.org/es",
+        "it": "https://wydseoul.org/it",
+        "pt": "https://wydseoul.org/pt"
+      },
+      "title": {
+        "en": "World Youth Day Seoul 2027",
+        "fr": "JMJ Séoul 2027",
+        "es": "JMJ Seúl 2027",
+        "it": "GMG Seul 2027",
+        "pt": "JMJ Seul 2027",
+        "de": "Weltjugendtag Seoul 2027",
+        "nl": "Wereldjongerendagen Seoel 2027",
+        "pl": "ŚDM Seul 2027",
+        "ta": "உலக இளைஞர் தினம் சியோல் 2027"
+      },
+      "location": {
+        "en": "Seoul, South Korea",
+        "fr": "Séoul, Corée du Sud",
+        "es": "Seúl, Corea del Sur",
+        "it": "Seul, Corea del Sud",
+        "pt": "Seul, Coreia do Sul",
+        "de": "Seoul, Südkorea",
+        "nl": "Seoel, Zuid-Korea",
+        "pl": "Seul, Korea Południowa",
+        "ta": "சியோல், தென் கொரியா"
+      },
+      "summary": {
+        "en": "Young people from every continent will gather with Pope Leo XIV in Seoul from 3 to 8 August 2027.",
+        "fr": "Des jeunes de tous les continents se rassembleront autour du pape Léon XIV à Séoul du 3 au 8 août 2027.",
+        "es": "Jóvenes de todos los continentes se reunirán con el papa León XIV en Seúl del 3 al 8 de agosto de 2027.",
+        "it": "Giovani di tutti i continenti si riuniranno con papa Leone XIV a Seul dal 3 all’8 agosto 2027.",
+        "pt": "Jovens de todos os continentes vão reunir-se com o Papa Leão XIV em Seul, de 3 a 8 de agosto de 2027.",
+        "de": "Junge Menschen aus allen Kontinenten kommen vom 3. bis 8. August 2027 mit Papst Leo XIV. in Seoul zusammen.",
+        "nl": "Jongeren van alle continenten komen van 3 tot 8 augustus 2027 samen met paus Leo XIV in Seoel.",
+        "pl": "Młodzi ze wszystkich kontynentów spotkają się z papieżem Leonem XIV w Seulu od 3 do 8 sierpnia 2027 roku.",
+        "ta": "2027 ஆகஸ்ட் 3 முதல் 8 வரை சியோலில், எல்லாக் கண்டங்களிலிருந்தும் வரும் இளைஞர்கள் திருத்தந்தை பதினான்காம் லியோவுடன் ஒன்றுகூடுவார்கள்."
+      },
+      "tagline": {
+        "en": "“Take courage! I have overcome the world.” — John 16:33",
+        "fr": "« Courage ! J’ai vaincu le monde. » — Jean 16, 33",
+        "es": "«¡Ánimo! Yo he vencido al mundo». — Juan 16, 33",
+        "it": "«Abbiate coraggio: io ho vinto il mondo!» — Giovanni 16,33",
+        "pt": "«Coragem! Eu venci o mundo.» — João 16,33",
+        "de": "„Habt Mut: Ich habe die Welt besiegt.“ — Johannes 16,33",
+        "nl": "‘Houd moed: Ik heb de wereld overwonnen.’ — Johannes 16,33",
+        "pl": "„Odwagi! Jam zwyciężył świat”. — J 16,33",
+        "ta": "“துணிவுடன் இருங்கள்; நான் உலகை வென்றுவிட்டேன்.” — யோவான் 16:33"
+      },
+      "body": {
+        "en": "The next international World Youth Day will be held in Seoul, South Korea, from 3 to 8 August 2027. Pope Leo XIV announced the dates at the close of the Jubilee of Youth in Rome in August 2025. It will be the first World Youth Day in Korea, and the second in Asia after Manila in 1995.\n\nIts theme is Christ’s word to his disciples: “Take courage, I have overcome the world” (John 16:33). The official theme song, “Confidite, Ego Vici Mundum”, was released on 3 August 2026, as the one-year countdown began.\n\nBefore the main week, pilgrims can take part in the Days in the Dioceses, from 29 July to 2 August, staying with local communities across Korea. The World Youth Day Cross and the icon of Mary are already on pilgrimage through the Korean dioceses.\n\nInternational registration is due to open on the official website in late 2026, covering accommodation, meals, transport and insurance.",
+        "fr": "Les prochaines Journées mondiales de la jeunesse internationales auront lieu à Séoul, en Corée du Sud, du 3 au 8 août 2027. Le pape Léon XIV en a annoncé les dates à la clôture du Jubilé des jeunes à Rome, en août 2025. Ce seront les premières JMJ en Corée, et les deuxièmes en Asie après Manille en 1995.\n\nLeur thème est la parole du Christ à ses disciples : « Courage ! J’ai vaincu le monde » (Jean 16, 33). L’hymne officiel, « Confidite, Ego Vici Mundum », a été publié le 3 août 2026, au début du compte à rebours d’un an.\n\nAvant la semaine principale, les pèlerins pourront vivre les Journées dans les diocèses, du 29 juillet au 2 août, accueillis par des communautés locales dans toute la Corée. La Croix des JMJ et l’icône de Marie sont déjà en pèlerinage dans les diocèses coréens.\n\nLes inscriptions internationales doivent ouvrir sur le site officiel fin 2026 ; elles comprendront l’hébergement, les repas, les transports et l’assurance.",
+        "es": "La próxima Jornada Mundial de la Juventud internacional se celebrará en Seúl, Corea del Sur, del 3 al 8 de agosto de 2027. El papa León XIV anunció las fechas al clausurar el Jubileo de los Jóvenes en Roma, en agosto de 2025. Será la primera JMJ en Corea y la segunda en Asia, después de Manila en 1995.\n\nSu lema es la palabra de Cristo a sus discípulos: «¡Ánimo! Yo he vencido al mundo» (Juan 16, 33). El himno oficial, «Confidite, Ego Vici Mundum», se publicó el 3 de agosto de 2026, al comenzar la cuenta atrás de un año.\n\nAntes de la semana principal, los peregrinos podrán vivir los Días en las Diócesis, del 29 de julio al 2 de agosto, acogidos por comunidades locales de toda Corea. La Cruz de la JMJ y el icono de María ya peregrinan por las diócesis coreanas.\n\nLas inscripciones internacionales abrirán en el sitio oficial a finales de 2026 e incluirán alojamiento, comidas, transporte y seguro.",
+        "it": "La prossima Giornata Mondiale della Gioventù internazionale si terrà a Seul, in Corea del Sud, dal 3 all’8 agosto 2027. Papa Leone XIV ne ha annunciato le date al termine del Giubileo dei Giovani a Roma, nell’agosto 2025. Sarà la prima GMG in Corea e la seconda in Asia, dopo Manila nel 1995.\n\nIl tema è la parola di Cristo ai suoi discepoli: «Abbiate coraggio: io ho vinto il mondo» (Giovanni 16,33). L’inno ufficiale, «Confidite, Ego Vici Mundum», è stato pubblicato il 3 agosto 2026, all’inizio del conto alla rovescia di un anno.\n\nPrima della settimana principale, i pellegrini potranno vivere i Giorni nelle Diocesi, dal 29 luglio al 2 agosto, ospitati da comunità locali in tutta la Corea. La Croce della GMG e l’icona di Maria sono già in pellegrinaggio nelle diocesi coreane.\n\nLe iscrizioni internazionali apriranno sul sito ufficiale alla fine del 2026 e comprenderanno alloggio, pasti, trasporti e assicurazione.",
+        "pt": "A próxima Jornada Mundial da Juventude internacional vai realizar-se em Seul, na Coreia do Sul, de 3 a 8 de agosto de 2027. O Papa Leão XIV anunciou as datas no encerramento do Jubileu dos Jovens em Roma, em agosto de 2025. Será a primeira JMJ na Coreia e a segunda na Ásia, depois de Manila em 1995.\n\nO tema é a palavra de Cristo aos seus discípulos: «Coragem! Eu venci o mundo» (João 16,33). O hino oficial, «Confidite, Ego Vici Mundum», foi lançado a 3 de agosto de 2026, no início da contagem decrescente de um ano.\n\nAntes da semana principal, os peregrinos podem participar nos Dias nas Dioceses, de 29 de julho a 2 de agosto, acolhidos por comunidades locais em toda a Coreia. A Cruz da JMJ e o ícone de Maria já peregrinam pelas dioceses coreanas.\n\nAs inscrições internacionais devem abrir no site oficial no final de 2026 e incluem alojamento, refeições, transportes e seguro.",
+        "de": "Der nächste internationale Weltjugendtag findet vom 3. bis 8. August 2027 in Seoul, Südkorea, statt. Papst Leo XIV. gab die Termine zum Abschluss des Jubiläums der Jugend in Rom im August 2025 bekannt. Es wird der erste Weltjugendtag in Korea und der zweite in Asien nach Manila 1995.\n\nDas Motto ist das Wort Christi an seine Jünger: „Habt Mut: Ich habe die Welt besiegt“ (Johannes 16,33). Die offizielle Hymne „Confidite, Ego Vici Mundum“ wurde am 3. August 2026 veröffentlicht, zum Beginn des einjährigen Countdowns.\n\nVor der Hauptwoche können Pilger vom 29. Juli bis 2. August an den Tagen der Begegnung in den Diözesen teilnehmen und bei Gemeinden in ganz Korea wohnen. Das Weltjugendtagskreuz und die Marienikone sind bereits auf Pilgerfahrt durch die koreanischen Diözesen.\n\nDie internationale Anmeldung soll Ende 2026 auf der offiziellen Website öffnen und umfasst Unterkunft, Verpflegung, Transport und Versicherung.",
+        "nl": "De volgende internationale Wereldjongerendagen vinden plaats in Seoel, Zuid-Korea, van 3 tot 8 augustus 2027. Paus Leo XIV maakte de data bekend bij de afsluiting van het Jubileum van de Jongeren in Rome, in augustus 2025. Het worden de eerste Wereldjongerendagen in Korea, en de tweede in Azië na Manilla in 1995.\n\nHet thema is het woord van Christus tot zijn leerlingen: ‘Houd moed: Ik heb de wereld overwonnen’ (Johannes 16,33). Het officiële themalied, ‘Confidite, Ego Vici Mundum’, verscheen op 3 augustus 2026, bij de start van het aftellen van één jaar.\n\nVóór de hoofdweek kunnen pelgrims deelnemen aan de Dagen in de Bisdommen, van 29 juli tot 2 augustus, te gast bij plaatselijke gemeenschappen in heel Korea. Het WJD-kruis en de icoon van Maria zijn al op pelgrimstocht door de Koreaanse bisdommen.\n\nDe internationale inschrijving gaat eind 2026 open op de officiële website, inclusief logies, maaltijden, vervoer en verzekering.",
+        "pl": "Kolejne międzynarodowe Światowe Dni Młodzieży odbędą się w Seulu, w Korei Południowej, od 3 do 8 sierpnia 2027 roku. Papież Leon XIV ogłosił ich termin na zakończenie Jubileuszu Młodzieży w Rzymie w sierpniu 2025 roku. Będą to pierwsze ŚDM w Korei i drugie w Azji, po Manili w 1995 roku.\n\nIch hasłem są słowa Chrystusa do uczniów: „Odwagi! Jam zwyciężył świat” (J 16,33). Oficjalny hymn „Confidite, Ego Vici Mundum” ukazał się 3 sierpnia 2026 roku, gdy rozpoczęło się roczne odliczanie.\n\nPrzed głównym tygodniem pielgrzymi mogą wziąć udział w Dniach w Diecezjach, od 29 lipca do 2 sierpnia, goszczeni przez lokalne wspólnoty w całej Korei. Krzyż ŚDM i ikona Maryi już pielgrzymują po koreańskich diecezjach.\n\nMiędzynarodowe zapisy mają ruszyć na oficjalnej stronie pod koniec 2026 roku i obejmą zakwaterowanie, wyżywienie, transport i ubezpieczenie.",
+        "ta": "அடுத்த அனைத்துலக உலக இளைஞர் தினம் 2027 ஆகஸ்ட் 3 முதல் 8 வரை தென் கொரியாவின் சியோல் நகரில் நடைபெறும். 2025 ஆகஸ்டில் உரோமையில் நடந்த இளைஞர் யூபிலியின் நிறைவில் திருத்தந்தை பதினான்காம் லியோ இந்தத் தேதிகளை அறிவித்தார். இது கொரியாவில் நடைபெறும் முதல் உலக இளைஞர் தினம்; 1995-இல் மணிலாவுக்குப் பிறகு ஆசியாவில் நடைபெறும் இரண்டாவது.\n\nஇதன் மையக்கருத்து, கிறிஸ்து தம் சீடர்களுக்குச் சொன்ன வார்த்தை: “துணிவுடன் இருங்கள்; நான் உலகை வென்றுவிட்டேன்” (யோவான் 16:33). அதிகாரபூர்வ கருப்பொருள் பாடலான “Confidite, Ego Vici Mundum”, ஓராண்டுக் கவுண்ட்டவுன் தொடங்கிய 2026 ஆகஸ்ட் 3 அன்று வெளியிடப்பட்டது.\n\nமுதன்மை வாரத்திற்கு முன், ஜூலை 29 முதல் ஆகஸ்ட் 2 வரை நடைபெறும் “மறைமாவட்ட நாட்களில்” திருப்பயணிகள் பங்கேற்று, கொரியா முழுவதும் உள்ள உள்ளூர் சமூகங்களுடன் தங்கலாம். உலக இளைஞர் தினச் சிலுவையும் மரியாவின் திருவோவியமும் ஏற்கெனவே கொரிய மறைமாவட்டங்கள் வழியாகத் திருப்பயணம் மேற்கொண்டு வருகின்றன.\n\nதங்குமிடம், உணவு, போக்குவரத்து, காப்பீடு உள்ளிட்ட அனைத்துலகப் பதிவு 2026 இறுதியில் அதிகாரபூர்வ இணையதளத்தில் தொடங்கும்."
+      }
+    },
+    {
+      "id": "pope-leo-discharged-2026-10",
+      "kind": "news",
+      "theme": "papal",
+      "pinned": false,
+      "published": "2026-10-17",
+      "start": null,
+      "end": null,
+      "expires": "2026-12-31",
+      "image": "images/pope-leo-discharged-2026-10.webp",
+      "imageAuthor": "INFOWeather1",
+      "imageLicense": "CC BY-SA 4.0",
+      "imageSource": "https://commons.wikimedia.org/wiki/File:Pope_Leo_XIV_Waving.jpg",
+      "source": "Vatican News",
+      "url": {
+        "en": "https://www.vaticannews.va/en/pope/news/2026-10/pope-leo-xiv-discharged-from-hospital-lung-surgery.html"
+      },
+      "title": {
+        "en": "Pope Leo XIV returns to the Vatican after lung surgery",
+        "fr": "Le pape Léon XIV de retour au Vatican après son opération au poumon",
+        "es": "El papa León XIV regresa al Vaticano tras su operación de pulmón",
+        "it": "Papa Leone XIV torna in Vaticano dopo l’intervento al polmone",
+        "pt": "Papa Leão XIV regressa ao Vaticano após cirurgia ao pulmão",
+        "de": "Papst Leo XIV. nach Lungenoperation zurück im Vatikan",
+        "nl": "Paus Leo XIV terug in het Vaticaan na longoperatie",
+        "pl": "Papież Leon XIV wrócił do Watykanu po operacji płuca",
+        "ta": "நுரையீரல் அறுவை சிகிச்சைக்குப் பின் திருத்தந்தை பதினான்காம் லியோ வத்திக்கான் திரும்பினார்"
+      },
+      "location": {
+        "en": "Rome",
+        "fr": "Rome",
+        "es": "Roma",
+        "it": "Roma",
+        "pt": "Roma",
+        "de": "Rom",
+        "nl": "Rome",
+        "pl": "Rzym",
+        "ta": "உரோமை"
+      },
+      "summary": {
+        "en": "Discharged from Rome’s Gemelli Hospital on 17 October, four days after an operation on his right lung.",
+        "fr": "Sorti de l’hôpital Gemelli de Rome le 17 octobre, quatre jours après une opération du poumon droit.",
+        "es": "Recibió el alta del hospital Gemelli de Roma el 17 de octubre, cuatro días después de una operación en el pulmón derecho.",
+        "it": "Dimesso dal Policlinico Gemelli di Roma il 17 ottobre, quattro giorni dopo un intervento al polmone destro.",
+        "pt": "Teve alta do Hospital Gemelli, em Roma, a 17 de outubro, quatro dias depois de uma operação ao pulmão direito.",
+        "de": "Am 17. Oktober aus der Gemelli-Klinik in Rom entlassen, vier Tage nach einem Eingriff an der rechten Lunge.",
+        "nl": "Op 17 oktober ontslagen uit het Gemelli-ziekenhuis in Rome, vier dagen na een operatie aan de rechterlong.",
+        "pl": "17 października opuścił rzymską klinikę Gemelli, cztery dni po operacji prawego płuca.",
+        "ta": "வலது நுரையீரல் அறுவை சிகிச்சைக்கு நான்கு நாட்களுக்குப் பின், அக்டோபர் 17 அன்று உரோமையின் ஜெமெல்லி மருத்துவமனையிலிருந்து வீடு திரும்பினார்."
+      },
+      "body": {
+        "en": "Pope Leo XIV was admitted to the Agostino Gemelli Hospital in Rome on 13 October 2026, where surgeons removed the lower lobe of his right lung using a minimally invasive, video-assisted technique. The Holy See Press Office reported that the operation was successful and without complications, and that the examination made during surgery confirmed a lung adenocarcinoma, as earlier tests had suggested.\n\nAfter a calm recovery, blood tests and a chest X-ray on Saturday 17 October showed he was well enough to leave. He celebrated Mass on the hospital’s tenth floor and returned to the Vatican that afternoon.\n\nThe next day he led the Sunday Angelus from the window of the papal apartment, thanking the doctors, nurses and staff of the Gemelli, and all who had prayed for him.\n\nLet us continue to pray for the Holy Father’s full recovery.",
+        "fr": "Le pape Léon XIV a été admis le 13 octobre 2026 à la polyclinique Agostino-Gemelli de Rome, où les chirurgiens lui ont retiré le lobe inférieur du poumon droit par une technique mini-invasive vidéo-assistée. Le Bureau de presse du Saint-Siège a indiqué que l’opération s’était bien déroulée, sans complications, et que l’examen réalisé pendant l’intervention avait confirmé un adénocarcinome pulmonaire, comme le laissaient penser les examens précédents.\n\nAprès une convalescence paisible, des analyses de sang et une radiographie du thorax le samedi 17 octobre ont permis sa sortie. Il a célébré la messe au dixième étage de l’hôpital et a regagné le Vatican l’après-midi même.\n\nLe lendemain, il a présidé l’Angélus dominical depuis la fenêtre de l’appartement pontifical, remerciant les médecins, les infirmiers et le personnel du Gemelli, ainsi que tous ceux qui avaient prié pour lui.\n\nContinuons de prier pour le plein rétablissement du Saint-Père.",
+        "es": "El papa León XIV ingresó el 13 de octubre de 2026 en el Policlínico Agostino Gemelli de Roma, donde los cirujanos le extirparon el lóbulo inferior del pulmón derecho mediante una técnica mínimamente invasiva asistida por vídeo. La Oficina de Prensa de la Santa Sede informó de que la operación fue un éxito, sin complicaciones, y de que el examen realizado durante la intervención confirmó un adenocarcinoma pulmonar, como ya apuntaban las pruebas previas.\n\nTras una recuperación tranquila, los análisis de sangre y una radiografía de tórax del sábado 17 de octubre permitieron darle el alta. Celebró la Misa en la décima planta del hospital y regresó al Vaticano esa misma tarde.\n\nAl día siguiente presidió el Ángelus dominical desde la ventana del apartamento pontificio y dio las gracias a los médicos, enfermeros y personal del Gemelli, y a todos los que habían rezado por él.\n\nSigamos rezando por la plena recuperación del Santo Padre.",
+        "it": "Papa Leone XIV è stato ricoverato il 13 ottobre 2026 al Policlinico Agostino Gemelli di Roma, dove i chirurghi gli hanno asportato il lobo inferiore del polmone destro con una tecnica mininvasiva videoassistita. La Sala Stampa della Santa Sede ha riferito che l’intervento è riuscito senza complicazioni e che l’esame eseguito durante l’operazione ha confermato un adenocarcinoma polmonare, come indicato dagli esami precedenti.\n\nDopo un decorso tranquillo, le analisi del sangue e una radiografia del torace di sabato 17 ottobre ne hanno consentito le dimissioni. Ha celebrato la Messa al decimo piano dell’ospedale ed è rientrato in Vaticano nel pomeriggio.\n\nIl giorno seguente ha guidato l’Angelus domenicale dalla finestra dell’appartamento pontificio, ringraziando i medici, gli infermieri e il personale del Gemelli e tutti coloro che avevano pregato per lui.\n\nContinuiamo a pregare per la piena guarigione del Santo Padre.",
+        "pt": "O Papa Leão XIV foi internado a 13 de outubro de 2026 no Policlínico Agostino Gemelli, em Roma, onde os cirurgiões lhe retiraram o lobo inferior do pulmão direito com uma técnica minimamente invasiva assistida por vídeo. A Sala de Imprensa da Santa Sé informou que a operação correu bem, sem complicações, e que o exame feito durante a cirurgia confirmou um adenocarcinoma pulmonar, como os exames anteriores indicavam.\n\nApós uma recuperação tranquila, as análises ao sangue e uma radiografia ao tórax no sábado, 17 de outubro, permitiram a alta. Celebrou a Missa no décimo piso do hospital e regressou ao Vaticano nessa tarde.\n\nNo dia seguinte, presidiu ao Angelus dominical da janela do apartamento pontifício, agradecendo aos médicos, enfermeiros e funcionários do Gemelli e a todos os que rezaram por ele.\n\nContinuemos a rezar pela plena recuperação do Santo Padre.",
+        "de": "Papst Leo XIV. wurde am 13. Oktober 2026 in die Gemelli-Klinik in Rom aufgenommen, wo die Chirurgen in einem minimalinvasiven, videoassistierten Eingriff den unteren Lappen seiner rechten Lunge entfernten. Das Presseamt des Heiligen Stuhls teilte mit, die Operation sei erfolgreich und ohne Komplikationen verlaufen; die Untersuchung während des Eingriffs habe ein Adenokarzinom der Lunge bestätigt, wie es die vorherigen Untersuchungen nahegelegt hatten.\n\nNach einer ruhigen Genesung zeigten Blutuntersuchungen und eine Röntgenaufnahme des Brustkorbs am Samstag, 17. Oktober, dass er entlassen werden konnte. Er feierte die Messe im zehnten Stock der Klinik und kehrte am Nachmittag in den Vatikan zurück.\n\nAm nächsten Tag leitete er das sonntägliche Angelusgebet vom Fenster der päpstlichen Wohnung aus und dankte den Ärzten, Pflegekräften und Mitarbeitern der Gemelli-Klinik sowie allen, die für ihn gebetet hatten.\n\nBeten wir weiter für die vollständige Genesung des Heiligen Vaters.",
+        "nl": "Paus Leo XIV werd op 13 oktober 2026 opgenomen in het Agostino Gemelli-ziekenhuis in Rome, waar chirurgen met een minimaal invasieve, video-ondersteunde techniek de onderste kwab van zijn rechterlong verwijderden. Het Persbureau van de Heilige Stoel meldde dat de operatie geslaagd was en zonder complicaties verliep, en dat het onderzoek tijdens de ingreep een adenocarcinoom van de long bevestigde, zoals eerdere onderzoeken al deden vermoeden.\n\nNa een rustig herstel bleek uit bloedonderzoek en een thoraxfoto op zaterdag 17 oktober dat hij naar huis kon. Hij vierde de Mis op de tiende verdieping van het ziekenhuis en keerde die middag terug naar het Vaticaan.\n\nDe volgende dag leidde hij het zondagse Angelus vanuit het raam van het pauselijke appartement en bedankte hij de artsen, verpleegkundigen en medewerkers van het Gemelli, en allen die voor hem hadden gebeden.\n\nLaten we blijven bidden voor het volledige herstel van de Heilige Vader.",
+        "pl": "Papież Leon XIV został przyjęty 13 października 2026 roku do Polikliniki Agostino Gemelli w Rzymie, gdzie chirurdzy usunęli dolny płat jego prawego płuca małoinwazyjną techniką wideotorakoskopową. Biuro Prasowe Stolicy Apostolskiej poinformowało, że operacja się powiodła i przebiegła bez powikłań, a badanie wykonane w jej trakcie potwierdziło gruczolakoraka płuca, na co wskazywały wcześniejsze badania.\n\nPo spokojnej rekonwalescencji badania krwi i zdjęcie rentgenowskie klatki piersiowej w sobotę 17 października pozwoliły na wypis. Papież odprawił Mszę na dziesiątym piętrze szpitala i po południu wrócił do Watykanu.\n\nNastępnego dnia poprowadził niedzielną modlitwę Anioł Pański z okna Pałacu Apostolskiego, dziękując lekarzom, pielęgniarkom i personelowi Gemelli oraz wszystkim, którzy się za niego modlili.\n\nMódlmy się nadal o pełny powrót Ojca Świętego do zdrowia.",
+        "ta": "திருத்தந்தை பதினான்காம் லியோ 2026 அக்டோபர் 13 அன்று உரோமையின் அகோஸ்தினோ ஜெமெல்லி மருத்துவமனையில் அனுமதிக்கப்பட்டார். அங்கு அறுவை மருத்துவர்கள், குறைந்த ஊடுருவல் கொண்ட வீடியோ உதவி முறையில் அவரது வலது நுரையீரலின் கீழ்ப் பகுதியை அகற்றினர். அறுவை சிகிச்சை சிக்கலின்றி வெற்றிகரமாக நடந்ததாகவும், முந்தைய பரிசோதனைகள் சுட்டிக்காட்டியபடியே அறுவையின்போது செய்யப்பட்ட பரிசோதனை நுரையீரல் அடினோகார்சினோமாவை உறுதிப்படுத்தியதாகவும் திருப்பீடச் செய்தி அலுவலகம் அறிவித்தது.\n\nஅமைதியான மீட்புக்குப் பின், அக்டோபர் 17 சனிக்கிழமை செய்யப்பட்ட இரத்தப் பரிசோதனைகளும் மார்பு எக்ஸ்-ரேயும் அவர் வீடு திரும்பலாம் என்று காட்டின. மருத்துவமனையின் பத்தாவது தளத்தில் திருப்பலி நிறைவேற்றிவிட்டு, அன்று பிற்பகலே வத்திக்கான் திரும்பினார்.\n\nமறுநாள், திருத்தந்தையின் இல்லச் சன்னலிலிருந்து ஞாயிறு மூவேளைச் செபத்தை வழிநடத்தி, ஜெமெல்லி மருத்துவர்கள், செவிலியர்கள், பணியாளர்கள் மற்றும் தமக்காகச் செபித்த அனைவருக்கும் நன்றி கூறினார்.\n\nதிருத்தந்தையின் முழுமையான நலனுக்காகத் தொடர்ந்து செபிப்போம்."
+      }
+    },
+    {
+      "id": "papal-journey-latin-america-2026",
+      "kind": "event",
+      "theme": "journey",
+      "pinned": true,
+      "published": "2026-09-21",
+      "start": "2026-11-06",
+      "end": "2026-11-17",
+      "expires": "2026-11-20",
+      "image": "images/papal-journey-latin-america-2026.webp",
+      "imageAuthor": "Diario La Industria - Chiclayo",
+      "imageLicense": "CC BY 3.0",
+      "imageSource": "https://commons.wikimedia.org/wiki/File:Robert_Prevost_2018_snapshot_from_interview_with_Diario_La_Industria.jpg",
+      "source": "Vatican News",
+      "url": {
+        "en": "https://www.vaticannews.va/en/pope/news/2026-09/hspo-programme-latin-america-logos-mottos-itinerary.html",
+        "de": "https://www.vaticannews.va/de/papst/news/2026-09/papst-leo-xiv-reise-programm-uruguay-argentinien-peru.html",
+        "es": "https://www.vaticannews.va/es/papa/news/2026-08/en-noviembre-viaje-apostolico-del-papa-uruguay-argentina-peru.html"
+      },
+      "title": {
+        "en": "Pope Leo XIV’s journey to Uruguay, Argentina and Peru",
+        "fr": "Le voyage du pape Léon XIV en Uruguay, en Argentine et au Pérou",
+        "es": "El viaje del papa León XIV a Uruguay, Argentina y Perú",
+        "it": "Il viaggio di papa Leone XIV in Uruguay, Argentina e Perù",
+        "pt": "A viagem do Papa Leão XIV ao Uruguai, Argentina e Peru",
+        "de": "Die Reise von Papst Leo XIV. nach Uruguay, Argentinien und Peru",
+        "nl": "De reis van paus Leo XIV naar Uruguay, Argentinië en Peru",
+        "pl": "Podróż papieża Leona XIV do Urugwaju, Argentyny i Peru",
+        "ta": "திருத்தந்தை பதினான்காம் லியோவின் உருகுவே, அர்ஜென்டினா, பெரு திருப்பயணம்"
+      },
+      "location": {
+        "en": "Uruguay · Argentina · Peru",
+        "fr": "Uruguay · Argentine · Pérou",
+        "es": "Uruguay · Argentina · Perú",
+        "it": "Uruguay · Argentina · Perù",
+        "pt": "Uruguai · Argentina · Peru",
+        "de": "Uruguay · Argentinien · Peru",
+        "nl": "Uruguay · Argentinië · Peru",
+        "pl": "Urugwaj · Argentyna · Peru",
+        "ta": "உருகுவே · அர்ஜென்டினா · பெரு"
+      },
+      "summary": {
+        "en": "Eleven days and ten cities, from Montevideo to Pucallpa: the Pope’s sixth international journey, 6–17 November.",
+        "fr": "Onze jours et dix villes, de Montevideo à Pucallpa : le sixième voyage international du pape, du 6 au 17 novembre.",
+        "es": "Once días y diez ciudades, de Montevideo a Pucallpa: el sexto viaje internacional del papa, del 6 al 17 de noviembre.",
+        "it": "Undici giorni e dieci città, da Montevideo a Pucallpa: il sesto viaggio internazionale del papa, dal 6 al 17 novembre.",
+        "pt": "Onze dias e dez cidades, de Montevideu a Pucallpa: a sexta viagem internacional do Papa, de 6 a 17 de novembro.",
+        "de": "Elf Tage, zehn Städte, von Montevideo bis Pucallpa: die sechste Auslandsreise des Papstes, 6. bis 17. November.",
+        "nl": "Elf dagen en tien steden, van Montevideo tot Pucallpa: de zesde buitenlandse reis van de paus, 6–17 november.",
+        "pl": "Jedenaście dni i dziesięć miast, od Montevideo po Pucallpę: szósta podróż zagraniczna papieża, 6–17 listopada.",
+        "ta": "மொன்டேவீடியோ முதல் புக்கால்பா வரை பதினொரு நாட்கள், பத்து நகரங்கள்: நவம்பர் 6–17, திருத்தந்தையின் ஆறாவது வெளிநாட்டுத் திருப்பயணம்."
+      },
+      "body": {
+        "en": "From 6 to 17 November 2026, Pope Leo XIV will make his sixth international apostolic journey, visiting ten cities in three South American countries.\n\nUruguay, 6–8 November: Montevideo, Paysandú and Florida. Motto: “I bring you news of great joy” (Luke 2:10). It is the first papal visit since Saint John Paul II in 1988.\n\nArgentina, 8–11 November: Buenos Aires, Córdoba and Luján. Motto: “Welcome everyone. Go and proclaim.” It is the homeland of Pope Francis and the first papal visit since 1987.\n\nPeru, 11–17 November: Lima, Chiclayo, Cusco and Pucallpa, the longest stage. Pope Leo first came to Peru as a missionary in the 1980s, later served as Bishop of Chiclayo, and holds Peruvian citizenship. Motto: “Let us open our hearts.”\n\nAfter the Pope’s lung surgery in October, his surgeon said there was no clinical reason for the journey not to go ahead.",
+        "fr": "Du 6 au 17 novembre 2026, le pape Léon XIV accomplira son sixième voyage apostolique international, dans dix villes de trois pays d’Amérique du Sud.\n\nUruguay, 6–8 novembre : Montevideo, Paysandú et Florida. Devise : « Je vous annonce une grande joie » (Luc 2, 10). C’est la première visite d’un pape depuis saint Jean-Paul II en 1988.\n\nArgentine, 8–11 novembre : Buenos Aires, Córdoba et Luján. Devise : « Accueillez tout le monde. Allez et annoncez. » C’est la patrie du pape François, et la première visite d’un pape depuis 1987.\n\nPérou, 11–17 novembre : Lima, Chiclayo, Cuzco et Pucallpa, l’étape la plus longue. Le pape Léon est d’abord venu au Pérou comme missionnaire dans les années 1980, puis y a été évêque de Chiclayo ; il a la nationalité péruvienne. Devise : « Ouvrons nos cœurs. »\n\nAprès l’opération du poumon subie par le pape en octobre, son chirurgien a déclaré qu’aucune raison clinique ne s’opposait au voyage.",
+        "es": "Del 6 al 17 de noviembre de 2026, el papa León XIV realizará su sexto viaje apostólico internacional, con diez ciudades en tres países de Sudamérica.\n\nUruguay, 6–8 de noviembre: Montevideo, Paysandú y Florida. Lema: «Les traigo una buena noticia, una gran alegría» (Lucas 2, 10). Es la primera visita papal desde san Juan Pablo II en 1988.\n\nArgentina, 8–11 de noviembre: Buenos Aires, Córdoba y Luján. Lema: «Reciban a todos. Vayan y anuncien». Es la patria del papa Francisco y la primera visita papal desde 1987.\n\nPerú, 11–17 de noviembre: Lima, Chiclayo, Cusco y Pucallpa, la etapa más larga. El papa León llegó a Perú como misionero en los años ochenta, después fue obispo de Chiclayo y tiene la nacionalidad peruana. Lema: «Abramos el corazón».\n\nTras la operación de pulmón del papa en octubre, su cirujano afirmó que no hay ninguna razón clínica para que el viaje no se realice.",
+        "it": "Dal 6 al 17 novembre 2026 papa Leone XIV compirà il suo sesto viaggio apostolico internazionale, in dieci città di tre Paesi del Sud America.\n\nUruguay, 6–8 novembre: Montevideo, Paysandú e Florida. Motto: «Vi annuncio una grande gioia» (Luca 2,10). È la prima visita di un papa dopo san Giovanni Paolo II nel 1988.\n\nArgentina, 8–11 novembre: Buenos Aires, Córdoba e Luján. Motto: «Accogliete tutti. Andate e annunciate». È la patria di papa Francesco e la prima visita di un papa dal 1987.\n\nPerù, 11–17 novembre: Lima, Chiclayo, Cusco e Pucallpa, la tappa più lunga. Papa Leone giunse in Perù come missionario negli anni Ottanta, fu poi vescovo di Chiclayo e ha la cittadinanza peruviana. Motto: «Apriamo il cuore».\n\nDopo l’intervento al polmone del papa in ottobre, il suo chirurgo ha detto che non ci sono ragioni cliniche perché il viaggio non si svolga.",
+        "pt": "De 6 a 17 de novembro de 2026, o Papa Leão XIV fará a sua sexta viagem apostólica internacional, a dez cidades de três países da América do Sul.\n\nUruguai, 6–8 de novembro: Montevidéu, Paysandú e Florida. Lema: «Anuncio-vos uma grande alegria» (Lucas 2,10). É a primeira visita papal desde São João Paulo II, em 1988.\n\nArgentina, 8–11 de novembro: Buenos Aires, Córdoba e Luján. Lema: «Acolhei a todos. Ide e anunciai.» É a pátria do Papa Francisco e a primeira visita papal desde 1987.\n\nPeru, 11–17 de novembro: Lima, Chiclayo, Cusco e Pucallpa, a etapa mais longa. O Papa Leão chegou ao Peru como missionário nos anos 1980, foi depois bispo de Chiclayo e tem nacionalidade peruana. Lema: «Abramos o coração.»\n\nDepois da cirurgia ao pulmão do Papa em outubro, o seu cirurgião afirmou que não há razões clínicas para que a viagem não se realize.",
+        "de": "Vom 6. bis 17. November 2026 unternimmt Papst Leo XIV. seine sechste internationale Apostolische Reise mit zehn Städten in drei Ländern Südamerikas.\n\nUruguay, 6.–8. November: Montevideo, Paysandú und Florida. Motto: „Ich verkünde euch eine große Freude“ (Lukas 2,10). Es ist der erste Papstbesuch seit dem heiligen Johannes Paul II. 1988.\n\nArgentinien, 8.–11. November: Buenos Aires, Córdoba und Luján. Motto: „Nehmt alle auf. Geht und verkündet.“ Es ist die Heimat von Papst Franziskus und der erste Papstbesuch seit 1987.\n\nPeru, 11.–17. November: Lima, Chiclayo, Cusco und Pucallpa, die längste Etappe. Papst Leo kam in den 1980er-Jahren als Missionar nach Peru, war später Bischof von Chiclayo und besitzt die peruanische Staatsbürgerschaft. Motto: „Öffnen wir unsere Herzen.“\n\nNach der Lungenoperation des Papstes im Oktober sagte sein Chirurg, es gebe keinen klinischen Grund, die Reise nicht anzutreten.",
+        "nl": "Van 6 tot 17 november 2026 maakt paus Leo XIV zijn zesde internationale apostolische reis, naar tien steden in drie landen van Zuid-Amerika.\n\nUruguay, 6–8 november: Montevideo, Paysandú en Florida. Motto: ‘Ik verkondig u een grote vreugde’ (Lucas 2,10). Het is het eerste pausbezoek sinds de heilige Johannes Paulus II in 1988.\n\nArgentinië, 8–11 november: Buenos Aires, Córdoba en Luján. Motto: ‘Verwelkom iedereen. Ga en verkondig.’ Het is het vaderland van paus Franciscus en het eerste pausbezoek sinds 1987.\n\nPeru, 11–17 november: Lima, Chiclayo, Cusco en Pucallpa, de langste etappe. Paus Leo kwam in de jaren tachtig als missionaris naar Peru, was later bisschop van Chiclayo en heeft de Peruaanse nationaliteit. Motto: ‘Laten we ons hart openen.’\n\nNa de longoperatie van de paus in oktober verklaarde zijn chirurg dat er geen medische reden is om de reis niet te laten doorgaan.",
+        "pl": "Od 6 do 17 listopada 2026 roku papież Leon XIV odbędzie swoją szóstą międzynarodową podróż apostolską, odwiedzając dziesięć miast w trzech krajach Ameryki Południowej.\n\nUrugwaj, 6–8 listopada: Montevideo, Paysandú i Florida. Hasło: „Zwiastuję wam radość wielką” (Łk 2,10). To pierwsza wizyta papieża od czasu św. Jana Pawła II w 1988 roku.\n\nArgentyna, 8–11 listopada: Buenos Aires, Córdoba i Luján. Hasło: „Przyjmujcie wszystkich. Idźcie i głoście”. To ojczyzna papieża Franciszka i pierwsza wizyta papieża od 1987 roku.\n\nPeru, 11–17 listopada: Lima, Chiclayo, Cusco i Pucallpa, najdłuższy etap. Papież Leon przybył do Peru jako misjonarz w latach 80., później był biskupem Chiclayo i ma obywatelstwo peruwiańskie. Hasło: „Otwórzmy serca”.\n\nPo październikowej operacji płuca papieża jego chirurg stwierdził, że nie ma przeciwwskazań klinicznych do odbycia podróży.",
+        "ta": "2026 நவம்பர் 6 முதல் 17 வரை, திருத்தந்தை பதினான்காம் லியோ தமது ஆறாவது அனைத்துலகத் திருத்தூதுப் பயணத்தை மேற்கொண்டு, தென் அமெரிக்காவின் மூன்று நாடுகளில் பத்து நகரங்களைச் சந்திப்பார்.\n\nஉருகுவே, நவம்பர் 6–8: மொன்டேவீடியோ, பைசாண்டு, ஃப்ளோரிடா. விருதுவாக்கு: “பெரும் மகிழ்ச்சி தரும் நற்செய்தியை உங்களுக்கு அறிவிக்கிறேன்” (லூக்கா 2:10). 1988-இல் புனித இரண்டாம் ஜான் பவுலுக்குப் பிறகு இதுவே முதல் திருத்தந்தை வருகை.\n\nஅர்ஜென்டினா, நவம்பர் 8–11: புவெனஸ் அயர்ஸ், கோர்டோபா, லுஹான். விருதுவாக்கு: “அனைவரையும் வரவேற்றிடுங்கள். சென்று அறிவியுங்கள்.” இது திருத்தந்தை பிரான்சிஸின் தாய்நாடு; 1987-க்குப் பிறகு முதல் திருத்தந்தை வருகை.\n\nபெரு, நவம்பர் 11–17: லீமா, சிக்லாயோ, கூஸ்கோ, புக்கால்பா — பயணத்தின் மிக நீண்ட பகுதி. திருத்தந்தை லியோ 1980-களில் மறைப்பணியாளராகப் பெருவுக்கு வந்து, பின்னர் சிக்லாயோ ஆயராகப் பணியாற்றினார்; அவர் பெரு நாட்டுக் குடியுரிமையும் பெற்றவர். விருதுவாக்கு: “நம் இதயங்களைத் திறப்போம்.”\n\nஅக்டோபரில் திருத்தந்தைக்கு நடந்த நுரையீரல் அறுவை சிகிச்சைக்குப் பின், இப்பயணம் நடைபெறாமல் இருக்க மருத்துவக் காரணம் எதுவும் இல்லை என்று அவரது அறுவை மருத்துவர் கூறினார்."
+      }
+    },
+    {
+      "id": "cardinal-tagle-dean-2026-10",
+      "kind": "news",
+      "theme": "cardinal",
+      "pinned": false,
+      "published": "2026-10-09",
+      "start": null,
+      "end": null,
+      "expires": "2026-12-31",
+      "image": "images/cardinal-tagle-dean-2026-10.webp",
+      "imageAuthor": "Perrant",
+      "imageLicense": "CC BY 3.0",
+      "imageSource": "https://commons.wikimedia.org/wiki/File:Luis_Antonio_Tagle_at_Manila_in_2016_(cropped).jpg",
+      "source": "Vatican News",
+      "url": {
+        "en": "https://www.vaticannews.va/en/pope/news/2026-10/cardinal-tagle-elected-new-dean-of-college-of-cardinals.html"
+      },
+      "title": {
+        "en": "Cardinal Tagle elected Dean of the College of Cardinals",
+        "fr": "Le cardinal Tagle élu doyen du Collège cardinalice",
+        "es": "El cardenal Tagle, elegido decano del Colegio Cardenalicio",
+        "it": "Il cardinale Tagle eletto decano del Collegio cardinalizio",
+        "pt": "Cardeal Tagle eleito decano do Colégio Cardinalício",
+        "de": "Kardinal Tagle zum Dekan des Kardinalskollegiums gewählt",
+        "nl": "Kardinaal Tagle gekozen tot deken van het College van Kardinalen",
+        "pl": "Kardynał Tagle wybrany dziekanem Kolegium Kardynalskiego",
+        "ta": "கர்தினால் தாக்லே கர்தினால்கள் குழுவின் தலைவராகத் தேர்வு"
+      },
+      "location": {
+        "en": "Vatican City",
+        "fr": "Cité du Vatican",
+        "es": "Ciudad del Vaticano",
+        "it": "Città del Vaticano",
+        "pt": "Cidade do Vaticano",
+        "de": "Vatikanstadt",
+        "nl": "Vaticaanstad",
+        "pl": "Watykan",
+        "ta": "வத்திக்கான் நகர்"
+      },
+      "summary": {
+        "en": "The Filipino cardinal, 69, succeeds Cardinal Giovanni Battista Re, who led the College for nearly seven years.",
+        "fr": "Le cardinal philippin, 69 ans, succède au cardinal Giovanni Battista Re, qui a guidé le Collège pendant près de sept ans.",
+        "es": "El cardenal filipino, de 69 años, sucede al cardenal Giovanni Battista Re, que guió el Colegio durante casi siete años.",
+        "it": "Il cardinale filippino, 69 anni, succede al cardinale Giovanni Battista Re, che ha guidato il Collegio per quasi sette anni.",
+        "pt": "O cardeal filipino, de 69 anos, sucede ao cardeal Giovanni Battista Re, que guiou o Colégio durante quase sete anos.",
+        "de": "Der 69-jährige philippinische Kardinal folgt auf Kardinal Giovanni Battista Re, der das Kollegium fast sieben Jahre leitete.",
+        "nl": "De 69-jarige Filipijnse kardinaal volgt kardinaal Giovanni Battista Re op, die het College bijna zeven jaar leidde.",
+        "pl": "69-letni filipiński kardynał zastępuje kard. Giovanniego Battistę Re, który kierował Kolegium przez prawie siedem lat.",
+        "ta": "69 வயதான பிலிப்பீன்ஸ் கர்தினால், ஏறக்குறைய ஏழு ஆண்டுகள் குழுவை வழிநடத்திய கர்தினால் ஜொவான்னி பத்திஸ்தா ரே-க்குப் பின் பொறுப்பேற்கிறார்."
+      },
+      "body": {
+        "en": "On 8 October 2026 the cardinals of the Order of Bishops elected Cardinal Luis Antonio Tagle as Dean of the College of Cardinals. The Holy See announced the appointment the next day.\n\nCardinal Tagle, 69, is Pro-Prefect of the Section for First Evangelisation and New Particular Churches of the Dicastery for Evangelisation. As Dean he takes the title of the Suburbicarian Church of Ostia, while keeping that of Albano.\n\nHe succeeds Cardinal Giovanni Battista Re, 92, Dean since 2020, who now becomes Dean Emeritus.\n\nThe Dean is “first among equals”: he coordinates the cardinals but has no authority over them. When he is under eighty, he convenes and presides over a conclave.",
+        "fr": "Le 8 octobre 2026, les cardinaux de l’ordre des évêques ont élu le cardinal Luis Antonio Tagle doyen du Collège cardinalice. Le Saint-Siège a annoncé la nomination le lendemain.\n\nLe cardinal Tagle, 69 ans, est pro-préfet de la Section pour la première évangélisation et les nouvelles Églises particulières du dicastère pour l’Évangélisation. Comme doyen, il prend le titre de l’Église suburbicaire d’Ostie, tout en gardant celui d’Albano.\n\nIl succède au cardinal Giovanni Battista Re, 92 ans, doyen depuis 2020, qui devient doyen émérite.\n\nLe doyen est « le premier parmi des égaux » : il coordonne les cardinaux sans avoir d’autorité sur eux. S’il a moins de quatre-vingts ans, il convoque et préside le conclave.",
+        "es": "El 8 de octubre de 2026, los cardenales del orden de los obispos eligieron al cardenal Luis Antonio Tagle decano del Colegio Cardenalicio. La Santa Sede anunció el nombramiento al día siguiente.\n\nEl cardenal Tagle, de 69 años, es pro-prefecto de la Sección para la Primera Evangelización y las Nuevas Iglesias Particulares del Dicasterio para la Evangelización. Como decano asume el título de la Iglesia suburbicaria de Ostia, conservando el de Albano.\n\nSucede al cardenal Giovanni Battista Re, de 92 años, decano desde 2020, que pasa a ser decano emérito.\n\nEl decano es «el primero entre iguales»: coordina a los cardenales, pero no tiene autoridad sobre ellos. Si es menor de ochenta años, convoca y preside el cónclave.",
+        "it": "L’8 ottobre 2026 i cardinali dell’ordine dei vescovi hanno eletto il cardinale Luis Antonio Tagle decano del Collegio cardinalizio. La Santa Sede ha annunciato la nomina il giorno seguente.\n\nIl cardinale Tagle, 69 anni, è pro-prefetto della Sezione per la prima evangelizzazione e le nuove Chiese particolari del Dicastero per l’Evangelizzazione. Come decano assume il titolo della Chiesa suburbicaria di Ostia, mantenendo quello di Albano.\n\nSuccede al cardinale Giovanni Battista Re, 92 anni, decano dal 2020, che diventa decano emerito.\n\nIl decano è «primo tra pari»: coordina i cardinali ma non ha autorità su di loro. Se ha meno di ottant’anni, convoca e presiede il conclave.",
+        "pt": "A 8 de outubro de 2026, os cardeais da ordem dos bispos elegeram o cardeal Luis Antonio Tagle decano do Colégio Cardinalício. A Santa Sé anunciou a nomeação no dia seguinte.\n\nO cardeal Tagle, de 69 anos, é pró-prefeito da Secção para a Primeira Evangelização e as Novas Igrejas Particulares do Dicastério para a Evangelização. Como decano assume o título da Igreja suburbicária de Óstia, mantendo o de Albano.\n\nSucede ao cardeal Giovanni Battista Re, de 92 anos, decano desde 2020, que passa a decano emérito.\n\nO decano é «o primeiro entre iguais»: coordena os cardeais, mas não tem autoridade sobre eles. Se tiver menos de oitenta anos, convoca e preside ao conclave.",
+        "de": "Am 8. Oktober 2026 wählten die Kardinäle des Bischofsrangs Kardinal Luis Antonio Tagle zum Dekan des Kardinalskollegiums. Der Heilige Stuhl gab die Ernennung am folgenden Tag bekannt.\n\nKardinal Tagle, 69, ist Pro-Präfekt der Sektion für die Erstevangelisierung und die neuen Teilkirchen im Dikasterium für die Evangelisierung. Als Dekan übernimmt er den Titel der suburbikarischen Kirche von Ostia und behält den von Albano.\n\nEr folgt auf den 92-jährigen Kardinal Giovanni Battista Re, Dekan seit 2020, der nun emeritierter Dekan ist.\n\nDer Dekan ist „Erster unter Gleichen“: Er koordiniert die Kardinäle, hat aber keine Weisungsbefugnis über sie. Ist er jünger als achtzig, beruft er das Konklave ein und leitet es.",
+        "nl": "Op 8 oktober 2026 kozen de kardinalen van de orde der bisschoppen kardinaal Luis Antonio Tagle tot deken van het College van Kardinalen. De Heilige Stoel maakte de benoeming de volgende dag bekend.\n\nKardinaal Tagle, 69, is pro-prefect van de Sectie voor de eerste evangelisatie en de nieuwe particuliere Kerken van het Dicasterie voor de Evangelisatie. Als deken krijgt hij de titel van de suburbicaire Kerk van Ostia en behoudt hij die van Albano.\n\nHij volgt de 92-jarige kardinaal Giovanni Battista Re op, deken sinds 2020, die nu deken-emeritus wordt.\n\nDe deken is ‘de eerste onder gelijken’: hij coördineert de kardinalen maar heeft geen gezag over hen. Is hij jonger dan tachtig, dan roept hij het conclaaf bijeen en zit het voor.",
+        "pl": "8 października 2026 roku kardynałowie z porządku biskupów wybrali kard. Luisa Antonia Tagle dziekanem Kolegium Kardynalskiego. Stolica Apostolska ogłosiła nominację następnego dnia.\n\n69-letni kard. Tagle jest proprefektem Sekcji ds. Pierwszej Ewangelizacji i Nowych Kościołów Partykularnych Dykasterii ds. Ewangelizacji. Jako dziekan otrzymuje tytuł Kościoła podmiejskiego Ostii, zachowując tytuł Albano.\n\nZastępuje 92-letniego kard. Giovanniego Battistę Re, dziekana od 2020 roku, który zostaje dziekanem seniorem.\n\nDziekan jest „pierwszym wśród równych”: koordynuje prace kardynałów, ale nie ma nad nimi władzy. Jeśli nie ukończył osiemdziesięciu lat, zwołuje konklawe i mu przewodniczy.",
+        "ta": "2026 அக்டோபர் 8 அன்று, ஆயர் நிலைக் கர்தினால்கள், கர்தினால் லூயிஸ் அந்தோனியோ தாக்லேவைக் கர்தினால்கள் குழுவின் தலைவராகத் (டீன்) தேர்ந்தெடுத்தனர். மறுநாள் திருப்பீடம் இந்த நியமனத்தை அறிவித்தது.\n\n69 வயதான கர்தினால் தாக்லே, நற்செய்தி அறிவிப்புத் துறையின் முதல் நற்செய்தி அறிவிப்பு மற்றும் புதிய தலத்திருஅவைகள் பிரிவின் இணைத் தலைவர். தலைவராக, அல்பானோ பட்டத்தைத் தக்கவைத்துக்கொண்டு ஓஸ்தியா புறநகர்த் திருஅவையின் பட்டத்தையும் ஏற்கிறார்.\n\n2020 முதல் தலைவராக இருந்த 92 வயதான கர்தினால் ஜொவான்னி பத்திஸ்தா ரே-க்குப் பின் அவர் பொறுப்பேற்கிறார்; கர்தினால் ரே இப்போது ஓய்வுபெற்ற தலைவர்.\n\nதலைவர் “சமமானவர்களில் முதல்வர்”: அவர் கர்தினால்களை ஒருங்கிணைக்கிறார், ஆனால் அவர்கள்மேல் அதிகாரம் இல்லை. எண்பது வயதுக்குக் குறைவாக இருந்தால், அவரே திருத்தந்தைத் தேர்வுக் கூட்டத்தைக் கூட்டித் தலைமை தாங்குகிறார்."
+      }
+    },
+    {
+      "id": "world-mission-sunday-100-2026",
+      "kind": "news",
+      "theme": "mission",
+      "pinned": false,
+      "published": "2026-10-18",
+      "start": null,
+      "end": null,
+      "expires": "2026-11-30",
+      "image": "images/world-mission-sunday-100-2026.webp",
+      "imageAuthor": "Nicola Perscheid",
+      "imageLicense": "Public domain",
+      "imageSource": "https://commons.wikimedia.org/wiki/File:Pius_XI,_by_Nicola_Perscheid,_circa_1922_(retouched).jpg",
+      "source": "Vatican News",
+      "url": {
+        "en": "https://www.vaticannews.va/en/pope/news/2026-10/pope-leo-plenary-indulgence-100th-world-mission-sunday-angelus.html"
+      },
+      "title": {
+        "en": "The 100th World Mission Sunday",
+        "fr": "La 100e Journée missionnaire mondiale",
+        "es": "El centenario del Domingo Mundial de las Misiones",
+        "it": "La 100ª Giornata Missionaria Mondiale",
+        "pt": "O 100.º Dia Mundial das Missões",
+        "de": "Der 100. Weltmissionssonntag",
+        "nl": "De 100e Wereldmissiezondag",
+        "pl": "Setna Światowa Niedziela Misyjna",
+        "ta": "100-ஆவது உலக மறைப்பணி ஞாயிறு"
+      },
+      "location": {
+        "en": "Worldwide",
+        "fr": "Monde entier",
+        "es": "Todo el mundo",
+        "it": "In tutto il mondo",
+        "pt": "Todo o mundo",
+        "de": "Weltweit",
+        "nl": "Wereldwijd",
+        "pl": "Cały świat",
+        "ta": "உலகெங்கும்"
+      },
+      "summary": {
+        "en": "A century after Pius XI founded it, the Church kept World Mission Sunday on 18 October with the theme “One in Christ, united in mission”.",
+        "fr": "Un siècle après sa fondation par Pie XI, l’Église a célébré la Journée missionnaire mondiale le 18 octobre sur le thème « Un dans le Christ, unis dans la mission ».",
+        "es": "Un siglo después de su fundación por Pío XI, la Iglesia celebró el Domund el 18 de octubre con el lema «Uno en Cristo, unidos en la misión».",
+        "it": "A un secolo dalla sua istituzione da parte di Pio XI, la Chiesa ha celebrato la Giornata il 18 ottobre con il tema «Uno in Cristo, uniti nella missione».",
+        "pt": "Um século depois de Pio XI o ter instituído, a Igreja celebrou o Dia Mundial das Missões a 18 de outubro com o tema «Um em Cristo, unidos na missão».",
+        "de": "Hundert Jahre nach der Einführung durch Pius XI. beging die Kirche am 18. Oktober den Weltmissionssonntag unter dem Leitwort „Eins in Christus, vereint in der Mission“.",
+        "nl": "Honderd jaar nadat Pius XI hem instelde, vierde de Kerk op 18 oktober Wereldmissiezondag met als thema ‘Eén in Christus, verenigd in de missie’.",
+        "pl": "Sto lat po ustanowieniu przez Piusa XI Kościół obchodził 18 października Niedzielę Misyjną pod hasłem „Jedno w Chrystusie, zjednoczeni w misji”.",
+        "ta": "பதினொன்றாம் பயஸ் இதை நிறுவி ஒரு நூற்றாண்டுக்குப் பின், “கிறிஸ்துவில் ஒன்றாய், மறைப்பணியில் இணைந்து” என்ற கருப்பொருளுடன் அக்டோபர் 18 அன்று திருஅவை உலக மறைப்பணி ஞாயிறைக் கொண்டாடியது."
+      },
+      "body": {
+        "en": "On Sunday 18 October 2026 the Church celebrated the 100th World Mission Sunday. Pope Pius XI established the day in 1926 so that every Catholic could support the Church’s missions by prayer and by giving.\n\nThe theme chosen by Pope Leo XIV is “One in Christ, united in mission”. In a video message for the centenary he thanked all who have supported the day over the years, recalling how such prayers helped his own vocation and his years as a missionary in Peru.\n\nFor the centenary the Apostolic Penitentiary granted a plenary indulgence under the usual conditions (sacramental confession, Holy Communion and prayer for the Pope’s intentions); the faithful can also pray the Rosary in union with the Pope for the spread of the Gospel.\n\nAt the Angelus, the Pope prayed that the Church stay faithful to the Lord’s command: “Go into all the world and proclaim the good news to the whole creation.”",
+        "fr": "Le dimanche 18 octobre 2026, l’Église a célébré la 100e Journée missionnaire mondiale. Le pape Pie XI l’a instituée en 1926 pour que chaque catholique puisse soutenir les missions par la prière et le don.\n\nLe thème choisi par le pape Léon XIV est « Un dans le Christ, unis dans la mission ». Dans un message vidéo pour le centenaire, il a remercié tous ceux qui ont soutenu cette Journée au fil des ans, rappelant combien ces prières ont aidé sa propre vocation et ses années de missionnaire au Pérou.\n\nPour le centenaire, la Pénitencerie apostolique a accordé une indulgence plénière aux conditions habituelles (confession sacramentelle, communion eucharistique et prière aux intentions du pape) ; les fidèles peuvent aussi prier le chapelet en union avec le pape pour la diffusion de l’Évangile.\n\nÀ l’Angélus, le pape a prié pour que l’Église reste fidèle à l’ordre du Seigneur : « Allez dans le monde entier. Proclamez l’Évangile à toute la création. »",
+        "es": "El domingo 18 de octubre de 2026, la Iglesia celebró el centésimo Domingo Mundial de las Misiones. El papa Pío XI instituyó la jornada en 1926 para que todo católico pudiera sostener las misiones con la oración y el donativo.\n\nEl lema elegido por el papa León XIV es «Uno en Cristo, unidos en la misión». En un videomensaje por el centenario agradeció a cuantos han apoyado la jornada a lo largo de los años y recordó cómo esas oraciones ayudaron a su propia vocación y a sus años de misionero en Perú.\n\nPara el centenario, la Penitenciaría Apostólica concedió la indulgencia plenaria con las condiciones habituales (confesión sacramental, comunión eucarística y oración por las intenciones del papa); los fieles pueden también rezar el Rosario en unión con el papa por la difusión del Evangelio.\n\nEn el Ángelus, el papa rezó para que la Iglesia permanezca fiel al mandato del Señor: «Vayan por todo el mundo y anuncien la Buena Noticia a toda la creación».",
+        "it": "Domenica 18 ottobre 2026 la Chiesa ha celebrato la 100ª Giornata Missionaria Mondiale. Papa Pio XI la istituì nel 1926 perché ogni cattolico potesse sostenere le missioni con la preghiera e l’offerta.\n\nIl tema scelto da papa Leone XIV è «Uno in Cristo, uniti nella missione». In un videomessaggio per il centenario ha ringraziato quanti hanno sostenuto la Giornata negli anni, ricordando come quelle preghiere abbiano aiutato la sua vocazione e i suoi anni da missionario in Perù.\n\nPer il centenario la Penitenzieria Apostolica ha concesso l’indulgenza plenaria alle consuete condizioni (confessione sacramentale, comunione eucaristica e preghiera secondo le intenzioni del papa); i fedeli possono anche recitare il Rosario in unione con il papa per la diffusione del Vangelo.\n\nAll’Angelus il papa ha pregato perché la Chiesa resti fedele al mandato del Signore: «Andate in tutto il mondo e proclamate il Vangelo a ogni creatura».",
+        "pt": "No domingo, 18 de outubro de 2026, a Igreja celebrou o 100.º Dia Mundial das Missões. O Papa Pio XI instituiu-o em 1926 para que todo o católico pudesse apoiar as missões com a oração e a oferta.\n\nO tema escolhido pelo Papa Leão XIV é «Um em Cristo, unidos na missão». Numa mensagem em vídeo para o centenário, agradeceu a todos os que apoiaram este dia ao longo dos anos, recordando como essas orações ajudaram a sua vocação e os seus anos de missionário no Peru.\n\nPara o centenário, a Penitenciaria Apostólica concedeu a indulgência plenária nas condições habituais (confissão sacramental, comunhão eucarística e oração pelas intenções do Papa); os fiéis podem também rezar o Rosário em união com o Papa pela difusão do Evangelho.\n\nNo Angelus, o Papa rezou para que a Igreja permaneça fiel ao mandato do Senhor: «Ide pelo mundo inteiro e anunciai o Evangelho a toda a criatura.»",
+        "de": "Am Sonntag, dem 18. Oktober 2026, beging die Kirche den 100. Weltmissionssonntag. Papst Pius XI. führte ihn 1926 ein, damit jeder Katholik die Mission durch Gebet und Spende unterstützen kann.\n\nDas von Papst Leo XIV. gewählte Leitwort lautet „Eins in Christus, vereint in der Mission“. In einer Videobotschaft zum Jubiläum dankte er allen, die diesen Tag über die Jahre unterstützt haben, und erinnerte daran, wie solche Gebete seiner eigenen Berufung und seinen Jahren als Missionar in Peru geholfen haben.\n\nZum Jubiläum gewährte die Apostolische Pönitentiarie einen vollkommenen Ablass unter den üblichen Bedingungen (Beichte, Kommunion und Gebet in den Anliegen des Papstes); die Gläubigen können auch in Verbundenheit mit dem Papst den Rosenkranz für die Verbreitung des Evangeliums beten.\n\nBeim Angelus betete der Papst, die Kirche möge dem Auftrag des Herrn treu bleiben: „Geht hinaus in die ganze Welt und verkündet das Evangelium der ganzen Schöpfung!“",
+        "nl": "Op zondag 18 oktober 2026 vierde de Kerk de 100e Wereldmissiezondag. Paus Pius XI stelde de dag in 1926 in, zodat iedere katholiek de missie kan steunen met gebed en gaven.\n\nHet door paus Leo XIV gekozen thema is ‘Eén in Christus, verenigd in de missie’. In een videoboodschap voor het eeuwfeest bedankte hij allen die de dag door de jaren heen hebben gesteund, en herinnerde hij eraan hoe zulke gebeden zijn eigen roeping en zijn jaren als missionaris in Peru hebben geholpen.\n\nVoor het eeuwfeest verleende de Apostolische Penitentiarie een volle aflaat onder de gewone voorwaarden (biecht, communie en gebed voor de intenties van de paus); de gelovigen kunnen ook in verbondenheid met de paus de rozenkrans bidden voor de verspreiding van het Evangelie.\n\nBij het Angelus bad de paus dat de Kerk trouw blijft aan de opdracht van de Heer: ‘Ga uit over de hele wereld en verkondig het evangelie aan heel de schepping.’",
+        "pl": "W niedzielę 18 października 2026 roku Kościół obchodził setną Światową Niedzielę Misyjną. Papież Pius XI ustanowił ją w 1926 roku, aby każdy katolik mógł wspierać misje modlitwą i ofiarą.\n\nHasło wybrane przez papieża Leona XIV brzmi: „Jedno w Chrystusie, zjednoczeni w misji”. W orędziu wideo na stulecie podziękował wszystkim, którzy przez lata wspierali ten dzień, wspominając, jak takie modlitwy pomogły jego powołaniu i latom misji w Peru.\n\nNa stulecie Penitencjaria Apostolska udzieliła odpustu zupełnego pod zwykłymi warunkami (spowiedź sakramentalna, Komunia święta i modlitwa w intencjach papieża); wierni mogą też odmówić różaniec w łączności z papieżem w intencji szerzenia Ewangelii.\n\nPodczas modlitwy Anioł Pański papież modlił się, aby Kościół pozostał wierny poleceniu Pana: „Idźcie na cały świat i głoście Ewangelię wszelkiemu stworzeniu”.",
+        "ta": "2026 அக்டோபர் 18 ஞாயிறன்று, திருஅவை 100-ஆவது உலக மறைப்பணி ஞாயிறைக் கொண்டாடியது. ஒவ்வொரு கத்தோலிக்கரும் செபத்தாலும் காணிக்கையாலும் மறைப்பணிகளுக்கு உதவும்படி, திருத்தந்தை பதினொன்றாம் பயஸ் 1926-இல் இந்நாளை நிறுவினார்.\n\nதிருத்தந்தை பதினான்காம் லியோ தேர்ந்தெடுத்த கருப்பொருள்: “கிறிஸ்துவில் ஒன்றாய், மறைப்பணியில் இணைந்து”. நூற்றாண்டு விழாவுக்கான காணொளிச் செய்தியில், ஆண்டுதோறும் இந்நாளுக்கு உதவிய அனைவருக்கும் நன்றி கூறி, அத்தகைய செபங்கள் தமது அழைத்தலுக்கும் பெருவில் தாம் மறைப்பணியாற்றிய ஆண்டுகளுக்கும் எவ்வாறு உதவின என்பதை நினைவுகூர்ந்தார்.\n\nநூற்றாண்டை முன்னிட்டு, திருத்தூது பாவமன்னிப்பு அலுவலகம் வழக்கமான நிபந்தனைகளுடன் (ஒப்புரவு அருளடையாளம், நற்கருணை உட்கொள்ளல், திருத்தந்தையின் கருத்துகளுக்காகச் செபம்) பரிபூரணப் பலனை வழங்கியது; நற்செய்தி பரவுவதற்காகத் திருத்தந்தையுடன் இணைந்து செபமாலையும் சொல்லலாம்.\n\nமூவேளைச் செபத்தின்போது, “உலகெங்கும் சென்று படைப்புக்கெல்லாம் நற்செய்தியைப் பறைசாற்றுங்கள்” என்ற ஆண்டவரின் கட்டளைக்குத் திருஅவை உண்மையாக இருக்கத் திருத்தந்தை செபித்தார்."
+      }
+    },
+    {
+      "id": "magnifica-humanitas-2026-05",
+      "kind": "news",
+      "theme": "document",
+      "pinned": false,
+      "published": "2026-05-25",
+      "start": null,
+      "end": null,
+      "expires": "2026-12-31",
+      "image": "images/magnifica-humanitas-2026-05.webp",
+      "imageAuthor": "Edgar Beltrán, The Pillar",
+      "imageLicense": "CC BY-SA 4.0",
+      "imageSource": "https://commons.wikimedia.org/wiki/File:Pope_Leo_XIV_2.png",
+      "source": "Vatican.va",
+      "url": {
+        "en": "https://www.vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html",
+        "fr": "https://www.vatican.va/content/leo-xiv/fr/encyclicals/documents/20260515-magnifica-humanitas.html",
+        "es": "https://www.vatican.va/content/leo-xiv/es/encyclicals/documents/20260515-magnifica-humanitas.html",
+        "it": "https://www.vatican.va/content/leo-xiv/it/encyclicals/documents/20260515-magnifica-humanitas.html",
+        "pt": "https://www.vatican.va/content/leo-xiv/pt/encyclicals/documents/20260515-magnifica-humanitas.html",
+        "de": "https://www.vatican.va/content/leo-xiv/de/encyclicals/documents/20260515-magnifica-humanitas.html",
+        "pl": "https://www.vatican.va/content/leo-xiv/pl/encyclicals/documents/20260515-magnifica-humanitas.html"
+      },
+      "title": {
+        "en": "Magnifica Humanitas: Pope Leo’s first encyclical, on AI",
+        "fr": "Magnifica Humanitas : la première encyclique du pape Léon, sur l’IA",
+        "es": "Magnifica Humanitas: la primera encíclica del papa León, sobre la IA",
+        "it": "Magnifica Humanitas: la prima enciclica di papa Leone, sull’IA",
+        "pt": "Magnifica Humanitas: a primeira encíclica do Papa Leão, sobre a IA",
+        "de": "Magnifica Humanitas: Papst Leos erste Enzyklika, über KI",
+        "nl": "Magnifica Humanitas: de eerste encycliek van paus Leo, over AI",
+        "pl": "Magnifica Humanitas: pierwsza encyklika papieża Leona, o SI",
+        "ta": "Magnifica Humanitas: செயற்கை நுண்ணறிவு குறித்த திருத்தந்தை லியோவின் முதல் சுற்றுமடல்"
+      },
+      "location": {
+        "en": "Vatican City",
+        "fr": "Cité du Vatican",
+        "es": "Ciudad del Vaticano",
+        "it": "Città del Vaticano",
+        "pt": "Cidade do Vaticano",
+        "de": "Vatikanstadt",
+        "nl": "Vaticaanstad",
+        "pl": "Watykan",
+        "ta": "வத்திக்கான் நகர்"
+      },
+      "summary": {
+        "en": "On safeguarding the human person in the time of artificial intelligence: AI must serve humanity, not concentrate power.",
+        "fr": "Sur la sauvegarde de la personne humaine au temps de l’intelligence artificielle : l’IA doit servir l’humanité, non concentrer le pouvoir.",
+        "es": "Sobre la protección de la persona humana en el tiempo de la inteligencia artificial: la IA debe servir a la humanidad, no concentrar el poder.",
+        "it": "Sulla custodia della persona umana nel tempo dell’intelligenza artificiale: l’IA deve servire l’umanità, non concentrare il potere.",
+        "pt": "Sobre a salvaguarda da pessoa humana no tempo da inteligência artificial: a IA deve servir a humanidade, não concentrar o poder.",
+        "de": "Über den Schutz der menschlichen Person im Zeitalter der künstlichen Intelligenz: KI muss der Menschheit dienen, nicht Macht bündeln.",
+        "nl": "Over de bescherming van de menselijke persoon in de tijd van kunstmatige intelligentie: AI moet de mensheid dienen, niet macht concentreren.",
+        "pl": "O ochronie osoby ludzkiej w czasach sztucznej inteligencji: SI ma służyć ludzkości, a nie skupiać władzę.",
+        "ta": "செயற்கை நுண்ணறிவுக் காலத்தில் மனித மாண்பைக் காப்பது பற்றி: செயற்கை நுண்ணறிவு அதிகாரத்தைக் குவிக்க அல்ல, மனிதகுலத்துக்குப் பணியாற்ற வேண்டும்."
+      },
+      "body": {
+        "en": "Pope Leo XIV signed his first encyclical, Magnifica Humanitas, on 15 May 2026, the 135th anniversary of Leo XIII’s Rerum Novarum, and it was presented at the Vatican on 25 May. Its subject is safeguarding the human person in the time of artificial intelligence.\n\nPresenting it, the Pope compared today’s technological change to the upheaval of the Industrial Revolution that Leo XIII faced.\n\nThe encyclical asks that AI be “disarmed” of military, economic and cognitive competition, and calls for clear accountability, legal frameworks, independent oversight and the education of users, so that AI serves humanity instead of concentrating power.\n\nThe full text is available on the Vatican website, and an audiobook has since been released.",
+        "fr": "Le pape Léon XIV a signé sa première encyclique, Magnifica Humanitas, le 15 mai 2026, 135e anniversaire de Rerum Novarum de Léon XIII ; elle a été présentée au Vatican le 25 mai. Elle porte sur la sauvegarde de la personne humaine au temps de l’intelligence artificielle.\n\nEn la présentant, le pape a comparé le bouleversement technologique actuel à celui de la révolution industrielle auquel Léon XIII avait fait face.\n\nL’encyclique demande que l’IA soit « désarmée » de la compétition militaire, économique et cognitive, et appelle à une responsabilité claire, à des cadres juridiques, à un contrôle indépendant et à l’éducation des utilisateurs, afin que l’IA serve l’humanité au lieu de concentrer le pouvoir.\n\nLe texte intégral est disponible sur le site du Vatican, et un livre audio est paru depuis.",
+        "es": "El papa León XIV firmó su primera encíclica, Magnifica Humanitas, el 15 de mayo de 2026, 135.º aniversario de la Rerum Novarum de León XIII, y fue presentada en el Vaticano el 25 de mayo. Trata de la protección de la persona humana en el tiempo de la inteligencia artificial.\n\nAl presentarla, el papa comparó el cambio tecnológico actual con la convulsión de la Revolución Industrial que afrontó León XIII.\n\nLa encíclica pide que la IA sea «desarmada» de la competencia militar, económica y cognitiva, y reclama responsabilidad clara, marcos jurídicos, supervisión independiente y educación de los usuarios, para que la IA sirva a la humanidad en lugar de concentrar el poder.\n\nEl texto completo está en el sitio web del Vaticano, y ya se ha publicado un audiolibro.",
+        "it": "Papa Leone XIV ha firmato la sua prima enciclica, Magnifica Humanitas, il 15 maggio 2026, 135° anniversario della Rerum Novarum di Leone XIII, ed è stata presentata in Vaticano il 25 maggio. Il tema è la custodia della persona umana nel tempo dell’intelligenza artificiale.\n\nPresentandola, il papa ha paragonato l’attuale cambiamento tecnologico allo sconvolgimento della Rivoluzione industriale affrontato da Leone XIII.\n\nL’enciclica chiede che l’IA sia «disarmata» dalla competizione militare, economica e cognitiva, e invoca responsabilità chiare, quadri giuridici, vigilanza indipendente ed educazione degli utenti, perché l’IA serva l’umanità invece di concentrare il potere.\n\nIl testo integrale è sul sito del Vaticano, ed è stato pubblicato anche un audiolibro.",
+        "pt": "O Papa Leão XIV assinou a sua primeira encíclica, Magnifica Humanitas, a 15 de maio de 2026, 135.º aniversário da Rerum Novarum de Leão XIII, e ela foi apresentada no Vaticano a 25 de maio. O tema é a salvaguarda da pessoa humana no tempo da inteligência artificial.\n\nAo apresentá-la, o Papa comparou a mudança tecnológica atual à convulsão da Revolução Industrial enfrentada por Leão XIII.\n\nA encíclica pede que a IA seja «desarmada» da competição militar, económica e cognitiva, e apela a responsabilidade clara, quadros jurídicos, supervisão independente e educação dos utilizadores, para que a IA sirva a humanidade em vez de concentrar o poder.\n\nO texto integral está no site do Vaticano, e já foi lançado um audiolivro.",
+        "de": "Papst Leo XIV. unterzeichnete seine erste Enzyklika, Magnifica Humanitas, am 15. Mai 2026, dem 135. Jahrestag von Leos XIII. Rerum Novarum; am 25. Mai wurde sie im Vatikan vorgestellt. Ihr Thema ist der Schutz der menschlichen Person im Zeitalter der künstlichen Intelligenz.\n\nBei der Vorstellung verglich der Papst den heutigen technologischen Wandel mit dem Umbruch der industriellen Revolution, vor dem Leo XIII. stand.\n\nDie Enzyklika fordert, KI vom militärischen, wirtschaftlichen und kognitiven Wettlauf zu „entwaffnen“, und verlangt klare Verantwortlichkeit, rechtliche Rahmen, unabhängige Aufsicht und die Bildung der Nutzer, damit KI der Menschheit dient, statt Macht zu bündeln.\n\nDer vollständige Text steht auf der Website des Vatikans; inzwischen ist auch ein Hörbuch erschienen.",
+        "nl": "Paus Leo XIV ondertekende zijn eerste encycliek, Magnifica Humanitas, op 15 mei 2026, de 135e verjaardag van Rerum Novarum van Leo XIII; op 25 mei werd ze in het Vaticaan gepresenteerd. Het onderwerp is de bescherming van de menselijke persoon in de tijd van kunstmatige intelligentie.\n\nBij de presentatie vergeleek de paus de huidige technologische omwenteling met die van de industriële revolutie waarmee Leo XIII te maken had.\n\nDe encycliek vraagt AI te ‘ontwapenen’ van militaire, economische en cognitieve wedijver, en pleit voor duidelijke verantwoordelijkheid, wettelijke kaders, onafhankelijk toezicht en vorming van gebruikers, zodat AI de mensheid dient in plaats van macht te concentreren.\n\nDe volledige tekst staat op de website van het Vaticaan, en er is inmiddels ook een luisterboek verschenen.",
+        "pl": "Papież Leon XIV podpisał swoją pierwszą encyklikę, Magnifica Humanitas, 15 maja 2026 roku, w 135. rocznicę Rerum Novarum Leona XIII, a 25 maja została ona zaprezentowana w Watykanie. Jej tematem jest ochrona osoby ludzkiej w czasach sztucznej inteligencji.\n\nPrezentując ją, papież porównał dzisiejszą przemianę technologiczną do wstrząsu rewolucji przemysłowej, z którym mierzył się Leon XIII.\n\nEncyklika wzywa, by „rozbroić” SI z rywalizacji militarnej, gospodarczej i poznawczej, oraz domaga się jasnej odpowiedzialności, ram prawnych, niezależnego nadzoru i edukacji użytkowników, aby SI służyła ludzkości, a nie skupiała władzę.\n\nPełny tekst jest dostępny na stronie Watykanu; ukazał się też audiobook.",
+        "ta": "திருத்தந்தை பதினான்காம் லியோ, பதின்மூன்றாம் லியோவின் Rerum Novarum மடலின் 135-ஆவது ஆண்டு நிறைவான 2026 மே 15 அன்று, தமது முதல் சுற்றுமடலான Magnifica Humanitas-இல் கையெழுத்திட்டார்; மே 25 அன்று அது வத்திக்கானில் வெளியிடப்பட்டது. செயற்கை நுண்ணறிவுக் காலத்தில் மனித மாண்பைக் காப்பதே அதன் பொருள்.\n\nஅதை வெளியிட்டபோது, இன்றைய தொழில்நுட்ப மாற்றத்தைப் பதின்மூன்றாம் லியோ எதிர்கொண்ட தொழிற்புரட்சியின் பெரும் மாற்றத்துடன் திருத்தந்தை ஒப்பிட்டார்.\n\nசெயற்கை நுண்ணறிவை இராணுவ, பொருளாதார, அறிவுசார் போட்டியிலிருந்து “ஆயுதம் களைய” வேண்டும் என்று சுற்றுமடல் கேட்கிறது; தெளிவான பொறுப்புடைமை, சட்டக் கட்டமைப்புகள், சுயாதீனக் கண்காணிப்பு, பயனர் கல்வி ஆகியவற்றை வலியுறுத்துகிறது — அதிகாரத்தைக் குவிக்காமல் மனிதகுலத்துக்குப் பணியாற்றவே.\n\nமுழு உரை வத்திக்கான் இணையதளத்தில் உள்ளது; ஒலிநூலும் வெளியாகியுள்ளது."
+      }
+    }
+  ]
+}

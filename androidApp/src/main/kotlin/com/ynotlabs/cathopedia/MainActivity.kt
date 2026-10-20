@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.ynotlabs.cathopedia.data.DatabaseDriverFactory
+import com.ynotlabs.cathopedia.data.RemoteCache
 import com.ynotlabs.cathopedia.di.AppContainer
 import com.ynotlabs.cathopedia.notifications.FeastNotificationScheduler
 
@@ -18,6 +19,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         val container = AppContainer(DatabaseDriverFactory(applicationContext))
+        RemoteCache.directory = java.io.File(filesDir, "remote").path
 
         setContent {
             App(container, notificationScheduler)
