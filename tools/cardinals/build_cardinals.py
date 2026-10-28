@@ -65,7 +65,8 @@ def main(csv_path, meta_path, updated):
         "updated": updated,
         # v2 (2026-10-20): every portrait cut out onto the same cardinal-red backdrop.
         # v3 (2026-10-28): the same cut-outs on the app's emerald-and-gold backdrop; also bundled.
-        "photosVersion": 3,
+        # v4 (2026-10-28): uniform framing (face size and eye line), 22 photos swapped for red choir dress.
+        "photosVersion": 4,
         "countries": {k: dict(zip(LANGS, v)) for k, v in sorted(COUNTRIES.items())},
         "cardinals": cardinals,
     }

@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "updated": "2026-10-28T12:00:00Z",
- "photosVersion": 3,
+ "updated": "2026-10-28T18:00:00Z",
+ "photosVersion": 4,
  "countries": {
   "Albania": {
    "en": "Albania",
@@ -1665,10 +1665,10 @@
    "wikipedia": "https://en.wikipedia.org/wiki/Juan_Luis_Cipriani_Thorne",
    "photo": {
     "path": "juan_luis_cipriani_thorne.webp",
-    "author": "Djacobo",
+    "author": "Arzobispado de Lima",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Cardenal_cipriani.JPG"
+    "source": "https://commons.wikimedia.org/wiki/File:Monse%C3%B1or_Cipriani.jpg"
    }
   },
   {
@@ -2102,10 +2102,10 @@
    "wikipedia": "https://en.wikipedia.org/wiki/Seán_Brady_(cardinal)",
    "photo": {
     "path": "sean_brady_cardinal.webp",
-    "author": "Irish Jesuits",
-    "license": "CC BY 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Cardinal_Sean_Brady_(cropped).jpg"
+    "author": "RexGregorian",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cardinal_Sean_Patrick_Brady.jpg"
    }
   },
   {
@@ -2162,7 +2162,7 @@
     "author": "rignese",
     "license": "CC BY-SA 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
-    "source": "https://commons.wikimedia.org/wiki/File:Cardinal_Th%C3%A9odore_Adrien_Sarr_2.JPG"
+    "source": "https://commons.wikimedia.org/wiki/File:Cardinal_Th%C3%A9odore_Adrien_Sarr_2_(cropped)_V2.JPG"
    }
   },
   {
@@ -2292,10 +2292,10 @@
    "wikipedia": "https://en.wikipedia.org/wiki/Francesco_Monterisi",
    "photo": {
     "path": "francesco_monterisi.webp",
-    "author": "The Catholic news agency of the Bishops' Conference of Bosnia and Herzegovina (Katolička tiskovna agencija Biskupske kon",
-    "license": "Attribution",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:Francesco_Monterisi_in_Sarajevo.jpg"
+    "author": "Giuseppep02",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Monterisi.jpg"
    }
   },
   {
@@ -2311,10 +2311,10 @@
    "wikipedia": "https://en.wikipedia.org/wiki/Raymond_Leo_Burke",
    "photo": {
     "path": "raymond_leo_burke.webp",
-    "author": "Henry Lithgow",
+    "author": "CanonLawJunkie",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Burke-BB-768x1152.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Raymond_Cardinal_Burke_with_Biretta.jpg"
    }
   },
   {
@@ -2900,10 +2900,10 @@
    "wikipedia": "https://en.wikipedia.org/wiki/Lorenzo_Baldisseri",
    "photo": {
     "path": "lorenzo_baldisseri.webp",
-    "author": "總統府",
-    "license": "CC BY 2.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-    "source": "https://commons.wikimedia.org/wiki/File:05.18_%E5%89%AF%E7%B8%BD%E7%B5%B1%E6%8E%A5%E8%A6%8B%E3%80%8C%E4%B8%96%E7%95%8C%E4%B8%BB%E6%95%99%E6%9C%83%E8%AD%B0%E3%80%8D%E7%A7%98%E6%9B%B8%E9%95%B7%E5%B7%B4%E8%BF%AA%E8%AC%9D%E9%87%8C%E6%A8%9E%E6%A9%9F%E4%B8%BB%E6%95%99%EF%BC%8C%E4%B8%A6%E7%9B%B8%E4%BA%92%E8%B4%88%E7%A6%AE_(33920095723)_(cropped).jpg"
+    "author": "Pufui Pc Pifpef I",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Lorenzo_Cardinal_Baldisseri.JPG"
    }
   },
   {
@@ -3720,7 +3720,7 @@
     "author": "Presidencia El Salvador from San Salvador, El Salvador, América Central",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    "source": "https://commons.wikimedia.org/wiki/File:Cardenal_Gregorio_Rosa_Ch%C3%A1vez.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Gregorio_Rosa_Ch%C3%A1vez_(2017).jpg"
    }
   },
   {
@@ -3736,10 +3736,10 @@
    "wikipedia": "https://en.wikipedia.org/wiki/Angelo_De_Donatis",
    "photo": {
     "path": "angelo_de_donatis.webp",
-    "author": "Lu pasci at Italian Wikipedia",
-    "license": "Public domain",
-    "licenseUrl": "",
-    "source": "https://commons.wikimedia.org/wiki/File:AngeloDeDonatis_(cropped).jpg"
+    "author": "Lu pasci",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:De_donatis.jpg"
    }
   },
   {
@@ -5086,10 +5086,10 @@
    "wikipedia": "https://en.wikipedia.org/wiki/Konrad_Krajewski",
    "photo": {
     "path": "konrad_krajewski.webp",
-    "author": "XBagietto",
-    "license": "CC0",
-    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    "source": "https://commons.wikimedia.org/wiki/File:Kard._Konrad_Krajewski_(2026).jpg"
+    "author": "lvivadm",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Konrad_Krajewski_(2020).jpg"
    }
   },
   {
@@ -5124,10 +5124,10 @@
    "wikipedia": "https://en.wikipedia.org/wiki/José_Tolentino_de_Mendonça",
    "photo": {
     "path": "jose_tolentino_de_mendonca.webp",
-    "author": "Elisabetta Villa",
-    "license": "CC BY 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Handshake_between_Jos%C3%A9_Tolentino_Cala%C3%A7a_de_Mendon%C3%A7a,_on_the_right,_and_Glenn_Micallef_(cropped).jpg"
+    "author": "ANTÓNIO0196",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cardeal_De_Mendon%C3%A7a_(cropped).jpg"
    }
   },
   {

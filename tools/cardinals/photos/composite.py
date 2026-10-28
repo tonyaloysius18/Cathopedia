@@ -4,7 +4,7 @@ from scipy import ndimage
 faces=json.load(open('faces.json')); meta=json.load(open('meta.json'))
 W,H=320,400
 FACE_OVERRIDE={'francesco_coccopalmerio':1}
-TIGHT={'anthony_olubunmi_okogie':2.1}
+TIGHT={}  # cid -> zoom factor (>1 = face larger)
 SMALLEST_INSTANCE=set()
 # Where the cut-out fails (white on white, crowds), fade the photo into the same backdrop instead.
 VIGNETTE={'filipe_neri_ferrao','anthony_olubunmi_okogie','christophe_pierre','jean_zerbo','adalberto_martinez_flores'}
@@ -21,19 +21,26 @@ halo=np.exp(-(((xx-W*0.5)/(W*0.30))**2+((yy-H*0.28)/(H*0.22))**2))
 backdrop=backdrop+np.array([212,175,55])*0.16*halo[...,None]
 backdrop*= (1-0.25*(yy/H))[...,None]**0.5
 backdrop=backdrop.clip(0,255)
+# Every portrait framed the same way: the face is FACE_H of the frame height, centred
+# horizontally, its centre at FACE_Y. Where the photo ends before the frame does, the
+# backdrop fills in (the cut-out mask is 0 there), so the face never drifts to an edge.
+FACE_H=0.27; FACE_H_MAX=0.40; FACE_Y=0.37
 def crop_box(iw,ih,fs,cid):
     if fs:
         f=fs[FACE_OVERRIDE[cid]] if cid in FACE_OVERRIDE else max(fs,key=lambda f:f[2]*f[3])
-        x,y,w,h,_=f; fx,fy,fw,fh=x*iw,y*ih,w*iw,h*ih
-        k=TIGHT.get(cid, 3.2 if cid in FACE_OVERRIDE else 2.9)
-        cw=fw*k; ch=cw*1.25
-        if cw>iw: cw=iw; ch=cw*1.25
-        if ch>ih: ch=ih; cw=ch/1.25
-        cx=fx+fw/2-(fw*0.35 if cid in FACE_OVERRIDE else 0); top=fy+fh/2-(0.42 if cid in FACE_OVERRIDE else 0.40)*ch
+        x,y,w,h=f[:4]; fx,fy,fw,fh=x*iw,y*ih,w*iw,h*ih
+        ch=fh/(FACE_H*TIGHT.get(cid,1.0))
+        cx=fx+fw/2; cy=fy+fh/2
+        # Zoom in (never out) until the photo fills the frame around the fixed face position,
+        # but stop before the face passes FACE_H_MAX; past that the backdrop fills the gap.
+        fit=min(ch, (ih-cy)/(1-FACE_Y), cy/FACE_Y, 2*min(cx,iw-cx)*H/W)
+        ch=max(fit, fh/FACE_H_MAX)
+        cw=ch*W/H
+        top=cy-FACE_Y*ch
         face=(fx,fy,fw,fh)
     else:
-        cw=min(iw,ih/1.25); ch=cw*1.25; cx=iw/2; top=0; face=None
-    left=min(max(cx-cw/2,0),iw-cw); top=min(max(top,0),ih-ch)
+        cw=min(iw,ih*W/H); ch=cw*H/W; cx=iw/2; top=0; face=None
+    left=cx-cw/2
     return (round(left),round(top),round(left+cw),round(top+ch)),face
 report=[]
 for m in meta:
@@ -75,12 +82,20 @@ for m in meta:
         a=base*ndimage.binary_dilation(lab2==keep2,iterations=18) if keep2 else base
     soft=Image.fromarray((a*255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(1.2))
     c=im.crop(box).resize((W,H),Image.LANCZOS); ms=soft.crop(box).resize((W,H),Image.LANCZOS)
-    alpha=np.asarray(ms,dtype=np.float32)[...,None]/255
+    # Where the frame runs past the photo, fade the cut-out into the backdrop instead of a hard edge.
+    inside=np.asarray(Image.new('L',im.size,255).crop(box).resize((W,H),Image.LANCZOS).filter(ImageFilter.GaussianBlur(10)),dtype=np.float32)[...,None]/255
+    alpha=np.asarray(ms,dtype=np.float32)[...,None]/255*inside
+    # A body that stops above the frame's bottom (photo ended) gets a soft fade into the backdrop
+    # rather than a flat cut: shade the last rows of the cut-out downwards.
+    rows=np.where(inside[:,W//2,0]>0.5)[0]
+    if len(rows) and rows[-1]<H-4:
+        end=rows[-1]; ramp=np.clip((end-yy)/40.0,0,1)[...,None]
+        alpha=alpha*ramp
     if cid in VIGNETTE:
         cx_,cy_,rx_,ry_=TIGHT_OVAL.get(cid,(0.5,0.40,0.50,0.58))
         r=np.sqrt(((xx-W*cx_)/(W*rx_))**2+((yy-H*cy_)/(H*ry_))**2)
         oval=np.clip((1.0-r)/0.35,0,1)[...,None]
-        alpha=oval
+        alpha=oval*inside
     out=(np.asarray(c,dtype=np.float32)*alpha+backdrop*(1-alpha)).clip(0,255).astype(np.uint8)
     Image.fromarray(out).save(f'out/{cid}.webp','WEBP',quality=82,method=6)
     cover=float(alpha.mean())
