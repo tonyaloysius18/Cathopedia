@@ -2,13 +2,13 @@
 
 Turns a Commons photo into the 320×400 portrait used in the app: cropped on the
 face, the cardinal cut out (macOS Vision person segmentation) and placed on
-the shared cardinal-red backdrop. Run from a work folder holding `raw/<id>`
+the shared emerald-and-gold backdrop. Run from a work folder holding `raw/<id>`
 (the downloaded photos) and `meta.json`:
 
 1. `swift faces.swift raw faces.json` — face boxes (Vision).
 2. `swift segment.swift raw masks` — fine person masks.
 3. `swift instances.swift raw imasks` — one mask per person, to drop bystanders.
-4. `python3 composite.py` — writes `red/<id>.webp` and contact sheets in `sheets_red/`.
+4. `python3 composite.py` — writes `out/<id>.webp` and contact sheets in `sheets/` (emerald-and-gold backdrop since photos v3).
 
 Check every new portrait on the contact sheet. Per-photo fixes live at the top
 of `composite.py`: `FACE_OVERRIDE` (wrong face picked), `TIGHT` (tighter crop),

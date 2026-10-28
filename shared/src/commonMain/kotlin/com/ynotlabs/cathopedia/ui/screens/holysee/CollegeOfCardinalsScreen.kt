@@ -1,6 +1,7 @@
 package com.ynotlabs.cathopedia.ui.screens.holysee
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -66,7 +67,6 @@ import com.ynotlabs.cathopedia.ui.components.FilterChipsRow
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleScaffold
 import com.ynotlabs.cathopedia.ui.screens.news.newsDate
 import com.ynotlabs.cathopedia.ui.theme.CardBorder
-import com.ynotlabs.cathopedia.ui.theme.DarkText
 import kotlinx.datetime.LocalDate
 
 private const val K = "art.cardcollege."
@@ -81,12 +81,15 @@ private enum class ElectorFilter { ALL, ELECTORS, NON_ELECTORS }
 
 // This page is dressed in cardinal red in both app themes, like the portraits'
 // backdrop, so text on its surfaces uses fixed light colours.
-private val CollegeRed = Color(0xFF4A0E16)
-private val CollegeRedDeep = Color(0xFF2E070C)
-private val CollegeRose = Color(0xFFF3A9A4)
-private val CollegeText = DarkText
-private val CollegeMuted = DarkText.copy(alpha = 0.68f)
-private val CollegeBorder = CardinalScarlet.copy(alpha = 0.55f)
+// The app's own green and gold, so the list reads like the rest of the Holy See hub in either theme.
+private val CollegeCard: Color @Composable get() = MaterialTheme.colorScheme.surfaceContainerHigh
+/** Matches the emerald backdrop the portraits are cut out onto. */
+private val CollegePhotoBg = Color(0xFF0E2A20)
+private val CollegeAccent: Color @Composable get() = MaterialTheme.colorScheme.primary
+private val CollegeOnAccent: Color @Composable get() = MaterialTheme.colorScheme.onPrimary
+private val CollegeText: Color @Composable get() = MaterialTheme.colorScheme.onSurface
+private val CollegeMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
+private val CollegeBorder: Color @Composable get() = CardBorder
 
 /**
  * "The College of Cardinals today": every living cardinal, with a photo, in
@@ -141,13 +144,13 @@ fun CollegeOfCardinalsScreen(
         item {
             Surface(
                 shape = RoundedCornerShape(20.dp),
-                color = CollegeRed,
+                color = CollegeCard,
                 border = BorderStroke(1.dp, CollegeBorder),
                 modifier = Modifier.fillMaxWidth().padding(bottom = 14.dp),
             ) {
                 Row {
                     Box(Modifier.padding(vertical = 18.dp).width(4.dp).height(64.dp).clip(RoundedCornerShape(2.dp))
-                        .background(CardinalScarlet))
+                        .background(CollegeAccent))
                     Text(
                         str("intro").replace("{total}", all.size.toString()).replace("{electors}", electors.toString()),
                         color = CollegeText.copy(alpha = 0.92f), fontSize = 15.sp, lineHeight = 23.sp,
@@ -169,11 +172,11 @@ fun CollegeOfCardinalsScreen(
                 onValueChange = { query = it },
                 singleLine = true,
                 placeholder = { Text(str("search_hint"), color = HolySeeMuted) },
-                leadingIcon = { Icon(Icons.Filled.Search, null, tint = CardinalScarlet) },
+                leadingIcon = { Icon(Icons.Filled.Search, null, tint = CollegeAccent) },
                 shape = RoundedCornerShape(14.dp),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = CardinalScarlet, unfocusedBorderColor = CollegeBorder,
-                    focusedTextColor = HolySeeCream, unfocusedTextColor = HolySeeCream, cursorColor = CardinalScarlet,
+                    focusedBorderColor = CollegeAccent, unfocusedBorderColor = CollegeBorder,
+                    focusedTextColor = CollegeText, unfocusedTextColor = CollegeText, cursorColor = CollegeAccent,
                 ),
                 modifier = Modifier.fillMaxWidth(),
             )
@@ -225,15 +228,15 @@ private fun StatTile(value: Int, label: String, selected: Boolean, modifier: Mod
     val shape = RoundedCornerShape(14.dp)
     Column(
         modifier.clip(shape)
-            .background(if (selected) CardinalScarlet.copy(alpha = 0.85f) else CollegeRed)
-            .border(1.dp, if (selected) CardinalScarlet else CollegeBorder, shape)
+            .background(if (selected) CollegeAccent else CollegeCard)
+            .border(1.dp, if (selected) CollegeAccent else CollegeBorder, shape)
             .clickable(role = Role.Tab, onClick = onClick)
             .padding(vertical = 10.dp, horizontal = 6.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Text(value.toString(), color = CollegeText, fontFamily = FontFamily.Serif,
+        Text(value.toString(), color = if (selected) CollegeOnAccent else CollegeText, fontFamily = FontFamily.Serif,
             fontSize = 24.sp, lineHeight = 28.sp, fontWeight = FontWeight.Medium)
-        Text(label, color = if (selected) CollegeText else CollegeMuted, fontSize = 11.sp, lineHeight = 14.sp,
+        Text(label, color = if (selected) CollegeOnAccent else CollegeMuted, fontSize = 11.sp, lineHeight = 14.sp,
             textAlign = TextAlign.Center, maxLines = 2)
     }
 }
@@ -242,12 +245,12 @@ private fun StatTile(value: Int, label: String, selected: Boolean, modifier: Mod
 @Composable
 private fun CardinalPhoto(cardinal: Cardinal, modifier: Modifier) {
     val bytes by produceState<ByteArray?>(null, cardinal.id) { value = CollegeOfCardinals.photo(cardinal) }
-    Box(modifier.background(CollegeRedDeep), contentAlignment = Alignment.Center) {
+    Box(modifier.background(CollegePhotoBg), contentAlignment = Alignment.Center) {
         val image = bytes
         if (image != null) {
             Image(rememberAsyncImagePainter(image), cardinal.name, Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
         } else {
-            Icon(Icons.Filled.Person, null, tint = CollegeRose.copy(alpha = 0.45f), modifier = Modifier.size(48.dp))
+            Icon(Icons.Filled.Person, null, tint = CollegeAccent.copy(alpha = 0.45f), modifier = Modifier.size(48.dp))
         }
     }
 }
@@ -264,16 +267,16 @@ private fun CardinalCard(
     val shape = RoundedCornerShape(16.dp)
     val elector = cardinal.isElector(today)
     Column(
-        modifier.clip(shape).background(CollegeRed).border(1.dp, CollegeBorder, shape)
+        modifier.clip(shape).background(CollegeCard).border(1.dp, CollegeBorder, shape)
             .semantics(mergeDescendants = true) {}.clickable(role = Role.Button, onClick = onClick),
     ) {
         Box {
             CardinalPhoto(cardinal, Modifier.fillMaxWidth().aspectRatio(4f / 5f))
             if (elector) {
-                Text(str("elector").uppercase(), color = Color.White, fontSize = 9.sp, lineHeight = 12.sp,
+                Text(str("elector").uppercase(), color = CollegeOnAccent, fontSize = 9.sp, lineHeight = 12.sp,
                     fontWeight = FontWeight.Bold, letterSpacing = 0.8.sp,
                     modifier = Modifier.align(Alignment.BottomStart).padding(8.dp).clip(RoundedCornerShape(50))
-                        .background(CardinalScarlet).padding(horizontal = 8.dp, vertical = 3.dp))
+                        .background(CollegeAccent).padding(horizontal = 8.dp, vertical = 3.dp))
             }
         }
         Column(Modifier.padding(horizontal = 10.dp, vertical = 9.dp)) {
@@ -283,7 +286,7 @@ private fun CardinalCard(
             Text(
                 listOfNotNull(CollegeOfCardinals.country(cardinal, language),
                     cardinal.age(today)?.let { str("age").replace("{n}", it.toString()) }).joinToString(" · "),
-                color = CollegeRose, fontSize = 12.sp, lineHeight = 16.sp, maxLines = 1, overflow = TextOverflow.Ellipsis,
+                color = CollegeAccent, fontSize = 12.sp, lineHeight = 16.sp, maxLines = 1, overflow = TextOverflow.Ellipsis,
                 modifier = Modifier.padding(top = 3.dp),
             )
             Text(str(orderKey(cardinal.order)), color = CollegeMuted, fontSize = 11.sp, lineHeight = 15.sp, maxLines = 1,
@@ -318,26 +321,26 @@ private fun CardinalDetail(cardinal: Cardinal, language: String, str: (String) -
                 Column(Modifier.padding(start = 16.dp).weight(1f)) {
                     Text(
                         (if (elector) str("elector") else str("non_elector")).uppercase(),
-                        color = if (elector) Color.White else CollegeRose, fontSize = 10.sp, fontWeight = FontWeight.Bold,
+                        color = if (elector) CollegeOnAccent else CollegeAccent, fontSize = 10.sp, fontWeight = FontWeight.Bold,
                         letterSpacing = 0.8.sp,
                         modifier = Modifier.clip(RoundedCornerShape(50))
-                            .background(if (elector) CardinalScarlet else Color.Transparent)
-                            .border(1.dp, if (elector) CardinalScarlet else CollegeBorder, RoundedCornerShape(50))
+                            .background(if (elector) CollegeAccent else Color.Transparent)
+                            .border(1.dp, if (elector) CollegeAccent else CollegeBorder, RoundedCornerShape(50))
                             .padding(horizontal = 9.dp, vertical = 4.dp),
                     )
                     if (cardinal.nonElector == "renounced") {
                         Text(str("renounced"), color = HolySeeMuted, fontSize = 12.sp, lineHeight = 16.sp,
                             modifier = Modifier.padding(top = 6.dp))
                     }
-                    Text(str("office").uppercase(), color = CardinalScarlet, fontSize = 10.sp, fontWeight = FontWeight.Bold,
+                    Text(str("office").uppercase(), color = CollegeAccent, fontSize = 10.sp, fontWeight = FontWeight.Bold,
                         letterSpacing = 0.8.sp, modifier = Modifier.padding(top = 14.dp))
-                    Text(cardinal.office, color = HolySeeCream, fontFamily = FontFamily.Serif, fontSize = 16.sp,
+                    Text(cardinal.office, color = CollegeText, fontFamily = FontFamily.Serif, fontSize = 16.sp,
                         lineHeight = 22.sp, modifier = Modifier.padding(top = 4.dp))
                 }
             }
         }
         item {
-            Surface(shape = RoundedCornerShape(16.dp), color = CollegeRed, border = BorderStroke(1.dp, CollegeBorder)) {
+            Surface(shape = RoundedCornerShape(16.dp), color = CollegeCard, border = BorderStroke(1.dp, CollegeBorder)) {
                 Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp)) {
                     cardinal.birthDate?.let { born ->
                         FactRow(str("born"), t.newsDate(born) + (cardinal.age(today)?.let { " · " + str("age").replace("{n}", "$it") } ?: ""))
@@ -383,8 +386,8 @@ private fun LinkButton(label: String, onClick: () -> Unit) {
     OutlinedButton(
         onClick = onClick,
         modifier = Modifier.fillMaxWidth(),
-        border = BorderStroke(1.dp, CardinalScarlet),
-        colors = ButtonDefaults.outlinedButtonColors(containerColor = CollegeRed, contentColor = CollegeText),
+        border = BorderStroke(1.dp, CollegeAccent),
+        colors = ButtonDefaults.outlinedButtonColors(containerColor = CollegeCard, contentColor = CollegeText),
     ) {
         Text(label, fontFamily = FontFamily.Serif, fontSize = 15.sp)
         Icon(Icons.AutoMirrored.Filled.OpenInNew, null, Modifier.padding(start = 8.dp).size(18.dp))

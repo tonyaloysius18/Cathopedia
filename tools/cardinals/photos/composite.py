@@ -11,11 +11,14 @@ VIGNETTE={'filipe_neri_ferrao','anthony_olubunmi_okogie','christophe_pierre','je
 TIGHT_OVAL={}
 # Mural behind him reads as a person: keep the part of the mask that contains his chest.
 ANCHOR={}
-# One backdrop for every portrait: deep cardinal red, lit softly behind the head.
+# One backdrop for every portrait: the app's deep emerald, lit softly behind the head with a
+# faint gold halo (photos v3; v2 used cardinal red).
 yy,xx=np.mgrid[0:H,0:W]
 d=np.sqrt(((xx-W*0.5)/(W*0.75))**2+((yy-H*0.33)/(H*0.70))**2).clip(0,1)
-c0=np.array([168,32,44]); c1=np.array([58,6,14])
+c0=np.array([46,98,74]); c1=np.array([8,30,22])
 backdrop=(c0*(1-d[...,None])+c1*d[...,None])
+halo=np.exp(-(((xx-W*0.5)/(W*0.30))**2+((yy-H*0.28)/(H*0.22))**2))
+backdrop=backdrop+np.array([212,175,55])*0.16*halo[...,None]
 backdrop*= (1-0.25*(yy/H))[...,None]**0.5
 backdrop=backdrop.clip(0,255)
 def crop_box(iw,ih,fs,cid):
@@ -79,7 +82,7 @@ for m in meta:
         oval=np.clip((1.0-r)/0.35,0,1)[...,None]
         alpha=oval
     out=(np.asarray(c,dtype=np.float32)*alpha+backdrop*(1-alpha)).clip(0,255).astype(np.uint8)
-    Image.fromarray(out).save(f'red/{cid}.webp','WEBP',quality=82,method=6)
+    Image.fromarray(out).save(f'out/{cid}.webp','WEBP',quality=82,method=6)
     cover=float(alpha.mean())
     facecov=None
     if face:
@@ -88,13 +91,13 @@ for m in meta:
         facecov=float(fa.mean()) if fa.size else None
     flag = cover<0.15 or cover>0.92 or (facecov is not None and facecov<0.6) or face is None
     report.append((cid,round(cover,2),facecov and round(facecov,2),flag))
-json.dump(report,open('red_report.json','w'))
+json.dump(report,open('out_report.json','w'))
 flagged=[r for r in report if r[3]]; print('flagged',len(flagged)); print(flagged)
 font=ImageFont.load_default()
 for s in range(0,len(meta),40):
     sheet=Image.new('RGB',(8*170,5*230),'white'); dr=ImageDraw.Draw(sheet)
     for i,m in enumerate(meta[s:s+40]):
-        t=Image.open(f"red/{m['id']}.webp").resize((160,200)); X,Y=(i%8)*170+5,(i//8)*230+5
+        t=Image.open(f"out/{m['id']}.webp").resize((160,200)); X,Y=(i%8)*170+5,(i//8)*230+5
         sheet.paste(t,(X,Y)); dr.text((X,Y+202),f"{s+i+1} {m['title'][:24]}",fill='black',font=font)
         if report[s+i][3]: dr.rectangle((X,Y,X+159,Y+199),outline='lime',width=3)
-    sheet.save(f"sheets_red/sheet{s//40+1}.jpg",quality=85)
+    sheet.save(f"sheets/sheet{s//40+1}.jpg",quality=85)

@@ -83,6 +83,7 @@ object CollegeOfCardinals {
     private const val REMOTE_FILE =
         RemoteCache.REPO_RAW + "shared/src/commonMain/composeResources/files/cardinals/cardinals.json"
     private const val PHOTO_DIR = "remote/cardinals/photos/"
+    private const val BUNDLED_PHOTO_DIR = "files/cardinals/photos/"
     private const val CACHE_KEY = "cardinals_feed_cache"
 
     private val json = Json { ignoreUnknownKeys = true }
@@ -95,9 +96,24 @@ object CollegeOfCardinals {
     fun country(cardinal: Cardinal, language: String): String =
         data?.countries?.get(cardinal.country)?.let { it[language] ?: it["en"] } ?: cardinal.country
 
-    suspend fun photo(cardinal: Cardinal): ByteArray? = cardinal.photo?.let {
-        RemoteCache.bytes(PHOTO_DIR + it.path, cacheName = "cardinals/v${data?.photosVersion ?: 1}/${it.path}")
+    /**
+     * The portraits ship in the app (files/cardinals/photos/), so the list is complete offline. A
+     * newer edition published later (a higher photosVersion than the bundled list's, or a cardinal
+     * the bundle doesn't have yet) downloads from the repo instead.
+     */
+    @OptIn(ExperimentalResourceApi::class)
+    suspend fun photo(cardinal: Cardinal): ByteArray? {
+        val path = cardinal.photo?.path ?: return null
+        val version = data?.photosVersion ?: 1
+        val bundledBytes = if (version <= bundledPhotosVersion()) {
+            runCatching { Res.readBytes(BUNDLED_PHOTO_DIR + path) }.getOrNull()
+        } else null
+        return bundledBytes ?: RemoteCache.bytes(PHOTO_DIR + path, cacheName = "cardinals/v$version/$path")
     }
+
+    private var bundledVersion: Int? = null
+    private suspend fun bundledPhotosVersion(): Int =
+        bundledVersion ?: (bundled()?.photosVersion ?: 0).also { bundledVersion = it }
 
     suspend fun load(repository: CathopediaRepository) {
         mutex.withLock {
