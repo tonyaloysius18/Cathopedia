@@ -197,7 +197,10 @@ internal fun MassSheet(
                                     if (showIcel) IcelTexts.aroundReading(planned.responses) else emptyList<SpokenLine>() to emptyList()
                                 beforeReading.forEach { SheetLine(it, scale) }
                                 planned.reading?.let { reading ->
-                                    if (reading.kind == LectionaryKind.PSALM) MissalLine(t["screen.mass.refrain_line"])
+                                    if (reading.kind == LectionaryKind.PSALM &&
+                                        reading.options.firstOrNull()?.let { LocalAelfMass.current?.passage(reading.kind, it.citation, it.short) } == null) {
+                                        MissalLine(t["screen.mass.refrain_line"])
+                                    }
                                     SheetReading(reading, scale)
                                     if (reading.options.firstOrNull()?.let { LocalAelfMass.current?.passage(reading.kind, it.citation, it.short) } == null &&
                                         reading.kind != LectionaryKind.SEQUENCE &&
