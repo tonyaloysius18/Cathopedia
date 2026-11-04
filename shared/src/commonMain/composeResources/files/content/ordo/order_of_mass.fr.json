@@ -1,8 +1,8 @@
 {
   "language": "fr",
   "note": "Structure et indications rédigées pour Cathopedia, d'après l'Ordinaire de la messe du Missel romain (troisième édition). Les textes et rubriques du Missel ne sont pas reproduits : les parties marquées « missel » indiquent où le texte autorisé apparaîtra.",
-  "missalPending": "Le texte de cette partie provient du Missel romain. Il apparaîtra ici dès que le Missel en français, sous licence, aura été ajouté à Cathopedia.",
-  "readingPending": "Le texte de la lecture, tiré d'un Lectionnaire approuvé, apparaîtra ici dès qu'il sera sous licence. La référence ci-dessus indique le passage lu aujourd'hui.",
+  "missalPending": "Le texte de cette partie provient du Missel romain : reportez-vous à votre Missel.",
+  "readingPending": "Le texte de la lecture n'a pas pu être affiché. La référence ci-dessus indique le passage lu aujourd'hui : reportez-vous à votre Lectionnaire.",
   "readingStudyNote": "Texte en anglais : World English Bible (domaine public), pour l'étude et la préparation. Ce n'est pas une traduction liturgique approuvée ; à la messe, proclamez la lecture à partir d'un Lectionnaire approuvé. Les versets sont donnés en entier : une lecture qui commence ou finit au milieu d'un verset peut donc contenir quelques mots de plus.",
   "homilyPending": "De brèves idées d'homélie pour ce jour apparaîtront ici.",
   "sections": [

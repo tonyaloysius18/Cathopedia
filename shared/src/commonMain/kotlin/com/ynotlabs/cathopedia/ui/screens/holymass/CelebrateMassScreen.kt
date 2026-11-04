@@ -97,6 +97,11 @@ import com.ynotlabs.cathopedia.liturgical.OrdoCelebration
 import com.ynotlabs.cathopedia.liturgical.OrdoProfile
 import com.ynotlabs.cathopedia.liturgical.OrdoRank
 import com.ynotlabs.cathopedia.liturgical.PlannedPart
+import com.ynotlabs.cathopedia.liturgical.AelfMass
+import com.ynotlabs.cathopedia.liturgical.AelfPassage
+import com.ynotlabs.cathopedia.liturgical.AelfTexts
+import com.ynotlabs.cathopedia.liturgical.LocalAelfMass
+import androidx.compose.runtime.CompositionLocalProvider
 import com.ynotlabs.cathopedia.liturgical.IcelTexts
 import com.ynotlabs.cathopedia.liturgical.SpokenLine
 import com.ynotlabs.cathopedia.ui.components.isDebugBuild
@@ -195,6 +200,12 @@ private fun MassReader(repository: CathopediaRepository, language: String, onBac
         }
         val current = plan
         val omt = text
+        var aelf by remember { mutableStateOf<AelfMass?>(null) }
+        LaunchedEffect(current, language) {
+            aelf = null
+            aelf = current?.let { AelfTexts.massFor(it, language) }
+        }
+        CompositionLocalProvider(LocalAelfMass provides aelf) {
         when {
             !loaded -> Unit
             current == null || omt == null -> Text(
@@ -222,6 +233,7 @@ private fun MassReader(repository: CathopediaRepository, language: String, onBac
                         onCelebrationChosen = { celebrationKey = it })
                 }
             }
+        }
         }
     }
 }
@@ -803,8 +815,15 @@ private fun ReadingBlock(reading: LectionaryReading, language: String, scale: Fl
             } else Modifier,
         )
     }
+    val option = reading.options.getOrNull(chosen)
+    val official = option?.let { LocalAelfMass.current?.passage(reading.kind, it.citation, it.short) }
+    if (official != null) {
+        Spacer(Modifier.height(12.dp))
+        AelfPassageBlock(official, scale)
+        return
+    }
     if (reading.kind == LectionaryKind.SEQUENCE) return
-    val citation = reading.options.getOrNull(chosen)?.citation ?: return
+    val citation = option?.citation ?: return
     var passage by remember(citation) { mutableStateOf<ReadingText?>(null) }
     var loaded by remember(citation) { mutableStateOf(false) }
     LaunchedEffect(citation) {
@@ -834,6 +853,30 @@ private fun ReadingBlock(reading: LectionaryReading, language: String, scale: Fl
             )
         }
     }
+}
+
+/** A reading in AELF's official French text, with its source credited as AELF asks. */
+@Composable
+private fun AelfPassageBlock(passage: AelfPassage, scale: Float) {
+    val colors = MaterialTheme.colorScheme
+    if (passage.intro.isNotBlank()) {
+        Text(passage.intro, color = colors.onSurfaceVariant, fontSize = (14 * scale).sp, lineHeight = (20 * scale).sp,
+            fontStyle = FontStyle.Italic)
+    }
+    if (passage.reference.isNotBlank()) {
+        Text(passage.reference, color = colors.onSurfaceVariant, fontSize = (13 * scale).sp, modifier = Modifier.padding(top = 2.dp))
+    }
+    if (passage.title.isNotBlank()) {
+        Text(passage.title, color = colors.primary, fontFamily = FontFamily.Serif, fontSize = (17 * scale).sp,
+            lineHeight = (24 * scale).sp, modifier = Modifier.padding(top = 8.dp))
+    }
+    if (passage.refrain.isNotBlank()) {
+        Text(passage.refrain, color = colors.onSurface, fontFamily = FontFamily.Serif, fontWeight = FontWeight.Bold,
+            fontSize = (19 * scale).sp, lineHeight = (28 * scale).sp, modifier = Modifier.padding(top = 8.dp))
+    }
+    Text(passage.text, color = colors.onSurface, fontFamily = FontFamily.Serif, fontSize = (19 * scale).sp,
+        lineHeight = (29 * scale).sp, modifier = Modifier.padding(top = 10.dp))
+    Text(AelfTexts.CREDIT, color = colors.onSurfaceVariant, fontSize = (11 * scale).sp, modifier = Modifier.padding(top = 12.dp))
 }
 
 /** Verse numbers small and raised, as in a printed Bible; a new chapter shows "chapter:verse". */

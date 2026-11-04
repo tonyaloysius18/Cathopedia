@@ -307,6 +307,7 @@ val TA: Strings = Strings().apply {
     aboutCreditSqlDelightPurpose = "உள்ளூர் கட்டமைந்த தரவும் சேமிப்பும்"
     aboutCreditCoroutinesPurpose = "ஒத்திசைவற்ற செயலித் தர்க்கம்"
     aboutCreditSerializationPurpose = "உள்ளடக்க மற்றும் தரவு வரிசைப்படுத்தல்"
+    aboutCreditAelfPurpose = "பிரெஞ்சு திருவழிபாட்டு உரைகள் (அன்றைய வாசகங்கள், திருப்புகழ்மாலை), www.aelf.org"
     aboutContentNoteSectionTitle = "உள்ளடக்கக் குறிப்பு"
     aboutCopyrightPrefix = "© 2026"
     introPage1Title = "எல்லாம் இணைந்துள்ளது"

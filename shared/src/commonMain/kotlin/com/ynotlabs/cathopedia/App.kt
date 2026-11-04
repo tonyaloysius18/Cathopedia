@@ -108,6 +108,7 @@ import com.ynotlabs.cathopedia.ui.screens.home.SearchScreen
 import com.ynotlabs.cathopedia.ui.screens.settings.SettingsScreen
 import com.ynotlabs.cathopedia.ui.screens.startup.SplashScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.CelebrateMassScreen
+import com.ynotlabs.cathopedia.ui.screens.holymass.LiturgyOfHoursScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.ProcessionScreen
 import com.ynotlabs.cathopedia.ui.screens.sacraments.SacramentsScreen
 import com.ynotlabs.cathopedia.ui.screens.stations.StationsScreen
@@ -351,6 +352,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     onOpenPrayer = { slug -> nav.navigate(Destination.PrayerDetail(slug)) },
                     onOpenRosary = { nav.navigate(Destination.RosaryScreen) },
                     onOpenMass = { nav.navigate(Destination.CelebrateMass) },
+                    onOpenHours = { nav.navigate(Destination.LiturgyOfHours) },
                     onOpenNews = { nav.navigate(Destination.News) },
                     onOpenNewsItem = { id -> nav.navigate(Destination.NewsDetail(id)) },
                     scrollState = homeScrollState,
@@ -529,6 +531,8 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     language = language,
                     onBack = nav::back,
                 )
+
+                is Destination.LiturgyOfHours -> LiturgyOfHoursScreen(onBack = nav::back)
 
                 is Destination.ProcessionScreen -> ProcessionScreen(
                     language = language,

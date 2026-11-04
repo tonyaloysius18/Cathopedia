@@ -307,6 +307,7 @@ val ES: Strings = Strings().apply {
     aboutCreditSqlDelightPurpose = "Datos estructurados locales y persistencia"
     aboutCreditCoroutinesPurpose = "Lógica asíncrona de la aplicación"
     aboutCreditSerializationPurpose = "Serialización de contenidos y datos"
+    aboutCreditAelfPurpose = "Textos litúrgicos franceses (lecturas del día, Liturgia de las Horas), www.aelf.org"
     aboutContentNoteSectionTitle = "Nota sobre el contenido"
     aboutCopyrightPrefix = "© 2026"
     introPage1Title = "Todo está conectado"

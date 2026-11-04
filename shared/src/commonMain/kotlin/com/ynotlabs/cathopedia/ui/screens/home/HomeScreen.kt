@@ -124,6 +124,7 @@ fun HomeScreen(
     onOpenRosary: () -> Unit,
     onReadingSelected: ((ScriptureReference) -> Unit)? = null,
     onOpenMass: (() -> Unit)? = null,
+    onOpenHours: (() -> Unit)? = null,
     onOpenNews: () -> Unit = {},
     onOpenNewsItem: (String) -> Unit = {},
     scrollState: ScrollState = rememberScrollState(),
@@ -157,7 +158,7 @@ fun HomeScreen(
             Spacer(Modifier.height(12.dp))
             HomeHero(seasonLabel = season.label(s))
             Box(Modifier.fillMaxWidth().padding(horizontal = 18.dp)) {
-                DailyReadingsCard(dailyReadings, dailyReadingsLoaded, language, onReadingSelected, onOpenMass)
+                DailyReadingsCard(dailyReadings, dailyReadingsLoaded, language, onReadingSelected, onOpenMass, onOpenHours)
             }
         },
     ) {
@@ -279,6 +280,7 @@ private fun DailyReadingsCard(
     language: String,
     onReadingSelected: ((ScriptureReference) -> Unit)?,
     onOpenMass: (() -> Unit)? = null,
+    onOpenHours: (() -> Unit)? = null,
 ) {
     val s = LocalStrings.current
     val t = LocalScreenText.current
@@ -453,6 +455,19 @@ private fun DailyReadingsCard(
                     modifier = Modifier.heightIn(min = 44.dp),
                 ) {
                     Text(t["screen.mass.celebrate"], color = HomeGold, fontFamily = FontFamily.Serif,
+                        fontSize = 15.sp, lineHeight = 20.sp)
+                    Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = HomeGold,
+                        modifier = Modifier.padding(start = 4.dp).size(20.dp))
+                }
+            }
+            // The Liturgy of the Hours comes from AELF, in French only.
+            if (onOpenHours != null && language == "fr") {
+                TextButton(
+                    onClick = onOpenHours,
+                    contentPadding = PaddingValues(top = 8.dp),
+                    modifier = Modifier.heightIn(min = 44.dp),
+                ) {
+                    Text("Liturgie des Heures", color = HomeGold, fontFamily = FontFamily.Serif,
                         fontSize = 15.sp, lineHeight = 20.sp)
                     Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = HomeGold,
                         modifier = Modifier.padding(start = 4.dp).size(20.dp))

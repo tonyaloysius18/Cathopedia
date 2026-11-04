@@ -79,6 +79,7 @@ private fun credits(s: Strings) = listOf(
     Credit("SQLDelight", s.aboutCreditSqlDelightPurpose),
     Credit("Kotlinx Coroutines", s.aboutCreditCoroutinesPurpose),
     Credit("Kotlinx Serialization", s.aboutCreditSerializationPurpose),
+    Credit("AELF", s.aboutCreditAelfPurpose),
 )
 
 @Composable

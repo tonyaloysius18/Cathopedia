@@ -364,6 +364,7 @@ class Strings {
     var aboutCreditSqlDelightPurpose: String = "Local structured data and persistence"
     var aboutCreditCoroutinesPurpose: String = "Asynchronous application logic"
     var aboutCreditSerializationPurpose: String = "Content and data serialization"
+    var aboutCreditAelfPurpose: String = "French liturgical texts (daily readings, Liturgy of the Hours), www.aelf.org"
     var aboutContentNoteSectionTitle: String = "Content note"
     var aboutContentNoteBody: String = "Cathopedia is an independent educational reference app. " +
         "It is not an official publication of the Holy See or any diocese. " +

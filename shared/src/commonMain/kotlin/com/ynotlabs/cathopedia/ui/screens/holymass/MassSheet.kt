@@ -60,6 +60,8 @@ import com.ynotlabs.cathopedia.liturgical.OrdoCalendar
 import com.ynotlabs.cathopedia.liturgical.OrdoProfile
 import com.ynotlabs.cathopedia.liturgical.OrdoRank
 import com.ynotlabs.cathopedia.liturgical.PlannedPart
+import com.ynotlabs.cathopedia.liturgical.AelfTexts
+import com.ynotlabs.cathopedia.liturgical.LocalAelfMass
 import com.ynotlabs.cathopedia.liturgical.IcelTexts
 import com.ynotlabs.cathopedia.liturgical.SpokenLine
 import com.ynotlabs.cathopedia.liturgical.ReadingText
@@ -197,7 +199,8 @@ internal fun MassSheet(
                                 planned.reading?.let { reading ->
                                     if (reading.kind == LectionaryKind.PSALM) MissalLine(t["screen.mass.refrain_line"])
                                     SheetReading(reading, scale)
-                                    if (reading.kind != LectionaryKind.SEQUENCE &&
+                                    if (reading.options.firstOrNull()?.let { LocalAelfMass.current?.passage(reading.kind, it.citation, it.short) } == null &&
+                                        reading.kind != LectionaryKind.SEQUENCE &&
                                         plan.parts.take(index).none { it.reading?.kind?.let { kind -> kind != LectionaryKind.SEQUENCE } == true }) {
                                         Text(text.readingStudyNote, color = colors.onSurfaceVariant, fontSize = 11.sp,
                                             lineHeight = 15.sp, fontStyle = FontStyle.Italic, modifier = Modifier.padding(top = 6.dp))
@@ -215,6 +218,9 @@ internal fun MassSheet(
                 }
                 item {
                     Column(Modifier.padding(horizontal = 20.dp)) {
+                        if (LocalAelfMass.current != null) {
+                            Text(AelfTexts.CREDIT, color = colors.onSurfaceVariant, fontSize = 11.sp, modifier = Modifier.padding(top = 16.dp))
+                        }
                         if ((IcelTexts.PERMISSION_GRANTED || isDebugBuild()) && plan.parts.any { it.responses.isNotEmpty() }) {
                             Text(
                                 (if (IcelTexts.PERMISSION_GRANTED) "" else "DRAFT · awaiting ICEL permission · ") +
@@ -355,9 +361,23 @@ private fun DraftBanner(message: String) {
 
 @Composable
 private fun SheetReading(reading: LectionaryReading, scale: Float) {
-    if (reading.kind == LectionaryKind.SEQUENCE) return
     val colors = MaterialTheme.colorScheme
-    val citation = (reading.options.firstOrNull { !it.short } ?: reading.options.firstOrNull())?.citation ?: return
+    val option = reading.options.firstOrNull { !it.short } ?: reading.options.firstOrNull() ?: return
+    LocalAelfMass.current?.passage(reading.kind, option.citation, option.short)?.let { official ->
+        if (official.title.isNotBlank()) {
+            Text(official.title, color = colors.primary, fontFamily = FontFamily.Serif,
+                fontSize = (15 * scale).sp, lineHeight = (21 * scale).sp, modifier = Modifier.padding(bottom = 4.dp))
+        }
+        if (official.refrain.isNotBlank()) {
+            Text(official.refrain, color = colors.onSurface, fontFamily = FontFamily.Serif, fontWeight = FontWeight.Bold,
+                fontSize = (17 * scale).sp, lineHeight = (26 * scale).sp, modifier = Modifier.padding(bottom = 6.dp))
+        }
+        Text(official.text, color = colors.onSurface, fontFamily = FontFamily.Serif,
+            fontSize = (17 * scale).sp, lineHeight = (26 * scale).sp)
+        return
+    }
+    if (reading.kind == LectionaryKind.SEQUENCE) return
+    val citation = option.citation
     var passage by remember(citation) { mutableStateOf<ReadingText?>(null) }
     LaunchedEffect(citation) { passage = ReadingTexts.textFor(citation) }
     passage?.let {

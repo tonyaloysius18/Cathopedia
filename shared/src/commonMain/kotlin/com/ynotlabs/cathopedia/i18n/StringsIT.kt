@@ -325,6 +325,7 @@ val IT: Strings = Strings().apply {
     aboutCreditSqlDelightPurpose = "Dati strutturati locali e persistenza"
     aboutCreditCoroutinesPurpose = "Logica applicativa asincrona"
     aboutCreditSerializationPurpose = "Serializzazione dei contenuti e dei dati"
+    aboutCreditAelfPurpose = "Testi liturgici francesi (letture del giorno, Liturgia delle Ore), www.aelf.org"
     aboutContentNoteSectionTitle = "Nota sui contenuti"
     aboutContentNoteBody = "Cathopedia è un'app di riferimento educativa indipendente. " +
         "Non è una pubblicazione ufficiale della Santa Sede né di alcuna diocesi. " +

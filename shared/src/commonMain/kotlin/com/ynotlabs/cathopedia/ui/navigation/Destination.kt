@@ -23,6 +23,7 @@ sealed interface Destination {
     data object SacramentsScreen : Destination
     data object ProcessionScreen : Destination
     data object CelebrateMass : Destination
+    data object LiturgyOfHours : Destination
     data object Vestments : Destination
     data object Search : Destination
     data object Saved : Destination

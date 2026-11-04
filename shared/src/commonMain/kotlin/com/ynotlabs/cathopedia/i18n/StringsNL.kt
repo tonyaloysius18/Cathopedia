@@ -307,6 +307,7 @@ val NL: Strings = Strings().apply {
     aboutCreditSqlDelightPurpose = "Lokale gestructureerde gegevens en opslag"
     aboutCreditCoroutinesPurpose = "Asynchrone app-logica"
     aboutCreditSerializationPurpose = "Serialisatie van inhoud en gegevens"
+    aboutCreditAelfPurpose = "Franse liturgische teksten (dagelijkse lezingen, getijdengebed), www.aelf.org"
     aboutContentNoteSectionTitle = "Over de inhoud"
     aboutCopyrightPrefix = "© 2026"
     introPage1Title = "Alles hangt samen"
