@@ -89,6 +89,7 @@ import com.ynotlabs.cathopedia.data.NewsItem
 import com.ynotlabs.cathopedia.ui.screens.news.NewsCard
 import com.ynotlabs.cathopedia.liturgical.DailyReadingsCalendar
 import com.ynotlabs.cathopedia.liturgical.LiturgicalCalendar
+import com.ynotlabs.cathopedia.liturgical.AelfTexts
 import com.ynotlabs.cathopedia.liturgical.LiturgicalSeason
 import com.ynotlabs.cathopedia.liturgical.ReadingKind
 import com.ynotlabs.cathopedia.liturgical.ScriptureReference
@@ -135,6 +136,9 @@ fun HomeScreen(
     val season = remember(today) { LiturgicalCalendar.liturgicalDayFor(today).season }
     val dateLabel = t["screen.saints.date"].replace("{day}", today.day.toString())
         .replace("{month}", t["screen.saints.month.${today.month.ordinal + 1}"])
+
+    // In French, keep the next few days of AELF readings and Hours on the device for offline use.
+    LaunchedEffect(today, language) { AelfTexts.prefetch(today, language) }
 
     var continueReading by remember(language) { mutableStateOf<ContentSummary?>(null) }
     var feastOfTheDay by remember(today, language) { mutableStateOf<ContentSummary?>(null) }

@@ -22,6 +22,13 @@ import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
+import com.ynotlabs.cathopedia.data.RemoteCache
+import kotlinx.io.buffered
+import kotlinx.io.files.Path
+import kotlinx.io.files.SystemFileSystem
+import kotlinx.io.readString
+import kotlinx.io.writeString
+import kotlin.time.Clock
 
 /** One reading from AELF, as plain text ready to show. */
 data class AelfPassage(
@@ -99,14 +106,21 @@ data class AelfHour(val dayName: String, val sections: List<AelfHourSection>)
 /**
  * French readings and Liturgy of the Hours from AELF's public API (https://api.aelf.org), which
  * AELF allows for free, non-commercial use with the source credited (email to the publisher, 2026).
- * The texts are never bundled or written to disk: AELF hasn't yet said whether offline copies
- * are allowed, so they are kept in memory only, and callers fall back when this returns null.
+ * The texts are never bundled. AELF allows copies kept on the device for offline reading as long as
+ * they are not kept more than a few days (email to the publisher, Nov 2026): each response is saved
+ * with the time it was downloaded and deleted after [KEEP_DAYS], and [prefetch] fetches the coming
+ * days while online. Callers fall back when this returns null.
  */
 object AelfTexts {
     const val CREDIT = "Textes liturgiques © AELF, www.aelf.org"
     private const val API = "https://api.aelf.org/v1/"
     private const val ZONE = "france"
     private const val MAX_CACHED = 40
+    /** AELF: "cette autorisation ne doit pas excéder quelques jours". */
+    const val KEEP_DAYS = 3
+    private const val KEEP_MILLIS = KEEP_DAYS * 24L * 60 * 60 * 1000
+    private const val DIR = "aelf"
+    private var prefetched: LocalDate? = null
 
     private val json = Json { ignoreUnknownKeys = true }
     private val mutex = Mutex()
@@ -131,8 +145,57 @@ object AelfTexts {
         return runCatching { parseHour(body, office) }.getOrNull()
     }
 
+    /**
+     * Downloads the Mass and every Hour for today and the next [KEEP_DAYS] - 1 days, so they can be
+     * read offline; at most once a day. Old copies are deleted first.
+     */
+    suspend fun prefetch(today: LocalDate, language: String) {
+        if (!isAvailable(language)) return
+        if (mutex.withLock { prefetched == today.also { prefetched = it } }) return
+        withContext(Dispatchers.IO) { purgeExpired() }
+        for (offset in 0 until KEEP_DAYS) {
+            val date = today.plus(offset, DateTimeUnit.DAY)
+            if (fetch("messes/$date/$ZONE") == null) return // offline or past AELF's published dates
+            for ((office, _) in HOURS) fetch("$office/$date/$ZONE")
+        }
+    }
+
+    private fun file(path: String): Path? = RemoteCache.directory?.let { Path(it, DIR, path.replace('/', '_') + ".json") }
+
+    /** A saved copy is "<download time in ms>\n<body>"; null when missing or older than [KEEP_DAYS]. */
+    private fun readSaved(path: String): String? = runCatching {
+        val f = file(path)?.takeIf { SystemFileSystem.exists(it) } ?: return null
+        val text = SystemFileSystem.source(f).buffered().use { it.readString() }
+        val saved = text.substringBefore('\n').toLong()
+        if (Clock.System.now().toEpochMilliseconds() - saved > KEEP_MILLIS) {
+            SystemFileSystem.delete(f, mustExist = false)
+            null
+        } else text.substringAfter('\n')
+    }.getOrNull()
+
+    private fun save(path: String, body: String) {
+        runCatching {
+            val f = file(path) ?: return
+            f.parent?.let { SystemFileSystem.createDirectories(it) }
+            val part = Path(f.toString() + ".part")
+            SystemFileSystem.sink(part).buffered().use { it.writeString("${Clock.System.now().toEpochMilliseconds()}\n$body") }
+            SystemFileSystem.atomicMove(part, f)
+        }
+    }
+
+    private fun purgeExpired() {
+        runCatching {
+            val dir = RemoteCache.directory?.let { Path(it, DIR) }?.takeIf { SystemFileSystem.exists(it) } ?: return
+            SystemFileSystem.list(dir).forEach { f -> readSaved(f.name.removeSuffix(".json").replace('_', '/')) }
+        }
+    }
+
     private suspend fun fetch(path: String): String? {
         mutex.withLock { memory[path] }?.let { return it }
+        withContext(Dispatchers.IO) { readSaved(path) }?.let { saved ->
+            mutex.withLock { memory[path] = saved }
+            return saved
+        }
         val body = withContext(Dispatchers.IO) {
             runCatching {
                 val client = HttpClient { install(HttpTimeout) { requestTimeoutMillis = 15_000 } }
@@ -144,6 +207,7 @@ object AelfTexts {
                 }
             }.getOrNull()
         } ?: return null
+        withContext(Dispatchers.IO) { save(path, body) }
         mutex.withLock {
             memory[path] = body
             if (memory.size > MAX_CACHED) memory.remove(memory.keys.first())
