@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": 14,
+  "contentVersion": 15,
   "hub": {
     "id": "holy_see",
     "slug": "holy-see",
@@ -203,7 +203,9 @@
       "icon": "ic_globe",
       "heroAsset": "hub/holy_see/holy_see_diplomacy.png",
       "articleIds": [
-        "art.diplomacy.overview"
+        "art.diplomacy.overview",
+        "art.diplomacy.nunciature",
+        "art.diplomacy.nuncios"
       ]
     },
     {
@@ -1465,6 +1467,133 @@
       "sources": [
         {
           "label": "Vienna Convention on Diplomatic Relations (1961)"
+        }
+      ]
+    },
+    {
+      "id": "art.diplomacy.nunciature",
+      "sectionId": "holy_see.diplomacy",
+      "sortOrder": 2,
+      "titleKey": "art.nunciature.title",
+      "leadKey": "art.nunciature.lead",
+      "heroAsset": "hub/holy_see/holy_see_diplomacy.png",
+      "readingTimeMinutes": 5,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.nunciature.p1"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.nunciature.h_two"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.nunciature.p2"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.nunciature.h_titles"
+        },
+        {
+          "type": "factGrid",
+          "facts": [
+            {
+              "labelKey": "art.nunciature.grid.nuncio.label",
+              "valueKey": "art.nunciature.grid.nuncio.value",
+              "icon": "ic_keys"
+            },
+            {
+              "labelKey": "art.nunciature.grid.delegate.label",
+              "valueKey": "art.nunciature.grid.delegate.value",
+              "icon": "ic_letter"
+            },
+            {
+              "labelKey": "art.nunciature.grid.observer.label",
+              "valueKey": "art.nunciature.grid.observer.value",
+              "icon": "ic_globe"
+            },
+            {
+              "labelKey": "art.nunciature.grid.charge.label",
+              "valueKey": "art.nunciature.grid.charge.value",
+              "icon": "ic_scroll"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.nunciature.h_dean"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.nunciature.p3"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.nunciature.h_many"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.nunciature.p4"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "textKey": "art.nunciature.h_academy"
+        },
+        {
+          "type": "paragraph",
+          "textKey": "art.nunciature.p5"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "titleKey": "art.nunciature.callout.title",
+          "textKey": "art.nunciature.callout.body"
+        }
+      ],
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.diplomacy.nuncios"
+        },
+        {
+          "type": "ARTICLE",
+          "id": "art.diplomacy.overview"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Code of Canon Law, cann. 362–367; Paul VI, Sollicitudo omnium Ecclesiarum (1969); Vienna Convention on Diplomatic Relations (1961), art. 14 and 16"
+        }
+      ]
+    },
+    {
+      "id": "art.diplomacy.nuncios",
+      "sectionId": "holy_see.diplomacy",
+      "sortOrder": 3,
+      "titleKey": "art.nuncios.title",
+      "leadKey": "art.nuncios.lead",
+      "readingTimeMinutes": 5,
+      "related": [
+        {
+          "type": "ARTICLE",
+          "id": "art.diplomacy.nunciature"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Holy See Press Office, Resignations and Appointments; Wikipedia, List of heads of the diplomatic missions of the Holy See; photos: Wikimedia Commons"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "textKey": "art.nuncios.intro"
         }
       ]
     },

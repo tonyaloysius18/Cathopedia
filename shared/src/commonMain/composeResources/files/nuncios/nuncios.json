@@ -1,0 +1,4508 @@
+{
+ "schemaVersion": 1,
+ "updated": "2026-11-15T17:00:00Z",
+ "photosVersion": 1,
+ "places": {
+  "ASEAN": {
+   "en": "ASEAN",
+   "fr": "ASEAN",
+   "es": "ASEAN",
+   "it": "ASEAN",
+   "pt": "ASEAN",
+   "de": "ASEAN",
+   "nl": "ASEAN",
+   "pl": "ASEAN",
+   "ta": "ஆசியான்"
+  },
+  "African Union": {
+   "en": "African Union",
+   "fr": "Union africaine",
+   "es": "Unión Africana",
+   "it": "Unione africana",
+   "pt": "União Africana",
+   "de": "Afrikanische Union",
+   "nl": "Afrikaanse Unie",
+   "pl": "Unia Afrykańska",
+   "ta": "ஆப்பிரிக்க ஒன்றியம்"
+  },
+  "Albania": {
+   "en": "Albania",
+   "fr": "Albanie",
+   "es": "Albania",
+   "it": "Albania",
+   "pt": "Albânia",
+   "de": "Albanien",
+   "nl": "Albanië",
+   "pl": "Albania",
+   "ta": "அல்பேனியா"
+  },
+  "Algeria": {
+   "en": "Algeria",
+   "fr": "Algérie",
+   "es": "Argelia",
+   "it": "Algeria",
+   "pt": "Argélia",
+   "de": "Algerien",
+   "nl": "Algerije",
+   "pl": "Algieria",
+   "ta": "அல்ஜீரியா"
+  },
+  "Andorra": {
+   "en": "Andorra",
+   "fr": "Andorre",
+   "es": "Andorra",
+   "it": "Andorra",
+   "pt": "Andorra",
+   "de": "Andorra",
+   "nl": "Andorra",
+   "pl": "Andora",
+   "ta": "அந்தோரா"
+  },
+  "Angola": {
+   "en": "Angola",
+   "fr": "Angola",
+   "es": "Angola",
+   "it": "Angola",
+   "pt": "Angola",
+   "de": "Angola",
+   "nl": "Angola",
+   "pl": "Angola",
+   "ta": "அங்கோலா"
+  },
+  "Antigua and Barbuda": {
+   "en": "Antigua and Barbuda",
+   "fr": "Antigua-et-Barbuda",
+   "es": "Antigua y Barbuda",
+   "it": "Antigua e Barbuda",
+   "pt": "Antígua e Barbuda",
+   "de": "Antigua und Barbuda",
+   "nl": "Antigua en Barbuda",
+   "pl": "Antigua i Barbuda",
+   "ta": "அன்டிகுவா பர்புடா"
+  },
+  "Antilles": {
+   "en": "Antilles",
+   "fr": "Antilles",
+   "es": "Antillas",
+   "it": "Antille",
+   "pt": "Antilhas",
+   "de": "Antillen",
+   "nl": "Antillen",
+   "pl": "Antyle",
+   "ta": "அண்டிலிசு"
+  },
+  "Arab League": {
+   "en": "Arab League",
+   "fr": "Ligue arabe",
+   "es": "Liga Árabe",
+   "it": "Lega araba",
+   "pt": "Liga Árabe",
+   "de": "Arabische Liga",
+   "nl": "Arabische Liga",
+   "pl": "Liga Arabska",
+   "ta": "அரபு நாடுகள் கூட்டமைப்பு"
+  },
+  "Arabian Peninsula": {
+   "en": "Arabian Peninsula",
+   "fr": "Péninsule arabique",
+   "es": "Península arábiga",
+   "it": "Penisola arabica",
+   "pt": "Península Arábica",
+   "de": "Arabische Halbinsel",
+   "nl": "Arabisch Schiereiland",
+   "pl": "Półwysep Arabski",
+   "ta": "அரேபியத் தீபகற்பம்"
+  },
+  "Argentina": {
+   "en": "Argentina",
+   "fr": "Argentine",
+   "es": "Argentina",
+   "it": "Argentina",
+   "pt": "Argentina",
+   "de": "Argentinien",
+   "nl": "Argentinië",
+   "pl": "Argentyna",
+   "ta": "அர்ஜென்டினா"
+  },
+  "Armenia": {
+   "en": "Armenia",
+   "fr": "Arménie",
+   "es": "Armenia",
+   "it": "Armenia",
+   "pt": "Armênia",
+   "de": "Armenien",
+   "nl": "Armenië",
+   "pl": "Armenia",
+   "ta": "ஆர்மீனியா"
+  },
+  "Australia": {
+   "en": "Australia",
+   "fr": "Australie",
+   "es": "Australia",
+   "it": "Australia",
+   "pt": "Austrália",
+   "de": "Australien",
+   "nl": "Australië",
+   "pl": "Australia",
+   "ta": "ஆஸ்திரேலியா"
+  },
+  "Austria": {
+   "en": "Austria",
+   "fr": "Autriche",
+   "es": "Austria",
+   "it": "Austria",
+   "pt": "Áustria",
+   "de": "Österreich",
+   "nl": "Oostenrijk",
+   "pl": "Austria",
+   "ta": "ஆஸ்திரியா"
+  },
+  "Azerbaijan": {
+   "en": "Azerbaijan",
+   "fr": "Azerbaïdjan",
+   "es": "Azerbaiyán",
+   "it": "Azerbaigian",
+   "pt": "Azerbaijão",
+   "de": "Aserbaidschan",
+   "nl": "Azerbeidzjan",
+   "pl": "Azerbejdżan",
+   "ta": "அசர்பைஜான்"
+  },
+  "Bahamas": {
+   "en": "Bahamas",
+   "fr": "Bahamas",
+   "es": "Bahamas",
+   "it": "Bahamas",
+   "pt": "Bahamas",
+   "de": "Bahamas",
+   "nl": "Bahama's",
+   "pl": "Bahamy",
+   "ta": "பகாமாசு"
+  },
+  "Bahrain": {
+   "en": "Bahrain",
+   "fr": "Bahreïn",
+   "es": "Baréin",
+   "it": "Bahrein",
+   "pt": "Bahrein",
+   "de": "Bahrain",
+   "nl": "Bahrein",
+   "pl": "Bahrajn",
+   "ta": "பகுரைன்"
+  },
+  "Bangladesh": {
+   "en": "Bangladesh",
+   "fr": "Bangladesh",
+   "es": "Bangladés",
+   "it": "Bangladesh",
+   "pt": "Bangladesh",
+   "de": "Bangladesch",
+   "nl": "Bangladesh",
+   "pl": "Bangladesz",
+   "ta": "வங்காளதேசம்"
+  },
+  "Barbados": {
+   "en": "Barbados",
+   "fr": "Barbade",
+   "es": "Barbados",
+   "it": "Barbados",
+   "pt": "Barbados",
+   "de": "Barbados",
+   "nl": "Barbados",
+   "pl": "Barbados",
+   "ta": "பார்படோசு"
+  },
+  "Belarus": {
+   "en": "Belarus",
+   "fr": "Biélorussie",
+   "es": "Bielorrusia",
+   "it": "Bielorussia",
+   "pt": "Bielorrússia",
+   "de": "Belarus",
+   "nl": "Belarus",
+   "pl": "Białoruś",
+   "ta": "பெலாரசு"
+  },
+  "Belgium": {
+   "en": "Belgium",
+   "fr": "Belgique",
+   "es": "Bélgica",
+   "it": "Belgio",
+   "pt": "Bélgica",
+   "de": "Belgien",
+   "nl": "België",
+   "pl": "Belgia",
+   "ta": "பெல்ஜியம்"
+  },
+  "Belize": {
+   "en": "Belize",
+   "fr": "Belize",
+   "es": "Belice",
+   "it": "Belize",
+   "pt": "Belize",
+   "de": "Belize",
+   "nl": "Belize",
+   "pl": "Belize",
+   "ta": "பெலீசு"
+  },
+  "Benin": {
+   "en": "Benin",
+   "fr": "Bénin",
+   "es": "Benín",
+   "it": "Benin",
+   "pt": "Benin",
+   "de": "Benin",
+   "nl": "Benin",
+   "pl": "Benin",
+   "ta": "பெனின்"
+  },
+  "Bolivia": {
+   "en": "Bolivia",
+   "fr": "Bolivie",
+   "es": "Bolivia",
+   "it": "Bolivia",
+   "pt": "Bolívia",
+   "de": "Bolivien",
+   "nl": "Bolivia",
+   "pl": "Boliwia",
+   "ta": "பொலிவியா"
+  },
+  "Bosnia and Herzegovina": {
+   "en": "Bosnia and Herzegovina",
+   "fr": "Bosnie-Herzégovine",
+   "es": "Bosnia y Herzegovina",
+   "it": "Bosnia ed Erzegovina",
+   "pt": "Bósnia e Herzegovina",
+   "de": "Bosnien und Herzegowina",
+   "nl": "Bosnië en Herzegovina",
+   "pl": "Bośnia i Hercegowina",
+   "ta": "போஸ்னியா எர்செகோவினா"
+  },
+  "Botswana": {
+   "en": "Botswana",
+   "fr": "Botswana",
+   "es": "Botsuana",
+   "it": "Botswana",
+   "pt": "Botsuana",
+   "de": "Botswana",
+   "nl": "Botswana",
+   "pl": "Botswana",
+   "ta": "போட்சுவானா"
+  },
+  "Brazil": {
+   "en": "Brazil",
+   "fr": "Brésil",
+   "es": "Brasil",
+   "it": "Brasile",
+   "pt": "Brasil",
+   "de": "Brasilien",
+   "nl": "Brazilië",
+   "pl": "Brazylia",
+   "ta": "பிரேசில்"
+  },
+  "Brunei": {
+   "en": "Brunei",
+   "fr": "Brunei",
+   "es": "Brunéi",
+   "it": "Brunei",
+   "pt": "Brunei",
+   "de": "Brunei",
+   "nl": "Brunei",
+   "pl": "Brunei",
+   "ta": "புரூணை"
+  },
+  "Bulgaria": {
+   "en": "Bulgaria",
+   "fr": "Bulgarie",
+   "es": "Bulgaria",
+   "it": "Bulgaria",
+   "pt": "Bulgária",
+   "de": "Bulgarien",
+   "nl": "Bulgarije",
+   "pl": "Bułgaria",
+   "ta": "பல்கேரியா"
+  },
+  "Burkina Faso": {
+   "en": "Burkina Faso",
+   "fr": "Burkina Faso",
+   "es": "Burkina Faso",
+   "it": "Burkina Faso",
+   "pt": "Burkina Faso",
+   "de": "Burkina Faso",
+   "nl": "Burkina Faso",
+   "pl": "Burkina Faso",
+   "ta": "புர்கினா பாசோ"
+  },
+  "Burundi": {
+   "en": "Burundi",
+   "fr": "Burundi",
+   "es": "Burundi",
+   "it": "Burundi",
+   "pt": "Burundi",
+   "de": "Burundi",
+   "nl": "Burundi",
+   "pl": "Burundi",
+   "ta": "புருண்டி"
+  },
+  "Cambodia": {
+   "en": "Cambodia",
+   "fr": "Cambodge",
+   "es": "Camboya",
+   "it": "Cambogia",
+   "pt": "Camboja",
+   "de": "Kambodscha",
+   "nl": "Cambodja",
+   "pl": "Kambodża",
+   "ta": "கம்போடியா"
+  },
+  "Cameroon": {
+   "en": "Cameroon",
+   "fr": "Cameroun",
+   "es": "Camerún",
+   "it": "Camerun",
+   "pt": "Camarões",
+   "de": "Kamerun",
+   "nl": "Kameroen",
+   "pl": "Kamerun",
+   "ta": "கமரூன்"
+  },
+  "Canada": {
+   "en": "Canada",
+   "fr": "Canada",
+   "es": "Canadá",
+   "it": "Canada",
+   "pt": "Canadá",
+   "de": "Kanada",
+   "nl": "Canada",
+   "pl": "Kanada",
+   "ta": "கனடா"
+  },
+  "Cape Verde": {
+   "en": "Cape Verde",
+   "fr": "Cap-Vert",
+   "es": "Cabo Verde",
+   "it": "Capo Verde",
+   "pt": "Cabo Verde",
+   "de": "Kap Verde",
+   "nl": "Kaapverdië",
+   "pl": "Republika Zielonego Przylądka",
+   "ta": "கேப் வர்டே"
+  },
+  "Central African Republic": {
+   "en": "Central African Republic",
+   "fr": "République centrafricaine",
+   "es": "República Centroafricana",
+   "it": "Repubblica Centrafricana",
+   "pt": "República Centro-Africana",
+   "de": "Zentralafrikanische Republik",
+   "nl": "Centraal-Afrikaanse Republiek",
+   "pl": "Republika Środkowoafrykańska",
+   "ta": "மத்திய ஆப்பிரிக்கக் குடியரசு"
+  },
+  "Chad": {
+   "en": "Chad",
+   "fr": "Tchad",
+   "es": "Chad",
+   "it": "Ciad",
+   "pt": "Chade",
+   "de": "Tschad",
+   "nl": "Tsjaad",
+   "pl": "Czad",
+   "ta": "சாட்"
+  },
+  "Chile": {
+   "en": "Chile",
+   "fr": "Chili",
+   "es": "Chile",
+   "it": "Cile",
+   "pt": "Chile",
+   "de": "Chile",
+   "nl": "Chili",
+   "pl": "Chile",
+   "ta": "சிலி"
+  },
+  "Colombia": {
+   "en": "Colombia",
+   "fr": "Colombie",
+   "es": "Colombia",
+   "it": "Colombia",
+   "pt": "Colômbia",
+   "de": "Kolumbien",
+   "nl": "Colombia",
+   "pl": "Kolumbia",
+   "ta": "கொலம்பியா"
+  },
+  "Comoros": {
+   "en": "Comoros",
+   "fr": "Comores",
+   "es": "Comoras",
+   "it": "Comore",
+   "pt": "Comores",
+   "de": "Komoren",
+   "nl": "Comoren",
+   "pl": "Komory",
+   "ta": "கொமொரோசு"
+  },
+  "Cook Islands": {
+   "en": "Cook Islands",
+   "fr": "Îles Cook",
+   "es": "Islas Cook",
+   "it": "Isole Cook",
+   "pt": "Ilhas Cook",
+   "de": "Cookinseln",
+   "nl": "Cookeilanden",
+   "pl": "Wyspy Cooka",
+   "ta": "குக் தீவுகள்"
+  },
+  "Costa Rica": {
+   "en": "Costa Rica",
+   "fr": "Costa Rica",
+   "es": "Costa Rica",
+   "it": "Costa Rica",
+   "pt": "Costa Rica",
+   "de": "Costa Rica",
+   "nl": "Costa Rica",
+   "pl": "Kostaryka",
+   "ta": "கோஸ்டா ரிக்கா"
+  },
+  "Council of Europe": {
+   "en": "Council of Europe",
+   "fr": "Conseil de l’Europe",
+   "es": "Consejo de Europa",
+   "it": "Consiglio d’Europa",
+   "pt": "Conselho da Europa",
+   "de": "Europarat",
+   "nl": "Raad van Europa",
+   "pl": "Rada Europy",
+   "ta": "ஐரோப்பியப் பேரவை"
+  },
+  "Croatia": {
+   "en": "Croatia",
+   "fr": "Croatie",
+   "es": "Croacia",
+   "it": "Croazia",
+   "pt": "Croácia",
+   "de": "Kroatien",
+   "nl": "Kroatië",
+   "pl": "Chorwacja",
+   "ta": "குரோவாசியா"
+  },
+  "Cuba": {
+   "en": "Cuba",
+   "fr": "Cuba",
+   "es": "Cuba",
+   "it": "Cuba",
+   "pt": "Cuba",
+   "de": "Kuba",
+   "nl": "Cuba",
+   "pl": "Kuba",
+   "ta": "கியூபா"
+  },
+  "Cyprus": {
+   "en": "Cyprus",
+   "fr": "Chypre",
+   "es": "Chipre",
+   "it": "Cipro",
+   "pt": "Chipre",
+   "de": "Zypern",
+   "nl": "Cyprus",
+   "pl": "Cypr",
+   "ta": "சைப்பிரசு"
+  },
+  "Czech Republic": {
+   "en": "Czech Republic",
+   "fr": "Tchéquie",
+   "es": "Chequia",
+   "it": "Repubblica Ceca",
+   "pt": "Tchéquia",
+   "de": "Tschechien",
+   "nl": "Tsjechië",
+   "pl": "Czechy",
+   "ta": "செக் குடியரசு"
+  },
+  "Democratic Republic of the Congo": {
+   "en": "Democratic Republic of the Congo",
+   "fr": "République démocratique du Congo",
+   "es": "República Democrática del Congo",
+   "it": "Repubblica Democratica del Congo",
+   "pt": "República Democrática do Congo",
+   "de": "Demokratische Republik Kongo",
+   "nl": "Democratische Republiek Congo",
+   "pl": "Demokratyczna Republika Konga",
+   "ta": "காங்கோ மக்களாட்சிக் குடியரசு"
+  },
+  "Denmark": {
+   "en": "Denmark",
+   "fr": "Danemark",
+   "es": "Dinamarca",
+   "it": "Danimarca",
+   "pt": "Dinamarca",
+   "de": "Dänemark",
+   "nl": "Denemarken",
+   "pl": "Dania",
+   "ta": "டென்மார்க்"
+  },
+  "Djibouti": {
+   "en": "Djibouti",
+   "fr": "Djibouti",
+   "es": "Yibuti",
+   "it": "Gibuti",
+   "pt": "Djibuti",
+   "de": "Dschibuti",
+   "nl": "Djibouti",
+   "pl": "Dżibuti",
+   "ta": "சீபூத்தீ"
+  },
+  "Dominica": {
+   "en": "Dominica",
+   "fr": "Dominique",
+   "es": "Dominica",
+   "it": "Dominica",
+   "pt": "Dominica",
+   "de": "Dominica",
+   "nl": "Dominica",
+   "pl": "Dominika",
+   "ta": "டொமினிக்கா"
+  },
+  "Dominican Republic": {
+   "en": "Dominican Republic",
+   "fr": "République dominicaine",
+   "es": "República Dominicana",
+   "it": "Repubblica Dominicana",
+   "pt": "República Dominicana",
+   "de": "Dominikanische Republik",
+   "nl": "Dominicaanse Republiek",
+   "pl": "Dominikana",
+   "ta": "டொமினிக்கன் குடியரசு"
+  },
+  "ECOWAS": {
+   "en": "ECOWAS",
+   "fr": "CEDEAO",
+   "es": "CEDEAO",
+   "it": "ECOWAS",
+   "pt": "CEDEAO",
+   "de": "ECOWAS",
+   "nl": "ECOWAS",
+   "pl": "ECOWAS",
+   "ta": "எக்கோவாஸ்"
+  },
+  "East Timor": {
+   "en": "East Timor",
+   "fr": "Timor oriental",
+   "es": "Timor Oriental",
+   "it": "Timor Est",
+   "pt": "Timor-Leste",
+   "de": "Osttimor",
+   "nl": "Oost-Timor",
+   "pl": "Timor Wschodni",
+   "ta": "கிழக்குத் திமோர்"
+  },
+  "Ecuador": {
+   "en": "Ecuador",
+   "fr": "Équateur",
+   "es": "Ecuador",
+   "it": "Ecuador",
+   "pt": "Equador",
+   "de": "Ecuador",
+   "nl": "Ecuador",
+   "pl": "Ekwador",
+   "ta": "எக்குவடோர்"
+  },
+  "Egypt": {
+   "en": "Egypt",
+   "fr": "Égypte",
+   "es": "Egipto",
+   "it": "Egitto",
+   "pt": "Egito",
+   "de": "Ägypten",
+   "nl": "Egypte",
+   "pl": "Egipt",
+   "ta": "எகிப்து"
+  },
+  "El Salvador": {
+   "en": "El Salvador",
+   "fr": "Salvador",
+   "es": "El Salvador",
+   "it": "El Salvador",
+   "pt": "El Salvador",
+   "de": "El Salvador",
+   "nl": "El Salvador",
+   "pl": "Salwador",
+   "ta": "எல் சால்வடோர்"
+  },
+  "Equatorial Guinea": {
+   "en": "Equatorial Guinea",
+   "fr": "Guinée équatoriale",
+   "es": "Guinea Ecuatorial",
+   "it": "Guinea Equatoriale",
+   "pt": "Guiné Equatorial",
+   "de": "Äquatorialguinea",
+   "nl": "Equatoriaal-Guinea",
+   "pl": "Gwinea Równikowa",
+   "ta": "எக்குவடோரியல் கினி"
+  },
+  "Eritrea": {
+   "en": "Eritrea",
+   "fr": "Érythrée",
+   "es": "Eritrea",
+   "it": "Eritrea",
+   "pt": "Eritreia",
+   "de": "Eritrea",
+   "nl": "Eritrea",
+   "pl": "Erytrea",
+   "ta": "எரித்திரியா"
+  },
+  "Estonia": {
+   "en": "Estonia",
+   "fr": "Estonie",
+   "es": "Estonia",
+   "it": "Estonia",
+   "pt": "Estônia",
+   "de": "Estland",
+   "nl": "Estland",
+   "pl": "Estonia",
+   "ta": "எசுத்தோனியா"
+  },
+  "Eswatini": {
+   "en": "Eswatini",
+   "fr": "Eswatini",
+   "es": "Esuatini",
+   "it": "Eswatini",
+   "pt": "Essuatíni",
+   "de": "Eswatini",
+   "nl": "Eswatini",
+   "pl": "Eswatini",
+   "ta": "எசுவாத்தினி"
+  },
+  "Ethiopia": {
+   "en": "Ethiopia",
+   "fr": "Éthiopie",
+   "es": "Etiopía",
+   "it": "Etiopia",
+   "pt": "Etiópia",
+   "de": "Äthiopien",
+   "nl": "Ethiopië",
+   "pl": "Etiopia",
+   "ta": "எத்தியோப்பியா"
+  },
+  "European Union": {
+   "en": "European Union",
+   "fr": "Union européenne",
+   "es": "Unión Europea",
+   "it": "Unione europea",
+   "pt": "União Europeia",
+   "de": "Europäische Union",
+   "nl": "Europese Unie",
+   "pl": "Unia Europejska",
+   "ta": "ஐரோப்பிய ஒன்றியம்"
+  },
+  "FAO, IFAD and WFP, Rome": {
+   "en": "FAO, IFAD and WFP, Rome",
+   "fr": "FAO, FIDA et PAM, Rome",
+   "es": "FAO, FIDA y PMA, Roma",
+   "it": "FAO, IFAD e PAM, Roma",
+   "pt": "FAO, FIDA e PMA, Roma",
+   "de": "FAO, IFAD und WFP, Rom",
+   "nl": "FAO, IFAD en WFP, Rome",
+   "pl": "FAO, IFAD i WFP, Rzym",
+   "ta": "எஃப்ஏஓ, ஐஃபாட், உலக உணவுத் திட்டம், உரோமை"
+  },
+  "Fiji": {
+   "en": "Fiji",
+   "fr": "Fidji",
+   "es": "Fiyi",
+   "it": "Figi",
+   "pt": "Fiji",
+   "de": "Fidschi",
+   "nl": "Fiji",
+   "pl": "Fidżi",
+   "ta": "பிஜி"
+  },
+  "Finland": {
+   "en": "Finland",
+   "fr": "Finlande",
+   "es": "Finlandia",
+   "it": "Finlandia",
+   "pt": "Finlândia",
+   "de": "Finnland",
+   "nl": "Finland",
+   "pl": "Finlandia",
+   "ta": "பின்லாந்து"
+  },
+  "France": {
+   "en": "France",
+   "fr": "France",
+   "es": "Francia",
+   "it": "Francia",
+   "pt": "França",
+   "de": "Frankreich",
+   "nl": "Frankrijk",
+   "pl": "Francja",
+   "ta": "பிரான்ஸ்"
+  },
+  "Gabon": {
+   "en": "Gabon",
+   "fr": "Gabon",
+   "es": "Gabón",
+   "it": "Gabon",
+   "pt": "Gabão",
+   "de": "Gabun",
+   "nl": "Gabon",
+   "pl": "Gabon",
+   "ta": "காபோன்"
+  },
+  "Gambia": {
+   "en": "Gambia",
+   "fr": "Gambie",
+   "es": "Gambia",
+   "it": "Gambia",
+   "pt": "Gâmbia",
+   "de": "Gambia",
+   "nl": "Gambia",
+   "pl": "Gambia",
+   "ta": "கம்பியா"
+  },
+  "Georgia": {
+   "en": "Georgia",
+   "fr": "Géorgie",
+   "es": "Georgia",
+   "it": "Georgia",
+   "pt": "Geórgia",
+   "de": "Georgien",
+   "nl": "Georgië",
+   "pl": "Gruzja",
+   "ta": "சியார்சியா"
+  },
+  "Germany": {
+   "en": "Germany",
+   "fr": "Allemagne",
+   "es": "Alemania",
+   "it": "Germania",
+   "pt": "Alemanha",
+   "de": "Deutschland",
+   "nl": "Duitsland",
+   "pl": "Niemcy",
+   "ta": "ஜெர்மனி"
+  },
+  "Ghana": {
+   "en": "Ghana",
+   "fr": "Ghana",
+   "es": "Ghana",
+   "it": "Ghana",
+   "pt": "Gana",
+   "de": "Ghana",
+   "nl": "Ghana",
+   "pl": "Ghana",
+   "ta": "கானா"
+  },
+  "Gibraltar": {
+   "en": "Gibraltar",
+   "fr": "Gibraltar",
+   "es": "Gibraltar",
+   "it": "Gibilterra",
+   "pt": "Gibraltar",
+   "de": "Gibraltar",
+   "nl": "Gibraltar",
+   "pl": "Gibraltar",
+   "ta": "ஜிப்ரால்ட்டர்"
+  },
+  "Great Britain": {
+   "en": "Great Britain",
+   "fr": "Grande-Bretagne",
+   "es": "Gran Bretaña",
+   "it": "Gran Bretagna",
+   "pt": "Grã-Bretanha",
+   "de": "Großbritannien",
+   "nl": "Groot-Brittannië",
+   "pl": "Wielka Brytania",
+   "ta": "பெரிய பிரித்தானியா"
+  },
+  "Greece": {
+   "en": "Greece",
+   "fr": "Grèce",
+   "es": "Grecia",
+   "it": "Grecia",
+   "pt": "Grécia",
+   "de": "Griechenland",
+   "nl": "Griekenland",
+   "pl": "Grecja",
+   "ta": "கிரேக்கம்"
+  },
+  "Grenada": {
+   "en": "Grenada",
+   "fr": "Grenade",
+   "es": "Granada",
+   "it": "Grenada",
+   "pt": "Granada",
+   "de": "Grenada",
+   "nl": "Grenada",
+   "pl": "Grenada",
+   "ta": "கிரெனடா"
+  },
+  "Guatemala": {
+   "en": "Guatemala",
+   "fr": "Guatemala",
+   "es": "Guatemala",
+   "it": "Guatemala",
+   "pt": "Guatemala",
+   "de": "Guatemala",
+   "nl": "Guatemala",
+   "pl": "Gwatemala",
+   "ta": "குவாத்தமாலா"
+  },
+  "Guinea": {
+   "en": "Guinea",
+   "fr": "Guinée",
+   "es": "Guinea",
+   "it": "Guinea",
+   "pt": "Guiné",
+   "de": "Guinea",
+   "nl": "Guinee",
+   "pl": "Gwinea",
+   "ta": "கினி"
+  },
+  "Guinea-Bissau": {
+   "en": "Guinea-Bissau",
+   "fr": "Guinée-Bissau",
+   "es": "Guinea-Bisáu",
+   "it": "Guinea-Bissau",
+   "pt": "Guiné-Bissau",
+   "de": "Guinea-Bissau",
+   "nl": "Guinee-Bissau",
+   "pl": "Gwinea Bissau",
+   "ta": "கினி-பிசாவு"
+  },
+  "Guyana": {
+   "en": "Guyana",
+   "fr": "Guyana",
+   "es": "Guyana",
+   "it": "Guyana",
+   "pt": "Guiana",
+   "de": "Guyana",
+   "nl": "Guyana",
+   "pl": "Gujana",
+   "ta": "கயானா"
+  },
+  "Haiti": {
+   "en": "Haiti",
+   "fr": "Haïti",
+   "es": "Haití",
+   "it": "Haiti",
+   "pt": "Haiti",
+   "de": "Haiti",
+   "nl": "Haïti",
+   "pl": "Haiti",
+   "ta": "ஹைட்டி"
+  },
+  "Honduras": {
+   "en": "Honduras",
+   "fr": "Honduras",
+   "es": "Honduras",
+   "it": "Honduras",
+   "pt": "Honduras",
+   "de": "Honduras",
+   "nl": "Honduras",
+   "pl": "Honduras",
+   "ta": "ஹோண்டுராஸ்"
+  },
+  "Hungary": {
+   "en": "Hungary",
+   "fr": "Hongrie",
+   "es": "Hungría",
+   "it": "Ungheria",
+   "pt": "Hungria",
+   "de": "Ungarn",
+   "nl": "Hongarije",
+   "pl": "Węgry",
+   "ta": "அங்கேரி"
+  },
+  "Iceland": {
+   "en": "Iceland",
+   "fr": "Islande",
+   "es": "Islandia",
+   "it": "Islanda",
+   "pt": "Islândia",
+   "de": "Island",
+   "nl": "IJsland",
+   "pl": "Islandia",
+   "ta": "ஐசுலாந்து"
+  },
+  "India": {
+   "en": "India",
+   "fr": "Inde",
+   "es": "India",
+   "it": "India",
+   "pt": "Índia",
+   "de": "Indien",
+   "nl": "India",
+   "pl": "Indie",
+   "ta": "இந்தியா"
+  },
+  "Indonesia": {
+   "en": "Indonesia",
+   "fr": "Indonésie",
+   "es": "Indonesia",
+   "it": "Indonesia",
+   "pt": "Indonésia",
+   "de": "Indonesien",
+   "nl": "Indonesië",
+   "pl": "Indonezja",
+   "ta": "இந்தோனேசியா"
+  },
+  "Iran": {
+   "en": "Iran",
+   "fr": "Iran",
+   "es": "Irán",
+   "it": "Iran",
+   "pt": "Irão",
+   "de": "Iran",
+   "nl": "Iran",
+   "pl": "Iran",
+   "ta": "ஈரான்"
+  },
+  "Iraq": {
+   "en": "Iraq",
+   "fr": "Irak",
+   "es": "Irak",
+   "it": "Iraq",
+   "pt": "Iraque",
+   "de": "Irak",
+   "nl": "Irak",
+   "pl": "Irak",
+   "ta": "ஈராக்"
+  },
+  "Ireland": {
+   "en": "Ireland",
+   "fr": "Irlande",
+   "es": "Irlanda",
+   "it": "Irlanda",
+   "pt": "Irlanda",
+   "de": "Irland",
+   "nl": "Ierland",
+   "pl": "Irlandia",
+   "ta": "அயர்லாந்து"
+  },
+  "Israel": {
+   "en": "Israel",
+   "fr": "Israël",
+   "es": "Israel",
+   "it": "Israele",
+   "pt": "Israel",
+   "de": "Israel",
+   "nl": "Israël",
+   "pl": "Izrael",
+   "ta": "இசுரேல்"
+  },
+  "Italy": {
+   "en": "Italy",
+   "fr": "Italie",
+   "es": "Italia",
+   "it": "Italia",
+   "pt": "Itália",
+   "de": "Italien",
+   "nl": "Italië",
+   "pl": "Włochy",
+   "ta": "இத்தாலி"
+  },
+  "Ivory Coast": {
+   "en": "Ivory Coast",
+   "fr": "Côte d’Ivoire",
+   "es": "Costa de Marfil",
+   "it": "Costa d’Avorio",
+   "pt": "Costa do Marfim",
+   "de": "Elfenbeinküste",
+   "nl": "Ivoorkust",
+   "pl": "Wybrzeże Kości Słoniowej",
+   "ta": "ஐவரி கோஸ்ட்"
+  },
+  "Jamaica": {
+   "en": "Jamaica",
+   "fr": "Jamaïque",
+   "es": "Jamaica",
+   "it": "Giamaica",
+   "pt": "Jamaica",
+   "de": "Jamaika",
+   "nl": "Jamaica",
+   "pl": "Jamajka",
+   "ta": "ஜமேக்கா"
+  },
+  "Japan": {
+   "en": "Japan",
+   "fr": "Japon",
+   "es": "Japón",
+   "it": "Giappone",
+   "pt": "Japão",
+   "de": "Japan",
+   "nl": "Japan",
+   "pl": "Japonia",
+   "ta": "ஜப்பான்"
+  },
+  "Jerusalem and Palestine": {
+   "en": "Jerusalem and Palestine",
+   "fr": "Jérusalem et Palestine",
+   "es": "Jerusalén y Palestina",
+   "it": "Gerusalemme e Palestina",
+   "pt": "Jerusalém e Palestina",
+   "de": "Jerusalem und Palästina",
+   "nl": "Jeruzalem en Palestina",
+   "pl": "Jerozolima i Palestyna",
+   "ta": "எருசலேமும் பாலஸ்தீனமும்"
+  },
+  "Jordan": {
+   "en": "Jordan",
+   "fr": "Jordanie",
+   "es": "Jordania",
+   "it": "Giordania",
+   "pt": "Jordânia",
+   "de": "Jordanien",
+   "nl": "Jordanië",
+   "pl": "Jordania",
+   "ta": "யோர்தான்"
+  },
+  "Kazakhstan": {
+   "en": "Kazakhstan",
+   "fr": "Kazakhstan",
+   "es": "Kazajistán",
+   "it": "Kazakistan",
+   "pt": "Cazaquistão",
+   "de": "Kasachstan",
+   "nl": "Kazachstan",
+   "pl": "Kazachstan",
+   "ta": "கசக்ஸ்தான்"
+  },
+  "Kenya": {
+   "en": "Kenya",
+   "fr": "Kenya",
+   "es": "Kenia",
+   "it": "Kenya",
+   "pt": "Quénia",
+   "de": "Kenia",
+   "nl": "Kenia",
+   "pl": "Kenia",
+   "ta": "கென்யா"
+  },
+  "Kiribati": {
+   "en": "Kiribati",
+   "fr": "Kiribati",
+   "es": "Kiribati",
+   "it": "Kiribati",
+   "pt": "Kiribati",
+   "de": "Kiribati",
+   "nl": "Kiribati",
+   "pl": "Kiribati",
+   "ta": "கிரிபட்டி"
+  },
+  "Kosovo": {
+   "en": "Kosovo",
+   "fr": "Kosovo",
+   "es": "Kosovo",
+   "it": "Kosovo",
+   "pt": "Kosovo",
+   "de": "Kosovo",
+   "nl": "Kosovo",
+   "pl": "Kosowo",
+   "ta": "கொசோவோ"
+  },
+  "Kuwait": {
+   "en": "Kuwait",
+   "fr": "Koweït",
+   "es": "Kuwait",
+   "it": "Kuwait",
+   "pt": "Kuwait",
+   "de": "Kuwait",
+   "nl": "Koeweit",
+   "pl": "Kuwejt",
+   "ta": "குவைத்"
+  },
+  "Kyrgyzstan": {
+   "en": "Kyrgyzstan",
+   "fr": "Kirghizistan",
+   "es": "Kirguistán",
+   "it": "Kirghizistan",
+   "pt": "Quirguistão",
+   "de": "Kirgisistan",
+   "nl": "Kirgizië",
+   "pl": "Kirgistan",
+   "ta": "கிர்கிசுதான்"
+  },
+  "Laos": {
+   "en": "Laos",
+   "fr": "Laos",
+   "es": "Laos",
+   "it": "Laos",
+   "pt": "Laos",
+   "de": "Laos",
+   "nl": "Laos",
+   "pl": "Laos",
+   "ta": "லாவோஸ்"
+  },
+  "Latvia": {
+   "en": "Latvia",
+   "fr": "Lettonie",
+   "es": "Letonia",
+   "it": "Lettonia",
+   "pt": "Letónia",
+   "de": "Lettland",
+   "nl": "Letland",
+   "pl": "Łotwa",
+   "ta": "லாத்வியா"
+  },
+  "Lebanon": {
+   "en": "Lebanon",
+   "fr": "Liban",
+   "es": "Líbano",
+   "it": "Libano",
+   "pt": "Líbano",
+   "de": "Libanon",
+   "nl": "Libanon",
+   "pl": "Liban",
+   "ta": "லெபனான்"
+  },
+  "Lesotho": {
+   "en": "Lesotho",
+   "fr": "Lesotho",
+   "es": "Lesoto",
+   "it": "Lesotho",
+   "pt": "Lesoto",
+   "de": "Lesotho",
+   "nl": "Lesotho",
+   "pl": "Lesotho",
+   "ta": "லெசோத்தோ"
+  },
+  "Liberia": {
+   "en": "Liberia",
+   "fr": "Liberia",
+   "es": "Liberia",
+   "it": "Liberia",
+   "pt": "Libéria",
+   "de": "Liberia",
+   "nl": "Liberia",
+   "pl": "Liberia",
+   "ta": "லைபீரியா"
+  },
+  "Libya": {
+   "en": "Libya",
+   "fr": "Libye",
+   "es": "Libia",
+   "it": "Libia",
+   "pt": "Líbia",
+   "de": "Libyen",
+   "nl": "Libië",
+   "pl": "Libia",
+   "ta": "லிபியா"
+  },
+  "Liechtenstein": {
+   "en": "Liechtenstein",
+   "fr": "Liechtenstein",
+   "es": "Liechtenstein",
+   "it": "Liechtenstein",
+   "pt": "Liechtenstein",
+   "de": "Liechtenstein",
+   "nl": "Liechtenstein",
+   "pl": "Liechtenstein",
+   "ta": "லீக்கின்ஸ்டைன்"
+  },
+  "Lithuania": {
+   "en": "Lithuania",
+   "fr": "Lituanie",
+   "es": "Lituania",
+   "it": "Lituania",
+   "pt": "Lituânia",
+   "de": "Litauen",
+   "nl": "Litouwen",
+   "pl": "Litwa",
+   "ta": "லித்துவேனியா"
+  },
+  "Luxembourg": {
+   "en": "Luxembourg",
+   "fr": "Luxembourg",
+   "es": "Luxemburgo",
+   "it": "Lussemburgo",
+   "pt": "Luxemburgo",
+   "de": "Luxemburg",
+   "nl": "Luxemburg",
+   "pl": "Luksemburg",
+   "ta": "லக்சம்பர்க்"
+  },
+  "Madagascar": {
+   "en": "Madagascar",
+   "fr": "Madagascar",
+   "es": "Madagascar",
+   "it": "Madagascar",
+   "pt": "Madagáscar",
+   "de": "Madagaskar",
+   "nl": "Madagaskar",
+   "pl": "Madagaskar",
+   "ta": "மடகாஸ்கர்"
+  },
+  "Malawi": {
+   "en": "Malawi",
+   "fr": "Malawi",
+   "es": "Malaui",
+   "it": "Malawi",
+   "pt": "Malawi",
+   "de": "Malawi",
+   "nl": "Malawi",
+   "pl": "Malawi",
+   "ta": "மலாவி"
+  },
+  "Malaysia": {
+   "en": "Malaysia",
+   "fr": "Malaisie",
+   "es": "Malasia",
+   "it": "Malesia",
+   "pt": "Malásia",
+   "de": "Malaysia",
+   "nl": "Maleisië",
+   "pl": "Malezja",
+   "ta": "மலேசியா"
+  },
+  "Mali": {
+   "en": "Mali",
+   "fr": "Mali",
+   "es": "Malí",
+   "it": "Mali",
+   "pt": "Mali",
+   "de": "Mali",
+   "nl": "Mali",
+   "pl": "Mali",
+   "ta": "மாலி"
+  },
+  "Malta": {
+   "en": "Malta",
+   "fr": "Malte",
+   "es": "Malta",
+   "it": "Malta",
+   "pt": "Malta",
+   "de": "Malta",
+   "nl": "Malta",
+   "pl": "Malta",
+   "ta": "மால்ட்டா"
+  },
+  "Marshall Islands": {
+   "en": "Marshall Islands",
+   "fr": "Îles Marshall",
+   "es": "Islas Marshall",
+   "it": "Isole Marshall",
+   "pt": "Ilhas Marshall",
+   "de": "Marshallinseln",
+   "nl": "Marshalleilanden",
+   "pl": "Wyspy Marshalla",
+   "ta": "மார்சல் தீவுகள்"
+  },
+  "Mauritania": {
+   "en": "Mauritania",
+   "fr": "Mauritanie",
+   "es": "Mauritania",
+   "it": "Mauritania",
+   "pt": "Mauritânia",
+   "de": "Mauretanien",
+   "nl": "Mauritanië",
+   "pl": "Mauretania",
+   "ta": "மூரித்தானியா"
+  },
+  "Mauritius": {
+   "en": "Mauritius",
+   "fr": "Maurice",
+   "es": "Mauricio",
+   "it": "Mauritius",
+   "pt": "Maurícia",
+   "de": "Mauritius",
+   "nl": "Mauritius",
+   "pl": "Mauritius",
+   "ta": "மொரிசியசு"
+  },
+  "Mexico": {
+   "en": "Mexico",
+   "fr": "Mexique",
+   "es": "México",
+   "it": "Messico",
+   "pt": "México",
+   "de": "Mexiko",
+   "nl": "Mexico",
+   "pl": "Meksyk",
+   "ta": "மெக்சிகோ"
+  },
+  "Micronesia": {
+   "en": "Micronesia",
+   "fr": "Micronésie",
+   "es": "Micronesia",
+   "it": "Micronesia",
+   "pt": "Micronésia",
+   "de": "Mikronesien",
+   "nl": "Micronesia",
+   "pl": "Mikronezja",
+   "ta": "மைக்குரோனீசியா"
+  },
+  "Moldova": {
+   "en": "Moldova",
+   "fr": "Moldavie",
+   "es": "Moldavia",
+   "it": "Moldavia",
+   "pt": "Moldávia",
+   "de": "Moldau",
+   "nl": "Moldavië",
+   "pl": "Mołdawia",
+   "ta": "மல்தோவா"
+  },
+  "Monaco": {
+   "en": "Monaco",
+   "fr": "Monaco",
+   "es": "Mónaco",
+   "it": "Monaco",
+   "pt": "Mônaco",
+   "de": "Monaco",
+   "nl": "Monaco",
+   "pl": "Monako",
+   "ta": "மொனாக்கோ"
+  },
+  "Mongolia": {
+   "en": "Mongolia",
+   "fr": "Mongolie",
+   "es": "Mongolia",
+   "it": "Mongolia",
+   "pt": "Mongólia",
+   "de": "Mongolei",
+   "nl": "Mongolië",
+   "pl": "Mongolia",
+   "ta": "மங்கோலியா"
+  },
+  "Montenegro": {
+   "en": "Montenegro",
+   "fr": "Monténégro",
+   "es": "Montenegro",
+   "it": "Montenegro",
+   "pt": "Montenegro",
+   "de": "Montenegro",
+   "nl": "Montenegro",
+   "pl": "Czarnogóra",
+   "ta": "மொண்டெனேகுரோ"
+  },
+  "Morocco": {
+   "en": "Morocco",
+   "fr": "Maroc",
+   "es": "Marruecos",
+   "it": "Marocco",
+   "pt": "Marrocos",
+   "de": "Marokko",
+   "nl": "Marokko",
+   "pl": "Maroko",
+   "ta": "மொரோக்கோ"
+  },
+  "Mozambique": {
+   "en": "Mozambique",
+   "fr": "Mozambique",
+   "es": "Mozambique",
+   "it": "Mozambico",
+   "pt": "Moçambique",
+   "de": "Mosambik",
+   "nl": "Mozambique",
+   "pl": "Mozambik",
+   "ta": "மொசாம்பிக்"
+  },
+  "Myanmar": {
+   "en": "Myanmar",
+   "fr": "Birmanie",
+   "es": "Myanmar",
+   "it": "Myanmar",
+   "pt": "Myanmar",
+   "de": "Myanmar",
+   "nl": "Myanmar",
+   "pl": "Mjanma",
+   "ta": "மியான்மர்"
+  },
+  "Namibia": {
+   "en": "Namibia",
+   "fr": "Namibie",
+   "es": "Namibia",
+   "it": "Namibia",
+   "pt": "Namíbia",
+   "de": "Namibia",
+   "nl": "Namibië",
+   "pl": "Namibia",
+   "ta": "நமீபியா"
+  },
+  "Nauru": {
+   "en": "Nauru",
+   "fr": "Nauru",
+   "es": "Nauru",
+   "it": "Nauru",
+   "pt": "Nauru",
+   "de": "Nauru",
+   "nl": "Nauru",
+   "pl": "Nauru",
+   "ta": "நவூரு"
+  },
+  "Nepal": {
+   "en": "Nepal",
+   "fr": "Népal",
+   "es": "Nepal",
+   "it": "Nepal",
+   "pt": "Nepal",
+   "de": "Nepal",
+   "nl": "Nepal",
+   "pl": "Nepal",
+   "ta": "நேபாளம்"
+  },
+  "Netherlands": {
+   "en": "Netherlands",
+   "fr": "Pays-Bas",
+   "es": "Países Bajos",
+   "it": "Paesi Bassi",
+   "pt": "Países Baixos",
+   "de": "Niederlande",
+   "nl": "Nederland",
+   "pl": "Holandia",
+   "ta": "நெதர்லாந்து"
+  },
+  "New Zealand": {
+   "en": "New Zealand",
+   "fr": "Nouvelle-Zélande",
+   "es": "Nueva Zelanda",
+   "it": "Nuova Zelanda",
+   "pt": "Nova Zelândia",
+   "de": "Neuseeland",
+   "nl": "Nieuw-Zeeland",
+   "pl": "Nowa Zelandia",
+   "ta": "நியூசிலாந்து"
+  },
+  "Nicaragua": {
+   "en": "Nicaragua",
+   "fr": "Nicaragua",
+   "es": "Nicaragua",
+   "it": "Nicaragua",
+   "pt": "Nicarágua",
+   "de": "Nicaragua",
+   "nl": "Nicaragua",
+   "pl": "Nikaragua",
+   "ta": "நிக்கராகுவா"
+  },
+  "Niger": {
+   "en": "Niger",
+   "fr": "Niger",
+   "es": "Níger",
+   "it": "Niger",
+   "pt": "Níger",
+   "de": "Niger",
+   "nl": "Niger",
+   "pl": "Niger",
+   "ta": "நைஜர்"
+  },
+  "Nigeria": {
+   "en": "Nigeria",
+   "fr": "Nigeria",
+   "es": "Nigeria",
+   "it": "Nigeria",
+   "pt": "Nigéria",
+   "de": "Nigeria",
+   "nl": "Nigeria",
+   "pl": "Nigeria",
+   "ta": "நைஜீரியா"
+  },
+  "North Macedonia": {
+   "en": "North Macedonia",
+   "fr": "Macédoine du Nord",
+   "es": "Macedonia del Norte",
+   "it": "Macedonia del Nord",
+   "pt": "Macedônia do Norte",
+   "de": "Nordmazedonien",
+   "nl": "Noord-Macedonië",
+   "pl": "Macedonia Północna",
+   "ta": "வட மாக்கடோனியா"
+  },
+  "Norway": {
+   "en": "Norway",
+   "fr": "Norvège",
+   "es": "Noruega",
+   "it": "Norvegia",
+   "pt": "Noruega",
+   "de": "Norwegen",
+   "nl": "Noorwegen",
+   "pl": "Norwegia",
+   "ta": "நோர்வே"
+  },
+  "Oman": {
+   "en": "Oman",
+   "fr": "Oman",
+   "es": "Omán",
+   "it": "Oman",
+   "pt": "Omã",
+   "de": "Oman",
+   "nl": "Oman",
+   "pl": "Oman",
+   "ta": "ஓமான்"
+  },
+  "Organization of American States": {
+   "en": "Organization of American States",
+   "fr": "Organisation des États américains",
+   "es": "Organización de los Estados Americanos",
+   "it": "Organizzazione degli Stati americani",
+   "pt": "Organização dos Estados Americanos",
+   "de": "Organisation Amerikanischer Staaten",
+   "nl": "Organisatie van Amerikaanse Staten",
+   "pl": "Organizacja Państw Amerykańskich",
+   "ta": "அமெரிக்க நாடுகள் அமைப்பு"
+  },
+  "Pacific Ocean": {
+   "en": "Pacific Ocean",
+   "fr": "Océan Pacifique",
+   "es": "Océano Pacífico",
+   "it": "Oceano Pacifico",
+   "pt": "Oceano Pacífico",
+   "de": "Pazifischer Ozean",
+   "nl": "Stille Oceaan",
+   "pl": "Ocean Spokojny",
+   "ta": "பசிபிக் பெருங்கடல்"
+  },
+  "Pakistan": {
+   "en": "Pakistan",
+   "fr": "Pakistan",
+   "es": "Pakistán",
+   "it": "Pakistan",
+   "pt": "Paquistão",
+   "de": "Pakistan",
+   "nl": "Pakistan",
+   "pl": "Pakistan",
+   "ta": "பாகிஸ்தான்"
+  },
+  "Palau": {
+   "en": "Palau",
+   "fr": "Palaos",
+   "es": "Palaos",
+   "it": "Palau",
+   "pt": "Palau",
+   "de": "Palau",
+   "nl": "Palau",
+   "pl": "Palau",
+   "ta": "பலாவு"
+  },
+  "Panama": {
+   "en": "Panama",
+   "fr": "Panama",
+   "es": "Panamá",
+   "it": "Panama",
+   "pt": "Panamá",
+   "de": "Panama",
+   "nl": "Panama",
+   "pl": "Panama",
+   "ta": "பனாமா"
+  },
+  "Papua New Guinea": {
+   "en": "Papua New Guinea",
+   "fr": "Papouasie-Nouvelle-Guinée",
+   "es": "Papúa Nueva Guinea",
+   "it": "Papua Nuova Guinea",
+   "pt": "Papua-Nova Guiné",
+   "de": "Papua-Neuguinea",
+   "nl": "Papoea-Nieuw-Guinea",
+   "pl": "Papua-Nowa Gwinea",
+   "ta": "பப்புவா நியூ கினி"
+  },
+  "Paraguay": {
+   "en": "Paraguay",
+   "fr": "Paraguay",
+   "es": "Paraguay",
+   "it": "Paraguay",
+   "pt": "Paraguai",
+   "de": "Paraguay",
+   "nl": "Paraguay",
+   "pl": "Paragwaj",
+   "ta": "பரகுவை"
+  },
+  "Peru": {
+   "en": "Peru",
+   "fr": "Pérou",
+   "es": "Perú",
+   "it": "Perù",
+   "pt": "Peru",
+   "de": "Peru",
+   "nl": "Peru",
+   "pl": "Peru",
+   "ta": "பெரு"
+  },
+  "Philippines": {
+   "en": "Philippines",
+   "fr": "Philippines",
+   "es": "Filipinas",
+   "it": "Filippine",
+   "pt": "Filipinas",
+   "de": "Philippinen",
+   "nl": "Filipijnen",
+   "pl": "Filipiny",
+   "ta": "பிலிப்பீன்ஸ்"
+  },
+  "Poland": {
+   "en": "Poland",
+   "fr": "Pologne",
+   "es": "Polonia",
+   "it": "Polonia",
+   "pt": "Polónia",
+   "de": "Polen",
+   "nl": "Polen",
+   "pl": "Polska",
+   "ta": "போலந்து"
+  },
+  "Portugal": {
+   "en": "Portugal",
+   "fr": "Portugal",
+   "es": "Portugal",
+   "it": "Portogallo",
+   "pt": "Portugal",
+   "de": "Portugal",
+   "nl": "Portugal",
+   "pl": "Portugalia",
+   "ta": "போர்த்துகல்"
+  },
+  "Puerto Rico": {
+   "en": "Puerto Rico",
+   "fr": "Porto Rico",
+   "es": "Puerto Rico",
+   "it": "Porto Rico",
+   "pt": "Porto Rico",
+   "de": "Puerto Rico",
+   "nl": "Puerto Rico",
+   "pl": "Portoryko",
+   "ta": "புவேர்ட்டோ ரிக்கோ"
+  },
+  "Qatar": {
+   "en": "Qatar",
+   "fr": "Qatar",
+   "es": "Catar",
+   "it": "Qatar",
+   "pt": "Catar",
+   "de": "Katar",
+   "nl": "Qatar",
+   "pl": "Katar",
+   "ta": "கத்தார்"
+  },
+  "Republic of China (Taiwan)": {
+   "en": "Republic of China (Taiwan)",
+   "fr": "République de Chine (Taïwan)",
+   "es": "República de China (Taiwán)",
+   "it": "Repubblica di Cina (Taiwan)",
+   "pt": "República da China (Taiwan)",
+   "de": "Republik China (Taiwan)",
+   "nl": "Republiek China (Taiwan)",
+   "pl": "Republika Chińska (Tajwan)",
+   "ta": "சீனக் குடியரசு (தைவான்)"
+  },
+  "Republic of the Congo": {
+   "en": "Republic of the Congo",
+   "fr": "République du Congo",
+   "es": "República del Congo",
+   "it": "Repubblica del Congo",
+   "pt": "República do Congo",
+   "de": "Republik Kongo",
+   "nl": "Congo-Brazzaville",
+   "pl": "Kongo",
+   "ta": "காங்கோ குடியரசு"
+  },
+  "Romania": {
+   "en": "Romania",
+   "fr": "Roumanie",
+   "es": "Rumania",
+   "it": "Romania",
+   "pt": "Romênia",
+   "de": "Rumänien",
+   "nl": "Roemenië",
+   "pl": "Rumunia",
+   "ta": "உருமேனியா"
+  },
+  "Russia": {
+   "en": "Russia",
+   "fr": "Russie",
+   "es": "Rusia",
+   "it": "Russia",
+   "pt": "Rússia",
+   "de": "Russland",
+   "nl": "Rusland",
+   "pl": "Rosja",
+   "ta": "உருசியா"
+  },
+  "Rwanda": {
+   "en": "Rwanda",
+   "fr": "Rwanda",
+   "es": "Ruanda",
+   "it": "Ruanda",
+   "pt": "Ruanda",
+   "de": "Ruanda",
+   "nl": "Rwanda",
+   "pl": "Rwanda",
+   "ta": "ருவாண்டா"
+  },
+  "Saint Kitts and Nevis": {
+   "en": "Saint Kitts and Nevis",
+   "fr": "Saint-Christophe-et-Niévès",
+   "es": "San Cristóbal y Nieves",
+   "it": "Saint Kitts e Nevis",
+   "pt": "São Cristóvão e Névis",
+   "de": "St. Kitts und Nevis",
+   "nl": "Saint Kitts en Nevis",
+   "pl": "Saint Kitts i Nevis",
+   "ta": "செயிண்ட் கிட்சும் நெவிசும்"
+  },
+  "Saint Lucia": {
+   "en": "Saint Lucia",
+   "fr": "Sainte-Lucie",
+   "es": "Santa Lucía",
+   "it": "Santa Lucia",
+   "pt": "Santa Lúcia",
+   "de": "St. Lucia",
+   "nl": "Saint Lucia",
+   "pl": "Saint Lucia",
+   "ta": "செயிண்ட் லூசியா"
+  },
+  "Saint Vincent and the Grenadines": {
+   "en": "Saint Vincent and the Grenadines",
+   "fr": "Saint-Vincent-et-les-Grenadines",
+   "es": "San Vicente y las Granadinas",
+   "it": "Saint Vincent e Grenadine",
+   "pt": "São Vicente e Granadinas",
+   "de": "St. Vincent und die Grenadinen",
+   "nl": "Saint Vincent en de Grenadines",
+   "pl": "Saint Vincent i Grenadyny",
+   "ta": "செயிண்ட் வின்செண்டு கிரெனடீன்கள்"
+  },
+  "Samoa": {
+   "en": "Samoa",
+   "fr": "Samoa",
+   "es": "Samoa",
+   "it": "Samoa",
+   "pt": "Samoa",
+   "de": "Samoa",
+   "nl": "Samoa",
+   "pl": "Samoa",
+   "ta": "சமோவா"
+  },
+  "San Marino": {
+   "en": "San Marino",
+   "fr": "Saint-Marin",
+   "es": "San Marino",
+   "it": "San Marino",
+   "pt": "San Marino",
+   "de": "San Marino",
+   "nl": "San Marino",
+   "pl": "San Marino",
+   "ta": "சான் மரீனோ"
+  },
+  "Senegal": {
+   "en": "Senegal",
+   "fr": "Sénégal",
+   "es": "Senegal",
+   "it": "Senegal",
+   "pt": "Senegal",
+   "de": "Senegal",
+   "nl": "Senegal",
+   "pl": "Senegal",
+   "ta": "செனகல்"
+  },
+  "Serbia": {
+   "en": "Serbia",
+   "fr": "Serbie",
+   "es": "Serbia",
+   "it": "Serbia",
+   "pt": "Sérvia",
+   "de": "Serbien",
+   "nl": "Servië",
+   "pl": "Serbia",
+   "ta": "செர்பியா"
+  },
+  "Seychelles": {
+   "en": "Seychelles",
+   "fr": "Seychelles",
+   "es": "Seychelles",
+   "it": "Seychelles",
+   "pt": "Seicheles",
+   "de": "Seychellen",
+   "nl": "Seychellen",
+   "pl": "Seszele",
+   "ta": "சீசெல்சு"
+  },
+  "Sierra Leone": {
+   "en": "Sierra Leone",
+   "fr": "Sierra Leone",
+   "es": "Sierra Leona",
+   "it": "Sierra Leone",
+   "pt": "Serra Leoa",
+   "de": "Sierra Leone",
+   "nl": "Sierra Leone",
+   "pl": "Sierra Leone",
+   "ta": "சியேரா லியோனி"
+  },
+  "Singapore": {
+   "en": "Singapore",
+   "fr": "Singapour",
+   "es": "Singapur",
+   "it": "Singapore",
+   "pt": "Singapura",
+   "de": "Singapur",
+   "nl": "Singapore",
+   "pl": "Singapur",
+   "ta": "சிங்கப்பூர்"
+  },
+  "Slovakia": {
+   "en": "Slovakia",
+   "fr": "Slovaquie",
+   "es": "Eslovaquia",
+   "it": "Slovacchia",
+   "pt": "Eslováquia",
+   "de": "Slowakei",
+   "nl": "Slowakije",
+   "pl": "Słowacja",
+   "ta": "சிலோவாக்கியா"
+  },
+  "Slovenia": {
+   "en": "Slovenia",
+   "fr": "Slovénie",
+   "es": "Eslovenia",
+   "it": "Slovenia",
+   "pt": "Eslovénia",
+   "de": "Slowenien",
+   "nl": "Slovenië",
+   "pl": "Słowenia",
+   "ta": "சுலோவீனியா"
+  },
+  "Solomon Islands": {
+   "en": "Solomon Islands",
+   "fr": "Îles Salomon",
+   "es": "Islas Salomón",
+   "it": "Isole Salomone",
+   "pt": "Ilhas Salomão",
+   "de": "Salomonen",
+   "nl": "Salomonseilanden",
+   "pl": "Wyspy Salomona",
+   "ta": "சொலமன் தீவுகள்"
+  },
+  "Somalia": {
+   "en": "Somalia",
+   "fr": "Somalie",
+   "es": "Somalia",
+   "it": "Somalia",
+   "pt": "Somália",
+   "de": "Somalia",
+   "nl": "Somalië",
+   "pl": "Somalia",
+   "ta": "சோமாலியா"
+  },
+  "South Africa": {
+   "en": "South Africa",
+   "fr": "Afrique du Sud",
+   "es": "Sudáfrica",
+   "it": "Sudafrica",
+   "pt": "África do Sul",
+   "de": "Südafrika",
+   "nl": "Zuid-Afrika",
+   "pl": "Republika Południowej Afryki",
+   "ta": "தென்னாப்பிரிக்கா"
+  },
+  "South Korea": {
+   "en": "South Korea",
+   "fr": "Corée du Sud",
+   "es": "Corea del Sur",
+   "it": "Corea del Sud",
+   "pt": "Coreia do Sul",
+   "de": "Südkorea",
+   "nl": "Zuid-Korea",
+   "pl": "Korea Południowa",
+   "ta": "தென் கொரியா"
+  },
+  "South Sudan": {
+   "en": "South Sudan",
+   "fr": "Soudan du Sud",
+   "es": "Sudán del Sur",
+   "it": "Sudan del Sud",
+   "pt": "Sudão do Sul",
+   "de": "Südsudan",
+   "nl": "Zuid-Soedan",
+   "pl": "Sudan Południowy",
+   "ta": "தெற்கு சூடான்"
+  },
+  "Spain": {
+   "en": "Spain",
+   "fr": "Espagne",
+   "es": "España",
+   "it": "Spagna",
+   "pt": "Espanha",
+   "de": "Spanien",
+   "nl": "Spanje",
+   "pl": "Hiszpania",
+   "ta": "ஸ்பெயின்"
+  },
+  "Sri Lanka": {
+   "en": "Sri Lanka",
+   "fr": "Sri Lanka",
+   "es": "Sri Lanka",
+   "it": "Sri Lanka",
+   "pt": "Sri Lanka",
+   "de": "Sri Lanka",
+   "nl": "Sri Lanka",
+   "pl": "Sri Lanka",
+   "ta": "இலங்கை"
+  },
+  "Sudan": {
+   "en": "Sudan",
+   "fr": "Soudan",
+   "es": "Sudán",
+   "it": "Sudan",
+   "pt": "Sudão",
+   "de": "Sudan",
+   "nl": "Soedan",
+   "pl": "Sudan",
+   "ta": "சூடான்"
+  },
+  "Suriname": {
+   "en": "Suriname",
+   "fr": "Suriname",
+   "es": "Surinam",
+   "it": "Suriname",
+   "pt": "Suriname",
+   "de": "Suriname",
+   "nl": "Suriname",
+   "pl": "Surinam",
+   "ta": "சுரிநாம்"
+  },
+  "Sweden": {
+   "en": "Sweden",
+   "fr": "Suède",
+   "es": "Suecia",
+   "it": "Svezia",
+   "pt": "Suécia",
+   "de": "Schweden",
+   "nl": "Zweden",
+   "pl": "Szwecja",
+   "ta": "சுவீடன்"
+  },
+  "Switzerland": {
+   "en": "Switzerland",
+   "fr": "Suisse",
+   "es": "Suiza",
+   "it": "Svizzera",
+   "pt": "Suíça",
+   "de": "Schweiz",
+   "nl": "Zwitserland",
+   "pl": "Szwajcaria",
+   "ta": "சுவிட்சர்லாந்து"
+  },
+  "Syria": {
+   "en": "Syria",
+   "fr": "Syrie",
+   "es": "Siria",
+   "it": "Siria",
+   "pt": "Síria",
+   "de": "Syrien",
+   "nl": "Syrië",
+   "pl": "Syria",
+   "ta": "சிரியா"
+  },
+  "São Tomé and Príncipe": {
+   "en": "São Tomé and Príncipe",
+   "fr": "Sao Tomé-et-Principe",
+   "es": "Santo Tomé y Príncipe",
+   "it": "São Tomé e Príncipe",
+   "pt": "São Tomé e Príncipe",
+   "de": "São Tomé und Príncipe",
+   "nl": "Sao Tomé en Principe",
+   "pl": "Wyspy Świętego Tomasza i Książęca",
+   "ta": "சாவோ தொமே பிரின்சிப்பி"
+  },
+  "Tajikistan": {
+   "en": "Tajikistan",
+   "fr": "Tadjikistan",
+   "es": "Tayikistán",
+   "it": "Tagikistan",
+   "pt": "Tajiquistão",
+   "de": "Tadschikistan",
+   "nl": "Tadzjikistan",
+   "pl": "Tadżykistan",
+   "ta": "தஜிகிஸ்தான்"
+  },
+  "Tanzania": {
+   "en": "Tanzania",
+   "fr": "Tanzanie",
+   "es": "Tanzania",
+   "it": "Tanzania",
+   "pt": "Tanzânia",
+   "de": "Tansania",
+   "nl": "Tanzania",
+   "pl": "Tanzania",
+   "ta": "தான்சானியா"
+  },
+  "Thailand": {
+   "en": "Thailand",
+   "fr": "Thaïlande",
+   "es": "Tailandia",
+   "it": "Thailandia",
+   "pt": "Tailândia",
+   "de": "Thailand",
+   "nl": "Thailand",
+   "pl": "Tajlandia",
+   "ta": "தாய்லாந்து"
+  },
+  "Togo": {
+   "en": "Togo",
+   "fr": "Togo",
+   "es": "Togo",
+   "it": "Togo",
+   "pt": "Togo",
+   "de": "Togo",
+   "nl": "Togo",
+   "pl": "Togo",
+   "ta": "டோகோ"
+  },
+  "Tonga": {
+   "en": "Tonga",
+   "fr": "Tonga",
+   "es": "Tonga",
+   "it": "Tonga",
+   "pt": "Tonga",
+   "de": "Tonga",
+   "nl": "Tonga",
+   "pl": "Tonga",
+   "ta": "டோங்கா"
+  },
+  "Trinidad and Tobago": {
+   "en": "Trinidad and Tobago",
+   "fr": "Trinité-et-Tobago",
+   "es": "Trinidad y Tobago",
+   "it": "Trinidad e Tobago",
+   "pt": "Trinidad e Tobago",
+   "de": "Trinidad und Tobago",
+   "nl": "Trinidad en Tobago",
+   "pl": "Trynidad i Tobago",
+   "ta": "டிரினிடாட் டொபாகோ"
+  },
+  "Tunisia": {
+   "en": "Tunisia",
+   "fr": "Tunisie",
+   "es": "Túnez",
+   "it": "Tunisia",
+   "pt": "Tunísia",
+   "de": "Tunesien",
+   "nl": "Tunesië",
+   "pl": "Tunezja",
+   "ta": "துனீசியா"
+  },
+  "Turkey": {
+   "en": "Turkey",
+   "fr": "Turquie",
+   "es": "Turquía",
+   "it": "Turchia",
+   "pt": "Turquia",
+   "de": "Türkei",
+   "nl": "Turkije",
+   "pl": "Turcja",
+   "ta": "துருக்கி"
+  },
+  "Turkmenistan": {
+   "en": "Turkmenistan",
+   "fr": "Turkménistan",
+   "es": "Turkmenistán",
+   "it": "Turkmenistan",
+   "pt": "Turcomenistão",
+   "de": "Turkmenistan",
+   "nl": "Turkmenistan",
+   "pl": "Turkmenistan",
+   "ta": "துருக்மெனிஸ்தான்"
+  },
+  "UN Tourism, Madrid": {
+   "en": "UN Tourism, Madrid",
+   "fr": "ONU Tourisme, Madrid",
+   "es": "ONU Turismo, Madrid",
+   "it": "ONU Turismo, Madrid",
+   "pt": "ONU Turismo, Madri",
+   "de": "UN Tourism, Madrid",
+   "nl": "UN Tourism, Madrid",
+   "pl": "UN Tourism, Madryt",
+   "ta": "ஐநா சுற்றுலா அமைப்பு, மாட்ரிட்"
+  },
+  "UNESCO, Paris": {
+   "en": "UNESCO, Paris",
+   "fr": "UNESCO, Paris",
+   "es": "UNESCO, París",
+   "it": "UNESCO, Parigi",
+   "pt": "UNESCO, Paris",
+   "de": "UNESCO, Paris",
+   "nl": "UNESCO, Parijs",
+   "pl": "UNESCO, Paryż",
+   "ta": "யுனெஸ்கோ, பாரிஸ்"
+  },
+  "Uganda": {
+   "en": "Uganda",
+   "fr": "Ouganda",
+   "es": "Uganda",
+   "it": "Uganda",
+   "pt": "Uganda",
+   "de": "Uganda",
+   "nl": "Oeganda",
+   "pl": "Uganda",
+   "ta": "உகாண்டா"
+  },
+  "Ukraine": {
+   "en": "Ukraine",
+   "fr": "Ukraine",
+   "es": "Ucrania",
+   "it": "Ucraina",
+   "pt": "Ucrânia",
+   "de": "Ukraine",
+   "nl": "Oekraïne",
+   "pl": "Ukraina",
+   "ta": "உக்ரைன்"
+  },
+  "United Arab Emirates": {
+   "en": "United Arab Emirates",
+   "fr": "Émirats arabes unis",
+   "es": "Emiratos Árabes Unidos",
+   "it": "Emirati Arabi Uniti",
+   "pt": "Emirados Árabes Unidos",
+   "de": "Vereinigte Arabische Emirate",
+   "nl": "Verenigde Arabische Emiraten",
+   "pl": "Zjednoczone Emiraty Arabskie",
+   "ta": "ஐக்கிய அரபு அமீரகம்"
+  },
+  "United Nations, Geneva": {
+   "en": "United Nations, Geneva",
+   "fr": "Nations unies, Genève",
+   "es": "Naciones Unidas, Ginebra",
+   "it": "Nazioni Unite, Ginevra",
+   "pt": "Nações Unidas, Genebra",
+   "de": "Vereinte Nationen, Genf",
+   "nl": "Verenigde Naties, Genève",
+   "pl": "ONZ, Genewa",
+   "ta": "ஐக்கிய நாடுகள், ஜெனீவா"
+  },
+  "United Nations, Nairobi": {
+   "en": "United Nations, Nairobi",
+   "fr": "Nations unies, Nairobi",
+   "es": "Naciones Unidas, Nairobi",
+   "it": "Nazioni Unite, Nairobi",
+   "pt": "Nações Unidas, Nairóbi",
+   "de": "Vereinte Nationen, Nairobi",
+   "nl": "Verenigde Naties, Nairobi",
+   "pl": "ONZ, Nairobi",
+   "ta": "ஐக்கிய நாடுகள், நைரோபி"
+  },
+  "United Nations, New York": {
+   "en": "United Nations, New York",
+   "fr": "Nations unies, New York",
+   "es": "Naciones Unidas, Nueva York",
+   "it": "Nazioni Unite, New York",
+   "pt": "Nações Unidas, Nova York",
+   "de": "Vereinte Nationen, New York",
+   "nl": "Verenigde Naties, New York",
+   "pl": "ONZ, Nowy Jork",
+   "ta": "ஐக்கிய நாடுகள், நியூயார்க்"
+  },
+  "United Nations, Vienna": {
+   "en": "United Nations, Vienna",
+   "fr": "Nations unies, Vienne",
+   "es": "Naciones Unidas, Viena",
+   "it": "Nazioni Unite, Vienna",
+   "pt": "Nações Unidas, Viena",
+   "de": "Vereinte Nationen, Wien",
+   "nl": "Verenigde Naties, Wenen",
+   "pl": "ONZ, Wiedeń",
+   "ta": "ஐக்கிய நாடுகள், வியன்னா"
+  },
+  "United States": {
+   "en": "United States",
+   "fr": "États-Unis",
+   "es": "Estados Unidos",
+   "it": "Stati Uniti",
+   "pt": "Estados Unidos",
+   "de": "Vereinigte Staaten",
+   "nl": "Verenigde Staten",
+   "pl": "Stany Zjednoczone",
+   "ta": "அமெரிக்க ஐக்கிய நாடுகள்"
+  },
+  "Uruguay": {
+   "en": "Uruguay",
+   "fr": "Uruguay",
+   "es": "Uruguay",
+   "it": "Uruguay",
+   "pt": "Uruguai",
+   "de": "Uruguay",
+   "nl": "Uruguay",
+   "pl": "Urugwaj",
+   "ta": "உருகுவே"
+  },
+  "Uzbekistan": {
+   "en": "Uzbekistan",
+   "fr": "Ouzbékistan",
+   "es": "Uzbekistán",
+   "it": "Uzbekistan",
+   "pt": "Uzbequistão",
+   "de": "Usbekistan",
+   "nl": "Oezbekistan",
+   "pl": "Uzbekistan",
+   "ta": "உஸ்பெகிஸ்தான்"
+  },
+  "Vanuatu": {
+   "en": "Vanuatu",
+   "fr": "Vanuatu",
+   "es": "Vanuatu",
+   "it": "Vanuatu",
+   "pt": "Vanuatu",
+   "de": "Vanuatu",
+   "nl": "Vanuatu",
+   "pl": "Vanuatu",
+   "ta": "வனுவாட்டு"
+  },
+  "Venezuela": {
+   "en": "Venezuela",
+   "fr": "Venezuela",
+   "es": "Venezuela",
+   "it": "Venezuela",
+   "pt": "Venezuela",
+   "de": "Venezuela",
+   "nl": "Venezuela",
+   "pl": "Wenezuela",
+   "ta": "வெனிசுவேலா"
+  },
+  "Vietnam": {
+   "en": "Vietnam",
+   "fr": "Viêt Nam",
+   "es": "Vietnam",
+   "it": "Vietnam",
+   "pt": "Vietname",
+   "de": "Vietnam",
+   "nl": "Vietnam",
+   "pl": "Wietnam",
+   "ta": "வியட்நாம்"
+  },
+  "Yemen": {
+   "en": "Yemen",
+   "fr": "Yémen",
+   "es": "Yemen",
+   "it": "Yemen",
+   "pt": "Iêmen",
+   "de": "Jemen",
+   "nl": "Jemen",
+   "pl": "Jemen",
+   "ta": "யேமன்"
+  },
+  "Zambia": {
+   "en": "Zambia",
+   "fr": "Zambie",
+   "es": "Zambia",
+   "it": "Zambia",
+   "pt": "Zâmbia",
+   "de": "Sambia",
+   "nl": "Zambia",
+   "pl": "Zambia",
+   "ta": "சாம்பியா"
+  },
+  "Zimbabwe": {
+   "en": "Zimbabwe",
+   "fr": "Zimbabwe",
+   "es": "Zimbabue",
+   "it": "Zimbabwe",
+   "pt": "Zimbábue",
+   "de": "Simbabwe",
+   "nl": "Zimbabwe",
+   "pl": "Zimbabwe",
+   "ta": "சிம்பாப்வே"
+  }
+ },
+ "envoys": [
+  {
+   "id": "walter_erbì",
+   "name": "Walter Erbì",
+   "born": "1968-01-08",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Walter_Erbì",
+   "posts": [
+    {
+     "place": "ASEAN",
+     "kind": "nunciature",
+     "since": "2026-07-01"
+    },
+    {
+     "place": "Indonesia",
+     "kind": "nunciature",
+     "since": "2026-07-01"
+    }
+   ]
+  },
+  {
+   "id": "mirosław_adamczyk",
+   "name": "Mirosław Adamczyk",
+   "born": "1962-07-16",
+   "nationality": "Poland",
+   "wikipedia": "https://en.wikipedia.org/wiki/Mirosław_Adamczyk",
+   "posts": [
+    {
+     "place": "Albania",
+     "kind": "nunciature",
+     "since": "2026-01-14"
+    }
+   ]
+  },
+  {
+   "id": "javier_herrera_corona",
+   "name": "Javier Herrera Corona",
+   "born": "1968-05-15",
+   "nationality": "Mexico",
+   "wikipedia": "https://en.wikipedia.org/wiki/Javier_Herrera_Corona",
+   "posts": [
+    {
+     "place": "Algeria",
+     "kind": "nunciature",
+     "since": "2025-11-22"
+    },
+    {
+     "place": "Tunisia",
+     "kind": "nunciature_nonres",
+     "since": "2026-02-16"
+    }
+   ]
+  },
+  {
+   "id": "kryspin_witold_dubiel",
+   "name": "Kryspin Witold Dubiel",
+   "born": "1973-11-12",
+   "nationality": "Poland",
+   "wikipedia": "https://en.wikipedia.org/wiki/Kryspin_Witold_Dubiel",
+   "posts": [
+    {
+     "place": "Angola",
+     "kind": "nunciature",
+     "since": "2024-07-01"
+    },
+    {
+     "place": "São Tomé and Príncipe",
+     "kind": "nunciature_nonres",
+     "since": "2024-07-15"
+    }
+   ],
+   "photo": {
+    "path": "kryspin_witold_dubiel.webp",
+    "author": "Tofik332",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=154509879"
+   }
+  },
+  {
+   "id": "michael_banach",
+   "name": "Michael Banach",
+   "born": "1962-11-19",
+   "nationality": "United States",
+   "wikipedia": "https://en.wikipedia.org/wiki/Michael_Banach",
+   "posts": [
+    {
+     "place": "Argentina",
+     "kind": "nunciature",
+     "since": "2026-05-14"
+    }
+   ]
+  },
+  {
+   "id": "pedro_lópez_quintana",
+   "name": "Pedro López Quintana",
+   "born": "1953-07-27",
+   "nationality": "Spain",
+   "wikipedia": "https://en.wikipedia.org/wiki/Pedro_López_Quintana",
+   "posts": [
+    {
+     "place": "Austria",
+     "kind": "nunciature",
+     "since": "2019-03-04"
+    }
+   ]
+  },
+  {
+   "id": "kevin_stuart_randall",
+   "name": "Kevin Stuart Randall",
+   "born": "1966-05-06",
+   "nationality": "United States",
+   "wikipedia": "https://en.wikipedia.org/wiki/Kevin_Stuart_Randall",
+   "posts": [
+    {
+     "place": "Bangladesh",
+     "kind": "nunciature",
+     "since": "2023-08-13"
+    }
+   ]
+  },
+  {
+   "id": "ignazio_ceffalia",
+   "name": "Ignazio Ceffalia",
+   "born": "1975-04-28",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Ignazio_Ceffalia",
+   "posts": [
+    {
+     "place": "Belarus",
+     "kind": "nunciature",
+     "since": "2025-03-25"
+    }
+   ]
+  },
+  {
+   "id": "rubén_darío_ruiz_mainardi",
+   "name": "Rubén Darío Ruiz Mainardi",
+   "born": "1964-11-17",
+   "nationality": "Argentina",
+   "wikipedia": "https://en.wikipedia.org/wiki/Rubén_Darío_Ruiz_Mainardi",
+   "posts": [
+    {
+     "place": "Benin",
+     "kind": "nunciature",
+     "since": "2024-10-28"
+    },
+    {
+     "place": "Togo",
+     "kind": "nunciature_nonres",
+     "since": "2024-10-28"
+    }
+   ]
+  },
+  {
+   "id": "fermín_emilio_sosa_rodríguez",
+   "name": "Fermín Emilio Sosa Rodríguez",
+   "born": "1968-04-12",
+   "nationality": "Mexico",
+   "wikipedia": "https://en.wikipedia.org/wiki/Fermín_Emilio_Sosa_Rodríguez",
+   "posts": [
+    {
+     "place": "Bolivia",
+     "kind": "nunciature",
+     "since": "2023-11-17"
+    }
+   ]
+  },
+  {
+   "id": "francis_chullikatt",
+   "name": "Francis Chullikatt",
+   "born": "1953-03-20",
+   "nationality": "India",
+   "wikipedia": "https://en.wikipedia.org/wiki/Francis_Chullikatt",
+   "posts": [
+    {
+     "place": "Bosnia and Herzegovina",
+     "kind": "nunciature",
+     "since": "2022-10-01"
+    },
+    {
+     "place": "Montenegro",
+     "kind": "nunciature_nonres",
+     "since": "2022-10-01"
+    }
+   ]
+  },
+  {
+   "id": "giambattista_diquattro",
+   "name": "Giambattista Diquattro",
+   "born": "1954-03-18",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Giambattista_Diquattro",
+   "posts": [
+    {
+     "place": "Brazil",
+     "kind": "nunciature",
+     "since": "2020-08-29"
+    }
+   ],
+   "photo": {
+    "path": "giambattista_diquattro.webp",
+    "author": "Isac Nóbrega (Palácio do Planalto)",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=110187520"
+   }
+  },
+  {
+   "id": "luciano_suriani",
+   "name": "Luciano Suriani",
+   "born": "1957-01-11",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Luciano_Suriani",
+   "posts": [
+    {
+     "place": "Bulgaria",
+     "kind": "nunciature",
+     "since": "2022-05-13"
+    },
+    {
+     "place": "North Macedonia",
+     "kind": "nunciature_nonres",
+     "since": "2022-05-21"
+    }
+   ],
+   "photo": {
+    "path": "luciano_suriani.webp",
+    "author": "Original:  Stebunik;  This version:  Marium Alberto",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=112298134"
+   }
+  },
+  {
+   "id": "eric_soviguidi",
+   "name": "Eric Soviguidi",
+   "born": "1971-00-00",
+   "nationality": "Benin",
+   "wikipedia": "https://en.wikipedia.org/wiki/Eric_Soviguidi",
+   "posts": [
+    {
+     "place": "Burkina Faso",
+     "kind": "nunciature",
+     "since": "2025-08-15"
+    },
+    {
+     "place": "Niger",
+     "kind": "nunciature_nonres",
+     "since": "2025-09-12"
+    }
+   ]
+  },
+  {
+   "id": "dieudonné_datonou",
+   "name": "Dieudonné Datonou",
+   "born": "1962-03-03",
+   "nationality": "Benin",
+   "wikipedia": "https://en.wikipedia.org/wiki/Dieudonné_Datonou",
+   "posts": [
+    {
+     "place": "Burundi",
+     "kind": "nunciature",
+     "since": "2021-10-07"
+    }
+   ]
+  },
+  {
+   "id": "josé_avelino_bettencourt",
+   "name": "José Avelino Bettencourt",
+   "born": "1962-05-23",
+   "nationality": "Canada",
+   "wikipedia": "https://en.wikipedia.org/wiki/José_Avelino_Bettencourt",
+   "posts": [
+    {
+     "place": "Cameroon",
+     "kind": "nunciature",
+     "since": "2023-08-30"
+    },
+    {
+     "place": "Equatorial Guinea",
+     "kind": "nunciature_nonres",
+     "since": "2023-08-30"
+    }
+   ]
+  },
+  {
+   "id": "ivan_jurkovic",
+   "name": "Ivan Jurkovič",
+   "born": "1952-06-10",
+   "nationality": "Slovenia",
+   "wikipedia": "https://en.wikipedia.org/wiki/Ivan_Jurkovič",
+   "posts": [
+    {
+     "place": "Canada",
+     "kind": "nunciature",
+     "since": "2021-06-05"
+    }
+   ],
+   "photo": {
+    "path": "ivan_jurkovic.webp",
+    "author": "Водник at ru.wikipedia",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=14611725"
+   }
+  },
+  {
+   "id": "giuseppe_laterza",
+   "name": "Giuseppe Laterza",
+   "born": "1970-11-12",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Giuseppe_Laterza",
+   "posts": [
+    {
+     "place": "Central African Republic",
+     "kind": "nunciature",
+     "since": "2023-01-05"
+    },
+    {
+     "place": "Chad",
+     "kind": "nunciature_nonres",
+     "since": "2023-01-05"
+    }
+   ],
+   "photo": {
+    "path": "giuseppe_laterza.webp",
+    "author": "Fla.lod",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=149786185"
+   }
+  },
+  {
+   "id": "kurian_mathew_vayalunkal",
+   "name": "Kurian Mathew Vayalunkal",
+   "born": "1966-08-04",
+   "nationality": "India",
+   "wikipedia": "https://en.wikipedia.org/wiki/Kurian_Mathew_Vayalunkal",
+   "posts": [
+    {
+     "place": "Chile",
+     "kind": "nunciature",
+     "since": "2025-03-15"
+    }
+   ],
+   "photo": {
+    "path": "kurian_mathew_vayalunkal.webp",
+    "author": "Agenzia Fides",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=156460136"
+   }
+  },
+  {
+   "id": "angelo_accattino",
+   "name": "Angelo Accattino",
+   "born": "1966-07-31",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Angelo_Accattino",
+   "posts": [
+    {
+     "place": "Colombia",
+     "kind": "nunciature",
+     "since": "2026-08-15"
+    }
+   ]
+  },
+  {
+   "id": "mark_miles",
+   "name": "Mark Miles",
+   "born": "1967-05-13",
+   "nationality": "Gibraltar",
+   "wikipedia": "https://en.wikipedia.org/wiki/Mark_Miles",
+   "posts": [
+    {
+     "place": "Costa Rica",
+     "kind": "nunciature",
+     "since": "2024-07-09"
+    }
+   ]
+  },
+  {
+   "id": "paul_butnaru",
+   "name": "Paul Butnaru",
+   "born": "1978-11-13",
+   "nationality": "Romania",
+   "wikipedia": "https://en.wikipedia.org/wiki/Paul_Butnaru",
+   "posts": [
+    {
+     "place": "Council of Europe",
+     "kind": "observer",
+     "since": "2026-09-24"
+    }
+   ]
+  },
+  {
+   "id": "leopoldo_girelli",
+   "name": "Leopoldo Girelli",
+   "born": "1953-03-13",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Leopoldo_Girelli",
+   "posts": [
+    {
+     "place": "Croatia",
+     "kind": "nunciature",
+     "since": "2026-03-13"
+    }
+   ],
+   "photo": {
+    "path": "leopoldo_girelli.webp",
+    "author": "Hoangvantoanajc",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=27837068"
+   }
+  },
+  {
+   "id": "antoine_camilleri",
+   "name": "Antoine Camilleri",
+   "born": "1965-08-20",
+   "nationality": "Malta",
+   "wikipedia": "https://en.wikipedia.org/wiki/Antoine_Camilleri_(prelate)",
+   "posts": [
+    {
+     "place": "Cuba",
+     "kind": "nunciature",
+     "since": "2024-05-20"
+    }
+   ],
+   "photo": {
+    "path": "antoine_camilleri.webp",
+    "author": "Υπουργείο Εξωτερικών",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=73003659"
+   }
+  },
+  {
+   "id": "eugene_nugent",
+   "name": "Eugene Nugent",
+   "born": "1958-10-21",
+   "nationality": "Ireland",
+   "wikipedia": "https://en.wikipedia.org/wiki/Eugene_Nugent",
+   "posts": [
+    {
+     "place": "Czech Republic",
+     "kind": "nunciature",
+     "since": "2026-05-25"
+    }
+   ]
+  },
+  {
+   "id": "mitja_leskovar",
+   "name": "Mitja Leskovar",
+   "born": "1970-01-03",
+   "nationality": "Slovenia",
+   "wikipedia": "https://en.wikipedia.org/wiki/Mitja_Leskovar",
+   "posts": [
+    {
+     "place": "Democratic Republic of the Congo",
+     "kind": "nunciature",
+     "since": "2024-04-16"
+    }
+   ]
+  },
+  {
+   "id": "piergiorgio_bertoldi",
+   "name": "Piergiorgio Bertoldi",
+   "born": "1963-07-26",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Piergiorgio_Bertoldi",
+   "posts": [
+    {
+     "place": "Dominican Republic",
+     "kind": "nunciature",
+     "since": "2023-05-18"
+    },
+    {
+     "place": "Puerto Rico",
+     "kind": "delegation",
+     "since": "2023-05-18",
+     "seat": "Dominican Republic"
+    }
+   ]
+  },
+  {
+   "id": "dagoberto_campos_salas",
+   "name": "Dagoberto Campos Salas",
+   "born": "1966-03-14",
+   "nationality": "Costa Rica",
+   "wikipedia": "https://en.wikipedia.org/wiki/Dagoberto_Campos_Salas",
+   "posts": [
+    {
+     "place": "Ecuador",
+     "kind": "nunciature",
+     "since": "2026-05-01"
+    }
+   ],
+   "photo": {
+    "path": "dagoberto_campos_salas.webp",
+    "author": "Lmpesantezt",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=194009990"
+   }
+  },
+  {
+   "id": "nicolas_thévenin",
+   "name": "Nicolas Thévenin",
+   "born": "1958-06-05",
+   "nationality": "France",
+   "wikipedia": "https://en.wikipedia.org/wiki/Nicolas_Thévenin",
+   "posts": [
+    {
+     "place": "Egypt",
+     "kind": "nunciature",
+     "since": "2019-11-04"
+    },
+    {
+     "place": "Arab League",
+     "kind": "delegation",
+     "since": "2019-11-04",
+     "seat": "Egypt"
+    },
+    {
+     "place": "Oman",
+     "kind": "nunciature_nonres",
+     "since": "2023-05-22"
+    }
+   ]
+  },
+  {
+   "id": "giancarlo_dellagiovanna",
+   "name": "Giancarlo Dellagiovanna",
+   "born": "1961-09-18",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Giancarlo_Dellagiovanna",
+   "posts": [
+    {
+     "place": "El Salvador",
+     "kind": "nunciature",
+     "since": "2026-04-25"
+    }
+   ]
+  },
+  {
+   "id": "brian_udaigwe",
+   "name": "Brian Udaigwe",
+   "born": "1964-07-19",
+   "nationality": "Nigeria",
+   "wikipedia": "https://en.wikipedia.org/wiki/Brian_Udaigwe",
+   "posts": [
+    {
+     "place": "Ethiopia",
+     "kind": "nunciature",
+     "since": "2025-04-12"
+    },
+    {
+     "place": "African Union",
+     "kind": "representative",
+     "since": "2025-11-03",
+     "seat": "Ethiopia"
+    },
+    {
+     "place": "Somalia",
+     "kind": "delegation",
+     "since": "2025-11-03",
+     "seat": "Ethiopia"
+    },
+    {
+     "place": "Djibouti",
+     "kind": "nunciature_nonres",
+     "since": "2025-11-03"
+    }
+   ]
+  },
+  {
+   "id": "bernardito_auza",
+   "name": "Bernardito Auza",
+   "born": "1959-06-10",
+   "nationality": "Philippines",
+   "wikipedia": "https://en.wikipedia.org/wiki/Bernardito_Auza",
+   "posts": [
+    {
+     "place": "European Union",
+     "kind": "nunciature",
+     "since": "2025-03-22"
+    }
+   ],
+   "photo": {
+    "path": "bernardito_auza.webp",
+    "author": "Christophe Licoppe / European Union, 2025 / EC - Audiovisual Service",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=187757384"
+   }
+  },
+  {
+   "id": "fernando_chica_arellano",
+   "name": "Fernando Chica Arellano",
+   "born": "1963-06-24",
+   "nationality": "Spain",
+   "wikipedia": "https://en.wikipedia.org/wiki/Fernando_Chica_Arellano",
+   "posts": [
+    {
+     "place": "FAO, IFAD and WFP, Rome",
+     "kind": "observer",
+     "since": "2015-02-12"
+    }
+   ]
+  },
+  {
+   "id": "celestino_migliore",
+   "name": "Celestino Migliore",
+   "born": "1952-07-01",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Celestino_Migliore",
+   "posts": [
+    {
+     "place": "France",
+     "kind": "nunciature",
+     "since": "2020-01-11"
+    }
+   ]
+  },
+  {
+   "id": "relwendé_kisito_ouédraogo",
+   "name": "Relwendé Kisito Ouédraogo",
+   "born": "1972-04-09",
+   "nationality": "Burkina Faso",
+   "wikipedia": "https://en.wikipedia.org/wiki/Relwendé_Kisito_Ouédraogo",
+   "posts": [
+    {
+     "place": "Gabon",
+     "kind": "nunciature",
+     "since": "2026-02-10"
+    },
+    {
+     "place": "Republic of the Congo",
+     "kind": "nunciature",
+     "since": "2026-01-28"
+    }
+   ]
+  },
+  {
+   "id": "ante_jozic",
+   "name": "Ante Jozić",
+   "born": "1967-01-16",
+   "nationality": "Croatia",
+   "wikipedia": "https://en.wikipedia.org/wiki/Ante_Jozić",
+   "posts": [
+    {
+     "place": "Georgia",
+     "kind": "nunciature",
+     "since": "2024-06-28"
+    },
+    {
+     "place": "Armenia",
+     "kind": "nunciature_nonres",
+     "since": "2024-06-28"
+    }
+   ],
+   "photo": {
+    "path": "ante_jozic.webp",
+    "author": "Tatacolt",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=104543614"
+   }
+  },
+  {
+   "id": "hubertus_van_megen",
+   "name": "Hubertus van Megen",
+   "born": "1961-10-04",
+   "nationality": "Netherlands",
+   "wikipedia": "https://en.wikipedia.org/wiki/Hubertus_van_Megen",
+   "posts": [
+    {
+     "place": "Germany",
+     "kind": "nunciature",
+     "since": "2026-04-09"
+    }
+   ],
+   "photo": {
+    "path": "hubertus_van_megen.webp",
+    "author": "Kleon3",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=110188110"
+   }
+  },
+  {
+   "id": "julien_kaboré",
+   "name": "Julien Kaboré",
+   "born": "1968-06-18",
+   "nationality": "Burkina Faso",
+   "wikipedia": "https://en.wikipedia.org/wiki/Julien_Kaboré",
+   "posts": [
+    {
+     "place": "Ghana",
+     "kind": "nunciature",
+     "since": "2024-06-29"
+    }
+   ]
+  },
+  {
+   "id": "miguel_maury_buendía",
+   "name": "Miguel Maury Buendía",
+   "born": "1955-11-19",
+   "nationality": "Spain",
+   "wikipedia": "https://en.wikipedia.org/wiki/Miguel_Maury_Buendía",
+   "posts": [
+    {
+     "place": "Great Britain",
+     "kind": "nunciature",
+     "since": "2023-04-13"
+    }
+   ]
+  },
+  {
+   "id": "francisco_montecillo_padilla",
+   "name": "Francisco Montecillo Padilla",
+   "born": "1953-09-17",
+   "nationality": "Philippines",
+   "wikipedia": "https://en.wikipedia.org/wiki/Francisco_Montecillo_Padilla",
+   "posts": [
+    {
+     "place": "Guatemala",
+     "kind": "nunciature",
+     "since": "2020-04-17"
+    }
+   ],
+   "photo": {
+    "path": "francisco_montecillo_padilla.webp",
+    "author": "Gobierno de Guatemala",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=144022964"
+   }
+  },
+  {
+   "id": "jean-sylvain_emien_mambé",
+   "name": "Jean-Sylvain Emien Mambé",
+   "born": "1970-09-16",
+   "nationality": "Ivory Coast",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jean-Sylvain_Emien_Mambé",
+   "posts": [
+    {
+     "place": "Guinea",
+     "kind": "nunciature",
+     "since": "2022-11-12"
+    },
+    {
+     "place": "Mali",
+     "kind": "nunciature_nonres",
+     "since": "2022-02-02"
+    }
+   ]
+  },
+  {
+   "id": "jude_thaddeus_okolo",
+   "name": "Thaddeus Okolo",
+   "born": "1956-12-18",
+   "nationality": "Nigeria",
+   "wikipedia": "https://en.wikipedia.org/wiki/Thaddeus_Okolo",
+   "posts": [
+    {
+     "place": "Haiti",
+     "kind": "nunciature",
+     "since": "2026-02-11"
+    }
+   ],
+   "photo": {
+    "path": "jude_thaddeus_okolo.webp",
+    "author": "Dominik Faustus",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=120182713"
+   }
+  },
+  {
+   "id": "simón_bolívar_sánchez_carrión",
+   "name": "Simón Bolívar Sánchez Carrión",
+   "born": "1971-12-24",
+   "nationality": "Ecuador",
+   "wikipedia": "https://en.wikipedia.org/wiki/Simón_Bolívar_Sánchez_Carrión",
+   "posts": [
+    {
+     "place": "Honduras",
+     "kind": "nunciature",
+     "since": "2024-10-15"
+    }
+   ]
+  },
+  {
+   "id": "franco_coppola",
+   "name": "Franco Coppola",
+   "born": "1957-03-31",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Franco_Coppola",
+   "posts": [
+    {
+     "place": "Hungary",
+     "kind": "nunciature",
+     "since": "2026-11-05"
+    }
+   ],
+   "photo": {
+    "path": "franco_coppola.webp",
+    "author": "Clementeste",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=115012884"
+   }
+  },
+  {
+   "id": "waldemar_stanisław_sommertag",
+   "name": "Waldemar Stanisław Sommertag",
+   "born": "1968-02-06",
+   "nationality": "Poland",
+   "wikipedia": "https://en.wikipedia.org/wiki/Waldemar_Stanisław_Sommertag",
+   "posts": [
+    {
+     "place": "India",
+     "kind": "nunciature",
+     "since": "2026-11-14"
+    }
+   ]
+  },
+  {
+   "id": "mirosław_stanisław_wachowski",
+   "name": "Mirosław Stanisław Wachowski",
+   "born": "1970-05-08",
+   "nationality": "Poland",
+   "wikipedia": "https://en.wikipedia.org/wiki/Mirosław_Stanisław_Wachowski",
+   "posts": [
+    {
+     "place": "Iraq",
+     "kind": "nunciature",
+     "since": "2025-09-18"
+    }
+   ]
+  },
+  {
+   "id": "jan_romeo_pawowski",
+   "name": "Jan Romeo Pawłowski",
+   "born": "1960-11-23",
+   "nationality": "Poland",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jan_Romeo_Pawłowski",
+   "posts": [
+    {
+     "place": "Ireland",
+     "kind": "nunciature",
+     "since": "2026-10-07"
+    }
+   ],
+   "photo": {
+    "path": "jan_romeo_pawowski.webp",
+    "author": "ks. Krzysztof Kwaśniewicz",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=110190697"
+   }
+  },
+  {
+   "id": "giorgio_lingua",
+   "name": "Giorgio Lingua",
+   "born": "1960-03-23",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Giorgio_Lingua",
+   "posts": [
+    {
+     "place": "Israel",
+     "kind": "nunciature",
+     "since": "2026-01-22"
+    },
+    {
+     "place": "Jerusalem and Palestine",
+     "kind": "delegation",
+     "since": "2026-01-22",
+     "seat": "Israel"
+    }
+   ]
+  },
+  {
+   "id": "edgar_pena_parra",
+   "name": "Edgar Peña Parra",
+   "born": "1960-03-03",
+   "nationality": "Venezuela",
+   "wikipedia": "https://en.wikipedia.org/wiki/Edgar_Peña_Parra",
+   "posts": [
+    {
+     "place": "Italy",
+     "kind": "nunciature",
+     "since": "2026-03-30"
+    },
+    {
+     "place": "San Marino",
+     "kind": "nunciature_nonres",
+     "since": "2026-03-30"
+    }
+   ],
+   "photo": {
+    "path": "edgar_pena_parra.webp",
+    "author": "Lorenzo Iorfino",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=173297200"
+   }
+  },
+  {
+   "id": "mauricio_rueda_beltz",
+   "name": "Mauricio Rueda Beltz",
+   "born": "1970-01-08",
+   "nationality": "Colombia",
+   "wikipedia": "https://en.wikipedia.org/wiki/Mauricio_Rueda_Beltz",
+   "posts": [
+    {
+     "place": "Ivory Coast",
+     "kind": "nunciature",
+     "since": "2023-06-16"
+    }
+   ]
+  },
+  {
+   "id": "francisco_escalante_molina",
+   "name": "Francisco Escalante Molina",
+   "born": "1965-01-29",
+   "nationality": "Venezuela",
+   "wikipedia": "https://en.wikipedia.org/wiki/Francisco_Escalante_Molina",
+   "posts": [
+    {
+     "place": "Japan",
+     "kind": "nunciature",
+     "since": "2024-01-25"
+    }
+   ]
+  },
+  {
+   "id": "giovanni_pietro_dal_toso",
+   "name": "Giovanni Pietro Dal Toso",
+   "born": "1964-10-06",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Giovanni_Pietro_Dal_Toso",
+   "posts": [
+    {
+     "place": "Jordan",
+     "kind": "nunciature",
+     "since": "2023-01-21"
+    },
+    {
+     "place": "Cyprus",
+     "kind": "nunciature_nonres",
+     "since": "2023-02-17"
+    }
+   ]
+  },
+  {
+   "id": "george_panamthundil",
+   "name": "George Panamthundil",
+   "born": "1972-05-20",
+   "nationality": "India",
+   "wikipedia": "https://en.wikipedia.org/wiki/George_Panamthundil",
+   "posts": [
+    {
+     "place": "Kazakhstan",
+     "kind": "nunciature",
+     "since": "2023-06-16"
+    },
+    {
+     "place": "Kyrgyzstan",
+     "kind": "nunciature_nonres",
+     "since": "2023-07-15"
+    },
+    {
+     "place": "Tajikistan",
+     "kind": "nunciature_nonres",
+     "since": "2023-07-15"
+    }
+   ],
+   "photo": {
+    "path": "george_panamthundil.webp",
+    "author": "Polk",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=175258005"
+   }
+  },
+  {
+   "id": "paolo_borgia",
+   "name": "Paolo Borgia",
+   "born": "1966-03-18",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Paolo_Borgia",
+   "posts": [
+    {
+     "place": "Lebanon",
+     "kind": "nunciature",
+     "since": "2022-09-24"
+    }
+   ]
+  },
+  {
+   "id": "georg_ganswein",
+   "name": "Georg Gänswein",
+   "born": "1956-07-30",
+   "nationality": "Germany",
+   "wikipedia": "https://en.wikipedia.org/wiki/Georg_Gänswein",
+   "posts": [
+    {
+     "place": "Lithuania",
+     "kind": "nunciature",
+     "since": "2024-06-24"
+    },
+    {
+     "place": "Estonia",
+     "kind": "nunciature_nonres",
+     "since": "2024-06-24"
+    },
+    {
+     "place": "Latvia",
+     "kind": "nunciature_nonres",
+     "since": "2024-06-24"
+    }
+   ],
+   "photo": {
+    "path": "georg_ganswein.webp",
+    "author": "Raimond Spekking",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=132802494"
+   }
+  },
+  {
+   "id": "wojciech_załuski",
+   "name": "Wojciech Załuski",
+   "born": "1960-04-05",
+   "nationality": "Poland",
+   "wikipedia": "https://en.wikipedia.org/wiki/Wojciech_Załuski",
+   "posts": [
+    {
+     "place": "Malta",
+     "kind": "nunciature",
+     "since": "2026-02-28"
+    },
+    {
+     "place": "Libya",
+     "kind": "nunciature_nonres",
+     "since": "2026-04-25"
+    }
+   ]
+  },
+  {
+   "id": "joseph_spiteri",
+   "name": "Joseph Spiteri",
+   "born": "1959-05-20",
+   "nationality": "Malta",
+   "wikipedia": "https://en.wikipedia.org/wiki/Joseph_Spiteri",
+   "posts": [
+    {
+     "place": "Mexico",
+     "kind": "nunciature",
+     "since": "2022-07-07"
+    }
+   ]
+  },
+  {
+   "id": "alfred_xuereb",
+   "name": "Alfred Xuereb",
+   "born": "1958-10-14",
+   "nationality": "Malta",
+   "wikipedia": "https://en.wikipedia.org/wiki/Alfred_Xuereb",
+   "posts": [
+    {
+     "place": "Morocco",
+     "kind": "nunciature",
+     "since": "2023-12-08"
+    }
+   ],
+   "photo": {
+    "path": "alfred_xuereb.webp",
+    "author": "Antho.Espinoza12",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=27529697"
+   }
+  },
+  {
+   "id": "luís_miguel_muñoz_cárdaba",
+   "name": "Luís Miguel Muñoz Cárdaba",
+   "born": "1965-08-25",
+   "nationality": "Spain",
+   "wikipedia": "https://en.wikipedia.org/wiki/Luís_Miguel_Muñoz_Cárdaba",
+   "posts": [
+    {
+     "place": "Mozambique",
+     "kind": "nunciature",
+     "since": "2024-01-23"
+    }
+   ]
+  },
+  {
+   "id": "santiago_de_wit_guzmán",
+   "name": "Santiago de Wit Guzmán",
+   "born": "1964-09-05",
+   "nationality": "Spain",
+   "wikipedia": "https://en.wikipedia.org/wiki/Santiago_de_Wit_Guzmán",
+   "posts": [
+    {
+     "place": "Netherlands",
+     "kind": "nunciature",
+     "since": "2026-05-25"
+    }
+   ]
+  },
+  {
+   "id": "gabor_pinter",
+   "name": "Gábor Pintér",
+   "born": "1964-03-09",
+   "nationality": "Hungary",
+   "wikipedia": "https://en.wikipedia.org/wiki/Gábor_Pintér",
+   "posts": [
+    {
+     "place": "New Zealand",
+     "kind": "nunciature",
+     "since": "2024-07-27"
+    },
+    {
+     "place": "Pacific Ocean",
+     "kind": "delegation",
+     "since": "2025-06-18",
+     "seat": "New Zealand"
+    },
+    {
+     "place": "Cook Islands",
+     "kind": "nunciature_nonres",
+     "since": "2025-04-12"
+    },
+    {
+     "place": "Fiji",
+     "kind": "nunciature_nonres",
+     "since": "2024-08-29"
+    },
+    {
+     "place": "Kiribati",
+     "kind": "nunciature_nonres",
+     "since": "2025-04-12"
+    },
+    {
+     "place": "Marshall Islands",
+     "kind": "nunciature_nonres",
+     "since": "2025-04-12"
+    },
+    {
+     "place": "Micronesia",
+     "kind": "nunciature_nonres",
+     "since": "2025-01-14"
+    },
+    {
+     "place": "Nauru",
+     "kind": "nunciature_nonres",
+     "since": "2025-04-12"
+    },
+    {
+     "place": "Palau",
+     "kind": "nunciature_nonres",
+     "since": "2025-01-14"
+    },
+    {
+     "place": "Samoa",
+     "kind": "nunciature_nonres",
+     "since": "2025-04-12"
+    },
+    {
+     "place": "Tonga",
+     "kind": "nunciature_nonres",
+     "since": "2026-08-15"
+    },
+    {
+     "place": "Vanuatu",
+     "kind": "nunciature_nonres",
+     "since": "2025-01-14"
+    }
+   ],
+   "photo": {
+    "path": "gabor_pinter.webp",
+    "author": "Paval Hadzinski Catholic Belarus Photo",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=101657466"
+   }
+  },
+  {
+   "id": "michael_francis_crotty",
+   "name": "Michael Francis Crotty",
+   "born": "1970-03-26",
+   "nationality": "Ireland",
+   "wikipedia": "https://en.wikipedia.org/wiki/Michael_Francis_Crotty",
+   "posts": [
+    {
+     "place": "Nigeria",
+     "kind": "nunciature",
+     "since": "2024-07-16"
+    }
+   ]
+  },
+  {
+   "id": "juan_antonio_cruz_serrano",
+   "name": "Juan Antonio Cruz Serrano",
+   "born": "1976-09-29",
+   "nationality": "Spain",
+   "wikipedia": "https://en.wikipedia.org/wiki/Juan_Antonio_Cruz_Serrano",
+   "posts": [
+    {
+     "place": "Organization of American States",
+     "kind": "observer",
+     "since": "2021-02-05"
+    }
+   ]
+  },
+  {
+   "id": "germano_penemote",
+   "name": "Germano Penemote",
+   "born": "1969-10-24",
+   "nationality": "Angola",
+   "wikipedia": "https://en.wikipedia.org/wiki/Germano_Penemote",
+   "posts": [
+    {
+     "place": "Pakistan",
+     "kind": "nunciature",
+     "since": "2023-06-16"
+    }
+   ]
+  },
+  {
+   "id": "maurizio_bravi",
+   "name": "Maurizio Bravi",
+   "born": "1962-07-20",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Maurizio_Bravi",
+   "posts": [
+    {
+     "place": "Papua New Guinea",
+     "kind": "nunciature",
+     "since": "2025-01-15"
+    },
+    {
+     "place": "Solomon Islands",
+     "kind": "nunciature_nonres",
+     "since": "2025-01-15"
+    }
+   ]
+  },
+  {
+   "id": "vincenzo_turturro",
+   "name": "Vincenzo Turturro",
+   "born": "1978-10-07",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Vincenzo_Turturro",
+   "posts": [
+    {
+     "place": "Paraguay",
+     "kind": "nunciature",
+     "since": "2023-12-29"
+    }
+   ]
+  },
+  {
+   "id": "paolo_rocco_gualtieri",
+   "name": "Paolo Rocco Gualtieri",
+   "born": "1961-02-01",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Paolo_Rocco_Gualtieri",
+   "posts": [
+    {
+     "place": "Peru",
+     "kind": "nunciature",
+     "since": "2022-08-06"
+    }
+   ]
+  },
+  {
+   "id": "charles_john_brown",
+   "name": "Charles John Brown",
+   "born": "1959-10-13",
+   "nationality": "United States",
+   "wikipedia": "https://en.wikipedia.org/wiki/Charles_John_Brown",
+   "posts": [
+    {
+     "place": "Philippines",
+     "kind": "nunciature",
+     "since": "2020-09-28"
+    }
+   ],
+   "photo": {
+    "path": "charles_john_brown.webp",
+    "author": "National Historical Commission of the Philippines",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=188604920"
+   }
+  },
+  {
+   "id": "antonio_guido_filipazzi",
+   "name": "Antonio Guido Filipazzi",
+   "born": "1963-10-08",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Antonio_Guido_Filipazzi",
+   "posts": [
+    {
+     "place": "Poland",
+     "kind": "nunciature",
+     "since": "2023-08-08"
+    }
+   ],
+   "photo": {
+    "path": "antonio_guido_filipazzi.webp",
+    "author": "Kancelaria Sejmu",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=184323443"
+   }
+  },
+  {
+   "id": "andres_carrascosa_coso",
+   "name": "Andrés Carrascosa Coso",
+   "born": "1955-12-16",
+   "nationality": "Spain",
+   "wikipedia": "https://en.wikipedia.org/wiki/Andrés_Carrascosa_Coso",
+   "posts": [
+    {
+     "place": "Portugal",
+     "kind": "nunciature",
+     "since": "2025-12-11"
+    }
+   ],
+   "photo": {
+    "path": "andres_carrascosa_coso.webp",
+    "author": "Asamblea Nacional  del Ecuador",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=142175879"
+   }
+  },
+  {
+   "id": "giampiero_gloder",
+   "name": "Giampiero Gloder",
+   "born": "1958-05-15",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Giampiero_Gloder",
+   "posts": [
+    {
+     "place": "Romania",
+     "kind": "nunciature",
+     "since": "2024-02-23"
+    },
+    {
+     "place": "Moldova",
+     "kind": "nunciature_nonres",
+     "since": "2024-02-23"
+    }
+   ]
+  },
+  {
+   "id": "giovanni_d_aniello",
+   "name": "Giovanni d'Aniello",
+   "born": "1955-01-05",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Giovanni_d'Aniello",
+   "posts": [
+    {
+     "place": "Russia",
+     "kind": "nunciature",
+     "since": "2020-06-01"
+    },
+    {
+     "place": "Uzbekistan",
+     "kind": "nunciature_nonres",
+     "since": "2021-01-14"
+    }
+   ],
+   "photo": {
+    "path": "giovanni_d_aniello.webp",
+    "author": "Beto Barata/PR",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=125702101"
+   }
+  },
+  {
+   "id": "arnaldo_catalan",
+   "name": "Arnaldo Catalan",
+   "born": "1966-09-18",
+   "nationality": "Philippines",
+   "wikipedia": "https://en.wikipedia.org/wiki/Arnaldo_Catalan",
+   "posts": [
+    {
+     "place": "Rwanda",
+     "kind": "nunciature",
+     "since": "2022-01-31"
+    }
+   ]
+  },
+  {
+   "id": "santo_gangemi",
+   "name": "Santo Gangemi",
+   "born": "1961-08-16",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Santo_Gangemi",
+   "posts": [
+    {
+     "place": "Serbia",
+     "kind": "nunciature",
+     "since": "2022-09-12"
+    }
+   ]
+  },
+  {
+   "id": "marek_zalewski_(bishop)",
+   "name": "Marek Zalewski",
+   "born": "1963-02-02",
+   "nationality": "Poland",
+   "wikipedia": "https://en.wikipedia.org/wiki/Marek_Zalewski_(bishop)",
+   "posts": [
+    {
+     "place": "Singapore",
+     "kind": "nunciature",
+     "since": "2018-05-21"
+    },
+    {
+     "place": "Vietnam",
+     "kind": "pontifical_representative",
+     "since": "2018-05-21"
+    }
+   ]
+  },
+  {
+   "id": "nicola_girasoli",
+   "name": "Nicola Girasoli",
+   "born": "1957-07-21",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Nicola_Girasoli",
+   "posts": [
+    {
+     "place": "Slovakia",
+     "kind": "nunciature",
+     "since": "2022-07-02"
+    }
+   ]
+  },
+  {
+   "id": "luigi_bianco",
+   "name": "Luigi Bianco",
+   "born": "1960-03-03",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Luigi_Bianco",
+   "posts": [
+    {
+     "place": "Slovenia",
+     "kind": "nunciature",
+     "since": "2025-05-20"
+    },
+    {
+     "place": "Kosovo",
+     "kind": "delegation",
+     "since": "2025-05-20",
+     "seat": "Slovenia"
+    }
+   ]
+  },
+  {
+   "id": "henryk_jagodzinski",
+   "name": "Henryk Jagodziński",
+   "born": "1969-01-01",
+   "nationality": "Poland",
+   "wikipedia": "https://en.wikipedia.org/wiki/Henryk_Jagodziński_(nuncio)",
+   "posts": [
+    {
+     "place": "South Africa",
+     "kind": "nunciature",
+     "since": "2024-04-16"
+    },
+    {
+     "place": "Botswana",
+     "kind": "nunciature_nonres",
+     "since": "2024-08-20"
+    },
+    {
+     "place": "Eswatini",
+     "kind": "nunciature_nonres",
+     "since": "2024-07-19"
+    },
+    {
+     "place": "Lesotho",
+     "kind": "nunciature_nonres",
+     "since": "2024-04-16"
+    },
+    {
+     "place": "Namibia",
+     "kind": "nunciature_nonres",
+     "since": "2024-07-19"
+    }
+   ],
+   "photo": {
+    "path": "henryk_jagodzinski.webp",
+    "author": "Mika58",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=91970952"
+   }
+  },
+  {
+   "id": "giovanni_gaspari",
+   "name": "Giovanni Gaspari",
+   "born": "1963-06-06",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Giovanni_Gaspari",
+   "posts": [
+    {
+     "place": "South Korea",
+     "kind": "nunciature",
+     "since": "2024-03-02"
+    },
+    {
+     "place": "Mongolia",
+     "kind": "nunciature_nonres",
+     "since": "2024-03-02"
+    }
+   ]
+  },
+  {
+   "id": "séamus_patrick_horgan",
+   "name": "Séamus Patrick Horgan",
+   "born": "1969-08-31",
+   "nationality": "Ireland",
+   "wikipedia": "https://en.wikipedia.org/wiki/Séamus_Patrick_Horgan",
+   "posts": [
+    {
+     "place": "South Sudan",
+     "kind": "nunciature",
+     "since": "2024-05-14"
+    }
+   ]
+  },
+  {
+   "id": "piero_pioppo",
+   "name": "Piero Pioppo",
+   "born": "1960-09-29",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Piero_Pioppo",
+   "posts": [
+    {
+     "place": "Spain",
+     "kind": "nunciature",
+     "since": "2025-09-15"
+    },
+    {
+     "place": "Andorra",
+     "kind": "nunciature_nonres",
+     "since": "2025-09-15"
+    }
+   ]
+  },
+  {
+   "id": "andrzej_jozwowicz",
+   "name": "Andrzej Józwowicz",
+   "born": "1965-01-14",
+   "nationality": "Poland",
+   "wikipedia": "https://en.wikipedia.org/wiki/Andrzej_Józwowicz",
+   "posts": [
+    {
+     "place": "Sri Lanka",
+     "kind": "nunciature",
+     "since": "2026-01-31"
+    }
+   ],
+   "photo": {
+    "path": "andrzej_jozwowicz.webp",
+    "author": "Tatacolt",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=58228366"
+   }
+  },
+  {
+   "id": "julio_murat",
+   "name": "Julio Murat",
+   "born": "1961-08-18",
+   "nationality": "Turkey",
+   "wikipedia": "https://en.wikipedia.org/wiki/Julio_Murat",
+   "posts": [
+    {
+     "place": "Sweden",
+     "kind": "nunciature",
+     "since": "2022-11-09"
+    },
+    {
+     "place": "Denmark",
+     "kind": "nunciature_nonres",
+     "since": "2023-01-25"
+    },
+    {
+     "place": "Finland",
+     "kind": "nunciature_nonres",
+     "since": "2023-03-07"
+    },
+    {
+     "place": "Iceland",
+     "kind": "nunciature_nonres",
+     "since": "2022-11-09"
+    },
+    {
+     "place": "Norway",
+     "kind": "nunciature_nonres",
+     "since": "2023-03-16"
+    }
+   ]
+  },
+  {
+   "id": "martin_krebs",
+   "name": "Martin Krebs",
+   "born": "1956-11-02",
+   "nationality": "Germany",
+   "wikipedia": "https://en.wikipedia.org/wiki/Martin_Krebs",
+   "posts": [
+    {
+     "place": "Switzerland",
+     "kind": "nunciature",
+     "since": "2021-03-03"
+    },
+    {
+     "place": "Liechtenstein",
+     "kind": "nunciature_nonres",
+     "since": "2021-03-03"
+    },
+    {
+     "place": "Monaco",
+     "kind": "nunciature_nonres",
+     "since": "2024-04-19"
+    }
+   ]
+  },
+  {
+   "id": "luigi_roberto_cona",
+   "name": "Luigi Roberto Cona",
+   "born": "1965-11-10",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Luigi_Roberto_Cona",
+   "posts": [
+    {
+     "place": "Syria",
+     "kind": "nunciature",
+     "since": "2026-03-19"
+    }
+   ],
+   "photo": {
+    "path": "luigi_roberto_cona.webp",
+    "author": "NunzioPardo",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=126409136"
+   }
+  },
+  {
+   "id": "peter_bryan_wells",
+   "name": "Peter Bryan Wells",
+   "born": "1963-05-12",
+   "nationality": "United States",
+   "wikipedia": "https://en.wikipedia.org/wiki/Peter_Bryan_Wells",
+   "posts": [
+    {
+     "place": "Thailand",
+     "kind": "nunciature",
+     "since": "2023-02-08"
+    },
+    {
+     "place": "Laos",
+     "kind": "delegation",
+     "since": "2023-02-08",
+     "seat": "Thailand"
+    },
+    {
+     "place": "Cambodia",
+     "kind": "nunciature_nonres",
+     "since": "2023-02-08"
+    }
+   ]
+  },
+  {
+   "id": "marek_solczynski",
+   "name": "Marek Solczyński",
+   "born": "1961-04-07",
+   "nationality": "Poland",
+   "wikipedia": "https://en.wikipedia.org/wiki/Marek_Solczyński",
+   "posts": [
+    {
+     "place": "Turkey",
+     "kind": "nunciature",
+     "since": "2022-02-02"
+    },
+    {
+     "place": "Azerbaijan",
+     "kind": "nunciature_nonres",
+     "since": "2022-02-14"
+    },
+    {
+     "place": "Turkmenistan",
+     "kind": "nunciature_nonres",
+     "since": "2022-09-08"
+    }
+   ],
+   "photo": {
+    "path": "marek_solczynski.webp",
+    "author": "Oskarjuc",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=110190937"
+   }
+  },
+  {
+   "id": "jain_mendez",
+   "name": "Jain Mendez",
+   "born": "",
+   "nationality": "India",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jain_Mendez",
+   "posts": [
+    {
+     "place": "UN Tourism, Madrid",
+     "kind": "observer",
+     "since": "2025-09-01"
+    }
+   ]
+  },
+  {
+   "id": "roberto_campisi",
+   "name": "Roberto Campisi",
+   "born": "1978-00-00",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Roberto_Campisi",
+   "posts": [
+    {
+     "place": "UNESCO, Paris",
+     "kind": "observer",
+     "since": "2025-09-27"
+    }
+   ]
+  },
+  {
+   "id": "tomasz_grysa",
+   "name": "Tomasz Grysa",
+   "born": "1970-10-16",
+   "nationality": "Poland",
+   "wikipedia": "https://en.wikipedia.org/wiki/Tomasz_Grysa",
+   "posts": [
+    {
+     "place": "Uganda",
+     "kind": "nunciature",
+     "since": "2026-05-14"
+    }
+   ]
+  },
+  {
+   "id": "visvaldas_kulbokas",
+   "name": "Visvaldas Kulbokas",
+   "born": "1974-05-14",
+   "nationality": "Lithuania",
+   "wikipedia": "https://en.wikipedia.org/wiki/Visvaldas_Kulbokas",
+   "posts": [
+    {
+     "place": "Ukraine",
+     "kind": "nunciature",
+     "since": "2021-06-15"
+    }
+   ]
+  },
+  {
+   "id": "grzegorz_piotr_bielaszka",
+   "name": "Grzegorz Piotr Bielaszka",
+   "born": "1974-08-04",
+   "nationality": "Poland",
+   "wikipedia": "https://en.wikipedia.org/wiki/Grzegorz_Piotr_Bielaszka",
+   "posts": [
+    {
+     "place": "United Arab Emirates",
+     "kind": "nunciature",
+     "since": "2026-10-05"
+    }
+   ]
+  },
+  {
+   "id": "ettore_balestrero",
+   "name": "Ettore Balestrero",
+   "born": "1966-12-21",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Ettore_Balestrero",
+   "posts": [
+    {
+     "place": "United Nations, Geneva",
+     "kind": "observer",
+     "since": "2023-06-21"
+    }
+   ],
+   "photo": {
+    "path": "ettore_balestrero.webp",
+    "author": "DonPaolo",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=7623450"
+   }
+  },
+  {
+   "id": "christophe_zakhia_el_kassis",
+   "name": "Christophe Zakhia El-Kassis",
+   "born": "1968-08-24",
+   "nationality": "Lebanon",
+   "wikipedia": "https://en.wikipedia.org/wiki/Christophe_Zakhia_El-Kassis",
+   "posts": [
+    {
+     "place": "United Nations, New York",
+     "kind": "observer",
+     "since": "2026-07-25"
+    }
+   ],
+   "photo": {
+    "path": "christophe_zakhia_el_kassis.webp",
+    "author": "Agenzia Fides",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=122088634"
+   }
+  },
+  {
+   "id": "richard_allen_gyhra",
+   "name": "Richard Allen Gyhra",
+   "born": "",
+   "nationality": "United States",
+   "wikipedia": "https://en.wikipedia.org/wiki/Richard_Allen_Gyhra",
+   "posts": [
+    {
+     "place": "United Nations, Vienna",
+     "kind": "observer",
+     "since": "2024-07-01"
+    }
+   ]
+  },
+  {
+   "id": "gabriele_giordano_caccia",
+   "name": "Gabriele Giordano Caccia",
+   "born": "1958-02-24",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Gabriele_Giordano_Caccia",
+   "posts": [
+    {
+     "place": "United States",
+     "kind": "nunciature",
+     "since": "2026-03-07"
+    }
+   ],
+   "photo": {
+    "path": "gabriele_giordano_caccia.webp",
+    "author": "U.S. Embassy in the Philipines",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=84799585"
+   }
+  },
+  {
+   "id": "gianfranco_gallone",
+   "name": "Gianfranco Gallone",
+   "born": "1963-04-20",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Gianfranco_Gallone",
+   "posts": [
+    {
+     "place": "Uruguay",
+     "kind": "nunciature",
+     "since": "2023-01-03"
+    }
+   ],
+   "photo": {
+    "path": "gianfranco_gallone.webp",
+    "author": "jm",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=110188283"
+   }
+  },
+  {
+   "id": "alberto_ortega_martin",
+   "name": "Alberto Ortega Martín",
+   "born": "1962-11-14",
+   "nationality": "Spain",
+   "wikipedia": "https://en.wikipedia.org/wiki/Alberto_Ortega_Martín",
+   "posts": [
+    {
+     "place": "Venezuela",
+     "kind": "nunciature",
+     "since": "2024-05-14"
+    }
+   ],
+   "photo": {
+    "path": "alberto_ortega_martin.webp",
+    "author": "Centro Televisivo Vaticano - Archivio",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=121038868"
+   }
+  },
+  {
+   "id": "gian_luca_perici",
+   "name": "Gian Luca Perici",
+   "born": "1964-09-17",
+   "nationality": "Italy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Gian_Luca_Perici",
+   "posts": [
+    {
+     "place": "Zambia",
+     "kind": "nunciature",
+     "since": "2023-06-05"
+    },
+    {
+     "place": "Malawi",
+     "kind": "nunciature_nonres",
+     "since": "2023-06-05"
+    }
+   ]
+  },
+  {
+   "id": "janusz_urbanczyk",
+   "name": "Janusz Urbańczyk",
+   "born": "1967-05-19",
+   "nationality": "Poland",
+   "wikipedia": "https://en.wikipedia.org/wiki/Janusz_Urbańczyk",
+   "posts": [
+    {
+     "place": "Zimbabwe",
+     "kind": "nunciature",
+     "since": "2024-01-25"
+    }
+   ],
+   "photo": {
+    "path": "janusz_urbanczyk.webp",
+    "author": "The Official CTBTO Photostream",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=50374064"
+   }
+  }
+ ],
+ "vacant": [
+  {
+   "place": "Antigua and Barbuda",
+   "kind": "nunciature_nonres",
+   "since": "2026-05-25"
+  },
+  {
+   "place": "Antilles",
+   "kind": "delegation",
+   "since": "2026-05-25",
+   "seat": "Trinidad and Tobago"
+  },
+  {
+   "place": "Arabian Peninsula",
+   "kind": "delegation",
+   "since": "2026-07-25",
+   "seat": "United Arab Emirates"
+  },
+  {
+   "place": "Australia",
+   "kind": "nunciature",
+   "since": "2026-06-30"
+  },
+  {
+   "place": "Bahamas",
+   "kind": "nunciature_nonres",
+   "since": "2026-05-25"
+  },
+  {
+   "place": "Bahrain",
+   "kind": "nunciature_nonres",
+   "since": "2026-05-25"
+  },
+  {
+   "place": "Barbados",
+   "kind": "nunciature_nonres",
+   "since": "2026-05-25"
+  },
+  {
+   "place": "Belgium",
+   "kind": "nunciature",
+   "since": "2026-11-05"
+  },
+  {
+   "place": "Belize",
+   "kind": "nunciature_nonres",
+   "since": "2026-05-25"
+  },
+  {
+   "place": "Brunei",
+   "kind": "delegation",
+   "since": "2026-02-28",
+   "seat": "Malaysia"
+  },
+  {
+   "place": "Cape Verde",
+   "kind": "nunciature_nonres",
+   "since": "2026-11-14"
+  },
+  {
+   "place": "Comoros",
+   "kind": "delegation",
+   "since": "2026-05-14",
+   "seat": "Madagascar"
+  },
+  {
+   "place": "Dominica",
+   "kind": "nunciature_nonres",
+   "since": "2026-05-25"
+  },
+  {
+   "place": "ECOWAS",
+   "kind": "observer",
+   "since": "2023-08-08"
+  },
+  {
+   "place": "East Timor",
+   "kind": "nunciature_nonres",
+   "since": "2026-02-28"
+  },
+  {
+   "place": "Eritrea",
+   "kind": "nunciature_nonres",
+   "since": "2024-01-23"
+  },
+  {
+   "place": "Gambia",
+   "kind": "nunciature_nonres",
+   "since": "2026-07-01"
+  },
+  {
+   "place": "Greece",
+   "kind": "nunciature",
+   "since": "2026-10-07"
+  },
+  {
+   "place": "Grenada",
+   "kind": "nunciature_nonres",
+   "since": "2026-05-25"
+  },
+  {
+   "place": "Guinea-Bissau",
+   "kind": "nunciature_nonres",
+   "since": "2026-11-14"
+  },
+  {
+   "place": "Guyana",
+   "kind": "nunciature_nonres",
+   "since": "2026-05-25"
+  },
+  {
+   "place": "Iran",
+   "kind": "nunciature",
+   "since": "2026-01-31"
+  },
+  {
+   "place": "Jamaica",
+   "kind": "nunciature_nonres",
+   "since": "2026-05-25"
+  },
+  {
+   "place": "Kenya",
+   "kind": "nunciature",
+   "since": "2026-04-09"
+  },
+  {
+   "place": "Kuwait",
+   "kind": "nunciature",
+   "since": "2026-05-25"
+  },
+  {
+   "place": "Liberia",
+   "kind": "nunciature",
+   "since": "2026-07-01"
+  },
+  {
+   "place": "Luxembourg",
+   "kind": "nunciature_nonres",
+   "since": "2026-11-05"
+  },
+  {
+   "place": "Madagascar",
+   "kind": "nunciature",
+   "since": "2026-05-14"
+  },
+  {
+   "place": "Malaysia",
+   "kind": "nunciature",
+   "since": "2026-02-28"
+  },
+  {
+   "place": "Mauritania",
+   "kind": "nunciature_nonres",
+   "since": "2026-11-14"
+  },
+  {
+   "place": "Mauritius",
+   "kind": "nunciature_nonres",
+   "since": "2026-05-14"
+  },
+  {
+   "place": "Myanmar",
+   "kind": "nunciature_nonres",
+   "since": "2022-07-16"
+  },
+  {
+   "place": "Nepal",
+   "kind": "nunciature_nonres",
+   "since": "2026-03-13"
+  },
+  {
+   "place": "Nicaragua",
+   "kind": "nunciature",
+   "since": "2022-03-06"
+  },
+  {
+   "place": "Panama",
+   "kind": "nunciature",
+   "since": "2026-05-01"
+  },
+  {
+   "place": "Qatar",
+   "kind": "nunciature_nonres",
+   "since": "2026-05-25"
+  },
+  {
+   "place": "Republic of China (Taiwan)",
+   "kind": "nunciature",
+   "since": "1971-10-25",
+   "headedBy": "charge_d_affaires"
+  },
+  {
+   "place": "Saint Kitts and Nevis",
+   "kind": "nunciature_nonres",
+   "since": "2026-05-25"
+  },
+  {
+   "place": "Saint Lucia",
+   "kind": "nunciature_nonres",
+   "since": "2026-05-25"
+  },
+  {
+   "place": "Saint Vincent and the Grenadines",
+   "kind": "nunciature_nonres",
+   "since": "2026-05-25"
+  },
+  {
+   "place": "Senegal",
+   "kind": "nunciature",
+   "since": "2026-11-14"
+  },
+  {
+   "place": "Seychelles",
+   "kind": "nunciature_nonres",
+   "since": "2026-05-14"
+  },
+  {
+   "place": "Sierra Leone",
+   "kind": "nunciature_nonres",
+   "since": "2026-07-01"
+  },
+  {
+   "place": "Sudan",
+   "kind": "nunciature",
+   "since": "2024-01-23"
+  },
+  {
+   "place": "Suriname",
+   "kind": "nunciature_nonres",
+   "since": "2026-05-25"
+  },
+  {
+   "place": "Tanzania",
+   "kind": "nunciature",
+   "since": "2026-08-15"
+  },
+  {
+   "place": "Trinidad and Tobago",
+   "kind": "nunciature",
+   "since": "2026-05-25"
+  },
+  {
+   "place": "United Nations, Nairobi",
+   "kind": "observer",
+   "since": "2026-04-09"
+  },
+  {
+   "place": "Yemen",
+   "kind": "nunciature_nonres",
+   "since": "2026-07-25"
+  }
+ ]
+}
