@@ -58,5 +58,5 @@ lives at; the rest are listed as extra accreditations.
 - Nationality comes from Wikidata (citizenship, ignoring Vatican City). It is
   overridden by hand where Wikidata lists two countries, and for envoys with no Wikidata
   item yet; the Press Office curriculum vitae is the source for those.
-- About a third of the envoys have no free photo; they show a silhouette and the line
+- 38 of the 100 envoys have no free photo (2026-11-15); they show a silhouette and the line
   "No freely licensed photo is available yet."

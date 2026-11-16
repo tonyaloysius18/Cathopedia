@@ -1,0 +1,24 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "asset": "explore_bible",
+      "prompt": "Create Cathopedia Explore card artwork. Rich glossy gilded-emblem illustration, polished gold, deep forest-green leather, warm cream parchment, soft golden light, reverent jewel-like fine detail, realistic 3D illustrated materials. Wide landscape 16:9 1672x941. True transparent alpha background, no backdrop whatsoever. CRITICAL layout: ENTIRE subject confined to RIGHT TWO THIRDS, LEFT THIRD completely empty transparent for overlay title; everything fits in frame uncropped with margins. On right a large open Holy Bible rests on low gold lectern-cushion, cream parchment pages fanned gently curving with fine decorative illegible linework, gilded page edges, red silk ribbon trailing over front. Green leather cover with ornate gold corner pieces. Behind book fine golden radiance rays with small glowing gold Latin cross at centre above pages. One gold olive sprig beside book and one lit white candle in polished gold candlestick on other side. Very faint gold sparkles close to subject only. No readable lettering at all: no Bible, IHS, words, letters, numbers, titles, labels, signatures, watermarks. No frame, border, room, sky, table, floor, people, hands. Not flat vector or cartoon."
+    },
+    {
+      "asset": "bible_icon",
+      "prompt": "Cathopedia round card icon, square 1:1 1024x1024. Rich glossy gilded-emblem illustration with polished gold, forest-green enamel, cream parchment. Single circular medallion fills frame with small transparent margin, genuine alpha outside round coin. Thick polished gold outer ring with bright bevel encircles deep forest-green enamel disc. Centre open Holy Bible viewed slightly from above, cream pages, gilded edges, red ribbon hanging below and fine decorative illegible page lines. Above book small glowing gold Latin cross with soft short rays halo. One gold olive sprig curves along lower left inside ring. Bold simplified shapes readable at 35dp, high contrast gold against dark green, finely rendered realistic materials. No readable text, letters, words, title, Bible, IHS, numbers, watermark, signature. No outer frame, background scenery, people or table. Not flat vector or cartoon."
+    },
+    {
+      "asset": "nav_bible",
+      "prompt": "Cathopedia navigation coin icon. Square 1200x1200, true transparent alpha background outside coin. A single circular thick polished GOLD rim with bright specular highlights and beveled edge, matching gold coin navigation set. Inside deep dark emerald-green glossy enamel disc (#0B1A15 to #1F4034), never bright green. Centre ONE bold photorealistic 3D polished gold-metal emblem: an OPEN HOLY BIBLE viewed front slightly above, two plain gold pages curving upward like wings and gilded page edges beneath. A SMALL Latin cross upright centred just above book spine, same gold. Short gold ribbon marker hangs from bottom centre. At most 2 or3 faint engraved lines per page. Open-book silhouette first thing seen, emblem60% of disc area, strong readability at36dp, soft reflections, fine highlights, subtle shadow on enamel for metallic depth. Gold #D4AF37 highlights #DDBF5F. NO text letters words IHS numbers, sparkles stars leaves candle, extra ornaments or objects. No silver bronze bright green blue, frame outside coin, scenery, background, watermark signature, cartoon or flat vector."
+    }
+  ],
+  "compositionEdit": "Preserve the artwork, scale the assembled subject down and move right so the left third is transparent and no elements are cropped.",
+  "export": {
+    "masterDirectory": "content/hub/bible",
+    "appDirectory": "shared/src/commonMain/composeResources/drawable",
+    "webpQuality": 90,
+    "alphaQuality": 100
+  }
+}

@@ -32,17 +32,27 @@ sealed interface Destination {
     data object Notifications : Destination
     data object About : Destination
     data object Feedback : Destination
+    data object BibleHome : Destination
+    /** [verse] scrolls to and highlights that verse (from search or a bookmark). */
+    data class BibleChapter(val code: String, val chapter: Int, val verse: Int? = null) : Destination
+    data object BibleBookmarks : Destination
     data object News : Destination
     data class NewsDetail(val id: String) : Destination
 }
 
 /**
- * The five bottom-bar destinations, in bar order (Prayers sits in the middle
- * slot per the Prayers brief). Saved lives inside Settings as its own card.
+ * The five bottom-bar destinations, in bar order, with Bible in the centre.
+ * Saved lives inside Settings as its own card.
  */
 enum class Tab(val label: String, val glyph: String, val destination: Destination) {
     HOME("Home", "✧", Destination.Home),
     EXPLORE("Explore", "☰", Destination.Explore),
+    BIBLE("Holy Bible", "✝", Destination.BibleHome),
     PRAYERS("Prayers", "🕀", Destination.PrayersHome),
     SETTINGS("Settings", "⚙", Destination.Settings),
 }
+
+/** All reader pages belong to the Bible tab, including links opened from another tab. */
+internal val Destination.isBibleDestination: Boolean
+    get() = this == Destination.BibleHome ||
+        this is Destination.BibleChapter || this == Destination.BibleBookmarks

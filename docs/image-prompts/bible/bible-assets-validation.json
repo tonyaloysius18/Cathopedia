@@ -1,0 +1,38 @@
+[
+  {
+    "asset": "explore_bible",
+    "masterSize": [
+      1672,
+      941
+    ],
+    "appSize": [
+      1672,
+      941
+    ],
+    "alpha": true
+  },
+  {
+    "asset": "bible_icon",
+    "masterSize": [
+      1024,
+      1024
+    ],
+    "appSize": [
+      512,
+      512
+    ],
+    "alpha": true
+  },
+  {
+    "asset": "nav_bible",
+    "masterSize": [
+      1200,
+      1200
+    ],
+    "appSize": [
+      1200,
+      1200
+    ],
+    "alpha": true
+  }
+]

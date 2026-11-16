@@ -26,8 +26,9 @@ enum class NavDirection {
  */
 class AppNavController(startDestination: Destination) {
     private val backStack = mutableStateListOf(startDestination)
-    var selectedTab by mutableStateOf(Tab.HOME)
-        private set
+    private var rootTab by mutableStateOf(Tab.HOME)
+    val selectedTab: Tab
+        get() = if (current.isBibleDestination) Tab.BIBLE else rootTab
 
     /** Set by every stack change; read by the router's transitionSpec. */
     var lastDirection by mutableStateOf(NavDirection.NONE)
@@ -50,7 +51,7 @@ class AppNavController(startDestination: Destination) {
     /** Tapping a tab always returns to that tab's root, dropping any pushed detail pages. */
     fun selectTab(tab: Tab) {
         lastDirection = NavDirection.NONE
-        selectedTab = tab
+        rootTab = tab
         backStack.clear()
         backStack.add(tab.destination)
     }

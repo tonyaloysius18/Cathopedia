@@ -90,7 +90,7 @@ private val NText: Color @Composable get() = MaterialTheme.colorScheme.onSurface
 private val NMuted: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 
 /**
- * "Apostolic nuncios today": every envoy of the Holy See, with a photo where a free one exists,
+ * "Apostolic Nuncios Today": every envoy of the Holy See, with a photo where a free one exists,
  * listed by the country he lives in, plus the posts that are vacant today. Tapping an envoy
  * opens him in place with every country he is accredited to.
  */

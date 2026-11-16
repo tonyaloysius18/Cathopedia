@@ -14,6 +14,7 @@ with a **Status** line saying whether their images have been generated.
 | `orders/` | Religious Orders: founders and emblems, the Franciscan family |
 | `priesthood/` | The Priesthood hub |
 | `biblical/` | Biblical Characters |
+| `bible/` | The Holy Bible reader: Explore card art and icon |
 | `prayers/` | Prayers, novenas, category icons, the Rosary screens |
 | `stations/` | Stations of the Cross |
 

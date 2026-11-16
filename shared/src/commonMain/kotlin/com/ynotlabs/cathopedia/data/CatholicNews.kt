@@ -15,7 +15,10 @@ import kotlinx.coroutines.IO
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.daysUntil
+import kotlinx.datetime.plus
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import org.jetbrains.compose.resources.ExperimentalResourceApi
@@ -41,7 +44,11 @@ data class NewsItem(
     val published: String,
     val start: String? = null,
     val end: String? = null,
-    /** Last day the item is shown; after it the item drops out of the app. */
+    /**
+     * Last day a news item is current; after it the item moves to "Past".
+     * Events move there after their [end]. Builds before the Past filter drop
+     * an item after [expires], so keep setting it on events too.
+     */
     val expires: String? = null,
     /** Our own art: a path under files/news/ (bundled or fetched beside the feed). */
     val image: String? = null,
@@ -77,16 +84,42 @@ data class NewsItem(
     fun paragraphs(language: String) = body.localized(language).split("\n\n").map { it.trim() }.filter { it.isNotEmpty() }
     fun url(language: String) = url.localized(language).ifEmpty { null }
 
-    fun isVisibleOn(today: LocalDate): Boolean {
-        val lastDay = expires?.toDateOrNull() ?: return true
-        return today <= lastDay
+    /**
+     * The last day the item counts as current: an event's last day, or a
+     * news item's [expires] (or [NEWS_SHELF_DAYS] after it was published).
+     */
+    val lastCurrentDay: LocalDate?
+        get() = if (isEvent && startDate != null) endDate
+            else expires?.toDateOrNull() ?: publishedDate?.plus(NEWS_SHELF_DAYS, DateTimeUnit.DAY)
+
+    fun status(today: LocalDate): NewsStatus {
+        val start = startDate
+        if (isEvent && start != null && today < start) return NewsStatus.UPCOMING
+        val last = lastCurrentDay ?: return NewsStatus.CURRENT
+        return when {
+            today > last -> NewsStatus.PAST
+            isEvent && start != null -> NewsStatus.NOW
+            else -> NewsStatus.CURRENT
+        }
+    }
+
+    /** Past items stay under "Past" for [ARCHIVE_DAYS], then leave the app. */
+    fun isArchivedOn(today: LocalDate): Boolean {
+        val last = lastCurrentDay ?: return false
+        return last.daysUntil(today) > ARCHIVE_DAYS
     }
 
     companion object {
         const val NEWS = "news"
         const val EVENT = "event"
+        /** How long a news item without [expires] stays current. */
+        const val NEWS_SHELF_DAYS = 30
+        const val ARCHIVE_DAYS = 365
     }
 }
+
+/** Where an item stands today. Home and the News screen's "Latest" filter leave out [PAST]. */
+enum class NewsStatus { UPCOMING, NOW, CURRENT, PAST }
 
 private fun Map<String, String>.localized(language: String): String =
     this[language]?.takeIf { it.isNotBlank() } ?: this["en"].orEmpty()
@@ -113,14 +146,31 @@ object CatholicNews {
     var feed by mutableStateOf<NewsFeed?>(null)
         private set
 
-    /** Items to show on [today]: pinned first (soonest first), then most recent. */
+    /**
+     * Current and upcoming items (no past ones), as Home and the "Latest"
+     * filter show them: pinned first (soonest first), then most recent.
+     */
     fun visibleItems(today: LocalDate): List<NewsItem> =
         feed?.items.orEmpty()
-            .filter { it.isVisibleOn(today) }
+            .filter { it.status(today) != NewsStatus.PAST }
             .sortedWith(compareByDescending<NewsItem> { it.pinned }
                 // Among pinned items, the soonest event first.
                 .thenBy { if (it.pinned) it.start ?: it.published else "" }
                 .thenByDescending { it.published })
+
+    /** Events still to come, soonest first. */
+    fun upcomingItems(today: LocalDate): List<NewsItem> =
+        feed?.items.orEmpty().filter { it.status(today) == NewsStatus.UPCOMING }.sortedBy { it.start }
+
+    /** Events under way today, the one ending soonest first. */
+    fun currentEvents(today: LocalDate): List<NewsItem> =
+        feed?.items.orEmpty().filter { it.status(today) == NewsStatus.NOW }.sortedBy { it.lastCurrentDay }
+
+    /** News and events that are over, most recent first, for up to a year. */
+    fun pastItems(today: LocalDate): List<NewsItem> =
+        feed?.items.orEmpty()
+            .filter { it.status(today) == NewsStatus.PAST && !it.isArchivedOn(today) }
+            .sortedByDescending { it.lastCurrentDay }
 
     fun item(id: String): NewsItem? = feed?.items?.firstOrNull { it.id == id }
 

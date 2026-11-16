@@ -132,7 +132,7 @@ internal fun ScreenText.newsDateLine(item: NewsItem): String? {
     return item.publishedDate?.let { newsDate(it) }
 }
 
-/** "In 287 days" / "Tomorrow" / "Happening now" for an event; null for news or a past event. */
+/** "In 287 days" / "Tomorrow" / "Happening now" / "Ended" for an event; null for news. */
 internal fun ScreenText.newsCountdown(item: NewsItem, today: LocalDate): String? {
     if (!item.isEvent) return null
     val start = item.startDate ?: return null
@@ -142,7 +142,7 @@ internal fun ScreenText.newsCountdown(item: NewsItem, today: LocalDate): String?
         days > 1 -> get("screen.news.in_days").replace("{n}", days.toString())
         days == 1 -> get("screen.news.tomorrow")
         today <= end -> get("screen.news.happening_now")
-        else -> null
+        else -> get("screen.news.ended")
     }
 }
 

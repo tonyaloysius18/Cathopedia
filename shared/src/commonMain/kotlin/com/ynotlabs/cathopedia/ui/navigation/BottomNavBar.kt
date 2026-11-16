@@ -38,18 +38,19 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.LocalScreenText
 import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.ui.theme.LocalIsDarkTheme
 import androidx.compose.ui.layout.ContentScale
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.nav_explore
+import com.ynotlabs.cathopedia.resources.bible_icon
 import com.ynotlabs.cathopedia.resources.nav_home
 import com.ynotlabs.cathopedia.resources.nav_prayers
 import com.ynotlabs.cathopedia.resources.nav_search
 import com.ynotlabs.cathopedia.resources.nav_settings
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
-import kotlin.math.abs
 
 @Composable
 fun BottomNavBar(
@@ -75,20 +76,17 @@ fun BottomNavBar(
     // When nothing is selected, we bias towards the center or maintain previous?
     // Let's hide the bubble if selectedIndex is -1.
     val hasSelection = selectedIndex != -1
-    
-    val targetBias = if (!hasSelection) 0f else if (count <= 1) 0f else (-1f + 2f * selectedIndex / (count - 1))
-    val bias by animateFloatAsState(
-        targetValue = targetBias,
-        animationSpec = spring(dampingRatio = 0.78f, stiffness = 350f),
-        label = "pillSlide",
-    )
-    val step = if (count <= 1) 2f else 2f / (count - 1)
 
-    // Animate bubble visibility
-    val bubbleAlpha by animateFloatAsState(
-        targetValue = if (hasSelection) 1f else 0f,
+    // The Holy Bible is a fixed centre coin: it always sits raised in its own notch,
+    // whichever tab is open. The other tabs show selection in place (glow + full opacity).
+    val raisedIndex = items.indexOf(Tab.BIBLE).coerceAtLeast(0)
+    val bias = if (count <= 1) 0f else (-1f + 2f * raisedIndex / (count - 1))
+    val bubbleAlpha = 1f
+    // The centre halo burns a little brighter while the Bible itself is open.
+    val haloStrength by animateFloatAsState(
+        targetValue = if (selected == Tab.BIBLE) 1f else 0.7f,
         animationSpec = tween(durationMillis = 200),
-        label = "bubbleAlpha"
+        label = "bibleHalo",
     )
 
     val barPulse = remember { Animatable(1f) }
@@ -233,9 +231,9 @@ fun BottomNavBar(
                 drawCircle(
                     brush = Brush.radialGradient(
                         colors = listOf(
-                            accentColor.copy(alpha = 0.64f * bubbleAlpha),
-                            accentColor.copy(alpha = 0.34f * bubbleAlpha),
-                            accentColor.copy(alpha = 0.13f * bubbleAlpha),
+                            accentColor.copy(alpha = 0.64f * haloStrength),
+                            accentColor.copy(alpha = 0.34f * haloStrength),
+                            accentColor.copy(alpha = 0.13f * haloStrength),
                             Color.Transparent,
                         ),
                         center = Offset(centerX, bubbleCenterY),
@@ -249,8 +247,8 @@ fun BottomNavBar(
                 drawCircle(
                     brush = Brush.radialGradient(
                         colors = listOf(
-                            accentColor.copy(alpha = 0.52f * bubbleAlpha),
-                            accentColor.copy(alpha = 0.16f * bubbleAlpha),
+                            accentColor.copy(alpha = 0.52f * haloStrength),
+                            accentColor.copy(alpha = 0.16f * haloStrength),
                             Color.Transparent,
                         ),
                         center = Offset(centerX, bubbleCenterY),
@@ -290,10 +288,13 @@ fun BottomNavBar(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             items.forEachIndexed { index, tab ->
-                val itemBias = if (count <= 1) 0f else -1f + 2f * index / (count - 1)
-                val selectedness = (1f - abs(bias - itemBias) / step).coerceIn(0f, 1f)
-
-                val visualSelectedness = if (hasSelection) selectedness else 0f
+                val isRaised = index == raisedIndex
+                val isSelected = index == selectedIndex
+                val selectedness by animateFloatAsState(
+                    targetValue = if (isSelected) 1f else 0f,
+                    animationSpec = spring(dampingRatio = 0.7f, stiffness = 400f),
+                    label = "tabSelected",
+                )
 
                 Box(
                     modifier = Modifier
@@ -307,16 +308,37 @@ fun BottomNavBar(
                 ) {
                     val density = LocalDensity.current
                     val verticalOffset = with(density) {
-                        ((-20).dp * visualSelectedness).toPx()
+                        if (isRaised) (-20).dp.toPx() else ((-3).dp * selectedness).toPx()
                     }
 
                     val iconSize = 44.dp
+
+                    if (!isRaised && selectedness > 0f) {
+                        // In-place selection glow for the four flat tabs.
+                        Canvas(Modifier.size(58.dp).graphicsLayer { translationY = verticalOffset }) {
+                            drawCircle(
+                                brush = Brush.radialGradient(
+                                    colors = listOf(
+                                        accentColor.copy(alpha = 0.50f * selectedness),
+                                        accentColor.copy(alpha = 0.16f * selectedness),
+                                        Color.Transparent,
+                                    ),
+                                    center = center,
+                                    radius = size.minDimension / 2f,
+                                ),
+                                radius = size.minDimension / 2f,
+                            )
+                        }
+                    }
 
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         modifier = Modifier.graphicsLayer {
                             translationY = verticalOffset
-                            alpha = if (hasSelection) (0.82f + (0.18f * selectedness)) else 1f
+                            val scale = if (isRaised) 1f else 1f + 0.06f * selectedness
+                            scaleX = scale
+                            scaleY = scale
+                            alpha = if (isRaised) 1f else 0.74f + 0.26f * selectedness
                         },
                     ) {
                         Image(
@@ -396,9 +418,11 @@ fun FloatingSearchButton(
 }
 
 /** The tab's name in the UI language, for screen readers. */
+@Composable
 private fun tabLabel(tab: Tab, s: Strings): String = when (tab) {
     Tab.HOME -> s.navHome
     Tab.EXPLORE -> s.navExplore
+    Tab.BIBLE -> LocalScreenText.current["screen.bible.title"]
     Tab.PRAYERS -> s.navPrayers
     Tab.SETTINGS -> s.navSettings
 }
@@ -407,6 +431,7 @@ private fun bottomNavIcon(tab: Tab): DrawableResource =
     when (tab.name.lowercase()) {
         "home" -> Res.drawable.nav_home
         "explore" -> Res.drawable.nav_explore
+        "bible" -> Res.drawable.bible_icon
         "prayers" -> Res.drawable.nav_prayers
         "search" -> Res.drawable.nav_search
         "settings" -> Res.drawable.nav_settings

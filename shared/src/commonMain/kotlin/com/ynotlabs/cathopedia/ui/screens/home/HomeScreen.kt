@@ -12,6 +12,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.PaddingValues
@@ -43,7 +45,9 @@ import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.filled.OpenInNew
 import androidx.compose.material.icons.filled.AutoStories
+import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.LocalTextStyle
@@ -67,6 +71,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onSizeChanged
@@ -277,6 +282,7 @@ private fun HomeHero(seasonLabel: String) {
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun DailyReadingsCard(
     readings: DailyMassReadings?,
@@ -333,25 +339,16 @@ private fun DailyReadingsCard(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 18.dp, vertical = 12.dp),
+                .padding(start = 16.dp, end = 16.dp, top = 12.dp, bottom = 4.dp),
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Box(
-                    modifier = Modifier
-                        .size(30.dp)
-                        .background(HomeGold.copy(alpha = 0.14f), CircleShape),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Icon(
-                        imageVector = Icons.Filled.AutoStories,
-                        contentDescription = null,
-                        tint = HomeGold,
-                        modifier = Modifier.size(17.dp),
-                    )
-                }
-
-                Spacer(Modifier.width(10.dp))
-
+                Icon(
+                    imageVector = Icons.Filled.AutoStories,
+                    contentDescription = null,
+                    tint = HomeGold,
+                    modifier = Modifier.size(15.dp),
+                )
+                Spacer(Modifier.width(8.dp))
                 Text(
                     text = s.homeTodaysReadings.uppercase(),
                     color = HomeGold,
@@ -361,7 +358,7 @@ private fun DailyReadingsCard(
                 )
             }
 
-            Spacer(Modifier.height(7.dp))
+            Spacer(Modifier.height(5.dp))
 
             Text(
                 text = readings?.title ?: if (loaded) s.homeTodaysReadings else s.loading,
@@ -374,7 +371,7 @@ private fun DailyReadingsCard(
                 overflow = TextOverflow.Ellipsis,
             )
 
-            Spacer(Modifier.height(6.dp))
+            Spacer(Modifier.height(8.dp))
 
             when {
                 readings == null -> Text(
@@ -391,46 +388,23 @@ private fun DailyReadingsCard(
                     lineHeight = 17.sp,
                 )
 
-                else -> readings.readings.forEachIndexed { index, reference ->
-                    ReadingReferenceRow(
-                        reference = reference,
-                        language = language,
-                        onClick = onReadingSelected?.let { callback -> { callback(reference) } },
-                    )
-                    if (index != readings.readings.lastIndex) {
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(1.dp)
-                                .background(HomeBorder.copy(alpha = 0.42f)),
+                // One chip per reading (book and chapter); a tap opens the reading as before.
+                else -> FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(5.dp),
+                    verticalArrangement = Arrangement.spacedBy(5.dp),
+                ) {
+                    readings.readings.forEach { reference ->
+                        ReadingChip(
+                            reference = reference,
+                            language = language,
+                            onClick = onReadingSelected?.let { callback -> { callback(reference) } },
                         )
                     }
                 }
             }
 
-            readings?.featuredVerse?.let { verse ->
-                Spacer(Modifier.height(6.dp))
-
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(1.dp)
-                        .background(HomeGoldSoft.copy(alpha = 0.38f)),
-                )
-
-                Spacer(Modifier.height(6.dp))
-
-                Text(
-                    text = "${s.homeVerseOfTheDay.uppercase()}  •  ${fullBookNameCitation(verse.citation, language)}",
-                    color = HomeGold,
-                    fontSize = 9.sp,
-                    letterSpacing = 0.7.sp,
-                    fontWeight = FontWeight.Bold,
-                )
-
-                if (verse.text.isNotBlank()) {
-                Spacer(Modifier.height(5.dp))
-
+            readings?.featuredVerse?.takeIf { it.text.isNotBlank() }?.let { verse ->
+                Spacer(Modifier.height(8.dp))
                 Text(
                     text = "“${verse.text}”",
                     color = HomeCream.copy(alpha = 0.94f),
@@ -440,58 +414,62 @@ private fun DailyReadingsCard(
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                 )
-                // The Tamil text is CC BY-SA, which requires the credit to travel with it.
-                if (verse.translation.isNotBlank()) {
-                    Spacer(Modifier.height(3.dp))
-                    Text(
-                        text = verse.translation,
-                        color = HomeGoldSoft.copy(alpha = 0.7f),
-                        fontSize = 10.sp,
-                        lineHeight = 14.sp,
-                    )
-                }
-                }
-            }
-            if (onOpenMass != null && readings != null) {
-                TextButton(
-                    onClick = onOpenMass,
-                    contentPadding = PaddingValues(top = 8.dp),
-                    modifier = Modifier.heightIn(min = 44.dp),
-                ) {
-                    Text(t["screen.mass.celebrate"], color = HomeGold, fontFamily = FontFamily.Serif,
-                        fontSize = 15.sp, lineHeight = 20.sp)
-                    Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = HomeGold,
-                        modifier = Modifier.padding(start = 4.dp).size(20.dp))
-                }
-            }
-            // The Liturgy of the Hours comes from AELF, in French only.
-            if (onOpenHours != null && language == "fr") {
-                TextButton(
-                    onClick = onOpenHours,
-                    contentPadding = PaddingValues(top = 8.dp),
-                    modifier = Modifier.heightIn(min = 44.dp),
-                ) {
-                    Text("Liturgie des Heures", color = HomeGold, fontFamily = FontFamily.Serif,
-                        fontSize = 15.sp, lineHeight = 20.sp)
-                    Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = HomeGold,
-                        modifier = Modifier.padding(start = 4.dp).size(20.dp))
-                }
-            }
-            sourceUrl?.let { url ->
-                TextButton(
-                    onClick = {
-                        openFailed = try { uriHandler.openUri(url); false } catch (_: Exception) { true }
+                Text(
+                    text = buildString {
+                        append(fullBookNameCitation(verse.citation, language))
+                        // The Tamil text is CC BY-SA, which requires the credit to travel with it.
+                        if (verse.translation.isNotBlank()) append("  ·  ${verse.translation}")
                     },
-                    contentPadding = PaddingValues(top = 8.dp),
-                    modifier = Modifier.heightIn(min = 44.dp),
-                ) {
-                    Text(t["screen.home.full_readings"], color = HomeGold, fontFamily = FontFamily.Serif,
-                        fontSize = 15.sp, lineHeight = 20.sp)
-                    Icon(Icons.AutoMirrored.Filled.OpenInNew, null, tint = HomeGold,
-                        modifier = Modifier.padding(start = 8.dp).size(17.dp))
+                    color = HomeGoldSoft.copy(alpha = 0.75f),
+                    fontSize = 10.sp,
+                    lineHeight = 14.sp,
+                    modifier = Modifier.padding(top = 2.dp),
+                )
+            }
+
+            val showHours = onOpenHours != null && language == "fr"
+            if ((onOpenMass != null && readings != null) || showHours || sourceUrl != null) {
+                Spacer(Modifier.height(6.dp))
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(1.dp)
+                        .background(HomeGoldSoft.copy(alpha = 0.3f)),
+                )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    if (onOpenMass != null && readings != null) {
+                        TextButton(
+                            onClick = onOpenMass,
+                            contentPadding = PaddingValues(0.dp),
+                            modifier = Modifier.heightIn(min = 44.dp),
+                        ) {
+                            Text(t["screen.mass.celebrate"], color = HomeGold, fontFamily = FontFamily.Serif,
+                                fontSize = 15.sp, lineHeight = 20.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                            Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = HomeGold,
+                                modifier = Modifier.padding(start = 2.dp).size(20.dp))
+                        }
+                    }
+                    Spacer(Modifier.weight(1f))
+                    // The Liturgy of the Hours comes from AELF, in French only.
+                    if (showHours) {
+                        IconButton(onClick = { onOpenHours?.invoke() }) {
+                            Icon(Icons.Filled.Schedule, contentDescription = "Liturgie des Heures",
+                                tint = HomeGold, modifier = Modifier.size(21.dp))
+                        }
+                    }
+                    sourceUrl?.let { url ->
+                        IconButton(onClick = {
+                            openFailed = try { uriHandler.openUri(url); false } catch (_: Exception) { true }
+                        }) {
+                            Icon(Icons.AutoMirrored.Filled.OpenInNew, contentDescription = t["screen.home.full_readings"],
+                                tint = HomeGold, modifier = Modifier.size(19.dp))
+                        }
+                    }
                 }
                 if (openFailed) Text(t["screen.home.readings_error"], color = HomeCream,
-                    fontSize = 12.sp, lineHeight = 17.sp)
+                    fontSize = 12.sp, lineHeight = 17.sp, modifier = Modifier.padding(bottom = 8.dp))
+            } else {
+                Spacer(Modifier.height(8.dp))
             }
         }
     }
@@ -502,47 +480,45 @@ internal fun fullReadingsUrl(date: LocalDate): String {
     return "https://bible.usccb.org/bible/readings/$key.cfm"
 }
 
+/** "Matthieu 25:14–30 or 25:14–15, 19–21" → "Matthieu 25": enough to recognise the reading at a glance. */
+internal fun bookAndChapter(citation: String, language: String): String =
+    fullBookNameCitation(citation, language)
+        .substringBefore(':').substringBefore(',').substringBefore(" or ").trim()
+
 @Composable
-private fun ReadingReferenceRow(
+private fun ReadingChip(
     reference: ScriptureReference,
     language: String,
     onClick: (() -> Unit)?,
 ) {
     val s = LocalStrings.current
-    val interactionModifier = if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier
-
+    val gospel = reference.kind == ReadingKind.GOSPEL
+    val kind = when (reference.kind) {
+        ReadingKind.FIRST_READING -> s.homeFirstReading
+        ReadingKind.SECOND_READING -> s.homeSecondReading
+        ReadingKind.GOSPEL -> s.homeGospel
+    }
+    val full = fullBookNameCitation(reference.citation, language)
+    val shape = RoundedCornerShape(50)
     Row(
         modifier = Modifier
-            .fillMaxWidth()
-            .then(interactionModifier)
-            .padding(vertical = 7.dp),
+            .clip(shape)
+            .background(if (gospel) HomeGold.copy(alpha = 0.16f) else HomeSurface.copy(alpha = 0.55f))
+            .border(1.dp, HomeGold.copy(alpha = if (gospel) 0.8f else 0.45f), shape)
+            .then(if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier)
+            .semantics(mergeDescendants = true) { contentDescription = "$kind, $full" }
+            .heightIn(min = 30.dp)
+            .padding(horizontal = 10.dp, vertical = 5.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
-            text = when (reference.kind) {
-                ReadingKind.FIRST_READING -> s.homeFirstReading
-                ReadingKind.SECOND_READING -> s.homeSecondReading
-                ReadingKind.GOSPEL -> s.homeGospel
-            }.uppercase(),
-            modifier = Modifier.widthIn(min = 108.dp),
-            color = HomeGoldSoft,
-            fontSize = 9.sp,
-            letterSpacing = 0.65.sp,
-            fontWeight = FontWeight.Bold,
-        )
-
-        Spacer(Modifier.width(12.dp))
-
-        Text(
-            text = fullBookNameCitation(reference.citation, language),
-            modifier = Modifier.weight(1f),
-            color = HomeCream,
+            text = bookAndChapter(reference.citation, language),
+            color = if (gospel) HomeGold else HomeCream,
             fontFamily = FontFamily.Serif,
-            fontSize = 15.sp,
-            lineHeight = 18.sp,
+            fontSize = 13.sp,
+            lineHeight = 16.sp,
             fontWeight = FontWeight.Medium,
-            maxLines = 2,
-            overflow = TextOverflow.Ellipsis,
+            maxLines = 1,
         )
     }
 }

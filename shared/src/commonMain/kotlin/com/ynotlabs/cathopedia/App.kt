@@ -78,6 +78,7 @@ import com.ynotlabs.cathopedia.ui.navigation.NavDirection
 import com.ynotlabs.cathopedia.ui.navigation.BottomNavBar
 import com.ynotlabs.cathopedia.ui.navigation.destination
 import com.ynotlabs.cathopedia.ui.navigation.Destination
+import com.ynotlabs.cathopedia.ui.navigation.isBibleDestination
 import com.ynotlabs.cathopedia.ui.navigation.FloatingSearchButton
 import com.ynotlabs.cathopedia.ui.navigation.rememberAppNavController
 import com.ynotlabs.cathopedia.ui.screens.settings.AboutScreen
@@ -109,6 +110,11 @@ import com.ynotlabs.cathopedia.ui.screens.settings.SettingsScreen
 import com.ynotlabs.cathopedia.ui.screens.startup.SplashScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.CelebrateMassScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.LiturgyOfHoursScreen
+import com.ynotlabs.cathopedia.bible.BibleRef
+import com.ynotlabs.cathopedia.bible.LocalOpenBible
+import com.ynotlabs.cathopedia.ui.screens.bible.BibleBookmarksScreen
+import com.ynotlabs.cathopedia.ui.screens.bible.BibleChapterScreen
+import com.ynotlabs.cathopedia.ui.screens.bible.BibleHomeScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.ProcessionScreen
 import com.ynotlabs.cathopedia.ui.screens.sacraments.SacramentsScreen
 import com.ynotlabs.cathopedia.ui.screens.stations.StationsScreen
@@ -272,6 +278,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
         LocalStrings provides stringsFor(language),
         LocalScreenText provides screenText,
         LocalDensity provides scaledDensity,
+        LocalOpenBible provides { ref -> nav.navigate(Destination.BibleChapter(ref.book, ref.chapter, ref.verse)) },
     ) {
         // System back (Android button/gesture, iOS edge swipe) pops the in-app stack; at the root
         // it falls through to the platform, which leaves the app. The common BackHandler is
@@ -281,7 +288,9 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
 
         val destination = nav.current
         val navDirection = nav.lastDirection
-        val showBottomBar = destination in TAB_DESTINATIONS
+        // The Bible reader is full-screen reading: no bottom bar on the chapter page itself.
+        val showBottomBar = destination in TAB_DESTINATIONS ||
+            (destination.isBibleDestination && destination !is Destination.BibleChapter)
 
         Box(modifier = Modifier.fillMaxSize().nestedScroll(navBarScrollConnection)) {
             AnimatedContent(
@@ -364,6 +373,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     onCategorySelected = { type -> nav.navigate(Destination.EntityList(type)) },
                     onVestmentsSelected = { nav.navigate(Destination.Vestments) },
                     onHubSelected = { hub -> nav.navigate(Destination.Hub(hub.id)) },
+                    onBibleSelected = { nav.navigate(Destination.BibleHome) },
                     listState = exploreScrollState,
                     initialData = exploreData,
                     onDataLoaded = { exploreData = it },
@@ -533,6 +543,25 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                 )
 
                 is Destination.LiturgyOfHours -> LiturgyOfHoursScreen(onBack = nav::back)
+
+                is Destination.BibleHome -> BibleHomeScreen(
+                    repository = repository,
+                    onBack = if (nav.canGoBack) nav::back else null,
+                    onOpenChapter = { ref -> nav.navigate(Destination.BibleChapter(ref.book, ref.chapter, ref.verse)) },
+                    onOpenBookmarks = { nav.navigate(Destination.BibleBookmarks) },
+                )
+
+                is Destination.BibleChapter -> BibleChapterScreen(
+                    repository = repository,
+                    start = BibleRef(current.code, current.chapter, current.verse),
+                    onBack = nav::back,
+                )
+
+                is Destination.BibleBookmarks -> BibleBookmarksScreen(
+                    repository = repository,
+                    onBack = nav::back,
+                    onOpenChapter = { ref -> nav.navigate(Destination.BibleChapter(ref.book, ref.chapter, ref.verse)) },
+                )
 
                 is Destination.ProcessionScreen -> ProcessionScreen(
                     language = language,

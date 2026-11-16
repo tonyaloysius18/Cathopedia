@@ -50,9 +50,12 @@ import com.ynotlabs.cathopedia.ui.screens.common.ArticleGold
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleMuted
 import com.ynotlabs.cathopedia.ui.screens.common.ArticleScaffold
 
-private enum class NewsFilter { ALL, NEWS, EVENTS }
+private enum class NewsFilter { LATEST, UPCOMING, NOW, PAST }
 
-/** Every current news item and event, newest first, with a News / Events filter. */
+/**
+ * The feed with a Latest / Upcoming / Happening now / Past filter. Latest (the
+ * default) is everything not yet over, as on Home; Past keeps a year of history.
+ */
 @Composable
 fun NewsScreen(
     repository: CathopediaRepository,
@@ -63,14 +66,13 @@ fun NewsScreen(
     val s = LocalStrings.current
     val t = LocalScreenText.current
     val today = remember { LiturgicalCalendar.today() }
-    var filter by rememberSaveable { mutableStateOf(NewsFilter.ALL) }
+    var filter by rememberSaveable { mutableStateOf(NewsFilter.LATEST) }
     LaunchedEffect(Unit) { CatholicNews.load(repository) }
-    val items = CatholicNews.visibleItems(today).filter {
-        when (filter) {
-            NewsFilter.ALL -> true
-            NewsFilter.NEWS -> !it.isEvent
-            NewsFilter.EVENTS -> it.isEvent
-        }
+    val items = when (filter) {
+        NewsFilter.LATEST -> CatholicNews.visibleItems(today)
+        NewsFilter.UPCOMING -> CatholicNews.upcomingItems(today)
+        NewsFilter.NOW -> CatholicNews.currentEvents(today)
+        NewsFilter.PAST -> CatholicNews.pastItems(today)
     }
 
     ArticleScaffold(
@@ -82,9 +84,10 @@ fun NewsScreen(
         item {
             FilterChipsRow(
                 options = listOf(
-                    t["screen.news.filter_all"] to NewsFilter.ALL,
-                    t["screen.news.filter_news"] to NewsFilter.NEWS,
-                    t["screen.news.filter_events"] to NewsFilter.EVENTS,
+                    t["screen.news.filter_latest"] to NewsFilter.LATEST,
+                    t["screen.news.filter_upcoming"] to NewsFilter.UPCOMING,
+                    t["screen.news.filter_now"] to NewsFilter.NOW,
+                    t["screen.news.filter_past"] to NewsFilter.PAST,
                 ),
                 selected = filter,
                 onSelect = { filter = it },
@@ -93,7 +96,7 @@ fun NewsScreen(
         }
         if (CatholicNews.feed != null && items.isEmpty()) {
             item {
-                Text(t["screen.news.empty"], color = ArticleMuted, fontSize = 14.sp,
+                Text(t[if (filter == NewsFilter.LATEST) "screen.news.empty" else "screen.news.empty_filter"], color = ArticleMuted, fontSize = 14.sp,
                     modifier = Modifier.padding(vertical = 24.dp))
             }
         }

@@ -14,6 +14,8 @@ data class ReadingText(
     /** The reference begins or ends mid-verse; whole verses are shown. */
     val partial: Boolean,
     val translation: String,
+    /** The WEB book code of the first verse (GEN, JOH…), to open the whole chapter in the Bible. */
+    val book: String = "",
 )
 
 @Serializable
@@ -52,7 +54,8 @@ object ReadingTexts {
                 data.verses["$book $chapter:$v"]?.let { ReadingVerse(chapter, v, it, stanza) }
             }
         }
-        return ReadingText(verses, entry.p, data.translation).takeIf { verses.isNotEmpty() }
+        val book = entry.r.firstOrNull()?.substringBefore(' ').orEmpty()
+        return ReadingText(verses, entry.p, data.translation, book).takeIf { verses.isNotEmpty() }
     }
 
     private suspend fun load(): ReadingTextsFile = mutex.withLock {

@@ -145,7 +145,15 @@
   "name": "Celestino Migliore",
   "born": "1952-07-01",
   "nationality": "Italy",
-  "wikidata": "Q962293"
+  "wikidata": "Q962293",
+  "photo": {
+   "id": "celestino_migliore",
+   "file": "Abp Celestino Migliore.jpg",
+   "author": "Piotr Drabik",
+   "license": "CC BY 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=48107850"
+  }
  },
  {
   "title": "Charles John Brown",
@@ -373,7 +381,15 @@
   "name": "Giampiero Gloder",
   "born": "1958-05-15",
   "nationality": "Italy",
-  "wikidata": "Q9267806"
+  "wikidata": "Q9267806",
+  "photo": {
+   "id": "giampiero_gloder",
+   "file": "Giampiero Gloder and Maia Sandu, September 2024.jpg",
+   "author": "President Office of Moldova",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=199138988"
+  }
  },
  {
   "title": "Gian Luca Perici",
@@ -592,7 +608,15 @@
   "name": "José Avelino Bettencourt",
   "born": "1962-05-23",
   "nationality": "Canada",
-  "wikidata": "Q1574015"
+  "wikidata": "Q1574015",
+  "photo": {
+   "id": "jose_avelino_bettencourt",
+   "file": "The Most Reverend José Avelino Bettencourt.jpg",
+   "author": "Joseavelinobettencourt",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=70037345"
+  }
  },
  {
   "title": "Juan Antonio Cruz Serrano",
@@ -620,7 +644,15 @@
   "name": "Kevin Stuart Randall",
   "born": "1966-05-06",
   "nationality": "United States",
-  "wikidata": "Q121410243"
+  "wikidata": "Q121410243",
+  "photo": {
+   "id": "kevin_stuart_randall",
+   "file": "Archbishop Kevin Stuart Randall Vatican Envoy meets Foreign Minister Dr Hasan Mahmud Dhaka 2024-02-06 (PID-0010855).jpg",
+   "author": "Press Information Department",
+   "license": "Public domain",
+   "licenseUrl": "",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=176865886"
+  }
  },
  {
   "title": "Kryspin Witold Dubiel",
@@ -709,7 +741,15 @@
   "name": "Luís Miguel Muñoz Cárdaba",
   "born": "1965-08-25",
   "nationality": "Spain",
-  "wikidata": "Q89100030"
+  "wikidata": "Q89100030",
+  "photo": {
+   "id": "luis_miguel_munoz_cardaba",
+   "file": "Luis Miguel Muñoz Cárdaba, 2020 1 (cropped).jpg",
+   "author": "Emiliano  García-Page Sánchez from Toledo, España",
+   "license": "CC BY-SA 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=144518590"
+  }
  },
  {
   "title": "Marek Solczyński",
@@ -731,14 +771,30 @@
   "name": "Marek Zalewski",
   "born": "1963-02-02",
   "nationality": "Poland",
-  "wikidata": "Q11768606"
+  "wikidata": "Q11768606",
+  "photo": {
+   "id": "marek_zalewski",
+   "file": "Ksiadz marek zalewski.jpg",
+   "author": "ZB011",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=67757273"
+  }
  },
  {
   "title": "Mark Miles",
   "name": "Mark Miles",
   "born": "1967-05-13",
   "nationality": "Gibraltar",
-  "wikidata": "Q21016947"
+  "wikidata": "Q21016947",
+  "photo": {
+   "id": "mark_miles",
+   "file": "Mark Miles (cropped).jpg",
+   "author": "U.S. Department of State",
+   "license": "Public domain",
+   "licenseUrl": "",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=50881631"
+  }
  },
  {
   "title": "Martin Krebs",
@@ -766,7 +822,15 @@
   "name": "Michael Banach",
   "born": "1962-11-19",
   "nationality": "United States",
-  "wikidata": "Q1929703"
+  "wikidata": "Q1929703",
+  "photo": {
+   "id": "michael_banach",
+   "file": "Michael Banach FotoThalerTamas.jpg",
+   "author": "Thaler Tamas",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=154123461"
+  }
  },
  {
   "title": "Michael Francis Crotty",
@@ -780,21 +844,45 @@
   "name": "Miguel Maury Buendía",
   "born": "1955-11-19",
   "nationality": "Spain",
-  "wikidata": "Q382142"
+  "wikidata": "Q382142",
+  "photo": {
+   "id": "miguel_maury_buendia",
+   "file": "Miguel Maury Buendía (2024) (cropped).jpg",
+   "author": "International Maritime Organization",
+   "license": "CC BY 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=155852571"
+  }
  },
  {
   "title": "Mirosław Adamczyk",
   "name": "Mirosław Adamczyk",
   "born": "1962-07-16",
   "nationality": "Poland",
-  "wikidata": "Q5120295"
+  "wikidata": "Q5120295",
+  "photo": {
+   "id": "mirosaw_adamczyk",
+   "file": "X. Mirosław Adamczyk.jpg",
+   "author": "Embassy of Poland, Buenos Aires",
+   "license": "CC BY 3.0 pl",
+   "licenseUrl": "https://creativecommons.org/licenses/by/3.0/pl/deed.en",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=110293687"
+  }
  },
  {
   "title": "Mirosław Stanisław Wachowski",
   "name": "Mirosław Stanisław Wachowski",
   "born": "1970-05-08",
   "nationality": "Poland",
-  "wikidata": "Q72160706"
+  "wikidata": "Q72160706",
+  "photo": {
+   "id": "mirosaw_stanisaw_wachowski",
+   "file": "Miroslaw Wachowski (2017).jpg",
+   "author": "OSCE Parliamentary Assembly",
+   "license": "CC BY-SA 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=182745455"
+  }
  },
  {
   "title": "Mitja Leskovar",
@@ -808,14 +896,30 @@
   "name": "Nicola Girasoli",
   "born": "1957-07-21",
   "nationality": "Italy",
-  "wikidata": "Q1986580"
+  "wikidata": "Q1986580",
+  "photo": {
+   "id": "nicola_girasoli",
+   "file": "Nicola Girasoli - Inauguración “Las relaciones entre el Perú y la Santa Sede”.jpg",
+   "author": "Ministerio de Relaciones Exteriores",
+   "license": "CC BY-SA 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=66383722"
+  }
  },
  {
   "title": "Nicolas Thévenin",
   "name": "Nicolas Thévenin",
   "born": "1958-06-05",
   "nationality": "France",
-  "wikidata": "Q1108099"
+  "wikidata": "Q1108099",
+  "photo": {
+   "id": "nicolas_thevenin",
+   "file": "Mons. Nicolás Thevenin.JPG",
+   "author": "Lic.Aquino",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=37239542"
+  }
  },
  {
   "title": "Paolo Borgia",
@@ -829,7 +933,15 @@
   "name": "Paolo Rocco Gualtieri",
   "born": "1961-02-01",
   "nationality": "Italy",
-  "wikidata": "Q19799547"
+  "wikidata": "Q19799547",
+  "photo": {
+   "id": "paolo_rocco_gualtieri",
+   "file": "Paolo Rocco Gualtieri.jpg",
+   "author": "Mervyn Marie, Seychelles News Agency",
+   "license": "CC BY 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=121458350"
+  }
  },
  {
   "title": "Paul Butnaru",
@@ -843,28 +955,60 @@
   "name": "Pedro López Quintana",
   "born": "1953-07-27",
   "nationality": "Spain",
-  "wikidata": "Q555166"
+  "wikidata": "Q555166",
+  "photo": {
+   "id": "pedro_lopez_quintana",
+   "file": "Pedro López Quintana (cropped).jpg",
+   "author": "Saeima (Reinis Inkēns, Saeimas Kanceleja)",
+   "license": "CC BY-SA 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=52528500"
+  }
  },
  {
   "title": "Peter Bryan Wells",
   "name": "Peter Bryan Wells",
   "born": "1963-05-12",
   "nationality": "United States",
-  "wikidata": "Q3900827"
+  "wikidata": "Q3900827",
+  "photo": {
+   "id": "peter_bryan_wells",
+   "file": "Archbishop Peter Wells (cropped).jpg",
+   "author": "Afbrat52",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=110187622"
+  }
  },
  {
   "title": "Piergiorgio Bertoldi",
   "name": "Piergiorgio Bertoldi",
   "born": "1963-07-26",
   "nationality": "Italy",
-  "wikidata": "Q19829388"
+  "wikidata": "Q19829388",
+  "photo": {
+   "id": "piergiorgio_bertoldi",
+   "file": "Piergiorgio Bertoldi (cropped).JPG",
+   "author": "Servizio fotografico vaticano",
+   "license": "CC BY 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=110190163"
+  }
  },
  {
   "title": "Piero Pioppo",
   "name": "Piero Pioppo",
   "born": "1960-09-29",
   "nationality": "Italy",
-  "wikidata": "Q553467"
+  "wikidata": "Q553467",
+  "photo": {
+   "id": "piero_pioppo",
+   "file": "Piero Pioppo.jpg",
+   "author": "Medelam",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=67292832"
+  }
  },
  {
   "title": "Relwendé Kisito Ouédraogo",
@@ -878,14 +1022,30 @@
   "name": "Richard Allen Gyhra",
   "born": "",
   "nationality": "United States",
-  "wikidata": "Q126955690"
+  "wikidata": "Q126955690",
+  "photo": {
+   "id": "richard_allen_gyhra",
+   "file": "Presentation of Credentials by the Holy See (53982631851) (cropped).jpg",
+   "author": "The Official CTBTO Photostream",
+   "license": "CC BY 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=155491790"
+  }
  },
  {
   "title": "Roberto Campisi",
   "name": "Roberto Campisi",
   "born": "1978-00-00",
   "nationality": "Italy",
-  "wikidata": "Q93266108"
+  "wikidata": "Q93266108",
+  "photo": {
+   "id": "roberto_campisi",
+   "file": "Roberto Campisi 2023.jpeg",
+   "author": "Embajada República Checa ante la Santa Sede",
+   "license": "CC BY 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=199479289"
+  }
  },
  {
   "title": "Rubén Darío Ruiz Mainardi",
@@ -906,14 +1066,30 @@
   "name": "Santo Gangemi",
   "born": "1961-08-16",
   "nationality": "Italy",
-  "wikidata": "Q979303"
+  "wikidata": "Q979303",
+  "photo": {
+   "id": "santo_rocco_gangemi",
+   "file": "Santo Rocco Gangemi (cropped).jpg",
+   "author": "Presidencia El Salvador",
+   "license": "CC0",
+   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=112998382"
+  }
  },
  {
   "title": "Simón Bolívar Sánchez Carrión",
   "name": "Simón Bolívar Sánchez Carrión",
   "born": "1971-12-24",
   "nationality": "Ecuador",
-  "wikidata": "Q130535808"
+  "wikidata": "Q130535808",
+  "photo": {
+   "id": "simon_bolivar_sanchez_carrion",
+   "file": "Monseñor Sánchez en la UNICAH.jpg",
+   "author": "Lmpesantezt",
+   "license": "CC0",
+   "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=194966917"
+  }
  },
  {
   "title": "Séamus Patrick Horgan",
@@ -942,7 +1118,15 @@
   "name": "Tomasz Grysa",
   "born": "1970-10-16",
   "nationality": "Poland",
-  "wikidata": "Q9359320"
+  "wikidata": "Q9359320",
+  "photo": {
+   "id": "tomasz_grysa",
+   "file": "Tomasz Grysa (2023).jpg",
+   "author": "Seychelles Nation",
+   "license": "CC BY 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=129617479"
+  }
  },
  {
   "title": "Vincenzo Turturro",
@@ -956,27 +1140,59 @@
   "name": "Visvaldas Kulbokas",
   "born": "1974-05-14",
   "nationality": "Lithuania",
-  "wikidata": "Q107245257"
+  "wikidata": "Q107245257",
+  "photo": {
+   "id": "visvaldas_kulbokas",
+   "file": "Nuncjusz UA.jpg",
+   "author": "Szyszka8075",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=110198064"
+  }
  },
  {
   "title": "Waldemar Stanisław Sommertag",
   "name": "Waldemar Stanisław Sommertag",
   "born": "1968-02-06",
   "nationality": "Poland",
-  "wikidata": "Q48782452"
+  "wikidata": "Q48782452",
+  "photo": {
+   "id": "waldemar_stanisaw_sommertag",
+   "file": "Waldemar Stanisław Sommertag.png",
+   "author": "Houston Castillo",
+   "license": "Public domain",
+   "licenseUrl": "",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=146099803"
+  }
  },
  {
   "title": "Walter Erbì",
   "name": "Walter Erbì",
   "born": "1968-01-08",
   "nationality": "Italy",
-  "wikidata": "Q113119459"
+  "wikidata": "Q113119459",
+  "photo": {
+   "id": "walter_erbi",
+   "file": "Walter Erbì (2026).jpg",
+   "author": "Medelam",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=202231554"
+  }
  },
  {
   "title": "Wojciech Załuski",
   "name": "Wojciech Załuski",
   "born": "1960-04-05",
   "nationality": "Poland",
-  "wikidata": "Q9376998"
+  "wikidata": "Q9376998",
+  "photo": {
+   "id": "wojciech_zauski",
+   "file": "Diocesan Pre Synodal Assembly (52159974789) (cropped).jpg",
+   "author": "John Ragai from Petaling Jaya, Malaysia",
+   "license": "CC BY 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+   "page": "https://commons.wikimedia.org/w/index.php?curid=130659006"
+  }
  }
 ]

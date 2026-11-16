@@ -74,7 +74,8 @@ fun ArticleScaffold(
     title: String,
     subtitle: String,
     backDescription: String,
-    onBack: () -> Unit,
+    /** Null hides the back button, e.g. on a page that is the root of a bottom-bar tab. */
+    onBack: (() -> Unit)?,
     modifier: Modifier = Modifier,
     listState: LazyListState = rememberLazyListState(),
     horizontalPadding: Dp = 20.dp,
@@ -234,7 +235,7 @@ private fun ArticleHeaderPanel(
     title: String,
     subtitle: String,
     backDescription: String,
-    onBack: () -> Unit,
+    onBack: (() -> Unit)?,
     modifier: Modifier = Modifier,
 ) {
     var titleLineCount by remember { mutableIntStateOf(1) }
@@ -256,11 +257,13 @@ private fun ArticleHeaderPanel(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.Top,
         ) {
-            CathopediaBackButton(
-                onClick = onBack,
-                contentDescription = backDescription,
-            )
-            Spacer(Modifier.width(10.dp))
+            if (onBack != null) {
+                CathopediaBackButton(
+                    onClick = onBack,
+                    contentDescription = backDescription,
+                )
+                Spacer(Modifier.width(10.dp))
+            }
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = title,

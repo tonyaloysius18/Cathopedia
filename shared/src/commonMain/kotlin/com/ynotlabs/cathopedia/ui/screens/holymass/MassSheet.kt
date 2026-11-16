@@ -389,5 +389,6 @@ private fun SheetReading(reading: LectionaryReading, scale: Float) {
             color = colors.onSurface, fontFamily = FontFamily.Serif,
             fontSize = (17 * scale).sp, lineHeight = (26 * scale).sp,
         )
+        WholeChapterLink(it, scale)
     }
 }

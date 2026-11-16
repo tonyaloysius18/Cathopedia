@@ -27,7 +27,7 @@ cached copy.
 | `pinned` | Pinned items come first, soonest `start` first; the rest are sorted newest `published` first. |
 | `published` | `YYYY-MM-DD`. |
 | `start`, `end` | Event dates (`end` optional). |
-| `expires` | Last day shown. **Always set it**: stale news is worse than none. |
+| `expires` | Last day a **news** item is current; the day after, it moves to **Past**. Events move to Past the day after their `end` (or `start`). **Always set it, on events too**: app builds from before the Past filter (Nov 2026) drop an item entirely after `expires`. A news item without it stays current for 30 days after `published`. |
 | `image` | `null`, or `"images/<id>.webp"` (960×540; a transparent left side lets the card colour show behind the title). Freely licensed Commons photos are fine. |
 | `imageAuthor`, `imageLicense`, `imageSource` | Credit for `image`, shown on the detail page as "Photo: author · licence · Wikimedia Commons" and linking to `imageSource`. Required for any CC photo. |
 | `badge`, `badgeCredit` | An official logo (transparent WebP) shown on the card. Use a light theme (like `"wyd"`) for logos made for white (e.g. `"images/wyd-seoul-2027-logo.webp"`) and its credit line on the detail page. Only with the owner's consent; delete both fields on `main` to withdraw it from every install. |
@@ -36,7 +36,22 @@ cached copy.
 | `url` | Per-language map of official links; `en` is the fallback. |
 | `title`, `location`, `summary`, `body` | Per-language maps (en, fr, es, it, pt, de, nl, pl, ta). Missing languages fall back to English. Separate `body` paragraphs with a blank line (`\n\n`). |
 
-Home shows the first 5 visible items.
+## Current, upcoming and past
+
+Each item's status comes from its own dates (`NewsItem.status`):
+
+| Status | Rule |
+| --- | --- |
+| Upcoming | an event whose `start` is after today |
+| Happening now | an event between `start` and `end` |
+| Current | a news item on or before `expires` |
+| Past | anything after that |
+
+Home shows the first 5 items that are **not past**. The News screen has a
+filter: **Latest** (default: everything not past, as on Home), **Upcoming**
+(soonest first), **Happening now** and **Past** (most recent first). Past
+items stay under Past for a year after they end, then leave the app, so
+there's no need to delete them by hand; a past event shows an "Ended" pill.
 
 ## Editorial rules
 

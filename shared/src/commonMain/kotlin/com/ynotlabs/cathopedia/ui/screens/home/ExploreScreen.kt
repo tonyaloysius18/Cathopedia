@@ -66,8 +66,11 @@ import com.ynotlabs.cathopedia.model.ContentType
 import com.ynotlabs.cathopedia.model.HubSummary
 import com.ynotlabs.cathopedia.ui.displayName
 import com.ynotlabs.cathopedia.ui.label
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.resources.explore_bible
+import com.ynotlabs.cathopedia.resources.bible_icon
 import com.ynotlabs.cathopedia.resources.explore_apostles
 import com.ynotlabs.cathopedia.resources.explore_churches
 import com.ynotlabs.cathopedia.resources.explore_eucharistic
@@ -129,6 +132,7 @@ fun ExploreScreen(
     onCategorySelected: (ContentType) -> Unit,
     onVestmentsSelected: () -> Unit,
     onHubSelected: (HubSummary) -> Unit,
+    onBibleSelected: () -> Unit = {},
     listState: LazyListState = rememberLazyListState(),
     initialData: ExploreData? = null,
     onDataLoaded: (ExploreData) -> Unit = {},
@@ -179,6 +183,17 @@ fun ExploreScreen(
             val catechism = hubs.find { it.id == "catechism" }
             val remainingHubs = hubs.filterNot {
                 it.id in setOf("holy_see", "catechism", "symbols", "mass", "biblical", "priesthood")
+            }
+
+            item(key = "bible") {
+                ArtExploreCard(
+                    title = t["screen.bible.title"],
+                    subtitle = t["screen.bible.explore_subtitle"],
+                    artwork = Res.drawable.explore_bible,
+                    icon = Res.drawable.bible_icon,
+                    accent = MaterialTheme.colorScheme.primary,
+                    onClick = onBibleSelected,
+                )
             }
 
             holySee?.let { hub ->
@@ -969,6 +984,19 @@ private fun HubExploreCard(
         else -> null
     }
 
+    ArtExploreCard(title, subtitle, artwork, icon, accent, onClick)
+}
+
+/** The wide Explore card: artwork on the right, icon top left, title and subtitle bottom left. */
+@Composable
+private fun ArtExploreCard(
+    title: String,
+    subtitle: String?,
+    artwork: DrawableResource,
+    icon: DrawableResource?,
+    accent: Color,
+    onClick: () -> Unit,
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()

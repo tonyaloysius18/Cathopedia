@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "updated": "2026-11-15T17:00:00Z",
+ "updated": "2026-11-15T18:48:57Z",
  "photosVersion": 1,
  "places": {
   "ASEAN": {
@@ -2305,7 +2305,7 @@
  },
  "envoys": [
   {
-   "id": "walter_erbì",
+   "id": "walter_erbi",
    "name": "Walter Erbì",
    "born": "1968-01-08",
    "nationality": "Italy",
@@ -2321,10 +2321,17 @@
      "kind": "nunciature",
      "since": "2026-07-01"
     }
-   ]
+   ],
+   "photo": {
+    "path": "walter_erbi.webp",
+    "author": "Medelam",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=202231554"
+   }
   },
   {
-   "id": "mirosław_adamczyk",
+   "id": "mirosaw_adamczyk",
    "name": "Mirosław Adamczyk",
    "born": "1962-07-16",
    "nationality": "Poland",
@@ -2335,7 +2342,14 @@
      "kind": "nunciature",
      "since": "2026-01-14"
     }
-   ]
+   ],
+   "photo": {
+    "path": "mirosaw_adamczyk.webp",
+    "author": "Embassy of Poland, Buenos Aires",
+    "license": "CC BY 3.0 pl",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/pl/deed.en",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=110293687"
+   }
   },
   {
    "id": "javier_herrera_corona",
@@ -2394,10 +2408,17 @@
      "kind": "nunciature",
      "since": "2026-05-14"
     }
-   ]
+   ],
+   "photo": {
+    "path": "michael_banach.webp",
+    "author": "Thaler Tamas",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=154123461"
+   }
   },
   {
-   "id": "pedro_lópez_quintana",
+   "id": "pedro_lopez_quintana",
    "name": "Pedro López Quintana",
    "born": "1953-07-27",
    "nationality": "Spain",
@@ -2408,7 +2429,14 @@
      "kind": "nunciature",
      "since": "2019-03-04"
     }
-   ]
+   ],
+   "photo": {
+    "path": "pedro_lopez_quintana.webp",
+    "author": "Saeima (Reinis Inkēns, Saeimas Kanceleja)",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=52528500"
+   }
   },
   {
    "id": "kevin_stuart_randall",
@@ -2422,7 +2450,14 @@
      "kind": "nunciature",
      "since": "2023-08-13"
     }
-   ]
+   ],
+   "photo": {
+    "path": "kevin_stuart_randall.webp",
+    "author": "Press Information Department",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=176865886"
+   }
   },
   {
    "id": "ignazio_ceffalia",
@@ -2571,7 +2606,7 @@
    ]
   },
   {
-   "id": "josé_avelino_bettencourt",
+   "id": "jose_avelino_bettencourt",
    "name": "José Avelino Bettencourt",
    "born": "1962-05-23",
    "nationality": "Canada",
@@ -2587,7 +2622,14 @@
      "kind": "nunciature_nonres",
      "since": "2023-08-30"
     }
-   ]
+   ],
+   "photo": {
+    "path": "jose_avelino_bettencourt.webp",
+    "author": "Joseavelinobettencourt",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=70037345"
+   }
   },
   {
    "id": "ivan_jurkovic",
@@ -2683,7 +2725,14 @@
      "kind": "nunciature",
      "since": "2024-07-09"
     }
-   ]
+   ],
+   "photo": {
+    "path": "mark_miles.webp",
+    "author": "U.S. Department of State",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=50881631"
+   }
   },
   {
    "id": "paul_butnaru",
@@ -2787,7 +2836,14 @@
      "since": "2023-05-18",
      "seat": "Dominican Republic"
     }
-   ]
+   ],
+   "photo": {
+    "path": "piergiorgio_bertoldi.webp",
+    "author": "Servizio fotografico vaticano",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=110190163"
+   }
   },
   {
    "id": "dagoberto_campos_salas",
@@ -2811,7 +2867,7 @@
    }
   },
   {
-   "id": "nicolas_thévenin",
+   "id": "nicolas_thevenin",
    "name": "Nicolas Thévenin",
    "born": "1958-06-05",
    "nationality": "France",
@@ -2833,7 +2889,14 @@
      "kind": "nunciature_nonres",
      "since": "2023-05-22"
     }
-   ]
+   ],
+   "photo": {
+    "path": "nicolas_thevenin.webp",
+    "author": "Lic.Aquino",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=37239542"
+   }
   },
   {
    "id": "giancarlo_dellagiovanna",
@@ -2927,7 +2990,14 @@
      "kind": "nunciature",
      "since": "2020-01-11"
     }
-   ]
+   ],
+   "photo": {
+    "path": "celestino_migliore.webp",
+    "author": "Piotr Drabik",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=48107850"
+   }
   },
   {
    "id": "relwendé_kisito_ouédraogo",
@@ -3010,7 +3080,7 @@
    ]
   },
   {
-   "id": "miguel_maury_buendía",
+   "id": "miguel_maury_buendia",
    "name": "Miguel Maury Buendía",
    "born": "1955-11-19",
    "nationality": "Spain",
@@ -3021,7 +3091,14 @@
      "kind": "nunciature",
      "since": "2023-04-13"
     }
-   ]
+   ],
+   "photo": {
+    "path": "miguel_maury_buendia.webp",
+    "author": "International Maritime Organization",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=155852571"
+   }
   },
   {
    "id": "francisco_montecillo_padilla",
@@ -3085,7 +3162,7 @@
    }
   },
   {
-   "id": "simón_bolívar_sánchez_carrión",
+   "id": "simon_bolivar_sanchez_carrion",
    "name": "Simón Bolívar Sánchez Carrión",
    "born": "1971-12-24",
    "nationality": "Ecuador",
@@ -3096,7 +3173,14 @@
      "kind": "nunciature",
      "since": "2024-10-15"
     }
-   ]
+   ],
+   "photo": {
+    "path": "simon_bolivar_sanchez_carrion.webp",
+    "author": "Lmpesantezt",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=194966917"
+   }
   },
   {
    "id": "franco_coppola",
@@ -3120,7 +3204,7 @@
    }
   },
   {
-   "id": "waldemar_stanisław_sommertag",
+   "id": "waldemar_stanisaw_sommertag",
    "name": "Waldemar Stanisław Sommertag",
    "born": "1968-02-06",
    "nationality": "Poland",
@@ -3131,10 +3215,17 @@
      "kind": "nunciature",
      "since": "2026-11-14"
     }
-   ]
+   ],
+   "photo": {
+    "path": "waldemar_stanisaw_sommertag.webp",
+    "author": "Houston Castillo",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=146099803"
+   }
   },
   {
-   "id": "mirosław_stanisław_wachowski",
+   "id": "mirosaw_stanisaw_wachowski",
    "name": "Mirosław Stanisław Wachowski",
    "born": "1970-05-08",
    "nationality": "Poland",
@@ -3145,7 +3236,14 @@
      "kind": "nunciature",
      "since": "2025-09-18"
     }
-   ]
+   ],
+   "photo": {
+    "path": "mirosaw_stanisaw_wachowski.webp",
+    "author": "OSCE Parliamentary Assembly",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=182745455"
+   }
   },
   {
    "id": "jan_romeo_pawowski",
@@ -3338,7 +3436,7 @@
    }
   },
   {
-   "id": "wojciech_załuski",
+   "id": "wojciech_zauski",
    "name": "Wojciech Załuski",
    "born": "1960-04-05",
    "nationality": "Poland",
@@ -3354,7 +3452,14 @@
      "kind": "nunciature_nonres",
      "since": "2026-04-25"
     }
-   ]
+   ],
+   "photo": {
+    "path": "wojciech_zauski.webp",
+    "author": "John Ragai from Petaling Jaya, Malaysia",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=130659006"
+   }
   },
   {
    "id": "joseph_spiteri",
@@ -3392,7 +3497,7 @@
    }
   },
   {
-   "id": "luís_miguel_muñoz_cárdaba",
+   "id": "luis_miguel_munoz_cardaba",
    "name": "Luís Miguel Muñoz Cárdaba",
    "born": "1965-08-25",
    "nationality": "Spain",
@@ -3403,7 +3508,14 @@
      "kind": "nunciature",
      "since": "2024-01-23"
     }
-   ]
+   ],
+   "photo": {
+    "path": "luis_miguel_munoz_cardaba.webp",
+    "author": "Emiliano  García-Page Sánchez from Toledo, España",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=144518590"
+   }
   },
   {
    "id": "santiago_de_wit_guzmán",
@@ -3583,7 +3695,14 @@
      "kind": "nunciature",
      "since": "2022-08-06"
     }
-   ]
+   ],
+   "photo": {
+    "path": "paolo_rocco_gualtieri.webp",
+    "author": "Mervyn Marie, Seychelles News Agency",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=121458350"
+   }
   },
   {
    "id": "charles_john_brown",
@@ -3665,7 +3784,14 @@
      "kind": "nunciature_nonres",
      "since": "2024-02-23"
     }
-   ]
+   ],
+   "photo": {
+    "path": "giampiero_gloder.webp",
+    "author": "President Office of Moldova",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=199138988"
+   }
   },
   {
    "id": "giovanni_d_aniello",
@@ -3708,7 +3834,7 @@
    ]
   },
   {
-   "id": "santo_gangemi",
+   "id": "santo_rocco_gangemi",
    "name": "Santo Gangemi",
    "born": "1961-08-16",
    "nationality": "Italy",
@@ -3719,10 +3845,17 @@
      "kind": "nunciature",
      "since": "2022-09-12"
     }
-   ]
+   ],
+   "photo": {
+    "path": "santo_rocco_gangemi.webp",
+    "author": "Presidencia El Salvador",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=112998382"
+   }
   },
   {
-   "id": "marek_zalewski_(bishop)",
+   "id": "marek_zalewski",
    "name": "Marek Zalewski",
    "born": "1963-02-02",
    "nationality": "Poland",
@@ -3738,7 +3871,14 @@
      "kind": "pontifical_representative",
      "since": "2018-05-21"
     }
-   ]
+   ],
+   "photo": {
+    "path": "marek_zalewski.webp",
+    "author": "ZB011",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=67757273"
+   }
   },
   {
    "id": "nicola_girasoli",
@@ -3752,7 +3892,14 @@
      "kind": "nunciature",
      "since": "2022-07-02"
     }
-   ]
+   ],
+   "photo": {
+    "path": "nicola_girasoli.webp",
+    "author": "Ministerio de Relaciones Exteriores",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=66383722"
+   }
   },
   {
    "id": "luigi_bianco",
@@ -3865,7 +4012,14 @@
      "kind": "nunciature_nonres",
      "since": "2025-09-15"
     }
-   ]
+   ],
+   "photo": {
+    "path": "piero_pioppo.webp",
+    "author": "Medelam",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=67292832"
+   }
   },
   {
    "id": "andrzej_jozwowicz",
@@ -3990,7 +4144,14 @@
      "kind": "nunciature_nonres",
      "since": "2023-02-08"
     }
-   ]
+   ],
+   "photo": {
+    "path": "peter_bryan_wells.webp",
+    "author": "Afbrat52",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=110187622"
+   }
   },
   {
    "id": "marek_solczynski",
@@ -4049,7 +4210,14 @@
      "kind": "observer",
      "since": "2025-09-27"
     }
-   ]
+   ],
+   "photo": {
+    "path": "roberto_campisi.webp",
+    "author": "Embajada República Checa ante la Santa Sede",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=199479289"
+   }
   },
   {
    "id": "tomasz_grysa",
@@ -4063,7 +4231,14 @@
      "kind": "nunciature",
      "since": "2026-05-14"
     }
-   ]
+   ],
+   "photo": {
+    "path": "tomasz_grysa.webp",
+    "author": "Seychelles Nation",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=129617479"
+   }
   },
   {
    "id": "visvaldas_kulbokas",
@@ -4077,7 +4252,14 @@
      "kind": "nunciature",
      "since": "2021-06-15"
     }
-   ]
+   ],
+   "photo": {
+    "path": "visvaldas_kulbokas.webp",
+    "author": "Szyszka8075",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=110198064"
+   }
   },
   {
    "id": "grzegorz_piotr_bielaszka",
@@ -4147,7 +4329,14 @@
      "kind": "observer",
      "since": "2024-07-01"
     }
-   ]
+   ],
+   "photo": {
+    "path": "richard_allen_gyhra.webp",
+    "author": "The Official CTBTO Photostream",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/w/index.php?curid=155491790"
+   }
   },
   {
    "id": "gabriele_giordano_caccia",

@@ -83,6 +83,8 @@ import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.mass_calendar_icon
 import org.jetbrains.compose.resources.painterResource
 import com.ynotlabs.cathopedia.i18n.LocalScreenText
+import com.ynotlabs.cathopedia.bible.BibleRef
+import com.ynotlabs.cathopedia.bible.LocalOpenBible
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.liturgical.LectionaryReading
 import com.ynotlabs.cathopedia.liturgical.ReadingTexts
@@ -843,6 +845,7 @@ private fun ReadingBlock(reading: LectionaryReading, language: String, scale: Fl
                 fontSize = (19 * scale).sp,
                 lineHeight = (29 * scale).sp,
             )
+            WholeChapterLink(current, scale)
             Spacer(Modifier.height(12.dp))
             Text(
                 text.readingStudyNote,
@@ -853,6 +856,23 @@ private fun ReadingBlock(reading: LectionaryReading, language: String, scale: Fl
             )
         }
     }
+}
+
+/** "Read the whole chapter" under a reading: opens the Bible reader at the reading's first verse. */
+@Composable
+internal fun WholeChapterLink(passage: ReadingText, scale: Float) {
+    val open = LocalOpenBible.current ?: return
+    val first = passage.verses.firstOrNull() ?: return
+    if (passage.book.isBlank()) return
+    Text(
+        LocalScreenText.current["screen.bible.open_chapter"],
+        color = MaterialTheme.colorScheme.primary,
+        fontSize = (14 * scale).sp,
+        fontWeight = FontWeight.SemiBold,
+        modifier = Modifier.padding(top = 8.dp).clip(RoundedCornerShape(8.dp))
+            .clickable(role = Role.Button) { open(BibleRef(passage.book, first.chapter, first.verse)) }
+            .padding(vertical = 8.dp),
+    )
 }
 
 /** A reading in AELF's official French text, with its source credited as AELF asks. */
