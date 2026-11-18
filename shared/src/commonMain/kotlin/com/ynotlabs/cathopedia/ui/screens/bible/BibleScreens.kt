@@ -103,6 +103,8 @@ import com.ynotlabs.cathopedia.bible.BibleSearchHit
 import com.ynotlabs.cathopedia.bible.BibleStore
 import com.ynotlabs.cathopedia.bible.BibleVerse
 import com.ynotlabs.cathopedia.data.CathopediaRepository
+import com.ynotlabs.cathopedia.resources.Res
+import com.ynotlabs.cathopedia.resources.explore_bible
 import com.ynotlabs.cathopedia.i18n.LocalScreenText
 import com.ynotlabs.cathopedia.i18n.LocalStrings
 import com.ynotlabs.cathopedia.i18n.ScreenText
@@ -206,6 +208,7 @@ fun BibleHomeScreen(
         onBack = onBack,
         listState = listState,
         horizontalPadding = 16.dp,
+        headerArt = Res.drawable.explore_bible,
     ) {
         var position = 0
         fun row(key: String, content: @Composable () -> Unit) {

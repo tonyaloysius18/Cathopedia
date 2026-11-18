@@ -100,6 +100,8 @@ import com.ynotlabs.cathopedia.liturgical.ReadingKind
 import com.ynotlabs.cathopedia.liturgical.ScriptureReference
 import com.ynotlabs.cathopedia.liturgical.fullBookNameCitation
 import com.ynotlabs.cathopedia.model.ContentSummary
+import com.ynotlabs.cathopedia.profile.ProfileGreetings
+import com.ynotlabs.cathopedia.profile.ProfileStore
 import com.ynotlabs.cathopedia.resources.Res
 import com.ynotlabs.cathopedia.resources.cathopedia_app_logo_transparent
 import com.ynotlabs.cathopedia.resources.daily_readings_card_bg
@@ -158,6 +160,9 @@ fun HomeScreen(
         saintsOfToday = repository.saintsOfToday(language)
     }
     LaunchedEffect(language) { continueReading = repository.mostRecentlyViewed(language) }
+    // The profile is read again each time Home is shown, so edits in Settings appear at once.
+    val profile = remember { ProfileStore(repository).load() }
+    val greetings = remember(profile, today) { ProfileGreetings.occasionsOn(profile, today) }
     LaunchedEffect(Unit) { CatholicNews.load(repository) }
     val news = CatholicNews.visibleItems(today).take(HOME_NEWS_LIMIT)
 
@@ -166,6 +171,11 @@ fun HomeScreen(
         header = {
             Spacer(Modifier.height(12.dp))
             HomeHero(seasonLabel = season.label(s))
+            greetings.forEach { occasion ->
+                Box(Modifier.fillMaxWidth().padding(start = 18.dp, end = 18.dp, bottom = 14.dp)) {
+                    ProfileGreetingCard(occasion, profile, language)
+                }
+            }
             Box(Modifier.fillMaxWidth().padding(horizontal = 18.dp)) {
                 DailyReadingsCard(dailyReadings, dailyReadingsLoaded, language, onReadingSelected, onOpenMass, onOpenHours)
             }

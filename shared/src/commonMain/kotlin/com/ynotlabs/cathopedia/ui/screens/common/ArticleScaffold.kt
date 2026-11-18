@@ -4,6 +4,12 @@ import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.foundation.Image
+import androidx.compose.ui.layout.ContentScale
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -79,6 +85,8 @@ fun ArticleScaffold(
     modifier: Modifier = Modifier,
     listState: LazyListState = rememberLazyListState(),
     horizontalPadding: Dp = 20.dp,
+    /** Optional artwork drawn at the header's right edge, behind the title (left part transparent). */
+    headerArt: DrawableResource? = null,
     content: LazyListScope.() -> Unit,
 ) {
     var headerHeightPx by remember { mutableIntStateOf(0) }
@@ -106,6 +114,7 @@ fun ArticleScaffold(
             subtitle = subtitle,
             backDescription = backDescription,
             onBack = onBack,
+            art = headerArt,
             modifier = Modifier.onGloballyPositioned {
                 if (headerHeightPx != it.size.height) headerHeightPx = it.size.height
             },
@@ -236,11 +245,12 @@ private fun ArticleHeaderPanel(
     subtitle: String,
     backDescription: String,
     onBack: (() -> Unit)?,
+    art: DrawableResource? = null,
     modifier: Modifier = Modifier,
 ) {
     var titleLineCount by remember { mutableIntStateOf(1) }
 
-    Column(
+    Box(
         modifier = modifier
             .fillMaxWidth()
             .shadow(
@@ -249,8 +259,59 @@ private fun ArticleHeaderPanel(
                 clip = false,
             )
             .clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp))
-            .background(ArticleHeader)
-            .statusBarsPadding()
+            .background(ArticleHeader),
+    ) {
+        if (art != null) {
+            // Like the Explore header: the artwork fills the right side of the panel, up under the
+            // status bar, and fades into the panel towards the title and along the bottom edge.
+            val fade = ArticleHeader
+            Box(Modifier.matchParentSize(), contentAlignment = Alignment.TopEnd) {
+                Box(Modifier.fillMaxWidth(0.64f).fillMaxHeight()) {
+                    Image(
+                        painter = painterResource(art),
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        alignment = Alignment.CenterEnd,
+                        modifier = Modifier.fillMaxSize(),
+                    )
+                    Box(
+                        Modifier.fillMaxSize().background(
+                            Brush.horizontalGradient(
+                                0f to fade,
+                                0.35f to fade.copy(alpha = 0.7f),
+                                0.75f to fade.copy(alpha = 0.15f),
+                                1f to Color.Transparent,
+                            ),
+                        ),
+                    )
+                    Box(
+                        Modifier.fillMaxSize().background(
+                            Brush.verticalGradient(
+                                0f to fade.copy(alpha = 0.25f),
+                                0.55f to Color.Transparent,
+                                1f to fade.copy(alpha = 0.9f),
+                            ),
+                        ),
+                    )
+                }
+            }
+        }
+        Box(Modifier.statusBarsPadding()) { ArticleHeaderContent(title, subtitle, backDescription, onBack) }
+    }
+}
+
+@Composable
+private fun ArticleHeaderContent(
+    title: String,
+    subtitle: String,
+    backDescription: String,
+    onBack: (() -> Unit)?,
+) {
+    var titleLineCount by remember { mutableIntStateOf(1) }
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
             .padding(start = 18.dp, top = 6.dp, end = 18.dp, bottom = 18.dp),
     ) {
         Row(

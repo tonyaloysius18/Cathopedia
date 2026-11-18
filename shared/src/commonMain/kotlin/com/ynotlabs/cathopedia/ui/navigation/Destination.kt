@@ -32,6 +32,7 @@ sealed interface Destination {
     data object Notifications : Destination
     data object About : Destination
     data object Feedback : Destination
+    data object Profile : Destination
     data object BibleHome : Destination
     /** [verse] scrolls to and highlights that verse (from search or a bookmark). */
     data class BibleChapter(val code: String, val chapter: Int, val verse: Int? = null) : Destination

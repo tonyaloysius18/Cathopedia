@@ -107,6 +107,9 @@ import com.ynotlabs.cathopedia.ui.screens.rosary.RosaryScreen
 import com.ynotlabs.cathopedia.ui.screens.home.SavedScreen
 import com.ynotlabs.cathopedia.ui.screens.home.SearchScreen
 import com.ynotlabs.cathopedia.ui.screens.settings.SettingsScreen
+import com.ynotlabs.cathopedia.ui.screens.settings.ProfileScreen
+import com.ynotlabs.cathopedia.profile.ProfileStore
+import com.ynotlabs.cathopedia.profile.profileGreetingNotifications
 import com.ynotlabs.cathopedia.ui.screens.startup.SplashScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.CelebrateMassScreen
 import com.ynotlabs.cathopedia.ui.screens.holymass.LiturgyOfHoursScreen
@@ -161,7 +164,7 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     title = summary.name,
                     body = summary.summary,
                 )
-            }
+            } + profileGreetingNotifications(repository, language)
             notificationScheduler.requestPermissionAndSchedule(items) { granted ->
                 notificationsEnabled = granted
                 notificationsPermissionDenied = !granted
@@ -373,7 +376,6 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     onCategorySelected = { type -> nav.navigate(Destination.EntityList(type)) },
                     onVestmentsSelected = { nav.navigate(Destination.Vestments) },
                     onHubSelected = { hub -> nav.navigate(Destination.Hub(hub.id)) },
-                    onBibleSelected = { nav.navigate(Destination.BibleHome) },
                     listState = exploreScrollState,
                     initialData = exploreData,
                     onDataLoaded = { exploreData = it },
@@ -595,6 +597,10 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                     onOpenSaved = { nav.navigate(Destination.Saved) },
                     onOpenAbout = { nav.navigate(Destination.About) },
                     onOpenFeedback = { nav.navigate(Destination.Feedback) },
+                    profileName = remember(current) {
+                        ProfileStore(repository).load().let { "${it.firstName} ${it.surname}".trim().ifEmpty { null } }
+                    },
+                    onOpenProfile = { nav.navigate(Destination.Profile) },
                 )
 
                 is Destination.Appearance -> AppearanceScreen(
@@ -625,6 +631,13 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
                 is Destination.About -> AboutScreen(onBack = nav::back)
 
                 is Destination.Feedback -> FeedbackScreen(onBack = nav::back)
+
+                is Destination.Profile -> ProfileScreen(
+                    repository = repository,
+                    language = language,
+                    onChanged = { if (notificationsEnabled) refreshFeastNotifications() },
+                    onBack = nav::back,
+                )
 
                 is Destination.News -> NewsScreen(
                     repository = repository,

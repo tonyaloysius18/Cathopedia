@@ -41,6 +41,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ynotlabs.cathopedia.i18n.LocalStrings
+import com.ynotlabs.cathopedia.i18n.LocalScreenText
+import androidx.compose.material.icons.filled.Person
 import com.ynotlabs.cathopedia.i18n.AppLanguages
 import com.ynotlabs.cathopedia.i18n.Strings
 import com.ynotlabs.cathopedia.resources.Res
@@ -69,8 +71,12 @@ fun SettingsScreen(
     onOpenSaved: () -> Unit,
     onOpenAbout: () -> Unit,
     onOpenFeedback: () -> Unit,
+    /** The profile's name, or null when no profile has been filled in. */
+    profileName: String? = null,
+    onOpenProfile: () -> Unit = {},
 ) {
     val s = LocalStrings.current
+    val t = LocalScreenText.current
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -86,6 +92,19 @@ fun SettingsScreen(
                 .fillMaxWidth()
                 .padding(horizontal = 18.dp),
         ) {
+            SettingsSectionLabel(t["screen.profile.settings_section"])
+
+            SettingsGroup {
+                PremiumSettingsRowVector(
+                    icon = Icons.Default.Person,
+                    label = t["screen.profile.title"],
+                    value = profileName ?: t["screen.profile.settings_value"],
+                    onClick = onOpenProfile,
+                )
+            }
+
+            Spacer(Modifier.height(16.dp))
+
             SettingsSectionLabel(s.settingsPreferencesSectionTitle)
 
             SettingsGroup {
