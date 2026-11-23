@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-15T18:00:00Z",
+  "updated": "2026-11-23T12:00:00Z",
   "items": [
     {
       "id": "wyd-seoul-2027",
@@ -1345,6 +1345,124 @@
         "nl": "De vijfde buitenlandse reis van paus Leo begon in Parijs en Saint-Denis, met een bezoek aan het hoofdkwartier van de UNESCO en een avondwake met jongeren in het Stade de France. Het was het eerste officiële pausbezoek aan Frankrijk sinds Benedictus XVI in 2008.\n\nIn Lourdes ontmoette de paus de bisschoppen van Frankrijk en bad hij in het heiligdom van Onze-Lieve-Vrouw, voordat hij de reis in Metz afsloot.",
         "pl": "Piąta zagraniczna podróż papieża Leona rozpoczęła się w Paryżu i Saint-Denis, od wizyty w siedzibie UNESCO i wieczornego czuwania modlitewnego z młodzieżą na Stade de France. Była to pierwsza oficjalna wizyta papieża we Francji od czasu Benedykta XVI w 2008 roku.\n\nW Lourdes papież spotkał się z biskupami Francji i modlił się w sanktuarium Matki Bożej, a podróż zakończył w Metz.",
         "ta": "திருத்தந்தை லியோவின் ஐந்தாவது வெளிநாட்டுப் பயணம் பாரிஸ், செயிண்ட்-டெனியில் தொடங்கியது; யுனெஸ்கோ தலைமையகப் பார்வையும், ஸ்டாட் தெ பிரான்சில் இளையோருடன் மாலை இறைவேண்டல் விழிப்பும் இடம்பெற்றன. 2008இல் பதினாறாம் பெனடிக்டின் வருகைக்குப் பின் பிரான்சுக்குத் திருத்தந்தை ஒருவரின் முதல் அதிகாரப்பூர்வப் பயணம் இது.\n\nலூர்தில் பிரான்ஸ் ஆயர்களைச் சந்தித்து அன்னையின் திருத்தலத்தில் இறைவேண்டல் செய்த திருத்தந்தை, மெட்ஸில் பயணத்தை நிறைவு செய்தார்."
+      }
+    },
+    {
+      "id": "decrees-saint-zdenka-blesseds-2026-11",
+      "kind": "news",
+      "theme": "default",
+      "pinned": false,
+      "published": "2026-11-21",
+      "start": null,
+      "end": null,
+      "expires": "2026-12-21",
+      "image": null,
+      "source": "Vatican News",
+      "url": {
+        "en": "https://www.vaticannews.va/en/pope/news/2026-11/decrees-issued-paving-way-for-a-new-saint-and-56-blesseds.html"
+      },
+      "title": {
+        "en": "A new saint and 56 new blesseds approved",
+        "fr": "Une nouvelle sainte et 56 nouveaux bienheureux approuvés",
+        "es": "Aprobados una nueva santa y 56 nuevos beatos",
+        "it": "Approvati una nuova santa e 56 nuovi beati",
+        "pt": "Aprovados uma nova santa e 56 novos beatos",
+        "de": "Eine neue Heilige und 56 neue Selige genehmigt",
+        "nl": "Een nieuwe heilige en 56 nieuwe zaligen goedgekeurd",
+        "pl": "Zatwierdzono nową świętą i 56 nowych błogosławionych",
+        "ta": "ஒரு புதிய புனிதரும் 56 புதிய அருளாளர்களும் அங்கீகரிப்பு"
+      },
+      "location": {
+        "en": "Vatican City",
+        "fr": "Cité du Vatican",
+        "es": "Ciudad del Vaticano",
+        "it": "Città del Vaticano",
+        "pt": "Cidade do Vaticano",
+        "de": "Vatikanstadt",
+        "nl": "Vaticaanstad",
+        "pl": "Watykan",
+        "ta": "வத்திக்கான் நகர்"
+      },
+      "summary": {
+        "en": "Pope Leo XIV approved decrees opening the way to the canonization of Blessed Zdenka Schelingová and the beatification of 56 people. No ceremony dates are announced yet.",
+        "fr": "Le pape Léon XIV a approuvé des décrets ouvrant la voie à la canonisation de la bienheureuse Zdenka Schelingová et à la béatification de 56 personnes. Aucune date de cérémonie n’est encore annoncée.",
+        "es": "El papa León XIV aprobó decretos que abren el camino a la canonización de la beata Zdenka Schelingová y a la beatificación de 56 personas. Aún no se han anunciado fechas.",
+        "it": "Papa Leone XIV ha approvato decreti che aprono la strada alla canonizzazione della beata Zdenka Schelingová e alla beatificazione di 56 persone. Non sono ancora annunciate le date delle cerimonie.",
+        "pt": "O papa Leão XIV aprovou decretos que abrem caminho à canonização da beata Zdenka Schelingová e à beatificação de 56 pessoas. Ainda não há datas anunciadas para as cerimónias.",
+        "de": "Papst Leo XIV. hat Dekrete genehmigt, die den Weg zur Heiligsprechung der seligen Zdenka Schelingová und zur Seligsprechung von 56 Personen ebnen. Termine der Feiern sind noch nicht bekannt.",
+        "nl": "Paus Leo XIV keurde decreten goed die de weg openen naar de heiligverklaring van de zalige Zdenka Schelingová en de zaligverklaring van 56 mensen. Data van de plechtigheden zijn nog niet bekend.",
+        "pl": "Papież Leon XIV zatwierdził dekrety otwierające drogę do kanonizacji bł. Zdenki Schelingovej i beatyfikacji 56 osób. Terminy uroczystości nie są jeszcze znane.",
+        "ta": "திருத்தந்தை பதினான்காம் லியோ, அருளாளர் ஸ்தென்கா ஷெலிங்கோவாவைப் புனிதராக அறிவிக்கவும் 56 பேரை அருளாளர்களாக அறிவிக்கவும் வழிவகுக்கும் ஆணைகளை அங்கீகரித்தார். விழா நாள்கள் இன்னும் அறிவிக்கப்படவில்லை."
+      },
+      "body": {
+        "en": "On 21 November 2026, in an audience with Cardinal Marcello Semeraro, Prefect of the Dicastery for the Causes of Saints, Pope Leo XIV authorized several decrees.\n\nCanonization: a miracle was recognized through the intercession of Blessed Zdenka Schelingová (1916–1955), a Slovak Sister of Charity of the Holy Cross who died in Trnava and was beatified in 2003. She will be canonized.\n\nBeatification: a miracle was recognized for Venerable Rosa Staltari (1951–1973), a young Italian religious from Calabria, and the martyrdom was recognized of Fr José Gómez Llor and 54 companions, killed for the faith in the Diocese of Cartagena, Spain, in the 1930s. Together this makes 56 new blesseds.\n\nThree people were also declared Venerable: Fr Angelo Maria Lolli, Fr Abundio García Román and the young Giulia Gabrieli.\n\nThe dates of the canonization and the beatifications have not been announced.",
+        "fr": "Le 21 novembre 2026, lors d’une audience avec le cardinal Marcello Semeraro, préfet du Dicastère pour les causes des saints, le pape Léon XIV a autorisé plusieurs décrets.\n\nCanonisation : un miracle a été reconnu par l’intercession de la bienheureuse Zdenka Schelingová (1916-1955), religieuse slovaque, Sœur de la Charité de la Sainte-Croix, morte à Trnava et béatifiée en 2003. Elle sera canonisée.\n\nBéatification : un miracle a été reconnu pour la vénérable Rosa Staltari (1951-1973), jeune religieuse italienne de Calabre, et le martyre a été reconnu pour le P. José Gómez Llor et ses 54 compagnons, tués en haine de la foi dans le diocèse de Carthagène (Espagne) dans les années 1930. Cela fait 56 nouveaux bienheureux.\n\nTrois personnes ont aussi été déclarées vénérables : le P. Angelo Maria Lolli, le P. Abundio García Román et la jeune Giulia Gabrieli.\n\nLes dates de la canonisation et des béatifications n’ont pas été annoncées.",
+        "es": "El 21 de noviembre de 2026, en una audiencia con el cardenal Marcello Semeraro, prefecto del Dicasterio para las Causas de los Santos, el papa León XIV autorizó varios decretos.\n\nCanonización: se reconoció un milagro por intercesión de la beata Zdenka Schelingová (1916-1955), religiosa eslovaca, Hermana de la Caridad de la Santa Cruz, fallecida en Trnava y beatificada en 2003. Será canonizada.\n\nBeatificación: se reconoció un milagro para la venerable Rosa Staltari (1951-1973), joven religiosa italiana de Calabria, y el martirio del P. José Gómez Llor y sus 54 compañeros, asesinados por su fe en la diócesis de Cartagena (España) en los años treinta. En total son 56 nuevos beatos.\n\nTambién fueron declarados venerables el P. Angelo Maria Lolli, el P. Abundio García Román y la joven Giulia Gabrieli.\n\nNo se han anunciado las fechas de la canonización ni de las beatificaciones.",
+        "it": "Il 21 novembre 2026, in udienza al cardinale Marcello Semeraro, prefetto del Dicastero delle Cause dei Santi, Papa Leone XIV ha autorizzato diversi decreti.\n\nCanonizzazione: è stato riconosciuto un miracolo per intercessione della beata Zdenka Schelingová (1916-1955), religiosa slovacca, Suora della Carità della Santa Croce, morta a Trnava e beatificata nel 2003. Sarà canonizzata.\n\nBeatificazione: è stato riconosciuto un miracolo per la venerabile Rosa Staltari (1951-1973), giovane religiosa calabrese, e il martirio di don José Gómez Llor e 54 compagni, uccisi in odio alla fede nella diocesi di Cartagena (Spagna) negli anni Trenta. In tutto, 56 nuovi beati.\n\nSono stati dichiarati venerabili anche don Angelo Maria Lolli, don Abundio García Román e la giovane Giulia Gabrieli.\n\nLe date della canonizzazione e delle beatificazioni non sono state annunciate.",
+        "pt": "A 21 de novembro de 2026, numa audiência com o cardeal Marcello Semeraro, prefeito do Dicastério para as Causas dos Santos, o papa Leão XIV autorizou vários decretos.\n\nCanonização: foi reconhecido um milagre por intercessão da beata Zdenka Schelingová (1916-1955), religiosa eslovaca, Irmã da Caridade da Santa Cruz, falecida em Trnava e beatificada em 2003. Será canonizada.\n\nBeatificação: foi reconhecido um milagre para a venerável Rosa Staltari (1951-1973), jovem religiosa italiana da Calábria, e o martírio do P. José Gómez Llor e de 54 companheiros, mortos por ódio à fé na diocese de Cartagena (Espanha) nos anos 1930. No total, 56 novos beatos.\n\nForam também declarados veneráveis o P. Angelo Maria Lolli, o P. Abundio García Román e a jovem Giulia Gabrieli.\n\nAs datas da canonização e das beatificações não foram anunciadas.",
+        "de": "Am 21. November 2026 hat Papst Leo XIV. in einer Audienz für Kardinal Marcello Semeraro, den Präfekten des Dikasteriums für die Selig- und Heiligsprechungsverfahren, mehrere Dekrete genehmigt.\n\nHeiligsprechung: Ein Wunder wurde auf die Fürsprache der seligen Zdenka Schelingová (1916–1955) anerkannt, einer slowakischen Schwester der Liebe vom Heiligen Kreuz, die in Trnava starb und 2003 seliggesprochen wurde. Sie wird heiliggesprochen.\n\nSeligsprechung: Ein Wunder wurde für die ehrwürdige Rosa Staltari (1951–1973), eine junge italienische Ordensfrau aus Kalabrien, anerkannt, ebenso das Martyrium von P. José Gómez Llor und 54 Gefährten, die in den 1930er Jahren im Bistum Cartagena (Spanien) aus Hass auf den Glauben getötet wurden. Das ergibt 56 neue Selige.\n\nZu Ehrwürdigen erklärt wurden zudem P. Angelo Maria Lolli, P. Abundio García Román und die junge Giulia Gabrieli.\n\nDie Termine für die Heilig- und Seligsprechungen wurden noch nicht bekanntgegeben.",
+        "nl": "Op 21 november 2026 keurde paus Leo XIV tijdens een audiëntie voor kardinaal Marcello Semeraro, prefect van het Dicasterie voor de Heiligverklaringen, meerdere decreten goed.\n\nHeiligverklaring: er werd een wonder erkend op voorspraak van de zalige Zdenka Schelingová (1916-1955), een Slowaakse Zuster van Liefde van het Heilig Kruis, overleden in Trnava en in 2003 zaligverklaard. Zij zal heilig worden verklaard.\n\nZaligverklaring: er werd een wonder erkend voor de eerbiedwaardige Rosa Staltari (1951-1973), een jonge Italiaanse religieuze uit Calabrië, en het martelaarschap van pater José Gómez Llor en 54 gezellen, in de jaren dertig om hun geloof gedood in het bisdom Cartagena (Spanje). Samen zijn dat 56 nieuwe zaligen.\n\nOok pater Angelo Maria Lolli, pater Abundio García Román en de jonge Giulia Gabrieli werden eerbiedwaardig verklaard.\n\nDe data van de heiligverklaring en de zaligverklaringen zijn niet bekendgemaakt.",
+        "pl": "21 listopada 2026 r., podczas audiencji dla kard. Marcella Semerara, prefekta Dykasterii Spraw Kanonizacyjnych, papież Leon XIV zatwierdził kilka dekretów.\n\nKanonizacja: uznano cud za wstawiennictwem bł. Zdenki Schelingovej (1916–1955), słowackiej siostry miłosierdzia od Świętego Krzyża, zmarłej w Trnawie i beatyfikowanej w 2003 r. Zostanie kanonizowana.\n\nBeatyfikacja: uznano cud za wstawiennictwem czcigodnej Rosy Staltari (1951–1973), młodej włoskiej zakonnicy z Kalabrii, oraz męczeństwo ks. José Gómeza Llora i 54 towarzyszy, zabitych z nienawiści do wiary w diecezji Kartagena (Hiszpania) w latach 30. XX w. W sumie jest to 56 nowych błogosławionych.\n\nCzcigodnymi ogłoszono także ks. Angela Marię Lolliego, ks. Abundia Garcíę Romána i młodą Giulię Gabrieli.\n\nTerminów kanonizacji i beatyfikacji jeszcze nie ogłoszono.",
+        "ta": "2026 நவம்பர் 21 அன்று, புனிதர் பட்ட நிகழ்வுகளுக்கான துறையின் தலைவர் கர்தினால் மார்செல்லோ செமெராரோவுடனான சந்திப்பில் திருத்தந்தை பதினான்காம் லியோ பல ஆணைகளுக்கு ஒப்புதல் அளித்தார்.\n\nபுனிதர் பட்டம்: திரு சிலுவை அன்பின் சகோதரியர் சபையைச் சேர்ந்த ஸ்லோவாக்கிய அருள்சகோதரி, அருளாளர் ஸ்தென்கா ஷெலிங்கோவாவின் (1916–1955) பரிந்துரையால் நிகழ்ந்த புதுமை அங்கீகரிக்கப்பட்டது. அவர் 2003-ல் அருளாளராக அறிவிக்கப்பட்டவர்; இனி புனிதராக உயர்த்தப்படுவார்.\n\nஅருளாளர் பட்டம்: கலாபிரியாவைச் சேர்ந்த இளம் இத்தாலிய அருள்சகோதரி, வணக்கத்துக்குரிய ரோசா ஸ்தால்த்தாரியின் (1951–1973) புதுமையும், 1930-களில் ஸ்பெயினின் கார்த்தகேனா மறைமாவட்டத்தில் விசுவாசத்துக்காகக் கொல்லப்பட்ட அருள்பணியாளர் ஹோசே கோமெஸ் யோர் மற்றும் அவரது 54 தோழர்களின் மறைசாட்சியமும் அங்கீகரிக்கப்பட்டன. இதனால் மொத்தம் 56 புதிய அருளாளர்கள்.\n\nஅருள்பணி ஆஞ்செலோ மரியா லொல்லி, அருள்பணி அபுண்டியோ கார்சியா ரோமான், இளம் ஜூலியா கப்ரியேலி ஆகியோர் வணக்கத்துக்குரியவர்களாக அறிவிக்கப்பட்டனர்.\n\nபுனிதர் மற்றும் அருளாளர் பட்ட விழாக்களின் நாள்கள் அறிவிக்கப்படவில்லை."
+      }
+    },
+    {
+      "id": "vatican-christmas-tree-lighting-2026-12",
+      "kind": "event",
+      "theme": "default",
+      "pinned": false,
+      "published": "2026-11-18",
+      "start": "2026-12-07",
+      "end": null,
+      "expires": "2026-12-10",
+      "image": null,
+      "source": "Vatican News",
+      "url": {
+        "en": "https://www.vaticannews.va/en/vatican-city/news/2026-11/vatican-christmas-tree-gubbio-st-francis-children-nativity-scene.html"
+      },
+      "title": {
+        "en": "Christmas tree lit in St Peter’s Square",
+        "fr": "Illumination du sapin de Noël place Saint-Pierre",
+        "es": "Encendido del árbol de Navidad en la plaza de San Pedro",
+        "it": "Accensione dell’albero di Natale in Piazza San Pietro",
+        "pt": "Acendimento da árvore de Natal na Praça de São Pedro",
+        "de": "Weihnachtsbaum auf dem Petersplatz wird entzündet",
+        "nl": "Kerstboom op het Sint-Pietersplein wordt aangestoken",
+        "pl": "Zapalenie bożonarodzeniowej choinki na placu św. Piotra",
+        "ta": "புனித பேதுரு சதுக்கத்தில் கிறிஸ்து பிறப்பு மரம் ஒளியேற்றம்"
+      },
+      "location": {
+        "en": "St Peter’s Square, Vatican City",
+        "fr": "Place Saint-Pierre, Cité du Vatican",
+        "es": "Plaza de San Pedro, Ciudad del Vaticano",
+        "it": "Piazza San Pietro, Città del Vaticano",
+        "pt": "Praça de São Pedro, Cidade do Vaticano",
+        "de": "Petersplatz, Vatikanstadt",
+        "nl": "Sint-Pietersplein, Vaticaanstad",
+        "pl": "Plac św. Piotra, Watykan",
+        "ta": "புனித பேதுரு சதுக்கம், வத்திக்கான் நகர்"
+      },
+      "summary": {
+        "en": "The 24-metre fir from Pollino National Park will be lit on 7 December at 5:30 pm by children in cancer treatment, at the same time as a tree in Gubbio.",
+        "fr": "Le sapin de 24 mètres du parc national du Pollino sera illuminé le 7 décembre à 17 h 30 par des enfants soignés pour un cancer, en même temps qu’un arbre à Gubbio.",
+        "es": "El abeto de 24 metros del Parque Nacional del Pollino se encenderá el 7 de diciembre a las 17:30, por niños en tratamiento oncológico, a la vez que un árbol en Gubbio.",
+        "it": "L’abete di 24 metri del Parco nazionale del Pollino sarà acceso il 7 dicembre alle 17.30 da bambini in cura oncologica, in contemporanea con un albero a Gubbio.",
+        "pt": "O abeto de 24 metros do Parque Nacional do Pollino será aceso a 7 de dezembro às 17h30 por crianças em tratamento oncológico, em simultâneo com uma árvore em Gubbio.",
+        "de": "Die 24 Meter hohe Tanne aus dem Nationalpark Pollino wird am 7. Dezember um 17.30 Uhr von krebskranken Kindern entzündet, zeitgleich mit einem Baum in Gubbio.",
+        "nl": "De 24 meter hoge spar uit het nationaal park Pollino wordt op 7 december om 17.30 uur aangestoken door kinderen in kankerbehandeling, gelijktijdig met een boom in Gubbio.",
+        "pl": "24-metrowa jodła z Parku Narodowego Pollino zostanie zapalona 7 grudnia o 17:30 przez dzieci leczone onkologicznie, równocześnie z drzewem w Gubbio.",
+        "ta": "பொலினோ தேசியப் பூங்காவிலிருந்து கொண்டுவரப்பட்ட 24 மீட்டர் உயர ஃபிர் மரம், புற்றுநோய்ச் சிகிச்சையிலுள்ள குழந்தைகளால் டிசம்பர் 7 மாலை 5:30 மணிக்கு, குப்பியோவிலுள்ள ஒரு மரத்துடன் ஒரே நேரத்தில் ஒளியேற்றப்படும்."
+      },
+      "body": {
+        "en": "The Vatican Governorate announced that the Christmas tree in St Peter’s Square will be lit on 7 December 2026 at 5:30 pm. The lighting will be done by children receiving oncology treatment in Italian hospitals, while a tree in Gubbio, Umbria, is lit at the same moment. The Gubbio tree recalls the 800th anniversary of the death of Saint Francis.\n\nThe tree is a 24-metre silver fir weighing 7.5 tonnes, a gift of the municipality of Terranova di Pollino from the Pollino National Park in southern Italy. It arrived at the Vatican on 19 November.\n\nThe nativity scene in the square, titled “The Great Mystery”, is donated by the Archdiocese of Chieti-Vasto and partner groups; a date for its unveiling has not been announced.",
+        "fr": "Le Gouvernorat du Vatican a annoncé que le sapin de Noël de la place Saint-Pierre sera illuminé le 7 décembre 2026 à 17 h 30. Ce sont des enfants soignés pour un cancer dans des hôpitaux italiens qui l’allumeront, tandis qu’un arbre à Gubbio, en Ombrie, sera allumé au même moment. L’arbre de Gubbio rappelle le 800e anniversaire de la mort de saint François.\n\nLe sapin, un sapin argenté de 24 mètres pesant 7,5 tonnes, est un don de la commune de Terranova di Pollino, dans le parc national du Pollino, au sud de l’Italie. Il est arrivé au Vatican le 19 novembre.\n\nLa crèche de la place, intitulée « Le Grand Mystère », est offerte par l’archidiocèse de Chieti-Vasto et des groupes partenaires ; la date de son dévoilement n’a pas été annoncée.",
+        "es": "El Governatorato del Vaticano anunció que el árbol de Navidad de la plaza de San Pedro se encenderá el 7 de diciembre de 2026 a las 17:30. Lo encenderán niños en tratamiento oncológico en hospitales italianos, mientras se enciende a la vez un árbol en Gubbio, en Umbría. El árbol de Gubbio recuerda el 800 aniversario de la muerte de san Francisco.\n\nEl árbol es un abeto plateado de 24 metros y 7,5 toneladas, regalo del municipio de Terranova di Pollino, en el Parque Nacional del Pollino, en el sur de Italia. Llegó al Vaticano el 19 de noviembre.\n\nEl belén de la plaza, titulado «El Gran Misterio», lo dona la archidiócesis de Chieti-Vasto con otros grupos; no se ha anunciado la fecha de su inauguración.",
+        "it": "Il Governatorato vaticano ha annunciato che l’albero di Natale di Piazza San Pietro sarà acceso il 7 dicembre 2026 alle 17.30. Lo accenderanno bambini in cura oncologica negli ospedali italiani, mentre un albero a Gubbio, in Umbria, si accenderà nello stesso momento. L’albero di Gubbio ricorda gli 800 anni dalla morte di san Francesco.\n\nL’albero è un abete argentato di 24 metri e 7,5 tonnellate, dono del comune di Terranova di Pollino, nel Parco nazionale del Pollino, nel Sud Italia. È arrivato in Vaticano il 19 novembre.\n\nIl presepe della piazza, intitolato «Il Grande Mistero», è donato dall’arcidiocesi di Chieti-Vasto e da gruppi partner; la data dell’inaugurazione non è stata annunciata.",
+        "pt": "O Governatorado do Vaticano anunciou que a árvore de Natal da Praça de São Pedro será acesa a 7 de dezembro de 2026, às 17h30. Serão crianças em tratamento oncológico em hospitais italianos a acendê-la, enquanto uma árvore em Gubbio, na Úmbria, é acesa no mesmo momento. A árvore de Gubbio recorda os 800 anos da morte de São Francisco.\n\nA árvore é um abeto prateado de 24 metros e 7,5 toneladas, oferta do município de Terranova di Pollino, no Parque Nacional do Pollino, no sul de Itália. Chegou ao Vaticano a 19 de novembro.\n\nO presépio da praça, intitulado «O Grande Mistério», é oferecido pela arquidiocese de Chieti-Vasto e grupos parceiros; a data da inauguração não foi anunciada.",
+        "de": "Das Governatorat der Vatikanstadt hat angekündigt, dass der Weihnachtsbaum auf dem Petersplatz am 7. Dezember 2026 um 17.30 Uhr entzündet wird. Entzündet wird er von Kindern, die in italienischen Krankenhäusern onkologisch behandelt werden; zeitgleich wird ein Baum in Gubbio in Umbrien angezündet. Der Baum in Gubbio erinnert an den 800. Todestag des heiligen Franziskus.\n\nDer Baum ist eine 24 Meter hohe Silbertanne von 7,5 Tonnen, ein Geschenk der Gemeinde Terranova di Pollino im Nationalpark Pollino in Süditalien. Er traf am 19. November im Vatikan ein.\n\nDie Krippe auf dem Platz mit dem Titel „Das große Geheimnis“ wird von der Erzdiözese Chieti-Vasto und Partnergruppen gestiftet; ein Termin für die Enthüllung wurde nicht bekanntgegeben.",
+        "nl": "Het Governatoraat van Vaticaanstad kondigde aan dat de kerstboom op het Sint-Pietersplein op 7 december 2026 om 17.30 uur wordt aangestoken. Kinderen die in Italiaanse ziekenhuizen voor kanker worden behandeld, steken hem aan, terwijl op hetzelfde moment een boom in Gubbio in Umbrië wordt aangestoken. De boom in Gubbio herdenkt de 800e sterfdag van de heilige Franciscus.\n\nDe boom is een zilverspar van 24 meter en 7,5 ton, een geschenk van de gemeente Terranova di Pollino in het nationaal park Pollino in Zuid-Italië. Hij kwam op 19 november in het Vaticaan aan.\n\nDe kerststal op het plein, getiteld ‘Het Grote Mysterie’, is geschonken door het aartsbisdom Chieti-Vasto en partnergroepen; een datum voor de onthulling is niet bekendgemaakt.",
+        "pl": "Gubernatorat Państwa Watykańskiego poinformował, że choinka na placu św. Piotra zostanie zapalona 7 grudnia 2026 r. o 17:30. Zapalą ją dzieci leczone onkologicznie we włoskich szpitalach, a w tym samym momencie zapali się drzewo w Gubbio w Umbrii. Drzewo w Gubbio przypomina 800. rocznicę śmierci św. Franciszka.\n\nChoinka to 24-metrowa jodła srebrzysta o wadze 7,5 tony, dar gminy Terranova di Pollino z Parku Narodowego Pollino w południowych Włoszech. Dotarła do Watykanu 19 listopada.\n\nSzopka na placu, zatytułowana „Wielka Tajemnica”, jest darem archidiecezji Chieti-Vasto i grup partnerskich; data jej odsłonięcia nie została ogłoszona.",
+        "ta": "வத்திக்கான் ஆளுநர் அலுவலகம், புனித பேதுரு சதுக்கத்திலுள்ள கிறிஸ்துமஸ் மரம் 2026 டிசம்பர் 7 மாலை 5:30 மணிக்கு ஒளியேற்றப்படும் என அறிவித்தது. இத்தாலிய மருத்துவமனைகளில் புற்றுநோய்ச் சிகிச்சை பெறும் குழந்தைகள் அதை ஒளிரச் செய்வர்; அதே நேரத்தில் உம்பிரியாவிலுள்ள குப்பியோவிலும் ஒரு மரம் ஒளியேற்றப்படும். குப்பியோ மரம் புனித பிரான்சிஸ் இறந்த 800-ஆம் ஆண்டை நினைவுகூர்கிறது.\n\nஇம்மரம் தெற்கு இத்தாலியின் பொலினோ தேசியப் பூங்காவிலுள்ள தெர்ரானோவா தி பொலினோ நகராட்சி வழங்கிய 24 மீட்டர் உயரமும் 7.5 டன் எடையுமுள்ள வெள்ளி ஃபிர் மரம்; நவம்பர் 19 அன்று வத்திக்கானை அடைந்தது.\n\n“மாபெரும் மறைபொருள்” என்ற தலைப்பிலான சதுக்கப் பிறப்புக் குடிலை கியேத்தி-வாஸ்தோ உயர்மறைமாவட்டமும் பங்காளிக் குழுக்களும் வழங்கியுள்ளன; அதன் திறப்பு நாள் அறிவிக்கப்படவில்லை."
       }
     }
   ]
