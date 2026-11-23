@@ -11,10 +11,10 @@ import androidx.compose.ui.graphics.Color
 // and category accents all read as the same metal at different depths.
 val MetallicGold = Color(0xFFD4AF37)
 
-// Dark — "the sanctuary"
-val DarkBackground = Color(0xFF0B1A15)
-val DarkSurface = Color(0xFF12241D)
-val DarkRaised = Color(0xFF1A2E26)
+// Dark — "the sanctuary". The greens follow the day's liturgical colour (LiturgicalTint.kt).
+val DarkBackground: Color get() = Color(0xFF0B1A15).liturgical()
+val DarkSurface: Color get() = Color(0xFF12241D).liturgical()
+val DarkRaised: Color get() = Color(0xFF1A2E26).liturgical()
 val DarkText = Color(0xFFEFE7D6)
 val DarkTextMuted = Color(0xFF9C9683)
 // The floating pill bar needs to read as a distinct object sitting above the
@@ -22,8 +22,8 @@ val DarkTextMuted = Color(0xFF9C9683)
 // lightness, too close once it's a thin floating shape instead of a full-bleed
 // screen. These sit a clear step further up the same green, with the active
 // bubble a step further again for a visible bg < pill < bubble hierarchy.
-val DarkPillSurface = Color(0xFF1F3D32)
-val DarkPillBubble = Color(0xFF2C5645)
+val DarkPillSurface: Color get() = Color(0xFF1F3D32).liturgical()
+val DarkPillBubble: Color get() = Color(0xFF2C5645).liturgical()
 // MetallicGold sits at 8.5:1 contrast on this background as-is — no darkening needed.
 val DarkGold = MetallicGold
 // Lightened for non-text ornament only (rules, dividers, icon fills) — same hue, +10% lightness.
@@ -38,7 +38,7 @@ val LightTextMuted = Color(0xFF5C5445)
 // MetallicGold on parchment lands ~1.8:1 — fails. Same hue/saturation, darkened
 // to ~28% lightness gets to 5.2:1, which is what light mode uses for any text.
 val LightGoldText = Color(0xFF766019)
-val LightGreenDeep = Color(0xFF1F4034)
+val LightGreenDeep: Color get() = Color(0xFF1F4034).liturgical()
 // Same reasoning as the dark pair above: LightSurface is only a few points
 // off LightBackground, not enough separation for a floating shape. A deeper,
 // slightly more saturated parchment for the pill, with the active bubble

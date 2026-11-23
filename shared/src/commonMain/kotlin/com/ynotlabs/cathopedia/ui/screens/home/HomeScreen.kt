@@ -2,7 +2,6 @@ package com.ynotlabs.cathopedia.ui.screens.home
 
 import com.ynotlabs.cathopedia.ui.theme.LocalIsDarkTheme
 import com.ynotlabs.cathopedia.ui.theme.imageFade
-import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.material3.MaterialTheme
 
 import androidx.compose.foundation.BorderStroke
@@ -310,6 +309,8 @@ private fun DailyReadingsCard(
         runCatching { fullReadingsUrl(LocalDate.parse(value)) }.getOrNull()
     }
     val shape = RoundedCornerShape(24.dp)
+    // The border takes the colour of the day's Mass (violet in Advent, rose on Gaudete Sunday…).
+    val liturgicalAccent = LocalLiturgicalAccent.current
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -317,7 +318,7 @@ private fun DailyReadingsCard(
             .background(HomeSurface)
             .border(
                 width = 2.dp,
-                color = CardBorder,
+                color = liturgicalAccent.copy(alpha = 0.8f),
                 shape = shape,
             ),
     ) {

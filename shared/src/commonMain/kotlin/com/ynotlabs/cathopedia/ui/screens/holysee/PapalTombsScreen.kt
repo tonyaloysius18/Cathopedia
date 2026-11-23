@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.holysee
 
+import com.ynotlabs.cathopedia.ui.theme.liturgical
 import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
@@ -217,7 +218,7 @@ private fun PapalTombsHero(asset: String, contentDescription: String?) {
                     .background(
                         Brush.verticalGradient(
                             0.58f to Color.Transparent,
-                            1f to Color(0xFF061A13).copy(alpha = 0.62f),
+                            1f to Color(0xFF061A13).liturgical().copy(alpha = 0.62f),
                         ),
                     ),
             )

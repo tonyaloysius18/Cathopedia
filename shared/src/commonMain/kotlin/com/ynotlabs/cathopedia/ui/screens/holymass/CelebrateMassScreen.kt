@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.holymass
 
+import com.ynotlabs.cathopedia.ui.theme.liturgical
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
@@ -141,12 +142,12 @@ fun CelebrateMassScreen(
 ) {
     val baseColors = MaterialTheme.colorScheme
     val readerColors = if (LocalIsDarkTheme.current) baseColors.copy(
-        primary = Color(0xFFD6BE7D), onPrimary = Color(0xFF081D17),
-        background = Color(0xFF081D17), onBackground = Color(0xFFF4EFDF),
-        surface = Color(0xFF0D261E), onSurface = Color(0xFFF4EFDF),
+        primary = Color(0xFFD6BE7D), onPrimary = Color(0xFF081D17).liturgical(),
+        background = Color(0xFF081D17).liturgical(), onBackground = Color(0xFFF4EFDF),
+        surface = Color(0xFF0D261E).liturgical(), onSurface = Color(0xFFF4EFDF),
         onSurfaceVariant = Color(0xFFB7C2B9),
-        surfaceContainerLow = Color(0xFF102D23), surfaceContainerHigh = Color(0xFF17382C),
-        outline = Color(0xFF52675B), outlineVariant = Color(0xFF294638),
+        surfaceContainerLow = Color(0xFF102D23).liturgical(), surfaceContainerHigh = Color(0xFF17382C).liturgical(),
+        outline = Color(0xFF52675B).liturgical(), outlineVariant = Color(0xFF294638).liturgical(),
     ) else baseColors
     MaterialTheme(colorScheme = readerColors) {
         MassReader(repository, language, onBack)

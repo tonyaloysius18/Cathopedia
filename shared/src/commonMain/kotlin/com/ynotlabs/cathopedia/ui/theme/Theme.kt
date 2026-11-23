@@ -1,10 +1,13 @@
 package com.ynotlabs.cathopedia.ui.theme
 
+import com.ynotlabs.cathopedia.liturgical.LiturgicalColor
+
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import kotlin.math.pow
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -17,7 +20,8 @@ import androidx.compose.ui.graphics.Color
 // Setting the full surfaceContainer* family here (the tokens filled Card and
 // FilterChip actually read) closes the gap for every component, not just
 // the ones we'd already noticed.
-private val DarkColors = darkColorScheme(
+// Built on demand: the greens in it follow the day's liturgical colour (LiturgicalTint).
+private fun darkColors() = darkColorScheme(
     primary = DarkGold,
     onPrimary = DarkBackground,
     background = DarkBackground,
@@ -47,7 +51,7 @@ private val DarkColors = darkColorScheme(
     error = AlertRed,
 )
 
-private val LightColors = lightColorScheme(
+private fun lightColors() = lightColorScheme(
     // Bright gold fails contrast on parchment — light mode uses the darkened
     // gold everywhere Material3 renders text/icons from `primary`.
     primary = LightGoldText,
@@ -86,6 +90,8 @@ val LocalIsDarkTheme = staticCompositionLocalOf { true }
 fun CathopediaTheme(
     themeMode: ThemeMode = ThemeMode.SYSTEM,
     liturgicalAccent: Color = LiturgicalOrdinary,
+    /** When set, the accent is derived from it for the resolved light or dark theme. */
+    liturgicalColor: LiturgicalColor? = null,
     content: @Composable () -> Unit,
 ) {
     val useDarkTheme = when (themeMode) {
@@ -93,12 +99,14 @@ fun CathopediaTheme(
         ThemeMode.LIGHT -> false
         ThemeMode.DARK -> true
     }
+    val tint = LiturgicalTint.color
+    val scheme = remember(useDarkTheme, tint) { if (useDarkTheme) darkColors() else lightColors() }
     CompositionLocalProvider(
-        LocalLiturgicalAccent provides liturgicalAccent,
+        LocalLiturgicalAccent provides (liturgicalColor?.toAccentColor(useDarkTheme) ?: liturgicalAccent),
         LocalIsDarkTheme provides useDarkTheme,
     ) {
         MaterialTheme(
-            colorScheme = if (useDarkTheme) DarkColors else LightColors,
+            colorScheme = scheme,
             typography = CathopediaTypography,
             content = content,
         )

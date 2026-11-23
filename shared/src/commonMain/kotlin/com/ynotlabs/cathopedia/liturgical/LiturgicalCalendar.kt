@@ -23,9 +23,12 @@ enum class LiturgicalSeason {
 enum class LiturgicalColor {
     GREEN,
     VIOLET,
+    /** Gold: the most solemn days (Christmas Day, the Easter octave and the highest solemnities). */
     GOLD,
     RED,
     ROSE,
+    /** White: other feasts of the Lord, of Our Lady and of saints who were not martyrs; the Christmas and Easter seasons. */
+    WHITE,
 }
 
 data class LiturgicalDay(
@@ -106,13 +109,14 @@ object LiturgicalCalendar {
         val christmas = LocalDate(year, 12, 25)
 
         return when {
-            date <= baptism -> LiturgicalDay(date, LiturgicalSeason.CHRISTMAS, LiturgicalColor.GOLD)
+            date <= baptism -> LiturgicalDay(date, LiturgicalSeason.CHRISTMAS, LiturgicalColor.WHITE)
             date < ash -> ordinaryTimeDay(date, year)
             date < easterDate -> lentDay(date, easterDate)
             date <= pentecostDate -> easterSeasonDay(date, pentecostDate)
             date < advent1 -> ordinaryTimeDay(date, year)
             date < christmas -> adventDay(date, advent1)
-            else -> LiturgicalDay(date, LiturgicalSeason.CHRISTMAS, LiturgicalColor.GOLD)
+            else -> LiturgicalDay(date, LiturgicalSeason.CHRISTMAS,
+                if (date == christmas) LiturgicalColor.GOLD else LiturgicalColor.WHITE)
         }
     }
 
@@ -140,7 +144,7 @@ object LiturgicalCalendar {
 
     private fun ordinaryTimeDay(date: LocalDate, year: Int): LiturgicalDay {
         val color = when (date) {
-            trinitySunday(year), corpusChristi(year), sacredHeart(year), christTheKing(year) -> LiturgicalColor.GOLD
+            trinitySunday(year), corpusChristi(year), sacredHeart(year), christTheKing(year) -> LiturgicalColor.WHITE
             else -> LiturgicalColor.GREEN
         }
         return LiturgicalDay(date, LiturgicalSeason.ORDINARY_TIME, color)
@@ -158,7 +162,11 @@ object LiturgicalCalendar {
     }
 
     private fun easterSeasonDay(date: LocalDate, pentecostDate: LocalDate): LiturgicalDay {
-        val color = if (date == pentecostDate) LiturgicalColor.RED else LiturgicalColor.GOLD
+        val color = when {
+            date == pentecostDate -> LiturgicalColor.RED
+            date < easter(date.year).plusDays(8) -> LiturgicalColor.GOLD
+            else -> LiturgicalColor.WHITE
+        }
         return LiturgicalDay(date, LiturgicalSeason.EASTER, color)
     }
 

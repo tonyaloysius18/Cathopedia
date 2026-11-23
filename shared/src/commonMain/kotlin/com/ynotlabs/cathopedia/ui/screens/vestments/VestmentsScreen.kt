@@ -482,7 +482,7 @@ private val liturgicalColors = listOf(
     ),
     LiturgicalColor(
         name = "Green",
-        swatch = Color(0xFF17A4D),
+        swatch = Color(0xFF084C12),
         image = Res.drawable.green_chausable,
         occasion = "Ordinary Time, the long season of growth between the great feasts of the liturgical year.",
         meaning = "Hope, and the steady growth of the Christian life and virtue over time.",

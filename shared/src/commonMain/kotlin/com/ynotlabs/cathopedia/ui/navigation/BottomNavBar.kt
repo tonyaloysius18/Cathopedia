@@ -33,6 +33,7 @@ import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import com.ynotlabs.cathopedia.ui.theme.LocalLiturgicalAccent
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
@@ -64,6 +65,8 @@ fun BottomNavBar(
 
     val isLightMode = !LocalIsDarkTheme.current
     val accentColor = MaterialTheme.colorScheme.primary
+    // The selected tab glows in the colour of the day's Mass; the bar itself stays gold.
+    val selectionColor = LocalLiturgicalAccent.current
     val barBackgroundColor = if (isLightMode) {
         MaterialTheme.colorScheme.surfaceContainerHighest.copy(alpha = 0.97f)
     } else {
@@ -231,9 +234,9 @@ fun BottomNavBar(
                 drawCircle(
                     brush = Brush.radialGradient(
                         colors = listOf(
-                            accentColor.copy(alpha = 0.64f * haloStrength),
-                            accentColor.copy(alpha = 0.34f * haloStrength),
-                            accentColor.copy(alpha = 0.13f * haloStrength),
+                            selectionColor.copy(alpha = 0.64f * haloStrength),
+                            selectionColor.copy(alpha = 0.34f * haloStrength),
+                            selectionColor.copy(alpha = 0.13f * haloStrength),
                             Color.Transparent,
                         ),
                         center = Offset(centerX, bubbleCenterY),
@@ -247,8 +250,8 @@ fun BottomNavBar(
                 drawCircle(
                     brush = Brush.radialGradient(
                         colors = listOf(
-                            accentColor.copy(alpha = 0.52f * haloStrength),
-                            accentColor.copy(alpha = 0.16f * haloStrength),
+                            selectionColor.copy(alpha = 0.52f * haloStrength),
+                            selectionColor.copy(alpha = 0.16f * haloStrength),
                             Color.Transparent,
                         ),
                         center = Offset(centerX, bubbleCenterY),
@@ -273,9 +276,9 @@ fun BottomNavBar(
                     center = Offset(centerX, bubbleCenterY),
                 )
 
-                // Bright gold rim around the raised active circle.
+                // Rim in the day's liturgical colour around the raised active circle.
                 drawCircle(
-                    color = accentColor.copy(alpha = 0.82f * bubbleAlpha),
+                    color = selectionColor.copy(alpha = 0.82f * bubbleAlpha),
                     radius = bubbleRadius + 1.5.dp.toPx(),
                     center = Offset(centerX, bubbleCenterY),
                     style = Stroke(width = 1.5.dp.toPx()),
@@ -319,8 +322,8 @@ fun BottomNavBar(
                             drawCircle(
                                 brush = Brush.radialGradient(
                                     colors = listOf(
-                                        accentColor.copy(alpha = 0.50f * selectedness),
-                                        accentColor.copy(alpha = 0.16f * selectedness),
+                                        selectionColor.copy(alpha = 0.50f * selectedness),
+                                        selectionColor.copy(alpha = 0.16f * selectedness),
                                         Color.Transparent,
                                     ),
                                     center = center,
@@ -363,6 +366,8 @@ fun FloatingSearchButton(
     val s = LocalStrings.current
     val isLightMode = !LocalIsDarkTheme.current
     val accentColor = MaterialTheme.colorScheme.primary
+    // The selected tab glows in the colour of the day's Mass; the bar itself stays gold.
+    val selectionColor = LocalLiturgicalAccent.current
     val barBackgroundColor = if (isLightMode) {
         MaterialTheme.colorScheme.surfaceContainerHighest.copy(alpha = 0.97f)
     } else {
@@ -384,7 +389,7 @@ fun FloatingSearchButton(
             }
             .clip(CircleShape)
             .background(barBackgroundColor)
-            .border(2.dp, if (isSelected) accentColor else rimColor, CircleShape)
+            .border(2.dp, if (isSelected) selectionColor else rimColor, CircleShape)
             .clickable(onClick = onClick),
         contentAlignment = Alignment.Center
     ) {
@@ -394,8 +399,8 @@ fun FloatingSearchButton(
                 drawCircle(
                     brush = Brush.radialGradient(
                         colors = listOf(
-                            accentColor.copy(alpha = 0.45f),
-                            accentColor.copy(alpha = 0.15f),
+                            selectionColor.copy(alpha = 0.45f),
+                            selectionColor.copy(alpha = 0.15f),
                             Color.Transparent,
                         ),
                         center = center,

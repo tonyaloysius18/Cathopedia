@@ -154,16 +154,18 @@ internal fun NewsArt(
     glyphSize: Dp = 80.dp,
     badgeSize: Dp = 92.dp,
     badgeTop: Dp = 34.dp,
+    /** Below 1, the photo fades into the card colour so text over it stays readable. */
+    imageAlpha: Float = 1f,
 ) {
     if (item.badge != null) {
         Box(modifier) {
-            NewsArtBackground(item, Modifier.matchParentSize(), showGlyph = false)
+            NewsArtBackground(item, Modifier.matchParentSize(), showGlyph = false, imageAlpha = imageAlpha)
             NewsBadge(item.badge, Modifier.align(Alignment.TopEnd).padding(top = badgeTop, end = 4.dp)
                 .size(badgeSize * 0.92f, badgeSize))
         }
         return
     }
-    NewsArtBackground(item, modifier, glyphSize)
+    NewsArtBackground(item, modifier, glyphSize, imageAlpha = imageAlpha)
 }
 
 /** A logo with a transparent background, on its card's own colour; empty until its bytes load. */
@@ -175,14 +177,14 @@ private fun NewsBadge(path: String, modifier: Modifier) {
 }
 
 @Composable
-private fun NewsArtBackground(item: NewsItem, modifier: Modifier, glyphSize: Dp = 80.dp, showGlyph: Boolean = true) {
+private fun NewsArtBackground(item: NewsItem, modifier: Modifier, glyphSize: Dp = 80.dp, showGlyph: Boolean = true, imageAlpha: Float = 1f) {
     val theme = NewsTheme.of(item)
     val path = item.image
     val bytes by produceState<ByteArray?>(null, path) { value = path?.let { CatholicNews.image(it) } }
     Box(modifier.background(Brush.verticalGradient(listOf(theme.top, theme.bottom)))) {
         val image = bytes
         if (image != null) {
-            Image(rememberAsyncImagePainter(image), null, Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
+            Image(rememberAsyncImagePainter(image), null, Modifier.fillMaxSize(), contentScale = ContentScale.Crop, alpha = imageAlpha)
         } else if (showGlyph) {
             NewsGlyph(item, theme, Modifier.align(Alignment.TopEnd).padding(top = 40.dp, end = 18.dp).size(glyphSize))
         }
@@ -288,17 +290,17 @@ internal fun NewsCard(
     Box(modifier.fillMaxWidth().height(height).clip(shape)
         .border(1.dp, theme.highlight.copy(alpha = 0.65f), shape)
         .semantics(mergeDescendants = true) {}.clickable(role = Role.Button, onClick = onClick)) {
-        NewsArt(item, Modifier.matchParentSize())
+        NewsArt(item, Modifier.matchParentSize(), imageAlpha = if (item.image != null) 0.6f else 1f)
         val scrim = if (theme.light) {
             arrayOf(0f to Color.Transparent, 0.55f to Color.Transparent, 1f to Color.White.copy(alpha = 0.6f))
         } else {
-            arrayOf(0f to Color.Black.copy(alpha = 0.10f), 0.40f to Color.Transparent, 1f to Color.Black.copy(alpha = 0.78f))
+            arrayOf(0f to Color.Black.copy(alpha = 0.10f), 0.35f to Color.Transparent, 1f to Color.Black.copy(alpha = 0.88f))
         }
         Box(Modifier.matchParentSize().background(Brush.verticalGradient(*scrim)))
         if (item.image != null) {
             // Photos fill the card: shade the left side too, so the title stays readable over a face.
             Box(Modifier.matchParentSize().background(Brush.horizontalGradient(
-                0f to Color.Black.copy(alpha = 0.55f), 0.55f to Color.Black.copy(alpha = 0.15f), 0.8f to Color.Transparent)))
+                0f to Color.Black.copy(alpha = 0.65f), 0.6f to Color.Black.copy(alpha = 0.25f), 0.9f to Color.Transparent)))
         }
         NewsCardBadges(item, countdown, text)
         Column(Modifier.align(Alignment.BottomStart).fillMaxWidth(if (item.badge != null) 0.70f else 0.80f).padding(14.dp)) {

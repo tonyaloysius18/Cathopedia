@@ -63,6 +63,12 @@ import com.ynotlabs.cathopedia.i18n.stringsFor
 import com.ynotlabs.cathopedia.i18n.LocalScreenText
 import com.ynotlabs.cathopedia.i18n.ScreenText
 import com.ynotlabs.cathopedia.liturgical.LiturgicalCalendar
+import com.ynotlabs.cathopedia.ui.theme.LiturgicalTint
+import androidx.compose.runtime.SideEffect
+import com.ynotlabs.cathopedia.liturgical.OrdoProfile
+import com.ynotlabs.cathopedia.liturgical.LiturgicalColorOfDay
+import kotlinx.coroutines.delay
+import androidx.compose.runtime.produceState
 import com.ynotlabs.cathopedia.model.BookmarkItem
 import com.ynotlabs.cathopedia.model.ContentSummary
 import com.ynotlabs.cathopedia.model.ContentType
@@ -124,7 +130,6 @@ import com.ynotlabs.cathopedia.ui.screens.stations.StationsScreen
 import com.ynotlabs.cathopedia.ui.screens.vestments.VestmentsScreen
 import com.ynotlabs.cathopedia.ui.theme.CathopediaTheme
 import com.ynotlabs.cathopedia.ui.theme.ThemeMode
-import com.ynotlabs.cathopedia.ui.theme.toAccentColor
 import kotlinx.coroutines.launch
 
 private val TAB_DESTINATIONS = setOf(
@@ -266,11 +271,24 @@ fun App(container: AppContainer, notificationScheduler: FeastNotificationSchedul
         barScale = 1f
     }
 
-    // Computed once per app session — good enough for a value that only ever
-    // changes at most once a day, and avoids recomputing on every recomposition.
-    val liturgicalAccent = remember { LiturgicalCalendar.liturgicalDayFor(LiturgicalCalendar.today()).color.toAccentColor() }
+    // The accent follows the colour of the day's Mass. The date is re-checked every minute, so an
+    // app left open overnight (or brought back the next morning) switches without a restart.
+    var liturgicalToday by remember { mutableStateOf(LiturgicalCalendar.today()) }
+    LaunchedEffect(Unit) {
+        while (true) {
+            delay(60_000)
+            val now = LiturgicalCalendar.today()
+            if (now != liturgicalToday) liturgicalToday = now
+        }
+    }
+    val liturgicalColor by produceState(LiturgicalCalendar.liturgicalDayFor(liturgicalToday).color, liturgicalToday) {
+        val profile = OrdoProfile.entries.firstOrNull { it.name == repository.getPreference("ordo_profile") } ?: OrdoProfile.GENERAL
+        value = LiturgicalColorOfDay.forDate(liturgicalToday, profile)
+    }
+    // Tint the whole app's green base into the day's colour (see LiturgicalTint).
+    SideEffect { LiturgicalTint.color = liturgicalColor }
 
-    CathopediaTheme(themeMode = themeMode, liturgicalAccent = liturgicalAccent) {
+    CathopediaTheme(themeMode = themeMode, liturgicalColor = liturgicalColor) {
     // Shrinks every sp in the app for scripts that run larger than Latin at the same size (Tamil).
     val baseDensity = LocalDensity.current
     val textScale = AppLanguages.forCode(language).textScale

@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.common
 
+import com.ynotlabs.cathopedia.ui.theme.liturgical
 import com.ynotlabs.cathopedia.ui.theme.imageFade
 import com.ynotlabs.cathopedia.ui.theme.CardBorder
 import com.ynotlabs.cathopedia.ui.screens.catechism.BeatitudesScreen
@@ -850,7 +851,7 @@ private fun SacramentCarousel(
                         .clip(RoundedCornerShape(26.dp))
                         .background(
                             Brush.verticalGradient(
-                                listOf(Color(0xFF15372A), HubSectionCard),
+                                listOf(Color(0xFF15372A).liturgical(), HubSectionCard),
                             ),
                         ),
                 ) {

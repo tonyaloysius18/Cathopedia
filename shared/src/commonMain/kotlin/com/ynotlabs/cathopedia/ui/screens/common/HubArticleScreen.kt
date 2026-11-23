@@ -1,5 +1,6 @@
 package com.ynotlabs.cathopedia.ui.screens.common
 
+import com.ynotlabs.cathopedia.ui.theme.liturgical
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.text.style.TextAlign
@@ -1035,7 +1036,7 @@ private fun HubArticleEditorialImage(asset: String) {
                     .background(
                         Brush.verticalGradient(
                             0.50f to Color.Transparent,
-                            1f to Color(0xFF061A13).copy(alpha = 0.78f),
+                            1f to Color(0xFF061A13).liturgical().copy(alpha = 0.78f),
                         )
                     ),
             )
@@ -1451,7 +1452,7 @@ private fun OrderCard(
                                     .padding(12.dp)
                                     .size(70.dp)
                                     .clip(RoundedCornerShape(50))
-                                    .background(Color(0xFF081F17).copy(alpha = 0.55f))
+                                    .background(Color(0xFF081F17).liturgical().copy(alpha = 0.55f))
                                     .border(
                                         BorderStroke(1.dp, CardBorder),
                                         RoundedCornerShape(50),

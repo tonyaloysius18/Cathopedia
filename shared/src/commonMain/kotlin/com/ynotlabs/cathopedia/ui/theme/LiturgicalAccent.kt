@@ -13,10 +13,18 @@ import com.ynotlabs.cathopedia.liturgical.LiturgicalColor
  */
 val LocalLiturgicalAccent = compositionLocalOf { LiturgicalOrdinary }
 
-fun LiturgicalColor.toAccentColor(): Color = when (this) {
-    LiturgicalColor.GREEN -> LiturgicalOrdinary
-    LiturgicalColor.VIOLET -> LiturgicalAdventLent
-    LiturgicalColor.GOLD -> LiturgicalChristmasEaster
-    LiturgicalColor.RED -> LiturgicalPentecostMartyrs
-    LiturgicalColor.ROSE -> LiturgicalGaudeteLaetare
+/**
+ * Bright enough to glow on the dark bar and to read as a dot or border on both themes; the darker
+ * `Liturgical*` swatches in Color.kt stay for places that fill whole surfaces. White is a warm
+ * ivory, which pure white would not be on the dark theme (it would read as plain text); on the
+ * light theme it becomes a pale silver so it still shows against the cream background.
+ */
+fun LiturgicalColor.toAccentColor(darkTheme: Boolean = true): Color = when (this) {
+    // The chasuble fabrics (see LiturgicalTint), lifted where the fabric is too dark to glow.
+    LiturgicalColor.GREEN -> Color(0xFF2FA046)
+    LiturgicalColor.VIOLET -> Color(0xFFA33DB0)
+    LiturgicalColor.GOLD -> Color(0xFFD18D1D)
+    LiturgicalColor.RED -> Color(0xFFD02A2F)
+    LiturgicalColor.ROSE -> Color(0xFFE15661)
+    LiturgicalColor.WHITE -> if (darkTheme) Color(0xFFE0D8D0) else Color(0xFFA9A293)
 }
